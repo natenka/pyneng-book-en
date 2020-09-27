@@ -1,14 +1,13 @@
 About book
 -------
 
-In nutshell, this book is like CCNA but for python. From the one hand, the book is basic enough, so everyone can handle it, from the other hand, the book considers all main topics which allow you to develop skill independently in the future. Python deep dive is not a goal of this book. The goal is to explain Python basics in plain language and provide understanding of necessary tools for practical usage. Everything in this book is focused on network equipment and interaction with it. It right away gives opportunity to use knowledge gained at the course in network engineers daily work. All shown examples are based on Cisco equipment but, of course, they could be applied to any other equipment.
+In nutshell, this book is like CCNA but for python. From the one hand, book is basic enough so everyone can handle it, from the other hand, book covers all main topics which allow you to develop skill independently in the future. Python deep dive is not a goal of this book. The goal is to explain Python basics in plain language and provide understanding of necessary tools for practical usage. Everything in this book is focused on network equipment and interaction with it. It right away gives opportunity to use knowledge gained at the course in network engineers daily work. All shown examples are based on Cisco equipment but, of course, they could be applied to any other equipment.
 
 Who is this book for?
 ~~~~~~~~~~~~~~~~~~
 
 For network engineers with or without programming experience. All examples and homework will be formed with a focus on network equipment. This book will be useful for network engineers who want to automate their daily basis routine tasks and want start coding but don't know how to approach this.
-Still haven't decided whether it worth reading this book? Read
-:ref:`feedbacks <testimonials>`.
+Still haven't decided whether it worth reading this book? Read :ref:`feedbacks <testimonials>`.
 
 Why you need to learn programming?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
