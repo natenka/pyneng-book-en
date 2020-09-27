@@ -1,15 +1,15 @@
-Python для сетевых инженеров
+Python for network engineers
 ============================
 
-В книге рассматриваются основы Python с примерами и заданиями построенными на сетевой тематике.
+Book covers Python basics with examples and tasks based on networking topics.
 
-С одной стороны, книга достаточно базовая, чтобы её мог одолеть любой желающий, а с другой стороны, в книге рассматриваются все основные темы, которые позволят дальше расти самостоятельно. Книга не ставит своей целью глубокое рассмотрение Python. Задача книги – объяснить понятным языком основы Python и дать понимание необходимых инструментов для его практического использования. Всё, что рассматривается в книге, ориентировано на сетевое оборудование и работу с ним. Это даёт возможность сразу использовать в работе сетевого инженера то, что было изучено на курсе. Все примеры показываются на примере оборудования Cisco, но, конечно же, они применимы и для любого другого оборудования.
+From the one hand, book is basic enough so everyone can handle it, from the other hand, book considers all main topics which allow you to develop skill independently in the future. Python deep dive is not a goal of this book. The goal is to explain Python basics in plain language and provide understanding of necessary tools for practical usage. Everything in this book is focused on network equipment and interaction with it. It right away gives opportunity to use knowledge gained at the course in network engineers daily work. All shown examples are based on Cisco equipment but, of course, they could be applied to any other equipment.
 
 .. note::
 
-    В книге используется Python 3.7.
+    Python 3.7 is used in this book.
 
-При желании, вы можете `сказать "спасибо" автору книги <https://natenka.github.io/thanks/>`__.
+If you wish, you can thank the author of the book. <https://natenka.github.io/thanks/>`__.
 
 
 .. toctree::
