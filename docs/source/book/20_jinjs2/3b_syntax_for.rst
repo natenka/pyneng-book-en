@@ -1,10 +1,10 @@
-Цикл for
+Loop for
 --------
 
-Цикл for позволяет проходиться по элементам последовательности.
+Loop **for** allows you to walk through sequence of elements.
 
-Цикл for должен находиться внутри символов ``{% %}``.
-Кроме того, нужно явно указывать завершение цикла:
+Loop **for** must be inside ``{% %}``.
+Furthermore, the end of the loop must be explicitly indicated:
 
 ::
 
@@ -12,7 +12,7 @@
       vlan {{ vlan }}
     {% endfor %}
 
-Пример шаблона templates/for.txt с использованием цикла:
+Template example templates/for.txt using a loop:
 
 ::
 
@@ -33,7 +33,7 @@
      network {{ networks.network }} area {{ networks.area }}
      {% endfor %}
 
-Файл data_files/for.yml с переменными:
+File data_files/for.yml with variables:
 
 .. code:: yaml
 
@@ -51,11 +51,9 @@
       - network: 10.1.1.0 0.0.0.255
         area: 0
 
-В цикле for можно проходиться как по элементам списка (например, список
-ospf), так и по словарю (словарь vlans). И, аналогичным образом, по
-любой последовательности.
+In **for**, it is possible to go through both the list elements (for example, *ospf* list) and the dictionary (*vlans* dictionary). And similarly, through any sequence.
 
-Результат выполнения будет таким:
+The result will be:
 
 ::
 

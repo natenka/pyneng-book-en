@@ -1,15 +1,14 @@
 ALTER
 ~~~~~
 
-Оператор ALTER позволяет менять существующую таблицу: добавлять новые
-колонки или переименовывать таблицу.
+ALTER operator allows you to change an existing table: add new columns or rename the table.
 
-Добавим в таблицу новые поля: 
+Add new fields to the table:
 
-* mngmt_ip - IP-адрес коммутатора в менеджмент VLAN 
-* mngmt_vid - VLAN ID (номер VLAN) для менеджмент VLAN
+* mngmt_ip - switch IP address in management VLAN 
+* mngmt_vid - VLAN ID of management VLAN
 
-Добавление записей с помощью команды ALTER:
+Adding entries using ALTER command:
 
 .. code:: sql
 
@@ -27,7 +26,7 @@ ALTER
     Query OK, 0 rows affected
     Time: 0.010s
 
-Теперь таблица выглядит так (новые поля установлены в значение NULL):
+Now the table looks like this (new fields are set to NULL):
 
 .. code:: sql
 

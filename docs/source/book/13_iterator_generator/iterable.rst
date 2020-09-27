@@ -1,26 +1,21 @@
 .. _iterable:
 
-Итерируемый объект
+Iterable object
 ------------------
 
-Итерация - это общий термин, который описывает процедуру взятия
-элементов чего-то по очереди.
+Iteration is a generic term that describes the procedure for taking elements of something in turn.
 
-В более общем смысле, это последовательность инструкций, которая
-повторяется определенное количество раз или до выполнения указанного
-условия.
+In a more general sense, it is a sequence of instructions that is repeated a certain number of times or before the specified condition is fulfilled.
 
-Итерируемый объект (iterable) - это объект, который способен возвращать
-элементы по одному. Кроме того, это объект, из которого можно получить
-итератор.
+An iterable object is an object that can return elements one at a time. It is also an object from which an iterator can be derived.
 
-Примеры итерируемых объектов: 
+Examples of iterable objects:
 
-* все последовательности: список, строка, кортеж 
-* словари 
-* файлы
+* all sequences: list, string, tuple
+* dictionaries 
+* files
 
-В Python за получение итератора отвечает функция iter():
+In Python the iter() function is responsible for iterator deriving.
 
 .. code:: python
 
@@ -29,17 +24,10 @@
     In [2]: iter(lista)
     Out[2]: <list_iterator at 0xb4ede28c>
 
-Функция ``iter()`` отработает на любом объекте, у которого есть метод
-``__iter__`` или метод ``__getitem__``.
+The ``iter()`` function will work on any object that has ``__iter__`` or  ``__getitem__`` method.
 
-Метод ``__iter__`` возвращает итератор. Если этого метода нет,
-функция iter() проверяет, нет ли метода ``__getitem__`` - метода,
-который позволяет получать элементы по индексу.
+The ``__iter__`` method returns the iterator. If this method is not available, the iter() function checks if there is ``__getitem__`` method that allows getting elements by index.
 
-Если метод ``__getitem__`` есть, возвращается итератор, который
-проходится по элементам, используя индекс (начиная с 0).
+If method ``__getitem__`` is present the iterator is returned, which iterates through the elements using index (starting with 0).
 
-На практике использование метода ``__getitem__`` означает, что все
-последовательности элементов - это итерируемые объекты. Например,
-список, кортеж, строка. Хотя у этих типов данных есть и метод
-``__iter__``.
+In practice, the use of ``__getitem__`` means that all sequence elements are iterable objects. For example, a list, a tuple, a string. Although these data types have ``__iter__`` method.

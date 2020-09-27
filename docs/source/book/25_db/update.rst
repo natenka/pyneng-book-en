@@ -1,14 +1,13 @@
 UPDATE
 ~~~~~~
 
-Оператор UPDATE используется для изменения существующей записи таблицы.
+UPDATE operator is used to change an existing table entry.
 
-Обычно, UPDATE используется вместе с оператором WHERE, чтобы уточнить,
-какую именно запись необходимо изменить.
+Usually, UPDATE is used with WHERE operator to specify which entry to change.
 
-С помощью UPDATE можно заполнить новые столбцы в таблице.
+With UPDATE you can fill in new columns in the table.
 
-Например, добавить IP-адрес для коммутатора sw1:
+For example, add an IP address for sw1 switch:
 
 .. code:: sql
 
@@ -16,7 +15,7 @@ UPDATE
     Query OK, 1 row affected
     Time: 0.009s
 
-Теперь таблица выглядит так:
+Now the table is like this:
 
 .. code:: sql
 
@@ -35,7 +34,7 @@ UPDATE
     7 rows in set
     Time: 0.035s
 
-Аналогичным образом можно изменить и номер VLAN:
+VLAN number can be changed in the same way:
 
 .. code:: sql
 
@@ -59,7 +58,7 @@ UPDATE
     Time: 0.037s
 
 
-Можно изменить несколько полей за раз:
+You can change several fields at a time:
 
 .. code:: sql
 
@@ -83,8 +82,7 @@ UPDATE
     Time: 0.033s
 
 
-Чтобы не заполнять поля mngmt_ip и mngmt_vid вручную, заполним
-остальное из файла update_fields_in_testdb.txt (команда ``source update_fields_in_testdb.txt``):
+To avoid filling fields mngmt_ip and mngmt_vid manually, fill in the rest from the update_fields_in_testdb.txt file (command ``source update_fields_in_testdb.txt``):
 
 ::
 
@@ -94,7 +92,7 @@ UPDATE
     UPDATE switch set mngmt_ip = '10.255.1.6', mngmt_vid = 255 WHERE hostname = 'sw6';
     UPDATE switch set mngmt_ip = '10.255.1.7', mngmt_vid = 255 WHERE hostname = 'sw7';
 
-После загрузки команд таблица выглядит так:
+After commands upload the table is as follows:
 
 .. code:: sql
 
@@ -113,10 +111,9 @@ UPDATE
     7 rows in set
     Time: 0.038s
 
-Теперь предположим, что sw1 был заменен с модели 3750 на модель 3850.
-Соответственно, изменилось не только поле модель, но и поле MAC-адрес.
+Now suppose that sw1 was replaced from 3750 model to 3850. Accordingly, not only model field but also MAC address field was changed.
 
-Внесение изменений:
+Making changes:
 
 .. code:: sql
 
@@ -124,7 +121,7 @@ UPDATE
     Query OK, 1 row affected
     Time: 0.009s
 
-Результат будет таким:
+The result will be:
 
 .. code:: sql
 

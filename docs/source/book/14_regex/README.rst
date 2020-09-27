@@ -1,37 +1,28 @@
-Синтаксис регулярных выражений
+Regular expression syntax
 ------------------------------
 
-В Python для работы с регулярными выражениями используется модуль re.
-Соответственно, для начала работы с регулярными выражениями надо его
-импортировать.
+Python uses **re** module to work with regular expressions. Accordingly, you have to  import it to start working with regular expressions.
 
-В этом разделе для всех примеров будет использоваться
-функция search. А в следующем подразделе будут рассматриваться
-остальные функции модуля re.
+This section will use the search() function for all examples. And in the next subsection, the rest of the functions of **re** will be considered.
 
-Синтаксис функции search такой:
+Syntax of the search() function is:
 
 .. code:: python
 
     match = re.search(regex, string)
 
-У функции search два обязательных параметра: 
+The search() function has two prerequisites:
 
-* regex - регулярное выражение 
-* string - строка, в которой ищется совпадение
+* regex - regular expression
+* string - string in which search pattern is searched
 
-Если совпадение было найдено, функция вернет специальный объект Match.
-Если же совпадения не было, функция вернет None.
+If a match is found the function will return special object Match. If there is no match, the function will return None.
 
-При этом особенность функции search в том, что она ищет только первое
-совпадение. То есть, если в строке есть несколько подстрок, которые
-соответствуют регулярному выражению, search вернет только первое
-найденное совпадение.
+The feature of the search() function is that it only looks for a first match. That is, if there are several substrings in a line that correspond to a regular expression, search() will return only the first match found.
 
-Чтобы получить представление о регулярных выражениях, рассмотрим
-несколько примеров.
+To get an idea of regular expressions, consider a few examples.
 
-Самый простой пример регулярного выражения - подстрока:
+The simplest example of a regular expression is a substring:
 
 .. code:: python
 
@@ -41,36 +32,31 @@
 
     In [3]: match = re.search('MTU', int_line)
 
-В этом примере: 
+In this example:
 
-* сначала импортируется модуль re 
-* затем идет пример строки int_line 
-* и в 3 строке функции search передается выражение, которое надо искать,
-  и строка int_line, в которой ищется совпадение
+* first import module **re**
+* then goes the example of  string  - int_line 
+* •	and in line 3 the search pattern is passed to search() function plus string int_line in which the match is searched
 
-В данном случае мы просто ищем, есть ли подстрока 'MTU' в строке
-int_line.
+In this case we are simply looking for whether there is ‘MTU’ substring in string int_line.
 
-Если она есть, в переменной match будет находиться специальный объект
-Match:
+If it exists, the *match* variable will contain a special Match object:
 
 .. code:: python
 
     In [4]: print(match)
     <_sre.SRE_Match object; span=(2, 5), match='MTU'>
 
-У объекта Match есть несколько методов, которые позволяют получать
-разную информацию о полученном совпадении. Например, метод group
-показывает, что в строке совпало с описанным выражением.
+Match object has several methods that allow to get different information about the received match. For example, the group() method shows that the string matches the expression described.
 
-В данном случае это просто подстрока 'MTU':
+In this case, it’s just a ‘MTU’ substring:
 
 .. code:: python
 
     In [5]: match.group()
     Out[5]: 'MTU'
 
-Если совпадения не было, в переменной match будет значение None:
+If there was no match, the *match* variable will have None value:
 
 .. code:: python
 
@@ -81,14 +67,10 @@ Match:
     In [8]: print(match)
     None
 
-Полностью возможности регулярных выражений проявляются при использовании
-специальных символов. Например, символ ``\d`` означает цифру, а ``+``
-означает повторение предыдущего символа один или более раз. Если их
-совместить ``\d+``, получится выражение, которое означает одну или более
-цифр.
+Regular expressions are fully enabled when special characters are used. For example, the symbol ``\d`` means a digit, but ``+``
+means repetition of the previous symbol one or more times. If you combine them ``\d+``, you get an expression that means one or more digits.
 
-Используя это выражение, можно получить часть строки, в которой описана
-пропускная способность:
+Using this expression, you can get the part of the string that describes the bandwidth:
 
 .. code:: python
 
@@ -99,34 +81,25 @@ Match:
     In [11]: match.group()
     Out[11]: 'BW 10000'
 
-Особенно полезны регулярные выражения в получении определенных подстрок
-из строки. Например, необходимо получить VLAN, MAC и порты из вывода
-такого лог-сообщения:
+Regular expressions are particularly useful in getting certain substrings from the string. For example, it is necessary to get VLAN, MAC and ports from the output of such log message:
 
 .. code:: python
 
     In [12]: log2 = 'Oct  3 12:49:15.941: %SW_MATM-4-MACFLAP_NOTIF: Host f04d.a206.7fd6 in vlan 1 is flapping between port Gi0/5 and port Gi0/16'
 
-Это можно сделать с помощью такого регулярного выражения:
+This can be done through the regular expression:
 
 .. code:: python
 
     In [13]: re.search('Host (\S+) in vlan (\d+) is flapping between port (\S+) and port (\S+)', log2).groups()
     Out[13]: ('f04d.a206.7fd6', '1', 'Gi0/5', 'Gi0/16')
 
-Метод groups возвращает только те части исходной строки, которые попали
-в круглые скобки. Таким образом, заключив часть выражения в скобки,
-можно указать, какие части строки надо запомнить.
+The group() method returns only those parts of the original string that are in brackets. Thus, by placing a part of the expression in brackets, you can specify which parts of the line you want to remember.
 
-Выражение ``\d+`` уже использовалось ранее - оно описывает одну или
-более цифр. А выражение ``\S+`` описывает все символы, кроме whitespace
-(пробел, таб и другие).
+The expression ``\d+`` has been used before - it describes one or more digits.  And the expression ``\S+`` describes all characters except whitespace (space, tab, etc.).
 
-В следующих подразделах рассматриваются специальные символы, которые
-используются в регулярных выражениях.
+The following subsections deal with special characters that are used in regular expressions.
 
 .. note::
 
-    Если вы знаете, что означают специальные символы в регулярных
-    выражениях, можно пропустить следующий подраздел и сразу
-    переключиться на подраздел о модуле re.
+    If you know what special characters mean in regular expressions, you can skip the following subsection and immediately switch to the subsection about module **re**.

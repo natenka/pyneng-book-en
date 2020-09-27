@@ -1,63 +1,51 @@
-Количество потоков
+Number of threads
 ------------------
 
-Сколько потоков нужно использовать при подключении к оборудованию?
-На этот вопрос нет однозначного ответа. Количество потоков, как минимум,
-зависит от того на каком компьютере выполняется 
-скрипт (ОС, память, процессор), от самой сети (задержек).
+How many threads you need to use when connecting to device? There is no clear answer to this question. The number of threads depends at least on which computer runs the script (OS, memory, processor), on network itself (delays).
 
-Поэтому, вместо поиска идеального количества потоков, надо замерить количество на своем
-компьютере, сети, скрипте. Например, в примерах к этому разделу есть скрипт 
-netmiko_count_threads.py, который запускает одну и ту же функцию с разным 
-количеством потоков и выводит информацию о времени выполнения.
-В функции по умолчанию используется небольшое количество устройств из файла devices_all.yaml
-и небольшое количество потоков, однако его можно адаптировать к любому количеству для своей сети.
+So instead of looking for the perfect number of threads, you have to measure the number on your computer, your network, your script. For example, in the examples to this section there is a script netmiko_count_threads.py that runs the same function with different threads and displays runtime information. Function by default uses a small number of devices from the devices_all.yaml file and a small number of threads, but it can be adapted to any number based on your network.
 
-Пример подключения к 5000 устройств с разным количеством потоков:
+Example of connecting to 5,000 devices with different number of threads:
 
 ::
 
-    Количество устройств: 5460
+    Number of devices: 5460
 
-    #30 потоков
+    #30 threads
     ----------------------------------------
-    Время выполнения: 0:09:17.187867
+    Execution time: 0:09:17.187867
 
-    #50 потоков
+    #50 threads
     ----------------------------------------
-    Время выполнения: 0:09:17.604252
+    Execution time: 0:09:17.604252
 
-    #70 потоков
+    #70 threads
     ----------------------------------------
-    Время выполнения: 0:09:17.117332
+    Execution time: 0:09:17.117332
 
-    #90 потоков
+    #90 threads
     ----------------------------------------
-    Время выполнения: 0:09:16.693774
+    Execution time: 0:09:16.693774
 
-    #100 потоков
+    #100 threads
     ----------------------------------------
-    Время выполнения: 0:09:17.083294
+    Execution time: 0:09:17.083294
 
-    #120 потоков
+    #120 threads
     ----------------------------------------
-    Время выполнения: 0:09:17.945270
+    Execution time: 0:09:17.945270
 
-    #140 потоков
+    #140 threads
     ----------------------------------------
-    Время выполнения: 0:09:18.114993
+    Execution time: 0:09:18.114993
 
-    #200 потоков
+    #200 threads
     ----------------------------------------
-    Время выполнения: 0:11:12.951247
+    Execution time: 0:11:12.951247
 
-    #300 потоков
+    #300 threads
     ----------------------------------------
-    Время выполнения: 0:14:03.790432
+    Execution time: 0:14:03.790432
 
-В этом случае время выполнения с 30 потоками и 120 потоков одинаковое, а после время только
-увеличивается. 
-Так происходит потому что на переключение между потоками также тратится много времени, 
-чем больше потоков, тем больше переключений. 
-И с какого-то момента нет смысла увеличивать количество потоков. Тут оптимальным количеством можно считать, например, 50 потоков. Тут мы берем не 30 чтобы сделать запас. 
+In this case, the execution time with 30 threads and 120 threads is the same and after time only increases. This is because switching between threads also takes a lot of time and the more streams the more switching. And from some moment it makes no sense to increase number of  threads. Here the optimal number can be considered as 50 threads. We're not taking 30 here in order to make a reserve.
 

@@ -1,16 +1,13 @@
 while
 -----
 
-Цикл while - это еще одна разновидность цикла в Python.
+A **while** loop is another type of loop in Python.
 
-В цикле while, как и в выражении if, надо писать условие. Если условие
-истинно, выполняются действия внутри блока while. При этом, в отличие от if,
-после выполнения кода в блоке, while возвращается в начало цикла.
+Unlike **if**, after executing code in the block, **while** returns to the beginning of the loop.
 
-При использовании циклов while необходимо обращать внимание на то, будет
-ли достигнуто такое состояние, при котором условие цикла будет ложным.
+When using **while** loops it is necessary to pay attention to whether the result when condition of the loop is false will be reached.
 
-Рассмотрим простой пример:
+Consider a simple example:
 
 .. code-block:: python
 
@@ -18,7 +15,7 @@ while
 
     In [2]: while a > 0:
        ...:     print(a)
-       ...:     a -= 1 # Эта запись равнозначна a = a - 1
+       ...:     a -= 1 # This record is equal to: a = a - 1
        ...:
     5
     4
@@ -26,70 +23,61 @@ while
     2
     1
 
-Сначала создается переменная а со значением 5.
+First, create a variable with a value of 5.
 
-Затем, в цикле while указано условие a > 0. То есть, пока значение а
-больше 0, будут выполняться действия в теле цикла. В данном случае,
-будет выводиться значение переменной а.
+Then, in the **while** loop the condition a > 0 is specified. That is, as long as the value is greater than 0, actions in the body of the loop will be performed. In this case, the value of variable **a** will be displayed.
 
-Кроме того, в теле цикла при каждом прохождении значение а становится на
-единицу меньше.
+In addition, in the body of the loop, after each pass the value of **a** becomes one less.
 
 .. note::
-    Запись ``a -= 1`` может быть немного необычной. Python позволяет
-    использовать такой формат вместо ``a = a - 1``.
+    Record ``a -= 1`` can be a bit unusual. Python allows this format to be used instead of ``a = a - 1``.
 
-    Аналогичным образом можно писать: ``a += 1``, ``a *= 2``,
+    Similarly, you can write: ``a += 1``, ``a *= 2``,
     ``a /= 2``.
 
-Так как значение а уменьшается, цикл не будет бесконечным, и в какой-то
-момент выражение a > 0 станет ложным.
+As the value **a** decreases, the loop will not be infinite, and at some point the expression a > 0 becomes false.
 
-Следующий пример построен на основе примера про пароль из раздела о
-конструкции if :ref:`if_example`.
-В том примере приходилось заново запускать скрипт, если пароль не соответствовал требованиям.
+The following example is based on the example about password from section which describes **if** construction use :ref:`if_example`.
+In that example you had to restart the script if the password did not meet the requirements.
 
-С помощью цикла while можно сделать так, что скрипт сам будет
-запрашивать пароль заново, если он не соответствует требованиям.
+With a **while** loop you can make sure that the script itself requests the password again if it does not meet the requirements.
 
-Файл check_password_with_while.py:
+Check_password_with_while.py file:
 
 .. code:: python
 
     # -*- coding: utf-8 -*-
 
-    username = input('Введите имя пользователя: ' )
-    password = input('Введите пароль: ' )
+    username = input('Enter username: ' )
+    password = input('Enter password: ' )
 
     password_correct = False
 
     while not password_correct:
         if len(password) < 8:
-            print('Пароль слишком короткий\n')
-            password = input('Введите пароль еще раз: ' )
+            print('Password is too short\n')
+            password = input('Enter password once again: ' )
         elif username in password:
-            print('Пароль содержит имя пользователя\n')
-            password = input('Введите пароль еще раз: ' )
+            print('Password contains username\n')
+            password = input('Enter password once again: ' )
         else:
-            print('Пароль для пользователя {} установлен'.format( username ))
+            print('Password for user {} is set'.format( username ))
             password_correct = True
 
-В этом случае цикл while полезен, так как он возвращает скрипт снова в
-начало проверок, позволяет снова набрать пароль, но при этом не требует
-перезапуска самого скрипта.
+In this case, the **while** loop is useful because it returns the script back to the beginning of the checks and allows the password to be typed again but does not require the script to restart.
 
-Теперь скрипт отрабатывает так:
+Now the script works like this:
 
 ::
 
     $ python check_password_with_while.py
-    Введите имя пользователя: nata
-    Введите пароль: nata
-    Пароль слишком короткий
+    Enter username: nata
+    Enter password: nata
+    Password is too short
 
-    Введите пароль еще раз: natanata
-    Пароль содержит имя пользователя
+    Enter password once again: natanata
+    Password contains username
 
-    Введите пароль еще раз: 123345345345
-    Пароль для пользователя nata установлен
+    Enter password once again: 123345345345
+    Password for user nata is set
 

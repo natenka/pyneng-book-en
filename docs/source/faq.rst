@@ -1,187 +1,99 @@
-Часто задаваемые вопросы (FAQ)
+Frequently Asked Questions (FAQ)
 ------------------------------
 
-Здесь собраны вопросы, которые наиболее часто возникают при чтении
-книги.
+Here are some of the most frequently asked questions in reading
+books.
 
-Чем это отличается от обычного вводного курса по Python?
+How does this differ from the regular Python introductory course?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Основных отличий три:
+The main differences are three:
 
--  основы даются достаточно коротко;
--  подразумевается определённая предметная область знаний (сетевое
-   оборудование);
--  все примеры, по возможности, ориентированы на сетевое оборудование.
+-  The basis is rather brief;
+-  Implies a certain domain of knowledge (network-based equipment);
+-  All examples are, as far as possible, focused on network equipment.
 
-Я сетевик. Для чего мне нужна эта книга?
+I'm a network engineer. What do I need this book for?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-В первую очередь – для автоматизации рутинных задач. Автоматизация даёт
-несколько преимуществ:
+First of all, to automate routine tasks. Automation provides
+several advantages:
 
--  высокоуровневое мышление – проще подняться над всем, когда вы
-   свободны от рутинной работы. У Вас появится время и возможность
-   думать об улучшениях;
--  доверие – вы не будете бояться делать изменения, которые, как
-   правило, сопряжены с риском, так как сеть это основа работы всех
-   приложений и цена ошибки высока;
--  консистентная конфигурация – вы сможете автоматизированно создавать
-   файлы настроек сетевого оборудования, от пользователей и подписей
-   интерфейсов до функционала безопасности, и будете меньше переживать о
-   том, забыли ли вы нечто.
+-  High-level thinking - it’s easier to rise above everything when you free of routine work. You’ll have time and opportunity to think of improvements;
+-  Trust - you won’t be afraid to make changes that are often risky because the network is the backbone of every applications and the cost of error is high;
+-  A coherent configuration - you will able to automatically create network configuration files, from users and interface descriptions to security functionality, and you’ll be less worried about whether you have forgotten something.
 
-Конечно, не будет такого, что после прочтения книги, вы "всё
-автоматизируете и наступит счастье", но это шаг в данном направлении. Я
-ни в коем случае не агитирую за то, чтобы автоматизация выполнялась
-кучей самописных скриптов. Если есть софт, который решает нужные Вам
-задачи, это отлично, используйте его. Но если его нет, или если вы
-просто ещё о таком не думали, попробуйте начать с простого – Ansible,
-например, позволит выполнять многие задачи практически "из коробки".
+Of course, it won’t be that after reading the book you "automate everything and happiness will come" but this is a step in this direction. I am in no way encouraging for all automation to be done via bunch of scripts. If there is some software that solves your needs, that’s great, use it. But if there isn’t or if you are just haven’t thought about it yet, try to start with a simple - Ansible, for example, allows to perfrom many tasks almost "out of the box".
 
-Зачем тогда учить Python? Дело в том, что тот же Ansible не решит все
-вопросы. И, возможно, вам понадобится добавить какой-то функционал
-самостоятельно. Кроме непосредственной настройки оборудования, есть
-ежедневные рутинные задачи, которые можно автоматизировать с помощью
-Python. Скажем так, если вы не хотите разбираться с Python, но хотите
-автоматизировать процесс настройки и работы с оборудованием, обратите
-своё внимание на Ansible. Даже "из коробки" он будет очень полезен. Если
-же вы потом войдете во вкус и захотите добавить своё, чего нет в
-Ansible, возвращайтесь :-)
+Why then learn Python? The fact is that the same Ansible won’t solve everything. And you may need to add some functionality independently. In addition, apart of equipment configuration adjustment, there are daily routine tasks that can be automated by Python. Let’s just say that if you don’t want to deal with Python, but want to
+automate setup and operation processes, please turn attention on Ansible. Even "out of the box" it will be very useful.
+Later, if you get taste for it and you want to add something that missed in Ansible, come back :-)
 
-И ещё, этот курс не только о том, как использовать Python для
-подключения к оборудованию и его настройке. Он и о том, как решать
-задачи, которые не касаются подключения к оборудованию, например,
-изменить что-то в нескольких файлах конфигурации, или обработать
-log-файл – Python поможет вам решать в том числе и подобные задачи.
+And yes, this course is not only about how to use Python for network equipment configuration and connecton to it.
+It’s also about how to solve tasks that are not connected to the equipment. 
+For example, change something in multiple configuration files or parse log-file - Python will help you solve these tasks.
 
-Почему книга именно для сетевых инженеров?
+Why is this book specifically for network engineers?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Есть несколько причин:
+There are several reasons:
 
--  сетевые инженеры уже обладают опытом работы в ИТ, и часть концепций
-   им знакома, и, скорее всего, какие-то основы программирования
-   большинству уже будут знакомы. Это означает, что будет гораздо проще
-   разобраться с Python;
--  работа в командной строке и написание скриптов вряд ли испугает их;
--  у сетевых инженеров есть знакомая им предметная область, на которую
-   можно опираться при составлении примеров и заданий.
+-  Network engineers already have experience in IT, and some of the concepts are familiar to them and it is likely that some programming basics will be familiar to most. This means that it will be much easier to deal with Python;
+-  Working in the CLI and writing scripts is unlikely to frighten them;
+-  Network engineers have a familiar knowledge domain on which to build examples and tasks.
 
-Если рассказывать на абстрактных примерах "о котиках и зайчиках", это
-одно. Но когда в примерах есть возможность использовать идеи из
-предметной области, всё становится проще, рождаются конкретные идеи, как
-улучшить какую-либо программу, скрипт. А когда человек пытается её
-улучшить, он начинает разбираться с новым - это очень сильно помогает
-продвигаться вперёд.
+If you tell on abstract examples «about cats and bunnies», it is one thing. But when you have the ability to use ideas from the subject area in the examples, things get easier, you get concrete ideas about how to improve a program, a script. And when a person tries to improve it, they start to deal with something new - it’s a very powerful way to move forward.
 
-Почему именно Python?
+Why Python?
 ~~~~~~~~~~~~~~~~~~~~~
 
-Причины следующие:
+The reasons are as follows:
 
--  в контексте работы с сетевым оборудованием, сейчас часто используется
-   именно Python;
--  на некотором оборудовании Python встроен или есть API, который
-   поддерживает Python;
--  Python достаточно прост для изучения (конечно, это относительно, и
-   более простым может казаться другой язык, но, скорее, это будет из-за
-   имеющегося опыта работы с языком, а не потому, что Python сложный);
--  с Python вы вряд ли быстро дойдете до границ возможностей языка;
--  Python может использоваться не только для написания скриптов, но и
-   для разработки приложений. Разумеется, это не является задачей этой
-   книги, но, по крайней мере, вы потратите время на язык, который
-   позволит вам легко шагнуть дальше, чем написание простых скриптов;
--  из программ, связанных с сетями, на Python написан, например,
-   `GNS3 <https://github.com/GNS3/>`__.
+-  In the context of network equipment, Python is often used now;
+-  Some equipment has Python embedded or has an API that supports Python;
+-  Python is simple enough to learn (of course, it is relatively, and another language may seem simpler but it is rather to be because of experience with the language than because Python is complex);
+-  With Python you will not quickly reach the limits of language capabilities;
+-  Python can be used not only to write scripts but also to develop applications. Of course, this is not the task of this book but at least you will spend your time on a language that will allow you to go further than simple scripts;
+-  For example `GNS3 <https://github.com/GNS3/>`__ is written on Python.
 
-И еще один момент – в контексте книги, Python нужно рассматривать не как
-единственно правильный вариант, и не как "правильный" язык. Нет, Python
-это просто инструмент, как отвёртка например, и мы учимся им
-пользоваться для конкретных задач. То есть, никакой идеологической
-подоплеки здесь нет, никакого "только Python" и никакого поклонения тем
-более. Странно поклоняться отвертке :-) Всё просто - есть хороший и
-удобный инструмент, который подойдет к разным задачам. Он не лучший во
-всём и далеко не единственный язык в принципе. Начните с него, и потом
-вы сможете самостоятельно выбрать нечто другое, если захотите – эти
-знания всё равно не пропадут.
+And one more point - in the context of the book, Python should not be seen as the only correct variant nor as the «correct» language. No, Python is just a tool like a screwdriver, for example, and we learn to use it for specific tasks. That is, there is no ideological background here, no «only Python» and no worship especially. It is strange to worship a screwdriver :-) Everything is simple - there is a good and convenient tool that will approach different tasks. He’s not the best language at all and he’s not the only language at all. Start with it and then you can choose something else if you want to - that knowledge will still be there.
 
-Нужный мне модуль не поддерживает Python 3
+The module I want does not support Python 3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Есть несколько вариантов решения:
+There are several options:
 
--  попробуйте найти альтернативный модуль, который поддерживает Python 3
-   (не обязательно последней версии языка);
--  попробуйте найти community-версию этого модуля для Python 3.
-   Возможно, официальной версии нет, но сообщество могло перевести его
-   самостоятельно на версию 3, особенно если этот модуль популярен;
--  используйте Python 2.7, ничего страшного не произойдет. Если вы не
-   собираетесь писать огромное приложение, а просто используете Python
-   для автоматизации своих задач, Python 2.7 совершенно точно подойдет.
+-  Try to find an alternative module that supports Python 3 (not necessarily the latest version of the language);
+-  Try to find a community version of this module for Python 3. There may not be an official version but the community could translate it independently to version 3, especially if this module is popular;
+-  Use Python 2.7, nothing terrible will happen. If you’re not going to write a huge application but you’re just using Python to automate your problems, Python 2.7 will definitely work.
 
-Я не знаю, нужно ли мне это.
+I don’t know if I need this.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Я, конечно же, считаю, что нужно :-) Иначе я бы не писала эту книгу.
-Совсем не факт, что вам захочется погружаться во всё это, поэтому для
-начала попробуйте разобраться с `Ansible <book/Part_VI.md>`__. Возможно,
-вам хватит надолго его возможностей. Начните с простых команд show,
-попробуйте подключиться сначала к тестовому оборудованию (виртуальным
-машинам), затем попробуйте выполнить команду show на реальной сети, на
-2-3 устройствах, потом на большем количестве. Если вам этого будет
-достаточно, можно остановиться на этом. Следующим шагом я бы попробовала
-использование Ansible для генерации шаблонов конфигурации.
+I, of course, think you need this :-) Otherwise I wouldn’t be writing this book. You don’t necessarily want to go into all this stuff, so you might want to start with `Ansible <https://github.com/Aidar5/nattoeng/blob/master/docs/source/book/Part_VI.md>`__. Perhaps you’ll have enough of it for a long time. Start with simple “show” commands, try to connect first to test equipment (virtual machines), then try to execute “show” command on real network, on 2-3 devices, then on more. If that’s enough for you, you can stop there. The next step is to try using Ansible to generate configuration patterns.
 
-Зачем сетевому инженеру программирование?
+Why would a network engineer need programming?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-На мой взгляд, для сетевого инженера умение программировать очень важно,
-и не потому, что сейчас все об этом говорят, или пугают SDN, потерей
-работы или чем-то подобным, а потому, что сетевой инженер постоянно
-сталкивается с:
+In my opinion, programming is very important for a network engineer, not because everybody’s talking about it right now or because everybody’s scaring with SDN, job loss or something like that, but because the network engineer is constantly facing with:
 
--  рутинными задачами;
--  проблемами и решениями, которые надо протестировать;
--  большим объёмом однотипных и повторяющихся задач;
--  большим количеством оборудования;
+-  Routine tasks
+-  Problems and solutions to be tested;
+-  Large quantity of monotonous and repetitive tasks;
+-  Large quantity of equipment;
 
-На текущий момент большое количество оборудования по-прежнему предлагает
-нам только интерфейс командной строки и неструктурированный вывод
-команд. Управляющий софт часто ограничен вендором, дорого стоит и имеет
-урезанные возможности – в итоге мы вручную снова и снова делаем одно и
-то же. Даже такие банальные вещи, как отправить одну и ту же команду
-show на 20 устройств, не всегда просто сделать. Допустим, ваш SSH-клиент
-поддерживает эту возможность. А если вам теперь надо проанализировать
-вывод? Мы ограничены теми средствами, которые нам дали, а знание
-программирования, даже самое базовое, позволяет нам расширить наши
-средства и даже создавать новые. Я не считаю, что всем надо торопиться
-учиться программировать, но для инженера это очень важный навык. Именно
-для инженера, а не для всех на свете.
+At present, a large amount of equipment still offers us only the command line interface and unstructured output of commands. The software is often limited to a vendor, expensive and has reduced possibilities - we end up doing the same thing over and over again by hand. Even banal things like sending the same show command to 20 devices are not always easy to do. Suppose your SSH client supports this feature. And what if you now need to analyze the output? We are limited by the means we have been given and knowledge of programming, even the most basic, allows us to expand our means and even create new ones. I don’t think everyone should be rushing to learn programming but for an engineer that’s a very important skill. It’s for the engineer, not everyone.
 
-Сейчас явно наблюдается тенденция, которую можно описать фразой "все
-учимся программировать", и это, в целом, хорошо. Но программирование это
-не что-то элементарное, это сложно, в это нужно вкладывать много
-времени, особенно если вы никогда не имели отношения к техническому
-миру. Может сложиться впечатление, что достаточно пройти "вот эти вот
-курсы" и через 3 месяца вы крутой программист с высокой зарплатой. Нет,
-этот книга не об этом :-) Мы не говорим в ней о программировании как
-профессии и не ставим такую цель, мы говорим о программировании как
-инструменте, таком как, например, знание CLI Linux. Дело не в том, что
-инженеры какие-то особенные, просто, как правило:
+Now clearly there is a tendency that can be described by the phrase « everybody is learning to code» and it is, in general, good. But programming is not something elementary, it’s difficult, it’s time-consuming, especially if you’ve never had relation to technology world.  It might give an impression that it’s enough to pass “these courses” and after 3 months you are great programmer with high salary. No, this book is not about that :-) We don’t talk about programming as a profession in it and we don’t set such a goal, we’re talking about programming as a tool such as knowing CLI Linux. It’s not that engineers are anything special but, in general:
 
--  они уже имеют техническое образование;
--  многие работают, так или иначе, с командной строкой;
--  они сталкивались, как минимум, с одним языком программирования;
--  у них "инженерный склад ума".
+-  They already have technical education;
+-  Many work with the command line, in one way or another;
+-  They have encountered at least one programming language;
+-  They have an «engineering mindset».
 
-Это не значит, что всем остальным "не дано". Просто инженерам это будет
-проще.
+This does not mean that everybody else is «not allowed». It will just be easier for the engineers.
 
-Книга будет когда-то платной?
+Will the book ever be charged with fee?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Нет, эта книга всегда будет бесплатной. Я читаю платно `онлайн курс
-"Python для сетевых
-инженеров" <https://natenka.github.io/pyneng-online/>`__, но это не
-будет влиять на эту книгу - она всегда будет бесплатной.
+No, this book will always be free. I read a paid `online course «Python for network engineers» <https://natenka.github.io/pyneng-online/>`__ (in Russian), but this will not affect this book - it will always be free.

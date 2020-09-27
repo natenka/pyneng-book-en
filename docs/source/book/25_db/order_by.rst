@@ -1,11 +1,9 @@
 ORDER BY
 ~~~~~~~~
 
-Оператор ORDER BY используется для сортировки вывода по определенному
-полю, по возрастанию или убыванию. Для этого он добавляется к оператору
-SELECT.
+ORDER BY operator is used to sort the output by a certain field, ascending or descending. To do this it should be added to SELECT operator.
 
-Если выполнить простой запрос SELECT, вывод будет таким:
+If you perform a simple SELECT query, the output is:
 
 .. code:: sql
 
@@ -24,8 +22,7 @@ SELECT.
     7 rows in set
     Time: 0.039s
 
-С помощью оператора ORDER BY можно вывести записи в таблице switch,
-отсортировав их по имени коммутаторов:
+With help of ORDER BY operator you can derive entries from *switch* table by sorting them by the switch name:
 
 .. code:: sql
 
@@ -45,8 +42,7 @@ SELECT.
     Time: 0.034s
 
 
-По умолчанию сортировка выполняется по возрастанию, поэтому в запросе
-можно было не указывать параметр ASC:
+By default, sorting is ascending, so the query could be without ASC parameter:
 
 .. code:: sql
 
@@ -65,7 +61,7 @@ SELECT.
     7 rows in set
     Time: 0.034s
 
-Сортировка по IP-адресу по убыванию:
+Sorting by IP address descending:
 
 .. code:: sql
 

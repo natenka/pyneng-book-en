@@ -1,20 +1,19 @@
-Символы повторения
+Repeating characters
 ------------------
 
-*  ``regex+`` - одно или более повторений предшествующего элемента
-*  ``regex*`` - ноль или более повторений предшествующего элемента
-*  ``regex?`` - ноль или одно повторение предшествующего элемента
-*  ``regex{n}`` - ровно n повторений предшествующего элемента
-*  ``regex{n,m}`` - от n до m повторений предшествующего элемента
-*  ``regex{n, }`` - n или более повторений предшествующего элемента
+*  ``regex+`` - one or more repetitions of the preceding element
+*  ``regex*`` - zero or more repetitions of the preceding element
+*  ``regex?`` -- zero or one repetition of the preceding element
+*  ``regex{n}`` - exactly 'n' repetitions of the preceding element
+*  ``regex{n,m}`` - from ‘n’ to ‘m’ repetitions of the preceding element
+*  ``regex{n, }`` - ‘n’ or more repetitions of the preceding element
 
 ``+``
 ~~~~~
 
-Плюс указывает, что предыдущее выражение может повторяться сколько
-угодно раз, но, как минимум, один раз.
+Plus indicates that the previous expression can be repeated as many times as you like, but at least once.
 
-Например, тут повторение относится к букве a:
+For example, here the repetition refers to the letter 'a':
 
 .. code:: py
 
@@ -23,7 +22,7 @@
     In [2]: re.search('a+', line).group()
     Out[2]: 'aa'
 
-А в этом выражении повторяется строка 'a1':
+And in this expression, string ‘a1’ is repeated:
 
 .. code:: py
 
@@ -32,19 +31,13 @@
     In [4]: re.search('(a1)+', line).group()
     Out[4]: 'a1a1'
 
-    В выражении ``(a1)+`` скобки используются для того, чтобы указать,
-    что повторение относится к последовательности символов 'a1'.
+    The expresson ``(a1)+`` uses brackets to specify that repetition is related to sequence of symbols 'a1'.
 
-IP-адрес можно описать выражением ``\d+\.\d+\.\d+\.\d+``. Тут плюс
-используется, чтобы указать, что цифр может быть несколько. А также
-встречается выражение ``\.``.
+IP address can be described by ``\d+\.\d+\.\d+\.\d+``. This plus is used to indicate that there can be several digits. And there’s also an expression  ``\.``.
 
-Оно необходимо из-за того, что точка является специальным символом (она
-обозначает любой символ). И чтобы указать, что нас интересует именно
-точка, надо ее экранировать - поместить перед точкой обратный слеш.
+It is required because the point is a special symbol (it denotes any symbol). And in order to indicate that we are interested in a point as a symbol, you have to screen it - put a backslash in front of the point.
 
-Используя это выражение, можно получить IP-адрес из строки
-sh_ip_int_br:
+Using this expression, you can get an IP address from the sh_ip_int_br string:
 
 .. code:: python
 
@@ -53,10 +46,8 @@ sh_ip_int_br:
     In [6]: re.search('\d+\.\d+\.\d+\.\d+', sh_ip_int_br).group()
     Out[6]: '192.168.200.1'
 
-Еще один пример выражения: ``\d+\s+\S+`` - оно описывает строку, в
-которой идут сначала цифры, после них пробельные символы,
-а затем непробельные символы (все, кроме пробела, таба и других подобных символов).
-С его помощью можно получить VLAN и MAC-адрес из строки:
+Another example of an expression: ``\d+\s+\S+`` - describes the string which has digits first, then whitespace characters, and then the not whitespace characters (all except the space, tab, and other similar characters).
+Using it you can get VLAN and MAC address from string:
 
 .. code:: py
 
@@ -68,13 +59,11 @@ sh_ip_int_br:
 ``*``
 ~~~~~
 
-Звездочка указывает, что предыдущее выражение может повторяться 0 или
-более раз.
+The asterisk indicates that the previous expression can be repeated 0 or more times.
 
-Например, если звездочка стоит после символа, она означает повторение
-этого символа.
+For example, if an asterisk stands after 'a' symbol, it means a repetition of that symbol.
 
-Выражение ``ba*`` означает b, а затем ноль или более повторений a:
+The expression ``ba*`` means ‘b’ and then zero or more repetitions of ‘a’:
 
 .. code:: py
 
@@ -83,8 +72,7 @@ sh_ip_int_br:
     In [10]: re.search('ba*', line).group()
     Out[10]: 'baaa'
 
-Если в строке line до подстроки baaa встретится b, то совпадением будет
-b:
+In *line* string, if ‘b’ meets before ‘baaa’ substring, then the match is ‘b’:
 
 .. code:: py
 
@@ -93,25 +81,22 @@ b:
     In [12]: re.search('ba*', line).group()
     Out[12]: 'b'
 
-Допустим, необходимо написать регулярное выражение, которое описывает
-электронные адреса в двух форматах: user@example.com и user.test@example.com. То
-есть, в левой части адреса может быть или одно слово, или два слова,
-разделенные точкой.
+Suppose you write a regular expression that describes the email addresses in two formats: user@example.com and user.test@example.com. That is, the left side of the address can have either one word or two words separated by a dot.
 
-Первый вариант на примере адреса без точки:
+The first variant is an example of email without a dot:
 
 .. code:: python
 
     In [13]: email1 = 'user1@gmail.com'
 
-Этот адрес можно описать таким выражением ``\w+@\w+\.\w+``:
+This address can be described by ``\w+@\w+\.\w+``:
 
 .. code:: python
 
     In [14]: re.search('\w+@\w+\.\w+', email1).group()
     Out[14]: 'user1@gmail.com'
 
-Но такое выражение не подходит для электронного адреса с точкой:
+But such an expression is not suitable for an email address with a dot:
 
 .. code:: python
 
@@ -120,21 +105,20 @@ b:
     In [16]: re.search('\w+@\w+\.\w+', email2).group()
     Out[16]: 'test@gmail.com'
 
-Регулярное выражение для адреса с точкой:
+Regular expression for email with a dot:
 
 .. code:: python
 
     In [17]: re.search('\w+\.\w+@\w+\.\w+', email2).group()
     Out[17]: 'user2.test@gmail.com'
 
-Чтобы описать оба варианта адресов, надо указать, что точка в адресе
-опциональна:
+To describe both email, you have to specify that the dot is optional:
 
 ::
 
     '\w+\.*\w+@\w+\.\w+'
 
-Такое регулярное выражение описывает оба варианта:
+This regular expression describes both options:
 
 .. code:: python
 
@@ -151,13 +135,9 @@ b:
 ``?``
 ~~~~~
 
-В последнем примере регулярное выражение указывает, что точка
-необязательна, но в то же время определяет, что она может
-появиться много раз.
+In the last example, the regular expression indicates that the dot is optional, but at the same time determines that it can appear many times.
 
-В этой ситуации логичней использовать знак вопроса. Он обозначает ноль
-или одно повторение предыдущего выражения или символа. Теперь регулярное
-выражение выглядит так ``\w+\.?\w+@\w+\.\w+``:
+In this situation, it is more logical to use a question mark. It denotes zero or one repetition of a preceding expression or symbol. Now the regular expression looks like ``\w+\.?\w+@\w+\.\w+``:
 
 .. code:: python
 
@@ -175,12 +155,9 @@ b:
 ``{n}``
 ~~~~~~~
 
-С помощью фигурных скобок можно указать, сколько раз должно повторяться
-предшествующее выражение.
+You can set how many times the previous expression should be repeated with the curly brackets.
 
-Например, выражение ``\w{4}\.\w{4}\.\w{4}`` описывает 12 букв или цифр,
-которые разделены на три группы по четыре символа точками. Таким образом
-можно получить MAC-адрес:
+For example, the expression ``\w{4}\.\w{4}\.\w{4}`` describes 12 letters or digits that are divided into three groups of four characters and separated by dot. This way you can get a MAC address:
 
 .. code:: py
 
@@ -189,8 +166,7 @@ b:
     In [25]: re.search('\w{4}\.\w{4}\.\w{4}', line).group()
     Out[25]: 'aab1.a1a1.a5d3'
 
-В фигурных скобках можно указывать и диапазон повторений. Например,
-попробуем получить все номера VLAN из строки mac\_table:
+You can specify a repetition range in curly brackets. For example, try to get all VLAN numbers from the string mac\_table:
 
 .. code:: python
 
@@ -210,8 +186,8 @@ b:
         ...: 1300    aa0b.cc70.7000    DYNAMIC     Gi0/7
         ...: '''
 
-Так как search ищет только первое совпадение, в выражение ``\d{1,4}``
-попадет номер VLAN:
+Since search() only looks for the first match, the expression ``\d{1,4}`` 
+will have the VLAN number:
 
 .. code:: python
 
@@ -229,14 +205,11 @@ b:
     VLAN:  1200
     VLAN:  1300
 
-Выражение ``\d{1,4}`` описывает от одной до четырех цифр.
+The expression ``\d{1,4}`` describes one to four digits.
 
-Обратите внимание, что в выводе команды с оборудования нет VLAN с номером 1.
-При этом регулярное выражение получило откуда-то число 1.
-Цифра 1 попала в вывод из имени хоста в строке ``sw1#sh mac address-table``.
+Note that the output of the command from equipment does not have a VLAN with number 1. The regular expression got a number 1 from somewhere. The number 1 was in the output from the hostname in the line ``sw1#sh mac address-table``.
 
-Чтобы исправить это, достаточно дополнить выражение и указать, что после
-цифр должен идти хотя бы один пробел:
+To correct this, it suffices to complete the expression and indicate that at least one space must follow the numbers:
 
 .. code:: python
 

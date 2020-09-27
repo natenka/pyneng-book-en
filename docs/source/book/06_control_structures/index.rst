@@ -4,16 +4,14 @@
 
 .. _control_structures_index:
 
-6. Контроль хода программы
+6. Compound statements
 ============================
 
-До сих пор, весь код выполнялся последовательно - все строки
-скрипта выполнялись в том порядке, в котором они записаны в файле.
-В этом разделе рассматриваются возможности Python в управлении ходом программы:
+So far, all the code has been executed sequentially - all lines of the script have been executed in the order in which they are written in the file. This section discusses how Python can manage the program:
 
-* ответвления в ходе программы с помощью конструкции ``if/elif/else``
-* повторение действий в цикле с помощью конструкций ``for`` и ``while``
-* обработка ошибок с помощью конструкции ``try/except``
+* branching with the help of ``if/elif/else`` construction
+* repetition of actions in the cycle using ``for`` and ``while`` constructions
+* error handling with ``try/except`` construction 
 
 
 .. toctree::

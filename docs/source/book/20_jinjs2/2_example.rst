@@ -1,20 +1,15 @@
-Пример использования Jinja с корректным использованием программного интерфейса
+Example of using Jinja with correct use of software interface
 ------------------------------------------------------------------------------
 
-Для того, чтобы разобраться с Jinja2, лучше использовать предыдущие
-примеры. В этом разделе описывается корректное использование Jinja. В
-таком варианте данные, шаблон и скрипт, который генерирует итоговую
-информацию, разделены.
+To deal with Jinja2, it is better to use previous examples. This section describes the correct use of Jinja. In this version, data, template and script that generates the resulting information are separated.
 
 .. note::
 
-    Термин "программный интерфейс" относится к способу работы Jinja с
-    вводными данными и шаблоном для генерации итоговых файлов.
+    The term "software interface" refers to the way Jinja works with input data and a template for generating output files.
+    
+Modified example of previous script, template and data file (all files are in 2_example directory):
 
-Переделанный пример предыдущего скрипта, шаблона и файла с данными (все
-файлы находятся в каталоге 2_example):
-
-Шаблон templates/router_template.txt - это обычный текстовый файл:
+Template templates/router_template.txt is a plain text file:
 
 ::
 
@@ -57,7 +52,7 @@
      network 10.0.0.0 0.255.255.255 area 0
      !
 
-Файл с данными routers_info.yml
+Data file routers_info.yml
 
 ::
 
@@ -82,7 +77,7 @@
       BS: 1650
       to_id: 2
 
-Скрипт для генерации конфигураций router_config_generator_ver2.py
+Script to generate configurations router_config_generator_ver2.py
 
 .. code:: python
 
@@ -101,15 +96,14 @@
         with open(r1_conf,'w') as f:
             f.write(template.render(router))
 
-Файл router_config_generator.py импортирует из модуля jinja2: 
+File router_config_generator.py imports from jinja2 module:
 
-* **FileSystemLoader** - загрузчик, который позволяет работать с файловой системой 
+* **FileSystemLoader** - a loader that allows working with a file system
 
-  * тут указывается путь к каталогу, где находятся шаблоны 
-  * в данном случае шаблон находится в каталоге templates 
+  * the path to the directory where templates are located is specified here
+  * in this case template is in *template* directory
+  
+* **Environment** - a class for describing environment parameters. In this case only the loader is specified, but you can specify how to process the template
 
-* **Environment** - класс для описания параметров окружения. 
-  В данном случае указан только загрузчик, но в нём можно указывать методы обработки шаблона
-
-Обратите внимание, что шаблон теперь находится в каталоге **templates**.
+Note that the template is now in **templates** directory.
 

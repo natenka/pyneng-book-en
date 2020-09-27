@@ -1,8 +1,7 @@
-Варианты создания множества
+Options for set creation 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Нельзя создать пустое множество с помощью литерала (так как в таком
-случае это будет не множество, а словарь):
+You cannot create an empty set using a literal set (in this case it will not be a set but a dictionary):
 
 .. code:: python
 
@@ -11,7 +10,7 @@
     In [2]: type(set1)
     Out[2]: dict
 
-Но пустое множество можно создать таким образом:
+But an empty set can be created in this way:
 
 .. code:: python
 
@@ -20,14 +19,14 @@
     In [4]: type(set2)
     Out[4]: set
 
-Множество из строки:
+Set from string:
 
 .. code:: python
 
     In [5]: set('long long long long string')
     Out[5]: {' ', 'g', 'i', 'l', 'n', 'o', 'r', 's', 't'}
 
-Множество из списка:
+Set from list:
 
 .. code:: python
 

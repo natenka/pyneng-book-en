@@ -1,12 +1,11 @@
 include
 -------
 
-Выражение include позволяет добавить один шаблон в другой.
+**include** expression allows you to add one template to another.
 
-Переменные, которые передаются как данные, должны содержать все данные и
-для основного шаблона, и для того, который добавлен через include.
+Variables that are transmitted as data must contain all data for both the master template and the one that is added through **include**.
 
-Шаблон templates/vlans.txt:
+Template templates/vlans.txt:
 
 ::
 
@@ -15,7 +14,7 @@ include
      name {{ name }}
     {% endfor %}
 
-Шаблон templates/ospf.txt:
+Template templates/ospf.txt:
 
 ::
 
@@ -25,7 +24,7 @@ include
      network {{ networks.network }} area {{ networks.area }}
     {% endfor %}
 
-Шаблон templates/bgp.txt:
+Template templates/bgp.txt:
 
 ::
 
@@ -38,7 +37,7 @@ include
      neighbor {{ ebgp }} remote-as {{ bgp.ebgp_neighbors[ebgp] }}
     {% endfor %}
 
-Шаблон templates/switch.txt использует созданные шаблоны ospf и vlans:
+Template templates/switch.txt uses created templates *ospf* and *vlans*:
 
 ::
 
@@ -46,7 +45,7 @@ include
 
     {% include 'ospf.txt' %}
 
-Файл с данными для генерации конфигурации (data_files/switch.yml):
+Data file for configuration generation (data_files/switch.yml):
 
 .. code:: json
 
@@ -62,7 +61,7 @@ include
       - network: 10.1.1.0 0.0.0.255
         area: 0
 
-Результат выполнения скрипта:
+The result of script execution:
 
 ::
 
@@ -80,10 +79,9 @@ include
      network 10.0.2.0 0.0.0.255 area 2
      network 10.1.1.0 0.0.0.255 area 0
 
-Итоговая конфигурация получилась такой, как будто строки из шаблонов
-ospf.txt и vlans.txt находились в шаблоне switch.txt.
+The resulting configuration is as if lines from templates ospf.txt and vlans.txt were in switch.txt template.
 
-Шаблон templates/router.txt:
+Template templates/router.txt:
 
 ::
 
@@ -93,11 +91,9 @@ ospf.txt и vlans.txt находились в шаблоне switch.txt.
 
     logging {{ log_server }}
 
-В данном случае кроме include добавлена ещё одна строка в шаблон, чтобы
-показать, что выражения include могут идти вперемешку с обычным
-шаблоном.
+In this case, in addition to **include**, another line in template was added to show that **include** expressions can be mixed with normal template.
 
-Файл с данными (data_files/router.yml):
+Data file (data_files/router.yml):
 
 .. code:: json
 
@@ -119,7 +115,7 @@ ospf.txt и vlans.txt находились в шаблоне switch.txt.
         80.1.1.1: 600
     log_server: 10.1.1.1
 
-Результат выполнения скрипта будет таким:
+The result of script execution will be:
 
 ::
 
@@ -140,6 +136,4 @@ ospf.txt и vlans.txt находились в шаблоне switch.txt.
 
     logging 10.1.1.1
 
-Благодаря include, шаблон templates/ospf.txt используется и в шаблоне
-templates/switch.txt, и в шаблоне templates/router.txt, вместо того,
-чтобы повторять одно и то же дважды.
+Thanks to **include**, template templates/ospf.txt is used both in template templates/switch.txt and in template templates/router.txt, instead of repeating the same thing twice.

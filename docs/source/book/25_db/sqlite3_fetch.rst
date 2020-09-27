@@ -1,18 +1,17 @@
-Получение результатов запроса
+Fetching query results
 -----------------------------
 
-Для получения результатов запроса в sqlite3 есть несколько способов: 
+There are several ways to get query results in sqlite3:
 
-* использование методов ``fetch...()`` - в зависимости от метода 
-  возвращаются одна, несколько или все строки 
-* использование курсора как итератора - возвращается итератор
+* using ``fetch...()`` - depending on the method one, more or all rows are returned
+* using cursor as an iterator - iterator returns
 
-Метод fetchone
+Method fetchone
 ^^^^^^^^^^^^^^
 
-Метод fetchone возвращает одну строку данных.
+Method fetchone() returns one data row.
 
-Пример получения информации из базы данных sw_inventory.db:
+Example of fetching information from sw_inventory.db database:
 
 .. code:: python
 
@@ -28,20 +27,18 @@
     In [20]: cursor.fetchone()
     Out[20]: ('0000.AAAA.CCCC', 'sw1', 'Cisco 3750', 'London, Green Str')
 
-Обратите внимание, что хотя запрос SQL подразумевает, что запрашивалось
-всё содержимое таблицы, метод fetchone вернул только одну строку.
+Note that while the SQL query requests all table content, fetchone() returned only one row.
 
-Если повторно вызвать метод, он вернет следующую строку:
+If you re-call method, it returns the next row:
 
 .. code:: python
 
     In [21]: print(cursor.fetchone())
     ('0000.BBBB.CCCC', 'sw2', 'Cisco 3780', 'London, Green Str')
 
-Аналогичным образом метод будет возвращать следующие строки. После
-обработки всех строк метод начинает возвращать None.
+Similarly, method will return the next rows. After processing all rows, method starts returning None.
 
-За счет этого метод можно использовать в цикле, например, так:
+In this way, method can be used in the loop, for example:
 
 .. code:: python
 
@@ -64,27 +61,25 @@
     ('0000.1111.0003', 'sw7', 'Cisco 3750', 'London, Green Str')
     ('0000.1111.0004', 'sw8', 'Cisco 3750', 'London, Green Str')
 
-Метод fetchmany
+Method fetchmany
 ^^^^^^^^^^^^^^^
 
-Метод fetchmany возвращает список строк данных.
+Method fetchmany() returns a list of data rows.
 
-Синтаксис метода:
+Method syntax:
 
 .. code:: python
 
     cursor.fetchmany([size=cursor.arraysize])
 
-С помощью параметра size можно указывать, какое количество строк
-возвращается. По умолчанию параметр size равен значению
-cursor.arraysize:
+Size parameter allows you to specify how many rows are returned. By default the size parameter is cursor.arraysize:
 
 .. code:: python
 
     In [24]: print(cursor.arraysize)
     1
 
-Например, таким образом можно возвращать по три строки из запроса:
+For example, you can return three rows at a time from query:
 
 .. code:: python
 
@@ -110,13 +105,12 @@ cursor.arraysize:
     [('0000.1111.0003', 'sw7', 'Cisco 3750', 'London, Green Str'),
      ('0000.1111.0004', 'sw8', 'Cisco 3750', 'London, Green Str')]
 
-Метод выдает нужное количество строк, а если строк осталось меньше, чем
-параметр size, то оставшиеся строки.
+Method displays required number of rows and if amount of rows are less than the size parameter, it returns remaining rows.
 
-Метод fetchall
+Method fetchall
 ^^^^^^^^^^^^^^
 
-Метод fetchall возвращает все строки в виде списка:
+Method fetchall() returns all rows as a list:
 
 .. code:: python
 
@@ -134,10 +128,9 @@ cursor.arraysize:
      ('0000.1111.0003', 'sw7', 'Cisco 3750', 'London, Green Str'),
      ('0000.1111.0004', 'sw8', 'Cisco 3750', 'London, Green Str')]
 
-Важный аспект работы метода - он возвращает все оставшиеся строки.
+An important aspect of method - it returns all remaining rows.
 
-То есть, если до метода fetchall использовался, например, метод
-fetchone, то метод fetchall вернет оставшиеся строки запроса:
+That is, if fetchone() method was used before fetchall(), then fetchall() would return remaining query rows:
 
 .. code:: python
 
@@ -159,5 +152,5 @@ fetchone, то метод fetchall вернет оставшиеся строк�
      ('0000.1111.0003', 'sw7', 'Cisco 3750', 'London, Green Str'),
      ('0000.1111.0004', 'sw8', 'Cisco 3750', 'London, Green Str')]
 
-Метод fetchmany в этом аспекте работает аналогично.
+Method fetchmany() works similarly in this aspect.
 

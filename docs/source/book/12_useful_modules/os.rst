@@ -1,15 +1,13 @@
-Модуль os
+Os
 ---------
 
-Модуль ``os`` позволяет работать с файловой системой, с окружением,
-управлять процессами.
+The ``os`` module allows working with the filesystem, environment and managing processes.
 
-В этом подразделе рассматриваются лишь несколько полезных возможностей. За более полным
-описанием возможностей модуля можно обратиться к
-`документации <https://docs.python.org/3/library/os.html>`__ или 
-`статье на сайте PyMOTW <https://pymotw.com/3/os/>`__.
+This subsection addresses only several useful features. For a more complete description of the capabilities of the module please refer to 
+`documentation <https://docs.python.org/3/library/os.html>`__ or 
+`article on Pymotw <https://pymotw.com/3/os/>`__.
 
-Модуль os позволяет создавать каталоги:
+Module **os** allows you to create directories:
 
 .. code:: python
 
@@ -21,8 +19,7 @@
     total 0
     0 drwxr-xr-x  2 nata  nata  68 Jan 23 18:58 test/
 
-Кроме того, в модуле есть соответствующие проверки на существование.
-Например, если попробовать повторно создать каталог, возникнет ошибка:
+In addition, the module contains relevant existence checks. For example, if you try to re-create a directory, an error will occur:
 
 .. code:: python
 
@@ -34,7 +31,7 @@
 
     FileExistsError: [Errno 17] File exists: 'test'
 
-В таком случае пригодится проверка ``os.path.exists``:
+In this case, testing with ``os.path.exists`` is useful:
 
 .. code:: python
 
@@ -45,15 +42,14 @@
        ...:     os.mkdir('test')
        ...:
 
-Метод listdir позволяет посмотреть содержимое каталога:
+Method listdir() allows you to view the content of directory:
 
 .. code:: python
 
     In [7]: os.listdir('.')
     Out[7]: ['cover3.png', 'dir2', 'dir3', 'README.txt', 'test']
 
-С помощью проверок ``os.path.isdir`` и ``os.path.isfile`` можно получить
-отдельно список файлов и список каталогов:
+By checking ``os.path.isdir`` and ``os.path.isfile`` you can get a separate list of files and list of directories:
 
 .. code:: python
 
@@ -67,7 +63,7 @@
     In [11]: files
     Out[11]: ['cover3.png', 'README.txt']
 
-Также в модуле есть отдельные методы для работы с путями:
+Also in the module there are separate methods for working with paths:
 
 .. code:: python
 

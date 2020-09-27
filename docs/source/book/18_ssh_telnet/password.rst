@@ -1,30 +1,21 @@
-Ввод пароля
+Password input
 -----------
 
-При подключении к оборудованию вручную, как правило, пароль также
-вводится вручную.
+During manual connection to device the password is also manually entered.
 
-При автоматизации подключения надо решить, каким образом будет
-передаваться пароль: 
+When automating the connection it is necessary to decide how the password will be transmitted:
 
-* Запрашивать пароль при старте скрипта и считывать ввод пользователя. 
-  Минус в том, что будет видно, какие символы вводит пользователь 
-* Записывать логин и пароль в каком-то файле (это не очень безопасно).
+* Request password at start of the script and read user input. Disadvantage is that you can see which characters the user is typing
+* Write login and password in some file (it’s not secure).
 
-Как правило, один и тот же пользователь использует одинаковый логин и
-пароль для подключения к оборудованию.
-И, как правило, будет достаточно запросить логин и пароль при старте
-скрипта, а затем использовать их для подключения на разные устройства.
+As a rule, the same user uses the same login and password to connect to devices. And usually it’s enough to request login and password at the start of the script and then use them to connect to different devices.
 
-К сожалению, если использовать ``input()``, набираемый пароль будет
-виден. А хотелось бы, чтобы при вводе пароля вводимые символы не
-отображались.
+Unfortunately, if you use ``input()`` the typed password will be visible. But it is desirable that no characters are displayed when entering a password.
 
-Модуль getpass
+Module getpass
 ~~~~~~~~~~~~~~
 
-Модуль getpass позволяет запрашивать пароль, не отображая вводимые
-символы:
+Module getpass allows you to request a password without displaying input characters:
 
 .. code:: python
 
@@ -36,20 +27,19 @@
     In [3]: print(password)
     testpass
 
-Переменные окружения
+Environment variables
 ~~~~~~~~~~~~~~~~~~~~
 
-Еще один вариант хранения пароля (а можно и пользователя) - переменные
-окружения.
+Another way to store a password (or even a username) is by environment variables.
 
-Например, таким образом логин и пароль записываются в переменные:
+For example, login and password are written in variables:
 
 ::
 
     $ export SSH_USER=user
     $ export SSH_PASSWORD=userpass
 
-А затем в Python считываются значения в переменные в скрипте:
+And then Python reads values to variables in the script:
 
 .. code:: python
 

@@ -1,11 +1,10 @@
-Протокол итерации
+Iteration protocol
 ~~~~~~~~~~~~~~~~~
 
 
-**Итерируемый объект (iterable)** - это объект, который способен возвращать элементы по одному.
-Для Python это любой объект у которого есть метод ``__iter__`` или метод ``__getitem__``.
-Если у объекта есть метод __iter__, итерируемый объект превращается в итератор вызовом ``iter(name)``,
-где name - имя итерируемого объекта. Если метода __iter__ нет, Python перебирает элементы используя __getitem__.
+**iterable object (iterable)** - object that can return elements one at a time. 
+For Python, it is any object that has ``__iter__`` or ``__getitem__`` method.
+If an object has __iter__ method, the iterated object becomes an iterator by calling ``iter(name)`` where *name* - name of iterable object. If __iter__ method is not present, Python iterates elements using __getitem__.
 
 
 .. code:: python
@@ -22,31 +21,31 @@
     In [2]: iterable_1 = Items([1, 2, 3, 4])
 
     In [3]: iterable_1[0]
-    Вызываю __getitem__
+    Calling __getitem__
     Out[3]: 1
 
     In [4]: for i in iterable_1:
        ...:     print('>>>>', i)
        ...:
-    Вызываю __getitem__
+    Calling __getitem__
     >>>> 1
-    Вызываю __getitem__
+    Calling __getitem__
     >>>> 2
-    Вызываю __getitem__
+    Calling __getitem__
     >>>> 3
-    Вызываю __getitem__
+    Calling __getitem__
     >>>> 4
-    Вызываю __getitem__
+    Calling __getitem__
 
     In [5]: list(map(str, iterable_1))
-    Вызываю __getitem__
-    Вызываю __getitem__
-    Вызываю __getitem__
-    Вызываю __getitem__
-    Вызываю __getitem__
+    Calling __getitem__
+    Calling __getitem__
+    Calling __getitem__
+    Calling __getitem__
+    Calling __getitem__
     Out[5]: ['1', '2', '3', '4']
 
-Если у объекта есть  метод __iter__ (который обязан возвращать итератор), при переборе значений используется он:
+If object has __iter__ method (which must return iterator), it is used for values iteration:
 
 .. code:: python
 
@@ -68,17 +67,17 @@
     In [13]: for i in iterable_1:
          ...:     print('>>>>', i)
          ...:
-    Вызываю __iter__
+    Calling __iter__
     >>>> 1
     >>>> 2
     >>>> 3
     >>>> 4
 
     In [14]: list(map(str, iterable_1))
-    Вызываю __iter__
+    Calling __iter__
     Out[14]: ['1', '2', '3', '4']
 
-В Python за получение итератора отвечает функция iter():
+In Python, iter() function is responsible for getting an iterator :
 
 .. code:: python
 
@@ -87,17 +86,14 @@
     In [2]: iter(lista)
     Out[2]: <list_iterator at 0xb4ede28c>
 
-Функция ``iter`` отработает на любом объекте, у которого есть метод __iter__ или метод __getitem__.
-Метод __iter__ возвращает итератор. Если этого метода нет, функция iter() проверяет, нет ли метода __getitem__ - метода, который позволяет получать элементы по индексу.
-Если метод __getitem__ есть, элементы будут перебираться по индексу (начиная с 0).
+``iter`` function will work on any object that has __iter__ or __getitem__ method.
+Method __iter__ returns the iterator. If this method is not available, iter() function checks availability of __getitem__ method that can get elements by index. If __getitem__ method exists, the elements will be iterated through index (starting with 0).
 
 
-**Итератор (iterator)** - это объект, который возвращает свои элементы по одному за раз.
-С точки зрения Python - это любой объект, у которого есть метод __next__. Этот метод возвращает следующий элемент, если он есть, или возвращает исключение StopIteration, когда элементы закончились.
-Кроме того, итератор запоминает, на каком объекте он остановился в последнюю итерацию.
-Также у каждого итератора присутствует метод __iter__ - то есть, любой итератор является итерируемым объектом. Этот метод возвращает сам итератор.
+**iterator** - object that returns its elements one at a time.
+From Python point of view, it is any object that has __next__method. This method returns the next item if any or returns Stopiteration exception when items are ended. In addition, iterator remembers which object it stopped at in the last iteration. Each iterator also has __iter__ method - that is, every iterator is an iterable object. This method returns iterator itself.
 
-Пример создания итератора из списка:
+An example of creating iterator from list:
 
 .. code:: python
 
@@ -105,7 +101,7 @@
 
     In [4]: i = iter(lista)
 
-Теперь можно использовать функцию next(), которая вызывает метод __next__, чтобы взять следующий элемент:
+Now you can use next() function that calls __next__method to take the next element:
 
 .. code:: python
 
@@ -126,9 +122,7 @@
 
     StopIteration:
 
-После того, как элементы закончились, возвращается исключение StopIteration.
-Для того, чтобы итератор снова начал возвращать элементы, его надо заново создать.
-Аналогичные действия выполяются, когда цикл for проходится по списку:
+After elements are ended, Stopiteration exception is returned. In order for iterator to return elements again, it has to be re-created. Similar actions are performed when **for** loop iterates items in the list:
 
 .. code:: python
 
@@ -139,11 +133,9 @@
     2
     3
 
-Когда мы перебираем элементы списка, к списку сначала применяется функция iter(),
-чтобы создать итератор, а затем вызывается его метод __next__ до тех пор, пока не возникнет исключение StopIteration.
+When we iterate list items, iter() function is first applied to the list to create the iterator and then __next__ method is called until Stopiteration exception occurs.
 
-Пример функции my_for, которая работает с любым итерируемым объектом 
-и имитирует работу встроенной функции for:
+An example of my_for() function that works with any iterable object and imitates built-in function **for**:
 
 .. code:: python
 
@@ -166,7 +158,7 @@
                 except IndexError:
                     break
 
-Проверка работы функции на объекте у которого есть метод __iter__:
+Check function on object that has __iter__:
 
 .. code:: python
 
@@ -177,7 +169,7 @@
     3
     4
 
-Проверка работы функции на объекте у которого нет метода __iter__, но есть __getitem__:
+Check function on object that does not have __iter__ but has __getitem__:
 
 .. code:: python
 
@@ -194,23 +186,23 @@
 
     In [21]: my_for(iterable_1)
     Нет __iter__, но есть __getitem__
-    Вызываю __getitem__
+    Calling __getitem__
     1
-    Вызываю __getitem__
+    Calling __getitem__
     2
-    Вызываю __getitem__
+    Calling __getitem__
     3
-    Вызываю __getitem__
+    Calling __getitem__
     4
-    Вызываю __getitem__
+    Calling __getitem__
     5
-    Вызываю __getitem__
+    Calling __getitem__
 
 
-Создание итератора
+Iterator creation
 ^^^^^^^^^^^^^^^^^^
 
-Пример класса Network:
+Example of Network class:
 
 .. code:: python
 
@@ -222,7 +214,7 @@
         ...:         subnet = ipaddress.ip_network(self.network)
         ...:         self.addresses = [str(ip) for ip in subnet.hosts()]
 
-Пример создания экземпляра класса Network:
+Example of Network class instance creation:
 
 .. code:: python
 
@@ -237,7 +229,7 @@
     In [17]: net1.network
     Out[17]: '10.1.1.192/30'
 
-Создаем итератор из класса Network:
+Create an iterator from Network class:
 
 .. code:: python
 
@@ -262,9 +254,7 @@
         ...:             raise StopIteration
         ...:
 
-Метод __iter__ в итераторе должен возвращать сам объект, поэтому в методе
-указано ``return self``, а метод __next__ возвращает элементы по одному и генерирует
-исключение StopIteration, когда элементы закончились.
+Method __iter__ in iterator must return object itself, therefore  ``return self`` is specified in method and __next__ method returns elements one at a time and generates Stoeratipiton exception when elements have run out.
 
 
 .. code:: python
@@ -274,35 +264,30 @@
     In [15]: for ip in net1:
         ...:     print(ip)
         ...:
-    Вызываю __iter__
-    Вызываю __next__
+    Calling __iter__
+    Calling __next__
     10.1.1.193
-    Вызываю __next__
+    Calling __next__
     10.1.1.194
-    Вызываю __next__
+    Calling __next__
 
-Чаще всего, итератор это одноразовый объект и перебрав элементы, мы уже не можем это сделать второй раз:
+Most of the time, iterator is a disposable object and once we’ve iterated elements, we can’t do it again:
 
 .. code:: python
 
     In [16]: for ip in net1:
         ...:     print(ip)
         ...:
-    Вызываю __iter__
-    Вызываю __next__
+    Calling __iter__
+    Calling __next__
 
 
-Создание итерируемого объекта
+Creation of iterable object
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Очень часто классу достаточно быть итерируемым объектом и не обязательно быть итератором.
-Если объект будет итерируемым, его можно использовать в цикле for,
-функциях map, filter, sorted, enumerate и других. Также, как правило, объект проще сделать итерируемым, чем итератором.
+Very often it is sufficient for class to be an iterable object and not necessarily an iterator. If an object is iterable, it can be used in *for* loop, *map* functions, *filter*, *sorted*, *enumerate* and others. It is also generally easier to make an iterable object than an iterator.
 
-Для того чтобы класс Network создавал итерируемые объекты, надо чтобы в классе был метод
-__iter__ (__next__ не нужен) и чтобы метод возвращал итератор.
-Так как в данном случае, Network перебирает адреса, которые находятся в списке self.addresses,
-самый просто вариант возвращать итератор, это вернуть ``iter(self.addresses)``:
+In order for Network class to create iterable objects, the class must have __iter__ (__next__ is not needed) and method must return iterator. Since in this case, Network iterates addresses that are in self.addresses list, the easiest option to return iterator is to return  ``iter(self.addresses)``:
 
 .. code:: python
 
@@ -316,7 +301,7 @@ __iter__ (__next__ не нужен) и чтобы метод возвращал 
         ...:         return iter(self.addresses)
         ...:
 
-Теперь все экземпляры класса Network будут итерируемыми объектами:
+Now all Network class instances will be iterable objects:
 
 .. code:: python
 

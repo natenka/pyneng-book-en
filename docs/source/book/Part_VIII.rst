@@ -1,8 +1,7 @@
-VIII. Дополнительная информация
+VIII. Additional information
 ###############################
 
-В этом разделе собрана информация, которая не вошла в основные разделы
-книги, но которая, тем не менее, может быть полезна.
+This section collects information that is not included in main sections of the book, but which can still be useful.
 
 .. toctree::
    :maxdepth: 1

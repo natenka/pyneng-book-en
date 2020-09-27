@@ -1,10 +1,10 @@
-Варианты создания словаря
+Dictionary creation options
 -------------------------
 
-Литерал
+Literal
 ~~~~~~~
 
-Словарь можно создать с помощью литерала:
+A dictionary can be created with the help of a literal:
 
 .. code:: python
 
@@ -13,10 +13,9 @@
 dict
 ~~~~
 
-Конструктор **dict** позволяет создавать словарь несколькими способами.
+The constructor **dict** allows you to create a dictionary in several ways.
 
-Если в роли ключей используются строки, можно использовать такой вариант
-создания словаря:
+If you use strings as keys you can use this option to create a dictionary:
 
 .. code:: python
 
@@ -25,7 +24,7 @@ dict
     In [3]: r1
     Out[3]: {'model': '4451', 'ios': '15.4'}
 
-Второй вариант создания словаря с помощью dict:
+The second option of creating a dictionary with dict():
 
 .. code:: python
 
@@ -37,9 +36,7 @@ dict
 dict.fromkeys
 ~~~~~~~~~~~~~
 
-В ситуации, когда надо создать словарь с известными ключами, но пока
-что пустыми значениями (или одинаковыми значениями), очень удобен метод
-**fromkeys()**:
+In a situation where you need to create a dictionary with known keys but so far empty values (or identical values), the **fromkeys()** method is very convenient:
 
 .. code:: python
 
@@ -57,8 +54,7 @@ dict.fromkeys
      'ip': None}
 
 
-По умолчанию метод fromkeys подставляет значение None. Но можно
-указывать и свой вариант значения:
+By default fromkeys() sets None value. But you can also give your own version of the value:
 
 .. code:: python
 
@@ -70,9 +66,7 @@ dict.fromkeys
     Out[10]: {'ISR2811': 0, 'ISR2911': 0, 'ISR2921': 0, 'ASR9002': 0}
 
 
-Этот вариант создания словаря подходит не для всех случаев. Например,
-при использовании изменяемого типа данных в значении, будет создана
-ссылка на один и тот же объект:
+This option of creating a dictionary is not suitable for all cases. For example, if you use a mutable data type in the value, a reference to the same object will be created:
 
 .. code:: python
 
@@ -93,8 +87,7 @@ dict.fromkeys
      'ISR2921': ['london_r1'],
      'ASR9002': ['london_r1']}
 
-В данном случае каждый ключ ссылается на один и тот же список. Поэтому,
-при добавлении значения в один из списков обновляются и остальные.
+In this case, each key refers to the same list. Therefore, when a value is added to one of the lists, the others are updated.
 
 .. note::
-    Для такой задачи лучше подходит генератор словаря. Смотри раздел :ref:`x_comprehensions`
+    A dictionary generator is better for this task. See section :ref:`x_comprehensions`

@@ -1,7 +1,7 @@
-Дополнительные материалы
+Additional material
 ------------------------
 
-Документация:
+Documentation:
 
 -  `Strings <https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str>`__.
    `String
@@ -24,7 +24,7 @@
 -  `Common Sequence
    Operations <https://docs.python.org/3/library/stdtypes.html#typesseq-common>`__
 
-Форматирование строк:
+String formatting:
 
 -  `Примеры использования форматирования
    строк <https://pyformat.info/>`__

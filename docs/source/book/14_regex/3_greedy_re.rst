@@ -1,11 +1,9 @@
-Жадность символов повторения
+Greedy symbols
 ----------------------------
 
-По умолчанию символы повторения в регулярных выражениях жадные (greedy).
-Это значит, что результирующая подстрока, которая соответствует шаблону,
-будет наиболее длинной.
+By default, repetition symbols in regular expressions are greedy. This means that the resulting substring which corresponds to the template will have the longest match.
 
-Пример жадного поведения:
+An example of greedy behavior:
 
 .. code:: python
 
@@ -16,11 +14,9 @@
     In [4]: match.group()
     Out[4]: '<text line> some text>'
 
-То есть, в данном случае выражение захватило максимально возможный кусок
-символов, заключенный в <>.
+That is, in this case, the expression captured the maximum possible piece of symbols contained in <>.
 
-Если нужно отключить жадность, достаточно добавить знак вопроса после
-символов повторения:
+If greedy behavior need to be disabled, it is sufficient to add a question mark after the repetition symbols:
 
 .. code:: python
 
@@ -31,8 +27,7 @@
     In [7]: match.group()
     Out[7]: '<text line>'
 
-Зачастую жадность наоборот полезна. Например, без отключения жадности
-последнего плюса, выражение ``\d+\s+\S+`` описывает такую строку:
+But greed is often useful. For example, without turning off the greed of the last plus, the expression ``\d+\s+\S+`` describes such a line:
 
 .. code:: python
 
@@ -41,12 +36,9 @@
     In [9]: re.search('\d+\s+\S+', line).group()
     Out[9]: '1500     aab1.a1a1.a5d3'
 
-Символ ``\S`` обозначает все, кроме пробельных символов. Поэтому выражение
-``\S+`` с жадным символом повторения описывает максимально длинную
-строку до первого whitespace символа. В данном случае - до первого
-пробела.
+Symbol ``\S`` denotes everything except whitespace characters. Therefore, the expression ``\S+`` with the greedy repetition symbol describes the maximal long string until the first whitespace character. In this case up to the first space.
 
-Если отключить жадность, результат будет таким:
+If greed is disabled, the result is:
 
 .. code:: python
 

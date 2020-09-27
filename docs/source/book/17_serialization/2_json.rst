@@ -1,41 +1,39 @@
-Работа с файлами в формате JSON
+Work with JSON files
 -------------------------------
 
-**JSON (JavaScript Object Notation)** - это текстовый формат для
-хранения и обмена данными.
+**JSON (JavaScript Object Notation)** - a text format for data storage and exchange.
 
-`JSON <https://ru.wikipedia.org/wiki/JSON>`__ по синтаксису очень похож
-на Python и достаточно удобен для восприятия.
+`JSON <https://ru.wikipedia.org/wiki/JSON>`__ syntax is very similar to Python and is user-friendly.
 
-Как и в случае с CSV, в Python есть модуль, который позволяет легко
-записывать и читать данные в формате JSON.
+As for CSV, Python has a module that allows easy writing and reading of data in JSON format.
 
-Чтение
+
+Reading
 ~~~~~~
 
-Файл sw_templates.json:
+File sw_templates.json:
 
 
 .. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/json/sw_templates.json
   :language: json
   :linenos:
 
-Для чтения в модуле json есть два метода: 
+There are two methods for reading in json module:
 
-* json.load() - метод считывает файл в формате JSON и возвращает объекты Python 
-* json.loads() - метод считывает строку в формате JSON и возвращает объекты Python
+* json.load() - method reads JSON file and returns Python objects
+* json.loads() - method reads string in JSON format and returns Python objects
 
 json.load()
 ^^^^^^^^^^^
 
-Чтение файла в формате JSON в объект Python (файл json_read_load.py):
+Reading JSON file to Python object (json_read_load.py file):
 
 
 .. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/json/json_read_load.py
   :language: python
   :linenos:
 
-Вывод будет таким:
+The output will be as follows:
 
 .. code:: python
 
@@ -56,72 +54,63 @@ json.load()
 json.loads()
 ^^^^^^^^^^^^
 
-Считывание строки в формате JSON в объект Python (файл
-json_read_loads.py):
+Reading JSON string to Python object (json_read_loads.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/json/json_read_loads.py
   :language: python
   :linenos:
 
-Результат будет аналогичен предыдущему выводу.
+The result will be similar to previous output.
 
-Запись
+Writing
 ~~~~~~
 
-Запись файла в формате JSON также осуществляется достаточно легко.
+Writing a file in JSON format is also fairly easy.
 
-Для записи информации в формате JSON в модуле json также два метода: 
+There are also two methods for writing information in JSON format in json module:
 
-* json.dump() - метод записывает объект Python в файл в формате JSON 
-* json.dumps() - метод возвращает строку в формате JSON
+* json.dump() - method writes Python object to file in JSON format
+* json.dumps() - method returns string in JSON format
 
 json.dumps()
 ^^^^^^^^^^^^
 
-Преобразование объекта в строку в формате JSON (json_write_dumps.py):
+Convert object to string in JSON format (json_write_dumps.py):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/json/json_write_dumps.py
   :language: python
   :linenos:
 
 
-Метод json.dumps() подходит для ситуаций, когда надо вернуть строку в
-формате JSON. Например, чтобы передать ее API.
+Method json.dumps() is suitable for situations where you want to return a string in JSON format. For example, to pass it to the API.
 
 json.dump()
 ^^^^^^^^^^^
 
-Запись объекта Python в файл в формате JSON (файл json_write_dump.py):
+Write a Python object to a JSON file (json_write_dump.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/json/json_write_dump.py
   :language: python
   :linenos:
 
-Когда нужно записать информацию в формате JSON в файл, лучше
-использовать метод dump.
+When you want to write information in JSON format into a file, it is better to use dump() method.
 
-Дополнительные параметры методов записи
+Additional parameters of write methods
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Методам dump и dumps можно передавать дополнительные параметры для
-управления форматом вывода.
+Methods dump() and dumps() can pass additional parameters to manage the output format.
 
-По умолчанию эти методы записывают информацию в компактном
-представлении. Как правило, когда данные используются другими
-программами, визуальное представление данных не важно. Если же данные в
-файле нужно будет считать человеку, такой формат не очень удобно
-воспринимать.
+By default, these methods write information in a compact view. As a rule, when data is used by other programs, visual presentation of data is not important. If data in file needs to be read  by the person, this format is not very convenient to perceive.
 
-К счастью, модуль json позволяет управлять подобными вещами.
+Fortunately, the json module allows you to manage such things.
 
-Передав дополнительные параметры методу dump (или методу dumps), можно
-получить более удобный для чтения вывод (файл json_write_indent.py):
+By passing additional parameters to dump() method (or dumps() method) you can get a more readable output (json_write_indent.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/json/json_write_indent.py
   :language: python
   :linenos:
 
-Теперь содержимое файла sw_templates.json выглядит так:
+Now the content of sw_templates.json file is:
 
 ::
 
@@ -141,13 +130,12 @@ json.dump()
       ]
     }
 
-Изменение типа данных
+Changing data type
 ^^^^^^^^^^^^^^^^^^^^^
 
-Еще один важный аспект преобразования данных в формат JSON: данные не
-всегда будут того же типа, что исходные данные в Python.
+Another important aspect of data conversion to JSON format is that data will not always be the same type as source data in Python.
 
-Например, кортежи при записи в JSON превращаются в списки:
+For example, when you write a tuple to JSON it becomes a list:
 
 .. code:: python
 
@@ -180,10 +168,9 @@ json.dump()
     In [8]: print(templates)
     ['switchport trunk encapsulation dot1q', 'switchport mode trunk', 'switchport trunk native vlan 999', 'switchport trunk allowed vlan']
 
-Так происходит из-за того, что в JSON используются другие типы данных и
-не для всех типов данных Python есть соответствия.
+This is because JSON uses different data types and does not have matches for all Python data types.
 
-Таблица конвертации данных Python в JSON:
+Python data conversion table to JSON:
 
 +---------------+----------+
 | Python        | JSON     |
@@ -203,7 +190,7 @@ json.dump()
 | None          | null     |
 +---------------+----------+
 
-Таблица конвертации JSON в данные Python:
+JSON conversion table to Python data:
 
 +-----------------+----------+
 | JSON            | Python   |
@@ -225,10 +212,10 @@ json.dump()
 | null            | None     |
 +-----------------+----------+
 
-Ограничение по типам данных
+Limitation on data types
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-В формат JSON нельзя записать словарь, у которого ключи - кортежи:
+It's not possible to write a dictionary in JSON format if it has tuples as a keys.
 
 .. code:: python
 
@@ -240,8 +227,7 @@ json.dump()
     ...
     TypeError: key ('trunk', 'cisco') is not a string
 
-С помощью дополнительного параметра можно игнорировать подобные
-ключи:
+By using additional parameter you can ignore such keys:
 
 .. code:: python
 
@@ -255,9 +241,7 @@ json.dump()
     In [27]: cat sw_templates.json
     {"access": ["switchport mode access", "switchport access vlan", "switchport nonegotiate", "spanning-tree portfast", "spanning-tree bpduguard enable"]}
 
-Кроме того, в JSON ключами словаря могут быть только строки. Но, если в
-словаре Python использовались числа, ошибки не будет. Вместо этого
-выполнится конвертация чисел в строки:
+Beside that, dictionary keys can only be strings in JSON. But if numbers are used in Python dictionary there will be no error. But conversion from numbers to strings will take place:
 
 .. code:: python
 

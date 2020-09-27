@@ -1,24 +1,21 @@
 INSERT
 ~~~~~~
 
-Оператор INSERT используется для добавления данных в таблицу.
+INSERT operator is used to add data to the table.
 
 .. note::
 
-    Если таблица была удалена на предыдущем шаге, надо ее создать:
-
+    If table was deleted in previous step, create it:
+    
     .. code:: sql
 
         new_db.db> create table switch (mac text not NULL primary key, hostname text, model text, location text);
         Query OK, 0 rows affected
         Time: 0.010s
 
-Есть несколько вариантов добавления записей, в зависимости от того, все
-ли поля будут заполнены, и будут ли они идти по порядку определения
-полей или нет.
+There are several options for adding entries, depending on whether all fields are filled and whether or not they follow the field order.
 
-Если указываются значения для всех полей, добавить запись можно таким
-образом (порядок полей должен соблюдаться):
+If values for all fields are specified you can add an entry in this way (the order of fields must be respected):
 
 .. code:: sql
 
@@ -26,8 +23,7 @@ INSERT
     Query OK, 1 row affected
     Time: 0.008s
 
-Если нужно указать не все поля или указать их в произвольном порядке,
-используется такая запись:
+If you want to specify not all fields or specify them randomly, this entry is used:
 
 .. code:: sql
 

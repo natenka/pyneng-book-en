@@ -1,14 +1,13 @@
 .. _sqlite3_index:
 
-Модуль sqlite3
+Sqlite3 module
 --------------
 
-Для работы с SQLite в Python используется модуль sqlite3.
+Python uses sqlite3 module to work with SQLite.
 
-Объект **Connection** - это подключение к конкретной БД. Можно сказать,
-что этот объект представляет БД.
+**Connection** object - this object can be said to represent a database.
 
-Пример создания подключения:
+Example of creating a connection:
 
 .. code:: python
 
@@ -16,10 +15,9 @@
 
     connection = sqlite3.connect('dhcp_snooping.db')
 
-После создания соединения надо создать объект Cursor - это основной
-способ работы с БД.
+Once you have created a connection you should create a Cursor object which is the main way to work with database.
 
-Создается курсор из соединения с БД:
+Cursor is created from the DB connection:
 
 .. code:: python
 

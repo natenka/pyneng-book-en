@@ -1,20 +1,17 @@
 break, continue, pass
 ---------------------
 
-В Python есть несколько операторов, которые позволяют менять поведение
-циклов по умолчанию.
+Python has several operators that allow to change default loop behavior.
 
-Оператор break
+Break operator
 ~~~~~~~~~~~~~~
 
-**Оператор break** позволяет досрочно прервать цикл:
+The **break operator** allows early termination of the loop:
 
-* break прерывает текущий цикл и продолжает выполнение следующих выражений
-* если используется несколько вложенных циклов, break прерывает внутренний цикл
-  и продолжает выполнять выражения, следующие за блоком
-  * break может использоваться в циклах for и while
+* **break** breaks the current loop and continues executing the next expressions
+* if multiple nested loops are used the **break** interrupts internal loop and continues to execute expressions following the block. **Break** can be used in loops **for** and **while**
 
-Пример с циклом for:
+Example of a loop **for**:
 
 .. code:: python
 
@@ -32,7 +29,7 @@ break, continue, pass
     5
     6
 
-Пример с циклом while:
+Example of a loop **while**:
 
 .. code:: python
 
@@ -50,40 +47,34 @@ break, continue, pass
     3
     4
 
-Использование break в примере с запросом пароля (файл
-check\_password\_with\_while\_break.py):
+Use break in an example with a password request (check\_password\_with\_while\_break.py file):
 
 .. code:: python
 
-    username = input('Введите имя пользователя: ' )
-    password = input('Введите пароль: ' )
+    username = input('Enter username: ' )
+    password = input('Enter password: ' )
 
     while True:
         if len(password) < 8:
-            print('Пароль слишком короткий\n')
+            print('Password is too short\n')
         elif username in password:
-            print('Пароль содержит имя пользователя\n')
+            print('Password contains username\n')
         else:
-            print('Пароль для пользователя {} установлен'.format(username))
-            # завершает цикл while
+            print('Password for user {} is set'.format(username))
+            # finish while loop
             break
-        password = input('Введите пароль еще раз: ')
+        password = input('Enter password once again: ')
 
-Теперь можно не повторять строку
-``password = input('Введите пароль еще раз: ')`` в каждом ответвлении,
-достаточно перенести ее в конец цикла.
+Now it is possible not to repeat the string ``password = input('Enter password once again: ')`` in each branch, it is enough to move it to the end of the loop.
 
-И, как только будет введен правильный пароль, break выведет программу из
-цикла while.
+And as soon as the correct password is entered, **break** will take the program out of loop **while**.
 
-Оператор continue
+Continue operator
 ~~~~~~~~~~~~~~~~~
 
-Оператор continue возвращает управление в начало цикла. То есть,
-continue позволяет "перепрыгнуть" оставшиеся выражения в цикле и перейти
-к следующей итерации.
+The **continue** operator returns the control to the beginning of the loop. That is, **continue** allows to «jump» the remaining expressions in the loop and go to the next iteration.
 
-Пример с циклом for:
+Example of a loop **for**:
 
 .. code:: python
 
@@ -98,7 +89,7 @@ continue позволяет "перепрыгнуть" оставшиеся вы
     2
     4
 
-Пример с циклом while:
+Example of a loop **while**:
 
 .. code:: python
 
@@ -106,71 +97,64 @@ continue позволяет "перепрыгнуть" оставшиеся вы
     In [6]: while i < 6:
        ....:     i += 1
        ....:     if i == 3:
-       ....:         print("Пропускаем 3")
+       ....:         print("Skip 3")
        ....:         continue
-       ....:         print("Это никто не увидит")
+       ....:         print("No one will see it")
        ....:     else:
-       ....:         print("Текущее значение: ", i)
+       ....:         print("Current value: ", i)
        ....:         
-    Текущее значение:  1
-    Текущее значение:  2
-    Пропускаем 3
-    Текущее значение:  4
-    Текущее значение:  5
-    Текущее значение:  6
+    Current value:  1
+    Current value:  2
+    Skip 3
+    Current value:  4
+    Current value:  5
+    Current value:  6
 
-Использование continue в примере с запросом пароля (файл
-check_password_with_while_continue.py):
+Use of **continue** in the example with a password request (check_password_with_while_continue.py file):
 
 .. code:: python
 
-    username = input('Введите имя пользователя: ')
-    password = input('Введите пароль: ')
+    username = input('Enter username: ')
+    password = input('Enter password: ')
 
     password_correct = False
 
     while not password_correct:
         if len(password) < 8:
-            print('Пароль слишком короткий\n')
+            print('Password is too short\n')
         elif username in password:
-            print('Пароль содержит имя пользователя\n')
+            print('Password contains username\n')
         else:
-            print('Пароль для пользователя {} установлен'.format(username))
+            print('Password for user {} is set'.format(username))
             password_correct = True
             continue
-        password = input('Введите пароль еще раз: ')
+        password = input('Enter password once again: ')
 
-Тут выход из цикла выполнятся с помощью проверки флага
-password_correct. Когда был введен правильный пароль, флаг выставляется
-равным True, и с помощью continue выполняется переход в начало цикла,
-перескочив последнюю строку с запросом пароля.
+Here you can exit the loop by checking the password_correct flag. When the correct password is entered, the flag is set to True, and with **continue** the jump to the beginning of the loop is occurred by skipping the last line with the password request.
 
-Результат выполнения будет таким:
+The result will be:
 
 ::
 
     $ python check_password_with_while_continue.py
-    Введите имя пользователя: nata
-    Введите пароль: nata12
-    Пароль слишком короткий
+    Enter username: nata
+    Enter password: nata12
+    Password is too short
 
-    Введите пароль еще раз: natalksdjflsdjf
-    Пароль содержит имя пользователя
+    Enter password once again: natalksdjflsdjf
+    Password contains username
 
-    Введите пароль еще раз: asdfsujljhdflaskjdfh
-    Пароль для пользователя nata установлен
+    Enter password once again: asdfsujljhdflaskjdfh
+    Password for user nata is set
 
-Оператор pass
+Pass operator
 ~~~~~~~~~~~~~
 
-Оператор ``pass`` ничего не делает. Фактически, это такая заглушка для
-объектов.
+The ``pass`` operator does nothing. In fact, it is a null statement.
 
-Например, ``pass`` может помочь в ситуации, когда нужно прописать
-структуру скрипта. Его можно ставить в циклах, функциях, классах. И это
-не будет влиять на исполнение кода.
+For example, ``pass`` can help when you need to specify a script structure. It can be set in loops, functions, classes. And it won’t affect the execution of the code.
 
-Пример использования pass:
+Example of using pass:
 
 .. code:: python
 

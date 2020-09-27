@@ -4,54 +4,43 @@
 
 .. _ssh_telnet_index:
 
-18. Подключение к оборудованию
+18. Connection to equipment
 ==============================
 
-В этом разделе рассматривается как подключиться к оборудованию по
-протоколам: 
+This section discusses how to connect to equipment via:
 
 * SSH 
 * Telnet
 
-В Python есть несколько модулей, которые позволяют подключаться к
-оборудованию и выполнять команды: 
+Python has several modules that allow you to connect to equipment and execute commands:
 
-* **pexpect** - это реализация expect на Python 
+* **pexpect** - an implementation of *expect* in Python
 
-  * этот модуль позволяет работать с любой интерактивной сессией: ssh, telnet, sftp и др. 
-  * кроме того, он позволяет выполнять 
-    различные команды в ОС (это можно делать и с помощью других модулей) 
-  * несмотря на то, что pexpect может быть менее удобным в использовании,
-    чем другие модули, он реализует более общий функционал и это позволяет
-    использовать его в ситуациях, когда другие модули не работают 
+  * this module allows working with any interactive session: ssh, telnet, sftp, etc. 
+  * in addition, it makes possible to execute different commands in OS (this can also be done with other modules)
+  * while pexpect may be less user-friendly than other modules, it implements a more general functionality and allows it to be used in situations where other modules do not work
 
-* **telnetlib** - этот модуль позволяет подключаться по Telnet 
+* **telnetlib** - this module allows you connecting via Telnet
   
-  * в версии 1.0 netmiko также появилась поддержка Telnet, поэтому, если netmiko
-    поддерживает то оборудование, которое используется у вас, удобней будет использовать его 
+  * netmiko version 1.0 also has Telnet support, so if netmiko supports the equipment you use, it is more convenient to use it
 
-* **paramiko** - это модуль, который позволяет подключаться по SSHv2 
+* **paramiko** - his module allows you connecting via SSHv2
 
-  * он более удобен в использовании, чем pexpect, но с более 
-    узкой функциональностью (поддерживает только SSH) 
+  * it is more convenient to use than pexpect but with narrower functionality (only supports SSH)
+  
+* **netmiko** - module that simplifies the use of paramiko for network devices 
 
-* **netmiko** - это модуль, который упрощает использование paramiko для сетевых устройств 
+  * netmiko is a "wrapper" which is oriented to work with network equipment
 
-  * netmiko это "обертка" вокруг paramiko, которая ориентирована на работу 
-    с сетевым оборудованием
+This section deals with all four modules and describes how to connect to several devices in parallel. Three routers are used in section examples. There are no requirements for them, only configured SSH.
 
-В этом разделе рассматриваются все 4 модуля, а также как подключаться к
-нескольким устройствам параллельно.
-В примерах раздела используются три маршрутизатора. К ним нет никаких
-требований, только настроенный SSH.
+The parameters used in the section:
 
-Параметры, которые используются в разделе: 
-
-* пользователь: cisco 
-* пароль: cisco 
-* пароль на режим enable: cisco 
-* SSH версии 2 
-* IP-адреса: 192.168.100.1, 192.168.100.2, 192.168.100.3
+* user: cisco 
+* password: cisco 
+* password for enable mode: cisco 
+* SSH version 2 
+* IP addresses: 192.168.100.1, 192.168.100.2, 192.168.100.3
 
 .. toctree::
    :maxdepth: 1

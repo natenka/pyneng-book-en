@@ -2,26 +2,25 @@
 
    \newpage
 
-Задания
+Tasks
 =======
 
 .. include:: ./pytest.rst
 
-Задание 17.1
+Task 17.1
 ~~~~~~~~~~~~
 
 
-Создать функцию write_dhcp_snooping_to_csv, которая обрабатывает
-вывод команды show dhcp snooping binding из разных файлов и записывает обработанные данные в csv файл.
+Create write_dhcp_snooping_to_csv() function that processes the output of show dhcp snooping binding command from different files and writes processed data to csv file.
 
-Аргументы функции:
+Function arguments:
 
-* filenames - список с именами файлов с выводом show dhcp snooping binding
-* output - имя файла в формате csv, в который будет записан результат
+* filenames - list with file names with show dhcp snooping binding outputs
+* output - file name in csv format to which the result will be written
 
-Функция ничего не возвращает.
+Function does not return anything.
 
-Например, если как аргумент был передан список с одним файлом sw3_dhcp_snooping.txt:
+For example, if a list with one sw3_dhcp_snooping.txt file was passed as an argument:
 
 ::
 
@@ -31,7 +30,7 @@
     00:E9:22:11:A6:50   100.1.1.7        76260       dhcp-snooping   3    FastEthernet0/21
     Total number of bindings: 2
 
-В итоговом csv файле должно быть такое содержимое:
+The resulting csv file should have such content:
 
 ::
 
@@ -40,56 +39,53 @@
     sw3,00:E9:22:11:A6:50,100.1.1.7,3,FastEthernet0/21
 
 
-Проверить работу функции на содержимом файлов sw1_dhcp_snooping.txt, sw2_dhcp_snooping.txt, sw3_dhcp_snooping.txt.
-Первый столбец в csv файле имя коммутатора надо получить из имени файла, остальные - из содержимого в файлах.
+Check function with content of sw1_dhcp_snooping.txt, sw2_dhcp_snooping.txt, sw3_dhcp_snooping.txt files. The first column in a csv file should be retrieved from filename, the rest from contents of files.
 
 
-Задание 17.2
+Task 17.2
 ~~~~~~~~~~~~
 
-В этом задании нужно:
+This task requires:
 
-* взять содержимое нескольких файлов с выводом команды sh version
-* распарсить вывод команды с помощью регулярных выражений и получить информацию об устройстве
-* записать полученную информацию в файл в CSV формате
+* take contents of several files with sh version command output
+* parse command output with regular expressions and get device information
+* write the received information to a CSV file
 
-Для выполнения задания нужно создать две функции.
+To complete task you need to create two functions.
 
-Функция parse_sh_version:
+Function parse_sh_version():
 
-* ожидает как аргумент вывод команды sh version одной строкой (не имя файла)
-* обрабатывает вывод, с помощью регулярных выражений
-* возвращает кортеж из трёх элементов:
+* expects as an argument the output of sh version command as one string (not file name)
+* handles output using regular expressions
+* returns a tuple of three elements:
 
-  * ios - в формате "12.4(5)T"
-  * image - в формате "flash:c2800-advipservicesk9-mz.124-5.T.bin"
-  * uptime - в формате "5 days, 3 hours, 3 minutes"
+  * ios - in format "12.4(5)T"
+  * image - in format "flash:c2800-advipservicesk9-mz.124-5.T.bin"
+  * uptime - in format "5 days, 3 hours, 3 minutes"
 
-У функции write_inventory_to_csv должно быть два параметра:
+Function write_inventory_to_csv() should have two parameters:
 
-* data_filenames - ожидает как аргумент список имен файлов с выводом sh version
-* csv_filename - ожидает как аргумент имя файла (например, routers_inventory.csv),
-  в который будет записана информация в формате CSV
+* data_filenames - expects as argument list of file names with sh version command output
+* csv_filename - expects as argument the name of file (for example, routers_inventory.csv) into which information will be written in CSV format
 
-Функция write_inventory_to_csv записывает содержимое в файл, в формате CSV и ничего не возвращает
+Function write_inventory_to_csv() writes content to a CSV file and returns nothing
 
 
-Функция write_inventory_to_csv должна делать следующее:
+Function write_inventory_to_csv() should do the following:
 
-* обработать информацию из каждого файла с выводом sh version:
+* Process information from each file with sh version output:
 
   * sh_version_r1.txt, sh_version_r2.txt, sh_version_r3.txt
 
-* с помощью функции parse_sh_version, из каждого вывода должна быть получена информация ios, image, uptime
-* из имени файла нужно получить имя хоста
-* после этого вся информация должна быть записана в CSV файл
+* with parse_sh_version() function, information like ios, image, uptime should be obtained from each output
+* hostname should be received from file name
+* then all information should be written in CSV file
 
-В файле routers_inventory.csv должны быть такие столбцы: ``hostname, ios, image, uptime``
+File routers_inventory.csv should have such columns: ``hostname, ios, image, uptime``
 
-В скрипте, с помощью модуля glob, создан список файлов, имя которых начинается на sh_vers.
-вы можете раскомментировать строку print(sh_version_files), чтобы посмотреть содержимое списка.
+In script, using glob module, a list of files whose name begins on *sh_vers* is created. You can uncomment string *print(sh_version_files)* to see the contents of list.
 
-Кроме того, создан список заголовков (headers), который должен быть записан в CSV.
+In addition, a list of headers was created that should be written in CSV.
 
 .. code:: python
 
@@ -101,16 +97,14 @@
 
     headers = ["hostname", "ios", "image", "uptime"]
 
-Задание 17.3
+Task 17.3
 ~~~~~~~~~~~~
 
-Создать функцию parse_sh_cdp_neighbors, которая обрабатывает
-вывод команды show cdp neighbors.
+Create parse_sh_cdp_neighbors() function that handles the output of show cdp neighbors command.
 
-Функция ожидает, как аргумент, вывод команды одной строкой (не имя файла).
-Функция должна возвращать словарь, который описывает соединения между устройствами.
+Function expects as an argument the output of command as a string (not file name). Function should return a dictionary that describes connections between devices.
 
-Например, если как аргумент был передан такой вывод:
+For example, if such output is given as an argument:
 
 ::
 
@@ -120,34 +114,33 @@
     R5           Fa 0/1          122           R S I           2811       Fa 0/1
     R6           Fa 0/2          143           R S I           2811       Fa 0/0
 
-Функция должна вернуть такой словарь:
+Function should return such dictionary:
 
 .. code:: python
 
     {"R4": {"Fa 0/1": {"R5": "Fa 0/1"},
             "Fa 0/2": {"R6": "Fa 0/0"}}}
 
-Интерфейсы должны быть записаны с пробелом. То есть, так Fa 0/0, а не так Fa0/0.
+Interfaces should be written with space. That is Fa 0/0, not Fa0/0.
 
+Check function with contents of sh_cdp_n_sw1.txt file.
 
-Проверить работу функции на содержимом файла sh_cdp_n_sw1.txt
-
-Задание 17.3a
+Task 17.3a
 ~~~~~~~~~~~~~
 
-Создать функцию generate_topology_from_cdp, которая обрабатывает вывод команды show cdp neighbor из нескольких файлов и записывает итоговую топологию в один словарь.
+Create generate_topology_from_cdp() function that handles the output of show cdp neighbor command from multiple files and writes the resulting topology in one dictionary.
 
-Функция generate_topology_from_cdp должна быть создана с параметрами:
+Function generate_topology_from_cdp() should be created with parameters:
 
-* list_of_files - список файлов из которых надо считать вывод команды sh cdp neighbor
-* save_to_filename - имя файла в формате YAML, в который сохранится топология.
+* list_of_files - list of files from which to read the output of sh cdp neighbor command
+* save_to_filename - name of file in YAML format that stores topology.
 
-  * значение по умолчанию - None. По умолчанию, топология не сохраняется в файл
-  * топология сохраняется только, если save_to_filename как аргумент указано имя файла
+  * default value - None. By default, topology is not saved to file
+  * topology is saved only if file name is specified for save_to_filename argument
 
-Функция должна возвращать словарь, который описывает соединения между устройствами, независимо от того сохраняется ли топология в файл.
+Function should return a dictionary that describes connections between devices, regardless of whether topology is saved to file.
 
-Структура словаря должна быть такой:
+The structure of dictionary should be:
 
 .. code:: python
 
@@ -156,9 +149,9 @@
      "R5": {"Fa 0/1": {"R4": "Fa 0/1"}},
      "R6": {"Fa 0/0": {"R4": "Fa 0/2"}}}
 
-Интерфейсы должны быть записаны с пробелом. То есть, так Fa 0/0, а не так Fa0/0.
+Interfaces should be written with space. That is Fa 0/0, not Fa0/0.
 
-Проверить работу функции generate_topology_from_cdp на списке файлов:
+Check generate_topology_from_cdp() function with list of files:
 
 * sh_cdp_n_sw1.txt
 * sh_cdp_n_r1.txt
@@ -168,70 +161,63 @@
 * sh_cdp_n_r5.txt
 * sh_cdp_n_r6.txt
 
-Проверить работу параметра save_to_filename и записать итоговый словарь в файл topology.yaml.
+Check save_to_filename option and write the resulting dictionary to topology.yaml file.
 
-Задание 17.3b
+Task 17.3b
 ~~~~~~~~~~~~~
 
-Создать функцию transform_topology, которая преобразует топологию в формат подходящий для функции draw_topology.
+Create transform_topology() function that converts topology into a format suitable for draw_topology() function.
 
-Функция ожидает как аргумент имя файла в формате YAML, в котором хранится топология.
+Function expects as argument the name of file in YAML format in which topology is stored.
 
-Функция должна считать данные из YAML файла, преобразовать их соответственно, чтобы функция возвращала словарь такого вида:
+Function should read data from YAML file, convert it accordingly, so that the function returns a dictionary of this type:
 
 .. code:: python
 
     {("R4", "Fa 0/1"): ("R5", "Fa 0/1"),
      ("R4", "Fa 0/2"): ("R6", "Fa 0/0")}
 
-Функция transform_topology должна не только менять формат представления топологии, но и удалять дублирующиеся соединения (их лучше всего видно на схеме, которую генерирует draw_topology).
+Function transform_topology() should not only change the format of topology representation but also remove duplicate connections (these are best seen in diagram generated by draw_topology).
 
-Проверить работу функции на файле topology.yaml (должен быть создан в предыдущем задании 17.2a). На основании полученного словаря надо сгенерировать изображение топологии с помощью функции draw_topology.
-Не копировать код функции draw_topology.
+Check function with topology.yaml file (should be created in previous task 17.2a). Based on resulting dictionary, you should generate a topology image using draw_topology() function. Do not copy draw_topology() function code.
 
-Результат должен выглядеть так же, как схема в файле task_17_3b_topology.svg
+Result should look the same as scheme in task_17_3b_topology.svg file
 
-При этом:
+At the same time:
 
-* Интерфейсы должны быть записаны с пробелом Fa 0/0
-* Расположение устройств на схеме может быть другим
-* Соединения должны соответствовать схеме
-* На схеме не должно быть дублирующихся линков
+* Interfaces should be written with space Fa 0/0
+* The arrangement of devices on diagram may be different
+* Connections should follow the diagram
+* There should be no duplicate links on diagram
 
 .. note::
 
-    Для выполнения этого задания, должен быть установлен graphviz:
+    To complete this task, graphviz should be installed:
     apt-get install graphviz
 
-    И модуль python для работы с graphviz:
+    And python module for working with graphviz:
     pip install graphviz
 
 
 .. figure:: https://raw.githubusercontent.com/natenka/pyneng-examples-exercises/master/exercises/17_serialization/task_17_3b_topology.png
 
-Задание 17.4
+Task 17.4
 ~~~~~~~~~~~~
 
-Создать функцию write_last_log_to_csv.
+Create write_last_log_to_csv() function.
 
-Аргументы функции:
+Function arguments:
 
-* source_log - имя файла в формате csv, из которого читаются данные (пример mail_log.csv)
-* output - имя файла в формате csv, в который будет записан результат
+* source_log - name of csv file from which data is read (example mail_log.csv)
+* output - name of csv file to which the result will be written
 
-Функция ничего не возвращает.
+Function does not return anything.
 
-Функция write_last_log_to_csv обрабатывает csv файл mail_log.csv.
-В файле mail_log.csv находятся логи изменения имени пользователя. При этом, email
-пользователь менять не может, только имя.
+Function write_last_log_to_csv() handles mail_log.csv file. File mail_log.csv contains logs of user name changes. At the same time, user cannot change email, only name.
 
-Функция write_last_log_to_csv должна отбирать из файла mail_log.csv только
-самые свежие записи для каждого пользователя и записывать их в другой csv файл.
-В файле output первой строкой должны быть заголовки столбцов, такие же как в файле source_log.
+Function write_last_log_to_csv() should select only the most recent entries for each user from mail_log.csv file and write them to another csv file. The *output* file should have column headers as a first line, similar to source_log file.
 
-Для части пользователей запись только одна и тогда в итоговый файл надо записать только ее.
-Для некоторых пользователей есть несколько записей с разными именами.
-Например пользователь с email c3po@gmail.com несколько раз менял имя:
+Some users have only one record and then only it should be written to final file. Some users have multiple entries with different names. For example, user with c3po@gmail.com has changed his name several times:
 
 ::
 
@@ -239,20 +225,15 @@
     C3PO,c3po@gmail.com,16/12/2019 17:15
     C-3PO,c3po@gmail.com,16/12/2019 17:24
 
-Из этих трех записей, в итоговый файл должна быть записана только одна - самая свежая:
+Of these three entries, only one should be written to final file - the latest:
 
 ::
 
     C-3PO,c3po@gmail.com,16/12/2019 17:24
 
-Для сравнения дат удобно использовать объекты datetime из модуля datetime.
-Чтобы упростить работу с датами, создана функция convert_str_to_datetime - она
-конвертирует строку с датой в формате 11/10/2019 14:05 в объект datetime.
-Полученные объекты datetime можно сравнивать между собой.
-Вторая функция convert_datetime_to_str делает обратную операцию - превращает
-объект datetime в строку.
+It is convenient to use datetime objects from *datetime* module to compare dates. To simplify work with dates, convert_str_to_datetime() function was created - it converts a string with a date in format 11/10/2019 14:05 into an datetime object. The resulting datetime objects can be compared. The second convert_datetime_to_str() function does the reverse operation - converts datetime object into a string.
 
-Функции convert_str_to_datetime и convert_datetime_to_str использовать не обязательно.
+Functions convert_str_to_datetime() and convert_datetime_to_str() are not necessary to use.
 
 .. code:: python
 
@@ -261,14 +242,14 @@
 
     def convert_str_to_datetime(datetime_str):
         """
-        Конвертирует строку с датой в формате 11/10/2019 14:05 в объект datetime.
+        Converts a string with a date in format 11/10/2019 14:05 into an datetime object.
         """
         return datetime.datetime.strptime(datetime_str, "%d/%m/%Y %H:%M")
 
 
     def convert_datetime_to_str(datetime_obj):
         """
-        Конвертирует строку с датой в формате 11/10/2019 14:05 в объект datetime.
+        Converts datetime object into a string with a date in format 11/10/2019 14:05.
         """
         return datetime.datetime.strftime(datetime_obj, "%d/%m/%Y %H:%M")
 

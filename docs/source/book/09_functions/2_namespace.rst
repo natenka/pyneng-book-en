@@ -1,41 +1,33 @@
-Пространства имен. Области видимости
+Namespace. Scope of variables
 ------------------------------------
 
-У переменных в Python есть область видимости. В зависимости от места в
-коде, где переменная была определена, определяется и область видимости,
-то есть, где переменная будет доступна.
+Variables in Python have a scope. Depending on the location in the code where variable has been defined, the scope is also defined, it determines where variable will be available.
 
-При использовании имен переменных в программе, Python каждый раз ищет,
-создает или изменяет эти имена в соответствующем пространстве имен.
-Пространство имен, которое доступно в каждый момент, зависит от области,
-в которой находится код.
+When using variable names in a program, Python searches, creates or changes these names in the corresponding namespace each time. The namespace that is available at each moment depends on the area in which the code is located.
 
-У Python есть правило LEGB, которым он пользуется при поиске переменных.
+Python has a LEGB rule that it uses for variables search.
 
-Например, если внутри функции выполняется обращение к имени переменной,
-Python ищет переменную в таком порядке по областям видимости (до первого
-совпадения):
+For example, when accessing a variable within a function, Python searches for a variable in this order in scopes (before the first match):
 
-* L (local) - в локальной (внутри функции)
-* E (enclosing) - в локальной области объемлющих функций (это те функции,
-  внутри которых находится наша функция)
-* G (global) - в глобальной (в скрипте)
-* B (built-in) - во встроенной (зарезервированные значения Python)
+* L (local) - in local (within function)
+* E (enclosing) - in the local area of outer functions (these are the functions within which our function is located)
+* G (global) - in global (in script)
+* B (built-in) - in built-in (reserved Python values)
 
-Соответственно, есть локальные и глобальные переменные:
+Accordingly, there are local and global variables:
 
-* локальные переменные:
+* local variables:
   
-  * переменные, которые определены внутри функции
-  * эти переменные становятся недоступными после выхода из функции
+  * variables that are defined within function
+  * these variables become unavailable after exit from function
 
-* глобальные переменные:
+* global variables:
   
-  * переменные, которые определены вне функции
-  * эти переменные 'глобальны' только в пределах модуля
-  * например, чтобы они были доступны в другом модуле, их надо импортировать
+  * variables that are defined outside the function
+  * these variables are 'global' only within the module
+  * for example, to be available in another module they must be imported
 
-Пример локальной intf_config:
+Example of local intf_config:
 
 .. code:: python
 
@@ -53,8 +45,7 @@ Python ищет переменную в таком порядке по обла�
     NameError: name 'intf_config' is not defined
 
 
-Обратите внимание, что переменная intf_config недоступна за пределами функции.
-Для того чтобы получить результат функции, надо вызвать функцию и присвоить результат в переменную:
+Note that the intf_config variable is not available outside of the function. To get the result of a function you must call a function and assign result to a variable:
 
 .. code:: python
 

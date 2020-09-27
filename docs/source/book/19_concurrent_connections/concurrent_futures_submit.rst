@@ -1,42 +1,29 @@
-Метод submit и работа с futures
+Method submit and work with futures
 -------------------------------
 
-Метод submit отличается от метода map:
+Method submit() differs from the map() method:
 
-* submit запускает в потоке только одну функцию
-* с помощью submit можно запускать разные функции с разными несвязанными аргументами,
-  а map надо обязательно запускать с итерируемым объектами в роли аргументов
-* submit сразу возвращает результат, не дожидаясь выполнения функции
-* submit возвращает специальный объект Future, который представляет
-  выполнение функции.
+* submit() runs only one function in thread
+* submit() can run different functions with different unrelated arguments, when map() must run with iterable objects as arguments
+* submit() immediately returns the result without having to wait for function execution
+* submit() returns special Future object that represents execution of function.
 
-  * submit возвращает Future для того чтобы вызов submit не блокировал
-    код. Как только submit вернул Future, код может выполняться дальше.
-    И как только запущены все функции в потоках, можно начинать запрашивать
-    Future о том готовы ли результаты. Или воспользоваться специальной функцией
-    as_completed, которая сама запрашивает результат, а код получает его
-    по мере готовности
+  * submit() returns Future in order that the call of submit() does not block the code. Once submit() has returned Future, the code can be executed further. And once all functions in threads are running, you can start requesting Future if the results are ready. Or take advantage of special function as_completed(), which requests the result itself and the code gets it when it’s ready
 
-* submit возвращает результаты в порядке готовности, а не в порядке аргументов
-* submit можно передавать ключевые аргументы, а map только позиционные
+* submit() returns results in readiness order, not in argument order
+* submit() can pass key arguments when map() only position arguments
 
-Метод submit использует объект `Future <https://en.wikipedia.org/wiki/Futures_and_promises>`__ - это
-объект, который представляет отложенное вычисление. Этот объект можно
-запрашивать о состоянии (завершена работа или нет), можно получать
-результаты или исключения, которые возникли в процессе работы.
-Future не нужно создавать вручную, эти объекты создаются методом submit.
+Method submit() uses `Future <https://en.wikipedia.org/wiki/Futures_and_promises>`__ object - an object that represents a delayed computation. This object can be resquested for status (completed or not), and results or exceptions can be obtained from the work. Future does not need to create manually, these objects are created by submit().
 
 
-Пример запуска функции в потоках с помощью submit (файл
-netmiko_threads_submit_basics.py):
+Example of running a function in threads using submit() (netmiko_threads_submit_basics.py file)
 
 .. literalinclude:: /pyneng-examples-exercises/examples/20_concurrent_connections/netmiko_threads_submit_basics.py
   :language: python
   :linenos:
 
 
-Остальной код не изменился, поэтому разобраться надо только с блоком,
-который запускает функцию send_show в потоках:
+The rest of the code has not changed, so only the block that runs send_show() needs an attention:
 
 .. code:: python
 
@@ -48,25 +35,22 @@ netmiko_threads_submit_basics.py):
         for f in as_completed(future_list):
             print(f.result())
 
-Теперь в блоке with два цикла: 
+Now block *with* has two cycles:
 
-* ``future_list`` - это список объектов future:
+* ``future_list`` - a list of Future objects:
 
-  * для создания future используется функция submit 
-  * ей как аргументы передаются: имя функции, которую надо выполнить, и ее аргументы 
+  * submit() function is used to create Future object
+  * submit() expects the name of function to be executed and its arguments
 
-* следующий цикл проходится по списку future с помощью функции as_completed. Эта функция
-  возвращает future только когда они завершили работу или были отменены.
-  При этом future возвращаются по мере завершения работы, не в порядке добавления в
-  список future_list
+* the next cycle runs through future_list using as_completed() function. This function returns a Future objects only when they have finished or been cancelled. Future is then returned as soon as work is completed, not in the order of adding to future_list
 
 
 .. note::
 
-    Создание списка с future можно сделать с помощью list comprehensions:
+    Creation of list with Future can be done with list comprehensions: 
     ``future_list = [executor.submit(send_show, device, 'sh clock') for device in devices]``
 
-Результат выполнения:
+The result is:
 
 ::
 
@@ -82,13 +66,12 @@ netmiko_threads_submit_basics.py):
     {'192.168.100.3': '*17:33:23.188 UTC Thu Jul 4 2019'}
 
 
-Обратите внимание, что порядок не сохраняется и зависит от того, какие
-функции раньше завершили работу.
+Please note that the order is not preserved and depends on which function was previously completed.
 
 Future
 ~~~~~~
 
-Пример запуска функции send_show с помощью submit и вывод информации о Future (обратите внимание на статус future в разные моменты времени):
+An example of running send_show() function with submit() and displaying information about Future (note the status of the Future at different points in time):
 
 .. code:: python
 
@@ -127,15 +110,14 @@ Future
     <Future at 0xb488e72c state=finished returned dict>
 
 
-Чтобы посмотреть на future, в скрипт добавлены несколько строк с выводом
-информации (netmiko_threads_submit_futures.py):
+In order to look at Future, several lines with information output are added to the script (netmiko_threads_submit_futures.py):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/20_concurrent_connections/netmiko_threads_submit_futures.py
   :language: python
   :linenos:
 
 
-Результат выполнения:
+The result is:
 
 ::
 
@@ -157,18 +139,14 @@ Future
      '192.168.100.3': '*07:14:37.413 UTC Fri Jul 26 2019'}
 
 
-Так как по умолчанию используется ограничение в два потока, только два
-из трех future показывают статус running. Третий находится в состоянии
-pending и ждет, пока до него дойдет очередь.
+Since two threads are used by default, only two out of three Future shows running status. The third is in pending state and is waiting for the queue to arrive.
 
-Обработка исключений
+Processing of exceptions
 ~~~~~~~~~~~~~~~~~~~~
 
-Если при выполнении функции возникло исключение, оно будет сгенерировано
-при получении результата
+If there is an exception in function execution, it will be generated when the result is obtained
 
-Например, в файле devices.yaml пароль для устройства 192.168.100.2
-изменен на неправильный:
+For example, in device.yaml file the password for device 192.168.100.2 was changed to the wrong one:
 
 ::
 
@@ -185,15 +163,14 @@ pending и ждет, пока до него дойдет очередь.
     netmiko.ssh_exception.NetMikoAuthenticationException: Authentication failure: unable to connect cisco_ios 192.168.100.2:22
     Authentication failed.
 
-Так как исключение возникает при получении результата, легко добавить
-обработку исключений (файл netmiko_threads_submit_exception.py):
+Since an exception occurs when result is obtained, it is easy to add exception processing (netmiko_threads_submit_exception.py file):
 
 
 .. literalinclude:: /pyneng-examples-exercises/examples/20_concurrent_connections/netmiko_threads_submit_exception.py
   :language: python
   :linenos:
 
-Результат выполнения:
+The result is:
 
 ::
 
@@ -209,7 +186,5 @@ pending и ждет, пока до него дойдет очередь.
      '192.168.100.3': '*07:21:28.930 UTC Fri Jul 26 2019'}
 
 
-Конечно, обработка исключения может выполняться и внутри функции
-send_show, но это просто пример того, как можно работать с
-исключениями при использовании future.
+Of course, exception handling can be performed within send_show() function, but it is just an example of how you can work with exceptions when using a Future.
 

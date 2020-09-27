@@ -1,18 +1,15 @@
-Функция finditer
+Finditer function
 -----------------
 
-Функция ``finditer()``: 
+Function ``finditer()``: 
 
-* используется для поиска всех непересекающихся совпадений в шаблоне 
-* возвращает итератор с объектами Match
-* finditer возвращает итератор даже в том случае, когда совпадение не найдено
+* is used to search for all disjoint matches in template
+* returns an iterator with Match objects
+* finditer() returns iterator even if no match is found
 
-Функция finditer отлично подходит для обработки тех команд, вывод
-которых отображается столбцами. Например, sh ip int br, sh mac
-address-table и др. В этом случае его можно применять ко всему выводу
-команды.
+The finditer() function is well suited to handle those commands whose output is displayed by columns. For example: ‘sh ip int br’, ‘sh mac address-table’, etc. In this case it can be applied to the entire output of command.
 
-Пример вывода sh ip int br:
+Example of 'sh ip int br' output:
 
 .. code:: python
 
@@ -27,7 +24,7 @@ address-table и др. В этом случае его можно применя
        ...: Loopback100           100.0.0.1       YES manual up               up
        ...: '''
 
-Регулярное выражение для обработки вывода:
+Regular expression for output processing:
 
 .. code:: python
 
@@ -39,14 +36,14 @@ address-table и др. В этом случае его можно применя
        ...:                      sh_ip_int_br)
        ...:
 
-В переменной result находится итератор:
+*result* variable contains an iterator:
 
 .. code:: python
 
     In [12]: result
     Out[12]: <callable_iterator at 0xb583f46c>
 
-В итераторе находятся объекты Match:
+Iterator contains Match objects:
 
 .. code:: python
 
@@ -62,8 +59,7 @@ address-table и др. В этом случае его можно применя
     <_sre.SRE_Match object; span=(379, 447), match='Loopback0             10.1.1.1        YES manual >
     <_sre.SRE_Match object; span=(448, 516), match='Loopback100           100.0.0.1       YES manual >'
 
-Теперь в списке groups находятся кортежи со строками, которые попали в
-группы:
+Now in *groups* list there are tuples with strings that fallen into groups::
 
 .. code:: python
 
@@ -75,7 +71,7 @@ address-table и др. В этом случае его можно применя
      ('Loopback0', '10.1.1.1', 'up', 'up'),
      ('Loopback100', '100.0.0.1', 'up', 'up')]
 
-Аналогичный результат можно получить с помощью генератора списков:
+A similar result can be obtained by a list generator:
 
 .. code:: python
 
@@ -91,11 +87,9 @@ address-table и др. В этом случае его можно применя
      ('Loopback0', '10.1.1.1', 'up', 'up'),
      ('Loopback100', '100.0.0.1', 'up', 'up')]
 
-Теперь разберем тот же лог-файл, который использовался в подразделах
-search и match.
+Now we will analyze the same log file that was used in *search* and *match* subsections.
 
-В этом случае вывод можно не перебирать построчно, а передать все
-содержимое файла (файл parse_log_finditer.py):
+In this case it is possible to pass the entire contents of the file (parse_log_finditer.py):
 
 .. code:: python
 
@@ -114,28 +108,25 @@ search и match.
             ports.add(m.group(2))
             ports.add(m.group(3))
 
-    print('Петля между портами {} в VLAN {}'.format(', '.join(ports), vlan))
+    print('Loop between ports {} в VLAN {}'.format(', '.join(ports), vlan))
 
 .. warning::
 
-    В реальной жизни log-файл может быть очень большим. В таком случае,
-    его лучше обрабатывать построчно.
+    In real life, a log file can be very large. In that case, it’s better to process it line by line.
 
-Вывод будет таким же:
+Output will be the same:
 
 ::
 
     $ python parse_log_finditer.py
-    Петля между портами Gi0/19, Gi0/24, Gi0/16 в VLAN 10
+    Loop between ports Gi0/19, Gi0/24, Gi0/16 в VLAN 10
 
-Обработка вывода show cdp neighbors detail
+Processing of ‘show cdp neighbors detail’ output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-С помощью finditer можно обработать вывод sh cdp neighbors detail, так
-же, как и в подразделе re.search.
+Finditer() can handle output of ‘sh cdp neighbors detail’ as well as in re.search subsection.
 
-Скрипт почти полностью аналогичен варианту с re.search (файл
-parse_sh_cdp_neighbors_detail_finditer.py):
+The script is almost identical to the version with re.search (parse_sh_cdp_neighbors_detail_finditer.py file):
 
 .. code:: python
 
@@ -164,14 +155,14 @@ parse_sh_cdp_neighbors_detail_finditer.py):
 
     pprint(parse_cdp('sh_cdp_neighbors_sw1.txt'))
 
-Теперь совпадения ищутся во всем файле, а не в каждой строке отдельно:
+Now matches are searched throughout the file, not in every line separately:
 
 .. code:: python
 
         with open(filename) as f:
             match_iter = re.finditer(regex, f.read())
 
-Затем перебираются совпадения:
+Then matches go through the loop:
 
 .. code:: python
 
@@ -179,9 +170,9 @@ parse_sh_cdp_neighbors_detail_finditer.py):
             match_iter = re.finditer(regex, f.read())
             for match in match_iter:
 
-Остальное аналогично.
+The rest is the same.
 
-Результат будет таким:
+The result will be:
 
 .. code:: python
 
@@ -196,11 +187,9 @@ parse_sh_cdp_neighbors_detail_finditer.py):
              'ip': '10.1.1.2',
              'platform': 'cisco WS-C2960-8TC-L'}}
 
-Хотя результат аналогичный, с finditer больше возможностей, так как
-можно указывать не только то, что должно находиться в нужной строке, но
-и в строках вокруг.
+Although the result is similar, finditer() has more features, as you can specify not only what should be in searched string but also in strings around it.
 
-Например, можно точнее указать, какой именно IP-адрес надо взять:
+For example, you can specify exactly which IP address to take:
 
 ::
 
@@ -216,8 +205,7 @@ parse_sh_cdp_neighbors_detail_finditer.py):
     Management address(es):
       IP address: 10.1.1.2
 
-Например, если нужно взять первый IP-адрес, можно так дополнить
-регулярное выражение:
+For example, if you want to take the first IP address you can supplement a regular expression like this:
 
 .. code:: python
 

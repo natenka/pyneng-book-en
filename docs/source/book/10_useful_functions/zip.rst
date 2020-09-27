@@ -1,23 +1,18 @@
-Функция zip
+Zip
 -----------
 
-Функция ``zip()``:
+The ``zip()`` function:
 
--  на вход функции передаются последовательности
--  zip() возвращает итератор с кортежами, в котором n-ый кортеж состоит
-   из n-ых элементов последовательностей, которые были переданы как
-   аргументы
--  например, десятый кортеж будет содержать десятый элемент каждой из
-   переданных последовательностей
--  если на вход были переданы последовательности разной длины, то все
-   они будут отрезаны по самой короткой последовательности
--  порядок элементов соблюдается
+-  sequences are passed to the function
+-  zip() returns an iterator with tuples in which the n-tuple consists of n-elements of sequences that have been passed as arguments
+-  for example, the 10th tuple will contain the 10th element of each of the passed sequences
+-  if sequences with different lengths have been passed to input, they will all be cut by the shortest sequence
+-  the order of elements is respected
 
 .. note::
-    Так как zip - это итератор, для отображение его содержимого
-    используется list()
+    Since zip() is an iterator, list() is used to display its contents
 
-Пример использования zip:
+Example of using zip():
 
 .. code:: python
 
@@ -28,7 +23,7 @@
     In [3]: list(zip(a,b))
     Out[3]: [(1, 100), (2, 200), (3, 300)]
 
-Использование zip() со списками разной длины:
+Use zip() with lists of different lengths:
 
 .. code:: python
 
@@ -41,10 +36,10 @@
     In [7]: list(zip(a,b,c))
     Out[7]: [(1, 10, 100), (2, 20, 200), (3, 30, 300)]
 
-Использование zip для создания словаря
+Using zip() to create a dictionary
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Пример использования zip для создания словаря:
+Example of using zip()  to create a dictionary:
 
 .. code:: python
 
@@ -79,11 +74,9 @@
      'model': '4451',
      'vendor': 'Cisco'}
 
-В примере ниже есть отдельный список, в котором хранятся ключи, и
-словарь, в котором хранится в виде списка (чтобы сохранить порядок)
-информация о каждом устройстве.
+In the example below there is a separate list which stores keys and a dictionary which stores  information about each device in form of list (to preserve order).
 
-Соберем их в словарь с ключами из списка и информацией из словаря data:
+Collect them in dictionary with keys from list and information from dictionary *data*:
 
 .. code:: python
 

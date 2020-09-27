@@ -1,27 +1,27 @@
-Работа со своим репозиторием заданий
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Working with own repository
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-В данной главе описывается, как создать свой репозиторий с копией файлов заданий для курса.
+This chapter describes how to work with a repository on your local machine.
 
-Создание репозитория на GitHub
+Creating a Github repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Для создания своего репозитория на основе шаблона нужно:
+To create a Github repository you need:
 
--  залогиниться на `GitHub <https://github.com/>`__
--  открыть `репозиторий с заданиями <https://github.com/natenka/pyneng-examples-exercises>`__
--  нажать "Use this template" и создать новый репозиторий на основе этого шаблона
--  в открывшемся окне надо ввести название репозитория
--  после этого готов новый репозиторий с копией всех файлов из исходного репозитория с заданиями
+-  log in to `GitHub <https://github.com/>`__;
+-  In the upper right corner press plus and select "New repository" to create a new repository;
+-  The name of the repository should be entered in the window that appears;
 
-.. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/github_use_template.png
+You can put "Initialize this repository with a README". This will create a README.md file that only contains the repository name.
 
-Клонирование репозитория с GitHub
+.. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/github_new_repo.png
+
+Cloning a Github repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Для локальной работы с репозиторием его нужно клонировать.
+To work locally with the repository, it must be cloned.
 
-Для этого используется команда git clone:
+Use “git clone" command to clone repository:
 
 ::
 
@@ -34,60 +34,49 @@
     Resolving deltas: 100% (43/43), done.
     Checking connectivity... done.
 
-По сравнению с приведённой в этом листинге командой, вам нужно изменить:
+Compared to this command, you need to change:
 
--  имя пользователя pyneng на имя своего пользователя на GitHub;
--  имя репозитория online-2-natasha-samoylenko на имя своего
-   репозитория на GitHub.
+-  The pyneng user name for your Github user name;
+-  The online-2-natasha-samoylenko repository name for your Github repository.
 
-В итоге, в текущем каталоге, в котором была выполнена команда git clone,
-появится каталог с именем репозитория, в моём случае –
-"online-2-natasha-samoylenko". В этом каталоге теперь находится
-содержимое репозитория на GitHub.
+As a result, in the current directory in which "git clone" was executed, a directory with the name of the repository will appear, in my case - "online-2-natasha-samoylenko". This directory now contains the contents of the Github repository.
 
-Работа с репозиторием
+Working with the repository
 ^^^^^^^^^^^^^^^^^^^^^
 
-Предыдущая команда не просто скопировала репозиторий чтобы использовать
-его локально, но и настроила соответствующим образом Git:
+The previous command not only copied the repository to use it locally, but also configured Git accordingly:
 
--  создан каталог .git
--  скачаны все данные репозитория
--  скачаны все изменения, которые были в репозитории
--  репозиторий на GitHub настроен как remote для локального репозитория
+-  Folder .git was created
+-  All repository data is downloaded
+-  Downloaded all changes that were in the repository
+-  Github repository is configured as a remote for local repository
 
-Теперь готов полноценный локальный репозиторий Git, в котором вы можете
-работать. Обычно последовательность работы будет такой:
+Now you have a complete local Git repository where you can work. Typically, the sequence of steps will be as follows:
 
--  перед началом работы, синхронизация локального содержимого с GitHub
-   командой git pull
--  изменение файлов репозитория
--  добавление изменённых файлов в staging командой git add
--  фиксация изменений через коммит командой git commit
--  передача локальных изменений в репозитории на GitHub командой git
-   push
+-  Before starting, synchronize local content with Github using “git pull” command
+-  Modifying repository files
+-  Adding modified files to staging with “git add” command
+-  Commit changes using “git commit” command
+-  Transferring local changes to the Github repository with “git push” command
 
-При работе с заданиями на работе и дома, надо обратить особое внимание
-на первый и последний шаг:
+When working with tasks at work and at home, it is necessary to pay special attention to the first and last step:
 
--  первый шаг – обновление локального репозитория
--  последний шаг – загрузка изменений на GitHub
+-  The first step is to update the local repository
+-  The last step - load changes to Github
 
-Синхронизация локального репозитория с удалённым
+Synchronizing local repository with remote repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Все команды выполняются внутри каталога репозитория (в примере выше -
-online-2-natasha-samoylenko).
+All commands are executed inside the repository directory (in the example above - online-2-natasha-samoylenko).
 
-Если содержимое локального репозитория одинаково с удалённым, вывод
-будет таким:
+If the contents of the local repository are the same as those of the remote repository, the output will be:
 
 ::
 
     $ git pull
     Already up-to-date.
 
-Если были изменения, вывод будет примерно таким:
+If there were changes, the output would be something like this:
 
 ::
 
@@ -103,25 +92,20 @@ online-2-natasha-samoylenko).
      exercises/03_data_structures/task_3_3.py | 2 ++
      1 file changed, 2 insertions(+)
 
-Добавление новых файлов или изменений в существующих
+Adding new files or changes to existing files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Если необходимо добавить конкретный файл (в данном случае – README.md),
-нужно дать команду ``git add README.md``. Добавление всех файлов текущей
-директории производится командой ``git add .``.
+If you want to add a specific file (in this case, README.md), you need to enter ``git add README.md`` command. All files of the current directory are added by ``git add .`` command.
 
-Коммит
+Commit
 ^^^^^^
 
-При выполнении коммита обязательно надо указать сообщение. Лучше, если
-сообщение будет со смыслом, а не просто "update" или подобное. Коммит
-делается командой, подобной ``git commit -m "Сделаны задания 4.1-4.3"``.
+You must specify a message when you are running a commit. It is better if the message is with meaning, rather than just "update" or similar. Commit could be done by a command similar to ``git commit -m "Tasks 4.1-4.3 are completed"``.
 
-Push на GitHub
+Push on GitHub
 ^^^^^^^^^^^^^^
 
-Для загрузки всех локальных изменений на GitHub используется команда git
-push:
+The “git push” command is used to load all local changes to Github:
 
 ::
 
@@ -134,6 +118,4 @@ push:
     To ssh://git@github.com/pyneng/online-2-natasha-samoylenko.git
        fc4c721..edcf417  master -> master
 
-Перед выполнением git push можно выполнить команду ``git log -p
-origin/master..`` – она покажет, какие изменения вы собираетесь добавлять
-в свой репозиторий на GitHub.
+Before executing “git push” you can run ``git log -p/origin..`` - it will show what changes you are going to add to your repository on Github.

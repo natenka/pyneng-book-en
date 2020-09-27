@@ -1,12 +1,12 @@
-I. Основы Python
+I. Python basics
 ################
 
-Первая часть книги посвящена основам Python. В ней рассматриваются:
+First part of the book is dedicated to Python basics. It examines:
 
--  типы данных Python;
--  как создавать базовые скрипты;
--  контроль хода программы;
--  работа с файлами.
+-  Python data types;
+-  How to create basic scripts;
+-  Compound statements;
+-  Working with files;
 
 
 .. toctree::

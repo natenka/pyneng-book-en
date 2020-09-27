@@ -1,15 +1,14 @@
-Анонимная функция (лямбда-выражение)
+Anonymous function (lambda expression)
 ------------------------------------
 
-В Python лямбда-выражение позволяет создавать анонимные функции -
-функции, которые не привязаны к имени.
+In Python, lambda expression allows the creation of anonymous functions - functions that are not tied to a name.
 
-В анонимной функции:
+Anonymous function:
 
-    * может содержаться только одно выражение
-    * могут передаваться сколько угодно аргументов
+    * may contain only one expression
+    * can pass as many arguments as you want
 
-Стандартная функция:
+Standard function:
 
 .. code:: python
 
@@ -18,7 +17,7 @@
     In [2]: sum_arg(1,2)
     Out[2]: 3
 
-Аналогичная анонимная функция, или лямбда-функция:
+Similar anonymous function or lambda function:
 
 .. code:: python
 
@@ -27,15 +26,11 @@
     In [4]: sum_arg(1,2)
     Out[4]: 3
 
-Обратите внимание, что в определении лямбда-функции нет оператора return, так
-как в этой функции может быть только одно выражение, которое всегда
-возвращает значение и завершает работу функции.
+Note that there is no **return** operator in lambda function definition because there can only be one expression in this function that always returns a value and closes the function.
 
-Лямбда-функцию удобно использовать в выражениях, где требуется написать
-небольшую функцию для обработки данных.
+The lambda function is convenient to use in expressions where you need to write a small function for data processing.
 
-Например, в функции sorted лямбда-выражение можно использовать для указания ключа
-для сортировки:
+For example, in sorted() function you can use lambda expression to specify the sorting key:
 
 .. code:: python
 
@@ -47,5 +42,4 @@
     In [6]: sorted(list_of_tuples, key=lambda x: x[1])
     Out[6]: [('DB_VLAN', 11), ('Mngmt_VLAN', 99), ('IT_VLAN', 320), ('User_VLAN', 1010)]
 
-Также лямбда-функция пригодится в функциях map и filter, которые будут
-рассматриваться в следующих разделах.
+The lambda function is also useful in map() and filter() functions which will be discussed in the following sections.

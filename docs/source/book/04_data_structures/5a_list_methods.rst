@@ -1,15 +1,12 @@
-Полезные методы для работы со списками
+Useful methods for working with lists
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Список - это изменяемый тип данных, поэтому очень важно обращать
-внимание на то, что большинство методов для работы со списками меняют
-список на месте, при этом ничего не возвращая.
+The list is a mutable  data type, so it is important to note that most methods for working with lists change the list on the spot without returning anything.
 
 ``join()``
 ^^^^^^^^^^
 
-Метод **join()** собирает список строк в одну строку с разделителем,
-который указан перед join:
+The **join()** method collects a list of strings into one string with the separator specified before join:
 
 .. code:: python
 
@@ -19,14 +16,12 @@
     Out[17]: '10,20,30'
 
 .. note::
-
-    Метод join на самом деле относится к строкам, но так как значение
-    ему надо передавать как список, он рассматривается тут.
+    The join method actually relates to strings but since the value must be given as a list, it is considered in this section.
 
 ``append()``
 ^^^^^^^^^^^^
 
-Метод **append()** добавляет в конец списка указанный элемент:
+The **append()** method adds the specified item to the end of the list:
 
 .. code:: python
 
@@ -37,19 +32,16 @@
     In [20]: vlans
     Out[20]: ['10', '20', '30', '100-200', '300']
 
-Метод append меняет список на месте и ничего не возвращает.
+The append() method changes the list on the spot and does not return anything.
 
 ``extend()``
 ^^^^^^^^^^^^
 
-Если нужно объединить два списка, то можно использовать два способа:
-метод **extend()** и операцию сложения.
+If you want to combine two lists you can use two methods: the **extend()** method and the addition operation.
 
-У этих способов есть важное отличие - extend меняет список, к которому
-применен метод, а суммирование возвращает новый список, который состоит
-из двух.
+These methods have an important difference: extend() changes the list to which the method is applied and addition returns a new list that consists of two.
 
-Метод extend:
+The extend() method:
 
 .. code:: python
 
@@ -62,7 +54,7 @@
     In [24]: vlans
     Out[24]: ['10', '20', '30', '100-200', '300', '400', '500']
 
-Суммирование списков:
+Addition operation:
 
 .. code:: python
 
@@ -73,9 +65,7 @@
     In [29]: vlans + vlans2
     Out[29]: ['10', '20', '30', '100-200', '300', '400', '500']
 
-Обратите внимание на то, что при суммировании списков в ipython
-появилась строка Out. Это означает, что результат суммирования можно
-присвоить в переменную:
+Note that when adding lists in IPython the line Out appeared. This means that the result of the summation can be assigned to the variable:
 
 .. code:: python
 
@@ -87,8 +77,7 @@
 ``pop()``
 ^^^^^^^^^
 
-Метод **pop()** удаляет элемент, который соответствует указанному
-номеру. Но, что важно, при этом метод возвращает этот элемент:
+The **pop()** method removes the item that corresponds to the specified number. But, importantly, the method returns this item:
 
 .. code:: python
 
@@ -100,14 +89,14 @@
     In [30]: vlans
     Out[30]: ['10', '20', '30']
 
-Без указания номера удаляется последний элемент списка.
+Without number specified the last item in the list is deleted.
 
 ``remove()``
 ^^^^^^^^^^^^
 
-Метод **remove()** удаляет указанный элемент.
+The **remove()** method removes the specified item.
 
-remove() не возвращает удаленный элемент:
+remove() does not return the deleted item:
 
 .. code:: python
 
@@ -118,8 +107,7 @@ remove() не возвращает удаленный элемент:
     In [33]: vlans
     Out[33]: ['10', '30', '100-200']
 
-В методе remove надо указывать сам элемент, который надо удалить, а не
-его номер в списке. Если указать номер элемента, возникнет ошибка:
+In remove() method you must specify the item to be deleted, not its number in the list. If item number is specified, error occurs:
 
 .. code:: python
 
@@ -134,8 +122,7 @@ remove() не возвращает удаленный элемент:
 ``index()``
 ^^^^^^^^^^^
 
-Метод **index()** используется для того, чтобы проверить, под каким
-номером в списке хранится элемент:
+The **index()** method is used to check under which number the item is stored in the list:
 
 .. code:: python
 
@@ -147,8 +134,7 @@ remove() не возвращает удаленный элемент:
 ``insert()``
 ^^^^^^^^^^^^
 
-Метод **insert()** позволяет вставить элемент на определенное место в
-списке:
+The **insert()** method allows you to insert an item into a specific place in the list:
 
 .. code:: python
 
@@ -162,7 +148,7 @@ remove() не возвращает удаленный элемент:
 ``sort()``
 ^^^^^^^^^^
 
-Метод sort сортирует список на месте:
+The sort() method sorts on the spot:
 
 .. code:: python
 

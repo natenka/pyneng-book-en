@@ -1,21 +1,19 @@
-Модуль tabulate
+Tabulate
 ---------------
 
-tabulate - это модуль, который позволяет красиво отображать
-табличные данные. Он не входит в стандартную библиотеку Python,
-поэтому tabulate нужно установить:
+**tabulate** is a module that allows you to display table data beautifully. It is not part of the standard Python library, so **tabulate** needs to be installed:
 
 ::
 
     pip install tabulate
 
-Модуль поддерживает такие типы табличных данных:
+Module supports such tabular data types as:
 
-* список списков (в общем случае iterable of iterables)
-* список словарей (или любой другой итерируемый объект со словарями). Ключи используются как имена столбцов
-* словарь с итерируемыми объектами. Ключи используются как имена столбцов
+* list of lists (in general case - iterable of iterables)
+* dictionary list (or any other iterable object with dictionaries). Keys are used as column names
+* dictionary with iterable objects. Keys are used as column names
 
-Для генерации таблицы используется функция tabulate:
+The tabulate() function is used to generate the table:
 
 .. code:: python
 
@@ -40,8 +38,7 @@ tabulate - это модуль, который позволяет красиво
 headers
 ~~~~~~~
 
-Параметр headers позволяет передавать дополнительный аргумент, в котором
-указаны имена столбцов:
+The **headers** parameter allows you to pass an additional argument that specifies column names:
 
 .. code:: python
 
@@ -56,8 +53,7 @@ headers
     Loopback0        10.1.1.1   up        up
     Loopback100      100.0.0.1  up        up
 
-Достаточно часто первый набор данных - это заголовки. Тогда достаточно
-указать headers равным "firstrow":
+Quite often, the first data set is the headers. Then it is enough to specify headers equal to "firstrow":
 
 .. code:: python
 
@@ -79,7 +75,7 @@ headers
     Loopback0        10.1.1.1   up        up
     Loopback100      100.0.0.1  up        up
 
-Если данные в виде списка словарей, надо указать headers равным "keys":
+If the data is in the form of a list of dictionaries, you should specify headers equal to "keys":
 
 .. code:: python
 
@@ -115,12 +111,12 @@ headers
     Loopback0        10.1.1.1   up        up
     Loopback100      100.0.0.1  up        up
 
-Стиль таблицы
+Table style
 ~~~~~~~~~~~~~
 
-tabulate поддерживает разные стили отображения таблицы.
+**tabulate** supports different table display styles.
 
-Формат grid:
+Table in Grid format:
 
 ::
 
@@ -139,7 +135,7 @@ tabulate поддерживает разные стили отображения
     | Loopback100     | 100.0.0.1 | up       | up         |
     +-----------------+-----------+----------+------------+
 
-Таблица в формате Markdown:
+Table in Markdown format:
 
 ::
 
@@ -152,7 +148,7 @@ tabulate поддерживает разные стили отображения
     | Loopback0       | 10.1.1.1  | up       | up         |
     | Loopback100     | 100.0.0.1 | up       | up         |
 
-Таблица в формате HTML:
+Table in HTML format:
 
 ::
 
@@ -170,10 +166,10 @@ tabulate поддерживает разные стили отображения
     </tbody>
     </table>
 
-Выравнивание столбцов
+Alignment of columns
 ~~~~~~~~~~~~~~~~~~~~~
 
-Можно указывать выравнивание для столбцов:
+You can specify alignment for columns:
 
 .. code:: python
 
@@ -186,17 +182,14 @@ tabulate поддерживает разные стили отображения
     |    Loopback0    | 10.1.1.1  |    up    |     up     |
     |   Loopback100   | 100.0.0.1 |    up    |     up     |
 
-Обратите внимание, что тут не только столбцы отобразились с
-выравниванием по центру, но и соответственно изменился синтаксис
-Markdown.
+Note that not only columns are displayed centrally, but the Markdown syntax has been changed accordingly.
 
-Дополнительные материалы
+Additional material
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
--  `Документация
-   tabulate <https://bitbucket.org/astanin/python-tabulate>`__
+-  `tabulate documentation <https://bitbucket.org/astanin/python-tabulate>`__
 
-Статьи от автора tabulate:
+Articles from author **tabulate**:
 
 * `Pretty printing tables in Python <https://txt.arboreus.com/2013/03/13/pretty-print-tables-in-python.html>`__
 * `Tabulate 0.7.1 with LaTeX & MediaWiki tables <https://txt.arboreus.com/2013/12/12/tabulate-0-7-1-with-latex-tables-named-tuples-etc.html>`__
@@ -204,4 +197,4 @@ Markdown.
 Stack Overflow:
 
 * `Printing Lists as Tabular Data <https://stackoverflow.com/questions/9535954/printing-lists-as-tabular-data>`__.
-  Обратите внимание на `ответ <https://stackoverflow.com/a/26937531>`__ - в нём указаны другие аналоги tabulate.
+  Note `the answer <https://stackoverflow.com/a/26937531>`__ - it contains other tabulate analogues.

@@ -4,55 +4,44 @@
 
 .. _functions_index:
 
-9. Функции
+9. Functions
 ============================
 
-Функция - это блок кода, выполняющий определенные действия:
+A function is a block of code that performs certain actions:
 
-* у функции есть имя, с помощью которого можно запускать этот блок кода
-  сколько угодно раз
+* function has a name to run this code block as many times as you want
 
-  * запуск кода функции называется вызовом функции
+  * launch of function code is called a function call
 
-* при создании функции, как правило, определяются параметры функции.
+* function parameters are usually defined when creating a function.
 
-  * параметры функции определяют, какие аргументы функция может принимать
-  * функциям можно передавать аргументы
-  * соответственно, код функции будет выполняться с учетом указанных аргументов
+  * function parameters determine which arguments a function can accept
+  * arguments can be passed to functions
+  * hence, the function code will be executed according to the stated arguments
 
-**Зачем нужны функции?**
+**What are the functions for?**
 
-Как правило, задачи, которые решает код, очень похожи и часто имеют
-что-то общее.
+Typically, the problems that code solves are very similar and often have something in common.
 
-Например, при работе с конфигурационными файлами каждый раз надо
-выполнять такие действия:
+For example, when working with configuration files each time it is necessary to perform such actions:
 
-* открытие файла
-* удаление (или пропуск) строк, начинающиеся со знака восклицания (для Cisco)
-* удаление (или пропуск) пустых строк
-* удаление символов перевода строки в конце строк
-* преобразование полученного результата в список
+* file opening
+* deletion (or skipping) of lines starting with the exclamation mark (for Cisco)
+* deleting (or skipping) empty lines
+* deleting line feed characters at the end of lines
+* converting the result to a list
 
-Дальше действия могут отличаться в зависимости от того, что нужно
-делать.
+Beyond that, actions can vary depending on what needs to be done.
 
-Часто получается, что есть кусок кода, который повторяется. Конечно, его
-можно копировать из одного скрипта в другой. Но это очень неудобно, так
-как при внесении изменений в код нужно будет обновить его во всех
-файлах, в которые он скопирован.
+Often there’s a piece of code that repeats itself. Of course, you can copy it from one script to another. But this is very inconvenient because when you change the code you have to update it in all the files in which it is copied.
 
-Гораздо проще и правильней вынести этот код в функцию (это может быть и
-несколько функций).
+It is much easier and more accurate to put this code into a function (it can also be several functions).
 
-И тогда будет производиться вызов этой функции - в этом файле или
-каком-то другом.
+And then you will call this function - in this file or another one.
 
-В этом разделе рассматривается ситуация, когда функция находится в том
-же файле.
+This section discusses when a function is in the same file.
 
-А в разделе :ref:`modules_index` будет рассматриваться, как
-повторно использовать объекты, которые находятся в других скриптах.
+And in :ref:`modules_index` we will see how to reuse objects that are in other scripts.
 
 .. toctree::
    :maxdepth: 1

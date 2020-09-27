@@ -1,13 +1,9 @@
-Параметр self
+Parameter self
 ~~~~~~~~~~~~~
 
-Параметр self указывался выше в определении методов, а также при
-использовании переменных экземпляра в методе. Параметр self это ссылка
-на конкретный экземпляр класса. При этом, само имя self не является
-особенным, а лишь договоренностью. Вместо self можно использовать другое
-имя, но так делать не стоит.
+Parameter **self** was specified before in method definition, as well as when using instance variables in the method. Parameter **self** is a reference to a particular instance of the class. Parameter **self** is not a special name but an arrangement. Instead of **self** you can use a different name but you shouldn't do that.
 
-Пример с использованием другого имени, вместо self:
+Example of using a different name instead of **self**:
 
 .. code:: python
 
@@ -16,7 +12,7 @@
         ...:         print('Hostname: {}\nModel: {}'.format(sw_object.hostname, sw_object.model))
         ...:
 
-Работать все будет аналогично:
+It will work the same way:
 
 .. code:: python
 
@@ -32,17 +28,11 @@
 
 .. warning::
 
-    Хотя технически использовать другое имя можно, всегда используйте
-    self.
+    Although technically you can use another name but always use **self**.
 
-Во всех "обычных" методах класса первым параметром всегда будет self.
-Кроме того, создание переменной экземпляра внутри класса также
-выполняется через self.
+In all "usual" methods of class the first parameter will always be **self**. Furthermore, creating an instance variable within a class is also done via **self**.
 
-Пример класса Switch с новым методом generate_interfaces: метод
-generate_interfaces должен сгенерировать список с интерфейсами на
-основании указанного типа и количества и создать переменную в экземпляре
-класса. Для начала, вариант создания обычно переменной внутри метода:
+An example of Switch class with new generate_interfaces method: generate_interfaces method must generate a list with interfaces based on specified type and quantity and create variable in an instance of the class. First, the option of creating a usual variable within method:
 
 .. code:: python
 
@@ -51,7 +41,7 @@ generate_interfaces должен сгенерировать список с ин
        ...:         interfaces = ['{}{}'.format(intf_type, number) for number in range(1, number_of_intf+1)]
        ...:
 
-В этом случае, в экземплярах класса не будет переменной interfaces:
+In this case, class instances will not have *interfaces* variable:
 
 .. code:: python
 
@@ -67,12 +57,9 @@ generate_interfaces должен сгенерировать список с ин
 
     AttributeError: 'Switch' object has no attribute 'interfaces'
 
-Этой переменной нет, потому что она существует только внутри метода, а
-область видимости у метода такая же, как и у функции. Даже другие методы
-одного и того же класса, не видят переменные в других методах.
+This variable does not exist because it exists only within method and visibility area of method is the same as function. Even other methods of the same class do not see variables in other methods.
 
-Чтобы список с интерфейсами был доступен как переменная в экземплярах,
-надо присвоить значение в self.interfaces:
+For list with interfaces to be available as a variable in instances, you have to assign value in self.interfaces:
 
 .. code:: python
 
@@ -85,8 +72,7 @@ generate_interfaces должен сгенерировать список с ин
        ...:         self.interfaces = interfaces
        ...:
 
-Теперь, после вызова метода generate_interfaces, в экземпляре создается
-переменная interfaces:
+Now, after generate_interfaces method is called the *interfaces* variable is created in instance:
 
 .. code:: python
 

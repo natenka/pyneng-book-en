@@ -1,7 +1,7 @@
-Числа
+Numbers
 =====
 
-С числами можно выполнять различные математические операции.
+With numbers it is possible to perform various mathematical operations.
 
 .. code:: python
 
@@ -17,7 +17,7 @@
     In [4]: 2**3
     Out[4]: 8
 
-Деление int и float:
+Division int and float:
 
 .. code:: python
 
@@ -27,8 +27,7 @@
     In [6]: 10/3.0
     Out[6]: 3.3333333333333335
 
-С помощью функции round можно округлять числа до нужного количества
-знаков:
+The round() function can round the numbers to the required number of characters:
 
 .. code:: python
 
@@ -38,14 +37,14 @@
     In [10]: round(10/3.0, 4)
     Out[10]: 3.3333
 
-Остаток от деления:
+Remainder of the division:
 
 .. code:: python
 
     In [11]: 10 % 3
     Out[11]: 1
 
-Операторы сравнения
+Comparison operators
 
 .. code:: python
 
@@ -67,8 +66,7 @@
     In [17]: 10.0 == 10
     Out[17]: True
 
-Функция int() позволяет выполнять конвертацию в тип int. Во втором
-аргументе можно указывать систему счисления:
+The int() function allows converting to int type. The second argument can specify the number system:
 
 .. code:: python
 
@@ -77,15 +75,14 @@
     In [19]: int(a)
     Out[19]: 11
 
-Если указать, что строку a надо воспринимать как двоичное число, то
-результат будет таким:
+If you specify that string should be read as a binary number, the result is:
 
 .. code:: python
 
     In [20]: int(a, 2)
     Out[20]: 3
 
-Конвертация в int типа float:
+Convert to int from float:
 
 .. code:: python
 
@@ -95,8 +92,7 @@
     In [22]: int(3.9)
     Out[22]: 3
 
-Функция bin позволяет получить двоичное представление числа (обратите
-внимание, что результат - строка):
+The bin() function produces a binary representation of a number (note that the result is a string):
 
 .. code:: python
 
@@ -106,14 +102,14 @@
     In [24]: bin(255)
     Out[24]: '0b11111111'
 
-Аналогично, функция hex() позволяет получить шестнадцатеричное значение:
+Similarly, the function hex() produces a hexadecimal value:
 
 .. code:: python
 
     In [25]: hex(10)
     Out[25]: '0xa'
 
-И, конечно же, можно делать несколько преобразований одновременно:
+And, of course, you can do several changes at the same time:
 
 .. code:: python
 
@@ -123,7 +119,7 @@
     In [27]: bin(int('ff', 16))
     Out[27]: '0b11111111'
 
-Для более сложных математических функций в Python есть модуль **math**:
+For more complex mathematical functions, Python has a **math** module:
 
 .. code:: python
 

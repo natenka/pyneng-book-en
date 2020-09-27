@@ -4,10 +4,10 @@
 
 .. _useful_functions_index:
 
-10. Полезные функции
+10. Useful functions
 ============================
 
-В этом разделе рассматриваются такие функции:
+This section discusses the following functions:
 
 -  print
 -  range

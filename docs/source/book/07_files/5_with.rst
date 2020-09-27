@@ -1,10 +1,9 @@
-Конструкция with
+Construction with
 ----------------
 
-Конструкция with называется менеджер контекста.
+The construction **with** is a context manager.
 
-В Python существует более удобный способ работы с файлами, чем те,
-которые использовались до сих пор - конструкция ``with``:
+Python has a more convenient way of working with files than the ones used so far - the construction ``with``:
 
 .. code:: python
 
@@ -32,23 +31,20 @@
 
     !
 
-Кроме того, конструкция ``with`` гарантирует закрытие файла
-автоматически.
+In addition, the construction ``with`` guarantees file closure automatically.
 
-Обратите внимание на то, как считываются строки файла:
+Pay attention to how the lines of the file are read:
 
 .. code:: python
 
     for line in f:
         print(line)
 
-Когда с файлом нужно работать построчно, лучше использовать такой
-вариант.
+When the file needs to be run line by line, it is best to use this option.
 
-В предыдущем выводе, между строками файла были лишние пустые строки, так
-как print добавляет ещё один перевод строки.
+In the previous output there were extra empty lines between the lines of the file because **print** adds another line feed character.
 
-Чтобы избавиться от этого, можно использовать метод ``rstrip``:
+To get rid of this you can use ``rstrip`` method:
 
 .. code:: python
 
@@ -70,9 +66,7 @@
     In [3]: f.closed
     Out[3]: True
 
-И конечно же, с конструкцией ``with`` можно использовать не только
-такой построчный вариант считывания, все методы, которые рассматривались
-до этого, также работают:
+And of course, ``with`` construction can be used not only as a line-by-line reader, all methods that have been considered before also work:
 
 .. code:: python
 
@@ -90,13 +84,12 @@
     ip ssh version 2
     !
 
-Открытие двух файлов
+Open two files
 ~~~~~~~~~~~~~~~~~~~~
 
-Иногда нужно работать одновременно с двумя файлами. Например, надо
-записать некоторые строки из одного файла, в другой.
+Sometimes you have to work with two files simultaneously. For example, write some lines from one file to another.
 
-В таком случае, в блоке with можно открывать два файла таким образом:
+In this case you can open two files in **with** block as follows:
 
 .. code:: python
 
@@ -112,7 +105,7 @@
     service password-encryption
     service sequence-numbers
 
-Это равнозначно таким двум блокам with:
+This is equivalent to:
 
 .. code:: python
 

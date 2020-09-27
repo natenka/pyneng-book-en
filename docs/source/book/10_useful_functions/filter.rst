@@ -1,11 +1,9 @@
-Функция filter
+Filter
 --------------
 
-Функция ``filter()`` применяет функцию ко всем элементам последовательности
-и возвращает итератор с теми объектами, для которых функция вернула
-True.
+The ``filter()`` function applies the function to all sequence elements and returns the iterator with those objects for which the function has returned True.
 
-Например, вернуть только те строки, в которых находятся числа:
+For example, return only those strings that contain numbers:
 
 .. code:: python
 
@@ -17,22 +15,21 @@ True.
     In [3]: list(filter(str.isdigit, list_of_strings))
     Out[3]: ['100', '1', '50']
 
-Из списка чисел оставить только нечетные:
+From the list of numbers leave only odd:
 
 .. code:: python
 
     In [3]: list(filter(lambda x: x%2, [10, 111, 102, 213, 314, 515]))
     Out[3]: [111, 213, 515]
 
-Аналогично, только четные:
+Similarly, only even ones:
 
 .. code:: python
 
     In [4]: list(filter(lambda x: not x%2, [10, 111, 102, 213, 314, 515]))
     Out[4]: [10, 102, 314]
 
-Из списка слов оставить только те, у которых количество букв больше
-двух:
+From the list of words leave only those with more than two letters:
 
 .. code:: python
 
@@ -41,14 +38,14 @@ True.
     In [6]: list(filter(lambda x: len(x) > 2, list_of_words))
     Out[6]: ['one', 'two', 'list', 'dict']
 
-List comprehension вместо filter
+List comprehension instead of filter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Как правило, вместо filter можно использовать list comprehension.
+As a rule, you can use list comprehension instead of filter().
 
-Примеры, аналогичные приведенным выше, в варианте с list comprehension.
+Examples similar to those above in the list comprehension variant.
 
-Вернуть только те строки, в которых находятся числа:
+Return only those strings that contain numbers:
 
 .. code:: python
 
@@ -57,7 +54,7 @@ List comprehension вместо filter
     In [8]: [ s for s in list_of_strings if s.isdigit() ]
     Out[8]: ['100', '1', '50']
 
-Нечетные/четные числа:
+Odd/even numbers:
 
 .. code:: python
 
@@ -69,8 +66,7 @@ List comprehension вместо filter
     In [11]: [ n for n in nums if not n % 2 ]
     Out[11]: [10, 102, 314]
 
-Из списка слов оставить только те, у которых количество букв больше
-двух:
+From the list of words leave only those with more than two letters:
 
 .. code:: python
 

@@ -1,43 +1,37 @@
-ОС и редактор
+OS and editor
 =============
 
-Можно выбрать любую ОС и любой редактор, но желательно использовать
-Python версии 3.7, так как в книге используется именно эта версия.
+You can choose any OS and any editor but it is desirable to use Python version 3.7 because the book uses this version.
 
-Все примеры в книге выполнялись на Debian, на других ОС вывод может незначительно отличаться. 
-Для выполнения заданий из книги можно использовать Linux, macOS или Windows.
-Однако, стоит учитывать, что, например, Ansible можно установить только на Linux/macOS.
+All of the examples in the book were run on Debian, but other operating systems may have a slightly different output. You can use Linux, macOS or Windows to perform tasks from a book. However, it is worth considering that, for example, Ansible can only be installed on Linux/macOS.
 
+You can select any text editor or IDE that supports Python to work with Python. Generally, working with Python requires minimal editor settings and often the editor recognizes Python by default.
 
-Для работы с Python можно выбрать любой текстовый редактор или IDE, который поддерживает Python. Как правило, для работы с Python требуется минимум настройки редактора и часто редактор по умолчанию распознает Python.
-
-Редактор Mu
+Mu editor
 ^^^^^^^^^^^
 
-Отдельно стоит упомянуть `редактор Mu <https://codewith.mu/>`__: это редактор для начинающих изучать Python (он поддерживает только Python).
+It is worth mentioning that `Mu editor <https://codewith.mu/>`__ it is an editor for beginners to learn Python (it supports only Python).
 
-С одной стороны, в нём нет ничего лишнего, что поначалу может сильно отвлекать и путать. В то же время, в нём есть такие важные функции как проверка кода на соблюдение PEP 8 и debugger. Плюс, Mu работает на разных ОС (macOS, Windows, Linux).
+On the one hand, there’s nothing superfluous about it that can initially be very distracting and confusing. At the same time, it has important features such as checking code against PEP 8 and debugger. Plus, Mu runs on different operating systems (macOS, Windows, Linux).
 
 .. note::
-    Записи лекций по редактору Mu:
-    `Основы работы с Mu <https://youtu.be/9qH92jz0p58>`__,
-    `Использование debugger в  Mu <https://youtu.be/s9Lskg37xss>`__
+    Video tutorials on Mu:
+    `Basics of Mu <https://youtu.be/9qH92jz0p58>`__,
+    `Using Debugger in Mu <https://youtu.be/s9Lskg37xss>`__
 
 
 IDE PyCharm 
 ^^^^^^^^^^^
 
-`PyCharm <https://www.jetbrains.com/pycharm/>`__ — интегрированная среда разработки для Python. Для начинающих изучать язык может оказаться сложным вариантом из-за обилия настроек, но это зависит от личных предпочтений.
-В PyCharm поддерживается огромное количество возможностей, даже в бесплатной версии.
+`PyCharm <https://www.jetbrains.com/pycharm/>`__ — is an integrated development environment for Python. For beginners it may be difficult because of the plethora of settings but it depends on personal preferences. Pycharm supports a huge number of features, even in the free version.
 
-PyCharm прекрасный IDE, но, на мой взгляд, он сложноват для начинающих. Я бы не советовала использовать его, если вы с ним не знакомы и только начинаете учить Python. Вы всегда сможете перейти на него после книги, но пока что лучше попробовать что-то другое.
+Pycharm is a great IDE but I think it’s a little difficult for beginners. I wouldn’t recommend using it if you're not familiar with it and you’re just starting to learn Python. You can always switch to it after the book but for now it’s better to try something else.
 
 
 Geany
 ^^^^^
 
-`Geany <https://www.geany.org/>`__ - текстовый редактор, который поддерживает разные языки программирования, среди них Python. Также является кроссплатформенным редактором и поддерживает ОС Linux, macOS, Windows.
+`Geany <https://www.geany.org/>`__ - is a text editor that supports different programming languages, including Python. It is also a cross-platform editor and supports Linux, macOS, and Windows.
 
 .. note::
-    Варианты редакторов выше приведены для примера, вместо них можно использовать любой
-    текстовый редактор, который поддерживает Python.
+    The editor variants above are given for example, they can be replaced by any text editor that supports Python.

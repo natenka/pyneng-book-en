@@ -1,16 +1,13 @@
-Передача аргументов скрипту (argv)
+Transferring argument to the script  (argv)
 ----------------------------------
 
-Очень часто скрипт решает какую-то общую задачу. Например, скрипт
-обрабатывает как-то файл конфигурации. Конечно, в таком случае не
-хочется каждый раз руками в скрипте править название файла.
+Very often the script solves some common problem. For example, the script processes a configuration file. Of course, in this case you don’t want to edit name of file every time with your hands in the script.
 
-Гораздо лучше будет передавать имя файла как аргумент скрипта и затем
-использовать уже указанный файл.
+It will be much better to pass the file name as the script argument and then use already specified file.
 
-Модуль sys позволяет работать с аргументами скрипта с помощью argv.
+The sys module allows working with script arguments via argv.
 
-Пример access_template_argv.py:
+Example of access_template_argv.py:
 
 .. code:: python
 
@@ -28,7 +25,7 @@
     print('interface {}'.format(interface))
     print('\n'.join(access_template).format(vlan))
 
-Проверка работы скрипта:
+Script test:
 
 ::
 
@@ -40,20 +37,19 @@
     spanning-tree portfast
     spanning-tree bpduguard enable
 
-Аргументы, которые были переданы скрипту, подставляются как значения в
-шаблон.
+Arguments that have been passed to script are substituted as values in the template.
 
-Тут надо пояснить несколько моментов:
+Several points need to be clarified:
 
-* argv - это список
-* все аргументы находятся в списке в виде строк
-* argv содержит не только аргументы, которые передали скрипту, но и название самого скрипта
+* argv is a list
+* all arguments are in the list and represented as strings
+* argv contains not only arguments that passed to the script but also the name of script itself
 
-В данном случае в списке argv находятся такие элементы:
+In this case, the argv list contains the following elements:
 
 ::
 
     ['access_template_argv.py', 'Gi0/7', '4']
 
-Сначала идет имя самого скрипта, затем аргументы, в том же порядке.
+First comes the name of script itself, then the arguments in the same order.
 

@@ -1,46 +1,42 @@
-Основы Git
+Git fundamentals
 ~~~~~~~~~~
 
-Git — это распределённая система контроля версий (Version Control System,
-VCS), которая широко используется и выпущена под лицензией GNU GPL v2.
-Она может:
+Git is a distributed version control system (Version Control System, VCS) that is widely used and released under the GNU GPL v2 license. 
+It can:
 
--  отслеживать изменения в файлах;
--  хранить несколько версий одного файла;
--  отменять внесённые изменения;
--  регистрировать, кто и когда сделал изменения.
+-  track changes in files;
+-  store multiple versions of the same file;
+-  cancel the changes made;
+-  record who made the changes and when.
 
-Git хранит изменения как снимок (snapshot) всего репозитория. Этот
-снимок выполняется после каждого коммита (commit).
+Git stores the changes as a snapshot of the entire repository. This snapshot is created after each “commit” command.
 
-Установка Git:
+Git installation:
 
 ::
 
     $ sudo apt-get install git
 
-Первичная настройка Git
+Git initial setup
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Для начала работы с Git, необходимо указать имя и e-mail пользователя,
-которые будут использоваться для синхронизации локального репозитория с
-репозиторием на GitHub:
+To start working with Git you need to specify the user name and e-mail that will be used to synchronize the local repository with the Github repository:
 
 ::
 
     $ git config --global user.name "username"
     $ git config --global user.email "username.user@example.com"
 
-Посмотреть настройки Git можно таким образом:
+See the Git settings:
 
 ::
 
     $ git config --list
 
-Инициализация репозитория
+Repository initialization
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Инициализация репозитория выполняется с помощью команды git init:
+The repository is initialized using the "git init" command:
 
 ::
 
@@ -48,5 +44,4 @@ Git хранит изменения как снимок (snapshot) всего р
     $ git init
     Initialized empty Git repository in /home/vagrant/tools/first_repo/.git/
 
-После выполнения этой команды, в текущем каталоге создаётся папка .git,
-в которой содержатся служебные файлы, необходимые для Git.
+After executing this command, the current directory creates .git folder containing the service files needed for Git.

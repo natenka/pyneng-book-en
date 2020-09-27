@@ -1,35 +1,28 @@
-Виртуальные окружения
+Virtual environment
 =====================
 
-Виртуальные окружения:
+Virtual environments:
 
--  позволяют изолировать различные проекты друг от друга;
--  пакеты, которые нужны разным проектам, находятся в разных местах –
-   если, например, в одном проекте требуется пакет версии 1.0, а в
-   другом проекте требуется тот же пакет, но версии 3.1, то они не будут
-   мешать друг другу;
--  пакеты, которые установлены в виртуальных окружениях, не перебивают
-   глобальные пакеты.
+-  Allow different projects to be isolated from each other;
+-  Packages that are needed by different projects are in different places - if, for example, one project requires a 1.0 package and another project requires the same package but version 3.1, they will not interfere with each other;
+-  Packages that are installed in virtual environments do not impact on global packages.
 
 .. note::
-    В Python есть несколько вариантов для создания виртуальных окружений.
-    Использовать можно любой из них. Для начала можно использовать virtualenvwrapper,
-    а затем со временем уже разбираться с тем, какие еще есть варианты.
+    Python has several options for creating virtual environments. You can use any one of them. To start with, you can use virtualenvwrapper and then eventually you can figure out which options are still available.
 
 
 virtualenvwrapper
 ^^^^^^^^^^^^^^^^^
 
-Виртуальные окружения создаются с помощью virtualenvwrapper.
+Virtual environments are created with virtualenvwrapper.
 
-Установка virtualenvwrapper с помощью pip:
+Installing virtualenvwrapper with pip:
 
 ::
 
     $ sudo pip3.7 install virtualenvwrapper
 
-После установки, в файле .bashrc, находящимся в домашней папке текущего
-пользователя, нужно добавить несколько строк:
+After installation, in the . bashrc file in the current user’s home folder, you need to add several lines:
 
 ::
 
@@ -37,30 +30,23 @@ virtualenvwrapper
     export WORKON_HOME=~/venv
     . /usr/local/bin/virtualenvwrapper.sh
 
-Если вы используете командный интерпретатор, отличный от bash,
-посмотрите, поддерживается ли он в
-`документации <http://virtualenvwrapper.readthedocs.io/en/latest/install.html>`__
-virtualenvwrapper. Переменная окружения VIRTUALENVWRAPPER\_PYTHON
-указывает на бинарный файл командной строки Python, WORKON\_HOME – на
-расположение виртуальных окружений. Третья строка указывает, где
-находится скрипт, установленный с пакетом virtualenvwrapper. Для того,
-чтобы скрипт virtualenvwrapper.sh выполнился и можно было работать с
-виртуальными окружениями, надо перезапустить bash.
+If you are using a command interpreter other than bash, see if it is supported in the virtualenvwrapper 
+`documentation <http://virtualenvwrapper.readthedocs.io/en/latest/install.html>`__. The environment variable VIRTUALENVWRAPPER\_PYTHON
+points to the Python command line binary file, WORKON\_HOME – points to the location of virtual environments. The third line indicates location of the script installed with the virtualenvwrapper package. To start virtualenvwrapper.sh script work with virtual environments, bash must be restarted.
 
-Перезапуск командного интерпретатора:
+Restart the command interpreter:
 
 ::
 
     $ exec bash
 
-Такой вариант может быть не всегда правильным. Подробнее на `Stack
+This may not always be the right option. More on `Stack
 Overflow <http://stackoverflow.com/questions/2518127/how-do-i-reload-bashrc-without-logging-out-and-back-in>`__.
 
-Работа с виртуальными окружениями
+Working with virtual environments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Создание нового виртуального окружения, в котором Python 3.7
-используется по умолчанию:
+Creating a new virtual environment in which Python 3.7 is used by default:
 
 ::
 
@@ -70,12 +56,7 @@ Overflow <http://stackoverflow.com/questions/2518127/how-do-i-reload-bashrc-with
     Installing pip...............done.
     (pyneng)$ 
 
-В скобках перед стандартным приглашением отображается имя виртуального
-окружения. Это означает, что вы находитесь в нём. В virtualenvwrapper по
-Tab работает автодополнение имени виртуального окружения. Это особенно
-удобно в тех случаях, когда виртуальных окружений много. Теперь в том
-каталоге, который был указан в переменной окружения WORKON_HOME, создан
-каталог pyneng:
+The name of the virtual environment is shown in brackets before the standard invitation. That means you’re inside it. Virtualenvwrapper uses Tab to autocomplete name of the virtual environment. This is particularly useful when there are many virtual environments. Now the “pyneng” directory was created in the directory specified in the environment variable WORKON_HOME:
 
 ::
 
@@ -89,23 +70,21 @@ Tab работает автодополнение имени виртуальн�
     4 -rwxr-xr-x 1 nata nata  111 Sep 30 16:41 prermvirtualenv
     4 drwxr-xr-x 6 nata nata 4096 Sep 30 16:42 pyneng
 
-Выход из виртуального окружения:
+Exit the virtual environment:
 
 ::
 
     (pyneng)$ deactivate 
     $ 
 
-Для перехода в созданное виртуальное окружение надо выполнить команду
-workon:
+To move to the created virtual environment, you must run the "workon" command:
 
 ::
 
     $ workon pyneng
     (pyneng)$ 
 
-Если необходимо перейти из одного виртуального окружения в другое, то
-необязательно делать deactivate, можно перейти сразу через workon:
+If you want to go from one virtual environment to another, you don’t need to do deactivate, you can go directly through "workon":
 
 ::
 
@@ -113,8 +92,7 @@ workon:
     (Test)$ workon pyneng
     (pyneng)$ 
 
-Если виртуальное окружение нужно удалить, то надо использовать команду
-rmvirtualenv:
+If you want to remove the virtual environment, you should use "rmvirtualenv":
 
 ::
 
@@ -122,8 +100,7 @@ rmvirtualenv:
     Removing Test...
     $ 
 
-Посмотреть, какие пакеты установлены в виртуальном окружении можно
-командой lssitepackages:
+See which packages are installed in a virtual environment using "lssitepackages":
 
 ::
 
@@ -148,22 +125,18 @@ rmvirtualenv:
     path.pyc                               traitlets
     pexpect                                traitlets-4.0.0-py2.7.egg-info
 
-Встроенный модуль venv
+Built-in venv module
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Начиная с версии 3.5, в Python рекомендуется использовать модуль venv
-для создания виртуальных окружений:
+Starting from version 3.5, it is recommended that Python use venv to create virtual environments:
 
 ::
 
     $ python3.7 -m venv new/pyneng
 
-Вместо python3.7 может использоваться python или python3, в зависимости
-от того, как установлен Python 3.7. Эта команда создаёт указанный
-каталог и все необходимые каталоги внутри него, если они не были
-созданы.
+Python or python3 can be used instead of python 3.7, depending on how Python 3.7 is installed. This command creates the specified directory and all necessary subdirectories within it if they have not been created.
 
-Команда создаёт следующую структуру каталогов:
+The command creates the following directory structure:
 
 ::
 
@@ -174,25 +147,25 @@ rmvirtualenv:
     4 drwxr-xr-x 3 vagrant vagrant 4096 Aug 21 14:50 lib
     4 -rw-r--r-- 1 vagrant vagrant   75 Aug 21 14:50 pyvenv.cfg
 
-Для перехода в виртуальное окружение надо выполнить команду:
+To move to a virtual environment, you must execute the command:
 
 ::
 
     $ source new/pyneng/bin/activate
 
-Для выхода из виртуального окружения используется команда deactivate:
+To exit the virtual environment, use command “deactivate”:
 
 ::
 
     $ deactivate
 
-Подробнее о модуле venv в
-`документации <https://docs.python.org/3/library/venv.html#module-venv>`__.
+More about the venv module in
+`documentation <https://docs.python.org/3/library/venv.html#module-venv>`__.
 
-Установка пакетов
+Package installation
 ^^^^^^^^^^^^^^^^^
 
-Например, установим в виртуальном окружении пакет simplejson.
+For example, let's install simplejson package in a virtual environment.
 
 ::
 
@@ -201,8 +174,7 @@ rmvirtualenv:
     Successfully installed simplejson
     Cleaning up...
 
-Если перейти в интерпретатор Python и импортировать simplejson, то он доступен
-и никаких ошибок нет:
+If you open Python interpreter and import simplejson, it is available and there are no errors:
 
 ::
 
@@ -212,8 +184,7 @@ rmvirtualenv:
     <module 'simplejson' from '/home/vagrant/venv/pyneng-py3-7/lib/python3.7/site-packages/simplejson/__init__.py'>
     >>>
 
-Но если выйти из виртуального окружения и попытаться сделать то же
-самое, то такого модуля нет:
+But if you exit from virtual environment and try to do the same thing, there is no such module:
 
 ::
 

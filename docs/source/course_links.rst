@@ -1,17 +1,11 @@
-Ресурсы для обучения по книге
+Resources for study course
 -----------------------------
 
-Здесь собраны ссылки на все ресурсы, которые пригодятся в процессе
-обучения:
+Here are the links to all resources which will be helpful during study process:
 
--  `варианты виртуальной машины для курса <https://pyneng.github.io/docs/course-vm/>`__;
--  `репозиторий с примерами и заданиями <https://github.com/natenka/pyneng-examples-exercises/>`__
--  `вопросы <https://github.com/natenka/pyneng-examples-exercises/blob/master/tests.md>`__;
--  `чат PyNEng <https://join.slack.com/t/pyneng/shared_invite/enQtNzkyNTYwOTU5Njk5LWE4OGNjMmM1ZTlkNWQ0N2RhODExZDA0OTNhNDJjZDZlOTZhOGRiMzIyZjBhZWYzYzc3MTg3ZmQzODllYmQ4OWU>`__ в Slack;
+-  `Variants of virtual machines for this course <https://pyneng.github.io/docs/course-vm/>`__;
+-  `Repositories with examples and tasks <https://github.com/natenka/pyneng-examples-exercises/>`__
+-  `Quizzes <https://github.com/natenka/pyneng-examples-exercises/blob/master/tests.md>`__;
+-  `Chat PyNEng <https://join.slack.com/t/pyneng/shared_invite/enQtNzkyNTYwOTU5Njk5LWE4OGNjMmM1ZTlkNWQ0N2RhODExZDA0OTNhNDJjZDZlOTZhOGRiMzIyZjBhZWYzYzc3MTg3ZmQzODllYmQ4OWU>`__ in Slack;
 
-Почти в каждой части книги есть глава "Дополнительные материалы", в
-которой находятся полезные материалы и ссылки по теме, а также ссылки на
-документацию. Кроме того, я сделала
-`подборку <https://natenka.github.io/pyneng-resources/>`__ ресурсов по
-Python для сетевых инженеров, где можно найти много полезных статей,
-книг, видео курсов и подкастов.
+Almost every book chapter has subchapter "Additional materials" which includes useful materials and references on the subject, plus references to official documentations. Moreover, I prepared a `collection <https://natenka.github.io/pyneng-resources/>`__ of resources on "Python for network engineers" topic where you can find a lot of useful articles, books, video courses and podcasts.

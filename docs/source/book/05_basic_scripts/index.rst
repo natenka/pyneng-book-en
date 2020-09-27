@@ -4,16 +4,14 @@
 
 .. _basic_scripts_index:
 
-5. Создание базовых скриптов
+5. Basic scripts creation
 ============================
 
-Если говорить в целом, то скрипт - это обычный файл. В этом файле
-хранится последовательность команд, которые необходимо выполнить.
+Generally speaking, the script is a regular file. This file stores the sequence of commands that you want to execute.
 
-Начнем с базового скрипта. Выведем на стандартный поток вывода несколько
-строк.
+Let’s start with basic script and display several strings on the standard output.
 
-Для этого надо создать файл access\_template.py с таким содержимым:
+To do this, you need to create an access_template.py file with this content:
 
 .. code:: python
 
@@ -25,13 +23,11 @@
 
     print('\n'.join(access_template).format(5))
 
-Сначала элементы списка объединяются в строку, которая разделена
-символом ``\n``, а в строку подставляется номер VLAN, используя
-форматирование строк.
+First, items in the list are combined into a string that is separated by ``\n`` and the VLAN number is inserted into the string using string formatting.
 
-После этого надо сохранить файл и перейти в командную строку.
+After this you must save the file and go to the command line.
 
-Так выглядит выполнение скрипта:
+This is the execution of the script:
 
 .. code:: python
 
@@ -42,16 +38,11 @@
     spanning-tree portfast
     spanning-tree bpduguard enable
 
-Ставить расширение .py у файла не обязательно.
+It is not necessary to specify extension .py for a file. 
 
-Но, если вы используете Windows, то это желательно делать, так как
-Windows использует расширение файла для определения того, как
-обрабатывать файл.
+But if you are using Windows it is better to do so because Windows uses a file extension to determine how to process a file.
 
-В курсе все скрипты, которые будут создаваться, используют
-расширение .py. Можно сказать, что это "хороший тон" - создавать
-скрипты Python с таким расширением.
-
+All the scripts that will be created in this course have an extension. You can say that it is a «good manners» - to create Python scripts with .py extension.
 
 .. toctree::
    :maxdepth: 1

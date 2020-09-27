@@ -4,28 +4,27 @@
 
 .. _data_structures_index:
 
-4. Типы данных в Python
+4. Python data types
 ============================
 
-В Python есть несколько стандартных типов данных:
+Python has several standard data types:
 
--  Numbers (числа)
--  Strings (строки)
--  Lists (списки)
--  Dictionaries (словари)
--  Tuples (кортежи)
--  Sets (множества)
--  Boolean (логический тип данных)
+-  Numbers
+-  Strings
+-  Lists
+-  Dictionaries
+-  Tuples
+-  Sets
+-  Boolean (logical data type)
 
-Эти типы данных можно, в свою очередь, классифицировать по нескольким
-признакам:
+These data types, in turn, can be classified by several grounds:
 
--  изменяемые (списки, словари и множества)
--  неизменяемые (числа, строки и кортежи)
--  упорядоченные (списки, кортежи, строки и словари)
--  неупорядоченные (множества)
+-  mutable (lists, dictionaries and sets)
+-  immutable (integers, strings and tuples)
+-  ordered (lists, tuples, strings and dictionaries)
+-  unordered (sets)
 
-Содержание раздела:
+Content of section:
 
 .. toctree::
    :maxdepth: 1

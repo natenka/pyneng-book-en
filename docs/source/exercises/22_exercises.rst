@@ -2,35 +2,34 @@
 
    \newpage
 
-Задания
+Tasks
 =======
 
 .. include:: ./pytest.rst
 
 
-Задание 22.1
+Task 22.1
 ~~~~~~~~~~~~
 
-Создать класс Topology, который представляет топологию сети.
+Create Topology class that represents network topology.
 
-При создании экземпляра класса, как аргумент передается словарь, который описывает топологию.
-Словарь может содержать дублирующиеся соединения.
+When creating an instance of class, dictionary that describes topology is passed as an argument. Dictionary may contain duplicate connections.
 
-Дублем считается ситуация, когда в словаре есть такие пары:
+Duplicate refers to situation where dictionary contains such couples:
 
 ::
 
     ('R1', 'Eth0/0'): ('SW1', 'Eth0/1') и ('SW1', 'Eth0/1'): ('R1', 'Eth0/0')
 
-В каждом экземпляре должна быть создана переменная topology, в которой содержится словарь топологии, но уже без дублей.
+Each instance should have *topology* variable that contains topology dictionary, but without duplicates.
 
-Пример создания экземпляра класса:
+Example of class instance creation:
 
 .. code:: python
 
     In [2]: top = Topology(topology_example)
 
-После этого, должна быть доступна переменная topology:
+After that, *topology* variable should be available:
 
 .. code:: python
 
@@ -58,15 +57,14 @@
 
 
 
-Задание 22.1a
+Task 22.1a
 ~~~~~~~~~~~~~
 
-Скопировать класс Topology из задания 22.1 и изменить его.
+Copy Topology class from task 22.1 and change it.
 
-Если в задании 22.1 удаление дублей выполнялось в методе __init__,
-надо перенести функциональность удаления дублей в метод _normalize.
+If in task 22.1 duplicates removal was performed in __init__() method, it is necessary to transfer function of duplicates removal to _normalize() method.
 
-При этом метод __init__ должен выглядеть таким образом:
+The __init__ method has to look like this:
 
 .. code:: python
 
@@ -75,17 +73,16 @@
             self.topology = self._normalize(topology_dict)
 
 
-Задание 22.1b
+Task 22.1b
 ~~~~~~~~~~~~~
 
-Изменить класс Topology из задания 22.1a или 22.1.
+Change Topology class from task 22.1a or 22.1.
 
-Добавить метод delete_link, который удаляет указанное соединение.
-Метод должен удалять и зеркальное соединение, если оно есть (ниже пример).
+Add delete_link() method that removes specified connection. Method should also remove mirror connection if it exists (example below).
 
-Если такого соединения нет, выводится сообщение "Такого соединения нет".
+If there is no such connection, message "There is no such connection" is displayed.
 
-Создание топологии
+Topology creation:
 
 .. code:: python
 
@@ -100,7 +97,7 @@
      ('R3', 'Eth0/1'): ('R4', 'Eth0/0'),
      ('R3', 'Eth0/2'): ('R5', 'Eth0/0')}
 
-Удаление линка:
+Link removal:
 
 .. code:: python
 
@@ -114,8 +111,7 @@
      ('R3', 'Eth0/0'): ('SW1', 'Eth0/3'),
      ('R3', 'Eth0/2'): ('R5', 'Eth0/0')}
 
-Удаление зеркального линка: в словаре есть запись ``('R3', 'Eth0/2'): ('R5', 'Eth0/0')``,
-но вызов delete_link с указанием ключа и значения в обратном порядке, должно удалять соединение:
+Removal of mirror connection: dictionary has an entry ('R3', 'Eth0/2'): ('R5', 'Eth0/0'), but call of delete_link() with key and value in reverse order should remove connection:
 
 .. code:: python
 
@@ -128,22 +124,21 @@
      ('R2', 'Eth0/1'): ('SW2', 'Eth0/11'),
      ('R3', 'Eth0/0'): ('SW1', 'Eth0/3')}
 
-Если такого соединения нет, выводится сообщение:
+If there is no such connection, such message is displayed:
 
 .. code:: python
 
     In [13]: t.delete_link(('R5', 'Eth0/0'), ('R3', 'Eth0/2'))
-    Такого соединения нет
+    There is no such connection
 
-Задание 22.1c
+Task 22.1c
 ~~~~~~~~~~~~~
 
-Изменить класс Topology из задания 22.1b.
+Change Topology class from task 22.1b.
 
-Добавить метод delete_node, который удаляет все соединения с указаным устройством.
-Если такого устройства нет, выводится сообщение "Такого устройства нет".
+Add delete_node() method that removes all connections with specified device. If there is no such device, message "There is no such device" is displayed.
 
-Создание топологии
+Topology creation:
 
 .. code:: python
 
@@ -158,7 +153,7 @@
      ('R3', 'Eth0/1'): ('R4', 'Eth0/0'),
      ('R3', 'Eth0/2'): ('R5', 'Eth0/0')}
 
-Удаление устройства:
+Device removal:
 
 .. code:: python
 
@@ -170,24 +165,23 @@
      ('R3', 'Eth0/1'): ('R4', 'Eth0/0'),
      ('R3', 'Eth0/2'): ('R5', 'Eth0/0')}
 
-Если такого устройства нет, выводится сообщение:
+If there is no such device, such message is displayed:
 
 .. code:: python
 
     In [5]: t.delete_node('SW1')
-    Такого устройства нет
+    There is no such device
 
-Задание 22.1d
+Task 22.1d
 ~~~~~~~~~~~~~
 
-Изменить класс Topology из задания 22.1c
+Change Topology class from task 22.1c
 
-Добавить метод add_link, который добавляет указанное соединение, если его еще нет в топологии.
-Если соединение существует, вывести сообщение "Такое соединение существует".
-Если одна из сторон есть в топологии, вывести сообщение "Cоединение с одним из портов существует".
+Add add_link() method that adds specified connection if it is not already in topology. If connection exists, display message "Such connection already exists".
+If one of sides is in topology, display message "Connection with one of ports exists".
 
 
-Пример создания топологии и добавления соединений
+Example of creating a topology and adding connections
 
 .. code:: python
 
@@ -215,39 +209,33 @@
      ('R3', 'Eth0/2'): ('R5', 'Eth0/0')}
 
     In [11]: t.add_link(('R1', 'Eth0/4'), ('R7', 'Eth0/0'))
-    Такое соединение существует
+    Such connection already exists
 
     In [12]: t.add_link(('R1', 'Eth0/4'), ('R7', 'Eth0/5'))
-    Cоединение с одним из портов существует
+    Connection with one of ports exists
 
 
-Задание 22.2
+Task 22.2
 ~~~~~~~~~~~~
 
-Создать класс CiscoTelnet, который подключается по Telnet к оборудованию Cisco.
+Create CiscoTelnet class that connects via Telnet to Cisco equipment.
 
-При создании экземпляра класса, должно создаваться подключение Telnet, а также переход в режим enable.
-Класс должен использовать модуль telnetlib для подключения по Telnet.
+When creating class instance, Telnet connection should be created as well as switching to enable mode. Class should use telnetlib module to connect via Telnet.
 
-У класса CiscoTelnet, кроме __init__, должно быть, как минимум, два метода:
+CiscoTelnet class, besides __init__(), should have at least two methods:
 
+* _write_line() - takes as argument a string and sends to equipment a string converted to bytes and adds a line feed at the end. Method _write_line() should be used within class.
+* send_show_command() - takes show command as argument and returns output received from device
 
-У класса CiscoTelnet, кроме __init__, должно быть, как минимум, два метода:
+Parameter of __init__() method:
 
-* _write_line - принимает как аргумент строку и отправляет на оборудование строку преобразованную в байты и добавляет перевод строки в конце.
-  Метод _write_line должен использоваться внутри класса.
-* send_show_command - принимает как аргумент команду show и возвращает вывод полученный с обрудования
-
-Параметры метода __init__:
-
-* ip - IP-адрес
-* username - имя пользователя
-* password - пароль
-* secret - пароль enable
+* ip - IP address
+* username - username
+* password - password
+* secret - enable password 
 
 
-
-Пример создания экземпляра класса:
+Example of creating class instance:
 
 .. code:: python
 
@@ -267,22 +255,22 @@
 
 .. note::
 
-    Подсказка:
-    Метод _write_line нужен для того чтобы можно было сократить строку: ``self.telnet.write(line.encode("ascii") + b"\n")`` до такой: ``self._write_line(line)``.
-    Он не должен делать ничего другого.
+    Tip:
+    Мethod _write_line() is needed to shorten line ``self.telnet.write(line.encode("ascii") + b"\n")`` to such line: ``self._write_line(line)``.
+    It should not do anything else.
 
 
-Задание 22.2a
+Task 22.2a
 ~~~~~~~~~~~~~
 
-Скопировать класс CiscoTelnet из задания 22.2 и изменить метод send_show_command добавив три параметра:
+Copy CiscoTelnet class from task 22.2 and change send_show_command() method by adding three parameters:
 
-* parse - контролирует то, будет возвращаться обычный вывод команды или список словарей, полученные после обработки с помощью TextFSM. При parse=True должен возвращаться список словарей, а parse=False обычный вывод. Значение по умолчанию - True.
-* templates - путь к каталогу с шаблонами. Значение по умолчанию - "templates"
-* index - имя файла, где хранится соответствие между командами и шаблонами. Значение по умолчанию - "index"
+* parse - controls whether the usual command output or list of dictionaries received after processing with Textfsm will be returned. If parse=True, list of dictionaries should be returned and if parse=False, usual output should be returned. Default value is True.
+* templates - path to template directory. Default value - "templates"
+* index - name of file where mapping between commands and templates is stored. Default value - "index"
 
 
-Пример создания экземпляра класса:
+Example of class instance creation:
 
 .. code:: python
 
@@ -296,7 +284,7 @@
 
     In [3]: r1 = CiscoTelnet(**r1_params)
 
-Использование метода send_show_command:
+Use of send_show_command() method:
 
 .. code:: python
 
@@ -342,16 +330,15 @@
       'status': 'up',
       'protocol': 'up'}]
 
-Задание 22.2b
+Task 22.2b
 ~~~~~~~~~~~~~
 
-Скопировать класс CiscoTelnet из задания 22.2a и добавить метод send_config_commands.
+Copy CiscoTelnet class from task 22.2a and add send_config_commands() method.
 
 
-Метод send_config_commands должен уметь отправлять одну команду конфигурационного режима или список команд.
-Метод дожен возвращать вывод аналогичный методу send_config_set у netmiko (пример вывода ниже).
+Method send_config_commands() should be able to send one configuration mode command or list of commands. Method should return output similar to send_config_set() method of netmiko (example of output below).
 
-Пример создания экземпляра класса:
+Example of class instance creation:
 
 .. code:: python
 
@@ -365,7 +352,7 @@
 
     In [3]: r1 = CiscoTelnet(**r1_params)
 
-Использование метода send_config_commands:
+Use of send_config_commands() method:
 
 .. code:: python
 
@@ -376,19 +363,19 @@
     Out[6]: 'conf t\r\nEnter configuration commands, one per line.  End with CNTL/Z.\r\nR1(config)#interface loop55\r\nR1(config-if)#ip address 5.5.5.5 255.255.255.255\r\nR1(config-if)#end\r\nR1#'
 
 
-Задание 22.2c
+Task 22.2c
 ~~~~~~~~~~~~~
 
-Скопировать класс CiscoTelnet из задания 22.2b и изменить метод send_config_commands добавив проверку команд на ошибки.
+Copy CiscoTelnet class from task 22.2b and change send_config_commands() method by adding error check.
 
-У метода send_config_commands должен быть дополнительный параметр strict:
+Method send_config_commands() should have an additional parameter *strict*:
 
-* strict=True значит, что при обнаружении ошибки, необходимо сгенерировать исключение ValueError
-* strict=False значит, что при обнаружении ошибки, надо только вывести на стандартный поток вывода сообщене об ошибке
+* strict=True means that if error is detected, it is necessary to generate ValueError exception
+* strict=False means that if error is detected, all you have to do is to display error message
 
-Метод дожен возвращать вывод аналогичный методу send_config_set у netmiko (пример вывода ниже). Текст исключения и ошибки в примере ниже.
+Method should return output similar to send_config_set() method of netmiko (example of output below). Exception and error text in example below.
 
-Пример создания экземпляра класса:
+Example of class instance creation:
 
 .. code:: python
 
@@ -406,14 +393,14 @@
     In [5]: correct_commands = ['logging buffered 20010', 'ip http server']
     In [6]: commands = commands_with_errors+correct_commands
 
-Использование метода send_config_commands:
+Use of send_config_commands() method:
 
 .. code:: python
 
     In [7]: print(r1.send_config_commands(commands, strict=False))
-    При выполнении команды "logging 0255.255.1" на устройстве 192.168.100.1 возникла ошибка -> Invalid input detected at '^' marker.
-    При выполнении команды "logging" на устройстве 192.168.100.1 возникла ошибка -> Incomplete command.
-    При выполнении команды "i" на устройстве 192.168.100.1 возникла ошибка -> Ambiguous command:  "i"
+    When executing command  "logging 0255.255.1" on device 192.168.100.1 error occurred -> Invalid input detected at '^' marker.
+    When executing command "logging" on device 192.168.100.1 error occurred -> Incomplete command.
+    When executing command "i" on device 192.168.100.1 error occurred -> Ambiguous command:  "i"
     conf t
     Enter configuration commands, one per line.  End with CNTL/Z.
     R1(config)#logging 0255.255.1
@@ -438,5 +425,5 @@
 
     ...
 
-    ValueError: При выполнении команды "logging 0255.255.1" на устройстве 192.168.100.1 возникла ошибка -> Invalid input detected at '^' marker.
+    ValueError: When executing command "logging 0255.255.1" on device 192.168.100.1 error occurred -> Invalid input detected at '^' marker.
 

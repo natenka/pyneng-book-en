@@ -1,60 +1,51 @@
-Параметры и аргументы функций
+Function parameters and arguments
 #############################
 
-Цель создания функции, как правило, заключается в том, чтобы вынести
-кусок кода, который выполняет определенную задачу, в отдельный объект.
-Это позволяет использовать этот кусок кода многократно, не создавая
-его заново в программе.
+The purpose of creating a function is typically to take a piece of code that performs a particular task to a separate object. This allows you to use this piece of code multiple times without having to re-create it in the program.
 
-Как правило, функция должна выполнять какие-то действия с входящими
-значениями и на выходе выдавать результат.
+Typically, a function must perform some actions with input values and produce an output.
 
-При работе с функциями важно различать:
+When working with functions it is important to distinguish:
 
--  **параметры** - это переменные, которые используются при создании
-   функции.
--  **аргументы** - это фактические значения (данные), которые передаются
-   функции при вызове.
+-  **parameters** - the variables that are used when creating a function.
+-  **arguments** - the actual values (data) that are passed to the function when called.
 
-Для того, чтобы функция могла принимать входящие значения, ее нужно
-создать с параметрами (файл func_check_passwd.py):
+For a function to receive incoming values, it must be created with parameters (func_check_passwd.py file):
 
 .. code:: python
 
     In [1]: def check_passwd(username, password):
        ...:     if len(password) < 8:
-       ...:         print('Пароль слишком короткий')
+       ...:         print('Password is too short')
        ...:         return False
        ...:     elif username in password:
-       ...:         print('Пароль содержит имя пользователя')
+       ...:         print('Password contains username')
        ...:         return False
        ...:     else:
-       ...:         print(f'Пароль для пользователя {username} прошел все проверки')
+       ...:         print(f'Password for user {username} has passed all checks')
        ...:         return True
        ...:
 
-В данном случае, у функции два параметра: username и password.
+In this case, function has two parameters: username and password.
 
-Функция проверяет пароль и возвращает False, если проверки не прошли и
-True если пароль прошел проверки:
+The function checks the password and returns False if checks fail and True if password passed checks:
 
 .. code:: python
 
     In [2]: check_passwd('nata', '12345')
-    Пароль слишком короткий
+    Password is too short
     Out[2]: False
 
     In [3]: check_passwd('nata', '12345lsdkjflskfdjsnata')
-    Пароль содержит имя пользователя
+    Password contains username
     Out[3]: False
 
     In [4]: check_passwd('nata', '12345lsdkjflskfdjs')
-    Пароль для пользователя nata прошел все проверки
+    Password for user nata has passed all checks
     Out[4]: True
 
 
-При таком определении функции надо обязательно передать оба аргумента.
-Если передать только один аргумент, возникнет ошибка:
+When defining a function in this way it is necessary to pass both arguments. If only one argument is passed, there is an error:
 
 .. code:: python
 
@@ -67,7 +58,7 @@ True если пароль прошел проверки:
     TypeError: check_passwd() missing 1 required positional argument: 'password'
 
 
-Аналогично, возникнет ошибка, если передать три и больше аргументов.
+Similarly, an error will occur if three or more arguments are passed.
 
 .. toctree::
    :maxdepth: 1

@@ -1,12 +1,12 @@
-V. Работа с сетевым оборудованием
+V. Working with network equipment
 #################################
 
-В этой части рассматриаются:
+In this part, the following topics are discussed:
 
--  подключение к оборудованию по SSH и Telnet
--  одновременное подключение к нескольким устройствам
--  создание шаблонов конфигурации с помощью Jinja2
--  обработка вывода команд с помощью TextFSM
+-  SSH and Telnet connection
+-  simultaneous connection to multiple devices
+-  creating configuration templates with Jinja2
+-  command output processing with TextFSM
 
 .. toctree::
    :maxdepth: 1

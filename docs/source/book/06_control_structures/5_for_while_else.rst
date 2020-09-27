@@ -1,35 +1,33 @@
 for/else, while/else
 --------------------
 
-В циклах for и while опционально может использоваться блок else.
+In the loops **for** and **while** you may optionally use **else** block.
 
 for/else
 ~~~~~~~~
 
-В цикле for:
+In the loop **for**:
 
-* блок else выполняется в том случае, если цикл завершил итерацию списка
-* но else **не выполняется**, если в цикле был выполнен break
+* block **else** is executed if the loop has completed the iteration of the list
+* but it *does not execute* if **break** was applied in the loop.
 
-Пример цикла for с else (блок else выполняется после завершения цикла
-for):
+Example of a loop **for** with **else** (block **else** is executed after loop **for**):
 
 .. code:: python
 
     In [1]: for num in range(5):
        ....:     print(num)
        ....: else:
-       ....:     print("Числа закончились")
+       ....:     print("Run out of numbers")
        ....:     
     0
     1
     2
     3
     4
-    Числа закончились
+    Run out of numbers
 
-Пример цикла for с else и break в цикле (из-за break блок else не
-выполняется):
+An example of a loop **for** with **else** and **break** in the loop (because of **break** the block **else** is not applied):
 
 .. code:: python
 
@@ -39,14 +37,13 @@ for):
        ....:     else:
        ....:         print(num)
        ....: else:
-       ....:     print("Числа закончились")
+       ....:     print("Run out of numbers")
        ....:     
     0
     1
     2
 
-Пример цикла for с else и continue в цикле (continue не влияет на блок
-else):
+Example of the loop **for** with **else** and **continue** in the loop (**continue** does not affect the **else** block):
 
 .. code:: python
 
@@ -56,24 +53,23 @@ else):
        ....:     else:
        ....:         print(num)
        ....: else:
-       ....:     print("Числа закончились")
+       ....:     print("Run out of numbers")
        ....:     
     0
     1
     2
     4
-    Числа закончились
+    Run out of numbers
 
 while/else
 ~~~~~~~~~~
 
-В цикле while:
+In the loop **while**:
 
-* блок else выполняется в том случае, если цикл завершил итерацию списка
-* но else **не выполняется**, если в цикле был выполнен break
+* block **else** is executed if the loop has completed the iteration of the list
+* but it *does not execute* if **break** was applied in the loop.
 
-Пример цикла while с else (блок else выполняется после завершения цикла
-while):
+Example of a loop **while** with **else** (the block **else** runs after the loop **while**):
 
 .. code:: python
 
@@ -91,8 +87,7 @@ while):
     4
     Конец
 
-Пример цикла while с else и break в цикле (из-за break блок else не
-выполняется):
+An example of a loop **while** with **else** and **break** in a loop (because of **break** the block **else** is not applied):
 
 .. code:: python
 

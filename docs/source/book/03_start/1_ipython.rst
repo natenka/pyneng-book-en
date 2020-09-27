@@ -1,36 +1,23 @@
-Интерпретатор Python. IPython
+Python interpreter. Ipython
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Интерпретатор позволяет получать моментальный отклик на выполненные
-действия. Можно сказать, что интерпретатор работает как CLI (Command
-Line Interface) сетевых устройств: каждая команда будет выполняться
-сразу же после нажатия Enter. Однако есть исключение – более сложные
-объекты (например циклы или функции) выполняются только после
-двухкратного нажатия Enter.
+The interpreter makes it possible to receive an instant response to the executed actions. You can say that the interpreter works as the CLI (Command Line Interface) of network devices: each command will be executed immediately after pressing Enter. However, there is an exception: more complex objects (such as cycles or functions) are executed only after twice pressing Enter.  
 
-В предыдущем разделе, для проверки установки
-Python вызывался стандартный интерпретатор. Кроме него, есть и
-усовершенствованный интерпретатор 
-`IPython <http://ipython.readthedocs.io/en/stable/index.html>`__.
-IPython позволяет намного больше, чем стандартный
-интерпретатор, который вызывается по команде python. Несколько примеров
-(возможности IPython намного шире):
+In the previous section, a standard interpreter was called to verify the installation of Python. There is also an improved interpreter `IPython <http://ipython.readthedocs.io/en/stable/index.html>`__.
+Ipython allows much more than the standard interpreter called by "python" command. Some examples (Ipython features are much broader):
 
--  автодополнение команд по Tab или подсказка, если вариантов команд
-   несколько;
--  более структурированный и понятный вывод команд;
--  автоматические отступы в циклах и других объектах;
--  можно передвигаться по истории выполнения команд, или же посмотреть
-   её "волшебной" командой %history.
+-  Autocomplete Tab commands or hints if there are more than one command variant;
+-  More structured and understandable output of commands;
+-  Automatic indentation in cycles and other objects;
+-  You can either walk through the command execution history or watch it with the %history 'magic' command.
 
-Установить IPython можно с помощью pip (установка будет производиться в
-виртуальном окружении, если оно настроено):
+You can install Ipython using pip (installation will be done in a virtual environment if configured):
 
 ::
 
     pip install ipython
 
-После этого, перейти в IPython можно следующим образом:
+After that, you can move to Ipython as follows:
 
 ::
 
@@ -41,11 +28,9 @@ IPython позволяет намного больше, чем стандарт�
 
     In [1]:
 
-Для выхода используется команда quit. Далее описывается, как будет
-использоваться IPython.
+The “quit” command is used to exit. The following is how IPython will be used.
 
-Для знакомства с интерпретатором можно попробовать использовать его как
-калькулятор:
+To get acquainted with the interpreter, you can use it as a calculator:
 
 .. code:: python
 
@@ -58,23 +43,20 @@ IPython позволяет намного больше, чем стандарт�
     In [3]: 2**3
     Out[3]: 8
 
-В IPython ввод и вывод помечены:
+In IPython, input and output are marked:
 
--  In – входные данные пользователя
--  Out – результат, который возвращает команда (если он есть)
--  числа после In или Out – это порядковые номера выполненных команд в
-   текущей сессии IPython
+-  In - user input data
+-  Out - the result that the command returns (if any)
+-  Numbers after In or Out are sequential numbers of executed commands in the current IPython session
 
-Пример вывода строки функцией print():
+Example of string output by function print():
 
 .. code:: python
 
     In [4]: print('Hello!')
     Hello!
 
-Когда в интерпретаторе создаётся, например, цикл, то внутри цикла
-приглашение меняется на многоточие. Для выполнения цикла и выхода из
-этого подрежима необходимо дважды нажать Enter:
+When a loop is created in the interpreter, for example, the invitation changes to ellipsis inside the loop. To complete the loop and exit this shortcut, double press Enter:
 
 .. code:: python
 
@@ -90,8 +72,7 @@ IPython позволяет намного больше, чем стандарт�
 help()
 ^^^^^^
 
-В IPython есть возможность посмотреть справку по произвольному объекту,
-функции или методу с помощью help():
+In IPython on you can view the help for an arbitrary object, function or method using help():
 
 ::
 
@@ -117,7 +98,7 @@ help()
         whitespace removed.
         If chars is given and not None, remove characters in chars instead.
 
-Второй вариант:
+The second option is:
 
 ::
 
@@ -148,11 +129,7 @@ help()
 print()
 ^^^^^^^
 
-Функция ``print()`` позволяет вывести информацию на стандартный поток вывода
-(текущий экран терминала). Если необходимо вывести строку, то её нужно
-обязательно заключить в кавычки (двойные или одинарные). Если же нужно
-вывести, например, результат вычисления или просто число, то кавычки не
-нужны:
+The ``print()`` function displays information on a standard output (the current terminal screen). If you want to get a string, you must place it in quotation marks (double or single). If you want to derive, for example, a computation result or just a number, quotes are not needed:
 
 .. code:: python
 
@@ -162,8 +139,7 @@ print()
     In [7]: print(5*5)
     25
 
-Если нужно вывести подряд несколько значений через пробел, то нужно
-перечислить их через запятую:
+If you want to get several values in a row through a space, you have to enumerate them through a comma:
 
 .. code:: python
 
@@ -173,22 +149,16 @@ print()
     In [9]: print('one', 'two', 'three')
     one two three
 
-По умолчанию в конце каждого выражения, переданного в print(), будет
-перевод строки. Если необходимо, чтобы после вывода каждого выражения не
-было бы перевода строки, надо в качестве последнего выражения в print()
-указать дополнительный аргумент end.
+By default, at the end of each expression passed to print(), there will be a line feed. If it is necessary that after the output of each expression there would be no line feed, an additional "end" argument should be specified as the last expression in print().
 
-.. seealso:: Дополнительные параметры функции print :ref:`print`
+.. seealso:: Additional parameters of print function :ref:`print`
 
 dir()
 ^^^^^
 
-Функция ``dir()`` может использоваться для того, чтобы посмотреть, какие имеются
-атрибуты (переменные, привязанные к объекту) и методы (функции,
-привязанные к объекту).
+The ``dir()`` function can be used to see what attributes (variables tied to the object) and methods (functions tied to the object) are available.
 
-Например, для числа вывод будет таким (обратите внимание на различные
-методы, которые позволяют делать арифметические операции):
+For example, for number the output will be (pay attention on various methods that allow arithmetic operations):
 
 .. code:: python
 
@@ -205,7 +175,7 @@ dir()
      'numerator',
      'real']
 
-Аналогично для строки:
+The same for the string:
 
 .. code:: python
 
@@ -223,9 +193,7 @@ dir()
      'upper',
      'zfill']
 
-Если выполнить dir() без передачи значения, то она показывает
-существующие методы, атрибуты и переменные, определённые в текущей
-сессии интерпретатора:
+If you do dir() with no value, it shows the existing methods, attributes, and variables defined in the current session of the interpreter:
 
 .. code:: python
 
@@ -244,7 +212,7 @@ dir()
      'i',
      'quit']
 
-Например, после создания переменной a и test():
+For example, after creating the variable “a” and test():
 
 .. code:: python
 

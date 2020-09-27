@@ -1,15 +1,13 @@
-Функция match
+Match function
 -------------
 
-Функция ``match()``: 
+Function ``match()``: 
 
-* используется для поиска в начале строки подстроки, которая соответствует шаблону 
-* возвращает объект Match, если подстрока найдена 
-* возвращает ``None``, если подстрока не найдена
+* is used to search at the beginning of string that corresponds to the template
+* returns Match object if substring is found
+* returns ``None`` if no substring was found
 
-Функция match отличается от search тем, что match всегда ищет совпадение
-в начале строки. Например, если повторить пример, который использовался
-для функции search, но уже с match:
+Match() function differs from search() in that match() always looks for a match at the beginning of the line. For example, if you repeat the example that was used for search() function, but with match():
 
 .. code:: python
 
@@ -23,18 +21,16 @@
        ...:                  r'(\S+) and port (\S+)', log)
        ...:
 
-Результатом будет None:
+The result will be None:
 
 .. code:: python
 
     In [6]: print(match)
     None
 
-Так получилось из-за того, что match ищет слово Host в начале строки. Но
-это сообщение находится в середине.
+This is because match() searches for the word *Host* at the beginning of the line. But this message is in the middle.
 
-В данном случае можно легко исправить выражение, чтобы функция match
-находила совпадение:
+In this case it is easy to fix expression so that match() function finds match:
 
 .. code:: python
 
@@ -44,8 +40,7 @@
        ...:                  r'(\S+) and port (\S+)', log)
        ...:
 
-Перед словом Host добавлено выражение ``\S+:``. Теперь совпадение будет
-найдено:
+The expression ``\S+:`` was added before *Host* word. Now match will be found:
 
 .. code:: python
 
@@ -55,8 +50,7 @@
     In [12]: match.groups()
     Out[12]: ('10', 'Gi0/16', 'Gi0/24')
 
-Пример аналогичен тому, который использовался в функции search, с
-небольшими изменениями (файл parse_log_match.py):
+The example is similar to one used in search() function with minor changes (parse_log_match match.py file):
 
 .. code:: python
 
@@ -77,12 +71,12 @@
                 ports.add(match.group(2))
                 ports.add(match.group(3))
 
-    print('Петля между портами {} в VLAN {}'.format(', '.join(ports), vlan))
+    print('Loop between ports {} в VLAN {}'.format(', '.join(ports), vlan))
 
-Результат:
+The result is:
 
 ::
 
     $ python parse_log_match.py
-    Петля между портами Gi0/19, Gi0/24, Gi0/16 в VLAN 10
+    Loop between ports Gi0/19, Gi0/24, Gi0/16 в VLAN 10
 

@@ -2,22 +2,21 @@
 
    \newpage
 
-Задания
+Tasks
 =======
 
 .. include:: ./pytest.rst
 
-Задание 11.1
+Task 11.1
 ~~~~~~~~~~~~
 
-Создать функцию parse_cdp_neighbors, которая обрабатывает вывод команды show cdp neighbors.
+Create a parse_cdp_neighbors() function that handles the output of show cdp neighbors command.
 
-У функции должен быть один параметр command_output, который ожидает как аргумент вывод команды одной строкой (не имя файла). Для этого надо считать все содержимое файла в строку,
-а затем передать строку как аргумент функции (как передать вывод команды показано в коде ниже).
+Function should have one parameter -  command_output, that expects as an argument the command output as a single string (not file name). To do this, you should read the entire contents of file into a string and then pass string as function argument (how to pass command output is shown in code below).
 
-Функция должна возвращать словарь, который описывает соединения между устройствами.
+Function should return a dictionary that describes connections between devices.
 
-Например, если как аргумент был передан такой вывод:
+For example, if such an output is given as an argument:
 
 ::
 
@@ -27,30 +26,26 @@
     R5           Fa 0/1          122           R S I           2811       Fa 0/1
     R6           Fa 0/2          143           R S I           2811       Fa 0/0
 
-Функция должна вернуть такой словарь:
+Function should return such dictionary:
 
 .. code:: python
 
     {("R4", "Fa0/1"): ("R5", "Fa0/1"),
      ("R4", "Fa0/2"): ("R6", "Fa0/0")}
 
-В словаре интерфейсы должны быть записаны без пробела между типом и именем. То есть так Fa0/0, а не так Fa 0/0.
+In dictionary, interfaces should be written without space between type and name. That is Fa0/0, not Fa 0/0.
 
-Проверить работу функции на содержимом файла sh_cdp_n_sw1.txt. При этом функция работать
-и на других файлах (тест проверяет работу функции на выводе из sh_cdp_n_sw1.txt и sh_cdp_n_r3.txt).
+Check function with contents of sh_cdp_n_sw1.txt file. Function also should work on other files (test checks function operation on output from sh_cdp_n_sw1.txt and sh_cdp_n_r3.txt).
 
-dd
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
 .. code:: python
 
     def parse_cdp_neighbors(command_output):
         """
-        Тут мы передаем вывод команды одной строкой потому что именно в таком виде
-        будет получен вывод команды с оборудования. Принимая как аргумент вывод
-        команды, вместо имени файла, мы делаем функцию более универсальной: она может
-        работать и с файлами и с выводом с оборудования.
-        Плюс учимся работать с таким выводом.
+        Here we pass command output with one string because in this form we will receive command output from equipment. 
+        Taking command output as argument, instead of a file name, we make function more universal: 
+        it can work with both files and output from equipment. Plus, we learn to work with that output.
         """
 
 
@@ -59,16 +54,14 @@ dd
             print(parse_cdp_neighbors(f.read()))
 
 
-Задание 11.2
+Task 11.2
 ~~~~~~~~~~~~
 
-Создать функцию create_network_map, которая обрабатывает
-вывод команды show cdp neighbors из нескольких файлов и объединяет его в одну общую топологию.
+Create a create_network_map() function that handles the output of show cdp neighbors command from multiple files and integrates it into one common topology.
 
-У функции должен быть один параметр filenames, который ожидает как аргумент список с именами файлов, в которых находится вывод команды show cdp neighbors.
+Function should have one parameter – filenames, that expects as an argument a list of file names in which show cdp neighbors output is found.
 
-Функция должна возвращать словарь, который описывает соединения между устройствами.
-Структура словаря такая же, как в задании 11.1:
+Function should return a dictionary that describes connections between devices. Structure of dictionary is the same as in task 11.1:
 
 .. code:: python
 
@@ -76,41 +69,40 @@ dd
      ("R4", "Fa0/2"): ("R6", "Fa0/0")}
 
 
-Cгенерировать топологию, которая соответствует выводу из файлов:
+Generate a topology that matches the output from files:
 
 * sh_cdp_n_sw1.txt
 * sh_cdp_n_r1.txt
 * sh_cdp_n_r2.txt
 * sh_cdp_n_r3.txt
 
-В словаре, который возвращает функция create_network_map, не должно быть дублей.
+There should be no duplicates in dictionary that returns create_network_map() function.
 
-С помощью функции draw_topology из файла draw_network_graph.py нарисовать схему на основании топологии, полученной с помощью функции create_network_map.
-Результат должен выглядеть так же, как схема в файле task_11_2_topology.svg
+Using draw_topology() function from draw_network_graph.py file, draw a diagram based on topology received with create_network_map() function. The result should look the same as scheme in task_11_2_topology.svg file
 
 .. figure:: https://raw.githubusercontent.com/natenka/pyneng-examples-exercises/master/exercises/11_modules/task_11_2_topology.png
 
-При этом:
+At the same time:
 
-* Расположение устройств на схеме может быть другим
-* Соединения должны соответствовать схеме
+* The arrangement of devices on diagram may be different
+* Connections should follow the diagram
 
-Не копировать код функций parse_cdp_neighbors и draw_topology.
+Do not copy code of functions parse_cdp_neighbors() and draw_topology().
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
 .. note::
-    Для выполнения этого задания, должен быть установлен graphviz:
+    To complete this task, graphviz must be installed: :
     ``apt-get install graphviz``
 
-    И модуль python для работы с graphviz:
+    And a python module for working with graphviz:
     ``pip install graphviz``
 
 
 .. code:: python
 
-    # эти заготовки написаны чтобы показать в какой момент должна
-    # рисоваться топология (после вызова функции)
+    # These blanks are written to show at what moment
+    # a topology should be drawn (after function call)
     def create_network_map(filenames):
         pass
 
@@ -124,6 +116,6 @@ Cгенерировать топологию, которая соответст�
         ]
 
         topology = create_network_map(infiles)
-        # рисуем топологию:
+        # draw topology:
         # draw_topology(topology)
 

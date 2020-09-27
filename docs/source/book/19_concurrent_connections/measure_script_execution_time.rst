@@ -1,22 +1,17 @@
-Измерение времени выполнения скрипта
+Measure script execution time 
 ------------------------------------
 
-Для оценки времени выполнения скрипта есть несколько вариантов. Тут 
-используются самые простые варианты: 
+There are several options for estimating execution time of the script. The simplest options are:
 
-* утилита Linux time 
-* и модуль Python datetime
+* Linux time utility
+* and Python datetime module
 
-При оценке времени выполнения скрипта в данном случае не важна высокая
-точность. Главное - сравнить время выполнения скрипта в разных
-вариантах.
+When measuring the execution time of script in this case, high accuracy is not important. The main thing is to compare the execution time of script in different variants.
 
 ``time``
 ~~~~~~~~
 
-Утилита time в Linux позволяет замерить время выполнения скрипта.
-Для использования утилиты time достаточно написать time перед строкой
-запуска скрипта:
+Linux **time** utility allows you to measure the execution time of a script. To use **time** utility it is enough to write **time** before starting the script:
 
 ::
 
@@ -26,16 +21,15 @@
     user    0m0.336s
     sys     0m0.064s
 
-Нас интересует real время. В данном случае это 4.7 секунд.
+We are interested in real time. In this case, it’s 4.7 seconds.
 
 
 ``datetime``
 ~~~~~~~~~~~~
 
-Второй вариант - модуль datetime. Этот модуль позволяет работать со
-временем и датами в Python.
+The second option is a **datetime** module. This module allows working with time and dates in Python.
 
-Пример использования:
+Example of use:
 
 .. code:: python
 
@@ -44,12 +38,12 @@
 
     start_time = datetime.now()
 
-    #Тут выполняются действия
+    #Code is running here
     time.sleep(5)
 
     print(datetime.now() - start_time)
 
-Результат выполнения:
+Result of execution:
 
 ::
 

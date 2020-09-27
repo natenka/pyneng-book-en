@@ -2,19 +2,15 @@
 
    \newpage
 
-Задания
+Tasks
 ~~~~~~~
 
 .. include:: ./exercises_intro.rst
 
 
-Задание 2.1
+Task 2.1
 ^^^^^^^^^^^
 
-Создайте свой репозиторий на основании шаблона
-`репозитория <https://github.com/natenka/pyneng-examples-exercises/>`__
-с заданиями и примерами. Для этого надо нажать "Use this template".
+Create your repository based on `repository template <https://github.com/natenka/pyneng-examples-exercises/>`__ with tasks and examples. To do this, press "Use this template".
 
-Созданный репозиторий будет копией репозитория pyneng-examples-exercises,
-но при этом никак не привязан к нему. Задания лучше выполнять в подготовленных файлах в 
-каталоге exercises, так как тесты для заданий зависят от созданной структуры каталогов.
+Created repository will be a copy of pyneng-examples-exercises repository, but is not tied to it. It’s better to perform tasks in prepared files in *exercises* directory as tests for tasks depend on created directory structure.

@@ -1,23 +1,19 @@
-Стандарт Юникод
+Unicode standard
 ---------------
 
-Юникод - это стандарт, который описывает представление и кодировку почти
-всех языков и других символов.
+Unicode is a standard that describes the representation and encoding of almost all languages and other characters.
 
-Несколько фактов про Юникод: 
+A few facts about Unicode:
 
-* стандарт версии 12.1 (май 2019) описывает 137 994 кодов 
-* каждый код - это номер, который соответствует определенному символу 
-* стандарт также определяет кодировки - способ представления кода символа в байтах
+* version 12.1 (May 2019) describes 137 994 codes
+* each code is a number that corresponds to a certain character
+* standard also defines the encoding - the way of representing the symbol code in bytes
 
-Каждому символу в Юникод соответствует определенный код. Это число,
-которое обычно записывается таким образом: ``U+0073``, где 0073 - это
-шестнадцатеричные цифры.
+Each character in Unicode has a specific code. This is a number that is usually written as follows: ``U+0073``, where 0073 - hexadecimal digits.
 
-Кроме кода, у каждого символа есть свое уникальное имя. Например, букве
-"s" соответствует код ``U+0073`` и имя "LATIN SMALL LETTER S".
+Apart from the code, each symbol has its own unique name. For example, the letter "s" corresponds to the code ``U+0073`` and the name "LATIN SMALL LETTER S".
 
-Примеры кодов, имен и соответствующих символов:
+Examples of codes, names and corresponding symbols:
 
 -  ``U+0073``, "LATIN SMALL LETTER S" - s
 -  ``U+00F6``, "LATIN SMALL LETTER O WITH DIAERESIS" - ö
@@ -25,22 +21,20 @@
 -  ``U+2615``, "HOT BEVERAGE" - ☕
 -  ``U+1f600``, "GRINNING FACE" - 😀
 
-Кодировки
+Encodings
 ~~~~~~~~~
 
-Кодировки позволяют записывать код символа в байтах.
+Encodings allow to write the character code in bytes.
 
-Юникод поддерживает несколько кодировок: 
+Unicode supports several encodings:
 
 * UTF-8 
 * UTF-16 
 * UTF-32
 
-Одна из самых популярных кодировок на сегодняшний день - UTF-8. Эта
-кодировка использует переменное количество байт для записи символов
-Юникод.
+One of the most popular encoding to date is UTF-8. This encoding uses a variable number of bytes to write Unicode characters.
 
-Примеры символов Юникод и их представление в байтах в кодировке UTF-8:
+Examples of Unicode characters and their representation in bytes in UTF-8 encoding:
 
 * H - ``48`` 
 * i - ``69`` 

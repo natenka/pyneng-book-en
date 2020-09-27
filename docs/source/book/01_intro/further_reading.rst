@@ -1,7 +1,7 @@
-Дополнительные материалы
+Additional material
 ========================
 
-Документация:
+Documentation:
 
 -  `Python Setup and
    Usage <https://docs.python.org/3/using/index.html>`__
@@ -9,7 +9,7 @@
 -  `venv <https://docs.python.org/3/library/venv.html>`__
 -  `virtualenvwrapper <http://virtualenvwrapper.readthedocs.io/en/latest/index.html>`__
 
-Редакторы и IDE:
+Editors and IDE:
 
 -  `PythonEditors <https://wiki.python.org/moin/PythonEditors/>`__
 -  `IntegratedDevelopmentEnvironments <https://wiki.python.org/moin/IntegratedDevelopmentEnvironments/>`__

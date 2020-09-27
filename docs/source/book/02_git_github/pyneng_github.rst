@@ -1,16 +1,15 @@
-Работа с репозиторием заданий и примеров
+Working with repository of tasks and examples
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Все примеры и задания книги выложены в отдельном
-`репозитории <https://github.com/natenka/pyneng-examples-exercises>`__.
+All the examples and tasks of the book are published in a separate 
+`repository <https://github.com/natenka/pyneng-examples-exercises>`__.
 
-Копирование репозитория с GitHub
+Copying repository from Github
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Примеры и задания иногда обновляются, поэтому будет удобнее клонировать
-этот репозиторий на свою машину и периодически обновлять его.
+Examples and tasks are sometimes updated, so it will be more convenient to clone this repository to your machine and periodically update it.
 
-Для копирования репозитория с GitHub выполните команду git clone:
+To copy a repository from Github, run “git clone”:
 
 ::
 
@@ -23,21 +22,19 @@
     Resolving deltas: 100% (735/735), done.
     Checking connectivity... done.
 
-Обновление локальной копии репозитория
+Updating local copy of repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-При необходимости обновить локальный репозиторий, чтобы синхронизировать
-его с версией на GitHub, надо выполнить git pull, находясь внутри
-созданного каталога pyneng-examples-exercises.
+If you need to update the local repository to synchronize it with Github version, you need to perform “git pull” from inside the created pyneng-examples-exercises directory.
 
-Если обновлений не было, вывод будет таким:
+If there were no updates, the output would be:
 
 ::
 
     $ git pull
     Already up-to-date.
 
-Если обновления были, вывод будет примерно таким:
+If there were updates, the output would be something like this:
 
 ::
 
@@ -53,14 +50,12 @@
      README.md | 2 +-
      1 file changed, 1 insertion(+), 1 deletion(-)
 
-Обратите внимание на информацию о том, что изменился только файл
-README.md.
+Please note that only README.md file has been changed.
 
-Просмотр изменений
+View changes
 ^^^^^^^^^^^^^^^^^^
 
-Если вы хотите посмотреть, какие именно изменения были внесены, можно
-воспользоваться командой git log:
+If you want to see what changes have been made, you can use “git log”:
 
 ::
 
@@ -76,9 +71,9 @@ README.md.
     --- a/exercises/24_ansible_for_network/task_24_4.md
     +++ b/exercises/24_ansible_for_network/task_24_4.md
     @@ -13,11 +13,12 @@
-     * применить ACL к интерфейсу
+     * apply ACL to interface
 
-     ACL должен быть таким:
+     ACL should be like:  
     +
      ip access-list extended INET-to-LAN
       permit tcp 10.0.1.0 0.0.0.255 any eq www
@@ -87,21 +82,16 @@ README.md.
     -
     +
 
-     Проверьте работу playbook на маршрутизаторе R1.
+     Check playbook execution on the R1 router.
 
-В этой команде флаг ``-p`` указывает, что надо отобразить вывод утилиты
-Linux diff для внесённых изменений, а не только сообщение коммита. В
-свою очередь, ``-1`` указывает, что надо показать только один самый свежий
-коммит.
+In this command ``-p`` flag indicates that the output of the Linux diff utility should be displayed for changes, not just the commit comment. In turn, ``-1`` indicates that only the latest commit should be shown.
 
-Просмотр изменений, которые будут синхронизированы
+View changes that will be synchronized
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Прошлый вариант git log опирается на количество коммитов, но это не
-всегда удобно. До выполнения команды git pull можно посмотреть, какие
-изменения были выполнены с момента последней синхронизации.
+The previous version of “git log” relies on the number of commands but this is not always convenient. Before executing “git pull” you can see what changes have been made since the last synchronization.
 
-Для этого используется следующая команда:
+The following command shall be used:
 
 ::
 
@@ -118,20 +108,13 @@ Linux diff для внесённых изменений, а не только с
     +++ b/tools/README.md
     @@ -1 +1,4 @@
     +
-    +Тут находятся PDF версии руководств по настройке инструментов, которые используются на курсе.
+    +Here you can find the PDF versions of configuration manuals of the tools that are used on the course.
 
-В данном случае изменения были только в одном файле. Эта команда будет
-очень полезна для того, чтобы посмотреть, какие изменения были внесены в
-формулировку заданий и каких именно заданий. Так будет легче
-ориентироваться, и понимать, касается ли это заданий, которые вы уже
-сделали, и если касается, то надо ли их изменять.
+In this case, the changes were in only one file. This command will be very useful to see what changes have been made to the tasks and which tasks. This will make it easier to navigate and to understand whether it is related to tasks you have already done and, if so, whether they should be changed.
 
 .. note::
-    "..origin/master" в команде ``git log -p ..origin/master``
-    означает показать все коммиты, которые есть в origin/master
-    (в данном случае, это GitHub), но которых нет в локальной копии репозитория
+    "..origin/master" in ``git log -p ..origin/master``
+    means to show all commits that are present in origin/master
+    (in this case, it's GitHub) but that are not in the local copy of the repository
 
-Если изменения были в тех заданиях, которые вы ещё не делали, этот вывод
-подскажет, какие файлы нужно скопировать с репозитория курса в ваш
-личный репозиторий (а может быть и весь раздел, если вы ещё не делали
-задания из этого раздела).
+If the changes were in tasks you haven’t yet done, this output will tell you which files should be copied from the course repository to your personal repository (and maybe the entire section if you haven’t yet done the tasks from this section).

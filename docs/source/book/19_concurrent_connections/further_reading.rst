@@ -1,4 +1,4 @@
-Дополнительные материалы
+Additional material
 ------------------------
 
 GIL
@@ -6,7 +6,7 @@ GIL
 
 -  `Can’t we get rid of the Global Interpreter
    Lock? <https://docs.python.org/3/faq/library.html#can-t-we-get-rid-of-the-global-interpreter-lock>`__
--  `GIL <http://asvetlov.blogspot.com/2011/07/gil.html>`__ (на русском)
+-  `GIL <http://asvetlov.blogspot.com/2011/07/gil.html>`__ (in Russian)
 -  `Understanding the Python GIL <http://www.dabeaz.com/GIL/>`__
 -  `Python threads and the
    GIL <http://jessenoller.com/blog/2009/02/01/python-threads-and-the-global-interpreter-lock>`__
@@ -14,7 +14,7 @@ GIL
 concurrent.futures
 ~~~~~~~~~~~~~~~~~~
 
-Документация Python:
+Python documentation:
 
 -  `concurrent.futures — Launching parallel
    tasks <https://docs.python.org/3/library/concurrent.futures.html>`__
@@ -22,7 +22,7 @@ concurrent.futures
 -  `PyMOTW. concurrent.futures — Manage Pools of Concurrent
    Tasks <https://pymotw.com/3/concurrent.futures/index.html>`__
 
-Статьи:
+Articles:
 
 -  `A quick introduction to the concurrent.futures
    module <http://masnun.com/2016/03/29/python-a-quick-introduction-to-the-concurrent-futures-module.html>`__
@@ -31,7 +31,7 @@ concurrent.futures
 -  `concurrent.futures in Python
    3 <https://www.ploggingdev.com/2017/01/concurrent.futures-in-python-3/>`__
 
-Полезные вопросы и ответы на stackoverflow
+Useful questions and answers on stackoverflow
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -  `How many processes should I run in

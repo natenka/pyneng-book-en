@@ -1,24 +1,21 @@
-Конвертация между байтами и строками
+Conversion between bytes and strings
 ------------------------------------
 
-Избежать работы с байтами нельзя. Например, при работе с сетью или
-файловой системой, чаще всего, результат возвращается в байтах.
+You can’t avoid working with bytes. For example, when working with a network or a filesystem, most often the result is returned in bytes.
 
-Соответственно, надо знать, как выполнять преобразование байтов в строку
-и наоборот. Для этого и нужна кодировка.
+Accordingly, you need to know how to convert bytes to string and vice versa. That’s what the encoding is for.
 
-Кодировку можно представлять как ключ шифрования, который указывает: 
+The encoding can be represented as an encryption key that specifies:
 
-* как "зашифровать" строку в байты (str -> bytes). Используется метод encode (похож на encrypt) 
-* как "расшифровать" байты в строку (bytes -> str). Используется метод decode (похож на decrypt)
+* how to "encrypt" a string to bytes (str -> bytes). Encode method used (similar to encrypt)
+* how to "decrypt" bytes to string (bytes -> str). Decode method used (similar to decrypt)
 
-Эта аналогия позволяет понять, что преобразования строка-байты и
-байты-строка должны использовать одинаковую кодировку.
+This analogy makes it clear that the string-byte and byte-string transformations must use the same encoding.
 
 encode, decode
 ~~~~~~~~~~~~~~
 
-Для преобразования строки в байты используется метод **encode**:
+**encode** method to convert string to bytes:
 
 .. code:: python
 
@@ -29,7 +26,7 @@ encode, decode
 
     In [3]: hi_bytes = hi.encode('utf-8')
 
-Чтобы получить строку из байт, используется метод **decode**:
+**decode** method to get a string from bytes:
 
 .. code:: python
 
@@ -42,8 +39,7 @@ encode, decode
 str.encode, bytes.decode
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Метод encode есть также в классе str (как и другие методы работы со
-строками):
+Method encode() is also present in *str* class (as are other methods of working with strings):
 
 .. code:: python
 
@@ -53,7 +49,7 @@ str.encode, bytes.decode
     In [7]: str.encode(hi, encoding='utf-8')
     Out[7]: b'\xd0\xbf\xd1\x80\xd0\xb8\xd0\xb2\xd0\xb5\xd1\x82'
 
-А метод decode есть у класса bytes (как и другие методы):
+And decode() method is available in the *bytes* class (like other methods):
 
 .. code:: python
 
@@ -63,8 +59,7 @@ str.encode, bytes.decode
     In [9]: bytes.decode(hi_bytes, encoding='utf-8')
     Out[9]: 'привет'
 
-В этих методах кодировка может указываться как ключевой аргумент
-(примеры выше) или как позиционный:
+In these methods, encoding can be used as a key argument (examples above) or as a positional argument:
 
 .. code:: python
 
@@ -74,14 +69,13 @@ str.encode, bytes.decode
     In [11]: bytes.decode(hi_bytes, 'utf-8')
     Out[11]: 'привет'
 
-Как работать с Юникодом и байтами
+How to work with Unicode and bytes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Есть очень простое правило, придерживаясь которого, можно избежать, как
-минимум, части проблем. Оно называется "Юникод-сэндвич": 
+There is a very simple rule, one that can avoid at least part of the problem. It’s called a «Unicode sandwich»:
 
-* байты, которые программа считывает, надо как можно раньше преобразовать в Юникод (строку) 
-* внутри программы работать с Юникод 
-* Юникод надо преобразовать в байты как можно позже, перед передачей
+* bytes that the program reads must be converted to Unicode (string) as early as possible
+* inside the program work with Unicode 
+* Unicode must be converted to bytes as soon as possible before transfer
 
 

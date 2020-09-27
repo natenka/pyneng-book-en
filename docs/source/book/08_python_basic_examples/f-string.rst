@@ -1,25 +1,17 @@
 
 .. _f_string:
 
-Форматирование строк с помощью f-строк
+Formatting lines with f-strings
 ======================================
 
-В Python 3.6 добавился новый вариант форматирования строк - f-строки или
-интерполяция строк. F-строки позволяют не только подставлять какие-то
-значения в шаблон, но и позволяют выполнять вызовы функций, методов и
-т.п.
+Python 3.6 added a new version of string formatting - f-strings or interpolation of strings. The f-strings allow not only to set values to the template but also to perform calls to functions, methods, etc.
 
-Во многих ситуациях f-строки удобней и проще использовать, чем format,
-кроме того, f-строки работают быстрее, чем format и другие методы
-форматирования строк.
+In many situations f-strings are easier to use than format() and f-strings work faster than format() and other methods of string formatting.
 
-
-Синтаксис
+Syntax
 ~~~~~~~~~
 
-F-строки - это литерал строки с буквой ``f`` перед ним. Внутри f-строки
-в паре фигурных скобок указываются имена переменных, которые надо
-подставить:
+F-string is a literal line with a letter ``f`` in front of it. Inside the f- string, in figure brackets there are names of the variables that will be substituted: 
 
 .. code:: python
 
@@ -30,16 +22,13 @@ F-строки - это литерал строки с буквой ``f`` пер
     In [3]: f"IP: {ip}, mask: {mask}"
     Out[3]: 'IP: 10.1.1.1, mask: 24'
 
-    Аналогичный результат с format можно получить так:
+    The same result with format() method you can achieve by:
     ``"IP: {ip}, mask: {mask}".format(ip=ip, mask=mask)``.
 
-Очень важное отличие f-строк от format: f-строки это выражение, которое
-выполняется, а не просто строка. То есть, в случае с ipython, как только
-мы написали выражение и нажали Enter, оно выполнилось и вместо выражений
-``{ip}`` и ``{mask}`` подставились значения переменных.
+A very important difference between f-strings and format(): f-strings are expressions that are processed, not just strings. That is, in the case of ipython, as soon as we wrote the expression and pressed Enter, it was performed and instead of the expressions
+``{ip}`` and ``{mask}`` the values of the variables were substituted.
 
-Поэтому, например, нельзя сначала написать шаблон, а затем определить
-переменные, которые используются в шаблоне:
+Therefore, for example, you cannot first write a template and then define the variables that are used in the template:
 
 .. code:: python
 
@@ -51,8 +40,7 @@ F-строки - это литерал строки с буквой ``f`` пер
 
     NameError: name 'ip' is not defined
 
-Кроме подстановки значений переменных, в фигурных скобках можно писать
-выражения:
+In addition to substituting variable values you can write expressions in curly brackets:
 
 .. code:: python
 
@@ -63,8 +51,7 @@ F-строки - это литерал строки с буквой ``f`` пер
     In [3]: f"IP: {'.'.join(octets)}, mask: {mask}"
     Out[3]: 'IP: 10.1.1.1, mask: 24'
 
-После двоеточия в f-строках можно указывать те же значения, что и при
-использовании format:
+After colon in f-strings you can specify the same values as in format():
 
 .. code:: python
 
@@ -79,14 +66,12 @@ F-строки - это литерал строки с буквой ``f`` пер
     10       1        1        1
     00001010 00000001 00000001 00000001
 
-Особенности использования f-строк
+Special aspects of f-strings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-При использовании f-строк нельзя сначала создать шаблон, а затем его
-использовать, как при использовании format.
+When using f-strings you cannot first create a template and then use it as in format() method.
 
-F-строка сразу выполняется и в нее подставляются значения переменных,
-которые должны быть определены ранее:
+F-string is immediately executed and contains the values of the variables that were defined earlier:
 
 .. code:: python
 
@@ -97,8 +82,7 @@ F-строка сразу выполняется и в нее подставля
     In [9]: print(f"IP: {ip}, mask: {mask}")
     IP: 10.1.1.1, mask: 24
 
-Если необходимо подставить другие значения, надо создать новые
-переменные (с теми же именами) и снова написать f-строку:
+If you want to set other values you must create new variables (with the same names) and write f-string again:
 
 .. code:: python
 
@@ -110,8 +94,7 @@ F-строка сразу выполняется и в нее подставля
     IP: 10.2.2.2, mask: 24
 
 
-При использовании f-строк в циклах, f-строку надо писать в теле цикла,
-чтобы она "подхватывала" новые значения переменных на каждой итерации:
+When using f-strings in loops the f-string must be written in the body of the loop to «catch» new variable values within each iteration:
 
 .. code:: python
 
@@ -125,10 +108,10 @@ F-строка сразу выполняется и в нее подставля
     IP: 10.2.2.2, mask: 24
     IP: 10.3.3.3, mask: 24
 
-Примеры использования f-строк
+Examples of f-string usage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Базовая подстановка переменных:
+Basic variable substitution:
 
 .. code:: python
 
@@ -139,7 +122,7 @@ F-строка сразу выполняется и в нее подставля
     In [3]: f'interface {intf_type}/{intf_name}'
     Out[3]: 'interface Gi/0/3'
 
-Выравнивание столбцами:
+Alignment with columns:
 
 .. code:: python
 
@@ -158,7 +141,7 @@ F-строка сразу выполняется и в нее подставля
     sw1        Gi0/3   r3         Gi0/0
     sw1        Gi0/5   sw4        Gi0/2
 
-Ширина столбцов может быть указана через переменную:
+Column width can be specified by variable:
 
 .. code:: python
 
@@ -179,7 +162,7 @@ F-строка сразу выполняется и в нее подставля
     sw1        Gi0/3      r3         Gi0/0
     sw1        Gi0/5      sw4        Gi0/2
 
-Работа со словарями
+Work with dictionary
 
 .. code:: python
 
@@ -192,7 +175,7 @@ F-строка сразу выполняется и в нее подставля
        ...:
     Pomodoros done: 10, TODO: 5
 
-Вызов функции len внутри f-строки:
+Call the len() function inside the f-string:
 
 .. code:: python
 
@@ -202,10 +185,10 @@ F-строка сразу выполняется и в нее подставля
        ...:             ['sw1', 'Gi0/5', 'sw4', 'Gi0/2']]
        ...:
 
-    In [3]: print(f'Количество подключений в топологии: {len(topology)}')
-    Количество подключений в топологии: 4
+    In [3]: print(f'Number of connections in topology: {len(topology)}')
+    Number of connections in topology: 4
 
-Вызов метода upper внутри f-строки:
+Call upper() method inside f-string:
 
 .. code:: python
 
@@ -214,7 +197,7 @@ F-строка сразу выполняется и в нее подставля
     In [2]: print(f'Zen of {name.upper()}')
     Zen of PYTHON
 
-Конвертация чисел в двоичный формат:
+Converting numbers to binary format:
 
 .. code:: python
 
@@ -225,12 +208,10 @@ F-строка сразу выполняется и в нее подставля
     In [9]: print(f'{int(oct1):08b} {int(oct2):08b} {int(oct3):08b} {int(oct4):08b}')
     00001010 00000001 00000001 00000001
 
-Что использовать format или f-строки
+What to use format or f-strings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Во многих случаях f-строки удобней использовать, так как шаблон выглядит
-понятней и компактней. Однако бывают случаи, когда метод format
-удобней. Например:
+In many cases f-strings are more convenient to use as the template looks more understandable and compact. However, there are cases when the format() method is more convenient. For example:
 
 .. code:: python
 
@@ -246,16 +227,9 @@ F-строка сразу выполняется и в нее подставля
     In [9]: template.format(*ip)
     Out[9]: '00001010 00000001 00000001 00000001 '
 
-Еще одна ситуация, когда format, как правило, удобней использовать:
-необходимость использовать в скрипте один и тот же шаблон много раз.
-F-строка выполнится первый раз и подставит текущие значения переменных и
-для использования шаблона еще раз, его надо заново писать. Это значит,
-что в скрипте будут находится копии одной и то же строки. В то же время
-format позволяет создать шаблон в одном месте и потом использовать его
-повторно, подставляя переменные по мере необходимости.
+Another situation where format() is usually more convenient to use: the need to use the same template many times in the script. F-string will execute the first time and will set the current values of the variables and to use the template again it has to be rewritten. This means that the script will contain copies of the same line. At the same time format() allows to create a template in one place and then use it again substituting variables as needed.
 
-Это можно обойти создав функцию, но создавать функцию для вывода строки
-по шаблону далеко не всегда оправдано. Пример создания функции:
+This can be avoided by creating a function but creating a function to print a string based on template is not always justified. Example of creating a function:
 
 .. code:: python
 

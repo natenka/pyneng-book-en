@@ -2,32 +2,32 @@
 
    \newpage
 
-Задания
+Tasks
 =======
 
 .. include:: ./pytest.rst
 
-Задание 21.1
+Task 21.1
 ~~~~~~~~~~~~
 
-Создать функцию parse_command_output. Параметры функции:
+Create parse_command_output() function. Function parameters:
 
-* template - имя файла, в котором находится шаблон TextFSM (templates/sh_ip_int_br.template)
-* command_output - вывод соответствующей команды show (строка)
+* template - name of file containing Textfsm template  (templates/sh_ip_int_br.template)
+* command_output - output of corresponding show command (string)
 
-Функция должна возвращать список:
+Function should return list:
 
-* первый элемент - это список с названиями столбцов
-* остальные элементы это списки, в котором находятся результаты обработки вывода
+* first element - list with column names
+* other elements - lists containing results of output processing 
 
-Проверить работу функции на выводе команды output/sh_ip_int_br.txt и шаблоне templates/sh_ip_int_br.template.
+Check function with output/sh_ip_int_br.txt and templates/sh_ip_int_br.template template.
 
 .. code:: python
 
     from netmiko import ConnectHandler
 
 
-    # вызов функции должен выглядеть так
+    # function call should be like
     if __name__ == "__main__":
         r1_params = {
             "device_type": "cisco_ios",
@@ -43,95 +43,94 @@
         print(result)
 
 
-Задание 21.1a
+Task 21.1a
 ~~~~~~~~~~~~~
 
-Создать функцию parse_output_to_dict.
+Create parse_output_to_dict() function.
 
-Параметры функции:
+Function parameters:
 
-* template - имя файла, в котором находится шаблон TextFSM (templates/sh_ip_int_br.template)
-* command_output - вывод соответствующей команды show (строка)
+* template - name of file containing Textfsm template (templates/sh_ip_int_br.template)
+* command_output - output of corresponding show command (string)
 
-Функция должна возвращать список словарей:
+Function should return list of dictionaries:
 
-* ключи - имена переменных в шаблоне TextFSM
-* значения - части вывода, которые соответствуют переменным
+* keys - variable names in Textfsm template
+* values  - parts of output that correspond to variables
 
-Проверить работу функции на выводе команды output/sh_ip_int_br.txt и шаблоне templates/sh_ip_int_br.template.
+Check function with output/sh_ip_int_br.txt and templates/sh_ip_int_br.template.
 
-Задание 21.2
+Task 21.2
 ~~~~~~~~~~~~
 
-Сделать шаблон TextFSM для обработки вывода sh ip dhcp snooping binding и записать его в файл templates/sh_ip_dhcp_snooping.template
+Create Textfsm template for processing output of *sh ip dhcp snooping binding* and write it to templates/sh_ip_dhcp_snooping.template
 
-Вывод команды находится в файле output/sh_ip_dhcp_snooping.txt.
+Output of command is in output/sh_ip_dhcp_snooping.txt.
 
-Шаблон должен обрабатывать и возвращать значения таких столбцов:
+Template should process and return values of such columns:
 
-* mac - такого вида 00:04:A3:3E:5B:69
-* ip - такого вида 10.1.10.6
+* mac - like 00:04:A3:3E:5B:69
+* ip - like 10.1.10.6
 * vlan - 10
 * intf - FastEthernet0/10
 
-Проверить работу шаблона с помощью функции parse_command_output из задания 21.1.
+Check template with parse_command_output() function from task 21.1.
 
-Задание 21.3
+Task 21.3
 ~~~~~~~~~~~~
 
-Создать функцию parse_command_dynamic.
+Create parse_command_dynamic() function.
 
-Параметры функции:
+Function parameters:
 
-* command_output - вывод команды (строка)
-* attributes_dict - словарь атрибутов, в котором находятся такие пары ключ-значение:
+* command_output - command output (string)
+* attributes_dict - dictionary with attributes containing such key-value pairs:
 
-  * 'Command': команда
-  * 'Vendor': вендор
+  * 'Command': command
+  * 'Vendor': vendor
 
-* index_file - имя файла, где хранится соответствие между командами и шаблонами. Значение по умолчанию - "index"
-* templ_path - каталог, где хранятся шаблоны. Значение по умолчанию - "templates"
+* index_file - name of file where mapping between commands and templates is stored. Default value - "index"
+* templ_path - directory where templates are stored. Default value is - "templates"
 
-Функция должна возвращать список словарей с результатами обработки вывода команды (как в задании 21.1a):
+Function should return list of dictionaries with output results (as in 21.1a):
 
-* ключи - имена переменных в шаблоне TextFSM
-* значения - части вывода, которые соответствуют переменным
+* keys - variable names in Textfsm template
+* values  - parts of output that correspond to variables
 
-Проверить работу функции на примере вывода команды sh ip int br.
+Check function with *sh ip int br* output.
 
-Задание 21.4
+Task 21.4
 ~~~~~~~~~~~~
 
-Создать функцию send_and_parse_show_command.
+Create send_and_parse_show_command() function.
 
-Параметры функции:
+Function parameters:
 
-* device_dict - словарь с параметрами подключения к одному устройству
-* command - команда, которую надо выполнить
-* templates_path - путь к каталогу с шаблонами TextFSM
-* index - имя индекс файла, значение по умолчанию "index"
+* device_dict - dictionary with connection parameters to one device
+* command - command to execute
+* templates_path - path to Textfsm template directory
+* index - name of index file, default "index"
 
-Функция должна подключаться к одному устройству, отправлять команду show с помощью netmiko,
-а затем парсить вывод команды с помощью TextFSM.
+Function should connect to a single device, send show command with netmiko and then parse command output with Textfsm.
 
-Функция должна возвращать список словарей с результатами обработки вывода команды (как в задании 21.1a):
+Function should return a list of dictionaries with output results (as in 21.1a):
 
-* ключи - имена переменных в шаблоне TextFSM
-* значения - части вывода, которые соответствуют переменным
+* keys - variable names in Textfsm template
+* values  - parts of output that correspond to variables
 
-Проверить работу функции на примере вывода команды sh ip int br и устройствах из devices.yaml.
+Check function with *sh ip int br* output and devices from devices.yaml.
 
-Задание 21.5
+Task 21.5
 ~~~~~~~~~~~~
 
-Создать функцию send_and_parse_command_parallel.
+Create send_and_parse_command_parallel() function.
 
-Функция send_and_parse_command_parallel должна запускать в параллельных потоках функцию send_and_parse_show_command из задания 21.4.
+Function send_and_parse_command_parallel() should call send_and_parse_show_command() functon in parallel threads from task 21.4.
 
-В этом задании надо самостоятельно решить:
+In this task, you have to decide:
 
-* какие параметры будут у функции
-* что она будет возвращать
+* what parameters will be used in function
+* what function will return
 
 
-Теста для этого задания нет.
+There’s no test for this task.

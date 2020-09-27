@@ -1,61 +1,42 @@
-Модуль concurrent.futures
+Module concurrent.futures
 -------------------------
 
-Модуль concurrent.futures предоставляет высокоуровневый интерфейс для
-работы с процессами и потоками. При этом и для потоков, и для процессов
-используется одинаковый интерфейс, что позволяет легко переключаться
-между ними.
+The concurrent.futures module provides a high-level interface for working with processes and threads. For both threads and processes the same interface is used which makes it easy to switch between them.
 
-Если сравнивать этот модуль с threading или multiprocessing, то у него
-меньше возможностей, но с concurrent.futures работать проще и
-интерфейс более понятный.
+If you compare this module with threading or multiprocessing, it has fewer features but with concurrent.futures it's easier to work and interface more understandable.
 
-Модуль concurrent.futures позволяет решить задачу запуска
-нескольких потоков/процессов и получения из них данных.
-Для этого в модуле используются два класса:
+Concurrent.futures module allows to solve the problem of starting multiple threads/processes and getting data from them. For this purpose, the module uses two classes:
 
--  **ThreadPoolExecutor** - для работы с потоками
--  **ProcessPoolExecutor** - для работы с процессами
+-  **ThreadPoolExecutor** - for threads handling
+-  **ProcessPoolExecutor** - for process handling
 
-Оба класса используют одинаковый интерфейс, поэтому достаточно
-разобраться с одним и затем просто переключиться на другой при
-необходимости.
+Both classes use the same interface, so it is enough to deal with one and then just switch to the other if necessary.
 
-Создание объекта Executor на примере ThreadPoolExecutor:
+Create an Executor object using ThreadPoolExecutor:
 
 .. code:: python
 
     executor = ThreadPoolExecutor(max_workers=5)
 
-После создания объекта Executor, у него есть три метода: shutdown, map и submit.
-Метод shutdown отвечает за завершение потоков/процессов, а методы map и submit за
-запуск функций в разных потоках/процессах.
+After creating an Executor object, it has three methods: shutdown, map, and submit. Shutdown is responsible for the completion of threads/processes, when map and submit methods are responsible for starting functions in different threads/processes.
 
 .. note::
-    На самом деле, map и submit могут запускать не только функции,
-    а и любой вызываемый объект. Однако далее будут рассматриваться только функции.
+    In fact, map and submit can run not only functions but any called object. However, only functions will be considered further.
 
-Метод shutdown указывает, что объекту Executor надо завершить работу.
-При этом, если методу shutdown передать значение ``wait=True`` (значение по умолчанию),
-он не вернет результат пока не завершатся все функции, которые запущены в потоках.
-Если же ``wait=False``, метод shutdown завершает работу мгновенно, но при этом
-сам скрипт не завершит работу пока все функции не отработают.
+The shutdown() method indicates that the Executor object must be finished. However, if to shutdown() method pass ``wait=True`` (default value),
+it will not return the result until all functions running in threads have been completed.
+If ``wait=False``, shutdown() method returns instantly but the script itself will not exit until all the functions have been completed.
 
-Как правило, метод shutdown не используется явно, так как при создании объекта Executor
-в менеджере контекста, метод shutdown автоматически вызывается в конце блока with c wait равным True.
+Generally, shutdown() is not explicitly used because when creating an Executor object in a context manager, shutdown() is automatically called at the end of a block with ``wait=True``.
 
 .. code:: python
 
     with ThreadPoolExecutor(max_workers=5) as executor:
         ...
 
-Так как методы map и submit запускают какую-то функцию в потоках или процессах,
-в коде должна присутствовать, как минимум, функция которая выполняет одно действие и
-которую надо запустить в разных потоках с разными аргументами функции.
+Since map and submit methods start a function in threads or processes, the code must at least have a function that performs one action and must be run in different threads with different arguments of the function.
 
-Например, если необходимо пинговать несколько IP-адресов в разных потоках,
-надо создать функцию, которая будет пинговать один IP-адрес, а затем запустить
-эту функцию в разных потоках для разных IP-адресов с помощью concurrent.futures.
+For example, if you need to ping multiple IP addresses in different threads you need to create a function that pings one IP address and then run this function in different threads for different IP addresses using concurrent.futures.
 
 
 .. toctree::

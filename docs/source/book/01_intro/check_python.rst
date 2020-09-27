@@ -1,8 +1,7 @@
-Интерпретатор Python
+Python interpreter
 ====================
 
-Перед началом работы надо проверить, что при вызове интерпретатора
-Python вывод будет таким:
+Before you start, check that when you call the Python interpreter, the output is:
 
 ::
 
@@ -11,10 +10,7 @@ Python вывод будет таким:
     [GCC 4.9.2] on linux
     Type "help", "copyright", "credits" or "license" for more information.
 
-Вывод показывает, что установлен Python 3.7. Приглашение ``>>>``, это
-стандартное приглашение интерпретатора Python. Вызов интерпретатора
-выполняется командой python, а чтобы выйти, нужно набрать ``quit()``, либо
-нажать Ctrl+D.
+The output shows that Python 3.7 is set. The invitation ``>>>``, this is a standard invitation from the Python interpreter. The interpreter call is executed by the python command and to exit you need to type ``quit()``, or press Ctrl+D.
 
 .. note::
-    В книге, вместо стандартного интерпретатора Python, будет использоваться ipython
+    The book will use ipython instead of the standard Python interpreter

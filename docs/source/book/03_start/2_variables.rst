@@ -1,16 +1,13 @@
-Переменные
+Variables
 ~~~~~~~~~~
 
-Переменные в Python не требуют объявления типа переменной (так как
-Python – язык с динамической типизацией) и являются ссылками на область
-памяти. Правила именования переменных:
+Variables in Python do not require variable type declaration (since Python is a language with dynamic typing) and they are references to a memory area. Variable naming rules:
 
--  имя переменной может состоять только из букв, цифр и знака
-   подчёркивания;
--  имя не может начинаться с цифры;
--  имя не может содержать специальных символов @, $, %.
+-  The name of the variable can consist only of letters, digits and an underscore;
+-  The name cannot start with a digit;
+-  Name cannot contain special characters @, $, %.
 
-Пример создания переменных в Python:
+An example of creating variables in Python:
 
 .. code:: python
 
@@ -23,12 +20,9 @@ Python – язык с динамической типизацией) и явл�
     In [4]: print(a,b,c,d)
     3 Hello 9 Test
 
-Обратите внимание, что в Python не нужно указывать, что "a" это число, а
-"b" это строка.
+Note that Python does not need to specify that "a" is a number, and "b" is a string.
 
-Переменные являются ссылками на область памяти. Это можно
-продемонстрировать с помощью id(), которая показывает идентификатор
-объекта:
+Variables are references to the memory area. This can be demonstrated by using id() which shows the object ID:
 
 .. code:: python
 
@@ -43,19 +37,12 @@ Python – язык с динамической типизацией) и явл�
     In [8]: id(c)
     Out[8]: 31671480
 
-В этом примере видно, что все три имени ссылаются на один и тот же
-идентификатор, то есть, это один и тот же объект, на который указывают
-три ссылки – "a", "b" и "c". С числами у Python есть одна особенность,
-которая может немного сбить с понимания: числа от -5 до 256 заранее
-созданы и хранятся в массиве (списке). Поэтому при создании числа из
-этого диапазона фактически создаётся ссылка на число в созданном
-массиве.
+In this example you can see that all three names refer to the same identifier, so it is the same object to which the three references "a", "b" and "c" point. Concerning numbers Python has one feature that can be slightly misunderstood: numbers from -5 to 256 are pre-created and stored in an array (list). Therefore, when you create a number from this range you actually create a reference to the number in the generated array.
 
 .. note::
-    Эта особенность характерна именно для реализации CPython, которая
-    рассматривается в книге
+    This feature is specific to the implementation of Cpython which is discussed in the book
 
-Это можно проверить таким образом:
+This can be verified as follows:
 
 .. code:: python
 
@@ -72,11 +59,10 @@ Python – язык с динамической типизацией) и явл�
     In [13]: id(3)
     Out[13]: 4400936168
 
-Обратите внимание, что у ``a``, ``b`` и числа ``3`` имеют одинаковые идентификаторы.
-Все они являются ссылками на существующее число в списке.
+Note that ``a``, ``b`` and number ``3`` have identical identifiers. 
+They are all references to an existing number in the list.
 
-Если сделать то же самое с числом больше 256, идентификаторы у всех
-будут разные:
+If you do the same with number more than 256, all identifiers will be different:
 
 .. code:: python
 
@@ -93,9 +79,8 @@ Python – язык с динамической типизацией) и явл�
     In [18]: id(500)
     Out[18]: 140239990502960
 
-При этом, если сделать присваивание переменных друг другу, то
-идентификаторы будут у всех одинаковые (в таком варианте ``a``, ``b`` и ``c``
-ссылаются на один и тот же объект):
+However, if you assign variables to each other, the identifiers are all the same (in this variant ``a``, ``b`` and ``c``
+are referring to the same object):
 
 .. code:: python
 
@@ -110,17 +95,12 @@ Python – язык с динамической типизацией) и явл�
     In [22]: id(c)
     Out[22]: 140239990503080
 
-Имена переменных
+Variable names
 ^^^^^^^^^^^^^^^^
 
-Имена переменных не должны пересекаться с названиями операторов и
-модулей или же других зарезервированных слов. В Python есть рекомендации
-по именованию функций, классов и переменных:
+Variable names should not overlap with the names of operators and modules or other reserved words. Python has recommendations for naming functions, classes and variables:
 
--  имена переменных обычно пишутся или полностью большими или полностью
-   маленькими буквами (например DB_NAME, db_name);
--  имена функций задаются маленькими буквами, с подчёркиваниями между
-   словами (например, get_names);
--  имена классов задаются словами с заглавными буквами без пробелов, это
-   так называемый CamelCase (например, CiscoSwitch).
+-  variable names are usually written in lowercase or in uppercase (e.g., DB_NAME, db_name);
+-  function names are written in lowercase, with underline between words (for example get_names);
+-  class names are given with capital letters without spaces, it is called CamelCase (for example, CiscoSwitch).
 

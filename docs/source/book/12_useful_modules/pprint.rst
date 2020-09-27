@@ -1,13 +1,10 @@
-Модуль pprint
+Pprint
 -------------
 
-Модуль pprint позволяет красиво отображать объекты Python. При этом
-сохраняется структура объекта и отображение, которое выводит pprint,
-можно использовать для создания объекта.
-Модуль pprint входит в стандартную библиотеку Python.
+The **pprint** module allows you to display Python objects beautifully. This saves the structure of the object. You can use the result that produces **pprint** to create object. The **pprint** module is part of the standard Python library.
 
-Самый простой вариант использования модуля - функция ``pprint()``.
-Например, словарь с вложенными словарями отобразится так:
+The simplest use of module is the ``pprint()`` function.
+For example, a dictionary with nested dictionaries is displayed as follows:
 
 .. code:: python
 
@@ -41,7 +38,7 @@
              'model': '3850',
              'vendor': 'Cisco'}}
 
-Список списков:
+List of lists:
 
 .. code:: python
 
@@ -55,7 +52,7 @@
      ['FastEthernet0/1', '10.0.1.1', 'YES', 'manual', 'up', 'up'],
      ['FastEthernet0/2', '10.0.2.1', 'YES', 'manual', 'up', 'down']]
 
-Строка:
+String:
 
 .. code:: python
 
@@ -71,13 +68,12 @@
      ' tunnel source FastEthernet1/0\n'
      ' tunnel protection ipsec profile DMVPN\n')
 
-Ограничение вложенности
+Nesting restriction
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-У функции pprint есть дополнительный параметр depth, который позволяет
-ограничивать глубину отображения структуры данных.
+The pprint() function has an additional **depth** parameter that allows limiting the depth of data structure display.
 
-Например, есть такой словарь:
+For example, there’s a dictionary:
 
 .. code:: python
 
@@ -107,7 +103,7 @@
        ...:   ' network 10.0.0.0 0.255.255.255 area 0']}
        ...:
 
-Можно отобразить только ключи, указав глубину равной 1:
+You can only display keys with depth equal to 1:
 
 .. code:: python
 
@@ -117,9 +113,9 @@
      'router bgp 100': {...},
      'router ospf 1': [...]}
 
-Скрытые уровни вложенности заменяются ``...``.
+Hidden nesting levels are replaced with ``...``.
 
-Если указать глубину равной 2, отобразится следующий уровень:
+If you specify a depth of 2, the next level is displayed:
 
 .. code:: python
 
@@ -148,9 +144,7 @@
 pformat
 ~~~~~~~
 
-pformat - это функция, которая отображает результат в виде строки. Ее
-удобно использовать, если необходимо записать структуру данных в
-какой-то файл, например, для логирования.
+pformat() is a function that displays the result as a string. It is convenient to use if you want to write a data structure into a file, for example to log.
 
 .. code:: python
 
@@ -183,10 +177,10 @@ pformat - это функция, которая отображает резул�
                        ' mpls traffic-eng area 0',
                        ' network 10.0.0.0 0.255.255.255 area 0']}
 
-Дополнительные материалы
+Additional material
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Документация:
+Documentation:
 
 -  `pprint — Data pretty printer <https://docs.python.org/3/library/pprint.html>`__
 -  `PyMOTW. pprint — Pretty-Print Data Structures <https://pymotw.com/3/pprint/>`__

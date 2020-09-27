@@ -1,8 +1,7 @@
-Функция all
+All
 -----------
 
-Функция ``all()`` возвращает True, если все элементы истинные (или объект
-пустой).
+The ``all()`` function returns True if all elements are true (or the object is empty).
 
 .. code:: python
 
@@ -15,8 +14,7 @@
     In [3]: all([])
     Out[3]: True
 
-Например, с помощью all можно проверить, все ли октеты в IP-адресе
-являются числами:
+For example, it is possible to check that all octets in an IP address are numbers:
 
 .. code:: python
 
@@ -28,10 +26,10 @@
     In [6]: all( i.isdigit() for i in '10.1.1.a'.split('.'))
     Out[6]: False
 
-Функция any
+Any
 -----------
 
-Функция any() возвращает True, если хотя бы один элемент истинный.
+The any() function returns True if at least one element is true.
 
 .. code:: python
 
@@ -47,15 +45,15 @@
     In [10]: any( i.isdigit() for i in '10.1.1.a'.split('.'))
     Out[10]: True
 
-Например, с помощью any, можно заменить функцию ignore_command:
+For example, with any() you can replace ignore_command() function:
 
 .. code:: python
 
     def ignore_command(command):
         '''
-        Функция проверяет содержится ли в команде слово из списка ignore.
-        * command - строка. Команда, которую надо проверить
-        * Возвращает True, если в команде содержится слово из списка ignore, False - если нет
+        Function checks if command contains a word from ignore list. 
+        * command is a string. Command that need to be checked returns True 
+        * if command contains a word from ignore list, False - if not.
         '''
         ignore = ['duplex', 'alias', 'Current configuration']
 
@@ -64,15 +62,15 @@
                 return True
         return False
 
-На такой вариант:
+To this option:
 
 .. code:: python
 
     def ignore_command(command):
         '''
-        Функция проверяет содержится ли в команде слово из списка ignore.
-        command - строка. Команда, которую надо проверить
-        Возвращает True, если в команде содержится слово из списка ignore, False - если нет
+        Function checks if command contains a word from ignore list. 
+        * command is a string. Command that need to be checked returns True 
+        * if command contains a word from ignore list, False - if not.
         '''
         ignore = ['duplex', 'alias', 'Current configuration']
 

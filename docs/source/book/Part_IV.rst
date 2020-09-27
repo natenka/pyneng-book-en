@@ -1,49 +1,31 @@
-IV. Запись и передача данных
+IV. Data writing and transferring
 ############################
 
-В этой части книги рассматриваются вопросы сохранения и передачи данных.
-Данными могут быть, например:
+This part of the book deals with data writing and transferring. Data can be, for example:
 
--  вывод команд
--  обработанный вывод команд в виде словаря, списка и подобного
--  информация полученная из системы мониторинга
+-  command output
+-  processed output of commands as dictionary, list or similar
+-  information from monitoring system
 
-До сих пор рассматривался только самый простой вариант - запись
-информации в обычный текстовый файл.
+So far, only the simplest option has been considered - writing information to a plain text file.
 
-В этой части рассматривается чтение и запись данных в форматах CSV, JSON
-и YAML:
+This section deals with data reading and writing in CSV, JSON and YAML formats:
 
--  CSV - это табличный формат представления данных. Он может быть
-   получен, например, при экспорте данных из таблицы или базе данных.
-   Аналогичным образом данные могут быть записаны в этом формате для
-   последующего импорта в таблицу.
--  JSON - это формат, который очень часто используется в API. Кроме
-   того, этот формат позволит сохранить такие структуры данных как
-   словари или списки в структурированном формате и затем прочитать их
-   из файла в формате JSON и получить те же структуры данных в Python.
--  Формат YAML очень часто используется для описания сценариев.
-   Например, он используется в Ansible. Кроме того, в этом формате
-   удобно записывать вручную параметры, которые должны считывать
-   скрипты.
+-  CSV - a tabular format of data presentation. It can be obtained, for example, by exporting data from a table or database. Similarly, data can be written in this format for further import into the table.
+-  JSON - a format that is often used in API. In addition, this format will allow you to save data structures such as dictionaries or lists in a structured format and then read them from a JSON file and get the same data structures in Python.
+-  YAML format is often used to describe scripts. For example, it is used in Ansible. In addition, in this format it is convenient to write manually the parameters that should  be read by scripts.
 
 .. note::
 
-    Python позволяет записывать объекты самого языка в файлы и считывать
-    их с помощью модуля Pickle, но этот аспект в книге не
-    рассматривается.
+    Python allows the objects of language itself to be written into files and read through the Pickle module, but this aspect is not considered in this book.
 
-Также в этой части рассматриваются базы данных. Хотя данные можно
-записать с соблюдением структуры и в CSV или JSON, запрашивать нужную
-информацию из файлов в этом формате не всегда удобно. Особенно, когда
-речь идет о более сложных запросах, в которых указаны несколько
-критериев.
+Databases are also discussed in this part. Although you can write data to CSV or JSON based on a structure, it is not always convenient to query information from files in this format. This is particularly the case for more complex requests with more than one criterion.
 
-Для задач такого рода отлично подходят базы данных. В разделе 25
-рассматривается СУБД SQLite, а также основы языка SQL.
+For tasks of this kind, databases are excellent. Section 18 deals with  SQLite as well as the basics of SQL language.
 
 .. toctree::
    :maxdepth: 1
 
    16_unicode/index.rst
    17_serialization/index.rst
+   18_db/index.rst

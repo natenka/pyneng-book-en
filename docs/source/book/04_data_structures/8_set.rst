@@ -1,13 +1,11 @@
-Множество (Set)
+Set
 ===============
 
-Множество - это изменяемый неупорядоченный тип данных. В множестве
-всегда содержатся только уникальные элементы.
+A set is a mutable unordered data type. The set always contains only unique elements.
 
-Множество в Python - это последовательность элементов, которые разделены
-между собой запятой и заключены в фигурные скобки.
+A set in Python is a sequence of elements that are separated by a comma and placed in curly brackets.
 
-С помощью множества можно легко убрать повторяющиеся элементы:
+A set can easily remove repetitive elements:
 
 .. code:: python
 

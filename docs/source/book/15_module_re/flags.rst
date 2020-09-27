@@ -1,12 +1,9 @@
-Флаги
+Flags
 -----
 
-При использовании функций или создании скомпилированного регулярного
-выражения можно указывать дополнительные флаги, которые влияют на
-поведение регулярного выражения.
+When using functions or creating a compiled regular expression you can specify additional flags that affect the behavior of regular expression.
 
-Модуль re поддерживает такие флаги (в скобках короткий вариант
-обозначения флага): 
+The **re** module supports such flags (in brackets - a short variant of flag designation):
 
 * re.ASCII (re.A) 
 * re.IGNORECASE (re.I) 
@@ -16,16 +13,14 @@
 * re.LOCALE (re.L) 
 * re.DEBUG
 
-В этом подразделе для примера рассматривается флаг re.DOTALL. Информация
-об остальных флагах доступна в
-`документации <https://docs.python.org/3/library/re.html#re.A>`__.
+In this subsection the re.DOTALL flag is considered. Information about other flags is available in `documentation <https://docs.python.org/3/library/re.html#re.A>`__.
 
 re.DOTALL
 ^^^^^^^^^
 
-С помощью регулярных выражений можно работать и с многострочной строкой.
+Regular expressions can also be used for multiline string.
 
-Например, из строки sh_cdp надо получить имя устройства, платформу и IOS:
+For example, from *sh_cdp* string you need to get a device name, platform and IOS:
 
 .. code:: python
 
@@ -51,17 +46,15 @@ re.DOTALL
        ...:   IP address: 10.1.1.2
        ...: '''
 
-Конечно, в этом случае можно разделить строку на части и работать с
-каждой строкой отдельно, но можно получить нужные данные и без разделения.
+Of course, in this case it is possible to divide a string into parts and work with each string separately, but you can get the necessary data without splitting.
 
-В этом выражении описаны строки с нужными данными:
+In this expression, the strings with the required data are described:
 
 .. code:: python
 
     In [3]: regex = r'Device ID: (\S+).+Platform: \w+ (\S+),.+Cisco IOS Software.+ Version (\S+),'
 
-В таком случае, совпадения не будет, потому что по умолчанию точка означает
-любой символ, кроме перевода строки:
+In this case, there will be no match because by default a dot means any character other than a line feed character:
 
 .. code:: python
 
@@ -69,7 +62,7 @@ re.DOTALL
     In [4]: print(re.search(regex, sh_cdp))
     None
 
-Изменить поведение по умолчанию, можно с помощью флага re.DOTALL:
+You can change the default behavior by using the re.DOTALL flag:
 
 .. code:: python
 
@@ -78,17 +71,15 @@ re.DOTALL
     In [6]: match.groups()
     Out[6]: ('SW2', 'WS-C2960-8TC-L', '12.2(55)SE9')
 
-Так как теперь в точку входит и перевод строки, комбинация ``.+`` захватывает все,
-между нужными данными.
+Since line feed character is now included, combination ``.+`` captures everything between data.
 
-Теперь попробуем с помощью этого регулярного выражения, получить информацию про 
-всех соседей из файла sh_cdp_neighbors_sw1.txt.
+Now try to use this regular expression to get information about all neighbors from sh_cdp_neighbors_sw1.txt file.
 
 .. literalinclude:: /pyneng-examples-exercises/examples/15_module_re/sh_cdp_neighbors_sw1.txt
   :linenos:
 
 
-Поиск всех совпадений с регулярным выражением:
+Search for all regular expression matches:
 
 .. code:: python
 
@@ -105,11 +96,10 @@ re.DOTALL
         ...:
     ('SW2', '2911', '15.2(2)T1')
 
-На первый взгляд, кажется, что вместо трех устройств, в вывод попало только одно.
-Однако, если присмотреться к результатам, окажется, что кортеже находится 
-Device ID от первого соседа, а платформа и IOS от последнего.
+At first glance, it seems that instead of three devices there was only one device in output. 
+However, if you look at the results the tuple has Device ID from the first neighbor and platform and IOS from the last neighbor.
 
-Короткий вариант вывода, чтобы легче было ориентироваться в результатах:
+A short output to ease understanding of result:
 
 ::
 
@@ -118,14 +108,11 @@ Device ID от первого соседа, а платформа и IOS от п
     R1               Gi 1/0/22         158              R     C3825     Gi 0/0
     R2               Gi 1/0/21         177              R     C2911     Gi 0/0
 
-Так получилось из-за того, что между нужными частями вывода, указана комбинация ``.+``.
-Без флага ``re.DOTALL`` такое выражение захватило бы все до перевода строки, но
-с флагом оно захватывает максимально длинный кусок текста, так как ``+`` жадный.
-В итоге регулярное выражение описывает строку от первого Device ID до последнего 
-места где встречается ``Cisco IOS Software.+ Version``.
+This is because there is a ``.+`` combination between the desired parts of the output.
+Without the ``re.DOTALL`` flag, such an expression would capture everything before line feed character, but with the flag it captures the longest possible piece of text because ``+`` is greedy.
+As a result, the regular expression describes a string from the first Device ID to the last place where ``Cisco IOS Software.+ Version`` meets.
 
-Такая ситуация возникает очень часто при использовании ``re.DOTALL`` и чтобы исправить ее,
-надо не забыть отключить жадность:
+This situation occurs very often when using ``re.DOTALL`` and in order to correct it remember to disable greedy behavior:
 
 .. code:: python
 

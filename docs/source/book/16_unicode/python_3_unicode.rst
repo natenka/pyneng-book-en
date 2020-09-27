@@ -1,17 +1,15 @@
-Юникод в Python 3
+Unicode in Python 3
 -----------------
 
-В Python 3 есть: 
+Python 3 has:
 
-* строки - неизменяемая последовательность Unicode-символов.
-  Для хранения этих символов используется тип строка (str) 
-* байты - неизменяемая последовательность байтов. Для хранения
-  используется тип bytes
+* strings  - an immutable sequence of Unicode characters. Type *string* (str) is used to store these characters
+* bytes  - an immutable sequence of bytes. Type *bytes* is used for storage
 
-Строки
+Strings
 ~~~~~~
 
-Примеры строк:
+Examples of strings:
 
 .. code:: python
 
@@ -28,24 +26,23 @@
     In [14]: beautiful
     Out[14]: 'schön'
 
-Так как строки - это последовательность кодов Юникод, можно записать
-строку разными способами.
+Since strings are a sequence of Unicode codes you can write a string in different ways.
 
-Символ Юникод можно записать, используя его имя:
+Unicode symbol can be written using its name:
 
 .. code:: python
 
     In [1]: "\N{LATIN SMALL LETTER O WITH DIAERESIS}"
     Out[1]: 'ö'
 
-Или использовав такой формат:
+Or by using this format:
 
 .. code:: python
 
     In [4]: "\u00F6"
     Out[4]: 'ö'
 
-Строку можно записать как последовательность кодов Юникод:
+You can write a string as a sequence of Unicode codes:
 
 .. code:: python
 
@@ -62,27 +59,26 @@
     In [23]: len(hi2)
     Out[23]: 6
 
-Функция ord возвращает значение кода Unicode для символа:
+The ord() function returns the value of Unicode code for the character:
 
 .. code:: python
 
     In [6]: ord('ö')
     Out[6]: 246
 
-Функция chr возвращает символ Юникод, который соответствует коду:
+The chr() function returns the Unicode character that corresponds to the code:
 
 .. code:: python
 
     In [7]: chr(246)
     Out[7]: 'ö'
 
-Байты
+Bytes
 ~~~~~
 
-Тип bytes - это неизменяемая последовательность байтов.
+Bytes are an immutable sequence of bytes.
 
-Байты обозначаются так же, как строки, но с добавлением буквы "b" перед
-строкой:
+Bytes are denoted in the same way as strings but with the addition of  letter "b" before the string:
 
 .. code:: python
 
@@ -98,9 +94,7 @@
     In [37]: len(b1)
     Out[37]: 4
 
-В Python байты, которые соответствуют символам ASCII, отображаются как
-эти символы, а не как соответствующие им байты. Это может немного
-путать, но всегда можно распознать тип bytes по букве b:
+In Python, bytes that correspond to ASCII symbols are displayed as these symbols, not as their corresponding bytes. This may be a bit confusing but it is always possible to recognize *bytes* type by letter **b**:
 
 .. code:: python
 
@@ -120,8 +114,7 @@
     In [43]: bytes2
     Out[43]: b'hello'
 
-Если попытаться написать не ASCII-символ в байтовом литерале, возникнет
-ошибка:
+If you try to write not an ASCII character in a byte literal, an error will occur:
 
 .. code:: python
 

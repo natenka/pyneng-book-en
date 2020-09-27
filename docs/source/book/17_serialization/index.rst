@@ -4,42 +4,34 @@
 
 .. _serialization_index:
 
-17. Работа с файлами в формате CSV, JSON, YAML
+17. Working with CSV, JSON, YAML files
 ============================
 
-Сериализация данных - это сохранение данных в каком-то формате, чаще
-всего, структурированном.
+Data serialization is about storing data in some format that is often structured.
 
-Например, это могут быть: 
+For example, it could be:
 
-* файлы в формате YAML или JSON 
-* файлы в формате CSV 
-* база данных
+* files in YAML or JSON format
+* files in CSV format
+* database
 
-Кроме того, Python позволяет записывать объекты самого языка (этот
-аспект в курсе не рассматривается, но, если вам интересно, посмотрите на
-модуль Pickle).
+In addition, Python allows you to write down the objects of the language itself (this aspect is not covered, but if you are interested, look at the Pickle module).
 
-В этом разделе рассматриваются форматы CSV, JSON, YAML, а в следующем
-разделе - базы данных.
+This section covers CSV, JSON, YAML formats and the following section covers databases.
 
-Для чего могут пригодится форматы YAML, JSON, CSV: 
+For which YAML, JSON, CSV formats can be useful:
 
-* у вас могут быть данные об IP-адресах и подобной информации, 
-  которую нужно обработать, в таблицах 
+* you may have data about IP address and similar information to process in tables
 
-  * таблицу можно экспортировать в формат CSV и обрабатывать её с помощью Python 
+  * o	table can be exported to CSV format and processed by Python 
 
-* управляющий софт может возвращать данные в JSON. Соответственно, 
-  преобразовав эти данные в объект Python, с ними можно работать и делать что угодно 
-* YAML очень удобно использовать для описания параметров, 
-  так как у него довольно приятный синтаксис 
+* software can return data in JSON format. Accordingly, by converting this data into a Python object you can work with it and do whatever you want 
+* YAML is very convenient to use to describe parameters because it has a nice syntax
 
-  * например, это могут быть параметры настройки различных объектов (IP-адреса, VLAN и др.) 
-  * как минимум, знание формата YAML пригодится при использовании Ansible
+  * for example, it can be settings for different objects (IP addresses, VLANs, etc.)
+  * at least knowing the YAML format will be useful when using Ansible
 
-Для каждого из этих форматов в Python есть модуль, который существенно
-упрощает работу с ними.
+For each of these formats, Python has a module that makes them easier to work with.
 
 .. toctree::
    :maxdepth: 1

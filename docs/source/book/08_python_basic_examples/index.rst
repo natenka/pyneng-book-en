@@ -4,16 +4,12 @@
 
 .. _python_basic_examples_index:
 
-8. Примеры использования основ
+8. Python basic examples
 ==============================
 
-В этом разделе собраны те темы, которые не вошли в предыдущие разделы, а
-также приведены примеры использования основ Python для решения задач.
+This section collects topics that were not included in the previous sections and also provides examples of using the Python to solve problems.
 
-Хотя большинство примеров будет ориентировано на работу с файлами, те же
-принципы обработки информации будут применимы и при работе с сетевым
-оборудованием. Только часть с чтением из файла будет заменена на
-получение вывода с оборудования.
+While most examples will be file-oriented the same data-processing principles can be applied to network equipment. Only part with reading from the file will be replaced to get output from the hardware.
 
 .. toctree::
    :maxdepth: 1

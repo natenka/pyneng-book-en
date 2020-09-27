@@ -1,37 +1,24 @@
-Метод map
+Method map
 ~~~~~~~~~
 
-Синтаксис метода:
+Method syntax:
 
 .. code:: python
 
     map(func, *iterables, timeout=None)
 
-Метод map - работает похоже на встроенную функцию map: применяет функцию
-func к одному или более итерируемых объектов. При этом, каждый вызов
-функции запускается в отдельном потоке/процессе. Метод map возвращает
-итератор с результатами выполнения функции для каждого элемента итерируемого
-объекта. Результаты расположены в том же порядке, что и элементы
-в итерируемом объекте.
+Method map() is similar to the built-in map function: applying the func() function to one or more iterable objects. Each call to a function is then started in a separate thread/process. Method map() returns the iterator with function results for each element of the object being iterated. The results are arranged in the same order as elements in iterable object.
 
-При работе с пулами потоков/процессов, создается определенное 
-количество потоков/процессов и затем код выполняется в этих потоках.
-Например, если при создании пула указано, что надо создать 5 потоков,
-а функцию надо запустить для 10 разных устройств, подключение будет выполняться
-сначала к первым пяти устройствам, а затем, по мере освобождения,
-к остальным.
+When working with thread/process pools, a certain number of threads/processes are created and the code is executed in these threads. For example, if the pool is created with 5 threads and function has to be started for 10 different devices, the connection will be performed first to the first five devices and then, as they liberated, to the others.
 
-Пример использования функции map с ThreadPoolExecutor (файл
-netmiko_threads_map_basics.py):
+An example of using a map() function with ThreadPoolExecutor (netmiko_threads_map_basics.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/20_concurrent_connections/netmiko_threads_map_basics.py
   :language: python
   :linenos:
 
 
-Так как методу map надо передавать функцию, создана функция send_show,
-которая подключается к оборудованию, передает указанную команду show и
-возвращает результат с выводом команды.
+Since function should be passed to map() method, the send_show() function is created which connects to devices, passes specified show command and returns the result with command output.
 
 .. code:: python
 
@@ -49,12 +36,9 @@ netmiko_threads_map_basics.py):
             logging.info(received_msg.format(datetime.now().time(), ip))
             return result
 
-Функция send_show выводит лог сообщения в начале и в конце работы.
-Это позволит определить когда функция отработала для конкретного устройства.
-Также внутри функции указано, что при подключении к устройству с адресом 192.168.100.1,
-надо сделать паузу на 5 секунд - таким образом маршрутизатор с этим адресом будет отрабатывать дольше.
+Function send_show() outputs log message at the beginning and at the end of work. This will determine when function has worked for the particular device. Also within function it is specified that when connecting to device with address 192.168.100.1, the pause for 5 seconds is required - thus the router with this address will respond longer.
 
-Последние 4 строки кода отвечают за подключение к устройствам в отдельных потоках:
+Last 4 lines of code are responsible for connecting to devices in separate threads:
 
 .. code:: python
 
@@ -63,26 +47,15 @@ netmiko_threads_map_basics.py):
         for device, output in zip(devices, result):
             print(device['ip'], output)
 
-* ``with ThreadPoolExecutor(max_workers=3) as executor:`` - класс
-  ThreadPoolExecutor инициируется в блоке with с указанием количества
-  потоков. 
-* ``result = executor.map(send_show, devices, repeat('sh clock'))`` - метод map похож на
-   функцию map, но тут функция send_show вызывается в разных потоках. При
-   этом в разных потоках функция будет вызываться с разными аргументами:
+* ``with ThreadPoolExecutor(max_workers=3) as executor:`` - ThreadPoolExecutor class is initiated in *with* block with the indicated number of threads.
+* ``result = executor.map(send_show, devices, repeat('sh clock'))`` - map() method is similar to map() function, but here the send_show() function is called in different threads. However, in different threads the function will be called with different arguments:
 
-  * элементами итерируемого объекта devices и одной и той же командой sh clock.
-  * так как вместо списка команд, тут используется только одна команда,
-    ее надо каким-то образом повторять, чтобы метод map подставлял эту команду
-    разным устройствам. Для этого используется функция repeat - она повторяет команду ровно столько
-    раз, сколько запрашивает map
+  * elements of iterable object *devices* and the same command *sh clock*.
+  * since instead of a list of commands only one command is used, it must be repeated in some way, so that map() method will set this command to different devices. It uses repeat() function - it repeats the command exactly as many times as map() requests
   
-*  метод map возвращает генератор. В этом генераторе содержатся
-   результаты выполнения функций. Результаты находятся в том же порядке,
-   что и устройства в списке devices, поэтому для совмещения IP-адресов устройств
-   и вывода команды используется функция zip.
+*  map() method returns generator. This generator contains results of functions. Results are in the same order as devices in the list of devices, so the zip() function is used to combine device IP addresses and command output.
 
-
-Результат выполнения:
+Execution result:
 
 ::
 
@@ -97,7 +70,7 @@ netmiko_threads_map_basics.py):
     192.168.100.2 *08:29:11.744 UTC Thu Jul 4 2019
     192.168.100.3 *08:29:15.374 UTC Thu Jul 4 2019
 
-Первые три сообщения указывают когда было выполнено подключение и к какому устройству:
+The first three messages indicate when the connection was made and to which device:
 
 ::
 
@@ -105,7 +78,7 @@ netmiko_threads_map_basics.py):
     ThreadPoolExecutor-0_1 root INFO: ===> 08:28:55.963198 Connection: 192.168.100.2
     ThreadPoolExecutor-0_2 root INFO: ===> 08:28:55.970269 Connection: 192.168.100.3
 
-Следующие три сообщения показывают время получения информации и завершения функции:
+The following three messages show the time of receipt of information and completion of the function:
 
 ::
 
@@ -113,10 +86,7 @@ netmiko_threads_map_basics.py):
     ThreadPoolExecutor-0_2 root INFO: <=== 08:29:15.497324 Received:   192.168.100.3
     ThreadPoolExecutor-0_0 root INFO: <=== 08:29:16.854344 Received:   192.168.100.1
 
-Так как для первого устройства был добавлен sleep на 5 секунд, информация
-с первого маршрутизатора фактически была получена позже всего.
-Однако, так как метод map возвращает значения в том же порядке, что и устройства в списке device,
-итоговый результат выглядит так:
+Since *sleep* was added for the first device for 5 seconds, information from the first router was actually received later. However, since map() method returns values in the same order as devices in *device* list, the result is:
 
 ::
 
@@ -125,20 +95,17 @@ netmiko_threads_map_basics.py):
     192.168.100.3 *08:29:15.374 UTC Thu Jul 4 2019
 
  
-Обработка исключений с map
+Map exception handling
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Пример использования map с обработкой исключений:
+Example of map() with exception handling:
 
 .. literalinclude:: /pyneng-examples-exercises/examples/20_concurrent_connections/netmiko_threads_map_exceptions.py
   :language: python
   :linenos:
 
 
-Пример в целом аналогичен предыдущему, но в функции send_show появилась обработка
-ошибки NetMikoAuthenticationException, а код, который запускал функцию send_show 
-в потоках, теперь находится в функции send_command_to_devices.
+The example is generally similar to the previous one but  NetMikoAuthenticationException was introduced in the send_show() function, and the code that started send_show() function in the threads is now in send_command_to_devices() function.
 
-При использовании метода map, обработку исключений лучше делать внутри функции, 
-которая запускается в потоках, в данном случае это функция send_show.
+When using map() method, exception handling is best done within a function that runs in threads, in this case send_show() function.
 

@@ -1,30 +1,16 @@
 ``if __name__ == "__main__"``
 -----------------------------
 
-Достаточно часто скрипт может выполняться и самостоятельно, и может быть
-импортирован как модуль другим скриптом.
-Так как импорт скрипта запускает этот скрипт, часто надо указать,
-что какие-то строки не должны выполняться при импорте.
+Often the script can be executed independently and can be imported as a module by another script. Since importing a script runs this script, it is often necessary to specify that some strings should not be executed when importing.
 
-В предыдущем примере было два скрипта: check_ip_function.py и get_correct_ip.py.
-И при запуске get_correct_ip.py, отображались print из check_ip_function.py.
+In the previous example there were two scripts: check_ip_function.py and get_correct_ip.py. And when starting get_correct_ip.py, print() from check_ip_function.py was displayed.
 
 
-В Python есть специальный прием, который позволяет указать, что какой-то
-код не должен выполняться при импорте: все строки, которые находятся
-в блоке ``if __name__ == '__main__'`` не выполняются при импорте.
+Python has a special technique that specifies that a code must not be executed at import: all lines that are in the ``if __name__ == '__main__'`` block are not executed at import.
 
-Переменная ``__name__`` - это специальная переменная, которая будет
-равна ``"__main__"``, только если файл запускается как основная программа, и
-выставляется равной имени модуля при импорте модуля.
-То есть, условие ``if __name__ == '__main__'`` проверяет, был ли
-файл запущен напрямую.
+The variable ``__name__`` is a special variable that will be equal to ``"__main__"`` only if the file is run as the main program and is set equal to the module name when importing the module. That is, the ``if __name__ == '__main__'`` condition checks whether the file was run directly.
 
-
-Как правило, в блок ``if __name__ == '__main__'`` заносят все вызовы функций
-и вывод информации на стандартный поток вывода.
-То есть, в скрипте check_ip_function.py в этом блоке будет все, кроме импорта
-и функции return_correct_ip:
+As a rule, the ``if __name__ == '__main__'`` block includes all function calls and information output on the standard output stream. That is, in the check_ip_function.py script this block conytains everything except import and the return_correct_ip function:
 
 .. code:: python
 
@@ -43,24 +29,23 @@
         ip1 = '10.1.1.1'
         ip2 = '10.1.1'
 
-        print('Проверка IP...')
+        print('Cheking IP...')
         print(ip1, check_ip(ip1))
         print(ip2, check_ip(ip2))
 
 
-Результат выполнения скрипта:
+Result of script execution:
 
 ::
 
     $ python check_ip_function.py
-    Проверка IP...
+    Cheking IP...
     10.1.1.1 True
     10.1.1 False
 
-При запуске скрипта check_ip_function.py напрямую, выполняются все строки,
-так как переменная ``__name__`` в этом случае равна ``'__main__'``.
+When you start the check_ip_function.py script directly, all lines are executed, because the variable ``__name__`` in this case is equal to ``'__main__'``.
 
-Скрипт get_correct_ip.py остается без изменений
+The get_correct_ip.py script remains unchanged
 
 .. code:: python
 
@@ -75,32 +60,25 @@
         return correct
 
 
-    print('Проверка списка IP-адресов')
+    print('Checking list of IP addresses')
     ip_list = ['10.1.1.1', '8.8.8.8', '2.2.2']
     correct = return_correct_ip(ip_list)
     print(correct)
 
 
-Выполнение скрипта get_correct_ip.py выглядит таким образом:
+Execution of the get_correct_ip.py script:
 
 ::
 
     $ python get_correct_ip.py
-    Проверка списка IP-адресов
+    Checking list of IP addresses
     ['10.1.1.1', '8.8.8.8']
 
-Теперь вывод содержит только информацию из скрипта get_correct_ip.py.
+Now the output contains only information from the script getcorrect__ip.py.
 
 
-В целом, лучше привыкнуть писать весь код, который вызывает функции и
-выводит что-то на стандартный поток вывода, внутри блока
-``if __name__ == '__main__'``.
+In general, it is better to write all the code that calls functions and outputs something to the standard output stream inside the block ``if __name__ == '__main__'``.
 
 .. warning::
-    Начиная с 9 раздела, для заданий есть программные тесты,
-    с помощью которых можно проверить правильность выполнения заданий.
-    Для корректной работы с тестами, надо всегда писать вызов функции
-    в файле задания внутри блока ``if __name__ == '__main__'``.
-    Отсутствие этого блока будет вызывать ошибки, не во всех заданиях,
-    однако это все равно позволит избежать проблем.
+    Starting with Section 9, there are program tests for tasks that can be used to check whether the tasks are properly executed. To work correctly with tests you have to always write a function call in the job file within the block ``if __name__ == '__main__'``. The absence of this block will cause errors, not in all tasks, but it will still avoid problems.
 

@@ -1,18 +1,13 @@
-Пример использования Jinja2
+Usage example of Jinja2
 ---------------------------
 
-В этом примере логика разнесена в 3 разных файла (все файлы находятся в
-каталоге 1_example): 
+In this example, logic is divided into 3 different files (all files are in 1_example directory):
 
-* router_template.py - шаблон 
-* routers_info.yml - в этом файле в виде списка словарей (в формате YAML)
-  находится информация о маршрутизаторах, для которых нужно сгенерировать 
-  конфигурационный файл 
-* router_config_generator.py - в этом скрипте импортируется файл 
-  с шаблоном и считывается информация из файла в формате YAML, 
-  а затем генерируются конфигурационные файлы маршрутизаторов
+* router_template.py - template 
+* routers_info.yml - this file contains a list of dictionaries (in YAML format) with information about routers for which you need to generate a configuration file
+* router_config_generator.py - this script imports a template file and reads information from a YAML file and then generates router configuration files
 
-Файл router_template.py
+File router_template.py
 
 .. code:: python
 
@@ -60,7 +55,7 @@
      !
     ''')
 
-Файл routers_info.yml
+File routers_info.yml
 
 .. code:: yaml
 
@@ -85,7 +80,7 @@
       BS: 1650
       to_id: 2
 
-Файл router_config_generator.py
+File router_config_generator.py
 
 .. code:: python
 
@@ -101,27 +96,26 @@
         with open(r1_conf,'w') as f:
             f.write(template_r1.render(router))
 
-Файл router_config_generator.py: 
+File router_config_generator.py: 
 
-* импортирует шаблон template_r1 
-* из файла routers_info.yml список параметров считывается в переменную routers
+* imports template template_r1 
+* from routers_info.yml file the parameter list is read to *routers* variable
 
-Затем в цикле перебираются объекты (словари) в списке routers: 
+Then the objects (dictionaries) in *routers* list are iterated in the loop:
 
-* название файла, в который записывается итоговая конфигурация, состоит из 
-  поля name в словаре и строки r1.txt. Например, Liverpool_r1.txt 
-* файл с таким именем открывается в режиме для записи 
-* в файл записывается результат рендеринга шаблона с использованием текущего словаря 
-* конструкция with сама закрывает файл 
-* управление возвращается в начало цикла (пока не переберутся все словари)
+* name of the file into which the final configuration is written consists of *name* field in dictionary and r1.txt string. For example, Liverpool_r1.txt
+* file with this name opens in write mode
+* file records the result of template rendering using current dictionary 
+* construction *with* closes the file
+* control returns to the beginning of the loop (until all dictionaries are iterated)
 
-Запускаем файл router_config_generator.py:
+Run file router_config_generator.py:
 
 ::
 
     $ python router_config_generator.py
 
-В результате получатся три конфигурационных файла такого вида:
+The result is three configuration files:
 
 ::
 

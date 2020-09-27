@@ -1,17 +1,11 @@
-Протоколы
+Protocols
 ---------
 
-Специальные методы отвечают не только за поддержку операций типа сложение, сравнение, 
-но и за поддержку протоколов.
-Протокол - это набор методов, которые должны быть реализованы в объекте, 
-чтобы он поддерживал определенное поведение. Например, в Python есть такие протоколы: итерации,
-менеджер контекста, контейнеры и другие. После создания в объекте определенных методов,
-объект будет вести себя как встроенный и использовать интерфейс понятный всем, 
-кто пишет на Python.
+Special methods are responsible not only for support of operations like addition and comparison, but also for protocol support. Protocol - set of methods that must be implemented in object to make object support a certain behavior. For example, Python has protocols like iteration, context manager, containers and others. After creating certain methods in the object, it will behave as built-in and use an interface understood by all who write on Python.
 
 .. note::
 
-    `Таблица с абстрактных классов в которой описаны какие методы должны присутствовать у объекта, чтобы он поддерживал определенный протокол <https://docs.python.org/3/library/collections.abc.html#collections-abstract-base-classes>`__
+    `A table with abstract classes describing which methods an object should have to make it support a certain protocol <https://docs.python.org/3/library/collections.abc.html#collections-abstract-base-classes>`__
 
 
 .. toctree::

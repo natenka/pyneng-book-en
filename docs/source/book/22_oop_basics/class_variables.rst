@@ -1,8 +1,7 @@
-Переменные класса
+Class variables
 ~~~~~~~~~~~~~~~~~
 
-Помимо переменных экземпляра, существуют также переменные класса. Они
-создаются, при указании переменных внутри самого класса, не метода:
+In addition to instance variables, there are also class variables. They are created when variables are specified within class itself, not method:
 
 .. code:: python
 
@@ -13,8 +12,7 @@
         ...:         pass
         ...:
 
-Теперь не только у класса, но и у каждого экземпляра класса будет
-переменная ``var_a``:
+Now not only class but every instance of the class will have ``var_a`` variable:
 
 .. code:: python
 
@@ -31,10 +29,7 @@
     In [33]: a2.var_a
     Out[33]: 5
 
-Важный момент при использовании переменных класса, то что внутри метода
-к ним все равно надо обращаться через имя класса (или self, но через имя
-класса лучше, так как тогда понятно, что это переменная класса). Для
-начала, вариант обращения без имени класса:
+An important point when using class variables is that within method they should still be called  through name of the class (or **self**, but through name of the class better because then it is clear that it is a class variable). First, variant without class name:
 
 .. code:: python
 
@@ -61,7 +56,7 @@
 
     NameError: name 'var_a' is not defined
 
-И правильный вариант:
+And correct variant:
 
 .. code:: python
 

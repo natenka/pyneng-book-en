@@ -1,12 +1,9 @@
-Протокол последовательности
+Sequence protocol
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-В самом базовом варианте, протокол последовательности (sequence) включает
-два метода: __len__ и __getitem__. В более полном варианте также методы:
-__contains__, __iter__, __reversed__, index и count. Если последовательность изменяема,
-добавляются еще несколько методов.
+In the most basic version, sequence protocol (sequence) includes two methods: __len__ and __getitem__. In more complete version also methods: __contains__, __iter__, __reversed__, index and count. If sequence is mutable, several other methods are added.
 
-Добавим методы __len__ и __getitem__ к классу Network:
+Add __len__ and __getitem__ methods to Network class:
 
 .. code:: python
 
@@ -27,7 +24,7 @@ __contains__, __iter__, __reversed__, index и count. Если последов�
        ...:
 
 
-Метод __len__ вызывается функцией len:
+Method __len__ is called by len() function:
 
 .. code:: python
 
@@ -37,7 +34,7 @@ __contains__, __iter__, __reversed__, index и count. Если последов�
     Out[3]: 2
 
 
-А метод __getitem__ при обращении по индексу таким образом:
+And __getitem__ method is called when you acess item by index:
 
 .. code:: python
 
@@ -50,7 +47,7 @@ __contains__, __iter__, __reversed__, index и count. Если последов�
     In [6]: net1[-1]
     Out[6]: '10.1.1.194'
 
-Метод __getitem__ отвечает не только обращение по индексу, но и за срезы:
+__getitem__ method is responsible not only for access by index, but also for slices:
 
 .. code:: python
 
@@ -76,8 +73,7 @@ __contains__, __iter__, __reversed__, index и count. Если последов�
      '10.1.1.205',
      '10.1.1.206']
 
-Так как в данном случае, внутри метода __getitem__ используется список,
-ошибки отрабатывают корректно автоматически:
+In this case, because __getitem__ method uses a list, errors are processed correctly automatically:
 
 .. code:: python
 
@@ -110,17 +106,10 @@ __contains__, __iter__, __reversed__, index и count. Если последов�
     TypeError: list indices must be integers or slices, not str
 
 
-Реализация остальных методов протокола последовательности вынесена в задания раздела:
+You will find implementation of remaining methods of sequence protocol in tasks to this section:
 
-* __contains__ - этот метод отвечает за проверку наличия элемента в 
-  последовательности ``'10.1.1.198' in net1``. Если в объекте не определен этот метод,
-  наличие элемента проверяется перебором элементов с помощью __iter__, а если и его нет
-  перевором индексов с __getitem__.
-* __reversed__ - используется встроенной функцией reversed. Этот метод как правило, 
-  лучше не создавать и полагаться на то, что функция reversed при отсутствии 
-  метода __reversed__ будет использовать методы __len__ и __getitem__.
-* index - возвращает индекс первого элемента, значение которого равно указаному. 
-  Работает полностью аналогично методу index в списках и кортежах.
-* count - возвращает количество значений. Работает полностью аналогично методу 
-  count в списках и кортежах.
+* __contains__ - this method is responsible for checking the presence of element in sequence ``'10.1.1.198' in net1``. If object does not define this method, the presence of element is checked by iteration of elements using __iter__ and if this method is also unavailable, then by index iteration with __getitem__.
+* __reversed__ - is used by built-in reversed() function. This method is usually best not to create and rely on the fact that reversed() function in absence of __reversed__ method will use methods __len__ and __getitem__.
+* index - returns index of element. Works exactly the same as index() method in lists and tuples.
+* count - returns number of values. Works exactly the same as count() method in lists and tuples.
 

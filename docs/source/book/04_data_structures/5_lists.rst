@@ -1,12 +1,12 @@
-Список (List)
+List
 =============
 
-Список в Python это:
+The list in Python is:
 
-* последовательность элементов, разделенных между собой запятой и заключенных в квадратные скобки
-* изменяемый упорядоченный тип данных
+* sequence of elements separated by comma and enclosed in square brackets
+* mutable ordered data type
 
-Примеры списков:
+Examples of lists:
 
 .. code:: python
 
@@ -14,16 +14,16 @@
     In [2]: list2 = ['one', 'dog', 'seven']
     In [3]: list3 = [1, 20, 4.0, 'word']
 
-Создание списка с помощью литерала:
+Creation of a list by means of a literal:
 
 .. code:: python
 
     In [1]: vlans = [10, 20, 30, 50]
 
 .. note::
-    Литерал - это выражение, которое создает объект.
+    The literal is an expression that creates the object.
 
-Создание списка с помощью функции **list()**:
+Create a list using the **list()** function:
 
 .. code:: python
 
@@ -32,8 +32,7 @@
     In [3]: print(list1)
     ['r', 'o', 'u', 't', 'e', 'r']
 
-Так как список - это упорядоченный тип данных, то, как и в строках, в
-списках можно обращаться к элементу по номеру, делать срезы:
+Since a list is an ordered data type just like a string, in lists you can refer to an item by number, make slices:
 
 .. code:: python
 
@@ -51,7 +50,7 @@
     In [8]: list3[::-1]
     Out[8]: ['word', 4.0, 20, 1]
 
-Перевернуть список наоборот можно и с помощью метода reverse():
+You can reverse the list by reverse() method:
 
 .. code:: python
 
@@ -62,7 +61,7 @@
     In [12]: vlans
     Out[12]: ['100-200', '30', '20', '15', '10']
 
-Так как списки изменяемые, элементы списка можно менять:
+Since lists are mutual, the list elements can be changed:
 
 .. code:: python
 
@@ -74,8 +73,7 @@
     In [15]: list3
     Out[15]: ['test', 20, 4.0, 'word']
 
-Можно создавать и список списков. И, как и в обычном списке, можно
-обращаться к элементам во вложенных списках:
+You can also create a list of lists. As in a regular list you can refer to items in the nested lists:
 
 .. code:: python
 
@@ -92,7 +90,7 @@
     In [19]: interfaces[2][1]
     Out[19]: '10.0.2.1'
 
-Функция len возвращает количество элементов в списке:
+The len() function returns the number of items in the list:
 
 .. code:: python
 
@@ -101,7 +99,7 @@
     In [2]: len(items)
     Out[2]: 3
 
-А функция sorted сортирует элементы списка по возрастанию и возвращает новый список с отсортированными элементами:
+And the sorted() function sorts list items in ascending order and returns a new list with sorted items:
 
 .. code:: python
 

@@ -7,25 +7,19 @@
 16. Unicode
 ============================
 
-Программы, которые мы пишем, не изолированы в себе. Они скачивают данные
-из Интернета, читают и записывают данные на диск, передают данные через
-сеть.
+The programs we write are not isolated. They download data from the Internet, read and write data on disk, transmit data over the network.
 
-Поэтому очень важно понимать разницу между тем, как компьютер хранит и
-передает данные, и как эти данные воспринимает человек. Мы воспринимаем
-текст, а компьютер - байты.
+So it’s very important to understand the difference between how a computer stores and transmits data and how that data is perceived by a person. We take the text, computer takes the bytes.
 
-В Python 3, соответственно, есть две концепции: 
+Python 3, respectively, has two concepts:
 
-* текст - неизменяемая последовательность Unicode-символов.
-  Для хранения этих символов используется тип строка (str) 
-* данные - неизменяемая последовательность байтов. Для хранения используется тип bytes
+* text  - an immutable sequence of unicode characters. Type *string* (str) is used to store these characters
+* data - an immutable sequence of bytes. Type *bytes* is used for storage
 
 .. note::
 
-    Более корректно будет сказать, что текст - это неизменяемая
-    последовательность кодов (codepoints) Unicode.
-
+    It is more correct to say that the text is an immutable sequence of codes (codepoints) Unicode.
+    
 .. toctree::
    :maxdepth: 1
 

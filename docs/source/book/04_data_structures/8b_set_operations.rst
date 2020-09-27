@@ -1,11 +1,10 @@
-Операции с множествами
+Operations with sets
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Множества полезны тем, что с ними можно делать различные операции и
-находить объединение множеств, пересечение и так далее.
+Sets are useful in performing different operations such us finding union of sets, intersection and so on. 
 
-Объединение множеств можно получить с помощью метода ``union()`` или
-оператора ``|``:
+Union of sets can be obtained by ``union()`` or
+operator ``|``:
 
 .. code:: python
 
@@ -18,8 +17,8 @@
     In [4]: vlans1 | vlans2
     Out[4]: {10, 20, 30, 50, 100, 101, 102, 200}
 
-Пересечение множеств можно получить с помощью метода
-``intersection()`` или оператора ``&``:
+Intersection of sets can be obtained by
+``intersection()`` or operator ``&``:
 
 .. code:: python
 

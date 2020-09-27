@@ -1,20 +1,16 @@
-Функция findall
+Findall function
 ----------------
 
-Функция ``findall()``: 
+Function ``findall()``: 
 
-* используется для поиска всех непересекающихся совпадений в шаблоне 
-* возвращает:
+* is used to search for all disjoint matches in template
+* returns:
 
-  * список строк, которые описаны регулярным выражением,
-    если в регулярном выражении нет групп 
-  * список строк, которые совпали с регулярным выражением в группе, если в
-    регулярном выражении одна группа 
-  * список кортежей, в которых находятся строки,
-    которые совпали с выражением в группе, если групп несколько
+  * list of strings that are described by the regular expression if there are no groups in regular expression
+  * list of strings that match with the regular expression in the group if there is only one group in regular expression 
+  * list of tuples containing strings that matches with the expression in the group if there are more than one group
 
-Рассмотрим работу findall на примере вывода команды sh mac
-address-table:
+Consider the work of findall() with an example of ‘sh mac address-table output’:
 
 .. code:: python
 
@@ -35,11 +31,9 @@ address-table:
      200    a1bb.1c60.7000    DYNAMIC     Gi0/6
      300    aa0b.cc70.7000    DYNAMIC     Gi0/7
 
-Первый пример - регулярное выражение без групп. В этом случае findall
-возвращает список строк, которые совпали с регулярным выражением.
+The first example is a regular expression without groups. In this case findall() returns a list of strings that matches with regular expression.
 
-Например, с помощью findall можно получить список строк с соответствиями
-vlan - mac - interface и избавиться от заголовка в выводе команды:
+For example, with findall() you can get a list of  matching strings with *vlan - mac – interface* and get rid of header in the output of command:
 
 .. code:: python
 
@@ -53,13 +47,9 @@ vlan - mac - interface и избавиться от заголовка в выв
      '200    a1bb.1c60.7000    DYNAMIC     Gi0/6',
      '300    aa0b.cc70.7000    DYNAMIC     Gi0/7']
 
-Обратите внимание, что findall возвращает список строк, а не объект
-Match.
+Note that findall() returns a list of strings, not a Match object.
 
-Как только в регулярном выражении появляется группа, findall ведет
-себя по-другому.
-Если в выражении используется одна группа, findall возвращает список
-строк, которые совпали с выражением в группе:
+As soon as a group appears in regular expression, findall() behaves differently. If one group is used in the expression, findall() returns a list of strings that matches with expression in the group:
 
 .. code:: python
 
@@ -73,10 +63,9 @@ Match.
      'a1bb.1c60.7000',
      'aa0b.cc70.7000']
 
-При этом findall ищет совпадение всей строки, но возвращает результат,
-похожий на метод groups() в объекте Match.
+findall() searches for a match of the entire string but returns a result similar to the group() method in Match object.
 
-Если же групп несколько, findall вернет список кортежей:
+If there are several groups, findall() will return the list of tuples:
 
 .. code:: python
 
@@ -90,12 +79,9 @@ Match.
      ('200', 'a1bb.1c60.7000', 'Gi0/6'),
      ('300', 'aa0b.cc70.7000', 'Gi0/7')]
 
-Если такие особенности работы функции findall мешают получить
-необходимый результат, то лучше использовать функцию finditer, но иногда
-такое поведение подходит и удобно использовать.
+If such features of findall() function prevent you from getting the desired result, it is better to use finditer() function, but sometimes this behavior is appropriate and convenient to use.
 
-Пример использования findall в разборе лог-файла (файл
-parse_log_findall.py):
+An example of using findall() in a log file parsing (parse_log_findall.py file):
 
 .. code:: python
 
@@ -114,12 +100,12 @@ parse_log_findall.py):
             ports.add(port1)
             ports.add(port2)
 
-    print('Петля между портами {} в VLAN {}'.format(', '.join(ports), vlan))
+    print('Loop between ports {} в VLAN {}'.format(', '.join(ports), vlan))
 
-Результат:
+The result is:
 
 ::
 
     $ python parse_log_findall.py
-    Петля между портами Gi0/19, Gi0/16, Gi0/24 в VLAN 10
+    Loop between ports Gi0/19, Gi0/16, Gi0/24 в VLAN 10
 

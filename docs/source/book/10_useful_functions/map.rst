@@ -1,11 +1,9 @@
-Функция map
+Map
 -----------
 
-Функция map применяет функцию к каждому элементу последовательности и
-возвращает итератор с результатами.
+The map() function applies function to each element of sequence and returns iterator with  result.
 
-Например, с помощью map можно выполнять преобразования элементов.
-Перевести все строки в верхний регистр:
+For example, map() can be used to perform element transformations. Convert all strings to uppercase:
 
 .. code:: python
 
@@ -17,7 +15,7 @@
     In [3]: list(map(str.upper, list_of_words))
     Out[3]: ['ONE', 'TWO', 'LIST', '', 'DICT']
 
-Конвертация в числа:
+Converting to numbers:
 
 .. code:: python
 
@@ -26,7 +24,7 @@
     In [4]: list(map(int, list_of_str))
     Out[4]: [1, 2, 5, 10]
 
-Вместе с map удобно использовать лямбда-выражения:
+With map() it is convenient to use lambda expressions:
 
 .. code:: python
 
@@ -35,8 +33,7 @@
     In [6]: list(map(lambda x: 'vlan {}'.format(x), vlans))
     Out[6]: ['vlan 100', 'vlan 110', 'vlan 150', 'vlan 200', 'vlan 201', 'vlan 202']
 
-Если функция, которую использует map(), ожидает два аргумента, то
-передаются два списка:
+If map() function expects two arguments, two lists are passed:
 
 .. code:: python
 
@@ -47,23 +44,19 @@
     In [9]: list(map(lambda x, y: x*y, nums, nums2))
     Out[9]: [100, 400, 900, 1600, 2500]
 
-List comprehension вместо map
+List comprehension instead of map
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Как правило, вместо map можно использовать list comprehension. Чаще
-всего, вариант с list comprehension более понятный, а в некоторых
-случаях даже быстрее.
+As a rule, you can use list comprehension instead of map(). Most often, list comprehension option is more understandable and in some cases even faster.
 
-    `Ответ Alex Martelli со сравнением map и list
+    `Alex Martelli response with comparison of map and list
     comprehension <https://stackoverflow.com/a/1247490>`__
 
-Но map может быть эффективней в том случае, когда надо сгенерировать
-большое количество элементов, так как map - итератор, а list
-comprehension генерирует список.
+But map() can be more effective when you have to generate a large number of elements because map() is an iterator and list comprehension generates a list.
 
-Примеры, аналогичные приведенным выше, в варианте с list comprehension.
+Examples similar to those above in the list comprehension variant.
 
-Перевести все строки в верхний регистр:
+Convert all strings to uppercase:
 
 .. code:: python
 
@@ -72,7 +65,7 @@ comprehension генерирует список.
     In [49]: [ str.upper(word) for word in list_of_words ]
     Out[49]: ['ONE', 'TWO', 'LIST', '', 'DICT']
 
-Конвертация в числа:
+Converting to numbers:
 
 .. code:: python
 
@@ -81,7 +74,7 @@ comprehension генерирует список.
     In [51]: [ int(i) for i in list_of_str ]
     Out[51]: [1, 2, 5, 10]
 
-Форматирование строк:
+String formatting:
 
 .. code:: python
 
@@ -90,7 +83,7 @@ comprehension генерирует список.
     In [53]: [ 'vlan {}'.format(x) for x in vlans ]
     Out[53]: ['vlan 100', 'vlan 110', 'vlan 150', 'vlan 200', 'vlan 201', 'vlan 202']
 
-Для получения пар элементов используется zip:
+Use zip() to get pairs of elements:
 
 .. code:: python
 

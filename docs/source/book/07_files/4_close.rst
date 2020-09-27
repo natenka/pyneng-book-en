@@ -1,33 +1,27 @@
-Закрытие файлов
+File closing
 ---------------
 
 .. note::
-    В реальной жизни для закрытия файлов чаще всего используется
-    конструкция ``with``. Её намного удобней использовать, чем закрывать
-    файл явно. Но, так как в жизни можно встретить и метод ``close``, в
-    этом разделе рассматривается как его использовать.
-
-После завершения работы с файлом, его нужно закрыть.
-В некоторых случаях Python может самостоятельно закрыть файл.
-Но лучше на это не рассчитывать и закрывать файл явно.
+    In real life, the most common way to close files is use of ``with`` construction. It’s much more convenient way than to close file explicitly. But since you can also find the ``close`` method in life, this section discusses how to use it.
+    
+After you finish working with file you have to close it. In some cases Python can close the file itself. But it’s best not to count on it and close the file explicitly.
 
 ``close()``
 ^^^^^^^^^^^
 
-Метод close встречался в разделе `запись файлов <https://pyneng.readthedocs.io/ru/latest/book/07_files/3_write.html>`__.
-Там он был нужен для того, чтобы содержимое файла было записано на диск.
+The close() method met in `File writing  <./3_write.md>`__ section.
+It was there to make sure that the content of the file was written on disk.
 
-Для этого, в Python есть отдельный метод ``flush()``.
-Но так как в примере с записью файлов, не нужно было больше
-выполнять никаких операций, файл можно было закрыть.
+For this, Python has a separate ``flush()`` method.
+But since in the example with the file writing there was no need to perform any more operations, the file could be closed.
 
-Откроем файл r1.txt:
+Open the r1.txt file:
 
 .. code:: python
 
     In [1]: f = open('r1.txt', 'r')
 
-Теперь можно считать содержимое:
+You can now read the content:
 
 .. code:: python
 
@@ -42,17 +36,14 @@
     !
     ip ssh version 2
     !
-
-У объекта file есть специальный атрибут ``closed``, который позволяет
-проверить, закрыт файл или нет.
-Если файл открыт, он возвращает ``False``:
+The **file** object has a special ``closed`` attribute that lets you check whether a file is closed or not. If the file is open, it returns ``False``:
 
 .. code:: python
 
     In [3]: f.closed
     Out[3]: False
 
-Теперь закрываем файл и снова проверяем ``closed``:
+Now close the file and check ``closed`` again:
 
 .. code:: python
 
@@ -61,7 +52,7 @@
     In [5]: f.closed
     Out[5]: True
 
-Если попробовать прочитать файл, возникнет исключение:
+If you try to read the file an exception occurs:
 
 .. code:: python
 
@@ -73,17 +64,15 @@
 
     ValueError: I/O operation on closed file
 
-Использование ``try/finally`` для работы с файлами
+Use ``try/finally`` to work with files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-С помощью обработки исключений, можно:
+By processing exceptions, you can:
 
--  перехватывать исключения, которые возникают, при попытке прочитать
-   несуществующий файл
--  закрывать файл, после всех операций, в блоке ``finally``
+-  intercept exceptions that occur when trying to read a non-existent file
+-  close file after all operations in ``finally`` block
 
-Если попытаться открыть для чтения файл, которого не существует,
-возникнет такое исключение:
+If you try to read a file that does not exist this exception will occur:
 
 .. code:: python
 
@@ -95,8 +84,7 @@
 
     IOError: [Errno 2] No such file or directory: 'r3.txt'
 
-С помощью конструкции ``try/except``, можно перехватить это исключение и
-вывести своё сообщение:
+Using ``try/except`` construction you can capture this exception and print your message:
 
 .. code:: python
 
@@ -107,7 +95,7 @@
       ....:
     No such file
 
-А с помощью части ``finally``, можно закрыть файл, после всех операций:
+And with ``finally`` you can close the file after all operations:
 
 .. code:: python
 

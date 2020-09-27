@@ -1,48 +1,42 @@
-Модуль telnetlib
+Module telnetlib
 ----------------
 
-Модуль telnetlib входит в стандартную библиотеку Python. Это реализация
-клиента telnet.
+Module telnetlib is part of standard Python library. This is the telnet client implementation.
 
 .. note::
 
-    Подключиться по telnet можно и используя pexpect. Плюс telnetlib в
-    том, что этот модуль входит в стандартную библиотеку Python.
+    It is also possible to connect via telnet using pexpect. Plus of telnetlib is that this module is part of standard Python library.
+    
+Telnetlib resembles pexpect but has several differences. The most notable difference is that telnetlib requires the transfer of a byte string, rather than normal one.
 
-Принцип работы telnetlib напоминает pexpect, но есть несколько отличий.
-Самое заметное отличие в том, что telnetlib требует передачи байтовой
-строки, а не обычной.
-
-Подключение выполняется таким образом:
+The connection is performed as follows:
 
 .. code:: python
 
     In [1]: telnet = telnetlib.Telnet('192.168.100.1')
 
-Метод read_until
+Method read_until
 ~~~~~~~~~~~~~~~~
 
-С помощью метода read_until указывается до какой строки считать вывод.
-При этом, как аргумент надо передавать не обычную строку, а байты:
+Method read_until() specifies till which line the output should be read. However, as an argument, it is necessary to pass bytes, not the usual string:
 
 .. code:: python
 
     In [2]: telnet.read_until(b'Username')
     Out[2]: b'\r\n\r\nUser Access Verification\r\n\r\nUsername'
 
-Метод read_until возвращает все, что он считал до указанной строки.
+Method read_until() returns everything it has read before the specified string.
 
-Метод write
+Method write
 ~~~~~~~~~~~
 
-Для передачи данных используется метод write. Ему нужно передавать
-байтовую строку:
+Method write() is used for data transmission. Byte string has to be passed to it:
 
 .. code:: python
 
     In [3]: telnet.write(b'cisco\n')
 
-Читаем вывод до слова Password и передаем пароль:
+Read output till *Password* and pass the password:
 
 .. code:: python
 
@@ -51,8 +45,7 @@
 
     In [5]: telnet.write(b'cisco\n')
 
-Теперь можно указать, что надо считать вывод до приглашения, а затем
-отправить команду:
+You can now specify what should be read untill prompt and then send the command:
 
 .. code:: python
 
@@ -61,19 +54,17 @@
 
     In [7]: telnet.write(b'sh ip int br\n')
 
-После отправки команды можно продолжать использовать метод read_until:
+After sending a command, you can continue to use read_until() method:
 
 .. code:: python
 
     In [8]: telnet.read_until(b'>')
     Out[8]: b'sh ip int br\r\nInterface                  IP-Address      OK? Method Status                Protocol\r\nEthernet0/0                192.168.100.1   YES NVRAM  up                    up      \r\nEthernet0/1                192.168.200.1   YES NVRAM  up                    up      \r\nEthernet0/2                19.1.1.1        YES NVRAM  up                    up      \r\nEthernet0/3                192.168.230.1   YES NVRAM  up                    up      \r\nEthernet0/3.100            10.100.0.1      YES NVRAM  up                    up      \r\nEthernet0/3.200            10.200.0.1      YES NVRAM  up                    up      \r\nEthernet0/3.300            10.30.0.1       YES NVRAM  up                    up      \r\nR1>'
 
-Метод read_very_eager
+Method read_very_eager
 ~~~~~~~~~~~~~~~~~~~~~
 
-Или использовать еще один метод для чтения read_very_eager.
-При использовании метода read_very_eager, можно отправить несколько
-команд, а затем считать весь доступный вывод:
+Or use another read method read_very_eager(). When using read_very_eager() method, you can send multiple commands and then read all available output:
 
 .. code:: python
 
@@ -114,11 +105,9 @@
 
 .. warning::
 
-    Перед методом read_very_eager всегда надо ставить time.sleep(n).
+    You should always set time.sleep(n) before using read_very_eager.
 
-С read_until будет немного другой подход. Можно выполнить те же три
-команды, но затем получать вывод по одной за счет чтения до строки с
-приглашением:
+With read_until() will be a slightly different approach. You can execute the same three commands, but then get the output one by one because of reading till prompt string:
 
 .. code:: python
 
@@ -140,21 +129,18 @@
 read_until vs read_very_eager
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Важное отличие между read_until и read_very_eager заключается в том,
-как они реагируют на отсутствие вывода.
+An important difference between read_until() and read_very_eager() is how they react to the lack of output.
 
-Метод read_until ждет определенную строку. По умолчанию, если ее нет,
-метод "зависнет". Опциональный параметр timeout позволяет указать
-сколько ждать нужную строку:
+Method read_until() waits for a certain string. By default, if it does not exist, method will "freeze". Timeout option allows you to specify how long to wait for the desired string:
 
 .. code:: python
 
     In [20]: telnet.read_until(b'>', timeout=5)
     Out[20]: b''
 
-Если за указанное время строка не появилась, возвращается пустая строка.
+If no string appears during the specified time, an empty string is returned.
 
-Метод read_very_eager просто вернет пустую строку, если вывода нет:
+Method read_very_eager() simply returns an empty string if there is no output:
 
 .. code:: python
 
@@ -162,15 +148,12 @@ read_until vs read_very_eager
     Out[21]: b''
 
 
-Метод expect
+Method expect
 ~~~~~~~~~~~~
 
-Метод expect позволяет указывать список с регулярными выражениями. Он
-работает похоже на pexpect, но в модуле telnetlib всегда надо передавать
-список регулярных выражений.
+Method expect() allows you to specify a list with regular expressions. It works like pexpect but telnetlib always has to pass a list of regular expressions.
 
-При этом, можно передавать байтовые строки или компилированные
-регулярные выражения:
+You can then transfer byte strings or compiled regular expressions:
 
 .. code:: python
 
@@ -182,15 +165,13 @@ read_until vs read_very_eager
      <_sre.SRE_Match object; span=(46, 47), match=b'>'>,
      b'sh clock\r\n*19:35:10.984 UTC Fri Nov 3 2017\r\nR1>')
 
-Метод expect возвращает кортеж их трех элементов: 
+Method expect() returns the tuple of their three elements:
 
-* индекс выражения, которое совпало 
-* объект Match 
-* байтовая строка, которая содержит все 
-  считанное до регулярного выражения и включая его
+* index of matched expression 
+* object Match 
+* byte string that contains everything read till regular expression including regular expression
 
-Соответственно, при необходимости, с этими элементами можно дальше
-работать:
+Accordingly, if necessary you can continue working with these elements:
 
 .. code:: python
 
@@ -216,13 +197,10 @@ read_until vs read_very_eager
     In [31]: output.decode('utf-8')
     Out[31]: 'sh clock\r\n*19:37:21.577 UTC Fri Nov 3 2017\r\nR1>'
 
-
-Метод close
+Method close
 ~~~~~~~~~~~
 
-
-Закрывается соединение методом close, но лучше открывать и закрывать сессию с помощью
-менеджера контекста:
+Method close() closes connection but it's better to open and close connection using context manager:
 
 .. code:: python
 
@@ -230,13 +208,14 @@ read_until vs read_very_eager
 
 .. note::
 
-    Использование объекта Telnet как менеджера контекса добавлено в
-    версии 3.6
+    Using Telnet object as context manager added in version 3.6
 
-Пример использования telnetlib
+Telnetlib usage example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Файл 2_telnetlib.py:
+Working principle of telnetlib resembles pexpect, so the example below should be clear.
+
+File 2_telnetlib.py:
 
 .. code:: python
 
@@ -281,13 +260,10 @@ read_until vs read_very_eager
             result = send_show_command(ip, "cisco", "cisco", "cisco", commands)
             pprint(result, width=120)
 
+Since bytes need to be passed to write() method and line feed should be added each time,
+a small function to_bytes() is created that does the conversion to bytes and adds a line feed.
 
-Так как методу write надо передавать байты и добавлять каждый раз перевод строки,
-создана небольшая функция to_bytes, которая выполняет преобразование в байты и
-добавление перевода строки.
-
-
-Выполнение скрипта:
+Script execution:
 
 ::
 
@@ -332,12 +308,11 @@ read_until vs read_very_eager
                      'Ethernet0/1       unassigned      YES NVRAM  up                    up      \n'
                      'Ethernet0/2       unassigned      YES NVRAM  administratively down down    \n'
                      'Ethernet0/3       unassigned      YES NVRAM  administratively down down    \n'
-
-Постраничный вывод команд
+                     
+Paginated command output
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Пример использования telnetlib для работы с постраничным выводом команд
-show (файл 2_telnetlib_more.py):
+Example of using telnetlib to work with paginated output of *show* commands (2_telnetlib_more.py file):
 
 .. code:: python
 
@@ -388,4 +363,3 @@ show (файл 2_telnetlib_more.py):
         for ip in devices:
             result = send_show_command(ip, "cisco", "cisco", "cisco", "sh run")
             pprint(result, width=120)
-

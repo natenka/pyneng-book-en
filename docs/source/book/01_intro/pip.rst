@@ -1,12 +1,9 @@
-Система управления пакетами pip
+Package management system Pip
 ===============================
 
-Для установки пакетов Python будет использоваться pip. Это система
-управления пакетами, которая используется для установки пакетов из
-Python Package Index (PyPI). Скорее всего, если у вас уже установлен
-Python, то установлен и pip.
+Pip will be used to install Python packages. It is a package management system used to install packages from the Python Package Index (Pypi). Most likely, if you already have Python installed, pip is installed.
 
-Проверка версии pip:
+Check pip version:
 
 ::
 
@@ -14,45 +11,42 @@ Python, то установлен и pip.
     pip 19.1.1 from /home/vagrant/venv/pyneng-py3-7/lib/python3.7/site-packages/pip (python 3.7)
 
 
-Если команда выдала ошибку, значит, pip не установлен. Установка pip
-описана в `документации <https://pip.pypa.io/en/stable/installing/>`__
+If the command failed, the pip is not installed. Pip installation is described in `documentation <https://pip.pypa.io/en/stable/installing/>`__
 
-Установка модулей
+Module installation
 ^^^^^^^^^^^^^^^^^
 
-Для установки модулей используется команда ``pip install``:
+The command to install modules ``pip install``:
 
 ::
 
     $ pip install tabulate
 
-Удаление пакета выполняется таким образом:
+Removing the package is done as follows:
 
 ::
 
     $ pip uninstall tabulate
 
-Кроме того, иногда необходимо обновить пакет:
+In addition, it is sometimes necessary to update the package:
 
 ::
 
     $ pip install --upgrade tabulate
 
-pip или pip3
+pip or pip3
 ^^^^^^^^^^^^
 
-В зависимости от того, как установлен и настроен Python в системе, может
-потребоваться использовать pip3 вместо pip. Чтобы проверить, какой
-вариант используется, надо выполнить команду ``pip --version``.
+Depending on how Python is installed and configured in the system it may be necessary to use pip3 instead of pip. To check which option is used, you must execute the command ``pip --version``.
 
-Вариант, когда pip соответствует Python 2.7:
+A variant where pip corresponds to Python 2.7:
 
 ::
 
     $ pip --version
     pip 9.0.1 from /usr/local/lib/python2.7/dist-packages (python 2.7)
 
-Вариант, когда pip3 соответствует Python 3.7:
+A variant where pip3 corresponds to 3.7:
 
 ::
 
@@ -60,14 +54,12 @@ pip или pip3
     pip 19.1.1 from /home/vagrant/venv/pyneng-py3-7/lib/python3.7/site-packages/pip (python 3.7)
 
 
-Если в системе используется pip3, то каждый раз, когда в книге
-устанавливается модуль Python, нужно будет заменить pip на pip3.
+If the system uses pip3, then every time a Python module is installed in the book it will be necessary to replace pip with pip3.
 
-Также можно использовать альтернативный вариант вызова pip:
+Alternatively, call pip:
 
 ::
 
     $ python3.7 -m pip install tabulate
 
-Таким образом, всегда понятно для какой именно версии Python
-устанавливается пакет.
+Thus, it is always clear for which version of Python the package is installed.

@@ -4,21 +4,17 @@
 
 .. _modules_index:
 
-11. Модули
+11. Modules
 ============================
 
-Модуль в Python - это обычный текстовый файл с кодом Python и
-расширением **.py**. Он позволяет логически упорядочить и сгруппировать
-код.
+Module in Python is a plain text file with Python code and **.py** extention. It allows logical ordering and grouping of the code.
 
-Разделение на модули может быть, например, по такой логике:
+Division into modules can be done, for example, by this logic:
 
-* разделение данных, форматирования и логики кода
-* группировка функций и других объектов по функционалу
+* division of data, formatting and code logic
+* grouping functions and other objects by functionality
 
-Модули хороши тем, что позволяют повторно использовать уже написанный
-код и не копировать его (например, не копировать когда-то написанную
-функцию).
+The good thing about modules is that they allow you to reuse already written code and not copy it (for example, do not copy a previously written function).
 
 
 .. toctree::

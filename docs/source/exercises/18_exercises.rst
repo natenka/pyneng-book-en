@@ -2,75 +2,62 @@
 
    \newpage
 
-Задания
+Tasks
 =======
 
 .. include:: ./pytest.rst
 
-Задание 18.1
+Task 18.1
 ~~~~~~~~~~~~
 
-Создать функцию send_show_command.
+Create send_show_command() function.
 
-Функция подключается по SSH (с помощью netmiko) к ОДНОМУ устройству и выполняет указанную команду.
+Function connects via SSH (using netmiko) to one device and performs specified command.
 
-Параметры функции:
+Function parameters:
 
-* device - словарь с параметрами подключения к устройству
-* command - команда, которую надо выполнить
+* device - dictionary with device connection parameters
+* command - command to execute
 
-Функция возвращает строку с выводом команды.
+Function returns a string with command output.
 
-Скрипт должен отправлять команду command на все устройства из файла devices.yaml с помощью функции send_show_command (эта часть кода написана).
+Script should send *command* command to all devices from device.yaml file using send_show_command() function.
 
 .. code:: python
-    import yaml
 
+    command = "sh ip int br"
 
-
-    if __name__ == "__main__":
-        command = "sh ip int br"
-        with open("devices.yaml") as f:
-            devices = yaml.safe_load(f)
-
-        for dev in devices:
-            print(send_show_command(dev, command))
-
-Задание 18.1a
+Task 18.1a
 ~~~~~~~~~~~~~
 
-Скопировать функцию send_show_command из задания 18.1 и переделать ее таким образом,
-чтобы обрабатывалось исключение, которое генерируется при ошибке аутентификации на устройстве.
+Copy send_show_command() function from task 18.1 and redo it to process the exception that is generated when authentication on device fails.
 
-При возникновении ошибки, на стандартный поток вывода должно выводиться сообщение исключения.
+If error occurs, exception message should be displayed on standard output stream.
 
-Для проверки измените пароль на устройстве или в файле devices.yaml.
+To verify this, change your password on device or in devices.yaml
 
-Задание 18.1b
+Task 18.1b
 ~~~~~~~~~~~~~
 
-Скопировать функцию send_show_command из задания 18.1a и переделать ее таким образом,
-чтобы обрабатывалось не только исключение, которое генерируется
-при ошибке аутентификации на устройстве, но и исключение,
-которое генерируется, когда IP-адрес устройства недоступен.
+Copy send_show_command() function from task 18.1a and redo it in such a way that exception is generated not only when authentication on device fails, but also when device’s IP address is not available.
 
-При возникновении ошибки, на стандартный поток вывода должно выводиться сообщение исключения.
+If error occurs, exception message should be displayed on standard output stream.
 
-Для проверки измените IP-адрес на устройстве или в файле devices.yaml.
+To verify this, change your password on device or in devices.yaml
 
-Задание 18.2
+Task 18.2
 ~~~~~~~~~~~~
 
-Создать функцию send_config_commands
+Create send_config_commands() function
 
-Функция подключается по SSH (с помощью netmiko) к одному устройству и выполняет перечень команд в конфигурационном режиме на основании переданных аргументов.
+Function connects via SSH (using netmiko) to device and performs a list of commands in configuration mode based on passed arguments.
 
-Параметры функции:
+Function parameters:
 
-* device - словарь с параметрами подключения к устройству
-* config_commands - список команд, которые надо выполнить
+* device - dictionary with device connection parameters
+* config_commands - list of commands to execute
 
-Функция возвращает строку с результатами выполнения команды:
+Function returns a string with command output.
 
 .. code:: python
 
@@ -100,7 +87,7 @@
     R1#
 
 
-Скрипт должен отправлять команду command на все устройства из файла devices.yaml с помощью функции send_config_commands.
+Script should send *command* command to all devices from device.yaml file using send_config_commands() function.
 
 .. code:: python
 
@@ -108,64 +95,58 @@
         'logging 10.255.255.1', 'logging buffered 20010', 'no logging console'
     ]
 
-Задание 18.2a
+Task 18.2a
 ~~~~~~~~~~~~~
 
-Скопировать функцию send_config_commands из задания 18.2 и добавить параметр log,
-который контролирует будет ли выводится на стандартный поток вывода
-информация о том к какому устройству выполняется подключение.
+Copy send_config_commands() function from task 18.2 and add *verbose* parameter that controls whether information about to which device connection is established will be displayed in output.
 
-По умолчанию, результат должен выводиться.
+.. note::
+    verbose - parameter of send_config_commands() function, not parameter of ConnectHandler!
 
-Пример работы функции:
+By default, the result should be displayed.
+
+Example of function execution:
 
 .. code:: python
 
     In [13]: result = send_config_commands(r1, commands)
-    Подключаюсь к 192.168.100.1...
+    Connection to 192.168.100.1...
 
-    In [14]: result = send_config_commands(r1, commands, log=False)
+    In [14]: result = send_config_commands(r1, commands, verbose=False)
 
     In [15]:
 
-Скрипт должен отправлять список команд commands на все устройства из файла devices.yaml с помощью функции send_config_commands.
+Script should send commands list to all devices from devices.yaml file using the send_config_commands() function.
 
 
-Задание 18.2b
+Task 18.2b
 ~~~~~~~~~~~~~
 
-Скопировать функцию send_config_commands из задания 18.2a и добавить проверку на ошибки.
+Copy send_config_commands() function from task 18.2a and add error check.
 
-При выполнении каждой команды, скрипт должен проверять результат на такие ошибки:
+When executing each command, script should check the result for such errors:
 
-* Invalid input detected
-* Incomplete command
-* Ambiguous command
+* Invalid input detected, Incomplete command, Ambiguous command
 
-Если при выполнении какой-то из команд возникла ошибка,
-функция должна выводить сообщение на стандартный поток вывода с информацией
-о том, какая ошибка возникла, при выполнении какой команды и на каком устройстве, например:
-Команда "logging" выполнилась с ошибкой "Incomplete command." на устройстве 192.168.100.1
+If error occurs during execution of any of commands, function should output a message to standard output stream with information about: which error occurred, which command caused it and on which device. For example: "logging" command was executed with error "Incomplete command." on device 192.168.100.1
 
-Ошибки должны выводиться всегда, независимо от значения параметра log.
-При этом, log по-прежнему должен контролировать будет ли выводиться сообщение:
-Подключаюсь к 192.168.100.1...
+Errors should always be displayed regardless of *verbose* parameter value. However, *verbose* still has to control whether the message will be displayed:
+Connecting to 192.168.100.1...
 
+Function send_config_commands() should now return a tuple with two dictionaries:
 
-Функция send_config_commands теперь должна возвращать кортеж из двух словарей:
+* first dictionary with commands output that executed without error
+* second dictionary with commands output that executed with errors
 
-* первый словарь с выводом команд, которые выполнились без ошибки
-* второй словарь с выводом команд, которые выполнились с ошибками
+Both dictionaries in format:
 
-Оба словаря в формате (примеры словарей ниже):
+* key - command
+* value - output with execution of commands
 
-* ключ - команда
-* значение - вывод с выполнением команд
-
-Проверить работу функции можно на одном устройстве.
+Function can be checked on one device.
 
 
-Пример работы функции send_config_commands:
+Example of send_config_commands() function execution:
 
 .. code:: python
 
@@ -178,10 +159,10 @@
      'ip http server']
 
     In [17]: result = send_config_commands(r1, commands)
-    Подключаюсь к 192.168.100.1...
-    Команда "logging 0255.255.1" выполнилась с ошибкой "Invalid input detected at '^' marker." на устройстве 192.168.100.1
-    Команда "logging" выполнилась с ошибкой "Incomplete command." на устройстве 192.168.100.1
-    Команда "a" выполнилась с ошибкой "Ambiguous command:  "a"" на устройстве 192.168.100.1
+    Connecting to 192.168.100.1...
+    "logging 0255.255.1" command was executed with error "Invalid input detected at '^' marker." on device 192.168.100.1
+    "logging" command was executed with error "Incomplete command." on device 192.168.100.1
+    "a" command was executed with error "Ambiguous command:  "a"" on device 192.168.100.1
 
     In [18]: pprint(result, width=120)
     ({'ip http server': 'config term\n'
@@ -220,7 +201,7 @@
     Out[21]: dict_keys(['logging 0255.255.1', 'logging', 'a'])
 
 
-Примеры команд с ошибками:
+Examples of commands with errors:
 
 ::
 
@@ -235,7 +216,7 @@
     % Ambiguous command:  "a"
 
 
-Списки команд с ошибками и без:
+Lists of command lists with and without errors:
 
 .. code:: python
 
@@ -244,40 +225,38 @@
 
     commands = commands_with_errors + correct_commands
 
-Задание 18.2c
+Task 18.2c
 ~~~~~~~~~~~~~
 
-Скопировать функцию send_config_commands из задания 18.2b и переделать ее таким образом:
-Если при выполнении команды возникла ошибка,
-спросить пользователя надо ли выполнять остальные команды.
+Copy send_config_commands() function from 18.2b task and redo it in the following way: If you have error when executing a command, ask user if you need to execute other commands.
 
-Варианты ответа [y]/n:
+Response options [y]/n:
 
-* y - выполнять остальные команды. Это значение по умолчанию, поэтому нажатие любой комбинации воспринимается как y
-* n или no - не выполнять остальные команды
+* y - to execute other commands. This is the default, so pressing any combination is perceived as "y"
+* n or no - do not execute other commands
 
-Функция send_config_commands по-прежнему должна возвращать кортеж из двух словарей:
+Function send_config_commands() should still return a tuple with two dictionaries:
 
-* первый словарь с выводом команд, которые выполнились без ошибки
-* второй словарь с выводом команд, которые выполнились с ошибками
+* first dictionary with commands output that executed without error
+* second dictionary with commands output that executed with errors
 
-Оба словаря в формате
+Both dictionaries in format:
 
-* ключ - команда
-* значение - вывод с выполнением команд
+* key - command
+* value - output with execution of commands
 
-Проверить работу функции можно на одном устройстве.
+Function can be checked on one device.
 
-Пример работы функции:
+Example of function execution:
 
 .. code:: python
 
     In [11]: result = send_config_commands(r1, commands)
-    Подключаюсь к 192.168.100.1...
-    Команда "logging 0255.255.1" выполнилась с ошибкой "Invalid input detected at '^' marker." на устройстве 192.168.100.1
-    Продолжать выполнять команды? [y]/n: y
-    Команда "logging" выполнилась с ошибкой "Incomplete command." на устройстве 192.168.100.1
-    Продолжать выполнять команды? [y]/n: n
+    Connecting to 192.168.100.1...
+    "logging 0255.255.1" command was executed with error "Invalid input detected at '^' marker." on device 192.168.100.1
+    Continue commands execution? [y]/n: y
+    "logging" command was executed with error "Incomplete command." on device 192.168.100.1
+    Continue commands execution? [y]/n: n
 
     In [12]: pprint(result)
     ({},
@@ -296,7 +275,7 @@
                             '\n'
                             'R1(config)#'})
 
-Списки команд с ошибками и без:
+Lists of commands with and without errors:
 
 .. code:: python
 
@@ -305,33 +284,32 @@
 
     commands = commands_with_errors + correct_commands
 
-Задание 18.3
+Task 18.3
 ~~~~~~~~~~~~
 
-Создать функцию send_commands (для подключения по SSH используется netmiko).
+Create send_commands() function (netmiko is used to connect via SSH).
 
-Параметры функции:
+Function parameters:
 
-* device - словарь с параметрами подключения к устройству, которому надо передать команды
-* show - одна команда show (строка)
-* config - список с командами, которые надо выполнить в конфигурационном режиме
+* device - dictionary with device connection parameters
+* show - one show command (string)
+* config - list of commands to execute in configuration mode
 
-В зависимости от того, какой аргумент был передан, функция вызывает разные функции внутри.
-При вызове функции send_commands, всегда будет передаваться только один из аргументов show, config.
+Depending on which argument is passed, the function calls different functions within. When calling send_commands(), only one argumnet will be passed - show or config.
 
-Далее комбинация из аргумента и соответствующей функции:
+Then follows the combination of argument and corresponding fucntion:
 
-* show - функция send_show_command из задания 18.1
-* config - функция send_config_commands из задания 18.2
+* show - send_show_command() function from task 18.1
+* config - send_config_commands() function from task 18.2
 
-Функция возвращает строку с результатами выполнения команд или команды.
+Function returns string with execution results of command or commands.
 
-Проверить работу функции:
+Check function with:
 
-* со списком команд commands
-* командой command
+* *commands* - list of commands
+* *command* - command
 
-Пример работы функции:
+Example of function execution:
 
 
 .. code:: python
@@ -342,7 +320,7 @@
     In [15]: send_commands(r1, config=['username user5 password pass5', 'username user6 password pass6'])
     Out[15]: 'config term\nEnter configuration commands, one per line.  End with CNTL/Z.\nR1(config)#username user5 password pass5\nR1(config)#username user6 password pass6\nR1(config)#end\nR1#'
 
-Пример команд:
+Commands example:
 
 .. code:: python
 

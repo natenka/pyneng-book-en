@@ -1,7 +1,7 @@
-Проверка типов
+Types checking
 ~~~~~~~~~~~~~~
 
-При преобразовании типов данных могут возникнуть ошибки такого рода:
+This type of error can occur when converting data types:
 
 .. code:: python
 
@@ -13,21 +13,16 @@
 
     ValueError: invalid literal for int() with base 10: 'a'
 
-Ошибка абсолютно логичная. Мы пытаемся преобразовать в десятичный формат
-строку 'a'.
+The error is perfectly logical. We’re trying to convert string 'a' into decimal format.
 
-И если тут пример выглядит, возможно, глупым, тем не менее, когда нужно,
-например, пройтись по списку строк и преобразовать в числа те из них,
-которые содержат числа, можно получить такую ошибку.
+And if the example here is probably stupid, however, when you want to go through a list of strings and convert to a number the strings that contain numbers, you can get that error.
 
-Чтобы избежать её, было бы хорошо иметь возможность проверить, с чем мы
-работаем.
+To avoid it, it would be nice to be able to check what we’re working with.
 
 ``isdigit()``
 ^^^^^^^^^^^^^
 
-В Python такие методы есть. Например, чтобы проверить, состоит ли строка
-из одних цифр, можно использовать метод ``isdigit()``:
+Python has such methods. For example, the ``isdigit()`` method can be used to check whether a string consists only of digits:
 
 .. code:: python
 
@@ -44,8 +39,7 @@
 ``isalpha()``
 ^^^^^^^^^^^^^
 
-Метод ``isalpha()`` позволяет проверить, состоит ли строка из одних
-букв:
+The ``isalpha()`` method makes it possible to check whether a string consists only of letters:
 
 .. code:: python
 
@@ -64,8 +58,7 @@
 ``isalnum()``
 ^^^^^^^^^^^^^
 
-Метод ``isalnum()`` позволяет проверить, состоит ли строка из букв или
-цифр:
+The ``isalnum()`` пethod makes it possible to check whether a string consists of letters or numbers:
 
 .. code:: python
 
@@ -78,14 +71,11 @@
 ``type()``
 ^^^^^^^^^^
 
-Иногда, в зависимости от результата, библиотека или функция может
-выводить разные типы объектов. Например, если объект один, возвращается
-строка, если несколько, то возвращается кортеж.
+Sometimes, depending on the result, a library or function can output different types of objects. For example, if an there is one object a string is returned, if several a tuple is returned.
 
-Нам же надо построить ход программы по-разному, в зависимости от того,
-была ли возвращена строка или кортеж.
+We have to construct the program in different ways, depending on whether a string or a tuple has been returned.
 
-В этом может помочь функция ``type()``:
+The ``type()`` function can help:
 
 .. code:: python
 
@@ -95,7 +85,7 @@
     In [14]: type("string") is str
     Out[14]: True
 
-Аналогично с кортежем (и другими типами данных):
+Similar to tuple (and other data types):
 
 .. code:: python
 

@@ -2,96 +2,90 @@
 
    \newpage
 
-Задания
+Tasks
 =======
 
 .. include:: ./exercises_intro.rst
 
-Задание 6.1
+Task 6.1
 ~~~~~~~~~~~
 
-Список mac содержит MAC-адреса в формате XXXX:XXXX:XXXX.
-Однако, в оборудовании cisco MAC-адреса используются в формате XXXX.XXXX.XXXX.
+Mac list contains MAC addresses in XXXXXX:XXXX:XXXX format. However, in cisco hardware, MAC addresses are used in XXXXXX.XXX.XXXX format.
+
+Write code that converts MAC addresses to cisco format and adds them to the new list mac_cisco
 
 
-Написать код, который преобразует MAC-адреса в формат cisco
-и добавляет их в новый список mac_cisco
-
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
 .. code:: python
 
     mac = ["aabb:cc80:7000", "aabb:dd80:7340", "aabb:ee80:7000", "aabb:ff80:7000"]
 
-Задание 6.2
+Task 6.2
 ~~~~~~~~~~~
 
-1. Запросить у пользователя ввод IP-адреса в формате 10.0.1.1
-2. В зависимости от типа адреса (описаны ниже), вывести на стандартный поток вывода:
+1. Request user input of IP addresses in 10.0.1.1 format
+2. Depending on address type (described below), print to standard output stream:
 
-   * "unicast" - если первый байт в диапазоне 1-223
-   * "multicast" - если первый байт в диапазоне 224-239
-   * "local broadcast" - если IP-адрес равен 255.255.255.255
-   * "unassigned" - если IP-адрес равен 0.0.0.0
-   * "unused" - во всех остальных случаях
+   * "unicast" - if first byte in range 1-223
+   * "multicast" - if first byte in range 224-239
+   * "local broadcast" - if IP address is 255.255.255.255
+   * "unassigned" - if IP address is 0.0.0.0
+   * "unused" - in all other cases
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
-Задание 6.2a
+Task 6.2a
 ~~~~~~~~~~~~
 
-Сделать копию скрипта задания 6.2.
+Make a copy of script from task 6.2.
 
-Добавить проверку введенного IP-адреса. Адрес считается корректно заданным, если он:
+Add a check of entered IP address. An address is considered correct if it:
 
-* состоит из 4 чисел (а не букв или других символов)
-* числа разделенны точкой
-* каждое число в диапазоне от 0 до 255
+* consists of 4 numbers (not letters or other symbols)
+* numbers separated by a dot
+* each number in range 0 to 255
 
-Если адрес задан неправильно, выводить сообщение: "Неправильный IP-адрес". Сообщение должно выводиться только один раз.
+If address is not set correctly, display message: "Wrong IP address". Message must be displayed only once.
 
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
-Задание 6.2b
+Task 6.2b
 ~~~~~~~~~~~~
 
-Сделать копию скрипта задания 6.2a.
+Make a copy of script from task 6.2a.
 
-Дополнить скрипт:
-Если адрес был введен неправильно, запросить адрес снова.
+Complete script:
+If address was entered incorrectly, ask for address again.
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
-Задание 6.3
+Task 6.3
 ~~~~~~~~~~~
 
-В скрипте сделан генератор конфигурации для access-портов.
+Script has a configuration generator for access ports.
 
-Сделать аналогичный генератор конфигурации для портов trunk.
+Make a similar configuration generator for trunk ports.
 
-В транках ситуация усложняется тем, что VLANов может быть много, и надо понимать,
-что с ним делать.
+The situation with trunk ports is complicated by the fact that there could be many Vlans and you have to know what to do with it.
 
-Поэтому в соответствии каждому порту стоит список
-и первый (нулевой) элемент списка указывает как воспринимать номера VLAN,
-которые идут дальше.
+Therefore, according to each port there is a list and the first (zero) item of the list indicates how to perceive VLAN numbers that go further.
 
-Пример значения и соответствующей команды:
+Example of value and corresponding command:
 
-* ["add", "10", "20"] - команда switchport trunk allowed vlan add 10,20
-* ["del", "17"] - команда switchport trunk allowed vlan remove 17
-* ["only", "11", "30"] - команда switchport trunk allowed vlan 11,30
+* ["add", "10", "20"] - switchport trunk allowed vlan add 10,20
+* ["del", "17"] - switchport trunk allowed vlan remove 17
+* ["only", "11", "30"] - switchport trunk allowed vlan 11,30
 
-Задача для портов 0/1, 0/2, 0/4:
+Tasks for ports 0/1, 0/2, 0/4:
 
-* сгенерировать конфигурацию на основе шаблона trunk_template
-* с учетом ключевых слов add, del, only
+* generate configuration based on template trunk_template
+* based on keywords add, del, only
 
-Код не должен привязываться к конкретным номерам портов. То есть, если в словаре
-trunk будут другие номера интерфейсов, код должен работать.
+The code should not be tied to specific port numbers. That is, if there are other interface numbers in *trunk* dictionary, the code should work.
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
 .. code:: python
 

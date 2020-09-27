@@ -1,159 +1,86 @@
-О книге
+About book
 -------
 
-Если "в двух словах", то это такой CCNA по Python. С одной стороны,
-книга достаточно базовая, чтобы её мог одолеть любой желающий, а с
-другой стороны, в книге рассматриваются все основные темы, которые
-позволят дальше расти самостоятельно. Книга не ставит своей целью
-глубокое рассмотрение Python. Задача книги – объяснить понятным языком
-основы Python и дать понимание необходимых инструментов для его
-практического использования. Всё, что рассматривается в книге,
-ориентировано на сетевое оборудование и работу с ним. Это даёт
-возможность сразу использовать в работе сетевого инженера то, что было
-изучено на курсе. Все примеры показываются на примере оборудования
-Cisco, но, конечно же, они применимы и для любого другого оборудования.
+In nutshell, this book is like CCNA but for python. From the one hand, the book is basic enough, so everyone can handle it, from the other hand, the book considers all main topics which allow you to develop skill independently in the future. Python deep dive is not a goal of this book. The goal is to explain Python basics in plain language and provide understanding of necessary tools for practical usage. Everything in this book is focused on network equipment and interaction with it. It right away gives opportunity to use knowledge gained at the course in network engineers daily work. All shown examples are based on Cisco equipment but, of course, they could be applied to any other equipment.
 
-Для кого эта книга
+Who is this book for?
 ~~~~~~~~~~~~~~~~~~
 
-Для сетевых инженеров с опытом программирования и без. Все примеры и
-домашние задания будут построены с уклоном на сетевое оборудование. Эта
-книга будет полезна сетевым инженерам, которые хотят автоматизировать
-задачи, с которыми сталкиваются каждый день и хотели заняться
-программированием, но не знали, с какой стороны подойти.
+For network engineers with or without programming experience. All examples and homework will be formed with a focus on network equipment. This book will be useful for network engineers who want to automate their daily basis routine tasks and want start coding but don't know how to approach this.
+Still haven't decided whether it worth reading this book? Read
+:ref:`feedbacks <testimonials>`.
 
-Ещё не решили, нужно ли читать книгу? Почитайте
-:ref:`отзывы <testimonials>`.
-
-Зачем Вам учиться программировать?
+Why you need to learn programming?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Знание программирования для сетевого инженера сравнимо со знанием
-английского. Если вы знаете английский хотя бы на уровне, который
-позволяет читать техническую документацию, вы сразу же расширяете свои
-возможности:
+Programming knowledge for network engineer could be compared with necessity of English knowledge. When you know English at least on level which allows to read technical documentation you expand your opportunities at once:
 
--  доступно в несколько раз больше литературы, форумов и блогов;
--  практически для любого вопроса или проблемы достаточно быстро
-   находится решение, если вы ввели запрос в Google.
+-  Much more literature, forums, blogs are available;
+-  Easier to find solution for almost every question or issue if you ask Google.
 
-Знание программирования в этом очень похоже. Если вы знаете, например,
-Python хотя бы на базовом уровне, вы уже открываете массу новых
-возможностей для себя. Аналогия с английским подходит ещё и потому, что
-можно работать сетевым инженером и быть хорошим специалистом без знания
-английского. Английский просто даёт возможности, но он не является
-обязательным требованием.
+Knowledge of programming is very similar in this. For instance, If you know Python at least on basic level  you open plenty of new opportunities. Also analogy to English fits here because you can be capable specialist without knowledge of English language. English gives you opportunity but it's not a mandatory requirement.
 
 
-Требуемые версии ОС и Python
+OS and Python requirements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Все примеры и выводы терминала в книге показываются на Debian Linux. В
-книге используется Python 3.7, но для большинства примеров подойдет и
-Python 3.x. Только в некоторых примерах требуется версия 3.6 или
-выше чем 3.5. Это всегда явно указано и, как правило, касается
-дополнительных возможностей.
+All examples and terminal outputs in the book are shown on Debian Linux. Python 3.7 is used in this book but for the majority of examples Python 3.x will be enough. Only some examples requires Python version higher than 3.5. It always explicitly indicated and generally concerns some additional features.
 
-Примеры
+Examples
 ~~~~~~~
 
-Все примеры, которые используются в книге, располагаются в
-`репозитории <https://github.com/natenka/pyneng-examples-exercises>`__.
-Примеры, которые рассматриваются в разделах книги, являются обучающими.
-Это значит, что они не обязательно показывают лучший вариант решения
-задачи, так как они основаны только на той информации, которая
-рассматривалась в предыдущих главах книги. Кроме того, довольно часто
-примеры, которые давались в разделах, развиваются в заданиях. То есть, в
-заданиях вам нужно будет сделать лучшую, более универсальную, и, в
-целом, более правильную версию кода. Если есть возможность, лучше
-набирать код, который используется в книге, самостоятельно, или, как
-минимум, скачать примеры и попробовать что-то в них изменить – так
-информация будет лучше запоминаться. Если такой возможности нет,
-например, когда вы читаете книгу в дороге, лучше повторить примеры
-самостоятельно позже. В любом случае, обязательно нужно делать задания
-вручную.
+All examples from the book resides in 
+`repository <https://github.com/natenka/pyneng-examples-exercises>`__.
+All examples have educational purpose. It means they not necessarily show the best solution since they are based on information which was covered in previous chapters. Moreover, often enough the examples in chapters are developing in tasks. In other words, in tasks you have to create better, more universal and, in general, more proper version of code. It's better to write code from the book on your own or at least download examples and try to modify them. So the information will be better remembered. If you don't have this possibility, for example when you read book on road, it's better to repeat examples later on your own. In any case, it's necessary to do tasks manually.
 
-Задания
+Tasks
 ~~~~~~~
 
-Все задания и вспомогательные файлы можно скачать в
-`репозитории <https://github.com/natenka/pyneng-examples-exercises>`__,
-том же, где располагаются примеры кода. Если в заданиях раздела есть
-задания с буквами (например, 5.2a), то нужно выполнить сначала задания
-без букв, а затем с буквами. Задания с буквами, как правило, немного
-сложнее заданий без букв и развивают идею в соответствующем задании без
-буквы. Если получается, лучше делать задания по порядку. В книге
-специально не приведены ответы на задания, так как, к сожалению, когда
-есть ответы, очень часто вместо того, чтобы попытаться решить сложное
-задание самостоятельно, подглядывают в них. Конечно, иногда возникает
-ситуация, когда никак не получается решить задание – попробуйте отложить
-его, задать вопрос в `Slack <https://join.slack.com/t/pyneng/shared_invite/enQtNzkyNTYwOTU5Njk5LWE4OGNjMmM1ZTlkNWQ0N2RhODExZDA0OTNhNDJjZDZlOTZhOGRiMzIyZjBhZWYzYzc3MTg3ZmQzODllYmQ4OWU>`__ и
-сделать какое-либо другое.
+All tasks and auxiliary files can be downloaded from the same
+`repository  <https://github.com/natenka/pyneng-examples-exercises>`__,
+where code examples are located. If task name consist of letter (for ex. 5.2a) it's better to complete this task after tasks without letters. Usually, tasks with letter are more complex and they continue the idea of task without letter. If possible it's better to do tasks one by one. There are no answers in the book because, unfortunately, when answers are present there is a great temptation to look at them instead of solving complex task on your own. Of course, sometimes it's difficult to find a solution - try to set this task aside, ask question in `Slack <https://join.slack.com/t/pyneng/shared_invite/enQtNzkyNTYwOTU5Njk5LWE4OGNjMmM1ZTlkNWQ0N2RhODExZDA0OTNhNDJjZDZlOTZhOGRiMzIyZjBhZWYzYzc3MTg3ZmQzODllYmQ4OWU>`__ and do another task.
 
 .. note::
-    На `Stack Overflow <https://stackoverflow.com>`__ есть ответы
-    практически на любые вопросы. Так что, если Google отправил Вас на
-    него, это, с большой вероятностью значит, что ответ найден. Запросы,
-    конечно же, лучше писать на английском – по Python очень много
-    материалов и, как правило, подсказку найти легко
+    Answers to almost all questions can be found in `Stack Overflow <https://stackoverflow.com>`__. So, if you see this website in Google search results it means with high probability the answer is found. Of course, it's better to ask Google in English - there are a lot of materials on Python and in general, it's easy to find a tip.
 
-Ответы могли бы показать, как ещё можно выполнить задание или же как
-лучше это сделать. Но на этот счёт не следует переживать, так как,
-скорее всего, в следующих разделах встретится пример, в котором будет
-показано, как писать такой код.
+Answers can show how to solve task in another way or how to solve it in better way. But no need to worry about it because in the next chapters you will likely meet an example with proper code.
 
-Вопросы
+Quiz
 ~~~~~~~
 
-Для части тем книги созданы вопросы:
+Some chapters have additional questions:
 
--  `Типы данных. Часть 1 <https://goo.gl/forms/xKHX5xNM8Pv5sQDf2>`__
--  `Типы данных. Часть 2 <https://goo.gl/forms/igxR3ub3tQg3ycX53>`__
--  `Контроль хода программы. Часть
-   1 <https://goo.gl/forms/2TmGcrhG11h2SdLn1>`__
--  `Контроль хода программы. Часть
-   2 <https://goo.gl/forms/KZGaDquGlUmOz2kG3>`__
--  `Функции и модули. Часть
-   1 <https://goo.gl/forms/M1DpbdD0brVbdp1G3>`__
--  `Функции и модули. Часть
-   2 <https://goo.gl/forms/rNvdX9bHw8wLajJp2>`__
--  `Регулярные выражения. Часть
-   1 <https://goo.gl/forms/5UpkJbm1dORqs4bP2>`__
--  `Регулярные выражения. Часть
-   2 <https://goo.gl/forms/ltuOAO62yLlZkEmm1>`__
--  `Базы данных <https://goo.gl/forms/wtGgmWg0vow1Cyqo1>`__
+-  `Data types. Part 1 <https://goo.gl/forms/xKHX5xNM8Pv5sQDf2>`__
+-  `Data types. Part 2 <https://goo.gl/forms/igxR3ub3tQg3ycX53>`__
+-  `Compound statements. Part 1 <https://goo.gl/forms/2TmGcrhG11h2SdLn1>`__
+-  `Compound statements. Part 2 <https://goo.gl/forms/KZGaDquGlUmOz2kG3>`__
+-  `Functions and modules. Part 1 <https://goo.gl/forms/M1DpbdD0brVbdp1G3>`__
+-  `Functions and modules. Part 2 <https://goo.gl/forms/rNvdX9bHw8wLajJp2>`__
+-  `Regular expressions. Part 1 <https://goo.gl/forms/5UpkJbm1dORqs4bP2>`__
+-  `Regular expressions. Part 2 <https://goo.gl/forms/ltuOAO62yLlZkEmm1>`__
+-  `Data bases <https://goo.gl/forms/wtGgmWg0vow1Cyqo1>`__
 
-Эти вопросы можно использовать как для проверки знаний, так и в роли
-заданий. Очень полезно поотвечать на вопросы после прочтения соответствующей темы.
-Они позволят вам вспомнить материал темы, а также увидеть на практике
-разные аспекты работы с Python. Постарайтесь сначала ответить
-самостоятельно, а затем подсмотреть ответы в IPython по тем вопросам, в
-которых вы сомневаетесь.
+These quiz can be considered an evaluation test or as a task. It's useful to answer to these questions after reading of corresponding chapter. They will help you recall chapter's material and also see different aspects of Python usage in practice. First, try answer on your own and only then check answers in IPython on questions which you are doubting.
 
-Презентации
+Presentations
 ~~~~~~~~~~~
 
-Для всех тем книги есть презентации в
-`репозитории <https://github.com/natenka/pyneng-slides>`__. По ним
-удобно быстро просматривать информацию и повторять. Если вы знаете
-основы Python, то стоит их пролистать.
+There are presentations for each book chapter in
+`repository <https://github.com/natenka/pyneng-slides>`__. It's convenient way to repeat and go through the information. If you know basics of Python it worth getting through it.
 
-Скачать все презентации в формате PDF можно в специальном
-`репозитории <https://github.com/natenka/pyneng-slides/tree/py3-pdf>`__
+All presentations can be downloaded from special
+`repository <https://github.com/natenka/pyneng-slides/tree/py3-pdf>`__.
 
-Форматы файлов книги
+Book formats
 ~~~~~~~~~~~~~~~~~~~~
 
-Книгу можно скачать в двух форматах: PDF, Epub.
-Они автоматически обновляются, поэтому всегда содержат одинаковую
-информацию.
+Book is available in PDF and Epub formats. Both of them are being updated automatically, therefore the content is equal.
 
 
-Обсуждение
+Discussion
 ~~~~~~~~~~
 
-Для обсуждения книги, заданий, а также связанных вопросов используется
-`Slack <https://pyneng-slack.herokuapp.com>`__. Все вопросы, предложения
-и замечания по книге также пишите в
-`Slack <https://pyneng-slack.herokuapp.com>`__.
+Discussions of book, tasks and other related topics are taken place in
+`Slack <https://pyneng-slack.herokuapp.com>`__. Also write to 
+`Slack <https://pyneng-slack.herokuapp.com>`__ in case of questions, suggestions, comments and observations on book.
 

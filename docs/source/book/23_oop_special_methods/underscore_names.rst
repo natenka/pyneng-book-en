@@ -1,18 +1,15 @@
-Подчеркивание в именах
+Underscore in names
 ----------------------
 
-В Python подчеркивание в начале или в конце имени указывает на
-специальные имена. Чаще всего это всего лишь договоренность, но иногда
-это действительно влияет на поведение объекта.
+In Python, underscore at the beginning or at the end of a name indicates special names. Most often it’s just an arrangement, but sometimes it actually affects object behavior.
 
 
-Одно подчеркивание перед именем
+One underscore before name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Одно подчеркивание перед именем метода указывает, что метод является 
-внутренней особенностью реализации и его не стоит использовать напрямую.
+One underscore before method name indicates that method is an internal feature of the implementation and it should not be used directly.
 
-Например, класс CiscoSSH использует paramiko для подключения к оборудованию:
+For example, CiscoSSH class uses paramiko to connect to equipment:
 
 .. code:: python
 
@@ -46,8 +43,7 @@
             return result
 
 
-После создания экземпляра класса, доступен не только метод send_show_command,
-но и атрибуты client и ssh (3 строка это подсказки по tab в ipython):
+After creating an instance of the class, not only send_show_command method is available but also *client* and *ssh* attributes (3rd line is tab tips in ipython)::
 
 .. code:: python
 
@@ -59,9 +55,7 @@
                 ssh
 
 
-Если же необходимо указать, что client и ssh являются внутренними атрибутами,
-которые нужны для работы класса, но не предназначены для пользователя,
-надо поставить нижнее подчеркивание перед именем:
+If you want to specify that *client* and *ssh* are internal attributes that are needed for class operation but are not intended for the user, you need to underscore name below:
 
 .. code:: python
 
@@ -94,21 +88,17 @@
 
 .. note::
 
-    Часто такие методы и атрибуты называются приватными, но это не значит, 
-    что методы и переменные недоступны пользователю.
+    Often such methods and attributes are called private but this does not mean that methods and variables are not available to the user.
 
 
 
 
-Два подчеркивания перед именем
+Two underscores before name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Два подчеркивания перед именем метода используются не просто как
-договоренность. Такие имена трансформируются в формат "имя класса + имя
-метода". Это позволяет создавать уникальные методы и атрибуты классов.
+Two underscores before method name are not used simply as an agreement. Such names are transformed into format "name of class + name of method". This allows the creation of unique methods and attributes of classes.
 
-Такое преобразование выполняется только в том случае, если в конце
-менее двух подчеркиваний или нет подчеркиваний.
+This conversion is only performed if less than two underscores endings or no underscores.
 
 .. code:: python
 
@@ -123,10 +113,9 @@
     Out[15]:
     ['_Switch__configure', '_Switch__quantity', ...]
 
-Хотя методы создавались без приставки ``_Switch``, она была добавлена.
+Although methods were created without ``_Switch``, it was added.
 
-Если создать подкласс, то метод ``__configure`` не перепишет метод
-родительского класса Switch:
+If you create a subclass then ``__configure`` method will not rewrite parent class method Switch:
 
 .. code:: python
 
@@ -140,21 +129,17 @@
     Out[17]:
     ['_CiscoSwitch__configure', '_CiscoSwitch__quantity', '_Switch__configure', '_Switch__quantity', ...]
 
-Два подчеркивания перед и после имени
+Two underscores before and after name
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Таким образом обозначаются специальные переменные и методы.
+Thus, special variables and methods are denoted.
 
-Например, в модуле Python есть такие специальные переменные:
+For example, Python module has such special variables:
 
-* ``__name__`` - эта переменная равна строке ``__main__``, когда скрипт
-  запускается напрямую, и равна имени модуля, когда импортируется
-* ``__file__`` - эта переменная равна имени скрипта, который был запущен
-  напрямую, и равна полному пути к модулю, когда он импортируется
+* ``__name__`` - this variable is equal to ``__main__`` when the script runs directly and is equal to module name when imported
+* ``__file__`` - this variable is equal  to name of the script that was run directly and equals to complete path to module when it is imported
 
-Переменная ``__name__`` чаще всего используется, чтобы указать, что
-определенная часть кода должна выполняться, только когда модуль
-выполняется напрямую:
+Variable ``__name__`` is most commonly used to indicate that a certain part of code must be executed only when module is called directly:
 
 .. code:: python
 
@@ -166,8 +151,7 @@
     if __name__ == '__main__':
         print(multiply(3, 5))
 
-А переменная ``__file__`` может быть полезна в определении текущего пути
-к файлу скрипта:
+And ``__file__`` variable can be useful in determining the current path to script file:
 
 .. code:: python
 
@@ -176,21 +160,16 @@
     print('__file__', __file__)
     print(os.path.abspath(__file__))
 
-Вывод будет таким:
+The output will be:
 
 ::
 
     __file__ example2.py
     /home/vagrant/repos/tests/example2.py
 
-Кроме того, таким образом в Python обозначаются специальные методы. Эти
-методы вызываются при использовании функций и операторов Python и
-позволяют реализовать определенный функционал.
+Python also denotes special methods. These methods are called when using Python functions and operators and allow to implement a certain functionality.
 
-Как правило, такие методы не нужно вызывать напрямую. Но, например, при
-создании своего класса может понадобиться описать такой метод, чтобы
-объект поддерживал какие-то операции в Python.
+As a rule, such methods need not be called directly. But for example, when creating your own class it may be necessary to describe such method in order to object can support some operations in Python.
 
-Например, для того, чтобы можно было получить длину объекта, он должен
-поддерживать метод ``__len__``.
+For example, in order to get length of an object it must support  ``__len__`` method.
 

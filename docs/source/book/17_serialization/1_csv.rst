@@ -1,17 +1,13 @@
-Работа с файлами в формате CSV
+Work with CSV files
 ------------------------------
 
-**CSV (comma-separated value)** - это формат представления табличных
-данных (например, это могут быть данные из таблицы или данные из БД).
+**CSV (comma-separated value)** - a tabular data format (for example, it may be data from a table or data from a database).
 
-В этом формате каждая строка файла - это строка таблицы. Несмотря на
-название формата, разделителем может быть не только запятая.
+In this format, each line of a file is a line of a table. Despite the format name the separator can be not only a comma.
 
-И хотя у форматов с другим разделителем может быть и собственное
-название, например, TSV (tab separated values), тем не менее, под
-форматом CSV понимают, как правило, любые разделители.
+Although formats with a different separator may have their own name such as TSV (tab separated values), CSV is generally understood by all separators.
 
-Пример файла в формате CSV (sw_data.csv):
+Example of a CSV file (sw_data.csv):
 
 ::
 
@@ -21,20 +17,19 @@
     sw3,Cisco,3650,Liverpool
     sw4,Cisco,3650,London
 
-В стандартной библиотеке Python есть модуль csv, который позволяет
-работать с файлами в CSV формате.
+The standard Python library has a csv module that allows working with files in CSV format.
 
-Чтение
+Reading
 ~~~~~~
 
-Пример чтения файла в формате CSV (файл csv_read.py):
+Example of reading a file in CSV format (csv_read.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/csv/csv_read.py
   :language: python
   :linenos:
 
 
-Вывод будет таким:
+The output is:
 
 ::
 
@@ -45,10 +40,9 @@
     ['sw3', 'Cisco', '3650', 'Liverpool']
     ['sw4', 'Cisco', '3650', 'London']
 
-В первом списке находятся названия столбцов, а в остальных
-соответствующие значения.
+First list contains the column names and remaining list contains the corresponding values.
 
-Обратите внимание, что сам csv.reader возвращает итератор:
+Note that csv.reader returns the iterator:
 
 .. code:: python
 
@@ -60,7 +54,7 @@
        ...:
     <_csv.reader object at 0x10385b050>
 
-При необходимости его можно превратить в список таким образом:
+If necessary it could be converted into a list in the following way:
 
 .. code:: python
 
@@ -70,25 +64,23 @@
        ...:
     [['hostname', 'vendor', 'model', 'location'], ['sw1', 'Cisco', '3750', 'London'], ['sw2', 'Cisco', '3850', 'Liverpool'], ['sw3', 'Cisco', '3650', 'Liverpool'], ['sw4', 'Cisco', '3650', 'London']]
 
-Чаще всего заголовки столбцов удобней получить отдельным объектом. Это
-можно сделать таким образом (файл csv_read_headers.py):
+Most often column headers are more convenient to get by a separate object. This can be done in this way (csv_read_headers.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/csv/csv_read_headers.py
   :language: python
   :linenos:
 
 
-Иногда в результате обработки гораздо удобней получить словари, в
-которых ключи - это названия столбцов, а значения - значения столбцов.
+Sometimes it is more convenient to obtain dictionaries in which keys are column names and values are column values.
 
-Для этого в модуле есть **DictReader** (файл csv_read_dict.py):
+For this purpose, the module has **DictReader** (csv_read_dict.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/csv/csv_read_dict.py
   :language: python
   :linenos:
 
 
-Вывод будет таким:
+The output is:
 
 ::
 
@@ -102,32 +94,27 @@
     OrderedDict([('hostname', 'sw4'), ('vendor', 'Cisco'), ('model', '3650'), ('location', 'London')])
     sw4 3650
 
-DictReader создает не стандартные словари Python, а упорядоченные
-словари. За счет этого порядок элементов соответствует порядку столбцов
-в CSV-файле.
+Dictreader does not create standard Python dictionaries but ordered dictionaries. Thus, the order of elements corresponds to order of the columns in the CSV file.
 
 .. note::
 
-    До Python 3.6 возвращались обычные словари, а не упорядоченные.
+    Prior to Python 3.6 regular dictionaries were returned, not ordered dictionaries.
 
-В остальном с упорядоченными словарями можно работать, используя те же
-методы, что и в обычных словарях.
+Otherwise, it is possible to work with ordered dictionaries using the same methods as in regular dictionaries.
 
-Запись
+Writing
 ~~~~~~
 
-Аналогичным образом с помощью модуля csv можно и записать файл в формате
-CSV (файл csv_write.py):
+Similarly, a csv module can be used to write data to file in CSV format (csv_write.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/csv/csv_write.py
   :language: python
   :linenos:
 
 
-В примере выше строки из списка сначала записываются в файл, а затем
-содержимое файла выводится на стандартный поток вывода.
+In the example above, strings from the list are written to the file and then the content of file is displayed on standard output stream.
 
-Вывод будет таким:
+The output will be as follows:
 
 ::
 
@@ -138,28 +125,20 @@ CSV (файл csv_write.py):
     sw3,Cisco,3650,"Liverpool, Better str"
     sw4,Cisco,3650,"London, Best str"
 
-Обратите внимание на интересную особенность: строки в последнем столбце
-взяты в кавычки, а остальные значения - нет.
+Note the interesting thing: strings in the last column are quoted and other values are not.
 
-Так получилось из-за того, что во всех строках последнего столбца есть
-запятая. И кавычки указывают на то, что именно является целой строкой.
-Когда запятая находится в кавычках, модуль csv не воспринимает её как
-разделитель.
+This is because all strings in the last column have a comma. And the quotation marks indicate what is an entire string. When a comma is inside quotation marks the csv module does not perceive it as a separator.
 
-Иногда лучше, чтобы все строки были в кавычках. Конечно, в данном случае
-достаточно простой пример, но когда в строках больше значений, то
-кавычки позволяют указать, где начинается и заканчивается значение.
+Sometimes it’s better to have all strings quoted. Of course, in this case, example is simple enough but when there are more values in the strings, the quotation marks indicate where the value begins and ends.
 
-Модуль csv позволяет управлять этим. Для того, чтобы все строки
-записывались в CSV-файл с кавычками, надо изменить скрипт таким образом
-(файл csv_write_quoting.py):
+The csv module allows you to control this. For all strings to be written in a CSV file with quotation marks you should change the script this way (csv_write_quoting.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/csv/csv_write_quoting.py
   :language: python
   :linenos:
 
 
-Теперь вывод будет таким:
+Now the output is this:
 
 ::
 
@@ -170,14 +149,11 @@ CSV (файл csv_write.py):
     "sw3","Cisco","3650","Liverpool, Better str"
     "sw4","Cisco","3650","London, Best str"
 
-Теперь все значения с кавычками. И поскольку номер модели задан как
-строка в изначальном списке, тут он тоже в кавычках.
+Now all values are quoted. And because the model number is given as a string in original list, it is quoted here as well.
 
-Кроме метода writerow, поддерживается метод writerows. Ему можно
-передать любой итерируемый объект.
+Besides writerow() method, the writerows() method is supported. It accepts any iterable object.
 
-Например, предыдущий пример можно записать таким образом (файл
-csv_writerows.py):
+So, previous example can be written this way (csv_writerows.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/csv/csv_writerows.py
   :language: python
@@ -187,27 +163,21 @@ csv_writerows.py):
 DictWriter
 ^^^^^^^^^^
 
-С помощью DictWriter можно записать словари в формат CSV.
+With DictWriter() you can write dictionaries in CSV format.
 
-В целом DictWriter работает так же, как writer, но так как словари не
-упорядочены, надо указывать явно в каком порядке будут идти столбцы в
-файле. Для этого используется параметр fieldnames (файл
-csv_write_dict.py):
+In general, DictWriter() works as writer() but since dictionaries are not ordered it is necessary to specify the order of columns in file. The *fieldnames* option is used for this purpose (csv_write_dict.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/csv/csv_write_dict.py
   :language: python
   :linenos:
 
 
-Указание разделителя
+Delimiter
 ~~~~~~~~~~~~~~~~~~~~
 
-Иногда в качестве разделителя используются другие значения. В таком
-случае должна быть возможность подсказать модулю, какой именно
-разделитель использовать.
+Sometimes other values are used as the separator. In this case, it should be possible to tell the module which separator to use.
 
-Например, если в файле используется разделитель ``;`` (файл
-sw_data2.csv):
+For example, if the file uses separator ``;`` (sw_data2.csv file):
 
 ::
 
@@ -217,8 +187,7 @@ sw_data2.csv):
     sw3;Cisco;3650;Liverpool
     sw4;Cisco;3650;London
 
-Достаточно просто указать, какой разделитель используется в reader (файл
-csv_read_delimiter.py):
+Simply specify which separator is used in reader() (csv_read_delimiter.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/csv/csv_read_delimiter.py
   :language: python

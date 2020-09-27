@@ -4,7 +4,7 @@
 
 .. _oop_inheritance_index:
 
-24. Наследование
+24. Inheritance
 ============================
 
 

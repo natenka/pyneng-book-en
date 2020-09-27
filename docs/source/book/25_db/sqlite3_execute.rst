@@ -1,19 +1,18 @@
-Выполнение команд SQL
+Executing SQL commands
 ----------------------
 
-Для выполнения команд SQL в модуле есть несколько методов: 
+There are several methods for execution of SQL commands in module:
 
-* ``execute()`` - метод для выполнения одного выражения SQL 
-* ``executemany()`` - метод позволяет выполнить одно выражение SQL для 
-  последовательности параметров (или для итератора) 
-* ``executescript()`` - метод позволяет выполнить несколько выражений SQL за один раз
+* ``execute()`` - method for executing one SQL expression 
+* ``executemany()`` - method allows to execute one SQL expression for a sequence of parameters (or for iterator) 
+* ``executescript()`` - method allows to execute multiple SQL expressions at once
 
-Метод execute
+Method execute
 ^^^^^^^^^^^^^
 
-Метод execute позволяет выполнить одну команду SQL.
+Method execute() allows one SQL command to be executed.
 
-Сначала надо создать соединение и курсор:
+First, create connection and cursor:
 
 .. code:: python
 
@@ -23,18 +22,16 @@
 
     In [3]: cursor = connection.cursor()
 
-Создание таблицы switch с помощью метода execute:
+Creates a *switch* table using execute():
 
 .. code:: python
 
     In [4]: cursor.execute("create table switch (mac text not NULL primary key, hostname text, model text, location text)")
     Out[4]: <sqlite3.Cursor at 0x1085be880>
 
-Выражения SQL могут быть параметризированы - вместо данных можно
-подставлять специальные значения. За счет этого можно использовать одну
-и ту же команду SQL для передачи разных данных.
+SQL expressions can be parameterized - data can be substituted by special values. Due to this you can use the same SQL command to transfer different data.
 
-Например, таблицу switch нужно заполнить данными из списка data:
+For example, *switch* table needs to be filled with data from *data* list:
 
 .. code:: python
 
@@ -44,16 +41,15 @@
        ...: ('0000.AAAA.DDDD', 'sw3', 'Cisco 2960', 'London, Green Str'),
        ...: ('0011.AAAA.CCCC', 'sw4', 'Cisco 3750', 'London, Green Str')]
 
-Для этого можно использовать запрос вида:
+You can use this query:
 
 .. code:: python
 
     In [6]: query = "INSERT into switch values (?, ?, ?, ?)"
 
-Знаки вопроса в команде используются для подстановки данных, которые
-будут передаваться методу execute.
+The question marks in command are used to fill in the data that will be passed to execute().
 
-Теперь можно передать данные таким образом:
+Data can now be passed as follows:
 
 .. code:: python
 
@@ -61,19 +57,15 @@
        ...:     cursor.execute(query, row)
        ...:
 
-Второй аргумент, который передается методу execute, должен быть
-кортежем. Если нужно передать кортеж с одним элементом, используется
-запись ``(value, )``.
+The second argument that is passed to execute() must be a tuple. If you want to transfer a tuple with one element, ``(value, )`` entry is used.
 
-Чтобы изменения были применены, нужно выполнить commit (обратите
-внимание, что метод commit вызывается у соединения):
+For changes to be applied, commit must be executed (note that commit() method is called at the connection):
 
 .. code:: python
 
     In [8]: connection.commit()
 
-Теперь при запросе из командной строки sqlite3, можно увидеть эти
-строки в таблице switch:
+Now, when querying from sqlite3 command line you can see these rows in *switch* table:	
 
 ::
 
@@ -95,16 +87,14 @@
     sw_inventory.db>
 
 
-Метод executemany
+Method executemany
 ^^^^^^^^^^^^^^^^^
 
-Метод executemany позволяет выполнить одну команду SQL для
-последовательности параметров (или для итератора).
+Method executemany() allows one SQL command to be executed for parameter sequence (or for iterator).
 
-С помощью метода executemany в таблицу switch можно добавить аналогичный
-список данных одной командой.
+Using executemany() method you can add a similar data list to *switch* table by a single command.
 
-Например, в таблицу switch надо добавить данные из списка data2:
+For example, you should add data from the *data2* list to *switch* table:
 
 .. code:: python
 
@@ -114,13 +104,13 @@
        ...: ('0000.1111.0003', 'sw7', 'Cisco 3750', 'London, Green Str'),
        ...: ('0000.1111.0004', 'sw8', 'Cisco 3750', 'London, Green Str')]
 
-Для этого нужно использовать аналогичный запрос вида:
+To do this, use a similar request:
 
 .. code:: python
 
     In [10]: query = "INSERT into switch values (?, ?, ?, ?)"
 
-Теперь можно передать данные методу executemany:
+Now you can pass data to executemany():
 
 .. code:: python
 
@@ -129,7 +119,7 @@
 
     In [12]: connection.commit()
 
-После выполнения commit данные доступны в таблице:
+After commit, data is available in the table:
 
 ::
 
@@ -153,16 +143,14 @@
     8 rows in set
     Time: 0.034s
 
-Метод executemany подставил соответствующие кортежи в команду SQL, и все
-данные добавились в таблицу.
+Method executemany() placed corresponding tuples to SQL command and all data was added to the table.
 
-Метод executescript
+Method executescript
 ^^^^^^^^^^^^^^^^^^^
 
-Метод executescript позволяет выполнить несколько выражений SQL за один
-раз.
+Method executescript allows multiple SQL expressions to be executed at once.
 
-Особенно удобно использовать этот метод при создании таблиц:
+This method is particularly useful when creating tables:
 
 .. code:: python
 

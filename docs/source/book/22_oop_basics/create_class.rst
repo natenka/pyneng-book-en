@@ -1,15 +1,11 @@
-Создание класса
+Class creation
 ---------------
 
 .. note::
 
-    Обратите внимание, что тут основы поясняются с учетом того, что у
-    читающего нет опыта работы с ООП. Некоторые примеры не очень
-    правильны с точки зрения идеологии Python, но помогают лучше понять
-    происходящее. В конце даются пояснения как это правильней делать.
+    Note that the basis is explained here given that the reader has no experience with OOP. Some examples are not very correct from Python’s ideology point of view, but they help to better understand how it works. At the end, an explanation is given of how this should be done in proper way.
 
-Для создания классов в питоне используется ключевое слово ``class``.
-Самый простой класс, который можно создать в Python:
+Keyword ``class`` is used in python to create classes. The easiest class you can create in Python:
 
 .. code:: python
 
@@ -19,10 +15,9 @@
 
 .. note::
 
-    Имена классов: в Python принято писать имена классов в формате
-    CamelCase.
+    Class names: usually class names in Python are written in CamelCase format.
 
-Для создания экземпляра класса, надо вызвать класс:
+To create a class instance, call class:
 
 .. code:: python
 
@@ -31,9 +26,7 @@
     In [3]: print(sw1)
     <__main__.Switch object at 0xb44963ac>
 
-Используя точечную нотацию, можно получать значения переменных
-экземпляра, создавать новые переменные и присваивать новое значение
-существующим:
+Using dot notation, it is possible to derive values of instance variables, create new variables and assign a new value to existing ones:
 
 .. code:: python
 
@@ -41,7 +34,7 @@
 
     In [6]: sw1.model = 'Cisco 3850'
 
-В другом экземпляре класса Switch, переменные могут быть другие:
+In another instance of Switch class, the variables may be different:
 
 .. code:: python
 
@@ -51,8 +44,7 @@
 
     In [9]: sw2.model = 'Cisco 3750'
 
-Посмотреть значение переменных экземпляра можно используя ту же точечную
-нотацию:
+You can see value of instance variables using the same dot notation:
 
 .. code:: python
 

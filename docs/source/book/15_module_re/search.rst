@@ -1,23 +1,19 @@
-Функция search
+Search function
 --------------
 
-Функция ``search()``: 
+Function ``search()``: 
 
-* используется для поиска подстроки, которая соответствует шаблону 
-* возвращает объект Match, если подстрока найдена
-* возвращает ``None``, если подстрока не найдена
+* is used to find a substring that matches the template
+* returns the Match object if a substring is found
+* returns ``None`` if no substring was found
 
-Функция search подходит в том случае, когда надо найти только одно
-совпадение в строке, например, когда регулярное выражение описывает всю
-строку или часть строки.
+The search() function is suitable when you need to find only one match in a string, for example when a regular expression describes the entire string or part of a string.
 
-Рассмотрим пример использования функции search в разборе лог-файла.
+Consider an example of using the search() function to parse a log file.
 
-В файле log.txt находятся лог-сообщения с информацией о том, что один и
-тот же MAC слишком быстро переучивается то на одном, то на другом
-интерфейсе. Одна из причин таких сообщений - петля в сети.
+The log.txt file contains log messages indicating that the same MAC is too often re-learned on one or another interface. One of the reasons for these messages is loop in network.
 
-Содержимое файла log.txt:
+Contents of log.txt file:
 
 ::
 
@@ -26,12 +22,9 @@
     %SW_MATM-4-MACFLAP_NOTIF: Host 01e2.4c18.0156 in vlan 10 is flapping between port Gi0/24 and port Gi0/19
     %SW_MATM-4-MACFLAP_NOTIF: Host 01e2.4c18.0156 in vlan 10 is flapping between port Gi0/24 and port Gi0/16
 
-При этом MAC-адрес может прыгать между несколькими портами. В таком
-случае очень важно знать, с каких портов прилетает MAC.
+The MAC address can jump between several ports. In this case it is very important to know from which ports the MAC comes.
 
-Попробуем вычислить, между какими портами и в каком VLAN образовалась
-проблема.
-Проверка регулярного выражения с одной строкой из log-файла:
+Try to figure out which ports and which VLAN was the problem. Check regular expression with one line from log file:
 
 .. code:: python
 
@@ -45,41 +38,37 @@
        ...:                   r'(\S+) and port (\S+)', log)
        ...:
 
-Регулярное выражение для удобства чтения разбито на части. В нём есть три группы: 
+The regular expression is divided into parts for ease of reading. It has three groups:
 
-* ``(\d+)`` - описывает номер VLAN 
-* ``(\S+) and port (\S+)`` - в это выражение попадают номера портов
+* ``(\d+)`` - describes VLAN number
+* ``(\S+) and port (\S+)`` - describes port numbers
 
-В итоге, в группы попали такие части строки:
+As a result, the following parts of the line fell into the groups:
 
 .. code:: python
 
     In [4]: match.groups()
     Out[4]: ('10', 'Gi0/16', 'Gi0/24')
 
-В итоговом скрипте файл log.txt обрабатывается построчно, и из каждой
-строки собирается информация о портах. Так как порты могут
-дублироваться, сразу добавляем их в множество, чтобы получить подборку
-уникальных интерфейсов (файл parse_log_search.py):
+In the resulting script, log.txt is processed line by line and port information is collected from each line. Since ports can be duplicated we add them immediately to the set in order to get a compilation of unique interfaces (parse_log_search.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/15_module_re/parse_log_search.py
   :language: python
   :linenos:
 
-Результат выполнения скрипта такой:
+The result of script execution:
 
 ::
 
     $ python parse_log_search.py
-    Петля между портами Gi0/19, Gi0/24, Gi0/16 в VLAN 10
+    Loop between ports Gi0/19, Gi0/24, Gi0/16 в VLAN 10
 
-Обработка вывода show cdp neighbors detail
+Processing of ‘show cdp neighbors detail’ output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Попробуем получить параметры устройств из вывода sh cdp neighbors
-detail.
+Try to get device parameters from 'sh cdp neighbors detail' output.
 
-Пример вывода информации для одного соседа:
+Example of output for one neighbor:
 
 ::
 
@@ -105,15 +94,14 @@ detail.
     Management address(es):
       IP address: 10.1.1.2
 
-Задача получить такие поля: 
+The goal is to obtain such fields:
 
-* имя соседа (Device ID: SW2) 
-* IP-адрес соседа (IP address: 10.1.1.2) 
-* платформу соседа (Platform: cisco WS-C2960-8TC-L) 
-* версию IOS (Cisco IOS Software, C2960 Software (C2960-LANBASEK9-M), Version 12.2(55)SE9, RELEASE SOFTWARE (fc1))
+* neighbor name (Device ID: SW2) 
+* IP address of neighbor (IP address: 10.1.1.2) 
+* neighbor platform (Platform: cisco WS-C2960-8TC-L) 
+* IOS version (Cisco IOS Software, C2960 Software (C2960-LANBASEK9-M), Version 12.2(55)SE9, RELEASE SOFTWARE (fc1))
 
-И для удобства надо получить данные в виде словаря. Пример итогового
-словаря для коммутатора SW2:
+And for convenience you need to get data in the form of a dictionary. Example of the resulting dictionary for SW2 switch:
 
 .. code:: python
 
@@ -121,20 +109,17 @@ detail.
              'platform': 'cisco WS-C2960-8TC-L',
              'ios': 'C2960 Software (C2960-LANBASEK9-M), Version 12.2(55)SE9'}}
 
-Пример проверяется на файле sh_cdp_neighbors_sw1.txt.
+Example is checked on file sh_cdp_neighbors_sw1.txt.
 
-Первый вариант решения (файл parse_sh_cdp_neighbors_detail_ver1.py):
+The first solution (parse_sh_cdp_neighbors_detail_ver1.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/15_module_re/parse_sh_cdp_neighbors_detail_ver1.py
   :language: python
   :linenos:
 
-Тут нужные строки отбираются с помощью метода строк startswith. И в
-строке с помощью регулярного выражения получается требуемая часть
-строки.
-В итоге все собирается в словарь.
+The desired strings are selected using startswith() string method. And in a string, a regular expression takes required part of the string. It all ends up in a dictionary.
 
-Результат выглядит так:
+The result is:
 
 .. code:: python
 
@@ -149,26 +134,24 @@ detail.
              'ip': '10.1.1.2',
              'platform': 'cisco WS-C2960-8TC-L'}}
 
-Все получилось как нужно, но эту задачу можно решить более компактно.
+It worked out well, but it can be done in a more compact way.
 
-Вторая версия решения (файл parse_sh_cdp_neighbors_detail_ver2.py):
+The second version of solution (parse_sh_cdp_neighbors_detail_ver2.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/15_module_re/parse_sh_cdp_neighbors_detail_ver2.py
   :language: python
   :linenos:
 
-Пояснения ко второму варианту: 
+Explanations for the second option:
 
-* в регулярном выражении описаны все варианты строк через знак или ``|`` 
-* без проверки строки ищется совпадение 
-* если совпадение найдено, проверяется метод lastgroup 
-* метод lastgroup возвращает имя последней именованной группы в регулярном 
-  выражении, для которой было найдено совпадение 
-* если было найдено совпадение для группы device, в переменную device записывается значение,
-  которое попало в эту группу 
-* иначе в словарь записывается соответствие 'имя группы': соответствующее значение
+* in regular expression, all line variants are described via ``|`` sign (or) 
+* without checking a line the match is searched 
+* if a match is found, the lastgroup() method is checked
+* lastgroup() method returns name of the last named group in regular expression for which a match has been found
+* if a match was found for the *device* group, the value that fells into the group is written to *device* variable 
+* otherwise the mapping of ‘group name’: ‘corresponding value’ is written to dictionary
 
-Результат будет таким же:
+Result will be the same:
 
 .. code:: python
 

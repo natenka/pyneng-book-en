@@ -1,12 +1,9 @@
-Модуль logging
+Module logging
 --------------
 
-Модуль logging - это модуль из стандартной библиотеки Python, который позволяет
-настраивать логирование из скрипта.
-У модуля logging очень много возможностей и огромное количество вариантов настройки.
-В этом разделе рассматривается только базовый вариант настройки.
+Module logging - a module from the standard Python library that allows you to configure logging from the script. Module logging has a lot of features and a lot of configuration options. Only basic configuration option is discussed in this section.
 
-Самый простой вариант настройки логирования в скрипте, использовать logging.basicConfig:
+The easiest way to configure logging in script, use logging.basicConfig:
 
 .. code:: python
 
@@ -17,21 +14,21 @@
         format='%(threadName)s %(name)s %(levelname)s: %(message)s',
         level=logging.INFO)
 
-В таком варианте настройки:
+In this variant, the settings are:
 
-* все сообщения будут выводиться на стандартный поток вывода, 
-* будут выводиться сообщения уровня INFO и выше, 
-* в каждом сообщении будет информация о потоке, имя логера, уровень сообщения и само сообщение.
+* all messages will be displayed on standard output, 
+* messages of INFO level and above will be displayed, 
+* each message will contain thread information, log name, message level, and message itself.
 
-Теперь, чтобы вывести log-сообщение в этом скрипте, надо написать так ``logging.info("тест")``.
+Now, to output a log message in this script, you should write  ``logging.info("test")``.
 
-Пример скрипта с настройкой логирования: (файл logging_basics.py)
+Example of script with logging settings: (logging_basics.py file)
 
 .. literalinclude:: /pyneng-examples-exercises/examples/20_concurrent_connections/logging_basics.py
   :language: python
   :linenos:
 
-При выполнении скрипта, вывод будет таким:
+Result of script execution:
 
 ::
 
@@ -48,6 +45,4 @@
 
 .. note::
 
-    В модуле logging еще очень много возможностей. В этом разделе используется только
-    базовый вариант настройки.
-    Узнать больше о возможностях модуля можно в `Logging HOWTO <https://docs.python.org/3/howto/logging.html#logging-basic-tutorial>`__
+    There are still many features in logging module. This section only uses basic configuration option. For more information on features of the module, see `Logging HOWTO <https://docs.python.org/3/howto/logging.html#logging-basic-tutorial>`__

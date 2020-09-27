@@ -1,20 +1,18 @@
 REPLACE
 ~~~~~~~
 
-Оператор REPLACE используется для добавления или замены данных в
-таблице.
+REPLACE operator is used to add or replace data in the table.
 
 .. note::
 
-    Оператор REPLACE может поддерживаться не во всех СУБД.
+    REPLACE operator may not be supported in all DBMS.
 
-Когда возникает нарушение условия уникальности поля, выражение с
-оператором REPLACE: 
+When a field uniqueness condition is violated, an expression with REPLACE operator:
 
-* удаляет существующую строку, которая вызвала нарушение 
-* добавляет новую строку
+* deletes the existing string that caused the violation
+* adds a new line
 
-Пример нарушения правила уникальности:
+An example of uniqueness condition rule violation:
 
 .. code:: sql
 
@@ -22,7 +20,7 @@ REPLACE
     UNIQUE constraint failed: switch.mac
 
 
-У выражения REPLACE есть два вида:
+There are two types of REPLACE expression:
 
 .. code:: sql
 
@@ -30,7 +28,7 @@ REPLACE
     Query OK, 1 row affected
     Time: 0.010s
 
-Или более короткий вариант:
+Or a shorter version:
 
 .. code:: sql
 
@@ -38,7 +36,7 @@ REPLACE
     Query OK, 1 row affected
     Time: 0.009s
 
-Результатом любой из этих команд будет замена модели коммутатора sw3:
+The result of any of these commands is to replace sw3 switch model:
 
 .. code:: sql
 
@@ -55,17 +53,13 @@ REPLACE
     | 0030.A3AA.C1CC | sw3      | Cisco 3850 | London, Green Str | 10.255.1.3 | 255       |
     +----------------+----------+------------+-------------------+------------+-----------+
 
-В данном случае MAC-адрес в новой записи совпадает с уже существующей,
-поэтому происходит замена.
+In this case, MAC address in new entry is the same as in existing one, so the replacement occurs.
 
 .. note::
 
-    Если были указаны не все поля, в новой записи будут только те поля,
-    которые были указаны. Это связано с тем, что REPLACE сначала удаляет
-    существующую запись.
+    If not all fields have been specified, the new entry will contain only those fields that have been specified. This is because REPLACE first removes an existing entry.
 
-При добавлении записи, для которой не возникает нарушения уникальности
-поля, REPLACE работает как обычный INSERT:
+For entry which was added without uniqueness violation, REPLACE functions as a normal INSERT:
 
 .. code:: sql
 

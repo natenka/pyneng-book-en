@@ -1,26 +1,26 @@
-Булевы значения
+Boolean values
 ===============
 
-Булевы значения в Python это две константы ``True`` и ``False``.
+Boolean values in Python are two constants ``True`` and ``False``.
 
-В Python истинными и ложными значениями считаются не только True и False.
+In Python, not only True and False constants have the same values.
 
-* истинное значение:
+* True value:
 
-  * любое ненулевое число
-  * любая непустая строка
-  * любой непустой объект
+  * any non-zero number
+  * any non-empty string
+  * any non-empty object
 
-* ложное значение:
+* False value:
 
   * 0
   * None
-  * пустая строка
-  * пустой объект
+  * empty string
+  * empty object
 
-Остальные истинные и ложные значения, как правило, логически следуют из условия.
+Other true and false values tend to follow the condition logically.
 
-Для проверки булевого значения объекта, можно воспользоваться ``bool``:
+To check boolean value of the object you can use ``bool``:
 
 .. code:: python
 

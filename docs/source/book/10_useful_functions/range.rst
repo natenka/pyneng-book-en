@@ -1,31 +1,26 @@
 .. _range:
 
-Функция range
+Range
 -------------
 
-Функция range возвращает неизменяемую последовательность чисел в виде
-объекта range.
+The range() function returns an immutable sequence of numbers as a **range** object.
 
-Синтаксис функции:
+Function syntax:
 
 .. code:: python
 
     range(stop)
     range(start, stop[, step])
 
-Параметры функции:
+Parameters of function:
 
-* **start** - с какого числа начинается последовательность. По умолчанию - 0
-* **stop** - до какого числа продолжается последовательность чисел.
-  Указанное число не включается в диапазон
-* **step** - с каким шагом растут числа. По умолчанию 1
+* **start** - from what number the sequence begins. By default - 0
+* **stop** - on which number the sequence of numbers ends. Mentioned number is not included in range
+* **step** - with what step numbers increase. By default 1
 
-Функция range хранит только информацию о значениях start, stop и step и
-вычисляет значения по мере необходимости. Это значит, что независимо от
-размера диапазона, который описывает функция range, она всегда будет
-занимать фиксированный объем памяти.
+The range function stores only **start**, **stop** and **step** values and calculates values as necessary. This means that regardless of the size of range that describes the range() function, it will always occupy a fixed amount of memory.
 
-Самый простой вариант range - передать только значение stop:
+The easiest range() option is to pass only **stop** value:
 
 .. code:: python
 
@@ -35,15 +30,14 @@
     In [2]: list(range(5))
     Out[2]: [0, 1, 2, 3, 4]
 
-Если передаются два аргумента, то первый используется как start, а
-второй - как stop:
+If two arguments are passed, the first is used as **start** and the second as **stop**:
 
 .. code:: python
 
     In [3]: list(range(1, 5))
     Out[3]: [1, 2, 3, 4]
 
-И чтобы указать шаг последовательности надо передать три аргумента:
+And in order to indicate the sequence step, you have to pass three arguments:
 
 .. code:: python
 
@@ -53,7 +47,7 @@
     In [5]: list(range(0, 10, 3))
     Out[5]: [0, 3, 6, 9]
 
-С помощью range можно генерировать и убывающие последовательности чисел:
+The range() can also generate descending sequences of numbers:
 
 .. code:: python
 
@@ -63,18 +57,16 @@
     In [7]: list(range(5, -1, -1))
     Out[7]: [5, 4, 3, 2, 1, 0]
 
-Для получения убывающей последовательности надо использовать
-отрицательный шаг и соответственно указать start - большим числом, а
-stop - меньшим.
+To obtain a descending sequence use a negative step and specify **start** by a greater number and **stop** by a smaller number.
 
-В убывающей последовательности шаг тоже может быть разным:
+In the descending sequence the steps can also be different:
 
 .. code:: python
 
     In [8]: list(range(10, 0, -2))
     Out[8]: [10, 8, 6, 4, 2]
 
-Функция поддерживает отрицательные значения start и stop:
+The function supports negative **start** and **stop** values:
 
 .. code:: python
 
@@ -84,12 +76,9 @@ stop - меньшим.
     In [10]: list(range(0, -10, -1))
     Out[10]: [0, -1, -2, -3, -4, -5, -6, -7, -8, -9]
 
-Объект range поддерживает все
-`операции <https://docs.python.org/3.6/library/stdtypes.html#sequence-types-list-tuple-range>`__,
-которые поддерживают последовательности в Python, кроме сложения и
-умножения.
+The **range** object supports all `operations <https://docs.python.org/3.6/library/stdtypes.html#sequence-types-list-tuple-range>`__ that support sequences in Python, except addition and multiplication.
 
-Проверка, входит ли число в диапазон, который описывает range:
+Check whether a number falls within a range:
 
 .. code:: python
 
@@ -105,10 +94,9 @@ stop - меньшим.
     Out[14]: False
 
 .. note::
-    Начиная с версии Python 3.2, эта проверка выполняется за постоянное
-    время (O(1)).
+    Starting with Python 3.2 this check is performed in constant time (O(1)).
 
-Можно получить конкретный элемент диапазона:
+You can get a specific range element:
 
 .. code:: python
 
@@ -120,7 +108,7 @@ stop - меньшим.
     In [17]: nums[-1]
     Out[17]: 4
 
-Range поддерживает срезы:
+Range supports slices:
 
 .. code:: python
 
@@ -132,7 +120,7 @@ Range поддерживает срезы:
     In [20]: nums[:3]
     Out[20]: range(0, 3)
 
-Можно получить длину диапазона:
+You can get the range length:
 
 .. code:: python
 
@@ -141,7 +129,7 @@ Range поддерживает срезы:
     In [22]: len(nums)
     Out[22]: 5
 
-А также минимальный и максимальный элемент:
+And a minimum and maximum element:
 
 .. code:: python
 
@@ -153,7 +141,7 @@ Range поддерживает срезы:
     In [25]: max(nums)
     Out[25]: 4
 
-Кроме того, объект range поддерживает метод index:
+In addition, **range** object supports index() method:
 
 .. code:: python
 

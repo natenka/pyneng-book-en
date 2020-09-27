@@ -1,105 +1,82 @@
-Работа с Git
+Working with Git
 ^^^^^^^^^^^^
 
-Для управления Git используются различные команды, смысл которых
-поясняется далее.
+Various commands are used to control Git, the meaning of which is explained below.
 
 git status
 ''''''''''
 
-При работе с Git, важно понимать текущий статус репозитория. Для этого в
-Git есть команда git status
+When working with Git it is important to understand the current status of the repository. For this purpose Git has a “git status” command
 
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_status_0.png
 
-Git сообщает, что мы находимся в ветке master (эта ветка создаётся сама
-и используется по умолчанию), и что ему нечего добавлять в коммит. Кроме
-этого, Git предлагает создать или скопировать файлы и после этого
-воспользоваться командой git add, чтобы Git начал за ними следить.
+Git reports that we are in the master branch (this branch is auto-created and used by default) and that it has nothing to commit. Git also offers to create or copy files and then use the “git add” command to start Git tracking them.
 
-Создание файла README и добавление в него строки "test"
+Create README file and add "test" line to it
 
 ::
 
     $ vi README
     $ echo "test" >> README
 
-После этого приглашение выглядит таким образом
+After that, the invitation looks like this
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/bash_prompt.png
 
-В приглашении показано, что есть два файла, за которыми Git ещё не
-следит
+The invitation shows that there are two files that Git is not following
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_status_1.png
 
-Два файла получилось из-за того, что у меня настроены undo-файлы для
-Vim. Это специальные файлы, благодаря которым можно отменять изменения
-не только в текущей сессии файла, но и прошлые. Обратите внимание, что
-Git сообщает, что есть файлы, за которыми он не следит и подсказывает,
-какой командой это сделать.
+Two files came out because I have undo-files configured for Vim. These are special files that allow you to cancel changes not only in the current file session but also in the past. Note that Git reports there are files that it does not follow and tells you using which command you can start following.
 
-Файл .gitignore
+File .gitignore
 '''''''''''''''
 
-Undo-файл .README.un~ – служебный файл, который не нужно добавлять в
-репозиторий. В Git есть возможность указать, какие файлы или каталоги
-нужно игнорировать. Для этого нужно создать соответствующие шаблоны в
-файле .gitignore в каталоге репозитория.
+Undo-file .README.un~ is a service file that does not need to be added to repository. Git has the option to specify which files or directories to ignore. To do this, you need to create appropriate templates in the . gitignore file in the repository directory.
 
-Для того, чтобы Git игнорировал undo-файлы Vim, можно добавить,
-например, такую строку в файл .gitignore
+To make Git ignore undo-files of Vim you can add such a line to the file .gitignore
 
 ::
 
     *.un~
 
-Это значит, что Git должен игнорировать все файлы, которые заканчиваются
-на ".un~".
+This means that Git must ignore all files that end with ".un~".
 
-После этого, git status показывает
+After that, git status shows
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_status_2.png
 
-Обратите внимание, что теперь в выводе нет файла .README.un~. Как только
-в репозиторий был добавлен файл .gitignore, файлы, которые указаны в
-нём, стали игнорироваться.
+Note that there is no .README.un~ file in the output. Once a file was added to the repository .gitignore, the files that are listed in it are being ignored.
 
 git add
 '''''''
 
-Для того, чтобы Git начал следить за файлами, используется команда git
-add.
+The “git add” command is used to start Git following files.
 
-Можно указать что надо следить за конкретным файлом
+You can specify that you want to follow a particular file
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_add_readme.png
 
-Или за всеми файлами
+Or all the files
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_add_all.png
 
-Вывод git status
+Git status output
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_status_3.png
 
-Теперь файлы находятся в секции под названием "Changes to be committed".
+Now the files are in a section called "Changes to be committed".
 
 git commit
 ''''''''''
 
-После того, как все нужные файлы были добавлены в staging, можно
-закоммитить изменения. Staging — это совокупность файлов, которые будут
-добавлены в следующий коммит. У команды git commit есть только один
-обязательный параметр – флаг "-m". Он позволяет указать сообщение для
-этого коммита.
+After all the necessary files have been added in staging, you can commit the changes. Staging is a collection of files that will be added to the next commit. The "git commit" command has only one obligatory parameter - the flag "-m". It allows you to specify a message for this commit.
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_commit_1.png
 
-После этого git status отображает
+After that, git status displays
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_status_4.png
 
-Фраза "nothing to commit, working directory clean" обозначает, что нет
-изменений, которые нужно добавить в Git или закоммитить.
+The phrase "nothing to commit, working directory clean" indicates that there are no changes to add to Git or to commit.

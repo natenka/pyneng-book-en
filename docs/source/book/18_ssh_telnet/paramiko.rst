@@ -1,20 +1,15 @@
-Модуль paramiko
+Module paramiko
 ---------------
 
-Paramiko - это реализация протокола SSHv2 на Python. Paramiko
-предоставляет функциональность клиента и сервера. В книге рассматривается
-только функциональность клиента.
+Paramiko is an implementation of SSHv2 protocol on Python. Paramiko provides client-server functionality. We will consider only client functionality.
 
-Так как Paramiko не входит в стандартную библиотеку модулей Python, его
-нужно установить:
+Since Paramiko is not part of standard Python module library, it needs to be installed:
 
 ::
 
     pip install paramiko
 
-
-Подключение выполняется таким образом: сначала создается клиент и выполняются настройки клиента,
-затем выполняется подключение и получение интерактивной сессии:
+The connection is established in this way: first, client is created and client configuration is set, then connection is initiated and an interactive session is received:
 
 .. code:: python
 
@@ -27,28 +22,22 @@ Paramiko - это реализация протокола SSHv2 на Python. Par
 
     In [5]: ssh = client.invoke_shell()
 
-SSHClient это класс, который представляет соединение к SSH-серверу. Он выполняет аутентификацию клиента. 
-Следующая настройка ``set_missing_host_key_policy`` не является обязательной, она указывает 
-какую политику использовать, когда выполнятся подключение к серверу, ключ которого неизвестен. 
-Политика ``paramiko.AutoAddPolicy()`` автоматически добавляет новое имя хоста и ключ в локальный
-объект HostKeys. 
+SSHClient is a class that represents a connection to SSH server. It performs client authentication.
+String ``set_missing_host_key_policy`` is optional, it indicates
+which policy to use when connecting to a server whose key is unknown.
+Policy ``paramiko.AutoAddPolicy()`` automatically add new hostname and key to local HostKeys object.
 
-Метод ``connect`` выполняет подключение к SSH-серверу и аутентифицирует подключение. Параметры:
+Method ``connect`` connects to SSH server and authenticates the connection. Parameters:
 
-* ``look_for_keys`` - по умолчанию paramiko выполняет аутентификацию по
-  ключам. Чтобы отключить это, надо поставить флаг в False 
-* ``allow_agent`` - paramiko может подключаться к локальному SSH агенту 
-  ОС. Это нужно при работе с ключами, а так как в данном случае 
-  аутентификация выполняется по логину/паролю, это нужно отключить. 
+* ``look_for_keys`` - by default paramiko performs key authentication. To disable this, put the flag in False
+* ``allow_agent`` - paramiko can connect to a local SSH agent. This is necessary when working with keys and since in this case authentication is done by login/password, it should be disabled.  
 
-После выполнения предыдущей команды уже есть подключение к серверу. Метод ``invoke_shell`` позволяет
-установить интерактивную сессию SSH с сервером.
+After execution of previous command there is already a connection to the server. Method ``invoke_shell`` allows to set an interactive SSH session with server.
 
-Метод send
+Method send
 ~~~~~~~~~~
 
-Метод ``send`` - отправляет указанную строку в сессию и возвращает количество отправленных байт
-или ноль если сессия закрыта и не удалось отправить команду:
+Method ``send`` - sends specified string to session and returns amount of sent bytes.
 
 .. code:: python
 
@@ -64,34 +53,33 @@ SSHClient это класс, который представляет соеди�
 
 .. warning::
 
-    В коде после send надо будет ставить time.sleep, особенно между send и recv.
-    Так как это интерактивная сессия и команды набираются медленно, все работает и без пауз.
+     In the code, after send() you will need to put time.sleep, especially between send and recv. Since this is an interactive session and commands are slow to type, everything works without pauses.
 
-Метод recv
+Method recv
 ~~~~~~~~~~
 
-Метод ``recv`` получает данные из сессии. В скобках  указывается максимальное значение в байтах,
-которое нужно получить. Этот метод возвращает считанную строку.
+Method ``recv`` receives data from session. In brackets, the maximum value in bytes that can be obtained is indicated. This method returns a received string
 
 .. code:: python
 
     In [10]: ssh.recv(3000)
     Out[10]: b'\r\nR1>enable\r\nPassword: \r\nR1#sh ip int br\r\nInterface                  IP-Address      OK? Method Status                Protocol\r\nEthernet0/0                192.168.100.1   YES NVRAM  up                    up      \r\nEthernet0/1                192.168.200.1   YES NVRAM  up                    up      \r\nEthernet0/2                unassigned      YES NVRAM  up                    up      \r\nEthernet0/3                192.168.130.1   YES NVRAM  up                    up      \r\nLoopback22                 10.2.2.2        YES manual up                    up      \r\nLoopback33                 unassigned      YES unset  up                    up      \r\nLoopback45                 unassigned      YES unset  up                    up      \r\nLoopback55                 5.5.5.5         YES manual up                    up      \r\nR1#'
 
-Метод close
+Method close
 ~~~~~~~~~~~
 
-Метод close закрывает сессию:
+Method close() closes session:
 
 .. code:: python
 
     In [11]: ssh.close()
 
 
-Пример использования paramiko
+Example of paramiko use
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Пример использования paramiko (файл 3_paramiko.py):
+
+Example of paramiko use (3_paramiko.py file):
 
 .. code:: python
 
@@ -154,7 +142,7 @@ SSHClient это класс, который представляет соеди�
 
 
 
-Результат выполнения скрипта:
+Result of script execution:
 
 ::
 
@@ -173,11 +161,10 @@ SSHClient это класс, который представляет соеди�
      'sh clock': 'sh clock\r\n*08:25:22.435 UTC Mon Jul 20 2020\r\nR1#'}
 
 
-Постраничный вывод команд
+Paginated command output
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Пример использования paramiko для работы с постраничным выводом команд
-show (файл 3_paramiko_more.py):
+Example of using paramiko to work with paginated output of *show* command (3_paramiko_more.py file):
 
 .. code:: python
 

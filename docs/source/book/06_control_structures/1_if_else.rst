@@ -1,93 +1,87 @@
 if/elif/else
 ============
 
-Конструкция ``if/elif/else`` позволяет делать ответвления в ходе программы.
-Программа уходит в ветку при выполнении определенного условия.
+The ``if/elif/else`` construction allows make branches during program implementation. The program goes into the branch when a certain condition is met.
 
-В этой конструкции только if является обязательным, elif и else
-опциональны:
+In this construction only **if** is mandatory, **elif** and **else**
+are optional:
 
-* Проверка if всегда идет первой.
-* После оператора if должно быть какое-то условие: если это условие выполняется
-  (возвращает True), то действия в блоке if выполняются.
-* С помощью elif можно сделать несколько разветвлений, то есть,
-  проверять входящие данные на разные условия.
-* Блок elif это тот же if, но только следующая проверка. Грубо говоря, это "а если ..."
-* Блоков elif может быть много.
-* Блок else выполняется в том случае, если ни одно из условий if или elif не было истинным.
+* **If** condition is always checked first.
+* After **If** operator there must be some condition: if this condition is met (returns true), then the actions in block **if** are executed.
+* **elif** can be used to make multiple branches, that is, to check incoming data for different conditions.
+* **elif** block is the same as **if** but it checked next. Roughly speaking, it is "what if ..."
+* There can be many **elif** blocks.
+* **else** block is executed if none of the conditions **if** or **elif** were true.
 
 
 
-Пример конструкции:
+Example of construction:
 
 .. code:: python
 
     In [1]: a = 9
 
     In [2]: if a == 10:
-       ...:     print('a равно 10')
+       ...:     print('a equal to 10')
        ...: elif a < 10:
-       ...:     print('a меньше 10')
+       ...:     print('a less than 10')
        ...: else:
-       ...:     print('a больше 10')
+       ...:     print('a less than 10')
        ...:
-    a меньше 10
+    a less than 10
 
 
-Условия
+Condition
 -------
 
-Конструкция if построена на условиях: после if и elif всегда пишется условие.
-Блоки if/elif выполняются только когда условие возвращает True, поэтому первое с чем надо
-разобраться - это что является истинным, а что ложным в Python.
+**If** construction is based on conditions: conditions are always written after **if** and **elif**.
+Blocks if/elif are executed only when the condition returns True, so the first thing to deal with is what is true and what is false in Python.
 
 
-True и False
+True and False
 ~~~~~~~~~~~~
 
-В Python, кроме очевидных значений True и False, всем остальным объектам также
-соответствует ложное или истинное значение:
+In Python, apart from the obvious True and False values, all other objects also have false or true value:
 
-* истинное значение:
+* True value:
 
-  * любое ненулевое число
-  * любая непустая строка
-  * любой непустой объект
+  * any non-zero number
+  * any non-empty string
+  * any non-empty object
 
-* ложное значение:
+* False value:
 
   * 0
   * None
-  * пустая строка
-  * пустой объект
+  * empty string
+  * empty object
 
 
-Например, так как пустой список это ложное значение, проверить, пустой ли список,
-можно таким образом:
+For example, since an empty list is a false value, it is possible to check whether the list is empty:
 
 .. code:: python
 
     In [12]: list_to_test = [1, 2, 3]
 
     In [13]: if list_to_test:
-       ....:     print("В списке есть объекты")
+       ....:     print("The list has objects")
        ....:
-    В списке есть объекты
+    The list has objects
 
-Тот же результат можно было бы получить несколько иначе:
+The same result could have been achieved somewhat differently:
 
 .. code:: python
 
     In [14]: if len(list_to_test) != 0:
-       ....:     print("В списке есть объекты")
+       ....:     print("The list has objects")
        ....:
-    В списке есть объекты
+    The list has objects
 
 
-Операторы сравнения
+Comparison operators
 ~~~~~~~~~~~~~~~~~~~
 
-**Операторы сравнения**, которые могут использоваться в условиях:
+**Comparison operators** can be used in conditions like:
 
 .. code:: python
 
@@ -116,28 +110,27 @@ True и False
     Out[10]: True
 
 .. note::
-    Обратите внимание, что равенство проверяется двойным ``==``.
+    Note that the equality is checked by double ``==``.
 
-Пример использования операторов сравнения:
+Example of the use of comparison operators:
 
 .. code:: python
 
     In [1]: a = 9
 
     In [2]: if a == 10:
-       ...:     print('a равно 10')
+       ...:     print('a equal to 10')
        ...: elif a < 10:
-       ...:     print('a меньше 10')
+       ...:     print('a less than 10')
        ...: else:
-       ...:     print('a больше 10')
+       ...:     print('a greater than 10')
        ...:
-    a меньше 10
+    a less than 10
 
-Оператор in
+Operator in
 ~~~~~~~~~~~
 
-Оператор ``in`` позволяет выполнять проверку на наличие элемента в
-последовательности (например, элемента в списке или подстроки в строке):
+Operator ``in`` allows checking for the presence of an element in a sequence (for example, an element in a list or substrings in a string):
 
 .. code:: python
 
@@ -155,8 +148,7 @@ True и False
     In [12]: 50 in vlan
     Out[12]: False
 
-При использовании со словарями условие **in** выполняет проверку по
-ключам словаря:
+When used with dictionaries the **in** condition performs check by dictionary keys:
 
 .. code:: python
 
@@ -174,10 +166,10 @@ True и False
     In [17]: '4451' in r1
     Out[17]: False
 
-Операторы and, or, not
+Operators  and, or, not
 ~~~~~~~~~~~~~~~~~~~~~~
 
-В условиях могут также использоваться **логические операторы**
+The conditions can also use **logical operators**
 ``and``, ``or``, ``not``:
 
 .. code:: python
@@ -207,14 +199,12 @@ True и False
     In [23]: '4451' not in r1
     Out[23]: True
 
-Оператор and
+Operator and
 ^^^^^^^^^^^^
 
-В Python оператор ``and`` возвращает не булево значение, а значение
-одного из операндов.
+In Python the ``and`` operator returns not a boolean value but a value of one of the operands.
 
-Если оба операнда являются истиной, результатом выражения будет
-последнее значение:
+If both operands are true, the result is a last value:
 
 .. code:: python
 
@@ -224,8 +214,7 @@ True и False
     In [25]: 'string1' and 'string2' and 'string3'
     Out[25]: 'string3'
 
-Если один из операторов является ложью, результатом выражения будет
-первое ложное значение:
+If one of the operators is a false, the result of the expression will be the first false value:
 
 .. code:: python
 
@@ -235,13 +224,12 @@ True и False
     In [27]: '' and [] and 'string1'
     Out[27]: ''
 
-Оператор or
+Operator or
 ^^^^^^^^^^^
 
-Оператор ``or``, как и оператор and, возвращает значение одного из
-операндов.
+Operator ``or``, like operator ``and``, returns the value of one of the operands.
 
-При оценке операндов возвращается первый истинный операнд:
+When checking operands, the first true operand is returned:
 
 .. code:: python
 
@@ -254,15 +242,14 @@ True и False
     In [30]: 'string1' or 'string2'
     Out[30]: 'string1'
 
-Если все значения являются ложными, возвращается последнее значение:
+If all values are false, the last value is returned:
 
 .. code:: python
 
     In [31]: '' or [] or {}
     Out[31]: {}
 
-Важная особенность работы оператора ``or`` - операнды, которые находятся
-после истинного, не вычисляются:
+An important feature of ``or`` operator - operands, which are after the true operand, are not calculated:
 
 .. code:: python
 
@@ -275,60 +262,58 @@ True и False
 
 .. _if_example:
 
-Пример использования конструкции if/elif/else
+Example of if/elif/else construction use
 ---------------------------------------------
 
-Пример скрипта check_password.py, который проверяет длину пароля и есть
-ли в пароле имя пользователя:
+An example of a check_password.py script that checks length of the password and whether the password contains username:
 
 .. code:: python
 
     # -*- coding: utf-8 -*-
 
-    username = input('Введите имя пользователя: ')
-    password = input('Введите пароль: ')
+    username = input('Enter username: ')
+    password = input('Enter password: ')
 
     if len(password) < 8:
-        print('Пароль слишком короткий')
+        print('Password is too short')
     elif username in password:
-        print('Пароль содержит имя пользователя')
+        print('Password contains username')
     else:
-        print('Пароль для пользователя {} установлен'.format(username))
+        print('Password for user {} is set'.format(username))
 
-Проверка скрипта:
+Script check:
 
 ::
 
     $ python check_password.py
-    Введите имя пользователя: nata
-    Введите пароль: nata1234
-    Пароль содержит имя пользователя
+    Enter username: nata
+    Enter password: nata1234
+    Password contains username
 
     $ python check_password.py
-    Введите имя пользователя: nata 
-    Введите пароль: 123nata123
-    Пароль содержит имя пользователя
+    Enter username: nata 
+    Enter password: 123nata123
+    Password contains username
 
     $ python check_password.py
-    Введите имя пользователя: nata
-    Введите пароль: 1234
-    Пароль слишком короткий
+    Enter username: nata
+    Enter password: 1234
+    Password is too short
 
     $ python check_password.py
-    Введите имя пользователя: nata
-    Введите пароль: 123456789
-    Пароль для пользователя nata установлен
+    Enter username: nata
+    Enter password: 123456789
+    Password for user nata is set
 
-Тернарное выражение (Ternary expression)
+Ternary expression
 ----------------------------------------
 
-Иногда удобнее использовать тернарный оператор, нежели развернутую
-форму:
+It is sometimes more convenient to use a ternary operator than an extended form:
 
 .. code:: python
 
     s = [1, 2, 3, 4]
     result = True if len(s) > 5 else False
 
-Этим лучше не злоупотреблять, но в простых выражениях такая запись может быть полезной.
+It is best not to abuse it but in simple terms such a record can be useful.
 

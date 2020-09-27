@@ -1,69 +1,54 @@
-Аутентификация на GitHub
+Github authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Для того, чтобы начать работать с GitHub, надо на нём
-`зарегистрироваться <https://github.com/join>`__. Для безопасной работы
-с GitHub лучше использовать аутентификацию по ключам SSH.
+To start working with Github you must 
+`register <https://github.com/join>`__ on it. It is better to use SSH key authentication to work safely with Github.
 
 
-Генерация нового SSH-ключа (используйте e-mail, который привязан к
-GitHub):
+Generation of a new SSH key (use e-mail that is linked to Github):
 
 ::
 
     $ ssh-keygen -t rsa -b 4096 -C "github_email@gmail.com"
 
-На всех вопросах достаточно нажать Enter (более безопасно использовать
-ключ с passphrase, но можно и без, если нажать Enter при вопросе, тогда
-passphrase не будет запрашиваться у вас постоянно при операциях с
-репозиторием).
+All questions need to be pressed Enter (it is more secure to use the passphrase key but it is possible without it, if you press Enter when asked then passphrase will not be requested from you permanently during operations with the repository).
 
-SSH-агент используется для хранения ключей в памяти и удобен тем, что 
-нет необходимости вводить пароль passphrase каждый раз при взаимодействии 
-с удаленным хостом (в данном случае - github.com).
-
-Запуск SSH-агента (пропускаем на Windows):
+Start SSH agent:
 
 ::
 
     $ eval "$(ssh-agent -s)"
 
-Добавить ключ в SSH-агент (пропускаем на Windows):
+Add key to SSH agent:
 
 ::
 
     $ ssh-add ~/.ssh/id_rsa
 
-Добавление SSH-ключа на GitHub
+Add SSH key to Github
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Для добавления ключа надо его скопировать.
+To add a key you have to copy it.
 
-Например, таким образом можно отобразить ключ для копирования:
+For example, you can display key to copy it:
 
 ::
 
     $ cat ~/.ssh/id_rsa.pub
 
-После копирования надо перейти на GitHub. Находясь на любой странице
-GitHub, в правом верхнем углу нажмите на картинку вашего профиля и в
-выпадающем списке выберите "Settings". В списке слева надо выбрать поле
-"SSH and GPG keys". После этого надо нажать "New SSH key" и в поле
-"Title" написать название ключа (например "Home"), а в поле "Key"
-вставить содержимое, которое было скопировано из файла
-~/.ssh/id\_rsa.pub.
+After copying, go to Github. When you are on any Github page, in the upper right-hand corner click on the picture of your profile and select "Settings" in the drop down list. In the list on the left, select the field "SSH and GPG keys". Then press "New SSH key" and in the field "Title" write the key name (for example "Home") and in the field "Key" insert the content that was copied from the file ~/. ssh/id_rsa.pub.
 
 .. note::
-    Если GitHub запросит пароль, введите пароль своего аккаунта на GitHub.
+    If Github requests a password, enter your account password on Github.
 
-Чтобы проверить, всё ли прошло успешно, попробуйте выполнить команду 
+To check if everything has been successful, try executing the command
 ``ssh -T git@github.com``.
 
-Вывод должен быть таким:
+The output should be as follows:
 
 ::
 
     $ ssh -T git@github.com
     Hi username! You've successfully authenticated, but GitHub does not provide shell access.
 
-Теперь вы готовы работать с Git и GitHub.
+Now you are ready to work with Git and Github.

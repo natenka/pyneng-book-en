@@ -4,46 +4,42 @@
 
 .. _files_index:
 
-7. Работа с файлами
+7. Working with files
 ============================
 
-В реальной жизни для того чтобы полноценно использовать всё, что
-рассматривалось до этого раздела, надо разобраться как работать с
-файлами.
+In real life, in order to make full use of everything considered before this section, you need to understand how to work with files.
 
-При работе с сетевым оборудованием (и не только), файлами могут быть:
+When working with network equipment (and not only), files can be:
 
-* конфигурации (простые, не структурированные текстовые файлы)
+* configurations (simple, non-structured text files)
 
-  * работа с ними рассматривается в этом разделе
+  * They are discussed in this section
 
-* шаблоны конфигураций
+* configuration templates
   
-  * как правило, это какой-то специальный формат файлов.
-  * в разделе `Шаблоны конфигураций с Jinja <../21_jinja2/>`__ рассматривается
-    использование Jinja2 для создания шаблонов конфигураций
+  * usually a special file format.
+  * section `Jinja configuration temlates <../21_jinja2/>`__ discusses the use of Jinja2 to create configuration templates
     
-* файлы с параметрами подключений
+* files with connection options
 
-  * как правило, это структурированные файлы, в каком-то определенном формате: YAML, JSON, CSV
+  * usually they are structured files in some particular format: YAML, JSON, CSV
 
-    * в разделе `Сериализация данных <../17_serialization/>`__ рассматривается, как работать с такими  файлами
+    * section `Data serialization <../17_serialization/>`__ discusses how to handle such files
 
-* другие скрипты Python
+* other Python scripts
   
-  * в разделе `Модули <../11_modules/>`__ рассматривается, как работать с модулями (другими скриптами Python)
+  * section  `Modules <../11_modules/>`__ discusses how to work with modules (other Python scripts)
 
-В этом разделе рассматривается работа с простыми текстовыми файлами.
-Например, конфигурационный файл Cisco.
+This section deals with simple text files. For example, Cisco configuration file.
 
-В работе с файлами есть несколько аспектов:
+There are several aspects to working with files:
 
-* открытие/закрытие
-* чтение
-* запись
+* opening/closing
+* reading
+* writing
 
-В этом разделе рассматривается только необходимый минимум для работы с файлами. Подробнее в
-`документации Python <https://docs.python.org/3/library/stdtypes.html#bltin-file-objects>`__.
+This section only deals with the minimum required for working with files. More in 
+`Python documentation <https://docs.python.org/3/library/stdtypes.html#bltin-file-objects>`__.
 
 .. toctree::
    :maxdepth: 1

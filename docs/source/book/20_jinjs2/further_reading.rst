@@ -1,12 +1,12 @@
-Дополнительные материалы
+Additional material
 ------------------------
 
-Документация:
+Documentation:
 
--  `Общая документация Jinja2 <http://jinja.pocoo.org/docs/2.9/>`__
--  `Синтаксис шаблонов <http://jinja.pocoo.org/docs/2.9/templates/>`__
+-  `General documentation Jinja2 <http://jinja.pocoo.org/docs/2.9/>`__
+-  `Template syntax <http://jinja.pocoo.org/docs/2.9/templates/>`__
 
-Статьи: 
+Artickles: 
 
 * `Network Configuration Templates Using Jinja2. Matt Oswalt <https://oswalt.dev/2014/03/network-configuration-templates-using-jinja2/>`__
 * `Python And Jinja2 Tutorial. Jeremy Schulman <http://packetpushers.net/python-jinja2-tutorial/>`__ 

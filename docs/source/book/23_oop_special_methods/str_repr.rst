@@ -1,11 +1,9 @@
-Методы __str__, __repr__
+Methods __str__, __repr__
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Специальные методы __str__ и __repr__ отвечают за строковое представления
-объекта. При этом используются они в разных местах.
+Special methods __str__ and __repr__ are responsible for string representation of the object. They are used in different places.
 
-Рассмотрим пример класса IPAddress, который отвечает за представление
-IPv4 адреса:
+Consider example of IPAddress class that is responsible for representing IPv4 address:
 
 .. code:: python
 
@@ -14,8 +12,7 @@ IPv4 адреса:
        ...:         self.ip = ip
        ...:
 
-После создания экземпляров класса, у них есть строковое представление по
-умолчанию, которое выглядит так (этот же вывод отображается при использовании print):
+After creating class instances, they have a default string view that looks like this (the same output is displayed when print() is used):
 
 .. code:: python
 
@@ -29,10 +26,7 @@ IPv4 адреса:
     In [5]: str(ip2)
     Out[5]: '<__main__.IPAddress object at 0xb1bd376c>'
 
-К сожалению, это представление не очень информативно. И было бы лучше, если бы
-отображалась информация о том, какой именно адрес представляет этот экземпляр.
-За отображение информации при применении функции str, отвечает специальный метод __str__ -
-как аргумент метод ожидает только экземпляр и должен возвращать строку
+Unfortunately, this presentation is not very informative. It would be better to display information about which address this instance represents. Special method __str__ is responsible for displaying information when using str() function. As an argument this method expects only instance and must return string.
 
 .. code:: python
 
@@ -54,8 +48,7 @@ IPv4 адреса:
     In [10]: str(ip2)
     Out[10]: 'IPAddress: 10.2.2.2'
 
-Второе строковое представление, которое используется в объектах Python, отображается
-при использовании функции repr, а также при добавлении объектов в контейнеры типа списков:
+A second string view which is used in Python objects is displayed when using repr() function and when adding objects to containers such as lists:
 
 
 .. code:: python
@@ -68,9 +61,9 @@ IPv4 адреса:
     In [13]: repr(ip1)
     Out[13]: '<__main__.IPAddress object at 0xb4e40c8c>'
 
-За это отображение отвечает метод __repr__, он тоже должен возвращать строку,
-но при этом принято, чтобы метод возвращал строку, скопировав которую, можно 
-получить экземпляр класса:
+Method __repr__ is responsible for this display and it should also return a string, but it would return a string by copying which you can
+get an instance of a class:
+
 
 .. code:: python
 

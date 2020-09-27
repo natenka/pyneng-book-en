@@ -1,21 +1,20 @@
-Дополнительные материалы
+Additional material
 ------------------------
 
-Документация Python:
+Python documentation:
 
 -  🐍 `What’s New In Python 3: Text Vs. Data Instead Of Unicode Vs.
    8-bit <https://docs.python.org/3.0/whatsnew/3.0.html#text-vs-data-instead-of-unicode-vs-8-bit>`__
 -  🐍 `Unicode HOWTO <https://docs.python.org/3/howto/unicode.html>`__
 
-Статьи:
+Articles:
 
 -  🐍 `Pragmatic Unicode <https://nedbatchelder.com/text/unipain.html>`__
-   - статья, презентация и видео
--  🐍 `Раздел "Strings" книги "Dive Into Python
-   3" <http://www.diveintopython3.net/strings.html>`__ - очень хорошо
-   написано о Unicode, кодировках и как все это работает в Python
+   - article, presentation and video
+-  🐍 `Section «Strings» of the book "Dive Into Python
+   3" <http://www.diveintopython3.net/strings.html>`__ - very well written about Unicode, encodings and how all this works in Python
 
-Без привязки к Python:
+Without binding to Python:
 
 -  `The Absolute Minimum Every Software Developer Absolutely, Positively
    Must Know About Unicode and Character Sets (No

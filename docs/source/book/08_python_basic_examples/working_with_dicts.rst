@@ -1,23 +1,16 @@
-Работа со словарями
+Working with dictionary
 -------------------
 
-При обработке вывода команд или конфигурации часто надо будет записать
-итоговые данные в словарь.
+When processing output of commands or configuration, often it will be necessary to write the summary data to the dictionary.
 
-Не всегда очевидно, как обрабатывать вывод команд и каким образом в целом
-подходить к разбору вывода на части. В этом подразделе рассматриваются
-несколько примеров, с возрастающим уровнем сложности.
+It is not always obvious how to handle the output of commands and how to deal with the output in general. This subsection discusses several examples with increasing complexity.
 
-Разбор вывода столбцами
+Parsing of output with columns
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-В этом примере будет разбираться вывод команды sh ip int br. Из вывода
-команды нам надо получить соответствия имя интерфейса - IP-адрес. То
-есть имя интерфейса - это ключ словаря, а IP-адрес - значение. При этом,
-соответствие надо делать только для тех интерфейсов, у которых назначен
-IP-адрес.
+This example will deal with the output of *sh ip int br* command. From the output of command we need to get the interface name - IP address. So the interface name is the dictionary key and the IP address is the value. At the same time, the match must be made only for those interfaces with the IP address assigned.
 
-Пример вывода команды sh ip int br (файл sh_ip_int_br.txt):
+An example of *sh ip int br* output (sh_ip_int_br.txt file):
 
 ::
 
@@ -30,7 +23,7 @@ IP-адрес.
     Loopback0                  10.1.1.1        YES manual up                    up
     Loopback100                100.0.0.1       YES manual up                    up
 
-Файл working_with_dict_example_1.py:
+Working_with_dict_example_1.py file:
 
 .. code:: python
 
@@ -45,25 +38,15 @@ IP-адрес.
 
     print(result)
 
-Команда sh ip int br отображает вывод столбцами. Значит нужные поля
-находятся в одной строке. Скрипт обрабатывает вывод построчно и каждую
-строку разбивает с помощью метода split.
+The command *sh ip int br* displays the output with columns. So the desired fields are in the same line. The script processes the output line by line and divides each line using split() method.
 
-Полученный в итоге список содержит столбцы вывода. Так как из всего
-вывода нужны только интерфейсы на которых настроен IP-адрес, выполняется
-проверка первого символа второго столбца: если первый символ число,
-значит на интерфейсе назначен адрес и эту строку надо обрабатывать.
+The resulting list contains output columns. Because we need only interfaces on which the IP address is configured, the first character of the second column is checked: if the first character is a number the address is assigned to the interface and the string has to be processed.
 
-В строке ``interface, address, *other = line`` выполняется распаковка
-переменных. В переменную interface попадет имя интерфейса, в address
-попадет IP-адрес, а в other все остальные поля.
+In ``interface, address, *other = line`` - the variables are unpacked. The *interface* variable will have the interface name, the *address* will have the IP address and *other* - all other fields.
 
-Так как для каждой строки есть пара ключ и значение, они присваиваются в
-словарь: ``result[interface] = address``.
+Since each line has a key-value pair, they are assigned to the dictionary: ``result[interface] = address``.
 
-Результатом выполнения скрипта будет такой словарь (тут он разбит на
-пары ключ-значение для удобства, в реальном выводе скрипта словарь будет
-отображаться в одну строку):
+The result of the script execution will be a dictionary (here it is split into key-value pairs for convenience, in the real script output the dictionary will be displayed in one line):
 
 .. code:: python
 
@@ -73,15 +56,12 @@ IP-адрес.
      'Loopback0': '10.1.1.1',
      'Loopback100': '100.0.0.1'}
 
-Получение ключа и значения из разных строк вывода
+Getting key and value from different output lines
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Очень часто вывод команд выглядит таким образом, что ключ и значение
-находятся в разных строках. И надо придумать каким образом обрабатывать
-вывод, чтобы получить нужное соответствие.
+Very often the output of commands looks like the key and the value are in different lines. And you have to figure out how to process the output to get the right match.
 
-Например, из вывода команды ``sh ip interface`` надо получить соответствие
-имя интерфейса - MTU (файл sh_ip_interface.txt):
+For example, from the output of the *sh ip int br* command you need to get the match *interface name – MTU* (sh_ip_interface.txt file):
 
 ::
 
@@ -107,12 +87,9 @@ IP-адрес.
       Helper address is not set
       ...
 
-Имя интерфейса находится в строке вида
-``Ethernet0/0 is up, line protocol is up``, а MTU в строке вида
-``MTU is 1500 bytes``.
+The interface name is in ``Ethernet0/0 is up, line protocol is up`` line and MTU in the ``MTU is 1500 bytes`` line.
 
-Например, попробуем запоминать каждый раз интерфейс и выводить его
-значение, когда встречается MTU, вместе со значением MTU:
+For example, try to remember the interface each time and print its value when MTU parameter is detected, together with MTU value:
 
 .. code:: python
 
@@ -130,16 +107,11 @@ IP-адрес.
     Ethernet0/3    1500
     Loopback0      1514
 
-Вывод организован таким образом, что всегда сначала идет строка с
-интерфейсом, а затем через несколько строк - строка с MTU. Если
-запоминать имя интерфейса каждый раз, когда оно встречается, то на
-момент когда встретится строка с MTU, последний запомненный интерфейс -
-это тот к которому относится MTU.
+The command output is organized in such a way that there is always a line with interface first and then a line with MTU after several lines. If you remember the name of the interface every time it appears and at the time when line meets with MTU, the last memorized interface is the one which matches this MTU.
 
-Теперь, если необходимо создать словарь с соответствием интерфейс - MTU,
-достаточно записать значения на момент, когда был найден MTU.
+Now, if you want to create a dictionary that matches *interface – MTU*, it’s enough to write the values when the MTU was found.
 
-Файл working_with_dict_example_2.py:
+Working_with_dict_example_2.py file:
 
 .. code:: python
 
@@ -155,9 +127,7 @@ IP-адрес.
 
     print(result)
 
-Результатом выполнения скрипта будет такой словарь (тут он разбит на
-пары ключ-значение для удобства, в реальном выводе скрипта словарь будет
-отображаться в одну строку):
+The result of the script execution will be a dictionary (here it is split into key-value pairs for convenience, in the real script output the dictionary will be displayed in one line):
 
 .. code:: python
 
@@ -167,17 +137,14 @@ IP-адрес.
      'Ethernet0/3': '1500',
      'Loopback0': '1514'}
 
-Этот прием будет достаточно часто полезен, так как вывод команд, в
-целом, организован очень похожим образом.
+This technique will be quite often useful because command output is generally organized in a very similar way.
 
-Вложенный словарь
+Nested dictionary
 ~~~~~~~~~~~~~~~~~
 
-Если из вывода команды надо получить несколько параметров, очень удобно
-использовать словарь с вложенным словарем.
+If you want to get several parameters from the output, it is very convenient to use a dictionary with a nested dictionary.
 
-Например, из вывода ```sh ip interface``` надо получить два параметра:
-IP-адрес и MTU. Для начала, вывод информации:
+For example, from output ```sh ip interface``` you need to get two parameters: IP address and MTU. First, output of the information:
 
 ::
 
@@ -203,8 +170,7 @@ IP-адрес и MTU. Для начала, вывод информации:
       Helper address is not set
       ...
 
-На первом этапе каждое значение запоминается в переменную, а затем, выводятся все три значения.
-Значения выводятся, когда встретилась строка с MTU, потому что она идет последней:
+In the first step, each value is stored in a variable and then all three values are displayed. The values are displayed when a string has MTU because it is the last string:
 
 .. code:: python
 
@@ -224,8 +190,7 @@ IP-адрес и MTU. Для начала, вывод информации:
     Ethernet0/3    192.168.230.1/24 1500
     Loopback0      4.4.4.4/32       1514
 
-Тут используется такой же прием, как в предыдущем примере, но
-добавляется еще одна вложенность словаря:
+It uses the same technique as in the previous example but adds another nested dictionary:
 
 .. code:: python
 
@@ -245,15 +210,9 @@ IP-адрес и MTU. Для начала, вывод информации:
 
     print(result)
 
-Каждый раз, когда встречается интерфейс, в словаре ```result``` создается ключ
-с именем интерфейса, которому соответствует пустой словарь. Эта
-заготовка нужна для того, чтобы на момент когда встретится IP-адрес или
-MTU можно было записать параметр во вложенный словарь соответствующего
-интерфейса.
+Each time an interface is detected, the dictionary ```result``` creates a key with the name of the interface that corresponds to an empty dictionary. This blank is used so that at the time when the IP address or MTU is detected, the parameter can be written into the nested dictionary of the corresponding interface.
 
-Результатом выполнения скрипта будет такой словарь (тут он разбит на
-пары ключ-значение для удобства, в реальном выводе скрипта словарь будет
-отображаться в одну строку):
+The result of the script execution will be a dictionary (here it is split into key-value pairs for convenience, in the real script output the dictionary will be displayed in one line):
 
 .. code:: python
 
@@ -263,13 +222,10 @@ MTU можно было записать параметр во вложенны�
      'Ethernet0/3': {'ip': '192.168.230.1/24', 'mtu': '1500'},
      'Loopback0': {'ip': '4.4.4.4/32', 'mtu': '1514'}}
 
-Вывод с пустыми значениями
+Output with empty values
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Иногда, в выводе будут попадаться секции с пустыми значениями. Например,
-в случае с выводом ```sh ip interface```, могут попадаться интерфейсы, которые
-выглядят так:
-
+Sometimes, sections with empty values will be found in the output. For example, in the case of output ```sh ip interface```, interfaces may look like:
 ::
 
     Ethernet0/1 is up, line protocol is up
@@ -279,10 +235,9 @@ MTU можно было записать параметр во вложенны�
     Ethernet0/3 is administratively down, line protocol is down
       Internet protocol processing disabled
 
-Соответственно тут нет MTU или IP-адреса.
+Consequently, there is no MTU or IP address.
 
-И если выполнить предыдущий скрипт для файла с такими интерфейсами,
-результат будет таким (вывод для файла sh_ip_interface2.txt):
+And if you execute the previous script for a file with such interfaces, the result is this (output for the file sh_ip_interface2.txt):
 
 .. code:: python
 
@@ -292,10 +247,7 @@ MTU можно было записать параметр во вложенны�
      'Ethernet0/3': {},
      'Loopback0': {'ip': '2.2.2.2/32', 'mtu': '1514'}}
 
-Если необходимо добавлять интерфейсы в словарь только, когда на
-интерфейсе назначен IP-адрес, надо перенести создание ключа с именем
-интерфейса на момент, когда встречается строка с IP-адресом (файл
-working_with_dict_example_4.py):
+If you need to add interfaces to the dictionary only when an IP address is assigned to the interface, you need to move the creation of the key with interface name to the moment when the line with IP address is detected (working_with_dict_example_4.py file):
 
 .. code:: python
 
@@ -315,7 +267,7 @@ working_with_dict_example_4.py):
 
     print(result)
 
-В этом случае результатом будет такой словарь:
+In this case, the result will be a dictionary:
 
 .. code:: python
 

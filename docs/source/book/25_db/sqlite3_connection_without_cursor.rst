@@ -1,21 +1,17 @@
-Использование модуля sqlite3 без явного создания курсора
+Using sqlite3 module without explicit cursor creation 
 --------------------------------------------------------
 
-Методы execute доступны и в объекте Connection, и в объекте Cursor, а
-методы fetch доступны только в объекте Cursor.
+The execute methods are available in Connection object and in Cursor object but fetch() methods are only available in Cursor object.
 
-При использовании методов execute с объектом Connection курсор
-возвращается как результат выполнения метода execute. Его можно
-использовать как итератор и получать данные без методов fetch.
-За счет этого при работе с модулем sqlite3 можно не создавать курсор.
+When using execute() methods with Connection object, the cursor is returned as a result of execute() method. It can be used as an iterator and receive data without fetch() methods. This allows you not to create cursor when working with sqlite3 module.
 
-Пример итогового скрипта (файл create_sw_inventory_ver1.py):
+Example of the resulting script (create_sw_inventory_ver1.py):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/18_db/create_sw_inventory_ver1.py
   :language: python
   :linenos:
 
-Результат выполнения будет таким:
+The result will be:
 
 ::
 

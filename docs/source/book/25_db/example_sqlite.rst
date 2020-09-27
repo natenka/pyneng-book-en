@@ -1,28 +1,15 @@
-Пример использования SQLite
+SQLite use example
 ---------------------------
 
-В 15 разделе был пример разбора
-вывода команды show ip dhcp snooping binding. На выходе мы получили
-информацию о параметрах подключенных устройств (interface, IP, MAC,
-VLAN).
+In section 15 there was an example of reviewing the output of command *show ip dhcp snooping binding*. In the output we received information about parameters of connected devices (interface, IP, MAC, VLAN).
 
-В таком варианте можно посмотреть только все подключенные устройства к
-коммутатору. Если же нужно узнать на основании одного из параметров
-другие, то в таком виде это не очень удобно.
+In this variant you can only see all devices connected to the switch. If you want to find out others based on one of the parameters, it’s not  convenient in this way.
 
-Например, если нужно по IP-адресу получить информацию о том, к какому
-интерфейсу подключен компьютер, какой у него MAC-адрес и в каком он
-VLAN, то по выводу скрипта это сделать не очень просто и, главное, не
-очень удобно.
+For example, if you want to get information based on IP address about to which interface the host is connected, which MAC address it has and in which VLAN it is, then the script is not very simple and more importantly, not convenient.
 
-Запишем информацию, полученную из вывода sh ip dhcp snooping binding в
-SQLite. Это позволит делать запросы по любому параметру и получать
-недостающие.
-Для этого примера достаточно создать одну таблицу, где будет храниться
-информация.
+Let’s write information obtained from the output *sh ip dhcp snooping binding* to SQLite. This will allow do queries based on any parameter and get missing ones. For this example, it is sufficient to create a single table where information will be stored.
 
-Определение таблицы прописано в отдельном файле
-dhcp_snooping_schema.sql и выглядит так:
+The table is defined in a separate dhcp_snooping_schema.sql file:
 
 .. code:: sql
 
@@ -33,35 +20,33 @@ dhcp_snooping_schema.sql и выглядит так:
         interface    text
     );
 
-Для всех полей определен тип данных "текст".
+For all fields the data type is "text".
 
-MAC-адрес является первичным ключом нашей таблицы, что вполне логично,
-так как MAC-адрес должен быть уникальным.
+MAC address is the primary key of our table which is logical because MAC address must be unique.
 
-Кроме того, используется выражение ``create table if not exists`` -
-SQLite создаст таблицу только в том случае, если она не существует.
+Additionally, by using expression ``create table if not exists`` -
+SQLite will only create a table if it does not exist.
 
-Теперь надо создать файл БД, подключиться к базе данных и создать
-таблицу (файл create_sqlite_ver1.py):
+Now you have to create a database file, connect to the database and create a table (create_sqlite_ver1.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/18_db/create_sqlite_ver1.py
   :language: python
   :linenos:
 
-Комментарии к файлу: 
+Comments to file:
 
-* при выполнении строки ``conn = sqlite3.connect('dhcp_snooping.db')``: 
+* during execution of ``conn = sqlite3.connect('dhcp_snooping.db')``: 
 
-  * создается файл dhcp_snooping.db, если его нет 
-  * создается объект Connection 
+  * file dhcp_snooping.db is created if it does not exist
+  * Connection object is created
 
-* в БД создается таблица (если ее не было) на основании команд, которые указаны в файле dhcp_snooping_schema.sql: 
+* table is created in database (if it does not exist) based on commands specified in dhcp_snooping_schema.sql file:
 
-  * открывается файл dhcp_snooping_schema.sql 
-  * ``schema = f.read()`` - весь файл считывается в одну строку 
-  * ``conn.executescript(schema)`` - метод executescript позволяет выполнять команды SQL, которые прописаны в файле
+  * dhcp_snooping_schema.sql file opens
+  * ``schema = f.read()`` - whole file is read in one string
+  * ``conn.executescript(schema)`` - executescript() method allows SQL to execute commands that are written in the file
 
-Выполнение скрипта:
+Execution of script:
 
 ::
 
@@ -69,20 +54,18 @@ SQLite создаст таблицу только в том случае, есл
     Creating schema...
     Done
 
-В результате должен быть создан файл БД и таблица dhcp.
+The result should be a database file and a dhcp table.
 
-Проверить, что таблица создалась, можно с помощью утилиты sqlite3,
-которая позволяет выполнять запросы прямо в командной строке.
+You can check that the table has been created with sqlite3 utility which allows you to execute queries directly in command line.
 
-Список созданных таблиц выводится таким образом:
+The list of tables created is shown as follows:
 
 ::
 
     $ sqlite3 dhcp_snooping.db "SELECT name FROM sqlite_master WHERE type='table'"
     dhcp
 
-Теперь нужно записать информацию из вывода команды sh ip dhcp snooping
-binding в таблицу (файл dhcp_snooping.txt):
+Now it is necessary to write information from the output of *sh ip dhcp snooping binding* command to the table (dhcp_snooping.txt file):
 
 ::
 
@@ -94,9 +77,7 @@ binding в таблицу (файл dhcp_snooping.txt):
     00:09:BC:3F:A6:50   10.1.10.6        76260       dhcp-snooping   10    FastEthernet0/3
     Total number of bindings: 4
 
-Во второй версии скрипта сначала вывод в файле dhcp_snooping.txt
-обрабатывается регулярными выражениями, а затем записи добавляются в БД
-(файл create_sqlite_ver2.py):
+In the second version of the script, the output in dhcp_snooping.txt file is processed with regular expressions and then entries are added to database (create_sqlite_ver2.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/18_db/create_sqlite_ver2.py
   :language: python
@@ -104,31 +85,26 @@ binding в таблицу (файл dhcp_snooping.txt):
 
 .. note::
 
-    Пока что файл БД каждый раз надо удалять, так как скрипт пытается
-    его создать при каждом запуске.
+    For now, you should delete database file every time because script tries to create it every time you start.
 
-Комментарии к скрипту: 
+Comments to the script:
 
-* в регулярном выражении, которое проходится по выводу
-  команды sh ip dhcp snooping binding, используются не именованные
-  группы, как в примере раздела `Регулярные выражения <../14_regex/4a_group_example.md>`__, а нумерованные 
+* in the regular expression that processes the output of *sh ip dhcp snooping binding*, numbered groups are used instead of named groups as it was in example of section `Regular expressions <../14_regex/4a_group_example.md>`__
 
-  * группы созданы только для тех элементов, которые нас интересуют 
+  * groups were created only for those elements we are interested in
 
-* result - это список, в котором хранится результат обработки вывода команды 
+* result - a list that stores the result of processing the command output
 
-  * но теперь тут не словари, а кортежи с результатами 
-  * это нужно для того, чтобы их можно было сразу передавать на запись в БД 
+  * but now there is no dictionaries but tuples with results 
+  * this is necessary to enable them to be immediately written to  database
 
-* Перебираем в полученном списке кортежей элементы 
-* В этом скрипте используется еще один вариант записи в БД 
+* Scroll the elements in the received list of tuples
+* This script uses another version of database entry
 
-  * строка query описывает запрос. Но вместо значений 
-    указываются знаки вопроса. Такой вариант записи запроса
-    позволяет динамически подставлять значение полей 
-  * затем методу execute передается строка запроса и кортеж row, где находятся значения
+  * *query* string describes the query. But instead of values, question marks are given. This query type allows dynamicly substite field values.
+  * then execute() method is passed the query string and the *row* tuple where the values are
 
-Выполняем скрипт:
+Execute the script:
 
 ::
 
@@ -137,7 +113,7 @@ binding в таблицу (файл dhcp_snooping.txt):
     Done
     Inserting DHCP Snooping data
 
-Проверим, что данные записались:
+Let’s check if data has been written:
 
 ::
 
@@ -151,7 +127,7 @@ binding в таблицу (файл dhcp_snooping.txt):
     00:05:B3:7E:9B:60  10.1.5.4    5           FastEthernet0/9
     00:09:BC:3F:A6:50  10.1.10.6   10          FastEthernet0/3
 
-Теперь попробуем запросить по определенному параметру:
+Now let’s try to ask by a certain parameter:
 
 ::
 
@@ -162,28 +138,23 @@ binding в таблицу (файл dhcp_snooping.txt):
     -----------------  ----------  ----------  ----------------
     00:04:A3:3E:5B:69  10.1.5.2    5           FastEthernet0/10
 
-То есть, теперь на основании одного параметра можно получать остальные.
+That is, it is now possible to get others parameters based on one parameter.
 
-Переделаем скрипт таким образом, чтобы в нём была проверка на наличие
-файла dhcp_snooping.db. Если файл БД есть, то не надо создавать
-таблицу, считаем, что она уже создана.
+Let’s modify the script to make it check for the presence of dhcp_snooping.db. If you have a database file you don’t need to create a table, we believe it has already been created.
 
-Файл create_sqlite_ver3.py:
+File create_sqlite_ver3.py:
 
 .. literalinclude:: /pyneng-examples-exercises/examples/18_db/create_sqlite_ver3.py
   :language: python
   :linenos:
 
-Теперь есть проверка наличия файла БД, и файл dhcp_snooping.db будет
-создаваться только в том случае, если его нет. Данные также записываются
-только в том случае, если не создан файл dhcp_snooping.db.
+Now there is a verification of the presence of database file and dhcp_snooping.db file will only be created if it does not exist. Data is also written only if dhcp_snooping.db file is not created.
 
 .. note::
 
-    Разделение процесса создания таблицы и заполнения ее данными
-    вынесено в задания к разделу.
+    Separating the process of creating a table and completing it with the data is specified in tasks to the section.
 
-Если файла нет (предварительно его удалить):
+If no file (delete it first):
 
 ::
 
@@ -193,7 +164,7 @@ binding в таблицу (файл dhcp_snooping.txt):
     Done
     Inserting DHCP Snooping data
 
-Проверим. В случае, если файл уже есть, но данные не записаны:
+Let’s check. In case the file already exists but the data is not written:
 
 ::
 
@@ -206,7 +177,7 @@ binding в таблицу (файл dhcp_snooping.txt):
     Database exists, assume dhcp table does, too.
     Inserting DHCP Snooping data
 
-Если есть и БД и данные:
+If both DB and data are exist:
 
 ::
 
@@ -218,47 +189,43 @@ binding в таблицу (файл dhcp_snooping.txt):
     Error occurred:  UNIQUE constraint failed: dhcp.mac
     Error occurred:  UNIQUE constraint failed: dhcp.mac
 
-Теперь делаем отдельный скрипт, который занимается отправкой запросов в
-БД и выводом результатов. Он должен: 
+Now we make a separate script that deals with sending queries to database and displaying results. It should:
 
-* ожидать от пользователя ввода параметров: 
+* expect parameters from user:
 
-  * имя параметра 
-  * значение параметра 
+  * parameter name
+  * parameter value
 
-* делать нормальный вывод данных по запросу
+* provide normal output on request
 
-Файл get_data_ver1.py:
+File get_data_ver1.py:
 
 .. literalinclude:: /pyneng-examples-exercises/examples/18_db/get_data_ver1.py
   :language: python
   :linenos:
 
-Комментарии к скрипту: 
+Comments to the script:
 
-* из аргументов, которые передали скрипту, считываются параметры key, value 
+* key, value are read from the arguments that passed to script
 
-  * из списка keys удаляется выбранный ключ. Таким образом, 
-    в списке остаются только те параметры, которые нужно вывести 
+  * selected key is removed from the *keys* list. Thus, only parameters that you want to display are left in the list
 
-* подключаемся к БД 
+* connecting to the DB
 
-  * ``conn.row_factory = sqlite3.Row`` - позволяет далее обращаться к данным в колонках по имени колонки 
+  * ``conn.row_factory = sqlite3.Row`` - allows further access data in column based on column names
 
-* из БД выбираются те строки, в которых ключ равен указанному значению 
+* Select rows from database where the key is equal to specified value
 
-  * в SQL значения можно подставлять через знак вопроса, но нельзя подставлять
-    имя столбца. Поэтому имя столбца подставляется через форматирование 
-    строк, а значение - штатным средством SQL. 
-  * Обратите внимание на ``(value,)`` - таким образом передается кортеж с одним элементом 
+  * in SQL the values can be set by a question mark but you cannot give a column name. Therefore, the column name is substituted by the row formatting and the value by SQL tool.
+  * Pay attention to ``(value,)`` - the tuple with one element is passed
 
-* Полученная информация выводится на стандартный поток вывода: 
-  * перебираем полученные результаты и выводим только те поля, названия
-    которых находятся в списке keys
+* The resulting information is displayed to standard output stream: 
 
-Проверим работу скрипта.
+  * iterate over the results obtained and display only those fields that are in the *keys* list
 
-Показать параметры хоста с IP 10.1.10.2:
+Let’s check the script.
+
+Show host parameters with IP 10.1.10.2:
 
 ::
 
@@ -271,7 +238,7 @@ binding в таблицу (файл dhcp_snooping.txt):
     interface   : FastEthernet0/1
     ----------------------------------------
 
-Показать хосты в VLAN 10:
+Show hosts in VLAN 10:
 
 ::
 
@@ -288,27 +255,23 @@ binding в таблицу (файл dhcp_snooping.txt):
     interface   : FastEthernet0/3
     ----------------------------------------
 
-Вторая версия скрипта для получения данных с небольшими улучшениями: 
+The second version of the script to obtain data with minor improvements:
 
-* Вместо форматирования строк используется словарь, в котором описаны
-  запросы, соответствующие каждому ключу. 
-* Выполняется проверка ключа, который был выбран 
-* Для получения заголовков всех столбцов, который
-  соответствуют запросу, используется метод keys()
+* Instead of rows formatting, a dictionary that describes the queries corresponding to each key is used. 
+* Checking the key that was selected
+* Method keys() is used to obtain all columns that match the query
 
-Файл get_data_ver2.py:
+File get_data_ver2.py:
 
 .. literalinclude:: /pyneng-examples-exercises/examples/18_db/get_data_ver2.py
   :language: python
   :linenos:
 
-В этом скрипте есть несколько недостатков: 
+There are several drawbacks to this script:
 
-* не проверяется количество аргументов, которые передаются скрипту 
-* хотелось бы собирать информацию с разных коммутаторов. А для этого надо добавить поле,
-  которое указывает, на каком коммутаторе была найдена запись
+* does not check the number of arguments that are passed to the script
+* It would be good to collect information from different switches. To do this, you should add a field that indicates on which switch the entry was found
 
-Кроме того, многое нужно доработать в скрипте, который создает БД и
-записывает данные.
+In addition, a lot of work needs to be done in the script that creates database and writes the data.
 
-Все доработки будут выполняться в заданиях этого раздела.
+All improvements will be done in tasks of this section.

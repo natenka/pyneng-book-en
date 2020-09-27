@@ -1,11 +1,11 @@
-Создание своих модулей
+Create your own modules
 ----------------------
 
-Модуль - это файл с расширением .py и кодом Python.
+Module is a file with . py extension and Python code.
 
-Пример создания своих модулей и импорта функции из одного модуля в другой.
+Example of creating your own modules and importing a function from one module to another.
 
-Файл check_ip_function.py:
+File check_ip_function.py:
 
 .. code:: python
 
@@ -23,33 +23,27 @@
     ip1 = '10.1.1.1'
     ip2 = '10.1.1'
 
-    print('Проверка IP...')
+    print('Checking IP...')
     print(ip1, check_ip(ip1))
     print(ip2, check_ip(ip2))
 
-В файле check_ip_function.py создана функция check_ip,
-которая проверяет, что аргумент является IP-адресом.
-Тут проверка выполняется с помощью модуля ipaddress,
-который будет рассматриваться в следующем разделе.
+The check_ip_function.py file has created check_ip function which checks that the argument is an IP address. This is done by using the **ipaddress** module which will be discussed in the next section.
 
-Функция ipaddress.ip_address сама проверяет правильность IP-адреса
-и генерирует исключение ValueError, если адрес не прошел проверку.
+The ipaddress.ip_address function itself checks the correctness of the IP address and generates  ValueError exception if the address is not validated.
 
-Функция check_ip возвращает True, если адрес прошел проверку и False - если нет.
+The check_ip function returns True if address is validated and False if not.
 
-Если запустить скрипт check_ip_function.py вывод будет таким:
+If you run check_ip_function.py script, the output is:
 
 ::
 
     $ python check_ip_function.py
-    Проверка IP...
+    Checking IP...
     10.1.1.1 True
     10.1.1 False
 
 
-Второй скрипт импортирует функцию check_ip и использует ее для того
-чтобы из списка адресов отобрать только те, которые прошли проверку
-(файл get_correct_ip.py):
+The second script imports the check_ip function and uses it to select from the address list only those that passed the check (get_correct_ip.py file):
 
 .. code:: python
 
@@ -63,45 +57,33 @@
                 correct.append(ip)
         return correct
 
-    print('Проверка списка IP-адресов')
+    print('Cheking list of IP addresses')
     ip_list = ['10.1.1.1', '8.8.8.8', '2.2.2']
     correct = return_correct_ip(ip_list)
     print(correct)
 
 
-В первой строке выполняется импорт функции check_ip из модуля
-check_ip_function.py.
+First line imports check_ip function from check_ip_function.py module.
 
-
-Результат выполнения скрипта:
+Result of script execution:
 
 ::
 
     $ python get_correct_ip.py
-    Проверка IP...
+    Cheking IP...
     10.1.1.1 True
     10.1.1 False
-    Проверка списка IP-адресов
+    Cheking list of IP addresses
     ['10.1.1.1', '8.8.8.8']
 
-Обратите внимание, что выведена не только информация из скрипта get_correct_ip.py,
-но и информация из скрипта check_ip_function.py.
-Так происходит из-за того, что любая разновидность import выполняет весь скрипт.
-То есть, даже когда импорт выглядит как ``from check_ip_function import check_ip``,
-выполняется весь скрипт check_ip_function.py, а не только функция check_ip.
-В итоге будут выводиться все сообщения импортируемого скрипта.
+Note that not only information from the get_correct_ip.py script is displayed, but also information from the check_ip_function.py. This is because any type of import executes the entire script. That is, even when the import looks like ``from check_ip_function import check_ip``, the entire check_ip_function.py script is executed, not just check_ip function. As a result, all messages of the imported script will be displayed.
 
-Сообщения из импортируемого скрипта не страшны, они мешают и только, хуже когда 
-скрипт выполнял что-то типа подключения к оборудованию и при импорте функции из него,
-придется ждать пока это подключение выполнится.
+Messages from the imported script are not scary, they are just confusing. Worse when script performed some kind of connection to the hardware and when importing a function from it, we will have to wait for the connection to take place.
 
-В Python есть возможность указать, что некоторые строки не должны выполняться при импорте.
-Это рассматривается в следующем подразделе.
+Python can specify that some strings should not be executed when importing. This is discussed in the following subsection.
 
 .. note::
-    Функцию return_correct_ip можно заменить filter или генератором списка,
-    выше используется более длинный, но скорее всего, пока что более понятный
-    вариант:
+    The return_correct_ip function can be replaced by a filter() or a list generator. Above is used the longer but most likely more understandable option:
 
     .. code:: python
 

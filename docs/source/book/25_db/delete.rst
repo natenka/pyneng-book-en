@@ -1,10 +1,9 @@
 DELETE
 ~~~~~~
 
-Оператор DELETE используется для удаления записей.
-Как правило, он используется вместе с оператором WHERE.
+DELETE operator is used to delete enties. It is commonly used together with WHERE operator.
 
-Например, таблица switch выглядит так:
+For example, *switch* table is:
 
 .. code:: sql
 
@@ -24,7 +23,7 @@ DELETE
     8 rows in set
     Time: 0.033s
 
-Удаление информации про коммутатор sw8 выполняется таким образом:
+Deleting information about sw8 switch is performed as follows:
 
 .. code:: sql
 
@@ -35,7 +34,7 @@ DELETE
     Query OK, 1 row affected
     Time: 0.008s
 
-Теперь в таблице нет строки с коммутатором sw8:
+No line with sw8 switch in the table now:
 
 .. code:: sql
 

@@ -1,15 +1,11 @@
-Функция sorted
+Sorted
 --------------
 
-Функция ``sorted()`` возвращает новый отсортированный список, который
-получен из итерируемого объекта, который был передан как аргумент.
-Функция также поддерживает дополнительные параметры, которые позволяют
-управлять сортировкой.
+The ``sorted()`` function returns a new sorted list that is obtained from an iterable object that has been passed as an argument. The function also supports additional options that allow you to control sorting.
 
-Первый аспект, на который важно обратить внимание - sorted возвращает
-список.
+The first aspect that is important to pay attention to - **sorted** returns the list.
 
-Если сортировать список элементов, то возвращается новый список:
+If you sort the list of items, a new list is returned:
 
 .. code:: python
 
@@ -18,7 +14,7 @@
     In [2]: sorted(list_of_words)
     Out[2]: ['', 'dict', 'list', 'one', 'two']
 
-При сортировке кортежа также возвращается список:
+When sorting the tuple also the list returns:
 
 .. code:: python
 
@@ -27,7 +23,7 @@
     In [4]: sorted(tuple_of_words)
     Out[4]: ['', 'dict', 'list', 'one', 'two']
 
-Сортировка множества:
+Sorting the set:
 
 .. code:: python
 
@@ -36,7 +32,7 @@
     In [6]: sorted(set_of_words)
     Out[6]: ['', 'dict', 'list', 'one', 'two']
 
-Сортировка строки:
+Sorting the string:
 
 .. code:: python
 
@@ -45,8 +41,7 @@
     In [8]: sorted(string_to_sort)
     Out[8]: [' ', 'g', 'g', 'i', 'l', 'n', 'n', 'o', 'r', 's', 't']
 
-Если передать sorted словарь, функция вернет отсортированный список
-ключей:
+If you pass a dictionary to sorted() the function will return sorted list of keys:
 
 .. code:: python
 
@@ -75,10 +70,9 @@
 reverse
 ~~~~~~~
 
-Флаг reverse позволяет управлять порядком сортировки. По умолчанию
-сортировка будет по возрастанию элементов.
+The **reverse** flag allows you to control the sorting order. By default, the sorting will be incremental.
 
-Указав флаг reverse, можно поменять порядок:
+The **reverse** flag changes the order:
 
 .. code:: python
 
@@ -93,12 +87,9 @@ reverse
 key
 ~~~
 
-С помощью параметра key можно указывать, как именно выполнять
-сортировку. Параметр key ожидает функцию, с помощью которой должно быть
-выполнено сравнение.
+With the **key** option you can specify how to perform sorting. The **key** parameter expects the function by which the comparison should be performed.
 
-Например, таким образом можно отсортировать список строк по длине
-строки:
+For example you can sort a list of strings by string length:
 
 .. code:: python
 
@@ -107,8 +98,7 @@ key
     In [15]: sorted(list_of_words, key=len)
     Out[15]: ['', 'one', 'two', 'list', 'dict']
 
-Если нужно отсортировать ключи словаря, но при этом игнорировать регистр
-строк:
+If you want to sort dictionary keys but ignore string register:
 
 .. code:: python
 
@@ -134,15 +124,11 @@ key
      'to_name',
      'User_VLAN']
 
-Параметру key можно передавать любые функции, не только встроенные.
-Также тут удобно использовать анонимную функцию lambda.
+The **key** option can accept any functions, not only embedded ones. It is also convenient to use the anonymous lambda() function.
 
-С помощью параметра key можно сортировать объекты не по первому
-элементу, а по любому другому. Но для этого надо использовать или
-функцию lambda, или специальные функции из модуля operator.
+Using the **key** option you can sort objects by any element. However, this requires either lambda() or special functions from the **operator** module.
 
-Например, чтобы отсортировать список кортежей из двух элементов по
-второму элементу, надо использовать такой прием:
+For example, in order to sort the list of tuples with two items in the second element, you should use this technique:
 
 .. code:: python
 

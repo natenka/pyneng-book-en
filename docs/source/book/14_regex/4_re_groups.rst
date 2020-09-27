@@ -1,53 +1,39 @@
-Группировка выражений
+Expressions grouping
 ---------------------
 
-Группировка выражений указывает, что последовательность символов надо
-рассматривать как одно целое. Однако это не единственное преимущество
-группировки.
+Expressions grouping indicates that the sequence of symbols should be considered as a one. However, this is not the only advantage of grouping.
 
-Кроме этого, с помощью групп можно получать только определенную часть
-строки, которая была описана выражением. Это очень полезно в ситуациях,
-когда надо описать строку достаточно подробно, чтобы отобрать нужные
-строки, но в то же время из самой строки надо получить только
-определенное значение.
+In addition, by use of groups you can get only a certain portion of the string that has been described by the expression.
 
-Например, из log-файла надо отобрать строки, в которых встречается
-"%SW_MATM-4-MACFLAP_NOTIF", а затем из каждой такой строки получить
-MAC-адрес, VLAN и интерфейсы. В этом случае регулярное выражение просто
-должно описывать строку, а все части строки, которые надо получить в
-результате, просто заключаются в скобки.
+For example, from a log file you should select strings in which "%SW_MATM-4-MACFLAP_NOTIF" meets and then from each such string get MAC address, VLAN and interfaces. In this case, the regular expression simply has to describe the string and all the parts of the string to be obtained are simply placed in brackets.
 
-В Python есть два варианта использования групп: 
+Python has two options for using groups:
 
-* Нумерованные группы
-* Именованные группы
+* Numbered groups
+* Named groups
 
-Нумерованные группы
+Numbered groups
 ~~~~~~~~~~~~~~~~~~~
 
-Группа определяется помещением выражения в круглые скобки ``()``.
+The group is defined by placing the expression in brackets ``()``.
 
-Внутри выражения группы нумеруются слева направо, начиная с 1.
-Затем к группам можно обращаться по номерам и получать текст, который
-соответствует выражению в группе.
+Inside the expression, group are numbered from left to right starting with 1. Groups can then be approached by numbers and receive text that corresponds to the group expression.
 
-Пример использования групп:
+Example of groups use:
 
 .. code:: python
 
     In [8]: line = "FastEthernet0/1            10.0.12.1       YES manual up                    up"
     In [9]: match = re.search('(\S+)\s+([\w.]+)\s+.*', line)
 
-В данном примере указаны две группы:
+In this example, two groups are specified:
 
--  первая группа - любые символы, кроме пробельных
--  вторая группа - любая буква или цифра (символ ``\w``) или точка
+-  the first group - any characters other than whitespaces
+-  the second group - any letter or digit (symbol ``\w``) or dot
 
-Вторую группу можно было описать так же, как и первую. Другой
-вариант сделан просто для примера
+The second group could be described as the first. The other version is just for example.
 
-Теперь можно обращаться к группам по номеру. Группа 0 - это строка,
-которая соответствует всему шаблону:
+You can now access the group by number. Group 0 is a string that corresponds to the entire template:
 
 .. code:: python
 
@@ -60,7 +46,7 @@ MAC-адрес, VLAN и интерфейсы. В этом случае регу�
     In [12]: match.group(2)
     Out[12]: '10.0.12.1'
 
-При необходимости можно перечислить несколько номеров групп:
+If necessary, you can list several group numbers:
 
 .. code:: python
 
@@ -70,7 +56,7 @@ MAC-адрес, VLAN и интерфейсы. В этом случае регу�
     In [14]: match.group(2, 1, 2)
     Out[14]: ('10.0.12.1', 'FastEthernet0/1', '10.0.12.1')
 
-Начиная с версии Python 3.6, к группам можно обращаться таким образом:
+Starting with Python 3.6, groups can be accessed as follows:
 
 .. code:: python
 
@@ -83,24 +69,21 @@ MAC-адрес, VLAN и интерфейсы. В этом случае регу�
     In [17]: match[2]
     Out[17]: '10.0.12.1'
 
-Для вывода всех подстрок, которые соответствуют указанным группам,
-используется метод groups:
+Method groups() is used to display all substrings that correspond to the specified groups:
 
 .. code:: python
 
     In [18]: match.groups()
     Out[18]: ('FastEthernet0/1', '10.0.12.1')
 
-Именованные группы
+Named groups
 ~~~~~~~~~~~~~~~~~~
 
-Когда выражение сложное, не очень удобно определять номер группы.
-Плюс, при дополнении выражения, может получиться так, что порядок
-групп изменился, и придется изменить и код, который ссылается на группы.
+When the expression is complex, it is not very convenient to determine the number of the group. Plus, when you modify an expression the order of groups can be changed and you will need to change the code that refers to the groups.
 
-Именованные группы позволяют задавать группе имя.
+The named groups allow you to give a name to the group.
 
-Синтаксис именованной группы ``(?P<name>regex)``:
+Syntax of the named group ``(?P<name>regex)``:
 
 .. code:: python
 
@@ -108,7 +91,7 @@ MAC-адрес, VLAN и интерфейсы. В этом случае регу�
 
     In [20]: match = re.search('(?P<intf>\S+)\s+(?P<address>[\d.]+)\s+', line)
 
-Теперь к этим группам можно обращаться по имени:
+These groups can now be accessed by name:
 
 .. code:: python
 
@@ -118,21 +101,18 @@ MAC-адрес, VLAN и интерфейсы. В этом случае регу�
     In [22]: match.group('address')
     Out[22]: '10.0.12.1'
 
-Также очень полезно то, что с помощью метода groupdict(), можно получить
-словарь, где ключи - имена групп, а значения - подстроки, которые им
-соответствуют:
+It is also very useful that with the groupdict() method you can get a dictionary where the keys are the names of groups and the values are the substrings that correspond to them:
 
 .. code:: python
 
     In [23]: match.groupdict()
     Out[23]: {'address': '10.0.12.1', 'intf': 'FastEthernet0/1'}
 
-И в таком случае можно добавить группы в регулярное выражение и
-полагаться на их имя, а не на порядок:
+And then you can add groups to the regular expression and rely on their name instead of order:
 
 .. code:: python
 
-    In [24]: match = re.search('(?P<intf>\S+)\s+(?P<address>[\d\.]+)\s+\w+\s+\w+\s+(?P<status>up|down)\s+(?P<protocol>up|down)', line)
+    In [24]: match = re.search('(?P<intf>\S+)\s+(?P<address>[\d\.]+)\s+\w+\s+\w+\s+(?P<status>up|down|administratively down)\s+(?P<protocol>up|down)', line)
 
     In [25]: match.groupdict()
     Out[25]:

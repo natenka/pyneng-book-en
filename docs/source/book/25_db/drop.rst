@@ -1,9 +1,9 @@
 DROP
 ~~~~
 
-Оператор DROP удаляет таблицу вместе со схемой и всеми данными.
+DROP operator removes table along with schema and all data.
 
-Удалить таблицу можно так:
+You can delete table like this:
 
 .. code:: sql
 

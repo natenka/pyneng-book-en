@@ -1,11 +1,9 @@
-Обработка исключений
+Processing of exceptions
 --------------------
 
-Посмотрим на пример использования метода execute при возникновении
-ошибки.
+Let’s  see an example of how to use execute() method when an error occurs.
 
-В таблице switch поле mac должно быть уникальным. И, если попытаться
-записать пересекающийся MAC-адрес, возникнет ошибка:
+In *switch* table the *mac* field must be unique. If you try to write an overlapping MAC address, there is an error:
 
 .. code:: python
 
@@ -21,7 +19,7 @@
 
     IntegrityError: UNIQUE constraint failed: switch.mac
 
-Соответственно, можно перехватить исключение:
+Accordingly, you can catch the exception:
 
 .. code:: python
 
@@ -32,5 +30,4 @@
         ...:
     Error occurred:  UNIQUE constraint failed: switch.mac
 
-Обратите внимание, что надо перехватывать исключение
-sqlite3.IntegrityError, а не IntegrityError.
+Note that you should intercept *sqlite3.IntegrityError* exception, not *IntegrityError*.

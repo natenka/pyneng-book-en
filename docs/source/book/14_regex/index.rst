@@ -4,7 +4,7 @@
 
 .. _regex_index:
 
-14. Синтаксис регулярных выражений
+14. Regular expression syntax
 ============================
 
 .. toctree::

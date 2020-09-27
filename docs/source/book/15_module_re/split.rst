@@ -1,12 +1,9 @@
-Функция re.split
+Function re.split
 ----------------
 
-Функция split работает аналогично методу split в строках,
-но в функции re.split можно использовать регулярные выражения, а
-значит, разделять строку на части по более сложным условиям.
+The split() function works similary to split() method in strings, but in re.split function you can use regular expressions which means dividing the string into parts using more complex conditions.
 
-Например, строку ospf_route надо разбить на элементы по пробелам (как в
-методе str.split):
+For example, *ospf_route* string should be split by spaces (as in str.split method):
 
 .. code:: python
 
@@ -22,7 +19,7 @@
      '3d18h,',
      'FastEthernet0/0']
 
-Аналогичным образом можно избавиться и от запятых:
+Similarly, commas can be removed:
 
 .. code:: python
 
@@ -36,19 +33,16 @@
      '3d18h',
      'FastEthernet0/0']
 
-И, если нужно, от квадратных скобок:
+And if necessary, get rid of square brackets:
 
 .. code:: python
 
     In [4]: re.split(r'[ ,\[\]]+', ospf_route)
     Out[4]: ['O', '10.0.24.0/24', '110/41', 'via', '10.0.13.3', '3d18h', 'FastEthernet0/0']
 
-У функции split есть особенность работы с группами (выражения в
-круглых скобках).
-Если указать то же выражение с помощью круглых скобок, в итоговый
-список попадут и разделители.
+The split() function has a peculiarity of working with groups (expressions in parentheses). If you specify the same expression with parentheses, the resulting list will include the separators.
 
-Например, в выражении как разделитель добавлено слово via:
+For example, word *via* is specified as a separator:
 
 .. code:: python
 
@@ -66,8 +60,7 @@
      ' ',
      'FastEthernet0/0']
 
-Для отключения такого поведения надо сделать группу noncapture.
-То есть, отключить запоминание элементов группы:
+To disable such behavior you should make a *noncapture* group. That is, disable memorization of group elements:
 
 .. code:: python
 

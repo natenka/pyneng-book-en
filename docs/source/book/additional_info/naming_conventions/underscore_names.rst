@@ -1,18 +1,14 @@
-Подчеркивание в именах
+Underscore in names
 ----------------------
 
-В Python подчеркивание в начале или в конце имени указывает на
-специальные имена. Чаще всего это всего лишь договоренность, но иногда
-это действительно влияет на поведение объекта.
+In Python, underscores at the beginning or at the end of a name indicates special names. Most often it’s just an arrangement but sometimes it actually affects object behavior.
 
-Подчеркивание как имя
+Underscore in name
 ~~~~~~~~~~~~~~~~~~~~~
 
-В Python одно подчеркивание используется для обозначения того, что
-данные просто выбрасываются.
+In Python, one underscore is used to simply indicate that data is discarded.
 
-Например, если из строки line надо получить MAC-адрес, IP-адрес, VLAN и
-интерфейс и отбросить остальные поля, можно использовать такой вариант:
+For example, if you want to get MAC address, IP address, VLAN and interface from *line* string and discard the rest of fields, you can use this option:
 
 .. code:: python
 
@@ -23,31 +19,27 @@
     In [3]: print(mac, ip, vlan, intf)
     00:09:BB:3D:D6:58 10.1.10.2 10 FastEthernet0/1
 
-Такая запись говорит о том, что нам не нужны третий и четвертый
-элементы.
+This record indicates that we do not need the third and fourth elements.
 
-Можно сделать так:
+You can do this:
 
 .. code:: python
 
     In [4]: mac, ip, lease, entry_type, vlan, intf = line.split()
 
-Но тогда может быть непонятно, почему переменные lease и entry\_type не
-используются дальше. Если понятней использовать имена, то лучше назвать
-переменные именами вроде ignored.
+But then it may be unclear why *lease* and *entry\_type* variables are not used any further. It is better to call variable names like *ignored*.
 
-Аналогичный прием может использоваться, когда переменная цикла не нужна:
+A similar technique can be used when a loop variable is not needed:
 
 .. code:: python
 
     In [5]: [0 for _ in range(10)]
     Out[5]: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-Подчеркивание в интерпретаторе
+Underscore in interpreter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-В интерпретаторе python и ipython подчеркивание используется для
-получения результата последнего выражения
+In the python and ipython interpreter undesrcore is used to get result of the last experision.
 
 .. code:: python
 
@@ -62,23 +54,19 @@
     In [9]: a
     Out[9]: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-Одно подчеркивание
+Single underscore
 ^^^^^^^^^^^^^^^^^^
 
-Одно подчеркивание перед именем
+One underscore before name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Одно подчеркивание перед именем указывает, что имя используется как
-внутреннее.
+One underscore before name indicates that the name is used as an internal name.
 
-Например, если одно подчеркивание указано в имени функции или метода,
-это означает, что этот объект является внутренней особенностью
-реализации и не стоит его использовать напрямую.
+For example, if one underscore is specified in name of function or method, this means that the object is an internal feature of implementation and should not be used directly.
 
-Но, кроме того, при импорте вида ``from module import *`` не будут
-импортироваться объекты, которые начинаются с подчеркивания.
+But also, when importing ``from module import *`` the objects that start with underscore will not be imported.
 
-Например, в файле example.py такие переменные и функции:
+For instanse, example.py file contains these variables and functions:
 
 .. code:: python
 
@@ -93,8 +81,7 @@
     def _func2(arg):
         print arg
 
-Если импортировать все объекты из модуля, то те, которые начинаются с
-подчеркивания, не будут импортированы:
+If you import all objects from module, those that start with underscore will not be imported:
 
 .. code:: python
 
@@ -114,13 +101,12 @@
     ...
     NameError: name '_func2' is not defined
 
-Одно подчеркивание после имени
+One underscore after name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Одно подчеркивание после имени используется в том случае, когда имя
-объекта или параметра пересекается со встроенными именами.
+One underscore after name is used when the name of object or parameter overlaps with the embedded names.
 
-Пример:
+Example:
 
 .. code:: python
 
@@ -128,18 +114,15 @@
 
     In [13]: mac, ip, lease, type_, vlan, intf = line.split()
 
-Два подчеркивания
+Two underscores
 ~~~~~~~~~~~~~~~~~
 
-Два подчеркивания перед именем
+Two underscores before name
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Два подчеркивания перед именем метода используются не просто как
-договоренность. Такие имена трансформируются в формат "имя класса + имя
-метода". Это позволяет создавать уникальные методы и атрибуты классов.
+Two underscores before method name are not used simply as an agreement. Such names are transformed into format "class name + method name". This allows the creation of unique methods and attributes of classes.
 
-    Такое преобразование выполняется только в том случае, если в конце
-    менее двух подчеркиваний или нет подчеркиваний.
+    This transformation is only performed if less than two underscore endings or no underscores.
 
 .. code:: python
 
@@ -153,10 +136,9 @@
     Out[15]:
     ['_Switch__configure', '_Switch__quantity', ...]
 
-Хотя методы создавались без приставки ``_Switch``, она была добавлена.
+Although methods were created without ``_Switch``, it was added.
 
-Если создать подкласс, то метод ``__configure`` не перепишет метод
-родительского класса Switch:
+If you create a subclass, then ``__configure`` method will not rewrite method of parent Switch class:
 
 .. code:: python
 
@@ -170,19 +152,17 @@
     Out[17]:
     ['_CiscoSwitch__configure', '_CiscoSwitch__quantity', '_Switch__configure', '_Switch__quantity', ...]
 
-Два подчеркивания перед и после имени
+Two underscores before and after name
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Таким образом обозначаются специальные переменные и методы.
+Thus, special variables and methods are denoted.
 
-Например, в модуле Python есть такие специальные переменные:
+For example, Python module has such special variables:
 
-* ``__name__`` - эта переменная равна строке ``__main__``, когда скрипт запускается напрямую, и равна имени модуля, когда импортируется
-* ``__file__`` - эта переменная равна имени скрипта, который был запущен напрямую, и равна полному пути к модулю, когда он импортируется
+* ``__name__`` - this variable is equal to ``__main__`` when script runs directly, and it is equal to module name when imported
+* ``__file__`` - this variable is equal to script name that was run directly, and equals to complete path to the module when it is imported
 
-Переменная ``__name__`` чаще всего используется, чтобы указать, что
-определенная часть кода должна выполняться, только когда модуль
-выполняется напрямую:
+``__name__`` variable is most commonly used to indicate that a certain part of the code must be executed only when module is executed directly:
 
 .. code:: python
 
@@ -194,8 +174,7 @@
     if __name__ == '__main__':
         print(multiply(3, 5))
 
-А переменная ``__file__`` может быть полезна в определении текущего пути
-к файлу скрипта:
+``__file__`` variable can be useful in determining the current path to script file:
 
 .. code:: python
 
@@ -204,28 +183,20 @@
     print('__file__', __file__)
     print(os.path.abspath(__file__))
 
-Вывод будет таким:
+The output will be:
 
 ::
 
     __file__ example2.py
     /home/vagrant/repos/tests/example2.py
 
-Кроме того, таким образом в Python обозначаются специальные методы. Эти
-методы вызываются при использовании функций и операторов Python и
-позволяют реализовать определенный функционал.
+Python also denotes special methods in this way. These methods are called when using Python functions and operators and allow for implementation of a certain functionality.
 
-Как правило, такие методы не нужно вызывать напрямую. Но, например, при
-создании своего класса может понадобиться описать такой метод, чтобы
-объект поддерживал какие-то операции в Python.
+As a rule, such methods need not be called directly. But for example, when creating your own class it may be necessary to describe such method in order to make object support some operations in Python.
 
-Например, для того, чтобы можно было получить длину объекта, он должен
-поддерживать метод ``__len__``.
+For example, in order to get object length, it must support ``__len__`` method.
 
-Ещё один специальный метод ``__str__`` вызывается, когда используется
-оператор print или вызывается функция str(). Если необходимо, чтобы при
-этом отображение было в определенном виде, надо создать этот метод в
-классе:
+Another special method ``__str__`` is called when print() operator is used or str() function is called. If it is necessary to get a certain form of display, you have to create this method in the class:
 
 .. code:: python
 
@@ -251,8 +222,7 @@
     In [14]: str(sw1)
     Out[14]: 'Switch sw1'
 
-Таких специальных методов в Python очень много. Несколько полезных
-ссылок, где можно почитать про конкретный метод:
+There are many such special methods in Python. Some useful links where you can read about a particular method:
 
-* `документация <https://docs.python.org/3.6/reference/datamodel.html#specialnames>`__
+* `documentation <https://docs.python.org/3.6/reference/datamodel.html#specialnames>`__
 * `Dive Into Python 3 <http://www.diveintopython3.net/special-method-names.html>`__

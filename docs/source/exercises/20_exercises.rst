@@ -2,31 +2,31 @@
 
    \newpage
 
-Задания
+Tasks
 =======
 
 .. include:: ./pytest.rst
 
-Задание 20.1
+Task 20.1
 ~~~~~~~~~~~~
 
-Создать функцию generate_config.
+Create generate_config() function.
 
-Параметры функции:
+Function parameters:
 
-* template - путь к файлу с шаблоном (например, "templates/for.txt")
-* data_dict - словарь со значениями, которые надо подставить в шаблон
+* template - path to template file (for example, "templates/for.txt")
+* data_dict - dictionary with values to set in template
 
-Функция должна возвращать строку с конфигурацией, которая была сгенерирована.
+Function should return a string with configuration that has been generated.
 
-Проверить работу функции на шаблоне templates/for.txt и данных из файла data_files/for.yml.
+Check function with templates/for.txt template and data from data_files/for.yml.
 
 .. code:: python
 
     import yaml
 
 
-    # так должен выглядеть вызов функции
+    # function call should looks like
     if __name__ == "__main__":
         data_file = "data_files/for.yml"
         template_file = "templates/for.txt"
@@ -35,73 +35,58 @@
         print(generate_config(template_file, data))
 
 
-Задание 20.2
+Task 20.2
 ~~~~~~~~~~~~
 
-Создать шаблон templates/cisco_router_base.txt.
-В шаблон templates/cisco_router_base.txt должно быть включено содержимое шаблонов:
+Create templates/cisco_router_base.txt template. It should include template content of:
 
 * templates/cisco_base.txt
 * templates/alias.txt
 * templates/eem_int_desc.txt
 
-При этом, нельзя копировать текст шаблонов.
+You cannot copy template text.
 
-Проверьте шаблон templates/cisco_router_base.txt, с помощью
-функции generate_config из задания 20.1. Не копируйте код функции generate_config.
+Check templates/cisco_router_base.txt template using generate_config() functon from task 20.1. Do not copy generate_config() function code.
 
-В качестве данных, используйте информацию из файла data_files/router_info.yml
+As data, use information from data_files/router_info.yml file
 
-Задание 20.3
+Task 20.3
 ~~~~~~~~~~~~
 
-Создайте шаблон templates/ospf.txt на основе конфигурации OSPF в файле cisco_ospf.txt.
-Пример конфигурации дан, чтобы показать синтаксис.
+Create templates/ospf.txt template based on OSPF configuration in cisco_ospf.txt file. Configuration example is given to show syntax.
 
-Шаблон надо создавать вручную, скопировав части конфига в соответствующий шаблон.
+Create template manually by copying parts of configuration into corresponding template.
 
-Какие значения должны быть переменными:
+Which values should be variables:
 
-* номер процесса. Имя переменной - process
-* router-id. Имя переменной - router_id
-* reference-bandwidth. Имя переменной - ref_bw
-* интерфейсы, на которых нужно включить OSPF. Имя переменной - ospf_intf.
-  На месте этой переменной ожидается список словарей с такими ключами:
+* process number. Variable name - process
+* router-id. Variable name - router_id
+* reference-bandwidth. Variable name - ref_bw
+* interfaces to enable OSPF. Variable name - ospf_intf. This variable expects list of dictionaries with such keys:
 
-  * name - имя интерфейса, вида Fa0/1, Vlan10, Gi0/0
-  * ip - IP-адрес интерфейса, вида 10.0.1.1
-  * area - номер зоны
-  * passive - является ли интерфейс пассивным. Допустимые значения: True или False
+  * name - interface name like Fa0/1, Vlan10, Gi0/0
+  * ip - IP address of interface like 10.0.1.1
+  * area - area number
+  * passive - whether interface is passive. Valid values: True or False
 
-Для всех интерфейсов в списке ospf_intf, надо сгенерировать строки:
+For all interfaces in *ospf_intf* list you should generate lines::
 
-::
+::   network x.x.x.x 0.0.0.0 area x
 
-    network x.x.x.x 0.0.0.0 area x
+If interface is passive, this line should be added:
 
-Если интерфейс пассивный, для него должна быть добавлена строка:
+::   passive-interface x
 
-::
+For interfaces that are not passive, in interface configuration mode you should add a line:
 
-     passive-interface x
+::   ip ospf hello-interval 1
 
-Для интерфейсов, которые не являются пассивными, в режиме конфигурации интерфейса,
-надо добавить строку:
+All commands must be in appropriate modes.
 
-::
-
-     ip ospf hello-interval 1
+Check resulting templates/ospf.txt template with data in data_files/ospf.yml file using generate_config() function from task 20.1. Do not copy generate_config() function code.
 
 
-Все команды должны быть в соответствующих режимах.
-
-Проверьте получившийся шаблон templates/ospf.txt, на данных в файле data_files/ospf.yml,
-с помощью функции generate_config из задания 20.1.
-Не копируйте код функции generate_config.
-
-
-В результате должна получиться конфигурация такого вида
-(команды в режиме router ospf не обязательно должны быть в таком порядке, главное чтобы они были в нужном режиме):
+The result should be a configuration of this kind (commands inside *router ospf* mode don’t have to be in such order, more important that they are in the right mode):
 
 ::
 
@@ -126,16 +111,15 @@
 Задание 20.4
 ~~~~~~~~~~~~
 
-Создайте шаблон templates/add_vlan_to_switch.txt, который будет использоваться
-при необходимости добавить VLAN на коммутатор.
+Create templates/add_vlan_to_switch.txt template that will be used if it's necessary to add VLAN to switch.
 
-В шаблоне должны поддерживаться возможности:
+Template should support these features:
 
-* добавления VLAN и имени VLAN
-* добавления VLAN как access, на указанном интерфейсе
-* добавления VLAN в список разрешенных, на указанные транки
+* add VLAN and VLAN name
+* add VLAN as access on specified interface
+* add VLAN to list of allowed vlans on trunks
 
-Если VLAN необходимо добавить как access, надо настроить и режим интерфейса и добавить его в VLAN:
+If you want to add VLAN as access, you need to configure interface mode and add VLAN to it:
 
 ::
 
@@ -143,46 +127,38 @@
      switchport mode access
      switchport access vlan 5
 
-Для транков, необходимо только добавить VLAN в список разрешенных:
+For trunks, only add VLAN to the list of allowed vlans:
 
 ::
 
     interface Gi0/10
      switchport trunk allowed vlan add 5
 
-Имена переменных надо выбрать на основании примера данных,
-в файле data_files/add_vlan_to_switch.yaml.
+Variable names should be selected from data example in data_files/add_vlan_to_switch.yaml.
+
+Check templates/add_vlan_to_switch.txt with data in data_files/add_vlan_to_switch.yaml file  using generat_config() function from task 20.1. Do not copy generate_config() function code.
 
 
-Проверьте шаблон templates/add_vlan_to_switch.txt на данных в файле data_files/add_vlan_to_switch.yaml, с помощью функции generate_config из задания 20.1.
-Не копируйте код функции generate_config.
-
-
-Задание 20.5
+Task 20.5
 ~~~~~~~~~~~~
 
-Создать шаблоны templates/gre_ipsec_vpn_1.txt и templates/gre_ipsec_vpn_2.txt,
-которые генерируют конфигурацию IPsec over GRE между двумя маршрутизаторами.
+Create templates/gre_ipsec_vpn_1.txt and templates/gre_ipsec_vpn_2.txt templates that generate IPsec over GRE configuration between two routers.
 
-Шаблон templates/gre_ipsec_vpn_1.txt создает конфигурацию для одной стороны туннеля,
-а templates/gre_ipsec_vpn_2.txt - для второй.
+Template templates/gre_ipsec_vpn_1.txt creates a configuration for one side of tunnel and templates/gre_ipsec_vpn_2.txt for other side.
 
-Примеры итоговой конфигурации, которая должна создаваться на основе шаблонов в файлах:
-cisco_vpn_1.txt и cisco_vpn_2.txt.
+Examples of resulting configuration that should be created based on templates in files: cisco_vpn_1.txt and cisco_vpn_2.txt.
 
+Create create_vpn_config() function that uses these templates to generate VPN configuration based on data in *data* dictionary.
 
-Создать функцию create_vpn_config, которая использует эти шаблоны для генерации конфигурации VPN на основе данных в словаре data.
+Function parameters:
 
-Параметры функции:
+* template1 - file name with template that creates configuration for one tunnel side
+* template2 - file name with template that creates configuration for second tunnel side
+* data_dict - dictionary with values to set in templates
 
-* template1 - имя файла с шаблоном, который создает конфигурацию для одной строны туннеля
-* template2 - имя файла с шаблоном, который создает конфигурацию для второй строны туннеля
-* data_dict - словарь со значениями, которые надо подставить в шаблоны
+Function should return a tuple with two configurations (strings) that are derived from templates.
 
-Функция должна возвращать кортеж с двумя конфигурациямя (строки), которые получены на основе шаблонов.
-
-Примеры конфигураций VPN, которые должна возвращать функция create_vpn_config в файлах
-cisco_vpn_1.txt и cisco_vpn_2.txt.
+In cisco_vpn_1.txt and cisco_vpn_2.txt you will find examples of VPN configurations that should return create_vpn_config() function.
 
 .. code:: python
 
@@ -194,36 +170,30 @@ cisco_vpn_1.txt и cisco_vpn_2.txt.
         'tun_ip_2': '10.0.1.2 255.255.255.252'
     }
 
-Задание 20.5a
+Task 20.5a
 ~~~~~~~~~~~~~
 
-Создать функцию configure_vpn, которая использует шаблоны из задания 20.5 для настройки VPN на маршрутизаторах на основе данных в словаре data.
+Create configure_vpn() function that uses templates from task 20.5 to configure VPN on routers based on data in *data* dictionary.
 
-Параметры функции:
+Function parameters:
 
-* src_device_params - словарь с параметрами подключения к устройству
-* dst_device_params - словарь с параметрами подключения к устройству
-* src_template - имя файла с шаблоном, который создает конфигурацию для одной строны туннеля
-* dst_template - имя файла с шаблоном, который создает конфигурацию для второй строны туннеля
-* vpn_data_dict - словарь со значениями, которые надо подставить в шаблоны
+* src_device_params - dictionary with device connection parameters
+* dst_device_params - dictionary with device connection parameters
+* src_template - name of file with template that creates a configuration for one tunnel side
+* dst_template - name of file with template that creates a configuration for second tunnel side
+* vpn_data_dict - dictionary with values to set in templates
 
-Функция должна настроить VPN на основе шаблонов и данных на каждом устройстве с помощью netmiko.
-Функция возвращает вывод с набором команд с двух марушртизаторов (вывод, которые возвращает метод netmiko send_config_set).
+Function should configure VPN based on templates and data on each device using netmiko. Function returns output with a set of commands from two routers (output that returns netmiko send_config_set() method).
 
-При этом, в словаре data не указан номер интерфейса Tunnel, который надо использовать.
-Номер надо определить самостоятельно на основе информации с оборудования.
-Если на маршрутизаторе нет интерфейсов Tunnel, взять номер 0, если есть взять ближайший свободный номер, но одинаковый для двух маршрутизаторов.
+However, *data* dictionary does not specify Tunnel interface number to be used. Number has to be determined independently based on information from equipment. If there are no Tunnel interfaces on router, take number 0. If there are some interfaces, take the nearest available number but it should be the same for two routers.
 
-Например, если на маршрутизаторе src такие интерфейсы: Tunnel1, Tunnel4.
-А на маршрутизаторе dest такие: Tunnel2, Tunnel3, Tunnel8.
-Первый свободный номер одинаковый для двух маршрутизаторов будет 9.
-И надо будет настроить интерфейс Tunnel 9.
+For example, *src* router has such interfaces as Tunnel1, Tunnel4. On *dest* router: Tunnel2, Tunnel3, Tunnel8. The first available number for two routers will be 9. And you will need to configure Tunnel9 interface.
 
 .. note::
 
-    Для усложения задания можно сделать так, чтобы выбирался номер 5, а не 9.
+    To complicate task you can make that number 5 is taken instead of 9.
 
-Для этого задания нет теста!
+There’s no test for this task!
 
 .. code:: python
 

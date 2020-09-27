@@ -4,25 +4,17 @@
 
 .. _oop_special_methods_index:
 
-23. Специальные методы
+23. Special methods
 ======================
 
-Специальные методы в Python - это методы, которые отвечают за "стандартные" возможности
-объектов и вызываются автоматически при использовани этих возможностей.
-Например, выражение ``a + b``, где a и b это числа, преобразуется в такой вызов
-``a.__add__(b)``, то есть, специальный метод __add__ отвечает за операцию сложения.
-Все специальные методы начинаются и заканчиваются двойным подчеркиванием, поэтому
-на английском их часто называют dunder методы, сокращенно от "double underscore".
+Special methods in Python - methods that are responsible for  "standard" possibilities of objects and are called automatically when these possibilities are used. For example, the expression ``a + b``  where a and b are numbers that is converted to such a call  ``a.__add__(b)``. That is, the special method __add__ is responsible for the addition operation. All special methods start and end with double underscore, therefore in English they are often called dunder methods, shortened from "double underscore".
 
 
 .. note::
 
-    Специальные методы часто называют волшебными (magic) методами.
+    Special methods are often called magic methods.
 
-Специальные методы отвечают за такие возможности как работа в менеджерах контекста,
-создание итераторов и итерируемых объектов, операции сложения, умножения и другие.
-Добавляя специальные методы в объекты, которые созданы пользователем, мы делаем
-их похожими на встроенные объекты.
+Special methods are responsible for such features as working in context managers, creating iterators and iterable objects, addition operations, multiplication and others. By adding special methods to objects that are created by user, we make them look like embedded objects.
 
 .. toctree::
    :maxdepth: 1

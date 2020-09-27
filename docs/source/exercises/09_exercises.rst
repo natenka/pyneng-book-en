@@ -2,19 +2,19 @@
 
    \newpage
 
-Задания
+Tasks
 =======
 
 .. include:: ./pytest.rst
 
-Задание 9.1
+Task 9.1
 ~~~~~~~~~~~
 
-Создать функцию, которая генерирует конфигурацию для access-портов.
+Create a function that generates configuration for access ports.
 
-Функция ожидает такие аргументы:
+Function expects such arguments:
 
-1. словарь с соответствием интерфейс-VLAN такого вида:
+1. dictionary with interface-VLAN mapping:
 
 .. code:: python
 
@@ -22,16 +22,14 @@
      "FastEthernet0/14": 11,
      "FastEthernet0/16": 17}
 
-2. шаблон конфигурации access-портов в виде списка команд (список access_mode_template)
+2. access port configuration template in the form of a list of commands (access_mode_template list)
 
-Функция должна возвращать список всех портов в режиме access
-с конфигурацией на основе шаблона access_mode_template.
-В конце строк в списке не должно быть символа перевода строки.
+Function should return a list of all ports in access mode with configuration based on template access_mode_template. There should be no line feed at the end of lines in the list.
 
-В этом задании заготовка для функции уже сделана и надо только продолжить писать само тело функции.
+In this task, the blank for function is already done and only body of function need to be written.
 
 
-Пример итогового списка (перевод строки после каждого элемента сделан для удобства чтения):
+Example of resulting list (line feed after each item is made for ease of reading):
 
 .. code:: python
 
@@ -50,9 +48,9 @@
     "spanning-tree bpduguard enable",
     ...]
 
-Проверить работу функции на примере словаря access_config.
+Check function with access_config dictionary.
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
 .. code:: python
 
@@ -71,36 +69,33 @@
 
     def generate_access_config(intf_vlan_mapping, access_template):
         """
-        intf_vlan_mapping - словарь с соответствием интерфейс-VLAN такого вида:
+        intf_vlan_mapping - dictionary with interface-VLAN mapping:
             {"FastEthernet0/12": 10,
              "FastEthernet0/14": 11,
              "FastEthernet0/16": 17}
-        access_template - список команд для порта в режиме access
+        access_template - list of commands for port in access mode
 
-        Возвращает список всех портов в режиме access с конфигурацией на основе шаблона
+        Return list of all ports in access mode with configuration based on temlate 
         """
 
 
-Задание 9.1a
+Task 9.1a
 ~~~~~~~~~~~~
 
-Сделать копию функции generate_access_config из задания 9.1.
+Make a copy of generate_access_config() function from task 9.1.
 
-Дополнить скрипт: ввести дополнительный параметр, который контролирует будет ли настроен port-security:
+Complete script: enter an additional parameter that controls whether port-security will be configured:
 
-* имя параметра "psecurity"
-* по умолчанию значение None
-* для настройки port-security, как значение надо передать список команд port-security (находятся в списке port_security_template)
+* parameter name "psecurity"
+* default is None
+* to configure port-security, list of *port-security* commands should be passed as a value (in port_security_template list)
 
-Функция должна возвращать список всех портов в режиме access
-с конфигурацией на основе шаблона access_mode_template и шаблона port_security_template, если он был передан.
-В конце строк в списке не должно быть символа перевода строки.
+Function should return a list of all ports in access mode with configuration based on access_mode_template template and template port_security_template template if it has been passed. There should be no line feed at the end of lines in the list.
 
 
-Проверить работу функции на примере словаря access_config,
-с генерацией конфигурации port-security и без.
+Check function with access_config dictionary, with and without port-security configuration generation.
 
-Пример вызова функции:
+Example of a function call:
 
 ::
 
@@ -108,7 +103,7 @@
     print(generate_access_config(access_config, access_mode_template, port_security_template))
 
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
 .. code:: python
 
@@ -127,14 +122,14 @@
     access_config = {"FastEthernet0/12": 10, "FastEthernet0/14": 11, "FastEthernet0/16": 17}
 
 
-Задание 9.2
+Task 9.2
 ~~~~~~~~~~~
 
-Создать функцию generate_trunk_config, которая генерирует конфигурацию для trunk-портов.
+Create a generate_trunk_config() function that generates configuration for trunk ports.
 
-У функции должны быть такие параметры:
+Function should have such parameters:
 
-1. intf_vlan_mapping: ожидает как аргумент словарь с соответствием интерфейс-VLANы такого вида:
+1. intf_vlan_mapping: expects a dictionary with interface-VLAN mapping:
 
 .. code:: python
 
@@ -142,18 +137,14 @@
      "FastEthernet0/2": [11, 30],
      "FastEthernet0/4": [17]}
 
-2. trunk_template: ожидает как аргумент шаблон конфигурации trunk-портов в виде списка команд (список trunk_mode_template)
+2. trunk_template: expects trunk port configuration template as command list (trunk_mode_template list)
 
-Функция должна возвращать список команд с конфигурацией
-на основе указанных портов и шаблона trunk_mode_template.
-В конце строк в списке не должно быть символа перевода строки.
+Function should return a list of commands with configuration based on specified ports and trunk_mode_template template. There should be no line feed at the end of lines in the list.
 
-Проверить работу функции на примере словаря trunk_config и списка команд trunk_mode_template.
-Если эта проверка прошла успешно, проверить работу функции еще раз на словаре trunk_config_2
-и убедится, что в итоговом списке правильные номера интерфейсов и вланов.
+Check function with trunk_config dictionary and list of commands trunk_mode_template. If this check is successful, check function again with trunk_config_2 dictionary and make sure that the resulting list contains correct interface and vlan numbers.
 
 
-Пример итогового списка (перевод строки после каждого элемента сделан для удобства чтения):
+Example of resulting list (line feed after each item is made for ease of reading):
 
 .. code:: python
 
@@ -169,7 +160,7 @@
     ...]
 
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
 .. code:: python
 
@@ -185,19 +176,19 @@
     }
 
 
-Задание 9.2a
+Task 9.2a
 ~~~~~~~~~~~~
 
-Сделать копию функции generate_trunk_config из задания 9.2
+Make a copy of generate_trunk_config() function from task 9.2.
 
-Изменить функцию таким образом, чтобы она возвращала не список команд, а словарь:
+Change function to return a dictionary rather than a list of commands:
 
-* ключи: имена интерфейсов, вида "FastEthernet0/1"
-* значения: список команд, который надо выполнить на этом интерфейсе
+* keys: interface names like "FastEthernet0/1"
+* values: list of commands to execute on this interface
 
-Проверить работу функции на примере словаря trunk_config и шаблона trunk_mode_template.
+Check function with trunk_config dictionary and trunk_mode_template template.
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
 .. code:: python
 
@@ -213,13 +204,12 @@
     }
 
 
-Задание 9.3
+Task 9.3
 ~~~~~~~~~~~
 
-Создать функцию get_int_vlan_map, которая обрабатывает конфигурационный файл коммутатора
-и возвращает кортеж из двух словарей:
+Create get_int_vlan_map() function that processes switch configuration file and returns a tuple with two dictionaries:
 
-1. словарь портов в режиме access, где ключи номера портов, а значения access VLAN (числа):
+1. dictionary of ports in access mode, where keys are port numbers and values is access VLAN (numbers):
 
 .. code:: python
 
@@ -227,26 +217,26 @@
      "FastEthernet0/14": 11,
      "FastEthernet0/16": 17}
 
-2. словарь портов в режиме trunk, где ключи номера портов, а значения список разрешенных VLAN (список чисел):
+2. dictionary of ports in trunk mode, where keys are port number and values are list of allowed VLANs (list of numbers):
 
 .. code:: python
     {"FastEthernet0/1": [10, 20],
      "FastEthernet0/2": [11, 30],
      "FastEthernet0/4": [17]}
 
-У функции должен быть один параметр config_filename, который ожидает как аргумент имя конфигурационного файла.
+Function should have one parameter - config_filename, that expects as an argument the name of configuration file.
 
-Проверить работу функции на примере файла config_sw1.txt
+Check function with config_sw1.txt file
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
 
-Задание 9.3a
+Task 9.3a
 ~~~~~~~~~~~~
 
-Сделать копию функции get_int_vlan_map из задания 9.3.
+Copy get_int_vlan_map() function from task 9.3.
 
-Дополнить функцию: добавить поддержку конфигурации, когда настройка access-порта выглядит так:
+Complete function: add configuration support when access port configuration is like:
 
 ::
 
@@ -254,40 +244,38 @@
      switchport mode access
      duplex auto
 
-То есть, порт находится в VLAN 1
+That is, port is in VLAN 1
 
-В таком случае, в словарь портов должна добавляться информация, что порт в VLAN 1
+In this case, port dictionary should add information that port in VLAN 1
 
 .. code:: python
       {"FastEthernet0/12": 10,
        "FastEthernet0/14": 11,
        "FastEthernet0/20": 1}
 
-У функции должен быть один параметр config_filename, который ожидает как аргумент имя конфигурационного файла.
+Function should have one parameter - config_filename, that expects as an argument the name of configuration file.
 
-Проверить работу функции на примере файла config_sw2.txt
+Check function with config_sw2.txt
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
 
-Задание 9.4
+Task 9.4
 ~~~~~~~~~~~
 
-Создать функцию convert_config_to_dict, которая обрабатывает конфигурационный файл коммутатора и возвращает словарь:
+Create convert_config_to_dict() function that processes switch configuration file and returns dictionary:
 
-* Все команды верхнего уровня (глобального режима конфигурации), будут ключами.
-* Если у команды верхнего уровня есть подкоманды, они должны быть в значении у соответствующего ключа, в виде списка (пробелы в начале строки надо удалить).
-* Если у команды верхнего уровня нет подкоманд, то значение будет пустым списком
+* All top-level commands (global configuration mode) will be the keys.
+* If top-level command has a sub-command, it must be in value of corresponding key as a list (spaces at the beginning of line should be removed).
+* If top level command does not have a sub-command, the value is an empty list
 
-У функции должен быть один параметр config_filename, который ожидает как аргумент имя конфигурационного файла.
+Function should have one parameter - config_filename, that expects as an argument the name of configuration file.
 
-При обработке конфигурационного файла, надо игнорировать строки, которые начинаются с "!",
-а также строки в которых содержатся слова из списка ignore.
-Для проверки надо ли игнорировать строку, использовать функцию ignore_command.
+When processing a configuration file, you should ignore lines that start with "!" as well as the lines that contain words from *ignore* list. To check whether to ignore a line, use ignore_command() function.
 
-Проверить работу функции на примере файла config_sw1.txt
+Check function with config_sw1.txt file
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
 .. code:: python
 
@@ -296,14 +284,14 @@
 
     def ignore_command(command, ignore):
         """
-        Функция проверяет содержится ли в команде слово из списка ignore.
+        Function checks whether command words from *ignore* list.
 
-        command - строка. Команда, которую надо проверить
-        ignore - список. Список слов
+        command - string. Command that should be checked.
+        ignore - list. List of words.
 
-        Возвращает
-        * True, если в команде содержится слово из списка ignore
-        * False - если нет
+        Returns
+        * True, if command contains a word from *ignore* list.
+        * False - if not
         """
         return any(word in command for word in ignore)
 

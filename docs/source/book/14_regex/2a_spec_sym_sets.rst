@@ -1,25 +1,23 @@
-Наборы символов
+Character sets
 ---------------
 
-В Python есть специальные обозначения для наборов символов:
+Python has special designations for character sets:
 
-*  ``\d`` - любая цифра
-*  ``\D`` - любое нечисловое значение
-*  ``\s`` - пробельные символы
-*  ``\S`` - все, кроме пробельные символы
-*  ``\w`` - любая буква, цифра или нижнее подчеркивание
-*  ``\W`` - все, кроме букв, цифр или нижнего подчеркивания
+*  ``\d`` - any digit
+*  ``\D`` - any non-numeric value
+*  ``\s`` - whitespace character
+*  ``\S`` - all except whitespace characters
+*  ``\w`` - any letter, digit or underline character
+*  ``\W`` - all except letter, digit or underline character
 
 .. note::
 
-    Это не все наборы символов, которые поддерживает Python. Подробнее
-    смотрите в
-    `документации <https://docs.python.org/3/library/re.html>`__.
+    These are not all character sets that support Python. See 
+    `documentation <https://docs.python.org/3/library/re.html>`__ for details.
 
-Наборы символов позволяют писать более короткие выражения без
-необходимости перечислять все нужные символы.
+Character sets allow you to write shorter expressions without having to list all the necessary characters.
 
-Например, получим время из строки лог-файла:
+For example, get time from the log file string:
 
 .. code:: python
 
@@ -28,10 +26,9 @@
     In [2]: re.search('\d\d:\d\d:\d\d', log).group()
     Out[2]: '06:15:18'
 
-Выражение ``\d\d:\d\d:\d\d`` описывает 3 пары чисел, разделенных
-двоеточиями.
+The expression ``\d\d:\d\d:\d\d`` describes 3 pairs of numbers separated by colons.
 
-Получение MAC-адреса из лог-сообщения:
+Getting MAC address from log message:
 
 .. code:: python
 
@@ -40,9 +37,6 @@
     In [4]: re.search('\w\w\w\w\.\w\w\w\w\.\w\w\w\w', log2).group()
     Out[4]: 'f03a.b216.7ad7'
 
-Выражение ``\w\w\w\w\.\w\w\w\w\.\w\w\w\w`` описывает 12 букв или цифр,
-которые разделены на три группы по четыре символа точками.
+The expression ``\w\w\w\w\.\w\w\w\w\.\w\w\w\w`` describes 12 letters or digits that are divided into three groups of four characters and separated by dot. 
 
-Группы символов очень удобны, но пока что приходится вручную указывать
-повторение символа. В следующем подразделе рассматриваются символы
-повторения, которые упростят описание выражений.
+The symbol groups are very convenient, but for now it is necessary to manually specify the character repetition. The following subsection deals with repetition symbols which will simplify the description of expressions.

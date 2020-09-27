@@ -1,22 +1,18 @@
-Дополнительные материалы
+Additional material
 ------------------------
 
-В этом разделе рассматривались только базовые операции чтения и записи,
-без дополнительных параметров. Подробнее можно почитать в документации
-модулей. 
+In this section only basic read and write operations were considered with no additional parameters. More details can be found in the module documentation.
 
 * `CSV <https://docs.python.org/3/library/csv.html>`__ 
 * `JSON <https://docs.python.org/3/library/json.html>`__ 
 * `YAML <http://pyyaml.org/wiki/PyYAMLDocumentation>`__
 
-Кроме того, на сайте `PyMOTW <https://pymotw.com/3/index.html>`__ очень
-хорошо расписываются все модули Python, которые входят в стандартную
-библиотеку (устанавливаются вместе с самим Python): 
+In addition, `PyMOTW <https://pymotw.com/3/index.html>`__ has very good description of all Python modules that are part of the standard library (installed with Python):
 
 * `CSV <https://pymotw.com/3/csv/index.html>`__ 
 * `JSON <https://pymotw.com/3/json/index.html>`__
 
-Пример получения данных в формате JSON через GitHub API:
+Example of getting JSON data via Github API:
 
-* `Пример работы с GitHub API с помощью requests <https://pyneng.github.io/pyneng-3/GitHub-API-JSON-example/>`__
-* `Запись кириллицы и других не ASCII символов в формате JSON <https://pyneng.github.io/pyneng-3/json-module/>`__
+* `Example of working with Github API with requests  <https://pyneng.github.io/pyneng-3/GitHub-API-JSON-example/>`__
+* `Writing Cyrillic and other non-ASCI characters in JSON format  <https://pyneng.github.io/pyneng-3/json-module/>`__

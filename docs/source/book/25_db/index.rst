@@ -4,26 +4,17 @@
 
 .. _db_index:
 
-25. Работа с базами данных
+25. Database operations
 ============================
 
 
-Использование баз данных - это еще один способ хранения информации.
-Базы данных полезны не только в хранении информации. Используя СУБД,
-можно делать срезы информации по различным параметрам.
+The use of databases is another way of storing information. Databases are useful not only in storing information. Using the DBMS it is possible to make information slices according to different parameters.
 
-**База данных (БД)** - это данные, которые хранятся в соответствии с
-определенной схемой. В этой схеме каким-то образом описаны соотношения
-между данными.
+**Database (DB)** - the data stored according to a certain scheme. This scheme describes relationships between data.
 
-**Язык БД (лингвистические средства)** - используется для описания
-структуры БД, управления данными (добавление, изменение, удаление,
-получение), управления правами доступа к БД и ее объектам, управления
-транзакциями.
+**DB language (language tools)** - used to describe database structure, manage data (add, edit, delete, receive), manage access rights to the database and its objects, and manage transactions.
 
-**Система управления базами данных (СУБД)** - это программные средства,
-которые дают возможность управлять БД. СУБД должны поддерживать
-соответствующий язык (языки) для управления БД.
+**Database Management System (DBMS)** - a software tool that enables management of DB. DBMS must support appropriate language(s) for DB management.
 
 .. toctree::
    :maxdepth: 1

@@ -1,22 +1,20 @@
-Использование ProcessPoolExecutor
+Using ProcessPoolExecutor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Интерфейс модуля concurrent.futures очень удобен тем, что переход с потоков
-на процессы делается заменой ThreadPoolExecutor на ProcessPoolExecutor, 
-поэтому все примеры ниже полностью аналогичны примерам с потоками.
+Interface of concurrent.futures module is very convenient because migration from threads to processes is done by replacing  ThreadPoolExecutor with ProcessPoolExecutor, 
+so all examples below are completely similar to examples with threads.
 
-Метод map
+Method map
 ^^^^^^^^^
 
-Для того чтобы использовать процессы вместо потоков,
-достаточно сменить ThreadPoolExecutor на ProcessPoolExecutor:
+To use processes instead of threads, it is sufficient to change  ThreadPoolExecutor to ProcessPoolExecutor:
 
 
 .. literalinclude:: /pyneng-examples-exercises/examples/20_concurrent_connections/netmiko_processes_map.py
   :language: python
   :linenos:
 
-Результат выполнения:
+Result of execution:
 
 ::
 
@@ -32,16 +30,16 @@
      '192.168.100.3': '*08:36:01.900 UTC Fri Jul 26 2019'}
 
 
-Метод submit
+Method submit
 ^^^^^^^^^^^^
 
-Файл netmiko_processes_submit_exception.py:
+File netmiko_processes_submit_exception.py:
 
 .. literalinclude:: /pyneng-examples-exercises/examples/20_concurrent_connections/netmiko_processes_submit_exception.py
   :language: python
   :linenos:
 
-Результат выполнения:
+Result of execution:
 
 ::
 

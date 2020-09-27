@@ -1,96 +1,88 @@
-Типы параметров функции
+Function parameter types
 -----------------------
 
-При создании функции можно указать, какие аргументы нужно передавать
-обязательно, а какие нет. Соответственно, функция может быть создана с:
+When creating a function you can specify which arguments must be passed and which must not. Accordingly, a function can be created with:
 
-* **обязательными параметрами**
-* **необязательными параметрами** (опциональными, параметрами со значением по умолчанию)
+* **required parameters**
+* **optional parameters** (with default values)
 
-Обязательные параметры
+Required parameters
 ~~~~~~~~~~~~~~~~~~~~~~
 
-**Обязательные параметры** - определяют, какие аргументы нужно передать
-функции обязательно. При этом, их нужно передать ровно столько, сколько
-указано параметров функции (нельзя указать большее или меньшее
-количество)
+**Required parameters** - determine which arguments must be passed to functions. At the same time, they need to be passed exactly as many as  parameters of function are specified (you cannot specify more or less)
 
-Функция с обязательными параметрами (файл func\_params\_types.py):
+Function with mandatory parameters (func_params_types.py file):
 
 .. code:: python
 
     In [1]: def check_passwd(username, password):
        ...:     if len(password) < 8:
-       ...:         print('Пароль слишком короткий')
+       ...:         print('Password is too short')
        ...:         return False
        ...:     elif username in password:
-       ...:         print('Пароль содержит имя пользователя')
+       ...:         print('Password contains username')
        ...:         return False
        ...:     else:
-       ...:         print(f'Пароль для пользователя {username} прошел все проверки')
+       ...:         print(f'Password for user {username} has passed all checks')
        ...:         return True
        ...:
 
 
-Функция check_passwd ожидает два аргумента: username и password.
+The check_passwd function expects two arguments: username and password.
 
-Функция проверяет пароль и возвращает False, если проверки не прошли и
-True, если пароль прошел проверки:
+The function checks the password and returns False if checks fail and True if password passed all checks:
 
 .. code:: python
 
     In [2]: check_passwd('nata', '12345')
-    Пароль слишком короткий
+    Password is too short
     Out[2]: False
 
     In [3]: check_passwd('nata', '12345lsdkjflskfdjsnata')
-    Пароль содержит имя пользователя
+    Password contains username
     Out[3]: False
 
     In [4]: check_passwd('nata', '12345lsdkjflskfdjs')
-    Пароль для пользователя nata прошел все проверки
+    Password for user nata has passed all checks
     Out[4]: True
 
 
-Необязательные параметры (параметры со значением по умолчанию)
+Optional parameters (default parameters)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-При создании функции можно указывать значение по умолчанию для параметра таким образом:
-``def check_passwd(username, password, min_length=8)``. В этом случае, параметр min_length
-указан со значением по умолчанию и может не передаваться при вызове функции.
+When creating a function you can specify default value for parameter in this way: ``def check_passwd(username, password, min_length=8)``. In this case, the min_length option is specified with the default value and may not be passed when a function is called.
 
 
-Пример функции check_passwd с параметром со значением по умолчанию (файл func_check_passwd_optional_param.py):
+Example of a check_passwd function with default parameter (func_check_passwd_optional_param.py file):
 
 .. code:: python
 
     In [6]: def check_passwd(username, password, min_length=8):
        ...:     if len(password) < min_length:
-       ...:         print('Пароль слишком короткий')
+       ...:         print('Password is too short')
        ...:         return False
        ...:     elif username in password:
-       ...:         print('Пароль содержит имя пользователя')
+       ...:         print('Password contains username')
        ...:         return False
        ...:     else:
-       ...:         print(f'Пароль для пользователя {username} прошел все проверки')
+       ...:         print(f'Password for user {username} has passed all checks')
        ...:         return True
        ...:
 
-Так как у параметра min_length есть значение по умолчанию, соответствующий аргумент
-можно не указывать при вызове функции, если значение по умолчанию подходит:
+Since the min_length parameter has a default value the corresponding argument can be omitted when a function is called if the default value fits you:
 
 .. code:: python
 
     In [7]: check_passwd('nata', '12345')
-    Пароль слишком короткий
+    Password is too short
     Out[7]: False
 
 
-Если нужно поменять значение по умолчанию:
+If you want to change the default value:
 
 .. code:: python
 
     In [8]: check_passwd('nata', '12345', 3)
-    Пароль для пользователя nata прошел все проверки
+    Password for user nata has passed all checks
     Out[8]: True
 

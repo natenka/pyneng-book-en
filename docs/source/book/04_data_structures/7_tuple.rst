@@ -1,17 +1,15 @@
-Кортеж (Tuple)
+Tuple
 --------------
 
 
-Кортеж в Python это:
+The tuple in Python is:
 
-* последовательность элементов, которые разделены между собой запятой и заключены в скобки
-* неизменяемый упорядоченный тип данных
+* a sequence of elements separated by a comma and enclosed in brackets
+* immutable ordered data type
 
-Грубо говоря, кортеж - это список, который нельзя изменить. То есть, в
-кортеже есть только права на чтение. Это может быть защитой от случайных
-изменений.
+Roughly speaking, a tuple is a list that can’t be changed. I mean, the tuple only has reading rights. It could be a defense against accidental change.
 
-Создать пустой кортеж:
+Create an empty tuple:
 
 .. code:: python
 
@@ -20,13 +18,13 @@
     In [2]: print(tuple1)
     ()
 
-Кортеж из одного элемента (обратите внимание на запятую):
+Tuple with one element (note the comma):
 
 .. code:: python
 
     In [3]: tuple2 = ('password',)
 
-Кортеж из списка:
+Tuple from the list:
 
 .. code:: python
 
@@ -37,15 +35,14 @@
     In [6]: tuple_keys
     Out[6]: ('hostname', 'location', 'vendor', 'model', 'ios', 'ip')
 
-К объектам в кортеже можно обращаться, как и к объектам списка, по
-порядковому номеру:
+The objects in tuple can be accessed as well as the objects in list, by the order number:
 
 .. code:: python
 
     In [7]: tuple_keys[0]
     Out[7]: 'hostname'
 
-Но так как кортеж неизменяем, присвоить новое значение нельзя:
+But since the tuple is immutable you cannot assign a new value:
 
 .. code:: python
 
@@ -57,8 +54,7 @@
 
     TypeError: 'tuple' object does not support item assignment
 
-Функция sorted сортирует элементы кортежа по возрастанию и возвращает
-новый список с отсортированными элементами:
+The sorted() function sorts the tuple elements in ascending order and returns a new list with sorted elements:
 
 .. code:: python
 

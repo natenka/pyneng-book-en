@@ -1,12 +1,8 @@
-Функция re.sub
+Function re.sub
 --------------
 
-Функция re.sub работает аналогично методу replace в строках.
-Но в функции re.sub можно использовать регулярные выражения, а значит,
-делать замены по более сложным условиям.
-
-Заменим запятые, квадратные скобки и слово via на пробел в строке
-ospf_route:
+The re.sub function works similary to replace() method in strings. But in re.sub you can use regular expressions and therefore make substitutions using more complex conditions.
+Replace commas, square brackets and *via* word with space in *ospf_route* string:
 
 .. code:: python
 
@@ -15,8 +11,7 @@ ospf_route:
     In [8]: re.sub(r'(via|[,\[\]])', ' ', ospf_route)
     Out[8]: 'O        10.0.24.0/24  110/41    10.0.13.3  3d18h  FastEthernet0/0'
 
-С помощью re.sub можно трансформировать строку.
-Например, преобразовать строку mac_table таким образом:
+With re.sub you can transform a string. For example, convert *mac_table* string to:
 
 .. code:: python
 
@@ -47,18 +42,11 @@ ospf_route:
     200 aabb:cc60:7000 Gi0/6
     300 aabb:cc70:7000 Gi0/7
 
-Регулярное выражение разделено на группы:
+The regular expression is divided into groups:
 
--  ``(\d+)`` - первая группа. Сюда попадет номер VLAN
--  ``([a-f,0-9]+).([a-f,0-9]+).([a-f,0-9]+)`` - три следующие группы (2,
-   3, 4) описывают MAC-адрес
--  ``(\S+)`` - пятая группа. Описывает интерфейс.
+-  ``(\d+)`` - the first group. VLAN number gets here
+-  ``([a-f,0-9]+).([a-f,0-9]+).([a-f,0-9]+)`` - the following three groups (2, 3, 4) describe MAC address
+-  ``(\S+)`` - the fifth group. Describes an interface.
 
-Во втором регулярном выражении эти группы используются.
-Для того, чтобы сослаться на группу, используется обратный слеш и
-номер группы.
-Чтобы не пришлось экранировать обратный слеш, используется raw строка.
-
-В итоге вместо номеров групп будут подставлены соответствующие
-подстроки.
-Для примера, также изменен формат записи MAC-адреса.
+In a second regular expression these groups are used. To refer to a group a backslash and a group number are used. To avoid backslash screening, the *raw* string is used.
+As a result, the corresponding substrings will be substituted instead of group numbers. For example, format of MAC address record was also changed.

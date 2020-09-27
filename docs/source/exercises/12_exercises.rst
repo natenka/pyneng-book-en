@@ -2,74 +2,70 @@
 
    \newpage
 
-Задания
+Tasks
 =======
 
 .. include:: ./pytest.rst
 
-Задание 12.1
+Task 12.1
 ~~~~~~~~~~~~
 
 
-Создать функцию ping_ip_addresses, которая проверяет пингуются ли IP-адреса.
-Функция ожидает как аргумент список IP-адресов.
+Create a ping_ip_addresses() function that checks if IP addresses are pingable. Function expects as argument a list of IP addresses.
 
-Функция должна возвращать кортеж с двумя списками:
+Function should return a tuple with two lists:
 
-* список доступных IP-адресов
-* список недоступных IP-адресов
+* list of reachable IP addresses
+* list of unreachable IP addresses
 
-Для проверки доступности IP-адреса, используйте команду ping.
+To check availability of IP address, use ping command.
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
-Задание 12.2
+Task 12.2
 ~~~~~~~~~~~~
 
-Функция ping_ip_addresses из задания 12.1 принимает только список адресов,
-но было бы удобно иметь возможность указывать адреса с помощью диапазона, например, 192.168.100.1-10.
+Function ping_ip_addresses() from task 12.1 accepts only list of addresses, but it would be convenient to be able to specify addresses using a range such as 192.168.100.1-10.
 
-В этом задании необходимо создать функцию convert_ranges_to_ip_list,
-которая конвертирует список IP-адресов в разных форматах в список, где каждый IP-адрес указан отдельно.
+In this task, you need to create a convert_ranges_to_ip_list() function that converts the list of IP addresses in different formats to a list where each IP address is specified separately.
 
-Функция ожидает как аргумент список IP-адресов и/или диапазонов IP-адресов.
+Function expects as argument a list of IP addresses and/or IP address ranges.
 
-Элементы списка могут быть в формате:
+List elements can be in the following format:
 
 * 10.1.1.1
 * 10.1.1.1-10.1.1.10
 * 10.1.1.1-10
 
-Если адрес указан в виде диапазона, надо развернуть диапазон в отдельные адреса, включая последний адрес диапазона.
-Для упрощения задачи, можно считать, что в диапазоне всегда меняется только последний октет адреса.
+If address is specified as a range, you should expand range to separate addresses, including the last address of range. To simplify the task, it can be assumed that only the last octet of address changes in range.
 
-Функция возвращает список IP-адресов.
+Function returns a list of IP addresses.
 
 
-Например, если передать функции convert_ranges_to_ip_list такой список:
+For example, if you pass to convert_ranges_to_ip_list() function such a list:
 
 .. code:: python
 
     ['8.8.4.4', '1.1.1.1-3', '172.21.41.128-172.21.41.132']
 
-Функция должна вернуть такой список:
+Function should return the list:
 
 .. code:: python
 
     ['8.8.4.4', '1.1.1.1', '1.1.1.2', '1.1.1.3', '172.21.41.128',
      '172.21.41.129', '172.21.41.130', '172.21.41.131', '172.21.41.132']
 
-Задание 12.3
+Task 12.3
 ~~~~~~~~~~~~
 
-Создать функцию print_ip_table, которая отображает таблицу доступных и недоступных IP-адресов.
+Create a print_ip_table() function that displays a table of reachable and unreachable IP addresses.
 
-Функция ожидает как аргументы два списка:
+Function expects as arguments two lists:
 
-* список доступных IP-адресов
-* список недоступных IP-адресов
+* list of reachable IP addresses
+* list of unreachable IP addresses
 
-Результат работы функции - вывод на стандартный поток вывода таблицы вида:
+The result of function is a table displayed on standard output:
 
 ::
 
@@ -79,8 +75,7 @@
     10.1.1.2     10.1.1.8
                  10.1.1.9
 
-Функция не должна изменять списки, которые переданы ей как аргументы.
-То есть, до выполнения функции и после списки должны выглядеть одинаково.
+Function should not change lists passed to it as arguments. That is, lists should look the same before and after function execution.
 
 
-Для этого задания нет тестов
+There are no tests for this task.

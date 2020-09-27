@@ -2,24 +2,22 @@
 
    \newpage
 
-Задания
+Exercises 
 ~~~~~~~
 
-Задание 1.1
+Task 1.1
 ^^^^^^^^^^^
 
-Единственное задание в этом разделе: подготовка к работе.
+The only task in this section is preparation for work.
 
-Для этого нужно:
+To do that:
 
-*  определиться с ОС, которую вы будете использовать:
+*  Define the OS you want to use:
 
-  * так как все примеры в книге ориентированы на Linux (Debian), 
-    желательно использовать его
-  * желательно использовать новую виртуальную машину, чтобы было
-    спокойнее экспериментировать
+  * since all examples in the book are Linux-oriented (Debian), it is desirable to use it
+  * it is desirable to use a new virtual machine, so you can safely experiment
 
-*  установить Python 3.7. Проверить, что Python и pip установлены
-*  создать виртуальное окружение
-*  определиться с редактором
+*  Install Python 3.7. Verify that Python and pip are installed
+*  Create a virtual environment
+*  Choose the editor 
 

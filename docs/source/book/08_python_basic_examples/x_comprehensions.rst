@@ -4,34 +4,24 @@
 List, dict, set comprehensions
 ==============================
 
-Python поддерживает специальные выражения, которые позволяют компактно
-создавать списки, словари и множества.
+Python supports special expressions that allow for compact creation of lists, dictionaries, and sets.
 
-На английском эти выражения называются, соответственно:
+The terms are as follows:
 
 -  List comprehensions
 -  Dict comprehensions
 -  Set comprehensions
 
-К сожалению, официальный перевод на русский звучит как `абстракция
-списков или списковое
-включение <https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BA%D0%BE%D0%B2%D0%BE%D0%B5_%D0%B2%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5>`__,
-что не особо помогает понять суть объекта.
+Unfortunately, the official translation into Russian sounds like `abstraction of lists or list inclusion <https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BA%D0%BE%D0%B2%D0%BE%D0%B5_%D0%B2%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5>`__ which does not help to understand the essence of the object.
 
-В книге использовался перевод "генератор списка", что, к сожалению, тоже
-не самый удачный вариант, так как в Python есть отдельное понятие
-генератор и генераторные выражения, но он лучше отображает суть
-выражения.
+The book used the term «list generator» which unfortunately is also not the best version because in Python there is a separate concept of generator and generator expressions, but it better reflects the essence of expression.
 
-Эти выражения не только позволяют более компактно создавать
-соответствующие объекты, но и создают их быстрее. И хотя поначалу они
-требуют определенной привычки использования и понимания, они очень часто
-используются.
+These expressions not only enable more compact objects to be created but also create them faster. Although they require a certain habit of use and understanding at first, they are very often used.
 
-List comprehensions (генераторы списков)
+List comprehensions (list generators)
 ----------------------------------------
 
-Генератор списка - это выражение вида:
+List generator is an expression like:
 
 .. code:: python
 
@@ -40,11 +30,9 @@ List comprehensions (генераторы списков)
     In [2]: print(vlans)
     ['vlan 10', 'vlan 11', 'vlan 12', 'vlan 13', 'vlan 14', 'vlan 15']
 
-В общем случае, это выражение, которое преобразует итерируемый объект в
-список. То есть, последовательность элементов преобразуется и
-добавляется в новый список.
+In general, it is an expression that converts an iterable object into a list. That is, a sequence of elements is converted and added to a new list.
 
-Выражению выше аналогичен такой цикл:
+The expression above is similar to this loop:
 
 .. code:: python
 
@@ -57,11 +45,9 @@ List comprehensions (генераторы списков)
     In [5]: print(vlans)
     ['vlan 10', 'vlan 11', 'vlan 12', 'vlan 13', 'vlan 14', 'vlan 15']
 
-В list comprehensions можно использовать выражение if. Таким образом
-можно добавлять в список только некоторые объекты.
+In the list comprehensions you can use **if**. Thus, you can only add some objects to the list.
 
-Например, такой цикл отбирает те элементы, которые являются числами,
-конвертирует их и добавляет в итоговый список only_digits:
+For example, a loop selects only those elements that are digits, converts them and adds them to the resulting list only_digits:
 
 .. code:: python
 
@@ -77,7 +63,7 @@ List comprehensions (генераторы списков)
     In [9]: print(only_digits)
     [10, 20, 30, 40]
 
-Аналогичный вариант в виде list comprehensions:
+A similar version with list comprehensions:
 
 .. code:: python
 
@@ -88,16 +74,12 @@ List comprehensions (генераторы списков)
     In [12]: print(only_digits)
     [10, 20, 30, 40]
 
-Конечно, далеко не все циклы можно переписать как генератор списка, но
-когда это можно сделать, и при этом выражение не усложняется, лучше
-использовать генераторы списка.
+Of course, not all loops can be rewritten as a list generator but when it is possible to do so without making the expression more complex, it is better to use the list generators.
 
 .. note::
-    В Python генераторы списка могут также заменить функции filter и map
-    и считаются более понятными вариантами решения.
+    In Python, list generators can also replace filter and map functions and are considered  as more understandable solutions.
 
-С помощью генератора списка также удобно получать элементы из вложенных
-словарей:
+With the help of the list generator it is also convenient to obtain elements from nested dictionaries:
 
 .. code:: python
 
@@ -134,7 +116,7 @@ List comprehensions (генераторы списков)
     In [15]: [london_co[device]['IP'] for device in london_co]
     Out[15]: ['10.255.0.1', '10.255.0.2', '10.255.0.101']
 
-На самом деле, синтаксис генератора списка выглядит так:
+In fact, the syntax of the list generator looks like:
 
 .. code:: python
 
@@ -143,17 +125,15 @@ List comprehensions (генераторы списков)
                 ...
                 for itemN in iterableN if conditionN ]
 
-Это значит, можно использовать несколько for в выражении.
+This means you can use several **for** in the expression.
 
-Например, в списке vlans находятся несколько вложенных списков с
-VLAN'ами:
+For example, the *vlans* list contains several nested lists with VLANs:
 
 .. code:: python
 
     In [16]: vlans = [[10,21,35], [101, 115, 150], [111, 40, 50]]
 
-Из этого списка надо сформировать один плоский список с номерами VLAN.
-Первый вариант — с помощью циклов for:
+It’s necessary to form only one list with VLAN numbers. The first option is to use **for** loop:
 
 .. code:: python
 
@@ -167,7 +147,7 @@ VLAN'ами:
     In [19]: print(result)
     [10, 21, 35, 101, 115, 150, 111, 40, 50]
 
-Аналогичный вариант с генератором списков:
+Similar to the list generator:
 
 .. code:: python
 
@@ -178,8 +158,7 @@ VLAN'ами:
     In [22]: print(result)
     [10, 21, 35, 101, 115, 150, 111, 40, 50]
 
-Можно одновременно проходиться по двум последовательностям, используя
-zip:
+Two sequences can be processed simultaneously using zip():
 
 .. code:: python
 
@@ -199,13 +178,12 @@ zip:
     vlan 200
      name dmz
 
-Dict comprehensions (генераторы словарей)
+Dict comprehensions (dictionary generators)
 -----------------------------------------
 
-Генераторы словарей аналогичны генераторам списков, но они используются
-для создания словарей.
+Dictionary generators are similar to list generators but they are used to create dictionaries.
 
-Например, такое выражение:
+For example, the expression:
 
 .. code:: python
 
@@ -218,7 +196,7 @@ Dict comprehensions (генераторы словарей)
     In [29]: print(d)
     {1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81, 10: 100}
 
-Можно заменить генератором словаря:
+You can replace it with a dictionary generator:
 
 .. code:: python
 
@@ -227,9 +205,7 @@ Dict comprehensions (генераторы словарей)
     In [31]: print(d)
     {1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81, 10: 100}
 
-Еще один пример, в котором надо преобразовать существующий словарь и
-перевести все ключи в нижний регистр. Для начала, вариант решения без
-генератора словаря:
+Another example where you need to convert an existing dictionary and transfer all keys to a lower register. First, a solution without a dictionary generator:
 
 .. code:: python
 
@@ -256,7 +232,7 @@ Dict comprehensions (генераторы словарей)
      'model': '4451',
      'vendor': 'Cisco'}
 
-Аналогичный вариант с помощью генератора словаря:
+A similar variant with a dictionary generator:
 
 .. code:: python
 
@@ -279,8 +255,7 @@ Dict comprehensions (генераторы словарей)
      'model': '4451',
      'vendor': 'Cisco'}
 
-Как и list comprehensions, dict comprehensions можно делать вложенными.
-Попробуем аналогичным образом преобразовать ключи во вложенных словарях:
+Like the list comprehensions, dict comprehensions can be nested. Try to convert keys in nested dictionaries in the same way:
 
 .. code:: python
 
@@ -340,7 +315,7 @@ Dict comprehensions (генераторы словарей)
       'model': '3850',
       'vendor': 'Cisco'}}
 
-Аналогичное преобразование с dict comprehensions:
+Similar conversion with dict comprehensions:
 
 .. code:: python
 
@@ -367,12 +342,12 @@ Dict comprehensions (генераторы словарей)
       'model': '3850',
       'vendor': 'Cisco'}}
 
-Set comprehensions (генераторы множеств)
+Set comprehensions (set generators)
 ----------------------------------------
 
-Генераторы множеств в целом аналогичны генераторам списков.
+Set generators are generally similar to list generators.
 
-Например, надо получить множество с уникальными номерами VLAN'ов:
+For example, get a set with unique VLAN numbers:
 
 .. code:: python
 
@@ -383,7 +358,7 @@ Set comprehensions (генераторы множеств)
     In [47]: unique_vlans
     Out[47]: {10, 30, 56}
 
-Аналогичное решение, без использования set comprehensions:
+Similar solution without using of set comprehensions:
 
 .. code:: python
 

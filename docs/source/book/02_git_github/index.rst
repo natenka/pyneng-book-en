@@ -4,50 +4,31 @@
 
 .. _git_github_index:
 
-2. Использование Git и GitHub
+2. Using Git and Github
 =============================
 
-В книге достаточно много заданий и нужно где-то их хранить. Один из
-вариантов – использование для этого Git и GitHub. Конечно, можно
-использовать для этого и другие средства, но используя GitHub, можно
-постепенно разобраться с ним и затем использовать его для других задач.
-Задания и примеры из книги находятся в отдельном
-`репозитории <https://github.com/natenka/pyneng-examples-exercises/>`__
-на GitHub. Их можно скачать как zip-архив, но лучше
-работать с репозиторием с помощью Git, тогда можно будет посмотреть
-внесённые изменения и легко обновить репозиторий. Если изучать Git с
-нуля и, особенно, если это первая система контроля версий, с которой Вы
-работаете, информации может быть очень много, поэтому в этой главе всё
-нацелено на практическую сторону вопроса, и рассказывается:
+There are a lot of tasks in the book and you have to store them somewhere. One option is to use Git and Github to do this. Of course, there are other ways to do this but Github can be used for other things in the future.
+Tasks and examples from the book are in a separate `repository <https://github.com/natenka/pyneng-examples-exercises/>`__
+on Github. They can be downloaded as a zip archive but it is better to work with the repository using Git, then you can see the changes made and easily update the repository. If this is the first time working with Git and especially if this is the first version control system you work with, there are a lot of information, so this chapter focuses on the practical side of the question and it says:
 
--  как начать использовать Git и GitHub;
--  как выполнить базовые настройки;
--  как посмотреть информацию и/или изменения.
+-  How to start using Git and Github;
+-  How to perform the basic setup;
+-  How to view information and/or changes.
 
-Теории в этом подразделе будет мало, но будут даны ссылки на полезные
-ресурсы. Попробуйте сначала провести все базовые настройки для
-выполнения заданий, а потом продолжайте читать книгу. И в конце, когда
-базовая работа с Git и GitHub будет уже привычным делом, почитайте о них
-подробнее. Для чего может пригодиться Git:
+There will be no much theory in this subsection but references to useful resources are given. Try doing all the basic settings for the tasks and then continue reading the book. And at the end, when the basic work with Git and Github is already routine, read more about them. What could Git be useful for:
 
--  для хранения конфигураций и всех изменений в них;
--  для хранения документации и всех её версий;
--  для хранения схем и всех их версий;
--  для хранения кода и его версий.
+-  to store configurations and all configuration changes;
+-  to store the documentation and all its versions;
+-  to store schemes and all its versions;
+-  to store the code and its versions.
 
-GitHub позволяет централизованно хранить все перечисленные выше вещи, но
-следует учитывать, что эти ресурсы будут доступны и другим. У GitHub
-есть и приватные репозитории (платные), но даже в них, пожалуй, не стоит
-выкладывать такую информацию, как пароли. Конечно, основное
-использование GitHub — размещение кода различных проектов. Кроме
-этого, GitHub ещё и:
+Github allows you to centrally store all the above items, but it should be taken into account that these resources will be available to others as well. Github also has private repositories (paid), but even these probably should not contain information such as passwords. Of course, the main use of Github is to place the code of various projects. In addition, Github is also:
 
--  хостинг для вашего сайта (`GitHub
+-  hosting for your website  (`GitHub
    Pages <https://pages.github.com/>`__);
--  хостинг для онлайн-презентаций и инструмент для их создания
+-  Hosting for online presentations and a tool to create them
    (`GitPitch <https://gitpitch.com/>`__);
--  вместе с `GitBook <https://www.gitbook.com>`__, это ещё и платформа
-   для публикации книг, документации или подобного тому.
+-  together with `GitBook <https://www.gitbook.com>`__, it is also a platform for publishing books, documentation, etc.
 
 
 .. toctree::

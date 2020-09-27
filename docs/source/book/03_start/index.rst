@@ -4,15 +4,15 @@
 
 .. _start_index:
 
-3. Начало работы с Python
+3. Getting started with Python
 ============================
 
 
-В этом разделе рассматриваются:
+This section examines:
 
--  синтаксис Python
--  работа в интерактивном режиме
--  переменные в Python
+-  Python syntax
+-  Work in interactive mode
+-  Python variables
 
 
 .. toctree::

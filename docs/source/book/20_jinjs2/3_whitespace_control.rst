@@ -1,14 +1,12 @@
-Контроль символов whitespace
+Control of whitespace symbols
 ----------------------------
 
 trim_blocks, lstrip_blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Параметр ``trim_blocks`` удаляет первую пустую строку после блока
-конструкции, если его значение равно True (по умолчанию False).
+Parameter ``trim_blocks`` removes the first empty line after construction block if its value is True (default False).
 
-Эффект применения флага рассматривается на примере шаблона
-templates/env_flags.txt:
+Effect of using the flag is considered by template example templates/env_flags.txt:
 
 ::
 
@@ -18,14 +16,14 @@ templates/env_flags.txt:
      neighbor {{ ibgp }} update-source {{ bgp.loopback }}
      {% endfor %}
 
-Если скрипт cfg_gen.py запускается без флагов trim_blocks,
+If cfg_gen.py script starts without trim_blocks,
 lstrip_blocks:
 
 .. code:: python
 
     env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
 
-Вывод будет таким:
+The output  is:
 
 ::
 
@@ -38,22 +36,22 @@ lstrip_blocks:
      neighbor 10.0.0.3 remote-as 100
      neighbor 10.0.0.3 update-source lo100
 
-Переводы строк появляются из-за блока for.
+Line feeds occur because of *for* block.
 
 ::
 
     {% for ibgp in bgp.ibgp_neighbors %}
 
-По умолчанию такое же поведение будет с любыми другими блоками Jinja.
+By default, the same behavior will be with any other Jinja blocks.
 
-При добавлении флага trim_blocks таким образом:
+When trim_blocks flag is added:
 
 .. code:: python
 
     env = Environment(loader=FileSystemLoader(TEMPLATE_DIR),
                       trim_blocks=True)
 
-Результат выполнения будет таким:
+The result will be:
 
 ::
 
@@ -64,28 +62,23 @@ lstrip_blocks:
       neighbor 10.0.0.3 remote-as 100
      neighbor 10.0.0.3 update-source lo100
 
-Были удалены пустые строки после блока.
+Empty lines after block were removed.
 
-Перед строками ``neighbor ... remote-as`` появились два пробела. Так
-получилось из-за того, что перед блоком for стоит пробел. После того,
-как был отключен лишний перевод строки, пробелы и табы перед блоком
-добавляются к первой строке блока.
+In front of ``neighbor ... remote-as`` lines two spaces appeared. This is because there is a space in front of *for* block. Once line feed has been disabled, spaces and tabs in front of the block are added to the first line of the  block.
 
-Это не влияет на следующие строки. Поэтому строки с
-``neighbor ... update-source`` отображаются с одним пробелом.
+This does not affect the next lines. Therefore, lines with 
+``neighbor ... update-source`` are displayed with one space.
 
-Параметр ``lstrip_blocks`` контролирует то, будут ли удаляться пробелы и
-табы от начала строки до начала блока (до открывающейся фигурной
-скобки).
+Parameter ``lstrip_blocks`` controls whether spaces and tabs will be removed from the beginning of the line to the beginning of the block (untill opening curly bracket).
 
-Если добавить аргумент ``lstrip_blocks=True`` таким образом:
+If add ``lstrip_blocks=True``:
 
 .. code:: python
 
     env = Environment(loader=FileSystemLoader(TEMPLATE_DIR),
                       trim_blocks=True, lstrip_blocks=True)
 
-Результат выполнения будет таким:
+The result will be:
 
 ::
 
@@ -96,14 +89,12 @@ lstrip_blocks:
      neighbor 10.0.0.3 remote-as 100
      neighbor 10.0.0.3 update-source lo100
 
-Отключение lstrip_blocks для блока
+Disabling lstrip_blocks for block
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Иногда нужно отключить функциональность lstrip_blocks для блока.
+Sometimes you need to disable lstrip_blocks in block.
 
-Например, если параметр ``lstrip_blocks`` установлен равным True в
-окружении, но нужно отключить его для второго блока в шаблоне (файл
-templates/env_flags2.txt):
+For example, if ``lstrip_blocks`` is set to True in an environment, but must be disabled for the second block in template (templates/flagenv_s2.txt file):
 
 ::
 
@@ -119,7 +110,7 @@ templates/env_flags2.txt):
      neighbor {{ ibgp }} update-source {{ bgp.loopback }}
      {% endfor %}
 
-Результат будет таким:
+The result will be:
 
 ::
 
@@ -136,11 +127,9 @@ templates/env_flags2.txt):
      neighbor 10.0.0.3 remote-as 100
      neighbor 10.0.0.3 update-source lo100
 
-Плюс после знака процента отключает lstrip_blocks для блока, в данном
-случае, только для начала блока.
+Plus sign after percent sign disables lstrip_blocks for the block, in this case, only in the beginning.
 
-Если сделать таким образом (плюс добавлен в выражении для завершения
-блока):
+If done this way (plus is added in the end block expression):
 
 ::
 
@@ -156,7 +145,7 @@ templates/env_flags2.txt):
      neighbor {{ ibgp }} update-source {{ bgp.loopback }}
      {%+ endfor %}
 
-Он будет отключен и для конца блока:
+It will be disabled for the end of the block:
 
 ::
 
@@ -173,18 +162,18 @@ templates/env_flags2.txt):
       neighbor 10.0.0.3 remote-as 100
      neighbor 10.0.0.3 update-source lo100
 
-Удаление whitespace в блоке
+Removing whitespace from block
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Аналогичным образом можно контролировать удаление whitespace для блока.
+Similarly, you can control whitespace removal for a block.
 
-Для этого примера в окружении не выставлены флаги:
+For this example, flags are not set in environment:
 
 ::
 
     env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
 
-Шаблон templates/env_flags3.txt:
+Template templates/env_flags3.txt:
 
 ::
 
@@ -200,10 +189,9 @@ templates/env_flags2.txt):
      neighbor {{ ibgp }} update-source {{ bgp.loopback }}
      {% endfor %}
 
-Обратите внимание на минус в начале второго блока. Минус удаляет все
-whitespace символы, в данном случае, в начале блока.
+Note the minus at the beginning of second block. Minus removes all whitespace characters, in this case, at the beginning of the block.
 
-Результат будет таким:
+The result will be:
 
 ::
 
@@ -224,7 +212,7 @@ whitespace символы, в данном случае, в начале бло�
      neighbor 10.0.0.3 remote-as 100
      neighbor 10.0.0.3 update-source lo100
 
-Если добавить минус в конец блока:
+If you add minus to the end of the block:
 
 ::
 
@@ -240,7 +228,7 @@ whitespace символы, в данном случае, в начале бло�
      neighbor {{ ibgp }} update-source {{ bgp.loopback }}
      {%- endfor %}
 
-Удалится пустая строка и в конце блока:
+Empty string at the end of the block will be deleted:
 
 ::
 
@@ -260,8 +248,7 @@ whitespace символы, в данном случае, в начале бло�
      neighbor 10.0.0.3 remote-as 100
      neighbor 10.0.0.3 update-source lo100
 
-Попробуйте добавить минус в конце выражений, описывающих блок, и
-посмотреть на результат:
+Try to add minus at the end of expressions describing the block and look at the result:
 
 ::
 

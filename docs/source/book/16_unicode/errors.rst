@@ -1,10 +1,9 @@
-Ошибки при конвертации
+Converting errors
 ----------------------
 
-При конвертации между строками и байтами очень важно точно знать, какая
-кодировка используется, а также знать о возможностях разных кодировок.
+When converting between strings and bytes it is very important to know exactly which encoding is used as well as to know the possibilities of different encodings.
 
-Например, кодировка ASCII не может преобразовать в байты кириллицу:
+For example, ASCII cannot convert to Cyrillic bytes:
 
 .. code:: python
 
@@ -18,8 +17,7 @@
 
     UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-5: ordinal not in range(128)
 
-Аналогично, если строка "привет" преобразована в байты, и попробовать
-преобразовать ее в строку с помощью ascii, тоже получим ошибку:
+Similarly, if the string "привет" is converted to bytes and you try to convert it into a string with ascii, we will also get an error:
 
 .. code:: python
 
@@ -36,8 +34,7 @@
 
     UnicodeDecodeError: 'ascii' codec can't decode byte 0xd0 in position 0: ordinal not in range(128)
 
-Еще один вариант ошибки, когда используются разные кодировки для
-преобразований:
+Another variant of error where different encodings are used to conversion:
 
 .. code:: python
 
@@ -54,9 +51,7 @@
 
     UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
 
-Наличие ошибок - это хорошо. Они явно говорят, в
-чем проблема.
-Хуже, когда получается так:
+Having mistakes is good. They’re telling me what the problem is. It’s worse when it’s like this:
 
 .. code:: python
 
@@ -70,21 +65,17 @@
     In [43]: hi_bytes.decode('utf-16')
     Out[43]: '뿐胑룐닐뗐苑'
 
-Обработка ошибок
+Error processing
 ~~~~~~~~~~~~~~~~
 
-У методов encode и decode есть режимы обработки ошибок, которые
-указывают, как реагировать на ошибку преобразования.
+Encode and decode methods have error-processing modes that indicate how to respond to a conversion error.
 
-Параметр errors в encode
+Parameter 'errors' in encode
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-По умолчанию encode использует режим ``strict`` - при возникновении ошибок
-кодировки генерируется исключение UnicodeError. Примеры такого поведения
-были выше.
+By default encode() uses ``strict`` mode - UnicodeError exception is generated when encoding errors occur. Examples of such behaviour are above.
 
-Вместо этого режима можно использовать replace, чтобы заменить символ
-знаком вопроса:
+Instead, you can use *replace* to substitute character with a question mark:
 
 .. code:: python
 
@@ -93,7 +84,7 @@
     In [45]: de_hi_unicode.encode('ascii', 'replace')
     Out[45]: b'gr?ezi'
 
-Или namereplace, чтобы заменить символ именем:
+Or *namereplace* to replace character with the name:
 
 .. code:: python
 
@@ -102,8 +93,7 @@
     In [47]: de_hi_unicode.encode('ascii', 'namereplace')
     Out[47]: b'gr\\N{LATIN SMALL LETTER U WITH DIAERESIS}ezi'
 
-Кроме того, можно полностью игнорировать символы, которые нельзя
-закодировать:
+In addition, characters that cannot be encoded may be completely ignored:
 
 .. code:: python
 
@@ -112,14 +102,12 @@
     In [49]: de_hi_unicode.encode('ascii', 'ignore')
     Out[49]: b'grezi'
 
-Параметр errors в decode
+Parameter 'errors' in decode
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-В методе decode по умолчанию тоже используется режим strict и
-генерируется исключение UnicodeDecodeError.
+The decode() method also uses strict mode by default and generates a UnicodeDecodeError exception.
 
-Если изменить режим на ignore, как и в encode, символы будут просто
-игнорироваться:
+If you change the mode to ignore, as in encode, the characters will simply be ignored:
 
 .. code:: python
 
@@ -133,7 +121,7 @@
     In [53]: de_hi_utf8.decode('ascii', 'ignore')
     Out[53]: 'grezi'
 
-Режим replace заменит символы:
+Mode *replace* substitutes characters:
 
 .. code:: python
 

@@ -1,8 +1,7 @@
-Метод ``__init__``
+Method ``__init__``
 ~~~~~~~~~~~~~~~~~~
 
-Для корректной работы метода info, необходимо чтобы у экземпляра были
-переменные hostname и model. Если этих переменных нет, возникнет ошибка:
+For info() method to work correctly the instance should have *hostname* and *model* variables. If these variables are not available, an error will occur:
 
 .. code:: python
 
@@ -26,14 +25,9 @@
 
     AttributeError: 'Switch' object has no attribute 'hostname'
 
-Практически всегда, при создании объекта, у него есть какие-то начальные
-данные. Например, чтобы создать подключение к оборудование с помощью
-netmiko, надо передать параметры подключения.
+Almost always, when an object is created it has some initial data. For example, to create a connection to device with netmiko you have to pass connection parameters.
 
-В Python эти начальные данные про объект указываются в методе
-``__init__``. Метод ``__init__`` выполняется после того как Python
-создал новый экземпляр и, при этом, методу ``__init__`` передаются
-аргументы с которыми был создан экземпляр:
+In Python these initial object data are specified in ``__init__``. Method ``__init__`` is executed after Python has created a new instance and ``__init__`` method is passed arguments with which instance was created:
 
 .. code:: python
 
@@ -46,17 +40,15 @@ netmiko, надо передать параметры подключения.
         ...:         print('Hostname: {}\nModel: {}'.format(self.hostname, self.model))
         ...:
 
-Обратите внимание на то, что у каждого экземпляра, который создан из этого класса,
-будут созданы переменные: ``self.model`` и ``self.hostname``.
+Note that each instance created from this class will have variables: ``self.model`` and ``self.hostname``.
 
-Теперь, при создании экземпляра класса Switch, обязательно надо указать
-hostname и model:
+Now, when creating an instance of Switch class you have to specify *hostname* and *model*:
 
 .. code:: python
 
     In [33]: sw1 = Switch('sw1', 'Cisco 3850')
 
-И, соответственно, метод info отрабатывает без ошибок:
+Accordingly, info() method works without error:
 
 .. code:: python
 
@@ -66,12 +58,7 @@ hostname и model:
 
 .. note::
 
-    Метод ``__init__`` иногда называют конструктором класса, хотя
-    технически в Python сначала выполняется метод ``__new__``, а затем
-    ``__init__``. В большинстве случаев, метод ``__new__`` использовать
-    не нужно.
+    ``__init__`` method is sometimes called a class constructor, although technically in Python ``__new__`` method is executed first and then ``__init__``. In most cases there is no necessety to use ``__new__`` method.
 
-Важной особенностью метода ``__init__`` является то, что он не должен
-ничего возвращать. Python сгенерирует исключение, если попытаться это
-сделать.
+An important feature of ``__init__`` method is that it should not return anything. Python will generate an exception if it tries to do this.
 

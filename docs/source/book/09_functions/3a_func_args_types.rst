@@ -1,82 +1,71 @@
-Типы аргументов функции
+Function argument types
 -----------------------
 
-При вызове функции аргументы можно передавать двумя способами:
+When a function is called the arguments can be passed in two ways:
 
-* как **позиционные** - передаются в том же порядке, в котором они определены
-  при создании функции. То есть, порядок передачи аргументов определяет, 
-  какое значение получит каждый аргумент
-* как **ключевые** - передаются с указанием имени аргумента и его значения.
-  В таком случае, аргументы могут быть указаны в любом порядке, так как их имя указывается явно.
+* as **positional** - passed in the same order in which they are defined at the creation of the function. That is, the order of argument transfer determines what value each argument will get.
+* as **keyword** - passed with the argument name and its value. In such a case, the arguments can be stated in any order as their name is clearly indicated.
 
-Позиционные и ключевые аргументы могут быть смешаны при вызове функции.
-То есть, можно использовать оба способа при передаче аргументов одной и
-той же функции. При этом сначала должны идти позиционные аргументы, а
-только потом - ключевые.
+Positional and keyword arguments can be mixed when calling a function. That is, it is possible to use both methods when passing arguments of the same function. In this process, Positional arguments must be indicated before keyword arguments.
 
-Посмотрим на разные способы передачи аргументов на примере функции
-check_passwd (файл func_check_passwd_optional_param.py):
+Look at the different ways to pass arguments using check_passwd (func_check_check_passwd_optional_param.py file):
 
 .. code:: python
 
     In [1]: def check_passwd(username, password):
        ...:     if len(password) < 8:
-       ...:         print('Пароль слишком короткий')
+       ...:         print('Password is too short')
        ...:         return False
        ...:     elif username in password:
-       ...:         print('Пароль содержит имя пользователя')
+       ...:         print('Password contains username')
        ...:         return False
        ...:     else:
-       ...:         print(f'Пароль для пользователя {username} прошел все проверки')
+       ...:         print(f'Password for user {username} has passed all checks')
        ...:         return True
        ...:
 
-Позиционные аргументы
+Positional argument
 ~~~~~~~~~~~~~~~~~~~~~
 
-Позиционные аргументы при вызове функции надо передать в правильном
-порядке (поэтому они и называются позиционные).
+Positional arguments when calling a function must be passed in the correct order (therefore they are called positional arguments).
 
 .. code:: python
 
     In [2]: check_passwd('nata', '12345')
-    Пароль слишком короткий
+    Password is too short
     Out[2]: False
 
     In [3]: check_passwd('nata', '12345lsdkjflskfdjsnata')
-    Пароль содержит имя пользователя
+    Password contains username
     Out[3]: False
 
     In [4]: check_passwd('nata', '12345lsdkjflskfdjs')
-    Пароль для пользователя nata прошел все проверки
+    Password for user nata has passed all checks
     Out[4]: True
 
-Если при вызове функции поменять аргументы местами, скорее всего,
-возникнет ошибка, в зависимости от конкретной функции.
+If you swap arguments when calling a function the error will likely occur depending on the function.
 
-Ключевые аргументы
+Keyword arguments
 ~~~~~~~~~~~~~~~~~~
 
-**Ключевые аргументы**:
+**Keyword arguments**:
 
-* передаются с указанием имени аргумента
-* за счет этого они могут передаваться в любом порядке
+* are passed with name of argument
+* thus they can be passed in any order
 
-Если передать оба аргумента как ключевые, можно передавать их в любом
-порядке:
+If both arguments are keyword, they can be passed in any order:
 
 .. code:: python
 
     In [9]: check_passwd(password='12345', username='nata', min_length=4)
-    Пароль для пользователя nata прошел все проверки
+    Password for user nata has passed all checks
     Out[9]: True
 
 
 .. warning::
-    Обратите внимание, что всегда сначала должны идти позиционные
-    аргументы, а затем ключевые.
+    Please note that first there should always be positional arguments and then keyword arguments.
 
-Если сделать наоборот, возникнет ошибка:
+If you do the opposite, there’s an error:
 
 .. code:: python
 
@@ -87,52 +76,49 @@ check_passwd (файл func_check_passwd_optional_param.py):
     SyntaxError: positional argument follows keyword argument
 
 
-Но в такой комбинации можно:
+But in that combination it works:
 
 .. code:: python
 
     In [11]: check_passwd('nata', '12345', min_length=3)
-    Пароль для пользователя nata прошел все проверки
+    Password for user nata has passed all checks
     Out[11]: True
 
-В реальной жизни зачастую намного понятней и удобней указывать
-флаги (параметры со значениями True/False) или числовые значения как ключевой аргумент. Если
-задать хорошее название параметра, то по его имени сразу
-будет понятно, что именно он делает.
+In real life, it is often better to specify flags (parameters with True/False values) or numerical values as a keyword argument. If you set a good name for the parameter you can immediately know by its name what it does.
 
-Например, можно добавить флаг, который будет контролировать, выполнять проверку наличия имени пользователя в пароле или нет:
+For example, you can add a flag that will control whether or not a username should be checked in password:
 
 .. code:: python
 
     In [12]: def check_passwd(username, password, min_length=8, check_username=True):
         ...:     if len(password) < min_length:
-        ...:         print('Пароль слишком короткий')
+        ...:         print('Password is too short')
         ...:         return False
         ...:     elif check_username and username in password:
-        ...:         print('Пароль содержит имя пользователя')
+        ...:         print('Password contains username')
         ...:         return False
         ...:     else:
-        ...:         print(f'Пароль для пользователя {username} прошел все проверки')
+        ...:         print(f'Password for user {username} has passed all checks')
         ...:         return True
         ...:
 
-По умолчанию флаг равен True, а значит проверку выполнять надо:
+By default, the flag is True which means check should be done:
 
 .. code:: python
 
     In [14]: check_passwd('nata', '12345nata', min_length=3)
-    Пароль содержит имя пользователя
+    Password contains username
     Out[14]: False
 
     In [15]: check_passwd('nata', '12345nata', min_length=3, check_username=True)
-    Пароль содержит имя пользователя
+    Password contains username
     Out[15]: False
 
-Если указать значение равным False, проверка не будет выполняться:
+If you specify a value equal to False the verification will not be performed:
 
 .. code:: python
 
     In [16]: check_passwd('nata', '12345nata', min_length=3, check_username=False)
-    Пароль для пользователя nata прошел все проверки
+    Password for user nata has passed all checks
     Out[16]: True
 

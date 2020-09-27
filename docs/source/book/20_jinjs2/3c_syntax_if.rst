@@ -1,12 +1,10 @@
 if/elif/else
 ------------
 
-if позволяет добавлять условие в шаблон. Например, можно использовать
-if, чтобы добавлять какие-то части шаблона в зависимости от наличия
-переменных в словаре с данными.
+**if** allows you to add a condition to template. For example, you can use **if** to add parts of template depending on the presence of variables in data dictionary.
 
-Конструкция if также должна находиться внутри ``{% %}``.
-Нужно явно указывать окончание условия:
+**if** construction must also be within  inside ``{% %}``.
+End of condition must be explicitly stated:
 
 ::
 
@@ -16,7 +14,7 @@ if, чтобы добавлять какие-то части шаблона в �
      auto-cost reference-bandwidth 10000
     {% endif %}
 
-Пример шаблона templates/if.txt:
+Template example templates/if.txt:
 
 ::
 
@@ -39,16 +37,13 @@ if, чтобы добавлять какие-то части шаблона в �
      {% endfor %}
     {% endif %}
 
-Выражение ``if ospf`` работает так же, как в Python: если переменная
-существует и не пустая, результат будет True. Если переменной нет или
-она пустая, результат будет False.
+``if ospf`` expression works the same way as in Python: if variable exists and is not empty, the result is True. If there is no variable or it is empty, the result is False.
 
-То есть, в этом шаблоне конфигурация OSPF генерируется только в том
-случае, если переменная ospf существует и не пустая.
+That is, in this template the OSPF configuration is generated only if variable *ospf* exists and is not empty.
 
-Конфигурация будет генерироваться с двумя вариантами данных.
+Configuration will be generated with two data variants.
 
-Сначала с файлом data_files/if.yml, в котором нет переменной ospf:
+First with data_files/if.yml that does not contain *ospf* variable:
 
 .. code:: yaml
 
@@ -59,7 +54,7 @@ if, чтобы добавлять какие-то части шаблона в �
       20: Voice
       30: Management
 
-Результат будет таким:
+The result will be:
 
 ::
 
@@ -77,7 +72,7 @@ if, чтобы добавлять какие-то части шаблона в �
     vlan 30
      name Management
 
-Теперь аналогичный шаблон, но с файлом data_files/if_ospf.yml:
+Now a similar template but with data_files/if_ospf.yml file:
 
 .. code:: yaml
 
@@ -95,7 +90,7 @@ if, чтобы добавлять какие-то части шаблона в �
       - network: 10.1.1.0 0.0.0.255
         area: 0
 
-Теперь результат выполнения будет таким:
+Now the result will be:
 
 ::
 
@@ -118,9 +113,9 @@ if, чтобы добавлять какие-то части шаблона в �
      network 10.0.2.0 0.0.0.255 area 2
      network 10.1.1.0 0.0.0.255 area 0
 
-Как и в Python, в Jinja можно делать ответвления в условии.
+As in Python, Jinja is allowed to make branches in condition.
 
-Пример шаблона templates/if_vlans.txt:
+Template example templates/if_vlans.txt:
 
 ::
 
@@ -135,7 +130,7 @@ if, чтобы добавлять какие-то части шаблона в �
      {% endif %}
     {% endfor %}
 
-Файл data_files/if_vlans.yml с данными:
+Data file data_files/if_vlans.yml:
 
 .. code:: yaml
 
@@ -150,11 +145,9 @@ if, чтобы добавлять какие-то части шаблона в �
         action: delete
         vlans: 10
 
-В данном примере в зависимости от значения параметра action генерируются
-разные команды.
+In this example, different commands are generated depending on the value of *action* parameter.
 
-В шаблоне можно было использовать и такой вариант обращения к вложенным
-словарям:
+In template you could also use this option to refer to nested dictionaries:
 
 ::
 
@@ -169,7 +162,7 @@ if, чтобы добавлять какие-то части шаблона в �
      {% endif %}
     {% endfor %}
 
-В итоге будет сгенерирована такая конфигурация:
+This will result in the following configuration:
 
 ::
 
@@ -181,10 +174,9 @@ if, чтобы добавлять какие-то части шаблона в �
     interface Fa0/2
      switchport trunk allowed vlan 10,30
 
-Также с помощью if можно фильтровать, по каким элементам
-последовательности пройдется цикл for.
+Using **if** you can also filter which elements of the sequence will be iterated in **for** loop.
 
-Пример шаблона templates/if_for.txt с фильтром в цикле for:
+Template example templates/if_for.txt with filter in **for** loop:
 
 ::
 
@@ -193,7 +185,7 @@ if, чтобы добавлять какие-то части шаблона в �
      name {{ name }}
     {% endfor %}
 
-Файл с данными (data_files/if_for.yml):
+Data file (data_files/if_for.yml):
 
 .. code:: yaml
 
@@ -202,7 +194,7 @@ if, чтобы добавлять какие-то части шаблона в �
       20: Voice
       30: Management
 
-Результат выполнения:
+The result will be:
 
 ::
 

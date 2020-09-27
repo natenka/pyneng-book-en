@@ -1,16 +1,11 @@
 set
 ---
 
-Внутри шаблона можно присваивать значения переменным. Это могут быть
-новые переменные, а могут быть измененные значения переменных, которые
-были переданы шаблону.
+You can assign values to variables inside the template. These can be new variables or there may be modified values of variables that have been passed to the template.
 
-Таким образом можно запомнить значение, которое, например, было получено
-в результате применения нескольких фильтров. И в дальнейшем использовать
-имя переменной, а не повторять снова все фильтры.
+In this way you can remember a value that for example was obtained by using several filters. Then use the variable name instead of repeating all filters.
 
-Пример шаблона templates/set.txt, в котором выражение set используется,
-чтобы задать более короткие имена параметрам:
+Template example templates/set.txt in which **set** expression is used to specify shorter parameter names:
 
 ::
 
@@ -38,17 +33,16 @@ set
      {% endif %}
     {% endfor %}
 
-Обратите внимание на вторую и третью строки:
+Note the second and third lines:
 
 ::
 
      {% set vlans = params.vlans %}
      {% set action = params.action %}
 
-Таким образом создаются новые переменные, и дальше используются уже эти
-новые значения. Так шаблон выглядит понятней.
+In this way new variables are created and these new values are used. It makes the template look clearer.
 
-Файл с данными (data_files/set.yml):
+Data file (data_files/set.yml):
 
 .. code:: json
 
@@ -67,7 +61,7 @@ set
         action: delete
         vlans: 10
 
-Результат выполнения:
+The result of execution:
 
 ::
 

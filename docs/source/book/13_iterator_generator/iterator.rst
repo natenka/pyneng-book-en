@@ -1,21 +1,15 @@
-Итераторы
+Iterators
 ---------
 
-Итератор (iterator) - это объект, который возвращает свои элементы по
-одному за раз.
+Iterator is an object that returns its elements one at a time.
 
-С точки зрения Python - это любой объект, у которого есть метод
-``__next__``. Этот метод возвращает следующий элемент, если он есть, или
-возвращает исключение StopIteration, когда элементы закончились.
+From Python point of view, it is any object that has ``__next__`` method. . This method returns the next item if any, or returns the *StopIteration* exception when the items are finished.
 
-Кроме того, итератор запоминает, на каком объекте он остановился в
-последнюю итерацию.
+In addition, iterator remembers which object it stopped at in the last iteration.
 
-В Python у каждого итератора присутствует метод ``__iter__`` - то есть,
-любой итератор является итерируемым объектом. Этот метод просто
-возвращает сам итератор.
+In Python, each iterator has ``__iter__`` - method - that is, every iterator is an iterable object. This method simply returns the iterator itself.
 
-Пример создания итератора из списка:
+An example of creating an iterator from the list:
 
 .. code:: python
 
@@ -23,8 +17,7 @@
 
     In [4]: i = iter(numbers)
 
-Теперь можно использовать функцию next(), которая вызывает метод
-``__next__``, чтобы взять следующий элемент:
+Now you can use the next() function that calls ``__next__`` method to take the next element:
 
 .. code:: python
 
@@ -45,13 +38,11 @@
 
     StopIteration:
 
-После того, как элементы закончились, возвращается исключение
-StopIteration.
+After the elements are finished, *StopIteration* exception is returned.
 
-Для того, чтобы итератор снова начал возвращать элементы, его надо
-заново создать.
+To make iterator to return elements again, it has to be re-created.
 
-Аналогичные действия выполняются, когда цикл for проходится по списку:
+Similar actions are performed when loop **for** processes the list:
 
 .. code:: python
 
@@ -62,20 +53,16 @@ StopIteration.
     2
     3
 
-Когда мы перебираем элементы списка, к списку сначала применяется
-функция iter(), чтобы создать итератор, а затем вызывается его метод
-``__next__`` до тех пор, пока не возникнет исключение StopIteration.
+When we search list elements, the iter() function is first applied to the list to create an iterator, and then ``__next__`` method is called until the *StopIteration* exception occurs.
 
-Итераторы полезны тем, что они отдают элементы по одному. Например, при
-работе с файлом это полезно тем, что в памяти будет находиться не весь
-файл, а только одна строка файла.
+Iterators are useful because they give elements one at a time. For example, when working with a file, it is useful that the memory will not contain the whole file, but only one line of a file.
 
-Файл как итератор
+File as iterator
 ~~~~~~~~~~~~~~~~~
 
-Один из самых распространенных примеров итератора - файл.
+One of the most common examples of an iterator is a file.
 
-Файл r1.txt:
+File r1.txt:
 
 ::
 
@@ -90,15 +77,13 @@ StopIteration.
     ip ssh version 2
     !
 
-Если открыть файл обычной функцией open, мы получим объект, который
-представляет файл:
+If we open the file with the normal open() function, we get the object that represents the file:
 
 .. code:: python
 
     In [10]: f = open('r1.txt')
 
-Этот объект является итератором, что можно проверить, вызвав метод
-``__next__``:
+This object is an iterator that can be verified by calling ``__next__`` method:
 
 .. code:: python
 
@@ -108,7 +93,7 @@ StopIteration.
     In [12]: f.__next__()
     Out[12]: 'service timestamps debug datetime msec localtime show-timezone year\n'
 
-Аналогичным образом можно перебирать строки в цикле for:
+You can also go through the lines using **for** loop:
 
 .. code:: python
 
@@ -124,13 +109,9 @@ StopIteration.
     ip ssh version 2
     !
 
-При работе с файлами, использование файла как итератора не просто
-позволяет перебирать файл построчно - в каждую итерацию загружена только
-одна строка. Это очень важно при работе с большими файлами на тысячи и
-сотни тысяч строк, например, с лог-файлами.
+When working with files, using a file as an iterator does not simply allow iterate the file line by line - only one line is loaded into each iteration. This is very important when working with large files of thousands and hundreds of thousands of lines, such as log files.
 
-Поэтому при работе с файлами в Python чаще всего используется
-конструкция вида:
+Therefore, when working with files in Python, the most commonly used construction is:
 
 .. code:: python
 

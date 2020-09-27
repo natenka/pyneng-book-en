@@ -1,7 +1,7 @@
-Дополнительные материалы
+Additional material
 ------------------------
 
-Документация Python:
+Documentation Python:
 
 -  `Sequence
    types <https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range>`__
@@ -10,7 +10,7 @@
 -  `Functional Programming
    HOWTO <https://docs.python.org/3/howto/functional.html>`__
 
-Статьи:
+Articles:
 
 -  `Iterables vs. Iterators vs.
    Generators <http://nvie.com/posts/iterators-vs-generators/>`__

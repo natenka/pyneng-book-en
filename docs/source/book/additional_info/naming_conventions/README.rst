@@ -1,55 +1,46 @@
-Соглашение об именах
+Naming convention
 --------------------
 
-В Python есть определенные соглашения об именовании объектов.
+Python has certain objects naming convention
 
-В целом, лучше придерживаться этих соглашений. Однако, если в
-определенной библиотеке или модуле используются другие соглашения, то
-стоит придерживаться того стиля, который используется в них.
+In general, it is better to adhere to this convention. However, if a particular library or module uses different convention, it is worth following the style used in them.
 
-    В этом разделе описаны не все правила. Подробнее можно почитать в
-    документе PEP8 на
-    `английском <https://www.python.org/dev/peps/pep-0008/>`__ или на
-    `русском <http://pep8.ru/doc/pep8/>`__.
+    Not all rules are described in this section. More information can be found in PEP8 in 
+    `English <https://www.python.org/dev/peps/pep-0008/>`__ or
+    `Russian <http://pep8.ru/doc/pep8/>`__.
 
-Имена переменных
+Variable names
 ~~~~~~~~~~~~~~~~
 
-Имена переменных не должны пересекаться с операторами и названиями
-модулей или других зарезервированных значений.
+Variable names should not overlap with operators and names of modules or other reserved values.
 
-Имена переменных обычно пишутся полностью большими или маленькими
-буквами. В пределах одного скрипта/модуля/пакета лучше придерживаться
-одного из вариантов.
+Variable names are usually written entirely in large or small letters. It is better to stick to one of option within a script/module/package.
 
-Если переменные - константы для модуля, то лучше использовать имена,
-написанные заглавными буквами:
+If variables are constants for module, it is better to use names written in capital letters:
 
 .. code:: python
 
     DB_NAME = 'dhcp_snooping.db'
     TESTING = True
 
-Для обычных переменных лучше использовать имена в нижнем регистре:
+For ordinary variables it is better to use lower case names:
 
 .. code:: python
 
     db_name = 'dhcp_snooping.db'
     testing = True
 
-Имена модулей и пакетов
+Module and package names
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Имена модулей и пакетов задаются маленькими буквами.
+Names of modules and packages are given in small letters.
 
-Модули могут использовать подчеркивания между словами для того, чтобы
-имена были более понятными. Для пакетов лучше выбирать короткие имена.
+Modules can use underscores to make names more understandable. For packages it is better to select short names.
 
-Имена функций
+Function names
 ~~~~~~~~~~~~~
 
-Имена функций задаются маленькими буквами, с подчеркиваниями между
-словами.
+Function names are given in small letters with underscores between words.
 
 .. code:: python
 
@@ -62,10 +53,10 @@
                 return True
         return ignore_command
 
-Имена классов
+Class names
 ~~~~~~~~~~~~~
 
-Имена классов задаются словами с заглавными буквами, без пробелов.
+Class names are given with capital letters, no spaces.
 
 .. code:: python
 

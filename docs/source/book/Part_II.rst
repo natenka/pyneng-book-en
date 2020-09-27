@@ -1,40 +1,20 @@
-II. Повторное использование кода
+II. Code reuse
 ################################
 
-При написании кода достаточно часто часть действий повторяется. Это
-может быть небольшой блок на 3-5 строк, а может быть и достаточно
-большая последовательность действий.
+When the code is written you will find that some of the actions are often repeated. It can be a small block of 3-5 lines or it can be a rather large sequence of actions.
 
-Копировать код — плохая затея. Так как, если потом понадобится обновить
-одну из копий, надо будет обновлять и другие.
+Copying code is a bad idea. Because if you have to update one of the copies later, you have to update the others.
 
-Вместо этого, надо создать специальный блок кода с именем - функцию. И
-каждый раз, когда код надо повторить, достаточно вызвать функцию.
-Функция позволяет не только назвать какой-то блок кода, но и сделать его
-более абстрактным за счет параметров. Параметры дают возможность
-передавать разные исходные данные для выполнения функции. И,
-соответственно, получать разный результат, в зависимости от входящих
-параметров.
+Instead, you create a special code block with the name - function. And every time the code has to be repeated, you just call a function. The function allows not only to name a block of code but also to make it more abstract through parameters. The parameters make it possible to transfer different source data for the execution of the function. And, correspondingly, get different results depending on the input parameters.
 
-Созданию функций посвящён раздел :ref:`functions_index`.
-Кроме того, в разделе :ref:`useful_functions_index`
-рассматриваются полезные встроенные функции.
+Section :ref:`functions_index` deals with the creation of functions.
+In addition, section :ref:`useful_functions_index` considers useful embedded functions.
 
-После разделения кода на функции, достаточно быстро наступает момент,
-когда необходимо использовать функцию в другом скрипте. Конечно же,
-копирование функции так же неудобно, как и копирование обычного кода.
-Для повторного использования кода из другого скрипта Python используются
-модули.
+Once the code is divided into functions, there comes a time when you need to use the function in another script. Of course, copying a function is as inconvenient as copying a normal code. Modules are used to reuse code from another Python script.
 
-Одиннадцатый
-раздел :ref:`modules_index`
-посвящён созданию собственных модулей, а в разделе :ref:`useful_modules_index`
-рассматриваются полезные модули из стандартной библиотеки Python.
+Section :ref:`modules_index` is dedicated to creating your own modules and section :ref:`useful_modules_index` is considered useful modules from the standard Python library. 
 
-Последний
-раздел :ref:`iterator_generator_index`
-этой части посвящён итерируемым объектам, итераторам и генераторам.
-
+The last section :ref:`iterator_generator_index` is dedicated to iterable objects, iterators and generators.
 
 .. toctree::
    :maxdepth: 1

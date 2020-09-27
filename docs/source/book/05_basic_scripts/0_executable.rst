@@ -1,15 +1,13 @@
-Исполняемый файл
+Executable file
 ~~~~~~~~~~~~~~~~
 
-Для того, чтобы файл был исполняемым, и не нужно было каждый раз писать
-python перед вызовом файла, нужно:
+In order for a file to be executable and not have to write "python" every time before calling a file, you need to:
 
-* сделать файл исполняемым (для Linux)
-* в первой строке файла должна находиться строка ``#!/usr/bin/env python``
-  или ``#!/usr/bin/env python3``, в зависимости от того,
-  какая версия Python используется по умолчанию
+* make the file executable (for Linux)
+* the first line of the file should have ``#!/usr/bin/env python``
+  or ``#!/usr/bin/env python3`` depending on which version of Python is used by default
 
-Пример файла access_template_exec.py:
+Example of access_template_exec.py file:
 
 .. code:: python
 
@@ -23,13 +21,13 @@ python перед вызовом файла, нужно:
 
     print('\n'.join(access_template).format(5))
 
-После этого:
+After that:
 
 ::
 
     chmod +x access_template_exec.py
 
-Теперь можно вызывать файл таким образом:
+Now you can call file like this:
 
 ::
 

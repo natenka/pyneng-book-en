@@ -1,11 +1,6 @@
 .. warning::
 
-    Начиная с раздела "9. Функции" для проверки заданий
-    есть автоматические тесты. 
-    Они помогают проверить все ли
-    соответствует поставленной задаче, а также дают обратный отклик по тому,
-    что не соответствует задаче. Как правило, после первого периода
-    адаптации к тестам, становится проще делать задания с тестами.
+    Starting from section "9. Functions" there are automatic tests for checking tasks. They help to check whether everything fits the task and also give feedback on what does not fit the task. As a rule, after first period of adaptation to tests, it becomes easier to do tasks with tests.
 
-    :ref:`Как работать с тестами и основы pytest <additional_info_pytest>`. 
+    :ref:`How to work with tests and basics of pytest <additional_info_pytest>`. 
 

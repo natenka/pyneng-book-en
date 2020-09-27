@@ -1,9 +1,9 @@
 CREATE
 ~~~~~~
 
-Оператор CREATE позволяет создавать таблицы.
+CREATE operator allows you to create tables.
 
-Сначала подключимся к базе данных или создадим ее с помощью litecli:
+First connect to the database or create it with litecli:
 
 ::
 
@@ -14,7 +14,7 @@ CREATE
     new_db.db>
 
 
-Создадим таблицу switch, в которой хранится информация о коммутаторах:
+Create a *switch* table which stores information about switches:
 
 .. code:: sql
 
@@ -23,20 +23,16 @@ CREATE
     Time: 0.010s
 
 
-В данном примере мы описали таблицу switch: определили, какие поля будут
-в таблице, и значения какого типа будут в них находиться.
+In this example, we described *switch* table: we defined which fields would be in the table and which types of values would be in them.
 
-Кроме того, поле mac является первичным ключом. Это автоматически
-значит, что: 
+Additionally, *mac* field is the primary key. That automatically means that:
 
-* поле должно быть уникальным 
-* в нём не может находиться значение NULL (в SQLite это надо задавать явно)
+* field must be unique
+* field cannot have null value (in SQLite this must be stated explicitly)
 
-В этом примере это вполне логично, так как MAC-адрес должен быть
-уникальным.
+In this example this is quite logical as MAC address must be unique.
 
-На данный момент записей в таблице нет, есть только ее определение.
-Просмотреть определение можно такой командой:
+There are no entries in the table at the moment, only a definition. You can view the definition with this command:
 
 .. code:: sql
 

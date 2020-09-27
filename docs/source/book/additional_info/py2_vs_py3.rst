@@ -1,56 +1,53 @@
-Отличия Python 2.7 и Python 3.6
+Python 2.7 and Python 3.6 distinctions
 -------------------------------
 
 `Unicode <../16_unicode/>`__
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-В Python 2.7 было два типа строк: str и unicode:
+Python 2.7 has two string types: **str** and **unicode**:
 
 .. code:: python
 
     In [1]: line = 'test'
 
-    In [2]: line2 = u'тест'
+    In [2]: line2 = u'test'
 
-В Python 3 строка - это тип str, но, кроме этого, в Python 3 появился
-тип bytes:
+In Python 3, string is **str** type but in addition **bytes** type appeared in Python 3:
 
 .. code:: python
 
-    In [3]: line = 'тест'
+    In [3]: line = 'test'
 
     In [4]: line.encode('utf-8')
     Out[4]: b'\xd1\x82\xd0\xb5\xd1\x81\xd1\x82'
 
     In [5]: byte_str = b'test'
 
-`Функция print <../10_useful_functions/print.html>`__
+`print() fucntion <../10_useful_functions/print.html>`__
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-В Python 2.7 print был оператором:
+In Python 2.7 *print* was an operator:
 
 .. code:: python
 
     In [6]: print 1, 'test'
     1 test
 
-В Python 3 `print - функция <../10_useful_functions/print.md>`__:
+In Python 3 `print() - function <../10_useful_functions/print.md>`__:
 
 .. code:: python
 
     In [7]: print(1, 'test')
     1 test
 
-В Python 2.7 можно брать аргументы в скобки, но от этого print не
-становится функцией и, кроме того, print возвращает другой результат
-(кортеж):
+In Python 2.7 it is possible to put arguments in brackets, but it doesn’t make *print* a function and *print* returns another result (tuple):
 
 .. code:: python
 
     In [8]: print(1, 'test')
     (1, 'test')
 
-В Python 3, использование синтаксиса Python 2.7 приведет к ошибке:
+In Python 3, using Python 2.7 syntax will result in an error:
 
 .. code:: python
 
@@ -60,11 +57,10 @@
               ^
     SyntaxError: Missing parentheses in call to 'print'
 
-`input вместо raw_input <../05_basic_scripts/2_user_input.html>`__
+`input instead of raw_input <../05_basic_scripts/2_user_input.html>`__
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-В Python 2.7 для получения информации от пользователя в виде строки
-использовалась функция raw_input:
+In Python 2.7, raw_input() function was used to get information from user as a string:
 
 .. code:: python
 
@@ -74,7 +70,7 @@
     In [11]: number
     Out[11]: '55'
 
-В Python 3 используется input:
+Python 3 uses *input*:
 
 .. code:: python
 
@@ -84,15 +80,15 @@
     In [13]: number
     Out[13]: '55'
 
-`range вместо xrange <../10_useful_functions/range.html>`__
+`range instead of xrange <../10_useful_functions/range.html>`__
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-В Python 2.7 были две функции
+Python 2.7 had two functions
 
-* range - возвращает список
-* xrange - возвращает итератор
+* range - returns list
+* xrange - returns iterator
 
-Пример range и xrange в Python 2.7:
+Example range() and xrange() in Python 2.7:
 
 .. code:: python
 
@@ -105,7 +101,7 @@
     In [16]: list(xrange(5))
     Out[16]: [0, 1, 2, 3, 4]
 
-В Python 3 есть только функция range, и она возвращает итератор:
+Python 3 has only a range() function and it returns an iterator:
 
 .. code:: python
 
@@ -115,25 +111,22 @@
     In [18]: list(range(5))
     Out[18]: [0, 1, 2, 3, 4]
 
-`Методы словарей <../04_data_structures/6a_dict_methods.html>`__
+`Dictionary methods <../04_data_structures/6a_dict_methods.html>`__
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Несколько изменений произошло в методах словарей.
+Several changes have occurred in dictionary methods.
 
 dict.keys(), values(), items()
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Методы keys(), values(), items() в Python 3 возвращают "views" вместо
-списков. Особенность view заключается в том, что они меняются вместе с
-изменением словаря. И фактически они лишь дают способ посмотреть на
-соответствующие объекты, но не создают их копию.
+Methods keys(), values(), items() in Python 3 return "views " instead of lists. The peculiarity of view is that they change with the change of dictionary. And in fact, they just give you a way to look at corresponding objects but they don’t make a copy of them.
 
-В Python 3 нет методов:
+Python 3 has no methods:
 
 * viewitems, viewkeys, viewvalues
 * iteritems, iterkeys, itervalues
 
-Для сравнения, методы словаря в Python 2.7:
+For comparison, dictionary methods in Python 2.7:
 
 .. code:: python
 
@@ -144,7 +137,7 @@ dict.keys(), values(), items()
         d.copy       d.has_key    d.iterkeys   d.pop        d.update     d.viewkeys
         d.fromkeys   d.items      d.itervalues d.popitem    d.values     d.viewvalues
 
-И в Python 3:
+And in Python 3:
 
 .. code:: python
 
@@ -155,11 +148,10 @@ dict.keys(), values(), items()
                copy()       items()      popitem()    values()
                fromkeys()   keys()       setdefault()
 
-`Распаковка переменных <../08_python_basic_examples/variable_unpacking.html>`__
+`Variables unpacking <../08_python_basic_examples/variable_unpacking.html>`__
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-В Python 3 появилась возможность использовать ``*`` при распаковке
-переменных:
+In Python 3 it is possible to use ``*`` when unpacking variables:
 
 .. code:: python
 
@@ -174,7 +166,7 @@ dict.keys(), values(), items()
     In [26]: c
     Out[26]: 5
 
-В Python 2.7 этот синтаксис не поддерживается:
+Python 2.7 does not support this syntax:
 
 .. code:: python
 
@@ -184,10 +176,10 @@ dict.keys(), values(), items()
            ^
     SyntaxError: invalid syntax
 
-`Итератор вместо списка <../10_useful_functions/>`__
+`Iterator instead of list <../10_useful_functions/>`__
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-В Python 2.7 map, filter и zip возвращали список:
+In Python 2.7 map, filter and zip returned a list:
 
 .. code:: python
 
@@ -200,7 +192,7 @@ dict.keys(), values(), items()
     In [30]: zip([1,2,3], [100,200,300])
     Out[30]: [(1, 100), (2, 200), (3, 300)]
 
-В Python 3 они возвращают итератор:
+In Python 3, they return an iterator:
 
 .. code:: python
 
@@ -216,18 +208,14 @@ dict.keys(), values(), items()
 `subprocess.run <../12_useful_modules/subprocess.html>`__
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-В версии Python 3.5 в модуле subprocess появилась новая функция - run.
-Она предоставляет более удобный интерфейс для работы с модулем и
-получения вывода команд.
+Python 3.5 introduced the new run() function in subprocess module. It provides a more user-friendly interface for working with module and getting output of commands.
 
-Соответственно, вместо функций call и check\_output используется функция
-run. Но функции call и check\_output остались.
+Accordingly, run() function is used instead of call() and check\_output() functions. But call() and check\_output() functions remain.
 
 Jinja2
 ~~~~~~
 
-В модуле Jinja2 больше не нужно использовать такой код, так как
-кодировка по умолчанию и так utf-8:
+In Jinja2 module it is no longer necessary to use such code, since the default encoding is utf-8:
 
 .. code:: python
 
@@ -235,37 +223,34 @@ Jinja2
     reload(sys)       
     sys.setdefaultencoding('utf-8')
 
-В самих шаблонах, как и в Python, изменились методы словарей. Тут,
-аналогично, вместо iteritems надо использовать items.
+In the templates themselves as in Python, dictionary methods have changed. Here, you should use items() instead of iteritems().
 
-Модули pexpect, telnetlib, paramiko
+Modules pexpect, telnetlib, paramiko
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Модули pexpect, telnetlib, paramiko отправляют и получают байты, поэтому
-надо делать encode/decode соответственно.
+Modules pexpect, telnetlib, paramiko send and receive bytes, so you have to make encode/decode accordingly.
 
-В netmiko эта конвертация выполняется автоматически.
+In netmiko this conversion is performed automatically.
 
-Мелочи
+Trivia
 ~~~~~~
 
--  Название модуля Queue сменилось на queue
--  С версии Python 3.6 объект csv.DictReader возвращает OrderedDict
-   вместо обычного словаря.
+-  Name of Queue module changed to queue
+-  Starting from Python 3.6, csv.DictReader returns OrderedDict instead of a regular dictionary.
 
-Дополнительная информация
+Additional information
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ниже приведены ссылки на ресурсы с информацией об изменениях в Python 3.
+Below are links to resources with information about changes in Python 3.
 
-Документация:
+Documentation:
 
 -  `What’s New In Python
    3.0 <https://docs.python.org/3.0/whatsnew/3.0.html>`__
 -  `Should I use Python 2 or Python 3 for my development
    activity? <https://wiki.python.org/moin/Python2orPython3>`__
 
-Статьи:
+Articles:
 
 -  `The key differences between Python 2.7.x and Python 3.x with
    examples <http://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html>`__

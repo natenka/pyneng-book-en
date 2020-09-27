@@ -1,49 +1,44 @@
 SQL
 ---
 
-**SQL (structured query language)** - используется для описания
-структуры БД, управления данными (добавление, изменение, удаление,
-получение), управления правами доступа к БД и ее объектам, управления
-транзакциями.
+**SQL (structured query language)** - used to describe database structure, manage data (add, edit, delete, receive), manage access rights to the database and its objects, and manage transactions.
 
-Язык SQL подразделяется на такие категории: 
+SQL language is divided into the following categories:
 
-* DDL (Data Definition Language) - язык описания данных 
-* DML (Data Manipulation Language) - язык манипулирования данными 
-* DCL (Data Control Language) - язык определения доступа к данным 
-* TCL (Transaction Control Language) - язык управления транзакциями
+* DDL (Data Definition Language)
+* DML (Data Manipulation Language)
+* DCL (Data Control Language)
+* TCL (Transaction Control Language)
 
-В каждой категории есть свои операторы (перечислены не все операторы):
+Each category has its own operators (not all operators are listed):
 
 * DDL 
 
-  * CREATE - создание новой таблицы, СУБД, схемы 
-  * ALTER - изменение существующей таблицы, колонки 
-  * DROP - удаление существующих объектов из СУБД 
+  * CREATE - create new table, DBMS, schemas 
+  * ALTER - change of existing table, columns 
+  * DROP - removing existing objects from DBMS
 
 * DML 
 
-  * SELECT - выбор данных 
-  * INSERT - добавление новых данных 
-  * UPDATE - обновление существующих данных 
-  * DELETE - удаление данных 
+  * SELECT - data selection
+  * INSERT - adding new data
+  * UPDATE - updating existing data
+  * DELETE - deleting data
 
 * DCL 
 
-  * GRANT - предоставление пользователям разрешения на чтение/запись определенных объектов в СУБД 
-  * REVOKE - отзыв ранее предоставленных разрешений 
+  * GRANT - Allow users to read/write certain objects to DBMS
+  * REVOKE - - withdrawal of prior authorizations
 
 * TCL 
 
-  * COMMIT - применение транзакции 
-  * ROLLBACK - откат всех изменений, сделанных в текущей транзакции
+  * COMMIT - committing of transaction
+  * ROLLBACK - rollback of all changes made in the current transaction
 
-SQL и Python
+SQL and Python
 ^^^^^^^^^^^^
 
-Для работы с реляционной СУБД в Python можно использовать два подхода:
+Two approaches can be used to work with a relational DBMS in Python:
 
-* работать с библиотекой, которая соответствует конкретной СУБД, 
-  и использовать для работы с БД язык SQL. Например, для работы с SQLite используется модуль sqlite3 
-* работать с `ORM <http://xgu.ru/wiki/ORM>`__, которая использует
-  объектно-ориентированный подход для работы с БД. Например, SQLAlchemy
+* work with a library that corresponds to a specific database and use SQL language to work with the database. For example, sqlite uses sqlite3 module 
+* work with `ORM <http://xgu.ru/wiki/ORM>`__ which uses an object-oriented approach to work with database. For example, Sqlalchemy

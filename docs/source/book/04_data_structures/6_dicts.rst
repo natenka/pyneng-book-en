@@ -1,25 +1,25 @@
-Словарь (Dictionary)
+Dictionary
 ====================
 
-Словари - это изменяемый упорядоченный тип данных:
+Dictionaries are mutable ordered data type:
 
-* данные в словаре - это пары ``ключ: значение``
-* доступ к значениям осуществляется по ключу, а не по номеру, как в списках
-* данные в словаре упорядочены по порядку добавления элементов
-* так как словари изменяемы, то элементы словаря можно менять, добавлять, удалять
-* ключ должен быть объектом неизменяемого типа: число, строка, кортеж
-* значение может быть данными любого типа
+* data in the dictionary are pairs ``key: value``
+* values are accessible by key, not by number as in lists
+* the entries in the dictionary display in the order they were defined.
+* since dictionaries are mutable, the dictionary items can be changed, added, removed
+* the key must be an immutable object: number, string, tuple
+* value can be data of any type
 
 .. note::
-    В других языках программирования тип данных подобный словарю может называться ассоциативный массив, хеш или хеш-таблица.
+    In other programming languages a similar dictionary can be called an associative array, hash, or hash table.
 
-Пример словаря:
+Example of dictionary:
 
 .. code:: python
 
     london = {'name': 'London1', 'location': 'London Str', 'vendor': 'Cisco'}
 
-Можно записывать и так:
+You can write it down like this:
 
 .. code:: python
 
@@ -34,9 +34,7 @@
         'port':'G1/0/11'
     }
 
-Для того, чтобы получить значение из словаря, надо обратиться по ключу,
-таким же образом, как это было в списках, только вместо номера будет
-использоваться ключ:
+In order to get a value from the dictionary you have to refer to the key in the same way as in the lists, only the key will be used instead of the number:
 
 .. code:: python
 
@@ -48,7 +46,7 @@
     In [3]: london['location']
     Out[3]: 'London Str'
 
-Аналогичным образом можно добавить новую пару ключ-значение:
+Similarly, a new key-value pair could be added:
 
 .. code:: python
 
@@ -57,7 +55,7 @@
     In [5]: print(london)
     {'vendor': 'Cisco', 'name': 'London1', 'location': 'London Str'}
 
-В словаре в качестве значения можно использовать словарь:
+In the dictionary you can use a dictionary as a value:
 
 .. code:: python
 
@@ -88,7 +86,7 @@
         }
     }
 
-Получить значения из вложенного словаря можно так:
+You can get values from the nested dictionary by:
 
 .. code:: python
 
@@ -101,8 +99,7 @@
     In [9]: london_co['sw1']['ip']
     Out[9]: '10.255.0.101'
 
-Функция sorted сортирует ключи словаря по возрастанию и возвращает
-новый список с отсортированными ключами:
+The sorted() function sorts the dictionary keys in ascending order and returns a new list with sorted keys:
 
 .. code:: python
 

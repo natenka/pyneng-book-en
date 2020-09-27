@@ -1,32 +1,27 @@
-Работа с файлами в формате YAML
+Work with YAML files
 -------------------------------
 
-**YAML (YAML Ain't Markup Language)** - еще один текстовый формат для
-записи данных.
+**YAML (YAML Ain't Markup Language)** - another text format for writing data.
 
-YAML более приятен для восприятия человеком, чем JSON, поэтому его часто
-используют для описания сценариев в ПО. Например, в Ansible.
+YAML is more human-friendly than JSON, so it is often used to describe scripts in software. Ansible, for example.
 
-Синтаксис YAML
+YAML syntax
 ~~~~~~~~~~~~~~
 
-Как и Python, YAML использует отступы для указания структуры документа.
-Но в YAML можно использовать только пробелы и нельзя использовать знаки
-табуляции.
+Like Python, YAML uses indents to specify the structure of document. But YAML can only use spaces and cannot use tabs.
 
-Еще одна схожесть с Python: комментарии начинаются с символа # и
-продолжаются до конца строки.
+Another similarity with Python is that comments start with # and continue until the end of line.
 
-Список
+List
 ^^^^^^
 
-Список может быть записан в одну строку:
+A list can be written in one line:
 
 .. code:: yaml
 
     [switchport mode access, switchport access vlan, switchport nonegotiate, spanning-tree portfast, spanning-tree bpduguard enable]
 
-Или каждый элемент списка в своей строке:
+Or every item in the list in separate row:
 
 .. code:: yaml
 
@@ -36,45 +31,39 @@ YAML более приятен для восприятия человеком, �
     - spanning-tree portfast
     - spanning-tree bpduguard enable
 
-Когда список записан таким блоком, каждая строка должна начинаться с
-``-`` (минуса и пробела), и все строки в списке должны быть на одном
-уровне отступа.
+When a list is written in such a block, each row must start with ``-`` (minus and space) and all lines in the list must be at the same indentation level.
 
-Словарь
+Dictionary
 ^^^^^^^
 
-Словарь также может быть записан в одну строку:
+A dictionary can also be written in one line:
 
 .. code:: yaml
 
     { vlan: 100, name: IT }
 
-Или блоком:
+Or a block:
 
 .. code:: yaml
 
     vlan: 100
     name: IT
 
-Строки
+Strings
 ^^^^^^
 
-Строки в YAML не обязательно брать в кавычки. Это удобно, но иногда всё
-же следует использовать кавычки. Например, когда в строке используется
-какой-то специальный символ (специальный для YAML).
+Strings in YAML don’t have to be quoted. This is convenient, but sometimes quotes should be used. For example, when a special character (special for YAML) is used in a string.
 
-Такую строку, например, нужно взять в кавычки, чтобы она была корректно
-воспринята YAML:
+This line, for example, should be quoted to be correctly understood by YAML:
 
 .. code:: yaml
 
     command: "sh interface | include Queueing strategy:"
 
-Комбинация элементов
+Combination of elements
 ^^^^^^^^^^^^^^^^^^^^
 
-Словарь, в котором есть два ключа: access и trunk. Значения, которые
-соответствуют этим ключам - списки команд:
+A dictionary with two keys: access and trunk. The values that correspond to these keys - command lists:
 
 .. code:: yaml
 
@@ -91,7 +80,7 @@ YAML более приятен для восприятия человеком, �
     - switchport trunk native vlan 999
     - switchport trunk allowed vlan
 
-Список словарей:
+List of dictionaries:
 
 .. code:: yaml
 
@@ -114,37 +103,36 @@ YAML более приятен для восприятия человеком, �
       to_id: 2
       to_name: Manchester
 
-Модуль PyYAML
+PyYAML module
 ~~~~~~~~~~~~~
 
-Для работы с YAML в Python используется модуль PyYAML. Он не входит в
-стандартную библиотеку модулей, поэтому его нужно установить:
+Python uses a PyYAML module to work with YAML. It is not part of the standard module library, so it needs to be installed:
 
 ::
 
     pip install pyyaml
 
-Работа с ним аналогична модулям csv и json.
+Work with it is similar to the csv and json modules.
 
-Чтение из YAML
+Reading from YAML
 ^^^^^^^^^^^^^^
 
-Попробуем преобразовать данные из файла YAML в объекты Python.
+Try converting data from YAML file to Python objects.
 
-Файл info.yaml:
+Info.yaml file:
 
 .. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/yaml/info.yaml
   :language: yaml
   :linenos:
 
 
-Чтение из YAML (файл yaml_read.py):
+Reading from YAML (yaml_read.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/yaml/yaml_read.py
   :language: python
   :linenos:
 
-Результат:
+The result is:
 
 ::
 
@@ -168,19 +156,18 @@ YAML более приятен для восприятия человеком, �
       'to_id': 2,
       'to_name': 'Manchester'}]
 
-Формат YAML очень удобен для хранения различных параметров, особенно,
-если они заполняются вручную.
+YAML format is very convenient for storing different parameters, especially if they are filled manually.
 
-Запись в YAML
+Writing to YAML
 ^^^^^^^^^^^^^
 
-Запись объектов Python в YAML (файл yaml_write.py):
+Write Python objects to YAML (yaml_write.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/yaml/yaml_write.py
   :language: python
   :linenos:
 
-Файл sw_templates.yaml выглядит таким образом:
+File sw_templates.yaml:
 
 .. code:: yaml
 

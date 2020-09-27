@@ -2,70 +2,65 @@
 
    \newpage
 
-Задания
+Tasks
 =======
 
 .. include:: ./pytest.rst
 
-Задание 15.1
+Task 15.1
 ~~~~~~~~~~~~
 
-Создать функцию get_ip_from_cfg, которая ожидает как аргумент имя файла,
-в котором находится конфигурация устройства.
+Create a get_ip_from_cfg() function that expects as argument the name of file with device configuration.
 
-Функция должна обрабатывать конфигурацию и возвращать IP-адреса и маски,
-которые настроены на интерфейсах, в виде списка кортежей:
+Function should process configuration and return IP addresses and masks, that are configured on interfaces, as a list of tuples:
 
-* первый элемент кортежа - IP-адрес
-* второй элемент кортежа - маска
+* first element of tuple - IP address
+* second element of tuple - mask
 
-Например (взяты произвольные адреса):
+For example (arbitrary addresses are taken):
 
 .. code:: python
 
     [("10.0.1.1", "255.255.255.0"), ("10.0.2.1", "255.255.255.0")]
 
-Для получения такого результата, используйте регулярные выражения.
+To get this result, use regular expressions.
 
-Проверить работу функции на примере файла config_r1.txt.
+Check function with config_r1.txt file.
 
+Please note that in this case you can skip checking the correctness of IP address, address ranges, etc., since command output is processed, not user input.
 
-Обратите внимание, что в данном случае, можно не проверять корректность IP-адреса,
-диапазоны адресов и так далее, так как обрабатывается вывод команды, а не ввод пользователя.
-
-Задание 15.1a
+Task 15.1a
 ~~~~~~~~~~~~~
 
-Скопировать функцию get_ip_from_cfg из задания 15.1 и переделать ее таким образом, чтобы она возвращала словарь:
+Copy get_ip_from_cfg() function from task 15.1 and redo it to return dictionary:
 
-* ключ: имя интерфейса
-* значение: кортеж с двумя строками:
+* key: interface name
+* value: tuple with two strings:
 
-  * IP-адрес
-  * маска
+  * IP address
+  * mask
 
-В словарь добавлять только те интерфейсы, на которых настроены IP-адреса.
+Add to dictionary only those interfaces where IP addresses are configured.
 
-Например (взяты произвольные адреса):
+For example (arbitrary addresses are taken):
 
 .. code:: python
 
     {"FastEthernet0/1": ("10.0.1.1", "255.255.255.0"),
      "FastEthernet0/2": ("10.0.2.1", "255.255.255.0")}
 
-Для получения такого результата, используйте регулярные выражения.
+To get this result, use regular expressions.
 
-Проверить работу функции на примере файла config_r1.txt.
+Check function with config_r1.txt file.
 
-Обратите внимание, что в данном случае, можно не проверять корректность IP-адреса,
-диапазоны адресов и так далее, так как обрабатывается вывод команды, а не ввод пользователя.
+Please note that in this case you can skip checking the correctness of IP address, address ranges, etc., since command output is processed, not user input.
 
-Задание 15.1b
+Task 15.1b
 ~~~~~~~~~~~~~
 
-Проверить работу функции get_ip_from_cfg из задания 15.1a на конфигурации config_r2.txt.
+Check get_ip_from_cfg() function from 15.1a task based on config_r2.txt.
 
-Обратите внимание, что на интерфейсе e0/1 назначены два IP-адреса:
+Note that there are two IP addresses assigned to interface e0/1:
 
 ::
 
@@ -73,26 +68,20 @@
      ip address 10.255.2.2 255.255.255.0
      ip address 10.254.2.2 255.255.255.0 secondary
 
-А в словаре, который возвращает функция get_ip_from_cfg, интерфейсу Ethernet0/1
-соответствует только один из них (второй).
+And in dictionary that returns get_ip_from_cfg() function, only one IP (second) corresponds to interface Ethernet0/1.
 
-Скопировать функцию get_ip_from_cfg из задания 15.1a и переделать ее таким образом, чтобы она возвращала список кортежей для каждого интерфейса.
-Если на интерфейсе назначен только один адрес, в списке будет один кортеж.
-Если же на интерфейсе настроены несколько IP-адресов, то в списке будет несколько кортежей.
+Copy get_ip_from_cfg() function from 15.1a task and redo it so that it returns a list of tuples for each interface. If only one address is assigned to interface, one tuple will be listed. If multiple IP addresses are configured on interface, several tuples will be listed.
 
-Проверьте функцию на конфигурации config_r2.txt и убедитесь, что интерфейсу
-Ethernet0/1 соответствует список из двух кортежей.
+Check function with config_r2.txt configuration file and ensure that interface Ethernet0/1 corresponds to list of two tuples.
 
-Обратите внимание, что в данном случае, можно не проверять корректность IP-адреса,
-диапазоны адресов и так далее, так как обрабатывается вывод команды, а не ввод пользователя.
+Please note that in this case you can skip checking the correctness of IP address, address ranges, etc., since command output is processed, not user input.
 
-Задание 15.2
+Task 15.2
 ~~~~~~~~~~~~
 
-Создать функцию parse_sh_ip_int_br, которая ожидает как аргумент
-имя файла, в котором находится вывод команды show ip int br
+Create parse_sh_ip_int_br() function that expects as an argument the name of file in which show ip int br output is found.
 
-Функция должна обрабатывать вывод команды show ip int br и возвращать такие поля:
+Function should process the output of show ip int br command and return such fields:
 
 * Interface
 * IP-Address
@@ -107,44 +96,45 @@ Ethernet0/1 соответствует список из двух кортеже
      ("FastEthernet0/1", "10.0.2.1", "up", "up"),
      ("FastEthernet0/2", "unassigned", "down", "down")]
 
-Для получения такого результата, используйте регулярные выражения.
+Information should be returned in the form of a list of tuples:
 
-Проверить работу функции на примере файла sh_ip_int_br.txt.
+To get this result, use regular expressions.
 
-Задание 15.2a
+Check function with sh_ip_int_br.txt file.
+
+Task 15.2a
 ~~~~~~~~~~~~~
 
-Создать функцию convert_to_dict, которая ожидает два аргумента:
+Create convert_to_dict() function that expects two arguments:
 
-* список с названиями полей
-* список кортежей со значениями
+* list of field names
+* list of tuples with values
 
 
-Функция возвращает результат в виде списка словарей, где ключи - взяты из первого списка,
-а значения подставлены из второго.
+Function returns the result as a list of dictionaries, where keys are taken from first list and values are substituted from second list.
 
-Например, если функции передать как аргументы список headers и список
+For example, if functions pass as arguments *headers* list and list
 
 .. code:: python
 
     [("R1", "12.4(24)T1", "Cisco 3825"),
      ("R2", "15.2(2)T1", "Cisco 2911")]
 
-Функция должна вернуть такой список со словарями:
+Function should return such list with dictionaries:
 
 .. code:: python
 
     [{"hostname": "R1", "ios": "12.4(24)T1", "platform": "Cisco 3825"},
      {"hostname": "R2", "ios": "15.2(2)T1", "platform": "Cisco 2911"}]
 
-Функция не должна быть привязана к конкретным данным или количеству заголовков/данных в кортежах.
+Function should not be tied to specific data or amount of headers/data in tuples.
 
-Проверить работу функции:
+Check function with:
 
-* первый аргумент - список headers
-* второй аргумент - список data
+* first argument - *headers* list
+* second argument - *data* list
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
 .. code:: python
 
@@ -157,28 +147,28 @@ Ethernet0/1 соответствует список из двух кортеже
     ]
 
 
-Задание 15.3
+Task 15.3
 ~~~~~~~~~~~~
 
-Создать функцию convert_ios_nat_to_asa, которая конвертирует правила NAT из синтаксиса cisco IOS в cisco ASA.
+Create convert_ios_nat_to_asa() function that converts NAT rules from cisco IOS syntax to cisco ASA.
 
-Функция ожидает такие аргументы:
+Function expects such arguments:
 
-* имя файла, в котором находится правила NAT Cisco IOS
-* имя файла, в который надо записать полученные правила NAT для ASA
+* name of file containing NAT rules for Cisco IOS 
+* name of file to which to write resulting NAT rules for ASA
 
-Функция ничего не возвращает.
+Function does not return anything.
 
-Проверить функцию на файле cisco_nat_config.txt.
+Check function with cisco_nat_config.txt file.
 
-Пример правил NAT cisco IOS
+Example of NAT rules for cisco IOS 
 
 ::
 
     ip nat inside source static tcp 10.1.2.84 22 interface GigabitEthernet0/1 20022
     ip nat inside source static tcp 10.1.9.5 22 interface GigabitEthernet0/1 20023
 
-И соответствующие правила NAT для ASA:
+And corresponding NAT rules for ASA:
 
 ::
 
@@ -189,25 +179,22 @@ Ethernet0/1 соответствует список из двух кортеже
      host 10.1.9.5
      nat (inside,outside) static interface service tcp 22 20023
 
-В файле с правилами для ASA:
+In ASA rules file:
 
-* не должно быть пустых строк между правилами
-* перед строками "object network" не должны быть пробелы
-* перед остальными строками должен быть один пробел
+* no empty lines between rules
+* "object network" lines should not be preceded by spaces
+* there should be one space in front of the rest of lines
 
-Во всех правилах для ASA интерфейсы будут одинаковыми (inside,outside).
+All ASA rules will have the same interfaces (inside,outside).
 
-Задание 15.4
+Task 15.4
 ~~~~~~~~~~~~
 
-Создать функцию get_ints_without_description, которая ожидает как аргумент
-имя файла, в котором находится конфигурация устройства.
+Create get_ints_without_description() function that expects as argument the name of file in which device configuration is found.
 
+Function should process configuration and return a list of interface names that do not have a description (*description* command)..
 
-Функция должна обрабатывать конфигурацию и возвращать список имен интерфейсов,
-на которых нет описания (команды description).
-
-Пример интерфейса с описанием:
+Example of interface with description:
 
 ::
 
@@ -217,24 +204,23 @@ Ethernet0/1 соответствует список из двух кортеже
      mpls traffic-eng tunnels
      ip rsvp bandwidth
 
-Интерфейс без описания:
+Interface without description:
 
 ::
 
     interface Loopback0
      ip address 10.1.1.1 255.255.255.255
 
-Проверить работу функции на примере файла config_r1.txt.
+Check function with config_r1.txt file.
 
-Задание 15.5
+Task 15.5
 ~~~~~~~~~~~~
 
-Создать функцию generate_description_from_cdp, которая ожидает как аргумент
-имя файла, в котором находится вывод команды show cdp neighbors.
+Create generate_description_from_cdp() function that expects as an argument the name of file containing show cdp neighbors command output.
 
-Функция должна обрабатывать вывод команды show cdp neighbors и генерировать на основании вывода команды описание для интерфейсов.
+Function should process the output of show cdp neighbors command and generate a description for interfaces based on command output.
 
-Например, если у R1 такой вывод команды:
+For example, if R1 has this command output:
 
 ::
 
@@ -245,13 +231,13 @@ Ethernet0/1 соответствует список из двух кортеже
     Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
     SW1              Eth 0/0           140          S I      WS-C3750-  Eth 0/1
 
-Для интерфейса Eth 0/0 надо сгенерировать такое описание ``description Connected to SW1 port Eth 0/1``.
+For interface Eth 0/0, you should generate this description  ``description Connected to SW1 port Eth 0/1``.
 
-Функция должна возвращать словарь, в котором ключи - имена интерфейсов, а значения - команда задающая описание интерфейса:
+Function should return a dictionary where keys are interface names and values are command that defines interface description:
 
 ::
 
     "Eth 0/0": "description Connected to SW1 port Eth 0/1"
 
 
-Проверить работу функции на файле sh_cdp_n_sw1.txt.
+Check function with sh_cdp_n_sw1.txt file.

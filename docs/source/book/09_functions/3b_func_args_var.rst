@@ -1,25 +1,17 @@
-Аргументы переменной длины
+Variable length arguments
 --------------------------
 
-Иногда необходимо сделать так, чтобы функция принимала не фиксированное
-количество аргументов, а любое. Для такого случая в Python можно
-создавать функцию со специальным параметром, который принимает аргументы
-переменной длины. Такой параметр может быть как ключевым, так и
-позиционным.
+Sometimes it is necessary to make function accept not a fixed number of arguments, but any number. For such a case, in Python it is possible to create a function with a special parameter that accepts variable length arguments. This parameter can be both keyword and positional.
 
 .. note::
-    Даже если вы не будете использовать этот прием в своих скриптах,
-    есть большая вероятность, что вы встретите его в чужом коде.
+    Even if you don’t use it in your scripts there’s a good chance you’ll find it in someone else’s code.
 
-Позиционные аргументы переменной длины
+Variable length positional arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Параметр, который принимает позиционные аргументы переменной длины,
-создается добавлением перед именем параметра звездочки. Имя параметра
-может быть любым, но по договоренности чаще всего используют имя
-``*args``
+The parameter that takes positional variable length arguments is created by adding an asterisk before parameter name. Parameter can have any name but by agreement ``*args`` is the most common name.
 
-Пример функции:
+Example of a function:
 
 .. code:: python
 
@@ -28,19 +20,19 @@
       ....:     return a + sum(args)
       ....: 
 
-Функция sum\_arg создана с двумя параметрами:
+The sum\_arg function is created with two parameters:
 
-* параметр ``a`` 
+* parameter ``a`` 
 
-  * если передается как позиционный аргумент, должен идти первым
-  * если передается как ключевой аргумент, то порядок не важен
+  * if passed as positional argument, should be first
+  * if passed as a keyword argument, the order does not matter
 
-* параметр ``*args`` - ожидает аргументы переменной длины
+* parameter ``*args`` - expects variable length arguments
 
-  * сюда попадут все остальные аргументы в виде кортежа
-  * эти аргументы могут отсутствовать
+  * all other arguments as a tuple
+  * these arguments may be missed
 
-Вызов функции с разным количеством аргументов:
+Call a function with different number of arguments:
 
 .. code:: python
 
@@ -56,7 +48,7 @@
     1 ()
     Out[4]: 1
 
-Можно создать и такую функцию:
+You can also create such a function:
 
 .. code:: python
 
@@ -73,15 +65,12 @@
     ()
     Out[7]: 0
 
-Ключевые аргументы переменной длины
+Keyword variable length arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Параметр, который принимает ключевые аргументы переменной длины,
-создается добавлением перед именем параметра двух звездочек. Имя
-параметра может быть любым, но, по договоренности, чаще всего,
-используют имя ``**kwargs`` (от keyword arguments).
+The parameter that accepts keyword variable length arguments is created by adding two asterisk in front of the parameter name. Name of parameter can be any but by agreement most commonly use the name ``**kwargs`` (from keyword arguments).
 
-Пример функции:
+Example of a function:
 
 .. code:: python
 
@@ -90,19 +79,19 @@
       ....:     return a + sum(kwargs.values())
       ....: 
 
-Функция sum\_arg создана с двумя параметрами:
+The sum\_arg function is created with two parameters:
 
-* параметр ``a``
+* parameter ``a``
   
-  * если передается как позиционный аргумент, должен идти первым
-  * если передается как ключевой аргумент, то порядок не важен
+  * if passed as positional argument, should be first
+  * if passed as a keyword argument, the order does not matter
 
-* параметр ``**kwargs`` - ожидает ключевые аргументы переменной длины
+* parameter ``**kwargs`` - expects keyword variable length arguments
   
-  * сюда попадут все остальные ключевые аргументы в виде словаря
-  * эти аргументы могут отсутствовать
+  * all other keyword arguments as a dictionary
+  * these arguments may be missed
 
-Вызов функции с разным количеством ключевых аргументов:
+Calling a function with different number of keyword arguments:
 
 .. code:: python
 

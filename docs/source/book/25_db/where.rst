@@ -1,12 +1,9 @@
 WHERE
 ~~~~~
 
-Оператор WHERE используется для уточнения запроса. С помощью этого
-оператора можно указывать определенные условия, по которым отбираются
-данные. Если условие выполнено, возвращается соответствующее значение из
-таблицы, если нет - не возвращается.
+WHERE operator is used to specify the query. With the help of this operator it is possible to specify certain conditions under which the data are selected. If condition is met the corresponding value is returned from the table, if not - it is not returned.
 
-Сейчас в таблице switch всего две записи:
+Now there are only two enties in *switch* table:
 
 .. code:: sql
 
@@ -20,11 +17,9 @@ WHERE
     2 rows in set
     Time: 0.033s
 
-Чтобы в таблице было больше записей, надо создать еще несколько строк. В
-litecli есть команда source, которая позволяет загружать команды SQL
-из файла.
+To create more entries in the table you need to create more rows. Litecli has a **source** command that lets you upload SQL commands from a file.
 
-Для добавления записей заготовлен файл add_rows_to_testdb.txt:
+File add_rows_to_testdb.txt is prepared to add entries:
 
 .. code:: sql
 
@@ -34,7 +29,7 @@ litecli есть команда source, которая позволяет заг
     INSERT into switch values ('0060.A6AA.C4CC', 'sw6', 'C3750', 'London, Green Str');
     INSERT into switch values ('0070.A7AA.C5CC', 'sw7', 'Cisco 3650', 'London, Green Str');
 
-Для загрузки команд из файла надо выполнить команду:
+To upload commands from a file you should execute the command:
 
 ::
 
@@ -54,7 +49,7 @@ litecli есть команда source, которая позволяет заг
     Query OK, 1 row affected
     Time: 0.002s
 
-Теперь таблица switch выглядит так:
+Now *switch* table looks like:
 
 .. code:: sql
 
@@ -73,8 +68,7 @@ litecli есть команда source, которая позволяет заг
     7 rows in set
     Time: 0.040s
 
-С помощью оператора WHERE можно показать только те коммутаторы, модель
-которых 3850:
+Using WHERE operator you can display only switches of 3850 model:
 
 .. code:: sql
 
@@ -90,22 +84,18 @@ litecli есть команда source, которая позволяет заг
     Time: 0.033s
 
 
-Оператор WHERE позволяет указывать не только конкретное значение поля.
-Если добавить к нему оператор LIKE, можно указывать шаблон поля.
+WHERE operator allows you to specify more than a specific field value. If you add the LIKE operator to it you can specify a field template.
 
-LIKE с помощью символов ``_`` и ``%`` указывает, на что должно быть
-похоже значение: 
+Like with characters ``_`` and ``%`` indicates what the value should look like:
 
-* ``_`` - обозначает один символ или число 
-* ``%`` - обозначает ноль, один или много символов
+* ``_`` - denotes one character or number
+* ``%`` - denotes zero, one or many characters
 
-Например, если поле model записано в разном формате, с помощью
-предыдущего запроса не получится вывести нужные коммутаторы.
+For example, if  *model* field is written in different formats the previous query will not be able to extract needed switches.
 
-Например, у коммутатора sw6 поле model записано в таком формате: C3750,
-а у коммутаторов sw1 и sw3 в таком: Cisco 3750.
+For example, for sw6 switch the model field is written in this format: C3750, but for sw1 and sw3 switches: Cisco 3750.
 
-В таком варианте запрос с оператором WHERE не покажет sw6:
+In this version, WHERE query does not show sw6:
 
 .. code:: sql
 
@@ -120,7 +110,7 @@ LIKE с помощью символов ``_`` и ``%`` указывает, на 
     Time: 0.037s
 
 
-Если вместе с оператором WHERE использовать оператор ``LIKE``:
+If with WHERE operator use ``LIKE`` operator:
 
 .. code:: sql
 

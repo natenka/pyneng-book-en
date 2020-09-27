@@ -1,13 +1,12 @@
-Примеры конвертации между байтами и строками
+Examples of converting between bytes and strings
 --------------------------------------------
 
-Рассмотрим несколько примеров работы с байтами и конвертации байт в
-строки.
+Consider a few examples of working with bytes and converting bytes to string.
 
 subprocess
 ~~~~~~~~~~
 
-Модуль subprocess возвращает результат команды в виде байт:
+The subprocess module returns the result of command as bytes:
 
 .. code:: python
 
@@ -20,8 +19,7 @@ subprocess
     In [3]: result.stdout
     Out[3]: b'PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.\n64 bytes from 8.8.8.8: icmp_seq=1 ttl=43 time=59.4 ms\n64 bytes from 8.8.8.8: icmp_seq=2 ttl=43 time=54.4 ms\n64 bytes from 8.8.8.8: icmp_seq=3 ttl=43 time=55.1 ms\n\n--- 8.8.8.8 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2002ms\nrtt min/avg/max/mdev = 54.470/56.346/59.440/2.220 ms\n'
 
-Если дальше необходимо работать с этим выводом, надо сразу
-конвертировать его в строку:
+If it is necessary to work with this output further you should immediately convert it to string:
 
 .. code:: python
 
@@ -37,9 +35,7 @@ subprocess
     3 packets transmitted, 3 received, 0% packet loss, time 2002ms
     rtt min/avg/max/mdev = 54.470/56.346/59.440/2.220 ms
 
-Модуль subprocess поддерживает еще один вариант преобразования -
-параметр encoding. Если указать его при вызове функции run, результат
-будет получен в виде строки:
+The subprocess module supports another conversion option - *encoding* parameter. If you specify it when you call the run() function, the result will be as a string:
 
 .. code:: python
 
@@ -63,11 +59,9 @@ subprocess
 telnetlib
 ~~~~~~~~~
 
-В зависимости от модуля, преобразование между строками и байтами может
-выполняться автоматически, а может требоваться явно.
+Depending on the module, conversion between strings and bytes can be performed automatically or may be required explicitly.
 
-Например, в модуле telnetlib необходимо передавать байты в методах
-read\_until и write:
+For example, the telnetlib module must transfer bytes to read\_until() and write() methods:
 
 .. code:: python
 
@@ -88,13 +82,12 @@ read\_until и write:
     output = t.read_very_eager().decode('utf-8')
     print(output)
 
-И возвращает метод байты, поэтому в предпоследней строке используется
-decode.
+Method returns bytes, so the penultimate line uses decode.
 
 pexpect
 ~~~~~~~
 
-Модуль pexpect как аргумент ожидает строку, а возвращает байты:
+The pexpect module waits for a string as an argument and returns bytes:
 
 .. code:: python
 
@@ -108,7 +101,7 @@ pexpect
     In [12]: output.decode('utf-8')
     Out[12]: 'total 8\r\n4 drwxr-xr-x 2 vagrant vagrant 4096 Aug 28 12:16 concurrent_futures\r\n4 drwxr-xr-x 2 vagrant vagrant 4096 Aug  3 07:59 iterator_generator\r\n'
 
-И также поддерживает вариант передачи кодировки через параметр encoding:
+And it also supports *encoding* parameter:
 
 .. code:: python
 
@@ -117,10 +110,10 @@ pexpect
     In [14]: output
     Out[14]: 'total 8\r\n4 drwxr-xr-x 2 vagrant vagrant 4096 Aug 28 12:16 concurrent_futures\r\n4 drwxr-xr-x 2 vagrant vagrant 4096 Aug  3 07:59 iterator_generator\r\n'
 
-Работа с файлами
+Working with files
 ~~~~~~~~~~~~~~~~
 
-До сих пор при работе с файлами использовалась такая конструкция:
+So far, the following construction has been used to handle files:
 
 .. code:: python
 
@@ -128,8 +121,7 @@ pexpect
         for line in f:
             print(line)
 
-Но на самом деле, при чтении файла происходит конвертация байт в строки.
-И при этом использовалась кодировка по умолчанию:
+But actually, when you read a file you convert bytes to a string. And the default encoding was used:
 
 .. code:: python
 
@@ -138,7 +130,7 @@ pexpect
     In [2]: locale.getpreferredencoding()
     Out[2]: 'UTF-8'
 
-Кодировка по умолчанию в файле:
+Default encoding in file:
 
 .. code:: python
 
@@ -147,8 +139,7 @@ pexpect
     In [3]: f
     Out[3]: <_io.TextIOWrapper name='r1.txt' mode='r' encoding='UTF-8'>
 
-При работе с файлами лучше явно указывать кодировку, так как в разных ОС
-она может отличаться:
+When working with files it is better to specify the encoding explicitly because it may differ in different operating systems:
 
 .. code:: python
 
@@ -167,11 +158,7 @@ pexpect
     ip ssh version 2
     !
 
-Выводы
+Conclusion
 ~~~~~~
 
-Эти примеры показаны тут для того, чтобы показать, что разные модули
-могут по-разному подходить к вопросу конвертации между строками и
-байтами. И разные функции и методы этих модулей могут ожидать аргументы
-и возвращать значения разных типов. Однако все эти вещи написаны в
-документации.
+These examples are shown here to show that different modules can treat the issue of conversion between strings and bytes differently. And different functions and methods of these modules can expect arguments and return values of different types. However, all of these items are in the documentation.

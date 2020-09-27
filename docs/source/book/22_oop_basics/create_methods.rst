@@ -1,9 +1,7 @@
-Создание метода
+Method creation
 ~~~~~~~~~~~~~~~
 
-Прежде чем мы начнем разбираться с методами класса, посмотрим пример
-функции, которая ожидает как аргумент экземпляр класса Switch и выводит
-информацию о нем, используя переменные экземпляра hostname и model:
+Before we start dealing with class methods, let’s see an example of a function that waits as an argument an instance variable of Switch class and displays information about it using instance variables *hostname* and *model*:
 
 .. code:: python
 
@@ -21,15 +19,12 @@
     Hostname: sw1
     Model: Cisco 3850
 
-В функции info параметр ``sw_obj`` ожидает экземпляр класса ``Switch``.
-Скорее всего, в это примере нет ничего нового, ведь аналогичным образом
-ранее мы писали функции, которые ожидают строку, как аргумент, а затем
-вызывают какие-то методы у этой строки.
+In info() function, ``sw_obj`` awaits an instance of ``Switch`` class.
+Most likely, there is nothing new about this example, because in the same way earlier we wrote functions that wait for a string as an argument and then call some methods in this string.
 
-Этот пример поможет разобраться с методом info, который мы добавим в
-класс Switch.
+This example will help you to understand info() method that we will add to Switch class.
 
-Для добавления метода, необходимо создать функцию внутри класса:
+To add a method you have to create a function within class:
 
 .. code:: python
 
@@ -38,10 +33,7 @@
         ...:         print('Hostname: {}\nModel: {}'.format(self.hostname, self.model))
         ...:
 
-Если присмотреться, метод info выглядит точно так же, как функция info,
-только вместо имени sw_obj, используется self. Почему тут используется
-странное имя self, мы разберемся позже, а пока посмотрим как вызвать
-метод info:
+If you look closely, info() method looks exactly like info() function, only instead of sw_obj name the *self* is used. Why there is a strange *self* name here will be explained later and in the meantime we will see how to call info() method:
 
 .. code:: python
 
@@ -55,17 +47,11 @@
     Hostname: sw1
     Model: Cisco 3850
 
-В примере выше сначала создается экземпляр класса Switch, затем в
-экземпляр добавляются переменные hostname и model, и только после этого
-вызывается метод info. Метод info выводит информацию про коммутатор,
-используя значения, которые хранятся в переменных экземпляра.
+In example above, first an instance of Switch class is created, then *hostname* and *model* variables are added to instance and then info() method is called. Method info() outputs information about switch using values that are stored in instance variables.
 
-Вызов метода отличается, от вызова функции: мы не передаем ссылку на
-экземпляр класса Switch. Нам это не нужно, потому что мы вызываем метод
-у самого экземпляра. Еще один непонятный момент - зачем же мы тогда
-писали self.
+Method call is different from the function call: we do not pass a link to an instance of Switch class. We don’t need that because we invoke method from instance itself. Another unclear thing - why we wrote *self* then?
 
-Все дело в том, что Python преобразует такой вызов:
+The point is that Python transforms such a call:
 
 .. code:: python
 
@@ -73,7 +59,7 @@
     Hostname: sw1
     Model: Cisco 3850
 
-Вот в такой:
+To this one:
 
 .. code:: python
 
@@ -81,22 +67,15 @@
     Hostname: sw1
     Model: Cisco 3850
 
-Во втором случае, в параметре self уже больше смысла, он действительно
-принимает ссылку на экземпляр и на основании этого выводит информацию.
+In the second case, *self* parameter already makes more sense, it actually accepts the reference to instance and displays information on this basis.
 
-С точки зрения использования объектов, удобней вызывать методы используя
-первый вариант синтаксиса, поэтому, практически всегда именно он и
-используется.
+From objects usage point of view, it is more convenient to call methods using the first syntax variant, so it is almost always used.
 
 .. note::
 
-    При вызове метода экземпляра класса, ссылка на экземпляр передается
-    первым аргументом. При этом, экземпляр передается неявно, но
-    параметр надо указывать явно.
+    When a class instance method is called the instance reference is passed by the first argument. In this case, instance is passed implicitly but parameter must be stated explicitly.
 
-Такое преобразование не является особенностью пользовательских классов и
-работает и для встроенных типов данных аналогично. Например, стандартный
-способ вызова метода append в списке, выглядит так:
+This conversion is not a feature of user classes and works for embedded data types in the same way. For example, standard way to call append() method in the list is:
 
 .. code:: python
 
@@ -107,8 +86,7 @@
     In [6]: a
     Out[6]: [1, 2, 3, 5]
 
-При этом, то же самое можно сделать и используя второй вариант, вызова
-через класс:
+The same can be done using the second option, calling through a class:
 
 .. code:: python
 

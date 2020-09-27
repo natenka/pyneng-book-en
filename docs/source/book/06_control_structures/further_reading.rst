@@ -1,7 +1,7 @@
-Дополнительные материалы
+Additional material
 ------------------------
 
-Документация:
+Documentation:
 
 -  `Compound statements (if, while, for,
    try) <https://docs.python.org/3/reference/compound_stmts.html>`__
@@ -12,7 +12,7 @@
 -  `Built-in
    Exceptions <https://docs.python.org/3.6/library/exceptions.html>`__
 
-Статьи:
+Articles:
 
 -  `Write Cleaner Python: Use
    Exceptions <https://jeffknupp.com/blog/2013/02/06/write-cleaner-python-use-exceptions/>`__

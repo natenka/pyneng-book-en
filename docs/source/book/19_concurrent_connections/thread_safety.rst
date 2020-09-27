@@ -1,87 +1,40 @@
-Потоковая безопасность
+Thread safety
 ----------------------
 
-При работе с потоками есть несколько рекомендаций, а также правил.
-Если их соблюдать, работать с потоками будет проще и, скорее всего,
-не будет проблем именно из-за потоков.
-Конечно, время от времени, будут появляться задачи, которые потребуют нарушения рекомендаций.
-Однако, прежде чем делать это, лучше попытаться решить задачу соблюдая
-рекомендации. Если это невозможно, тогда надо искать как обезопасить 
-решение, чтобы не были повреждены данные.
+When working with threads there are several recommendations and rules. If they are respected, it is easier to work with threads and it is likely that there will be no problem with threads. Of course, from time to time, there will be tasks that will require violations of recommendations. However, before doing so, it is better to try to meet the task by adhering to recommendations. If this is not possible, then we should look for ways to secure the solution so that the data is not damaged.
 
-Очень важная особенность работы с потоками: на небольшом количестве потоков
-и небольших тестовых задачах "все работает".
-Например, вывод информации с помощью print, при подключении к 20 устройствам
-в 5 потоков, будет работать нормально.
-А при подключении к большому количеству устройств с большим количеством потоков
-окажется, что иногда сообщения "налазят" друг на друга.
-Такая особенность проявляется очень часто, поэтому не доверяйте варианту
-когда "все работает" на базовых примерах, соблюдайте правила работы с потоками.
+Very important feature of working with threads: with a small number of threads and small test tasks "everything works". For example, printing output when connected to 20 devices in 5 threads will work normally. But when connected to a large number of devices with a large number of threads, it turns out that sometimes messages "will fit" on each other. This peculiarity appears very often, so do not trust the variant when "everything works" on basic examples, follow the rules of working with threads.
 
-Прежде чем разбираться с правилами, надо разобраться с термином "потоковая безопасность".
-Потоковая безопасность - это концепция, которая описывает работу с многопоточными программами.
-Код считается потокобезопасным (thread-safe), если он может работать 
-нормально при использовании нескольких потоков.
+Before dealing with rules we have to deal with the term "thread safety". Thread safety is a concept that describes work with multithreaded programs. The code is considered to be thread-safe if it can work normally with multiple threads.
 
+For example, print() function is not thread-safe. This is demonstrated by the fact that when code executes print() from different threads, messages in the output can be mixed. There could be output with a part of message from the first thread, then a part from the second thread, then a part from the first thread, and so on. That is, print() function does not work normally (as it should be) in thread. In this case, it is said that print() function is not  thread-safe.
 
-Например, функция print не является потокобезопасной. Это проявляется в том, что
-когда код выполняет print из разных потоков, сообщения на стандартном потоке вывода
-могут смешиваться. Может выводиться сначала часть сообщения из одного потока,
-потом часть из второго, потом часть из первого и так далее.
-То есть, функция print не работает нормально (как положено) в потоках.
-В этом случае говорят, что функция print не является потокобезопасной (not thread-safe).
-
-В общем случае, проблем не будет, если каждый поток работает со своими ресурсами.
-Например, каждый поток пишет данные в свой файл. Однако, это не всегда возможно 
-или может усложнять решение.
+In general, there is no problem if each thread works with its own resources. For example, each thread writes data to its own file. However, this is not always possible or can complicate the solution.
 
 .. note::
 
-    С print проблемы потому что из разных потоков пишем в один 
-    стандартный поток вывода, а print не потокобезопасен.
+    print() has problems because we write from different threads into one standard output stream  but print() is not thread-safe.
 
-В том случае, если надо все же из разных потоков писать в один и тот же ресурс,
-есть два варианта:
+If you have to write from different threads to the same resource, there are two options:
 
-1. Писать в один и тот же ресурс после того как работа в потоке закончилась. 
-   Например, в потоках 1, 2 и 3 выполнилась функция, ее результат по очереди 
-   (последовательно) получен из каждого потока, а затем записан в файл. 
-2. Использовать потокобезопасную альтернативу (не всегда доступна и/или не всегда простая). 
-   Например, вместо функции print использовать модуль logging.
+1. Write to the same resource after the work in thread is finished. For example, a function has been executed in threads 1, 2 and 3, its result is obtained in turn (consecutively) from each thread, and then written into a file. 
+2. Use a thread-safe alternative (not always available and/or easy). For example, use a logging module instead of print() function.
 
-Рекомендации при работе с потоками:
+Recommendations when working with threads:
 
-1. Не пишите в один и тот же ресурс из разных потоков, если ресурс
-   или то, чем пишете не предназначено для многопоточной работы.
-   Выяснить это, проще всего, погуглив что-то вроде "python write to file from threads".
+1. Do not write to the same resource from different threads if resource or what you write is not intended for multithreading. It is easy to find out by google something like "python write to file from threads".
 
-  * В этой рекомендации есть нюансы. Например, можно писать из разных потоков
-    в один и тот же файл, если использовать Lock или использовать потокобезопасную очередь.
-    Эти варианты, чаще всего, непросты в использовании и не рассматриваются в книге.
-    Скорее всего, 95% задач, с которыми вы будете сталкиваться, можно решить без них.
-  * К этой категории относится запись/изменение списков/словарей/множеств из разных потоков.
-    Сами по себе эти объекты потокобезопасны, но нет гарантии, что при изменении с одного
-    и того же списка из разных потоков, данные в списке будут правильные.
-    В случае, если надо использовать общий контейнер для данных для разных потоков,
-    надо использовать очередь queue из модуля Queue. Она потокобезопасна и с ней
-    можно работать из разных потоков.
+  * There are nuances to this recommendation. For example, you can write from different threads to the same file if you use a Lock or a thread-safe queue. These options are often difficult to use and are not considered in the book. It’s likely that 95 percent of problems you’ll be facing can be solved without them.
+  * This category includes writing/changing lists/dictionaries/sets from different threads. These objects are inherently thread-safe but there is no guarantee that when you change the same list from different threads, the data in the list will be correct. If you want to use a common container for different threads, use queue from Queue module. It’s thread-safe and you can work with it from different threads.
 
-2. Если есть воможность, избегайте коммуникаций между потоками в процессе их работы.
-   Это непростая задача и лучше постараться обойтись без нее.
-3. Соблюдайте принцип KISS (Keep it simple, stupid) - постарайтесь, чтобы решение
-   было максимально простым.
+2. If there is a possibility, avoid communication between threads in the course of their work. This is not an easy task and it is best to avoid it.
+3. Follow the KISS (Keep it simple, stupid) principle - try to make the solution as simple as possible.
 
 .. note::
 
-    Эти рекомендации, в целом, написаны для тех, кто только начинает
-    программировать на Python. Однако, как правило, они актуальны для большиства
-    программистов, которые пишут приложения для пользователей, а не фреймворки.
+    These recommendations are generally written for those who are just beginning to program on Python. However, they tend to be relevant to most programmers who write applications for users rather than frameworks.
     
 
-Модуль concurrent.futures, который будет рассматриваться дальше, упрощает 
-соблюдение первого принципа "Не пишите в один и тот же ресурс из разных потоков...".
-Сам интерфейс работы с модулем к этому подталкивает, но конечно не запрещает его нарушать.
+Module concurrent.futures which will be considered further, simplifies implementation of the first principle "Do not write to the same resource from different threads... ". The module interface itself encourages this, but of course it does not prohibit breaking it.
 
-Однако, перед знакомством с concurrent.futures, надо рассмотреть основы работы
-с модулем logging. Он будет использоваться вместо функции print, 
-которая не является потокобезопасной. 
+However, before getting to know concurrent.futures, you should consider the fundamentals of logging module. It will be used instead of print() function which is not inherently thread-safe.

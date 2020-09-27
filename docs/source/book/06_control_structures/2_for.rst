@@ -1,23 +1,19 @@
 for
 ---
 
-Очень часто одно и то же действие надо выполнить для набора однотипных данных.
-Например, преобразовать все строки в списке в верхний регистр. Для выполнения таких действий
-в Python используется цикл ``for``.
+Very often the same action should be performed for a set of the same data type. For example, convert all strings in the list to uppercase. Python uses ``for`` loop for such purposes.
 
-Цикл for перебирает по одному элементы указанной последовательности и выполняет
-действия, которые указаны в блоке for, для каждого элемента.
+Loop **for** iterates elements of specified sequence and performs the actions specified for each element.
 
-Примеры последовательностей элементов, по которым может проходиться цикл
-for:
+Examples of sequences of elements that can be iterated by **for**:
 
--  строка
--  список
--  словарь
+-  string
+-  list
+-  dictionary
 -  :ref:`range`
--  любой :ref:`iterable`
+-  Any :ref:`iterable`
 
-Пример преобразования строк в списке в верхний регистр без цикла for:
+An example of converting strings in a list to uppercase without a loop **for**:
 
 .. code:: python
 
@@ -28,10 +24,10 @@ for:
     In [3]: words[0]
     Out[3]: 'list'
 
-    In [4]: words[0].upper() # преобразование слова в верхний регистр
+    In [4]: words[0].upper() # converting word to uppercase
     Out[4]: 'LIST'
 
-    In [5]: upper_words.append(words[0].upper()) # преобразование и добавление в новый список
+    In [5]: upper_words.append(words[0].upper()) # converting and adding to new list
 
     In [6]: upper_words
     Out[6]: ['LIST']
@@ -44,13 +40,13 @@ for:
     Out[9]: ['LIST', 'DICT', 'TUPLE']
 
 
-У данного решения есть несколько нюансов:
+This solution has several nuances:
 
-* одно и то же действие надо повторять несколько раз
-* код привязан к определенному количеству элементов в списке words
+* the same action need to be repeated several times
+* code is tied to a certain number of elements in **words** list
 
 
-Те же действия с циклом for:
+Same actions with loop **for**:
 
 .. code:: python
 
@@ -65,23 +61,17 @@ for:
     In [13]: upper_words
     Out[13]: ['LIST', 'DICT', 'TUPLE']
 
-Выражение ``for word in words: upper_words.append(word.upper())``
-означает "для каждого слова в списке words выполнить действия в блоке for".
-При этом word это имя переменной, которое каждую итерацию цикла ссылается на разные значения.
+The expression ``for word in words: upper_words.append(word.upper())``
+means "for each word in the **words** list to perform actions in the block **for**".
+Note, that **word** is the name of variable that refers to different values for each iteration of the loop.
 
 .. note::
-    `Проект pythontutor <http://www.pythontutor.com/>`__ может очень помочь в понимании циклов.
-    Там есть специальная визуализация кода, которая позволяет увидеть, что происходит
-    на каждом этапе выполнения кода, что особенно полезно на первых порах с циклами.
-    На `сайте pythontutor <http://www.pythontutor.com/visualize.html#mode=edit>`__ можно загружать свой код, но для примера, по этой ссылке можно посмотреть
-    `пример выше <http://www.pythontutor.com/visualize.html#code=words%20%3D%20%5B'list',%20'dict',%20'tuple'%5D%0Aupper_words%20%3D%20%5B%5D%0A%0Afor%20word%20in%20words%3A%0A%20%20%20%20upper_words.append%28word.upper%28%29%29%0A&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false>`__.
+    The ` pythontutor <http://www.pythontutor.com/>`__ project can help to understand the loops. There is a special visualization of the code that allows you to see what happens at every stage of the code execution, which is especially useful in the first steps of learning loops. The `pythontutor <http://www.pythontutor.com/visualize.html#mode=edit>`__ allows you to upload your code but, for instance, you can see `example above <http://www.pythontutor.com/visualize.html#code=words%20%3D%20%5B'list',%20'dict',%20'tuple'%5D%0Aupper_words%20%3D%20%5B%5D%0A%0Afor%20word%20in%20words%3A%0A%20%20%20%20upper_words.append%28word.upper%28%29%29%0A&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false>`__.
 
 
-Цикл for может работать с любой последовательностью элементов.
-Например, выше использовался список и цикл перебирал элементы списка.
-Аналогичным образом for работает с кортежами.
+The **for** loop can work with any sequence of elements. For example, the list was used above and the loop iterates through the list elements. Similarly, **for** works with tuples.
 
-При работе со строками, цикл for перебирает символы строки, например:
+When working with strings **for** loop iterates through string characters, for example:
 
 .. code:: python
 
@@ -101,15 +91,12 @@ for:
     g
 
 .. note::
-    В цикле используется переменная с именем **letter**. Хотя имя может быть
-    любое, удобно, когда имя подсказывает, через какие объекты проходит
-    цикл.
+    The loop uses a variable named **letter**. Although the name can be any name, it is convenient when the name tells you which objects go through a loop.
 
-
-Иногда в цикле необходимо использовать последовательность чисел. В этом случае, лучше всего использовать функцию
+Sometimes it is necessary to use sequence of numbers in the loop. In this case, it is best to use 
 :ref:`range`
 
-Пример цикла for с функцией range():
+Example of a loop **for** with range() function:
 
 .. code:: python
 
@@ -127,11 +114,9 @@ for:
     interface FastEthernet0/8
     interface FastEthernet0/9
 
-В этом цикле используется ``range(10)``. Функция range генерирует числа в диапазоне
-от нуля до указанного числа (в данном примере - до 10), не включая его.
+This loop uses ``range(10)``. The range() function generates numbers in range from zero to the specified number (in this example, up to 10) not including it.
 
-В этом примере цикл проходит по списку VLANов, поэтому переменную можно
-назвать vlan:
+In this example, the loop runs through the Vlans list, so the variable can be called **vlan**:
 
 .. code:: python
 
@@ -152,7 +137,7 @@ for:
      name VLAN_100
 
 
-Когда цикл идет по словарю, то фактически он проходится по ключам:
+When a loop runs through dictionary, it actually goes by the keys:
 
 .. code:: python
 
@@ -176,7 +161,7 @@ for:
     vendor
 
 
-Если необходимо выводить пары ключ-значение в цикле, можно делать так:
+If you want to print key-value pairs in the loop, you can do this:
 
 .. code:: python
 
@@ -190,8 +175,7 @@ for:
     model => 4451
     vendor => Cisco
 
-Или воспользоваться методом items, который позволяет проходиться в
-цикле сразу по паре ключ-значение:
+Or use the items() method which allows you to run the loop over a key-value pair:
 
 .. code:: python
 
@@ -206,8 +190,7 @@ for:
     vendor => Cisco
 
 
-Метод items возвращает специальный объект view, который отображает пары
-ключ-значение:
+The items() method returns a special view object that displays key-value pairs:
 
 .. code:: python
 

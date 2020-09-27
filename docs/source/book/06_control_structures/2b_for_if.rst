@@ -1,9 +1,9 @@
-Совмещение for и if
+Combination for and if
 ~~~~~~~~~~~~~~~~~~~
 
-Рассмотрим пример совмещения for и if.
+Consider the example of combining **for** and **if**.
 
-Файл generate_access_port_config.py:
+Generate_access_port_config.py file:
 
 .. code-block:: python
    :linenos:
@@ -26,24 +26,24 @@
             else:
                 print(' {}'.format(command))
 
-Комментарии к коду:
+Comments to the code:
 
-* В первом цикле for перебираются ключи и значения во вложенном словаре fast\_int['access']
-* Текущий ключ, на данный момент цикла, хранится в переменной intf
-* Текущее значение, на данный момент цикла, хранится в переменной vlan
-* Выводится строка interface FastEthernet с добавлением к ней номера интерфейса
-* Во втором цикле for перебираются команды из списка access_template
-* Так как к команде switchport access vlan надо добавить номер VLAN:
+* The first **for** loop iterates keys and values in nested fast\_int['access'] dictionary
+* At this moment of the loop the current key is stored in **intf** variable
+* At this moment of the loop the current value is stored in **vlan** variable
+* The string “interface Fastethernet” is displayed with interface number added
+* The second cycle **for** iterates commands from the access_template list
+* Since **switchport access to vlan** command requires a VLAN number:
 
-  * внутри второго цикла for проверяются команды
-  * если команда заканчивается на access vlan
+  * within the second loop **for** commands are checked
+  * if command ends with “access vlan”
+  
+    * command is displayed and a VLAN number is added to it
 
-    * выводится команда, и к ней добавляется номер VLAN
-
-  * во всех остальных случаях просто выводится команда
+  * in all other cases the command is simply displayed
 
 
-Результат выполнения скрипта:
+Result of script execution:
 
 ::
 

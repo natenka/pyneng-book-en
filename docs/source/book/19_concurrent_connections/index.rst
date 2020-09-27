@@ -4,21 +4,16 @@
 
 .. _concurrent_connections_index:
 
-19. Одновременное подключение к нескольким устройствам
+19. Concurent connections to multiple devices
 ======================================================
 
-Когда нужно опросить много устройств, выполнение подключений поочередно
-будет достаточно долгим. Конечно, это будет быстрее, чем подключение
-вручную, но хотелось бы получать отклик как можно быстрее.
+When you have to poll many devices, the connections will take quite a long time to connect in turn. Of course, this will be faster than manual connection but we’d like to get response as soon as possible.
 
 .. note::
 
-    Все эти "долго" и "быстрее" относительные понятия, но в этом разделе
-    мы научимся и конкретно измерять, сколько отрабатывал скрипт, чтобы
-    сравнить, насколько быстрее будет выполняться подключение.
+    All these "long" and "faster" are relative concepts, but in this section we will learn to measure exact script execution time to compare how quick the connection is established.
 
-Для параллельного подключения к устройствам в этом разделе используется
-модуль concurrent.futures.
+Module concurrent.futures is used for parallel connection to devices in this section.
 
 .. toctree::
    :maxdepth: 1

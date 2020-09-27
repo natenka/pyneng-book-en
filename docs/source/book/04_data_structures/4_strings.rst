@@ -1,12 +1,12 @@
-Строки (Strings)
+Strings
 ================
 
-Строка в Python это:
+The string in Python is:
 
-* последовательность символов, заключенная в кавычки
-* неизменяемый упорядоченный тип данных
+* sequence of characters enclosed in quotation marks
+* immutable ordered data type
 
-Примеры строк:
+Examples of strings:
 
 .. code:: python
 
@@ -36,7 +36,7 @@
      tunnel source FastEthernet1/0
      tunnel protection ipsec profile DMVPN
 
-Строки можно суммировать. Тогда они объединяются в одну строку:
+Strings can be summed. Then they merge into one string:
 
 .. code:: python
 
@@ -50,8 +50,7 @@
     In [17]: intf + ' ' + tun
     Out[17]: 'interface Tunnel0'
 
-Строку можно умножать на число. В этом случае, строка повторяется
-указанное количество раз:
+You can multiply a string by a number. In this case, the string repeats the specified number of times:
 
 .. code:: python
 
@@ -61,8 +60,7 @@
     In [19]: '#' * 40
     Out[19]: '########################################'
 
-То, что строки являются упорядоченным типом данных, позволяет обращаться
-к символам в строке по номеру, начиная с нуля:
+The fact that strings are an ordered data type allows to refer to characters in a string by a number starting from zero:
 
 .. code:: python
 
@@ -71,9 +69,7 @@
     In [21]: string1[0]
     Out[21]: 'i'
 
-Нумерация всех символов в строке идет с нуля. Но, если нужно обратиться
-к какому-то по счету символу, начиная с конца, то можно указывать
-отрицательные значения (на этот раз с единицы).
+All characters in a string are numbered from zero. But if you need to refer to a character from the end, you can specify negative values (this time with 1).
 
 .. code:: python
 
@@ -83,8 +79,7 @@
     In [23]: string1[-1]
     Out[23]: '0'
 
-Кроме обращения к конкретному символу, можно делать срезы строк, указав
-диапазон номеров (срез выполняется по второе число, не включая его):
+In addition to referring to a specific character you can make string slices by specifying a number range. The slicing starts with the first number (included) and ends at second number (excluded):
 
 .. code:: python
 
@@ -94,21 +89,21 @@
     In [25]: string1[10:22]
     Out[25]: 'FastEthernet'
 
-Если не указывается второе число, то срез будет до конца строки:
+If no second number is specified, the slice is until the end of the string:
 
 .. code:: python
 
     In [26]:  string1[10:]
     Out[26]: 'FastEthernet1/0'
 
-Срезать три последних символа строки:
+Slice the last three character of string:
 
 .. code:: python
 
     In [27]: string1[-3:]
     Out[27]: '1/0'
 
-Также в срезе можно указывать шаг. Так можно получить нечетные числа:
+You can also specify a step in the slice. For example, you can get odd numbers:
 
 .. code:: python
 
@@ -117,14 +112,14 @@
     In [29]: a[1::2]
     Out[29]: '13579'
 
-А таким образом можно получить все четные числа строки a:
+Or you can get all even numbers of string “a”:
 
 .. code:: python
 
     In [31]: a[::2]
     Out[31]: '02468'
 
-Срезы также можно использовать для получения строки в обратном порядке:
+Slices can also be used to get a string in reverse order:
 
 .. code:: python
 
@@ -137,11 +132,9 @@
     Out[30]: '9876543210'
 
 .. note::
-    Записи ``a[::]`` и ``a[:]`` дают одинаковый результат, но двойное
-    двоеточие позволяет указывать, что надо брать не каждый элемент, а,
-    например, каждый второй.
+    The entries ``a[::]`` and ``a[:]`` give the same result but the double colon makes it possible to indicate that not every element should be taken, but for example every second element.
 
-Функция ``len`` позволяет получить количество символов в строке:
+The ``len`` function allows you to get the number of characters in a string:
 
 .. code:: python
 
@@ -151,10 +144,7 @@
     Out[2]: 15
 
 .. note::
-    Функция и метод отличаются тем, что метод привязан к объекту конкретного типа, а функция,
-    как правило, более универсальная и может применяться к объектам разного типа.
-    Например, функция ``len`` может применяться к строкам, спискам, словарям и так далее,
-    а метод ``startswith`` относится только к строкам.
+    The function and method differ in that the method is tied to a particular type of object and the function is generally more universal and can be applied to objects of different types. For example, the ``len`` function can be applied to strings, lists, dictionaries and so on, but the  ``startswith`` method only applies to strings.
 
 
 .. toctree::

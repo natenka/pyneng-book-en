@@ -1,10 +1,9 @@
-Вложенные for
+Nested for
 ~~~~~~~~~~~~~
 
-Циклы for можно вкладывать друг в друга.
+Loops **for** can be nested in each other.
 
-В этом примере в списке commands хранятся команды, которые надо
-выполнить для каждого из интерфейсов в списке fast_int:
+In this example, the **commands** is a list of commands to execute on each interface in the **fast_int** list:
 
 .. code:: python
 
@@ -30,5 +29,4 @@
      spanning-tree bpduguard enable
     ...
 
-Первый цикл for проходится по интерфейсам в списке fast_int, а второй
-по командам в списке commands.
+The first **for** loop passes through interfaces in the **fast_int** list and the second through commands in the list of commands.

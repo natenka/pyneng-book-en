@@ -1,24 +1,22 @@
-Создание функций
+Creation of functions
 ----------------
 
-Создание функции:
+Creation of function:
 
-* функции создаются с помощью зарезервированного слова **def**
-* за **def** следуют имя функции и круглые скобки
-* внутри скобок могут указываться параметры, которые функция принимает
-* после круглых скобок идет двоеточие и с новой строки, с отступом, идет блок
-  кода, который выполняет функция
-* первой строкой, опционально, может быть комментарий, так называемая **docstring**
-* в функциях может использоваться оператор **return**
+* functions are created with a reserved word **def**
+* **def** followed by function name and round brackets
+* parameters that the function accepts inside brackets
+* after round brackets goes colon and from a new line with indent there is a block of code that the function executes
+* optionally, the first line may be a comment, so-called **docstring**
+* function can use **return** operator
 
-  * он используется для прекращения работы функции и выхода из нее
-  * чаще всего, оператор return возвращает какое-то значение
+  * it is used to terminate and exit a function
+  * most often **return** operator returns some value
 
 .. note::
-    Код функций, которые используются в этом подразделе, можно
-    скопировать из файла create_func.py
+    The function code used in this subsection can be copied from the create_func file.
 
-Пример функции:
+Example of a function:
 
 .. code:: python
 
@@ -27,31 +25,22 @@
        ...:     print('ip address', ip, mask)
        ...:
 
-Функция configure_intf создает конфигурацию интерфейса с указанным именем и IP-адресом.
-У функции есть три параметра: intf_name, ip, mask. При вызове функции в эти параметры
-попадут реальные данные.
+Function configure_intf() creates an interface configuration with the specified name and IP address. 
+Function has three parameters: intf_name, ip, mask. When function is called the real data will enter these parameters.
 
 .. note::
-    Когда функция создана, она ещё ничего не выполняет. Только при вызове
-    функции действия, которые в ней перечислены, будут выполняться. Это
-    чем-то похоже на ACL в сетевом оборудовании: при создании ACL в
-    конфигурации, он ничего не делает до тех пор, пока не будет куда-то
-    применен.
-
-Вызов функции
+    When a function is created, it does nothing yet. Actions listed in it will be executed only when you call function. This is something like ACL in network equipment: when creating ACL in configuration, it does nothing until it is applied.
+    
+Function call
 ~~~~~~~~~~~~~
 
-При вызове функции нужно указать её имя и передать аргументы, если
-нужно.
+When calling a function you must specify its name and pass arguments if necessary.
 
 .. note::
-    Параметры - это переменные, которые используются при создании
-    функции.
-    Аргументы - это фактические значения (данные), которые передаются
-    функции при вызове.
+    Parameters are variables that are used to create a function.
+    Arguments are the actual values (data) that are passed to functions when called.
 
-Функция configure_intf ожидает при вызове три значения, потому
-что она была создана с тремя параметрами:
+The configure_intf() function expects three values when called because it was created with three parameters:
 
 .. code:: python
 
@@ -63,11 +52,9 @@
     interface Fa0/1
     ip address 94.150.197.1 255.255.255.248
 
-Текущий вариант функции configure_intf выводит команды на стандартный поток вывода,
-команды можно увидеть, но при этом результат функции нельзя сохранить в переменную.
+Current configure_intf() function prints commands to a standard output, commands can be seen but the result of the function cannot be saved to a variable.
 
-Например, функция sorted не просто выводит результат сортировки на стандартный поток вывода,
-а **возвращает** его, поэтому его можно сохранить в переменную таким образом:
+For example, the sorted() function does not simply print the sorting result to the standard output stream but *returns* it, so it can be saved to the variable in this way:
 
 .. code:: python
 
@@ -82,11 +69,9 @@
     Out[7]: [0, 2, 22, 40]
 
 .. note::
-    Обратите внимание на строку ``Out[5]`` в ipython: таким образом ipython показывает,
-    что функция/метод что-то возвращает и показывает, что именно возвращает.
+    Note the string ``Out[5]`` in ipython: thus ipython shows that the function/method returns something and shows what it returns.
 
-Если же попытаться записать в переменную результат функции configure_intf,
-в переменной окажется значение None:
+If you try to write the result of configure_intf() function to a variable, the variable will have None:
 
 .. code:: python
 
@@ -97,19 +82,14 @@
     In [9]: print(result)
     None
 
-Чтобы функция могла возвращать какое-то значение, надо использовать оператор ``return``.
+For a function to return a value, use ``return`` operator.
 
-Оператор return
+Operator return
 ~~~~~~~~~~~~~~~
 
-Оператор **return** используется для возврата какого-то значения, и в то же время
-он завершает работу функции.
-Функция может возвращать любой объект Python.
-По умолчанию, функция всегда возвращает ``None``.
+The **return** operator is used to return a value while it completes the function. Function can return any Python object. By default, function always returns ``None``.
 
-
-Для того, чтобы функция configure_intf возвращала значение, которое потом можно,
-например, присвоить переменной, надо использовать оператор ``return``:
+In order for the configure_intf() function to return a value that can then be assigned to a variable, you must use ``return`` operator:
 
 .. code:: python
 
@@ -128,31 +108,26 @@
     Out[13]: 'interface Fa0/0\nip address 10.1.1.1 255.255.255.0'
 
 
-Теперь в переменой result находится строка с командами для настройки интерфейса.
+Now the result variable contains a line with commands to configure interface.
 
-В реальной жизни практически всегда функция будет возвращать какое-то
-значение. Вместе с тем можно использовать выражение print, чтобы
-дополнительно выводить какие-то сообщения.
+In real life, function will almost always return some value. However, it is possible to use print() to add some messages.
 
-Ещё один важный аспект работы оператора return: после return, функция завершает работу,
-а значит выражения, которые идут после return, не выполняются.
+Another important aspect of the **return** operator is that after **return** the function closes, meaning that the expressions that follow **return** are not executed.
 
-Например, в функции ниже, строка "Конфигурация готова" не будет выводиться, так как она
-стоит после return:
+For example, in the function below the line «Configuration is ready» will not be displayed because it stands after **return**:
 
 .. code:: python
 
     In [14]: def configure_intf(intf_name, ip, mask):
         ...:     config = f'interface {intf_name}\nip address {ip} {mask}'
         ...:     return config
-        ...:     print('Конфигурация готова')
+        ...:     print('Configuration is ready')
         ...:
 
     In [15]: configure_intf('Fa0/0', '10.1.1.1', '255.255.255.0')
     Out[15]: 'interface Fa0/0\nip address 10.1.1.1 255.255.255.0'
 
-Функция может возвращать несколько значений. В этом случае, они пишутся через запятую после оператора return.
-При этом фактически функция возвращает кортеж:
+The function can return multiple values. In this case, they are separated by a comma after **return** operator. In fact, the function returns the tuple:
 
 .. code:: python
 
@@ -179,18 +154,16 @@
     Out[22]: 'ip address 10.1.1.1 255.255.255.0'
 
 
-Документация (docstring)
+Documentation (docstring)
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Первая строка в определении функции - это docstring, строка
-документации. Это комментарий, который используется как описание
-функции:
+The first line in the function definition is docstring, documentation string. This is a comment that is used to describe a function:
 
 .. code:: python
 
     In [23]: def configure_intf(intf_name, ip, mask):
         ...:     '''
-        ...:     Функция генерирует конфигурацию интерфейса
+        ...:     Fucntion generates interface configuration
         ...:     '''
         ...:     config_intf = f'interface {intf_name}\n'
         ...:     config_ip = f'ip address {ip} {mask}'
@@ -199,15 +172,10 @@
 
     In [24]: configure_intf?
     Signature: configure_intf(intf_name, ip, mask)
-    Docstring: Функция генерирует конфигурацию интерфейса
+    Docstring: Fucntion generates interface configuration
     File:      ~/repos/pyneng-examples-exercises/examples/06_control_structures/<ipython-input-23-2b2bd970db8f>
     Type:      function
 
 
 
-Лучше не лениться писать краткие комментарии, которые описывают
-работу функции. Например, описать, что функция ожидает на вход,
-какого типа должны быть аргументы и что будет на выходе. Кроме того,
-лучше написать пару предложений о том, что делает функция. Это очень
-поможет, когда через месяц-два вы будете пытаться понять, что делает
-функция, которую вы же написали.
+It is best not to be lazy to write short comments that describe the function. For example, describe what the function expects to input, what type of arguments should be and what will be the output. Besides, it is better to write a couple of sentences about what function does. This will help when in a month or two you will be trying to understand what the function you wrote is doing.

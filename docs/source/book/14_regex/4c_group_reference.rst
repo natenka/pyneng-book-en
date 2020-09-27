@@ -1,11 +1,9 @@
-Повторение захваченного результата
+Repeating the captured result
 ----------------------------------
 
-При работе с группами можно использовать результат, который попал в
-группу, дальше в этом же выражении.
+When working with groups, it is possible to use the result that has fallen into the group further in the same expression.
 
-Например, в выводе sh ip bgp последний столбец описывает атрибут AS Path
-(через какие автономные системы прошел маршрут):
+For example, in the output of ‘sh ip bgp’ the last column describes the AS Path attribute (through which autonomous systems the route passed):
 
 .. code:: python
 
@@ -20,12 +18,9 @@
        ...: *>                  192.168.89.8         0             0 800 800 i
        ...: '''
 
-Допустим, надо получить те префиксы, у которых в пути несколько раз
-повторяется один и тот же номер AS.
+Suppose you get those prefixes where the same AS number repeats several times in the path.
 
-Это можно сделать с помощью ссылки на результат, который был захвачен
-группой. Например, такое выражение отображает все строки, в которых один
-и тот же номер повторяется хотя бы два раза:
+This can be done by reference to a result that has been captured by the group. For example, such an expression displays all lines in which the same number is repeated at least twice:
 
 .. code:: python
 
@@ -39,15 +34,11 @@
     *  192.168.88.0/24  192.168.79.7                       0 700 700 700 i
     *>                  192.168.89.8         0             0 800 800 i
 
-В этом выражении обозначение ``\1`` подставляет результат, который попал
-в группу. Номер один указывает на конкретную группу. В данном случае это
-группа 1, она же единственная.
+In this expression, ``\1`` denotes the result that falls into the group. Number one indicates a specific group. In this case, it’s Group 1, it’s the only one group here.
 
-Кроме того, в этом выражении перед строкой регулярного выражения стоит
-буква r. Это так называемая raw строка.
+Additionally, the regular expression is preceded by the letter **r**. It is a so-called raw string.
 
-Тут удобней использовать ее, так как иначе надо будет экранировать
-обратный слеш, чтобы ссылка на группу сработала корректно:
+It is more convenient to use it, because otherwise you will have to screen the backslash in order for the link to the group works correctly:
 
 .. code:: python
 
@@ -56,11 +47,9 @@
 
 .. warning::
 
-    При использовании регулярных выражений лучше всегда использовать raw
-    строки.
+    When using regular expressions it is best to always use raw string.
 
-Аналогичным образом можно описать строки, в которых один и тот же номер
-встречается три раза:
+Similarly, you can describe strings where the same number occurs three times:
 
 .. code:: python
 
@@ -73,8 +62,7 @@
     *  192.168.67.0/24  192.168.79.7         0             0 700 700 700 i
     *  192.168.88.0/24  192.168.79.7                       0 700 700 700 i
 
-Аналогичным образом можно ссылаться на результат, который попал в
-именованную группу:
+Similarly, you can reffer to the result which was captured by named group:
 
 .. code:: python
 

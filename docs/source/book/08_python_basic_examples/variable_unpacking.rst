@@ -1,15 +1,12 @@
-Распаковка переменных
+Variable unpacking
 ---------------------
 
-Распаковка переменных - это специальный синтаксис, который позволяет
-присваивать переменным элементы итерируемого объекта.
+The unpacking of variables is a special syntax that allows to assign elements of an iterated object to variables.
 
 .. note::
-    Достаточно часто этот функционал встречается под именем tuple
-    unpacking, но распаковка работает на любом итерируемом объекте, не
-    только с кортежами
+    This functionality is often referred to as tuple unpacking but the unpacking works on any iterable object, not only with tuples
 
-Пример распаковки переменных:
+Example of variable unpacking:
 
 .. code:: python
 
@@ -23,17 +20,15 @@
     In [4]: ip
     Out[4]: '10.1.1.1'
 
-Такой вариант намного удобней использовать, чем использование индексов:
+This option is much more convenient than the use of indexes:
 
 .. code:: python
 
     In [5]: intf, ip, status, protocol = interface[0], interface[1], interface[2], interface[3]
 
-При распаковке переменных каждый элемент списка попадает в
-соответствующую переменную. Важно учитывать, что переменных слева
-должно быть ровно столько, сколько элементов в списке.
+When you unpack variables, each item in the list falls into the corresponding variable. It is important to keep in mind that the variables on the left should be exactly as many elements in the list.
 
-Если переменных больше или меньше, возникнет исключение:
+If amount of variables are less or more, there will be an exception:
 
 .. code:: python
 
@@ -53,16 +48,12 @@
 
     ValueError: not enough values to unpack (expected 5, got 4)
 
-Замена ненужных элементов ``_``
+Replacement of unnecessary elements ``_``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Часто из всех элементов итерируемого объекта нужны только
-некоторые. При этом синтаксис распаковки требует
-указать ровно столько переменных, сколько элементов в итерируемом
-объекте.
+Often only some of the elements of an iterated object are needed. The unpacking syntax requires that exactly as many variables as the elements in the object being iterated be specified.
 
-Если, например, из строки line надо получить только VLAN, MAC и
-интерфейс, надо все равно указать переменную для типа записи:
+If, for example, only VLAN, MAC and interface should be obtained from line, you still need to specify a variable for record type:
 
 .. code:: python
 
@@ -76,16 +67,15 @@
     In [11]: intf
     Out[11]: 'Gi0/1'
 
-Если тип записи не нужен в дальнейшем, можно заменить переменную
-item_type нижним подчеркиванием:
+If record type is no longer needed, you can replace the item_type variable with underline character:
 
 .. code:: python
 
     In [12]: vlan, mac, _, intf = line.split()
 
-Таким образом явно указывается то, что этот элемент не нужен.
+This clearly indicates that this element is not needed.
 
-Нижнее подчеркивание можно использовать и несколько раз:
+The underline character can be used more than once:
 
 .. code:: python
 
@@ -99,16 +89,12 @@ item_type нижним подчеркиванием:
     In [16]: vlan
     Out[16]: '10'
 
-Использование ``*``
+Use ``*``
 ~~~~~~~~~~~~~~~~~~~
 
-Распаковка переменных поддерживает специальный синтаксис, который
-позволяет распаковывать несколько элементов в один. Если поставить ``*``
-перед именем переменной, в нее запишутся все элементы, кроме тех, что
-присвоены явно.
+The unpacking  of variables supports a special syntax that allows unpacking  of several elements into one. If you put ``*`` in front of the variable name all elements except those that are explicitly assigned will be written into it.
 
-Например, так можно получить первый элемент в переменную first, а
-остальные в rest:
+For example, you can get the first element in the *first* variable and the rest in the *rest*:
 
 .. code:: python
 
@@ -122,7 +108,7 @@ item_type нижним подчеркиванием:
     In [21]: rest
     Out[21]: [11, 13, 30]
 
-При этом переменная со звездочкой всегда будет содержать список:
+The variable with an asterisk will always contain a list:
 
 .. code:: python
 
@@ -136,7 +122,7 @@ item_type нижним подчеркиванием:
     In [24]: rest
     Out[24]: [11, 13, 30]
 
-Если элемент всего один, распаковка все равно отработает:
+If there is only one item, unpacking will still work:
 
 .. code:: python
 
@@ -148,8 +134,7 @@ item_type нижним подчеркиванием:
     In [27]: rest
     Out[27]: []
 
-Такая переменная со звездочкой в выражении распаковки может быть только
-одна.
+There could be only one variable with an asterisk in terms of unpacking.
 
 .. code:: python
 
@@ -161,7 +146,7 @@ item_type нижним подчеркиванием:
                                      ^
     SyntaxError: two starred expressions in assignment
 
-Такая переменная может находиться не только в конце выражения:
+This variable may not only be at the end of the expression:
 
 .. code:: python
 
@@ -175,8 +160,7 @@ item_type нижним подчеркиванием:
     In [33]: last
     Out[33]: 30
 
-Таким образом можно указать, что нужен первый, второй и последний
-элемент:
+Thus, the first, second and last element can be specified:
 
 .. code:: python
 
@@ -193,16 +177,15 @@ item_type нижним подчеркиванием:
     In [38]: r_intf
     Out[38]: '0/1'
 
-Примеры распаковки
+Unpacking examples
 ~~~~~~~~~~~~~~~~~~
 
-Распаковка итерируемых объектов
+Unpacking of iterable objects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Эти примеры показывают, что распаковывать можно не только списки,
-кортежи и строки, но и любой другой итерируемый объект.
+These examples show that you can unpack not only lists, tuples and strings but also any other iterable objects.
 
-Распаковка range:
+Unpacking the range:
 
 .. code:: python
 
@@ -214,7 +197,7 @@ item_type нижним подчеркиванием:
     In [41]: rest
     Out[41]: [2, 3, 4, 5]
 
-Распаковка zip:
+Unpacking zip:
 
 .. code:: python
 
@@ -239,10 +222,10 @@ item_type нижним подчеркиванием:
     In [49]: last
     Out[49]: (5, 500)
 
-Пример распаковки в цикле for
+Example of unpacking in *for* loop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Пример цикла, который проходится по ключам:
+An example of a loop that runs through the keys:
 
 .. code:: python
 
@@ -281,8 +264,7 @@ item_type нижним подчеркиванием:
      spanning-tree portfast
      spanning-tree bpduguard enable
 
-Вместо этого можно проходиться по парам ключ-значение и сразу же
-распаковывать их в разные переменные:
+Instead, you can run through key-value pairs and immediately unpack them into different variables:
 
 .. code:: python
 
@@ -295,7 +277,7 @@ item_type нижним подчеркиванием:
         ...:             print(' {}'.format(command))
         ...:
 
-Пример распаковки элементов списка в цикле:
+Example of unpacking list items in the loop:
 
 .. code:: python
 
@@ -322,7 +304,7 @@ item_type нижним подчеркиванием:
     200 a1bb.1c60.7000 Gi0/6
     300 aa0b.cc70.7000 Gi0/7
 
-Но еще лучше сделать так:
+But it’s better to do this:
 
 .. code:: python
 

@@ -1,7 +1,7 @@
-Импорт модуля
+Module import
 -------------
 
-В Python есть несколько способов импорта модуля:
+Python has several ways to import a module:
 
 * ``import module``
 * ``import module as``
@@ -11,7 +11,7 @@
 ``import module``
 ~~~~~~~~~~~~~~~~~
 
-Вариант **import module**:
+Example of **import module**:
 
 .. code:: python
 
@@ -36,32 +36,25 @@
      'os',
      'quit']
 
-После импорта модуль os появился в выводе ``dir()``. Это значит, что он
-теперь в текущем именном пространстве.
+After importing the **os** module appeared in the output ``dir()``.This means that it is now in the current namespace.
 
-Чтобы вызвать какую-то функцию или метод из модуля os, надо указать
-``os.`` и затем имя объекта:
+To invoke some function or method from the **os** module you should specify
+``os.`` and then the object name:
 
 .. code:: python
 
     In [4]: os.getlogin()
     Out[4]: 'natasha'
 
-Этот способ импорта хорош тем, что объекты модуля не попадают в именное
-пространство текущей программы. То есть, если создать функцию с именем
-getlogin(), она не будет конфликтовать с аналогичной функцией модуля os.
+This import method is good because the module objects do not enter the namespace of the current program. That is, if you create a function named getlogin() it will not conflict with the same function of the **os** module.
 
 .. note::
-    Если в имени файла содержится точка, стандартный способ
-    импортирования не будет работать. Для таких случаев используется
-    `другой
-    способ <http://stackoverflow.com/questions/1828127/how-to-reference-python-package-when-filename-contains-a-period/1828249#1828249>`__.
+    If file name contains a dot, the standard way of importing will not work. In such cases,     `another method <http://stackoverflow.com/questions/1828127/how-to-reference-python-package-when-filename-contains-a-period/1828249#1828249>`__ is used.
 
 ``import module as``
 ~~~~~~~~~~~~~~~~~~~~
 
-Конструкция **import module as** позволяет импортировать модуль под
-другим именем (как правило, более коротким):
+Construction **import module as** allows importing a module under a different name (usually shorter):
 
 .. code:: python
 
@@ -73,14 +66,13 @@ getlogin(), она не будет конфликтовать с аналоги�
 ``from module import object``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Вариант **from module import object** удобно использовать, когда из
-всего модуля нужны только одна-две функции:
+Option **from module import object** is convenient to use when only one or two functions are needed from the whole module:
 
 .. code:: python
 
     In [1]: from os import getlogin, getcwd
 
-Теперь эти функции доступны в текущем именном пространстве:
+These functions are now available in the current namespace:
 
 .. code:: python
 
@@ -95,7 +87,7 @@ getlogin(), она не будет конфликтовать с аналоги�
      'getlogin',
      'quit']
 
-Их можно вызывать без имени модуля:
+They can be called without the module name:
 
 .. code:: python
 
@@ -108,8 +100,7 @@ getlogin(), она не будет конфликтовать с аналоги�
 ``from module import *``
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Вариант ``from module import *`` импортирует все имена модуля в
-текущее именное пространство:
+Option ``from module import *`` imports all module names into the current namespace:
 
 .. code:: python
 
@@ -130,9 +121,6 @@ getlogin(), она не будет конфликтовать с аналоги�
     In [3]: len(dir())
     Out[3]: 218
 
-В модуле os очень много объектов, поэтому вывод сокращен. В конце
-указана длина списка имен текущего именного пространства.
+There are many objects in the **os** module, so the output is shortened. At the end, the length of the list of names of current namespace is specified.
 
-Такой вариант импорта лучше не использовать. При таком импорте по коду
-непонятно, что какая-то функция взята, например, из модуля os. Это
-заметно усложняет понимание кода.
+This import option is best not to use. With such code import it is not clear which function is taken, for example from the **os** module. This makes it much harder to understand the code.

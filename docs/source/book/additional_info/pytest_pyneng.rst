@@ -1,29 +1,17 @@
-Особенности использования pytest для проверки заданий
+Specifics of using pytest to check tasks
 -----------------------------------------------------
 
-На курсе pytest используется, в первую очередь, для самопроверки
-заданий. Однако, эта проверка не является опциональной - задание
-считается сделанным, когда оно соблюдает все указанные пункты и проходит
-тесты. Со своей стороны, я тоже сначала проверяю задания автоматическими
-тестами, а затем уже смотрю код, пишу комментарии, если нужно и
-показываю вариант решения.
+Pytest in course is primarily used for self-tests of tasks. However, this test is not optional - task is considered done when it complies with all specified points and passes tests. For my part, I also check tasks with automatic tests and then look at the code, write comments if necessary and show a solution option.
 
-Поначалу тесты требуют усилий, но через пару разделов, они будут
-помогать в решении заданий.
+At first, tests require effort but through a couple of sections they will help solve tasks.
 
 .. warning::
 
-    Тесты, которые написаны для заданий курса, не
-    являются эталоном или best practice написания тестов. Тесты написаны
-    с максимальным упором на понятность и многие вещи принято делать
-    по-другому.
+    Tests that are written for course are not a benchmark or best practice of test writing. Tests are written with maximum emphasis on clarity and many things are done differently.
 
-При решении заданий, особенно, когда есть сомнения по поводу итогового
-формата данных, которые должны быть получены, лучше посмтреть в тест.
-Например, если задание task_9_1.py, то соответствующий тест будет в
-файле test_task_9_1.py.
+When solving tasks especially when there are doubts about the final format of data to be obtained, it is better to look into test. For example, if task_9_1.py the corresponding test will be in test/test_task_9_1.py.
 
-Пример теста test_task_9_1.py:
+Test example tests/test_task_9_1.py:
 
 .. code:: python
 
@@ -35,11 +23,11 @@
     from common_functions import check_function_exists, check_function_params
 
 
-    # Проверяет создана ли функция generate_access_config в задании task_9_1
+    # Checks is function generate_access_config is created in task task_9_1
     def test_function_created():
         check_function_exists(task_9_1, 'generate_access_config')
 
-    # Проверяет параметры функции
+    # Cheks fucntion parameters
     def test_function_params():
         check_function_params(function=task_9_1.generate_access_config,
                               param_count=2, param_names=['intf_vlan_mapping', 'access_template'])
@@ -76,24 +64,16 @@
                                 'spanning-tree bpduguard enable']
 
         return_value = task_9_1.generate_access_config(access_vlans_mapping, template_access_mode)
-        assert return_value != None, "Функция ничего не возвращает"
-        assert type(return_value) == list, "Функция должна возвращать список"
-        assert return_value == correct_return_value, "Функция возвращает неправильное значение"
+        assert return_value != None, "Functon returns nothing"
+        assert type(return_value) == list, "Function has to return a list"
+        assert return_value == correct_return_value, "Function return wrong value"
 
-Обратите внимание на переменную correct_return_value - в этой
-переменной содержится итоговый список, который должна возвращать функция
-generate_access_config. Поэтому, если, к примеру, по мере выполнения
-задания, возник вопрос надо ли добавлять пробелы перед командами или
-перевод строки в конце, можно посмотреть в тесте, что именно требуется в
-результате. А также сверить свой вывод, с выводом в переменной
-correct_return_value.
+Note correct_return_value variable - this variable contains the resulting list that should return generate_access_config function. Therefore for example, if question has arisen of whether to add spaces before commands or a line feed at the end, you can look at what the result requires. Also check your output against the output in variable_return_value.
 
-Как запускать тесты для проверки заданий
+How to run tests for tasks verification
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Самое главное, это откуда надо запускать тесты: все тесты надо запускать
-из каталога с заданиями раздела. Например, в
-разделе 09_functions, такая структура каталога с заданиями:
+The most important thing is where to run tests: all tests must be run from a directory with section tasks, not from a test directory. For example, in section 09_functions such a directory structure with tasks:
 
 ::
 
@@ -113,75 +93,53 @@ correct_return_value.
     ├── task_9_3a.py
     ├── task_9_3.py
     ├── task_9_4.py
-    ├── test_task_9_1a.py
-    ├── test_task_9_1.py
-    ├── test_task_9_2a.py
-    ├── test_task_9_2.py
-    ├── test_task_9_3a.py
-    ├── test_task_9_3.py
-    └── test_task_9_4.py
+    └── tests
+        ├── test_task_9_1a.py
+        ├── test_task_9_1.py
+        ├── test_task_9_2a.py
+        ├── test_task_9_2.py
+        ├── test_task_9_3a.py
+        ├── test_task_9_3.py
+        └── test_task_9_4.py
 
-Запускать тесты, в этом случае, надо из каталога 09_functions:
+In this case, you have to run tests from 09_functions directory:
 
 ::
 
     [~/repos/pyneng-7/pyneng-online-may-aug-2019/exercises/09_functions]
     vagrant: [master|✔]
-    $ pytest test_task_9_1.py
+    $ pytest tests/test_task_9_1.py
     ========================= test session starts ==========================
     platform linux -- Python 3.7.3, pytest-4.6.2, py-1.5.2, pluggy-0.12.0
     rootdir: /home/vagrant/repos/pyneng-7/pyneng-online-may-aug-2019/exercises/09_functions
     collected 3 items
 
-    test_task_9_1.py ...                                       [100%]
+    tests/test_task_9_1.py ...                                       [100%]
     ...
 
+    If you run tests from tests directory, errors will appear.
 
 conftest.py
 ~~~~~~~~~~~
 
-К тестами относится и файл conftest.py - это
-специальный файл, в котором можно писать функции (а точнее фикстуры)
-общие для раных тестов. Например, в этот файл вынесены функции, которые
-подключаются по SSH/Telnet к оборудованию.
+In addition to test directory there is a conftest.py file - special file in which you can write functions (more precisely fixtures) common to different tests. For example, this file contains functions that connect via SSH/Telnet to equipment.
 
-pytest.ini
-~~~~~~~~~~
-
-Это конфигурационный файл pytest. В нем можно настроить аргументы вызова
-pytest. Например, если вы хотите всегда вызывать pytest с -vv, надо
-написать в pytest.ini:
-
-::
-
-    [pytest]
-    addopts = -vv
-
-В подготовленном файле pytest.ini находится такая строка:
-
-::
-
-    addopts = -vv --no-hints
-
-Это параметр, который нужен модулю pytest-clarity, он описывается ниже.
-
-Полезные команды
+Useful commands
 ~~~~~~~~~~~~~~~~
 
-Запуск одного теста:
+Run one test:
 
 ::
 
-    $ pytest test_task_9_1.py
+    $ pytest tests/test_task_9_1.py
 
-Запуск одного теста с более подробным выводом информации (показывает
-diff между данными в тесте и тем, что получено из функции):
+Run one test with more detailed output (shows *diff* between data in test and what is received from function):
 
 ::
 
-    $ pytest test_task_9_1.py -vv
+    $ pytest tests/test_task_9_1.py -vv
 
-Запуск всех тестов одного раздела:
+Start all tests of one section:
 
 ::
 
@@ -193,80 +151,19 @@ diff между данными в тесте и тем, что получено 
     rootdir: /home/vagrant/repos/pyneng-7/pyneng-online-may-aug-2019/exercises/09_functions
     collected 21 items
 
-    test_task_9_1.py ..F                                   [ 14%]
-    test_task_9_1a.py FFF                                  [ 28%]
-    test_task_9_2.py FFF                                   [ 42%]
-    test_task_9_2a.py FFF                                  [ 57%]
-    test_task_9_3.py FFF                                   [ 71%]
-    test_task_9_3a.py FFF                                  [ 85%]
-    test_task_9_4.py FFF                                   [100%]
+    tests/test_task_9_1.py ..F                                   [ 14%]
+    tests/test_task_9_1a.py FFF                                  [ 28%]
+    tests/test_task_9_2.py FFF                                   [ 42%]
+    tests/test_task_9_2a.py FFF                                  [ 57%]
+    tests/test_task_9_3.py FFF                                   [ 71%]
+    tests/test_task_9_3a.py FFF                                  [ 85%]
+    tests/test_task_9_4.py FFF                                   [100%]
 
     ...
 
-Запуск всех тестов одного раздела с отображением сообщений об ошибках в
-одну строку:
+Starts all tests of the same section with error messages displayed in one line:
 
 ::
 
     $ pytest --tb=line
-
-
-pytest-clarity
---------------
-
-Плагин pytest-clarity улучшает отображение отличий необходимого
-результата с решением задания.
-
-Установка:
-
-::
-
-    pip install pytest-clarity
-
-Плагин pytest-clarity отрабатывает только в том случае, когда тест
-вызывается с флагом ``-vv``. Также по умолчанию у него довольно объемный
-вывод, поэтому лучше вызывать его с аргументом ``--no-hints`` (эта опция прописана в подготовленном репозитории в файле pytest.ini):
-
-::
-
-    $ pytest test_task_9_3.py -vv --no-hints
-    ======================= test session starts ========================
-
-    test_task_9_3.py::test_function_created PASSED               [ 33%]
-    test_task_9_3.py::test_function_params PASSED                [ 66%]
-    test_task_9_3.py::test_function_return_value FAILED          [100%]
-
-    ======================== FAILURES ==================================
-    __________ test_function_return_value ______________________________
-
-    ...
-            access, trunk = return_value
-    >       assert (
-                return_value == correct_return_value
-            ), "Функция возвращает неправильное значение"
-    E       AssertionError: Функция возвращает неправильное значение
-    E       assert left == right failed.
-    E         Showing unified diff (L=left, R=right):
-    E
-    E          L ({'FastEthernet0/0': '10',
-    E          R ({'FastEthernet0/0': 10,
-    E          L   'FastEthernet0/2': '20',
-    E          R   'FastEthernet0/2': 20,
-    E          L   'FastEthernet1/0': '20',
-    E          R   'FastEthernet1/0': 20,
-    E          L   'FastEthernet1/1': '30'},
-    E          R   'FastEthernet1/1': 30},
-    E            {'FastEthernet0/1': [100, 200],
-    E             'FastEthernet0/3': [100, 300, 400, 500, 600],
-    E             'FastEthernet1/2': [400, 500, 600]})
-
-    test_task_9_3.py:59: AssertionError
-
-Так как агументы ``-vv`` и ``--no-hints`` надо постоянно передавать,
-можно записать их в pytest.ini:
-
-::
-
-    [pytest]
-    addopts = -vv --no-hints
 

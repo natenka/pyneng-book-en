@@ -1,9 +1,9 @@
 SELECT
 ~~~~~~
 
-Оператор SELECT позволяет запрашивать информацию в таблице.
+SELECT operator allows you to query information from the table.
 
-Например:
+For example:
 
 .. code:: sql
 
@@ -17,10 +17,9 @@ SELECT
     2 rows in set
     Time: 0.033s
 
-``SELECT *`` означает, что нужно вывести все поля таблицы. Следом
-указывается, из какой таблицы запрашиваются данные: ``from switch``.
+``SELECT *`` means that all fields in the table must be displayed. Then indicates from which table data is requested: ``from switch``.
 
-Таким образом можно указывать конкретные столбцы, которые нужно вывести и в каком порядке:
+Thus, it is possible to specify specific columns to be derived and in what order:
 
 .. code:: sql
 

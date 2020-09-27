@@ -2,33 +2,31 @@
 
    \newpage
 
-Задания
+Tasks
 =======
 
 .. include:: ./exercises_intro.rst
 
-Задание 5.1
+Task 5.1
 ~~~~~~~~~~~
 
-В задании создан словарь, с информацией о разных устройствах.
+A dictionary with information about different devices is created in the task.
 
-Необходимо запросить у пользователя ввод имени устройства (r1, r2 или sw1).
-И вывести информацию о соответствующем устройстве на стандартный поток вывода
-(информация будет в виде словаря).
+You should ask user to enter device name (r1, r2 or sw1). And display information about corresponding device on standard output stream (information will be in form of a dictionary).
 
 
-Пример выполнения скрипта:
+Example of script execution:
 
 ::
 
     $ python task_5_1.py
-    Введите имя устройства: r1
+    Enter name of device: r1
     {"location": "21 New Globe Walk", "vendor": "Cisco", "model": "4451", "ios": "15.4", "ip": "10.255.0.1"}
 
-Ограничение: нельзя изменять словарь london_co.
+Restriction: You cannot change london_co dictionary.
 
-Все задания надо выполнять используя только пройденные темы.
-То есть эту задачу можно решить без использования условия if и других тем, которые рассматриваются позже.
+Restriction: All tasks must be performed using only covered topics.
+That is, it is possible to solve this task without using *if* condition and other topics to be discussed later.
 
 
 .. code:: python
@@ -60,27 +58,26 @@
     }
 
 
-Задание 5.1a
+Task 5.1a
 ~~~~~~~~~~~~
 
-Переделать скрипт из задания 5.1 таким образом, чтобы,
-кроме имени устройства, запрашивался также параметр устройства, который нужно отобразить.
+Modify script from Task 5.1 so that in addition to device name the device parameter that you want to display is also requested.
 
-Вывести информацию о соответствующем параметре, указанного устройства.
+Display information about corresponding parameter of specified device.
 
-Пример выполнения скрипта:
+Example of script execution:
 
 ::
 
     $ python task_5_1a.py
-    Введите имя устройства: r1
-    Введите имя параметра: ios
+    Enter device name : r1
+    Enter parameter name: ios
     15.4
 
-Ограничение: нельзя изменять словарь london_co.
+Restriction: You cannot change london_co dictionary.
 
-Все задания надо выполнять используя только пройденные темы.
-То есть эту задачу можно решить без использования условия if и других тем, которые рассматриваются позже.
+Restriction: All tasks must be performed using only covered topics.
+That is, it is possible to solve this task without using *if* condition and other topics to be discussed later.
 
 .. code:: python
 
@@ -110,28 +107,26 @@
         }
     }
 
-Задание 5.1b
+Task 5.1b
 ~~~~~~~~~~~~
 
-Переделать скрипт из задания 5.1a таким образом, чтобы, при запросе параметра,
-отображался список возможных параметров. Список параметров надо получить из словаря,
-а не прописывать вручную.
+Modify script from task 5.1so that a list of possible parameters is displayed when you ask for parameter. List of parameters should be obtained from dictionary, not written manually.
 
-Вывести информацию о соответствующем параметре, указанного устройства.
+Display information about corresponding parameter of specified device.
 
-Пример выполнения скрипта:
+Example of script execution:
 
 ::
 
     $ python task_5_1b.py
-    Введите имя устройства: r1
-    Введите имя параметра (ios, model, vendor, location, ip): ip
+    Enter device name: r1
+    Enter parameter name (ios, model, vendor, location, ip): ip
     10.255.0.1
 
-Ограничение: нельзя изменять словарь london_co.
+Restriction: You cannot change london_co dictionary.
 
-Все задания надо выполнять используя только пройденные темы.
-То есть эту задачу можно решить без использования условия if и других тем, которые рассматриваются позже.
+Restriction: All tasks must be performed using only covered topics.
+That is, it is possible to solve this task without using *if* condition and other topics to be discussed later.
 
 .. code:: python
 
@@ -161,32 +156,29 @@
         }
     }
 
-Задание 5.1c
+Task 5.1c
 ~~~~~~~~~~~~
 
-Переделать скрипт из задания 5.1b таким образом, чтобы, при запросе параметра,
-которого нет в словаре устройства, отображалось сообщение "Такого параметра нет".
+Modify script from task 5.1b so that when you ask for a parameter that is not present in device dictionary, the message "No such parameter" is displayed.
 
 .. note::
-    Попробуйте набрать неправильное имя параметра или несуществующий параметр,
-    чтобы увидеть какой будет результат. А затем выполняйте задание.
+    Try typing an invalid parameter name or a nonexistent parameter to see what the result is. And then do the task.
 
-Если выбран существующий параметр,
-вывести информацию о соответствующем параметре, указанного устройства.
+If an existing parameter is selected display information about corresponding parameter of specified device.
 
-Пример выполнения скрипта:
+Example of script execution:
 
 ::
 
     $ python task_5_1c.py
-    Введите имя устройства: r1
-    Введите имя параметра (ios, model, vendor, location, ip): ips
-    Такого параметра нет
+    Enter device name: r1
+    Enter parameter name (ios, model, vendor, location, ip): ips
+    No such parameter
 
-Ограничение: нельзя изменять словарь london_co.
+Restriction: You cannot change london_co dictionary.
 
-Все задания надо выполнять используя только пройденные темы.
-То есть эту задачу можно решить без использования условия if и других тем, которые рассматриваются позже.
+Restriction: All tasks must be performed using only covered topics.
+That is, it is possible to solve this task without using *if* condition and other topics to be discussed later.
 
 .. code:: python
 
@@ -216,26 +208,25 @@
         }
     }
 
-Задание 5.1d
+Task 5.1d
 ~~~~~~~~~~~~
 
-Переделать скрипт из задания 5.1c таким образом, чтобы, при запросе параметра,
-пользователь мог вводить название параметра в любом регистре.
+Modify script from task 5.1c so that when you ask for parameter, user can enter name of parameter in any register.
 
-Пример выполнения скрипта:
+Example of script execution:
 
 ::
 
     $ python task_5_1d.py
-    Введите имя устройства: r1
-    Введите имя параметра (ios, model, vendor, location, ip): IOS
+    Enter device name: r1
+    Enter parameter name (ios, model, vendor, location, ip): IOS
     15.4
 
 
-Ограничение: нельзя изменять словарь london_co.
+Restriction: You cannot change london_co dictionary.
 
-Все задания надо выполнять используя только пройденные темы.
-То есть эту задачу можно решить без использования условия if и других тем, которые рассматриваются позже.
+Restriction: All tasks must be performed using only covered topics.
+That is, it is possible to solve this task without using *if* condition and other topics to be discussed later.
 
 .. code:: python
 
@@ -265,12 +256,12 @@
         }
     }
 
-Задание 5.2
+Task 5.2
 ~~~~~~~~~~~
 
-Запросить у пользователя ввод IP-сети в формате: ``10.1.1.0/24``
+Request user to enter an IP network in format: ``10.1.1.0/24``
 
-Затем вывести информацию о сети и маске в таком формате:
+Then display network and mask information in this format:
 
 ::
 
@@ -283,35 +274,33 @@
     255       255       255       0
     11111111  11111111  11111111  00000000
 
-Проверить работу скрипта на разных комбинациях сеть/маска.
+Check script on different combinations of network/mask.
 
-Подсказка: Получить маску в двоичном формате можно так:
+Hint: Get a mask in binary format:
 
 ::
 
     In [1]: "1" * 28 + "0" * 4
     Out[1]: "11111111111111111111111111110000"
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
-Задание 5.2a
+Task 5.2a
 ~~~~~~~~~~~~
 
-Всё, как в задании 5.2, но, если пользователь ввел адрес хоста, а не адрес сети,
-надо преобразовать адрес хоста в адрес сети и вывести адрес сети и маску, как в задании 5.2.
+It’s like task 5.2 but if user entered host address instead of network address, you have to convert host address to network address and display network address and mask as in task 5.2.
 
-Пример адреса сети (все биты хостовой части равны нулю):
+Example of network address (all host bits are zero):
 
 * 10.0.1.0/24
 * 190.1.0.0/16
 
-Пример адреса хоста:
+Example of host address:
 
 * 10.0.1.1/24 - хост из сети 10.0.1.0/24
 * 10.0.5.1/30 - хост из сети 10.0.5.0/30
 
-Если пользователь ввел адрес 10.0.1.1/24,
-вывод должен быть таким:
+If user entered address 10.0.1.1/24, , the output should be:
 
 ::
 
@@ -324,62 +313,54 @@
     255       255       255       0
     11111111  11111111  11111111  00000000
 
-Проверить работу скрипта на разных комбинациях хост/маска, например: 10.0.5.195/28, 10.0.1.1/24
+Check script on different host/mask combinations, for example: 10.0.5.195/28, 10.0.1.1/24
 
-Подсказка:
+Hint:
 
-Есть адрес хоста в двоичном формате и маска сети 28. Адрес сети это 
-первые 28 бит адреса хоста + 4 ноля. То есть, например, адрес хоста 10.1.1.195/28  в двоичном формате будет ``bin_ip = "00001010000000010000000111000011"``.
+There is a binary host address and a network mask 28. Network address is the first 28 bits of host address + 4 zeros. That is, for example, host address 10.1.1.195/28 in binary format will be ``bin_ip = "00001010000000010000000111000011"``.
 
-А адрес сети будет первых 28 символов из bin_ip + 0000 (4 потому что всего в адресе может быть 32 бита, а 32 - 28 = 4): ``00001010000000010000000111000000``
+And network address will be the first 28 symbols from bin_ip + 0000 (4 because total address can be 32 bits and 32 - 28 = 4): ``00001010000000010000000111000000``
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
 
-Задание 5.2b
+Task 5.2b
 ~~~~~~~~~~~~
 
-Преобразовать скрипт из задания 5.2a таким образом,
-чтобы сеть/маска не запрашивались у пользователя,
-а передавались как аргумент скрипту.
+Modify script from task 5.2a so that the network/mask is not requested from user, but is passed as script argument.
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
-Задание 5.3
+Task 5.3
 ~~~~~~~~~~~~
 
-Скрипт должен запрашивать у пользователя:
+Script must request from user:
 
-* информацию о режиме интерфейса (access/trunk)
-* номере интерфейса (тип и номер, вида Gi0/3)
-* номер VLANа (для режима trunk будет вводиться список VLANов)
+* interface mode (access/trunk)
+* interface number (type and number, like Gi0/3)
+* Vlan number (Vlan list will be entered for trunk mode)
 
-В зависимости от выбранного режима, на стандартный поток вывода,
-должна возвращаться соответствующая конфигурация access или trunk
-(шаблоны команд находятся в списках access_template и trunk_template).
+Depending on selected mode, the appropriate access or trunk configuration should be displayed (command templates are in access_template and trunk_template lists).
 
-При этом, сначала должна идти строка interface и подставлен номер интерфейса,
-а затем соответствующий шаблон, в который подставлен номер VLANа (или список VLANов).
+First, interface string goes and interface number is substituted and then goes the corresponding template into which Vlan number (or Vlan list) is substituted.
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
-То есть эту задачу можно решить без использования условия if и циклов for/while.
+Restriction: All tasks must be performed using only covered topics.
+That is, it is possible to solve this task without using *if* condition and *for/while* loops.
 
-Подсказка:
-Подводящим к этому заданию было задание 5.1.
-Чтобы было легче решить это задание, можно посмотреть на задание 5.1 и разобраться как там получилось
-вывести разную информацию в зависимости от ввода пользователя.
+Hint:
+Leading to this task was task 5.1. To make this task easier, you can look at task 5.1 and figure out how it was possible to extract different information depending on user’s input.
 
 
-Ниже примеры выполнения скрипта, чтобы было проще понять задачу.
+The following are examples of how to execute a script to make task easier to understand.
 
-Пример выполнения скрипта, при выборе режима access:
+Example of script execution when you select access mode:
 
 ::
 
     $ python task_5_3.py
-    Введите режим работы интерфейса (access/trunk): access
-    Введите тип и номер интерфейса: Fa0/6
-    Введите номер влан(ов): 3
+    Enter interface mode (access/trunk): access
+    Enter type and interface number: Fa0/6
+    Enter number of vlan (vlans): 3
 
     interface Fa0/6
     switchport mode access
@@ -388,14 +369,14 @@
     spanning-tree portfast
     spanning-tree bpduguard enable
 
-Пример выполнения скрипта, при выборе режима trunk:
+Example of script execution if trunk mode is selected:
 
 ::
 
     $ python task_5_3.py
-    Введите режим работы интерфейса (access/trunk): trunk
-    Введите тип и номер интерфейса: Fa0/7
-    Введите номер влан(ов): 2,3,4,5
+    Enter interface mode (access/trunk): trunk
+    Enter type and interface number: Fa0/7
+    Enter number of vlan (vlans): 2,3,4,5
 
     interface Fa0/7
     switchport trunk encapsulation dot1q
@@ -415,18 +396,17 @@
         "switchport trunk allowed vlan {}"
     ]
 
-Задание 5.3a
+Task 5.3a
 ~~~~~~~~~~~~
 
 
-Дополнить скрипт из задания 5.3 таким образом, чтобы, в зависимости от выбранного режима,
-задавались разные вопросы в запросе о номере VLANа или списка VLANов:
+Complete script from task 5.3 in such a way that depending on selected mode the different questions are asked in request for Vlan number or Vlan list:
 
-* для access: "Введите номер VLAN:"
-* для trunk: "Введите разрешенные VLANы:"
+* for access: "Enter VLAN number:"
+* for trunk: "Enter allowed VLANs:"
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
-То есть эту задачу можно решить без использования условия if и циклов for/while.
+Restriction: All tasks must be performed using only covered topics.
+That is, it is possible to solve this task without using *if* condition and *for/while* loops.
 
 .. code:: python
 

@@ -1,14 +1,14 @@
-Дополнительные материалы
+Additional material
 ------------------------
 
-Документация:
+Documentation:
 
 -  `Reading and Writing
    Files <https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files>`__
 -  `The with
    statement <https://docs.python.org/3/reference/compound_stmts.html#the-with-statement>`__
 
-Статьи:
+Articles:
 
 -  `The Python "with" Statement by
    Example <http://preshing.com/20110920/the-python-with-statement-by-example/>`__

@@ -1,31 +1,24 @@
-Функция compile
+Compile function
 ---------------
 
-В Python есть возможность заранее скомпилировать регулярное выражение, а
-затем использовать его. Это особенно полезно в тех случаях, когда
-регулярное выражение много используется в скрипте.
+Python has the ability to pre-compile a regular expression and then use it. This is particularly useful when regular expression is used a lot in the script.
 
-Использование компилированного выражения может ускорить обработку, и,
-как правило, такой вариант удобней использовать, так как в программе
-разделяется создание регулярного выражения и его использование. Кроме
-того, при использовании функции re.compile создается объект RegexObject,
-у которого есть несколько дополнительных возможностей, которых нет в
-объекте MatchObject.
+The use of a compiled expression can speed up processing and it is generally more convenient to use this option as the program divides the creation of a regular expression and its use. In addition, using re.compile function creates a RegexObject object that has several additional features that are not present in the MatchObject object.
 
-Для компиляции регулярного выражения используется функция re.compile:
+To compile a regular expression, use re.compile:
 
 .. code:: python
 
     In [52]: regex = re.compile(r'\d+ +\S+ +\w+ +\S+')
 
-Она возвращает объект RegexObject:
+It returns the RegexObject object:
 
 .. code:: python
 
     In [53]: regex
     Out[53]: re.compile(r'\d+ +\S+ +\w+ +\S+', re.UNICODE)
 
-У объекта RegexObject доступны такие методы и атрибуты:
+RegexObject has such methods and attributes:
 
 .. code:: python
 
@@ -45,11 +38,9 @@
      'sub',
      'subn']
 
-Обратите внимание, что у объекта Regex доступны методы search, match,
-finditer, findall. Это те же функции, которые доступны в модуле
-глобально, но теперь их надо применять к объекту.
+Note that Regex object has search(), match(), finditer(), findall() methods available. These are the same functions that are available in the module globally, but now they have to be applied to the object.
 
-Пример использования метода search:
+An example of using search() method:
 
 .. code:: python
 
@@ -57,10 +48,9 @@ finditer, findall. Это те же функции, которые доступ�
 
     In [68]: match = regex.search(line)
 
-Теперь search надо вызывать как метод объекта regex. И передать как
-аргумент строку.
+Now search() should be called as the method of *regex* object. And pass the string as an argument.
 
-Результатом будет объект Match:
+The result is a Match object:
 
 .. code:: python
 
@@ -70,8 +60,7 @@ finditer, findall. Это те же функции, которые доступ�
     In [70]: match.group()
     Out[70]: '100    a1b2.ac10.7000    DYNAMIC     Gi0/1'
 
-Пример компиляции регулярного выражения и его использования на примере
-разбора лог-файла (файл parse_log_compile.py):
+An example of compiling a regular expression and its use based on example of a log file (parse_log_compile.py file):
 
 .. code:: python
 
@@ -92,8 +81,7 @@ finditer, findall. Это те же функции, которые доступ�
 
     print('Петля между портами {} в VLAN {}'.format(', '.join(ports), vlan))
 
-Это модифицированный пример с использованием finditer. Тут изменилось
-описание регулярного выражения:
+This is a modified example of finditer() usage. Description of regular expression changed:
 
 .. code:: python
 
@@ -102,24 +90,23 @@ finditer, findall. Это те же функции, которые доступ�
                        r'is flapping between port '
                        r'(\S+) and port (\S+)')
 
-И вызов finditer теперь выполняется как метод объекта regex:
+And now the call of finditer() is executed as a *regex* object method:
 
 .. code:: python
 
         for m in regex.finditer(f.read()):
 
-Параметры, которые доступны только при использовании re.compile
+Options that are available only when using re.compile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-При использовании функции re.compile в методах search, match, findall,
-finditer и fullmatch появляются дополнительные параметры: 
+When using re.compile in search(), match(), findall(), finditer() and fullmatch() methods, additional parameters appear:
 
-* pos - позволяет указывать индекс в строке, с которого надо начать искать совпадение 
-* endpos - указывает, до какого индекса надо выполнять поиск
+* pos - allows you to specify an index in the string from where to start looking for a match
+* endpos - specifies from which index the search should be started
 
-Их использование аналогично выполнению среза строки.
+Their use is similar to the execution of a string slice.
 
-Например, таким будет результат без указания параметров pos, endpos:
+For example, this is the result without specifying *pos*, *endpos* parameters:
 
 .. code:: python
 
@@ -132,7 +119,7 @@ finditer и fullmatch появляются дополнительные пара
     In [78]: match.group()
     Out[78]: '100    a1b2.ac10.7000    DYNAMIC     Gi0/1'
 
-В этом случае указывается начальная позиция поиска:
+In this case, the initial search position should be indicated:
 
 .. code:: python
 
@@ -141,7 +128,7 @@ finditer и fullmatch появляются дополнительные пара
     In [80]: match.group()
     Out[80]: '00    a1b2.ac10.7000    DYNAMIC     Gi0/1'
 
-Указание начальной позиции аналогично срезу строки:
+The initial entry is the same as string slice:
 
 .. code:: python
 
@@ -150,7 +137,7 @@ finditer и fullmatch появляются дополнительные пара
     In [82]: match.group()
     Out[82]: '00    a1b2.ac10.7000    DYNAMIC     Gi0/1'
 
-И последний пример - использование двух индексов:
+A final example is the use of two indexes:
 
 .. code:: python
 
@@ -163,7 +150,7 @@ finditer и fullmatch появляются дополнительные пара
     In [93]: match.group()
     Out[93]: '00    a1b2.ac10.7000    DYNAMIC     Gi'
 
-И аналогичный срез строки:
+And a similar string slice:
 
 .. code:: python
 
@@ -172,5 +159,5 @@ finditer и fullmatch появляются дополнительные пара
     In [95]: match.group()
     Out[95]: '00    a1b2.ac10.7000    DYNAMIC     Gi'
 
-В методах match, findall, finditer и fullmatch параметры pos и endpos
-работают аналогично.
+In match(), findall(), finditer() and fullmatch() methods *pos* and *endpos* parameters work similarly.
+

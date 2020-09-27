@@ -1,43 +1,40 @@
-Открытие файлов
+File opening
 ---------------
 
-Для начала работы с файлом, его надо открыть.
+To start working with a file you have to open it.
 
 ``open()``
 ^^^^^^^^^^
 
-Для открытия файлов, чаще всего, используется функция ``open()``:
+The ``open()`` function is most often used to open files:
 
 .. code:: python
 
     file = open('file_name.txt', 'r')
 
-В функции open():
+In the open() function:
 
--  ``'file_name.txt'`` - имя файла
--  тут можно указывать не только имя, но и путь (абсолютный или относительный)
--  ``'r'`` - режим открытия файла
+-  ``'file_name.txt'`` - file name
+-  You can specify not only the name but also the path (absolute or relative)
+-  ``'r'`` - file opening mode
 
-Функция ``open()`` создает объект file, к которому потом можно применять
-различные методы, для работы с ним.
+The ``open()`` function creates a **file** object to which different methods can then be applied to work with it.
 
-Режимы открытия файлов:
+File opening modes:
 
-*  ``r`` - открыть файл только для чтения (значение по умолчанию)
-*  ``r+`` - открыть файл для чтения и записи
-*  ``w`` - открыть файл для записи
+*  ``r`` - open file in read-only mode (default)
+*  ``r+`` - open file for reading and writing
+*  ``w`` - open file for writing only
 
-  *  если файл существует, то его содержимое удаляется
-  *  если файл не существует, то создается новый
+  *  if the file exists, its content is removed
+  *  if the file does not exist, a new one is created
 
-*  ``w+`` - открыть файл для чтения и записи
-  *  если файл существует, то его содержимое удаляется
-  *  если файл не существует, то создается новый
+*  ``w+`` - open file for reading and writing
+  *  if the file exists, its content is removed
+  *  if the file does not exist, a new one is created
 
-*  ``a`` - открыть файл для дополнения записи. Данные добавляются в
-   конец файла
-*  ``a+`` - открыть файл для чтения и записи. Данные добавляются в конец
-   файла
+*  ``a`` - open  file to add a data. Data is added to end of file
+*  ``a+`` - open file for reading and writing. Data is added to end of file
 
 .. note::
     r - read; a - append; w - write

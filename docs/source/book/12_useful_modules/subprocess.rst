@@ -1,26 +1,19 @@
-Модуль subprocess
+Subprocess
 -----------------
 
-Модуль subprocess позволяет создавать новые процессы.
-При этом он может подключаться к 
-`стандартным потокам ввода/вывода/ошибок <http://xgu.ru/wiki/stdin>`__ 
-и получать код возврата.
+Subprocess module allows you to create new processes. It can then connect to `standard input/output/error streams <http://xgu.ru/wiki/stdin>`__ and receive a return code.
 
-С помощью subprocess можно, например, выполнять любые команды Linux из
-скрипта.
-И в зависимости от ситуации получать вывод или только проверять, что
-команда выполнилась без ошибок.
+Subprocess can for example execute any Linux commands from the script. And depending on the situation get the output or just check that command has been performed correctly.
 
 .. note::
-    В Python 3.5 cинтаксис модуля subprocess изменился.
+    In Python 3.5, syntax of subprocess module has changed.
 
-Функция ``subprocess.run()``
+Function ``subprocess.run()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Функция ``subprocess.run()`` - основной способ работы с модулем
-subprocess.
+Function ``subprocess.run()`` is the main way of working with the subprocess module.
 
-Самый простой вариант использования функции - запуск её таким образом:
+The easiest way to use a function is to call it in this way:
 
 .. code:: python
 
@@ -31,9 +24,7 @@ subprocess.
     module_search.md             useful_functions
     naming_conventions           useful_modules
 
-В переменной result теперь содержится специальный объект
-CompletedProcess. Из этого объекта можно получить информацию о
-выполнении процесса, например, о коде возврата:
+The **result** variable now contains a special CompletedProcess object. From this object you can get information about the execution of the process, such as the return code:
 
 .. code:: python
 
@@ -43,10 +34,9 @@ CompletedProcess. Из этого объекта можно получить и�
     In [4]: result.returncode
     Out[4]: 0
 
-Код 0 означает, что программа выполнилась успешно.
+Code 0 means that program was executed successfully.
 
-Если необходимо вызвать команду с аргументами, её
-нужно передавать таким образом (как список):
+If it is necessary to call a command with arguments, it should be passed in this way (as a list):
 
 .. code:: python
 
@@ -60,16 +50,14 @@ CompletedProcess. Из этого объекта можно получить и�
     4 drwxr-xr-x 2 vagrant vagrant 4096 Jun 17 16:28 useful_modules
     4 -rw-r--r-- 1 vagrant vagrant   49 Jun  7 19:35 version_control.md
 
-При попытке выполнить команду с использованием wildcard-выражений,
-например, использовать ``*``, возникнет ошибка:
+Trying to execute a command using wildcard expressions, for example using ``*``, will cause an error:
 
 .. code:: python
 
     In [6]: result = subprocess.run(['ls', '-ls', '*md'])
     ls: cannot access *md: No such file or directory
 
-Чтобы вызывать команды, в которых используются wildcard-выражения, нужно
-добавлять аргумент shell и вызывать команду таким образом:
+To call commands in which wildcard expressions are used, you add a **shell** argument and call the command:
 
 .. code:: python
 
@@ -79,9 +67,7 @@ CompletedProcess. Из этого объекта можно получить и�
     4 -rw-r--r-- 1 vagrant vagrant  277 Jun  7 19:35 README.md
     4 -rw-r--r-- 1 vagrant vagrant   49 Jun  7 19:35 version_control.md
 
-Ещё одна особенность функции ``run()`` - она ожидает завершения выполнения
-команды. Если попробовать, например, запустить команду ping, то этот
-аспект будет заметен:
+Another feature of the ``run()`` If you try to run a ping command, for example, this aspect will be visible:
 
 .. code:: python
 
@@ -95,33 +81,28 @@ CompletedProcess. Из этого объекта можно получить и�
     3 packets transmitted, 3 received, 0% packet loss, time 2004ms
     rtt min/avg/max/mdev = 54.498/54.798/55.116/0.252 ms
 
-Получение результата выполнения команды
+Getting the result of a command execution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-По умолчанию функция run возвращает результат выполнения команды на
-стандартный поток вывода.
-Если нужно получить результат выполнения команды, надо добавить аргумент
-stdout и указать ему значение subprocess.PIPE:
+By default, the run() function returns the result of a command execution to a standard output stream. If you want to get the result of command execution, add **stdout** argument with  value **subprocess.PIPE**:
 
 .. code:: python
 
     In [9]: result = subprocess.run(['ls', '-ls'], stdout=subprocess.PIPE)
 
-Теперь можно получить результат выполнения команды таким образом:
+Now you can get the result of command executing in this way:
 
 .. code:: python
 
     In [10]: print(result.stdout)
     b'total 28\n4 -rw-r--r-- 1 vagrant vagrant   56 Jun  7 19:35 ipython_as_mngmt_console.md\n4 -rw-r--r-- 1 vagrant vagrant 1638 Jun  7 19:35 module_search.md\n4 drwxr-xr-x 2 vagrant vagrant 4096 Jun  7 19:35 naming_conventions\n4 -rw-r--r-- 1 vagrant vagrant  277 Jun  7 19:35 README.md\n4 drwxr-xr-x 2 vagrant vagrant 4096 Jun 16 05:11 useful_functions\n4 drwxr-xr-x 2 vagrant vagrant 4096 Jun 17 16:30 useful_modules\n4 -rw-r--r-- 1 vagrant vagrant   49 Jun  7 19:35 version_control.md\n'
 
-Обратите внимание на букву b перед строкой. Она означает, что модуль
-вернул вывод в виде байтовой строки.
-Для перевода её в unicode есть два варианта:
+Note letter **b** before line. It means that module returned the output as a byte string. There are two options to translate it into unicode:
 
--  выполнить decode полученной строки
--  указать аргумент encoding
+-  decode received string
+-  specify encoding argument
 
-Вариант с decode:
+Example with decode:
 
 .. code:: python
 
@@ -135,7 +116,7 @@ stdout и указать ему значение subprocess.PIPE:
     4 drwxr-xr-x 2 vagrant vagrant 4096 Jun 17 16:30 useful_modules
     4 -rw-r--r-- 1 vagrant vagrant   49 Jun  7 19:35 version_control.md
 
-Вариант с encoding:
+Example with encoding:
 
 .. code:: python
 
@@ -151,14 +132,10 @@ stdout и указать ему значение subprocess.PIPE:
     4 drwxr-xr-x 2 vagrant vagrant 4096 Jun 17 16:31 useful_modules
     4 -rw-r--r-- 1 vagrant vagrant   49 Jun  7 19:35 version_control.md
 
-Отключение вывода
+Output disabling
 ~~~~~~~~~~~~~~~~~
 
-Иногда достаточно получения кода возврата и нужно отключить вывод
-результата выполнения на стандартный поток вывода, и при этом сам
-результат не нужен.
-Это можно сделать, передав функции run аргумент stdout со значением
-subprocess.DEVNULL:
+Sometimes it is enough to get only return code and need to disable output of execution result on standard output stream. This can be done by passing to run() function the **stdout**  argument with value **subprocess.DEVNULL**:
 
 .. code:: python
 
@@ -170,20 +147,18 @@ subprocess.DEVNULL:
     In [16]: print(result.returncode)
     0
 
-Работа со стандартным потоком ошибок
+Working with standard error stream
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Если команда была выполнена с ошибкой или не отработала корректно, вывод
-команды попадет на стандартный поток ошибок.
+If the command was executed with error or failed, the output of command will fall on standard error stream.
 
-Получить этот вывод можно так же, как и стандартный поток вывода:
+This can be obtained in the same way as the standard output stream:
 
 .. code:: python
 
     In [17]: result = subprocess.run(['ping', '-c', '3', '-n', 'a'], stderr=subprocess.PIPE, encoding='utf-8')
 
-Теперь в result.stdout пустая строка, а в result.stderr находится
-стандартный поток вывода:
+Now result.stdout has empty string and result.stderr has standard output stream:
 
 .. code:: python
 
@@ -200,7 +175,7 @@ subprocess.DEVNULL:
 Примеры использования модуля
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Пример использования модуля subprocess (файл subprocess_run_basic.py):
+Example of subprocess module use (subprocess_run_basic.py file):
 
 .. code:: python
 
@@ -213,7 +188,7 @@ subprocess.DEVNULL:
     else:
         print('Unreachable')
 
-Результат выполнения будет таким:
+The result will be:
 
 .. code:: python
 
@@ -228,12 +203,9 @@ subprocess.DEVNULL:
     rtt min/avg/max/mdev = 53.962/54.145/54.461/0.293 ms
     Alive
 
-То есть, результат выполнения команды выводится на стандартный поток
-вывода.
+That is, the result of command execution is printed to standard output stream.
 
-Функция ping_ip проверяет доступность IP-адреса и возвращает True и
-stdout, если адрес доступен, или False и stderr, если адрес недоступен
-(файл subprocess\_ping\_function.py):
+The ping_ip function checks the availability of the IP address and returns True and **stdout** if address is available, or False and **stderr** if address is not available (subprocess\_ping\_function.py file):
 
 .. code:: python
 
@@ -262,7 +234,7 @@ stdout, если адрес доступен, или False и stderr, если �
     print(ping_ip('8.8.8.8'))
     print(ping_ip('a'))
 
-Результат выполнения будет таким:
+The result will be:
 
 ::
 
@@ -270,13 +242,9 @@ stdout, если адрес доступен, или False и stderr, если �
     (True, 'PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.\n64 bytes from 8.8.8.8: icmp_seq=1 ttl=43 time=63.8 ms\n64 bytes from 8.8.8.8: icmp_seq=2 ttl=43 time=55.6 ms\n64 bytes from 8.8.8.8: icmp_seq=3 ttl=43 time=55.9 ms\n\n--- 8.8.8.8 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 55.643/58.492/63.852/3.802 ms\n')
     (False, 'ping: unknown host a\n')
 
-На основе этой функции, можно сделать функцию, которая будет проверять
-список IP-адресов и возвращать в результате выполнения два списка:
-доступные и недоступные адреса.
+Based on this function you can make a function that will check the list of IP addresses and return as a result two lists: accessible and inaccessible addresses.
 
 .. note::
-    Это вынесено в задания к разделу
+    You will find it in tasks of section
 
-Если количество IP-адресов, которые нужно проверить, большое, можно
-использовать модуль threading или multiprocessing, чтобы ускорить
-проверку.
+If the number of IP addresses to check is large, you can use threading or multiprocessing modules to speed up verification.

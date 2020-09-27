@@ -1,55 +1,51 @@
-Группа без захвата
+Non-capturing group
 ------------------
 
-По умолчанию все, что попало в группу, запоминается. Это называется
-группа с захватом.
+By default, everything that fell into the group is remembered. It’s called a capturing group.
 
-Иногда скобки нужны для указания части выражения, которое
-повторяется. И, при этом, не нужно запоминать выражение.
+Sometimes brackets are needed to indicate the part of the expression that repeats. And, in doing so, you don’t need to remember the expression.
 
-Например, надо получить MAC-адрес, VLAN и порты из такого лог-сообщения:
+For example, get a MAC address, VLAN and ports from such log message:
 
 .. code:: python
 
     In [1]: log = 'Jun  3 14:39:05.941: %SW_MATM-4-MACFLAP_NOTIF: Host f03a.b216.7ad7 in vlan 10 is flapping between port Gi0/5 and port Gi0/15'
 
-Регулярное выражение, которое описывает нужные подстроки:
+A regular expression that describes the substrings needed:
 
 .. code:: python
 
     In [2]: match = re.search('((\w{4}\.){2}\w{4}).+vlan (\d+).+port (\S+).+port (\S+)', log)
 
-Выражение состоит из таких частей: 
+The expression consists of the following parts:
 
-* ``((\w{4}\.){2}\w{4})`` - сюда попадет MAC-адрес 
-* ``\w{4}\.`` - эта часть описывает 4 буквы или цифры и точку 
-* ``(\w{4}\.){2}`` - тут скобки нужны, чтобы указать, что 4 буквы 
-  или цифры и точка повторяются два раза 
-* ``\w{4}`` - затем 4 буквы или цифры 
-* ``.+vlan (\d+)`` - в группу попадет номер VLAN 
-* ``.+port (\S+)`` - первый интерфейс 
-* ``.+port (\S+)`` - второй интерфейс
+* ``((\w{4}\.){2}\w{4})`` - MAC address gets here 
+* ``\w{4}\.`` - this part describes 4 letters or digits and a dot
+* ``(\w{4}\.){2}`` - here the brackets are used to indicate that 4 letters or digits and a dot are repeated twice
+* ``\w{4}`` - then 4 letters or numbers
+* ``.+vlan (\d+)`` - VLAN number falls into the group 
+* ``.+port (\S+)`` - the first interface
+* ``.+port (\S+)`` - the second interface
 
-Метод groups вернет такой результат:
+The groups() method returns this result:
 
 .. code:: python
 
     In [3]: match.groups()
     Out[3]: ('f03a.b216.7ad7', 'b216.', '10', 'Gi0/5', 'Gi0/15')
 
-Второй элемент, по сути, лишний. Он попал в вывод из-за скобок в
-выражении ``(\w{4}\.){2}``.
+The second element is essentially superfluous. It appeared in the output because of the brackets in the expression ``(\w{4}\.){2}``.
 
-В этом случае нужно отключить захват в группе. Это делается добавлением
-``?:`` после открывающейся скобки группы.
+In that case, we need to disable the group capturing. This is done by adding 
+``?:`` after the group bracket opens.
 
-Теперь выражение выглядит так:
+Now the expression looks like this:
 
 .. code:: python
 
     In [4]: match = re.search('((?:\w{4}\.){2}\w{4}).+vlan (\d+).+port (\S+).+port (\S+)', log)
 
-И, соответственно, группы:
+Accordingly, the groups() method result:
 
 .. code:: python
 

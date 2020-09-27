@@ -1,18 +1,10 @@
-Область видимости
+Visibility area
 ~~~~~~~~~~~~~~~~~
 
-У каждого метода в классе своя локальная область видимости. Это значит,
-что один метод класса не видит переменные другого метода класса. Для
-того чтобы переменные были доступны, надо присваивать их экземпляру
-через ``self.name``.
-По сути метод - это функция привязанная к объекту. Поэтому все
-нюансы, которые касаются функция, относятся и к методам.
+Each method in class has its own local visibility area. This means that one class method does not see variables of another class method. For variables to be available, you have to assign their instance through  ``self.name``.
+Basically, method is a function tied to an object. Therefore, all nuances that concern function apply to methods.
 
-Переменные экземпляра доступны в другом методе, потому что каждому
-методу первым аргументом передается сам экзепляр. В примере ниже, в
-методе ``__init__`` переменные hostname и model присваиваются
-экземпляру, а затем в info используются, за счет того, что экземпляр
-передается первым аргументом:
+Variable instances are available in another method because instance itself is passed as a first argument to each method. In the example below in  ``__init__`` method, *hostname* and *model* variables are assigned to an instance and then used in info() due to the instance being passed as a first argument:
 
 .. code:: python
 

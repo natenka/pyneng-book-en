@@ -1,21 +1,20 @@
-Форматирование строк с оператором ``%``
+String formatting with ``%`` operator
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Пример использования оператора %:
+Example of % operator use:
 
 .. code:: python
 
     In [2]: "interface FastEthernet0/%s" % '1'
     Out[2]: 'interface FastEthernet0/1'
 
-В старом синтаксисе форматирования строк используются такие обозначения:
+Old string format syntax uses these symbols:
 
-* ``%s`` - строка или любой другой объект в котором есть строковое представление
+* ``%s`` - string or any other object with a string type
 * ``%d`` - integer
 * ``%f`` - float
 
-Вывести данные столбцами одинаковой ширины по 15 символов с
-выравниванием по правой стороне:
+Output data columns of equal width of 15 characters with right side alignment:
 
 .. code:: python
 
@@ -24,16 +23,16 @@
     In [4]: print("%15s %15s %15s" % (vlan, mac, intf))
                 100  aabb.cc80.7000           Gi0/1
 
-Выравнивание по левой стороне:
+Left side alignment:
 
 .. code:: python
 
     In [6]: print("%-15s %-15s %-15s" % (vlan, mac, intf))
     100             aabb.cc80.7000  Gi0/1
 
-С помощью форматирования строк можно также влиять на отображение чисел.
+You can also use string formatting to influence the display of numbers.
 
-Например, можно указать, сколько цифр после запятой выводить:
+For example, you can specify how many digits to display after comma:
 
 .. code:: python
 
@@ -41,6 +40,5 @@
     3.333
 
 .. note::
-    У форматирования строк есть ещё много возможностей. Хорошие примеры
-    и объяснения двух вариантов форматирования строк можно найти
-    `тут <https://pyformat.info/>`__.
+    String formatting still has many possibilities. Good examples and explanations of two string formatting options can be found
+    `here <https://pyformat.info/>`__.

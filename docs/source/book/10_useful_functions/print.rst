@@ -1,19 +1,17 @@
 .. _print:
 
-Функция print
+Print
 -------------
 
-Функция ``print()`` уже не раз использовалась в книге, но до сих пор не
-рассматривался ее полный синтаксис:
+The ``print()`` function has been used many times in the book but its full syntax has not yet been considered:
 
 .. code:: python
 
     print(*items, sep=' ', end='\n', file=sys.stdout, flush=False)
 
-Функция print выводит все элементы, разделяя их значением sep, и
-завершает вывод значением end.
+The print() function outputs all elements by separating them by their **sep** value and finishes output with the **end** value.
 
-Все элементы, которые передаются как аргументы, конвертируются в строки:
+All elements that are passed as arguments are converted into strings:
 
 .. code:: python
 
@@ -24,7 +22,7 @@
     In [5]: print(1, 2, f, range(10))
     1 2 <function f at 0xb4de926c> range(0, 10)
 
-Для функций f и range результат равнозначен применению str():
+For functions f() and range() the result is equivalent to str():
 
 .. code:: python
 
@@ -37,17 +35,16 @@
 sep
 ~~~
 
-Параметр sep контролирует то, какой разделитель будет использоваться
-между элементами.
+The sep parameter controls which separator will be used between elements.
 
-По умолчанию используется пробел:
+By default, the space is used:
 
 .. code:: python
 
     In [8]: print(1, 2, 3)
     1 2 3
 
-Можно изменить значение sep на любую другую строку:
+You can change **sep** value to any other string:
 
 .. code:: python
 
@@ -67,11 +64,9 @@ sep
     3
 
 .. note::
-    Обратите внимание на то, что все аргументы, которые управляют
-    поведением функции print, надо передавать как ключевые, а не
-    позиционные.
+    Note that all arguments that manage behavior of print() function must be passed on as keyword, not positional.
 
-В некоторых ситуациях функция print может заменить метод join:
+In some situations print() function can replace join() method:
 
 .. code:: python
 
@@ -83,16 +78,15 @@ sep
 end
 ~~~
 
-Параметр end контролирует то, какое значение выведется после вывода всех
-элементов.
-По умолчанию используется перевод строки:
+The **end** parameter controls which value will be displayed after all elements are printed. 
+By default, line feed character is used:
 
 .. code:: python
 
     In [19]: print(1,2,3)
     1 2 3
 
-Можно изменить значение end на любую другую строку:
+You can change **end** value to any other string:
 
 .. code:: python
 
@@ -103,12 +97,9 @@ end
 file
 ~~~~
 
-Параметр file контролирует то, куда выводятся значения функции print. По
-умолчанию все выводится на стандартный поток вывода - sys.stdout.
+The **file** parameter controls where values of print() function are displayed. The default output is sys.stdout.
 
-Python позволяет передавать file как аргумент любой объект с методом
-write(string). За счет этого с помощью print можно записывать строки в
-файл:
+Python allows to pass to **file** as an argument any object with write(string) method. 
 
 .. code:: python
 
@@ -135,13 +126,9 @@ write(string). За счет этого с помощью print можно за�
 flush
 ~~~~~
 
-По умолчанию при записи в файл или выводе на стандартный поток вывода
-вывод буферизируется. Функция print позволяет отключать буферизацию.
+By default, when writing to a file or print to a standard output stream, the output is buffered.  The print() function allows to disable buffering. You can control it in a file.
 
-    Это можно контролировать и в файле
-
-Пример скрипта, который выводит число от 0 до 10 каждую секунду (файл
-print_nums.py):
+Example script that displays a number from 0 to 10 every second (print_nums.py file):
 
 .. code:: python
 
@@ -151,11 +138,9 @@ print_nums.py):
         print(num)
         time.sleep(1)
 
-Попробуйте запустить скрипт и убедиться, что числа выводятся раз в
-секунду.
+Try running the script and make sure the numbers are displayed once per second.
 
-Теперь, аналогичный скрипт, но числа будут выводиться в одной строке
-(файл print_nums_oneline.py):
+Now, a similar script but the numbers will appear in one line (print_nums_oneline.py file):
 
 .. code:: python
 
@@ -165,14 +150,11 @@ print_nums.py):
         print(num, end=' ')
         time.sleep(1)
 
-Попробуйте запустить функцию. Числа не выводятся по одному в секунду, а
-выводятся все через 10 секунд.
+Try running the function. The numbers does not appear one per second but all appear after 10 seconds.
 
-Это связано с тем, что при выводе на стандартный поток вывода flush
-выполняется после перевода строки.
+This is because when output is displayed on standard output the **flush** is performed after line feed character.
 
-Чтобы скрипт отрабатывал как нужно, необходимо установить flush равным
-True (файл print_nums_oneline_fixed.py):
+In order to make script work properly the **flush** should be set to True (print_nums_oneline_fixed.py file):
 
 .. code:: python
 

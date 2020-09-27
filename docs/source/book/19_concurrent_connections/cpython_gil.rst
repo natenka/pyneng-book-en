@@ -1,84 +1,48 @@
-Процессы и потоки в Python (CPython)
+Processes and threads in Python (CPython)
 ------------------------------------
 
-Для начала нам нужно разобраться с терминами:
+First, we need to work out the terms:
 
--  процесс (process) - это, грубо говоря, запущенная программа. Процессу
-   выделяются отдельные ресурсы: память, процессорное время
--  поток (thread) - это единица исполнения в процессе. Потоки разделяют
-   ресурсы процесса, к которому они относятся.
+-  process - roughly speaking, it's a launched program. Separate resources are allocated to the process: memory, processor time
+-  thread - execution unit in the process. Thread share resources of the process to which they relate.
 
-Python (а точнее, CPython - реализация, которая используется в книге)
-оптимизирован для работы в однопоточном режиме. Это хорошо, если в
-программе используется только один поток.
-И, в то же время, у Python есть определенные нюансы работы в
-многопоточном режиме. Связаны они с тем, что CPython использует GIL
-(global interpreter lock).
+Python (or, more precisely, Cpython - the implementation used in the book)
+is optimized to work in single-threaded mode. This is good if program uses only one thread. And, at the same time, Python has certain nuances of running in multithreaded mode. This is because Cpython uses GIL (global interpreter lock).
 
-GIL не дает нескольким потокам исполнять одновременно код Python. Если
-не вдаваться в подробности, то GIL можно представить как некий
-переходящий флаг, который разрешает потокам выполняться. У кого флаг,
-тот может выполнять работу.
-Флаг передается либо каждые сколько-то инструкций Python, либо,
-например, когда выполняются какие-то операции ввода-вывода.
+GIL does not allow multiple threads to execute Python code at the same time. If you don’t go into detail, GIL can be visualized as a sort of flag that carried over from thread to thread. Whoever has the flag can do the job. The flag is transmitted either every Python instruction or, for example, when some type of input-output operation is performed.
 
-Поэтому получается, что разные потоки не будут выполняться параллельно,
-а программа просто будет между ними переключаться, выполняя их в разное
-время.
-Однако, если в программе есть некое "ожидание": пакетов из
-сети, запроса пользователя, пауза типа time.sleep, то в такой программе
-потоки будут выполняться как будто параллельно. А всё потому, что во
-время таких пауз флаг (GIL) можно передать другому потоку.
+Therefore, different threads will not run in parallel and the program will simply switch between them executing them at different times. However, if in the program there is some "wait" (packages from the network, user request, time.sleep pause), then in such program the threads will be executed as if in parallel. This is because during such pauses the flag (GIL) can be passed to another thread.
 
-То есть, потоки отлично подходят для задач, которые связаны с операциями
-ввода-вывода:
+That is, threads are well suited for tasks that involve input-output operations:
 
-* Подключение к оборудованию и подключение по сети в целом
-* Работа с файловой системой
-* Скачивание файлов по сети
+* Connection to equipment and network connectivity in general
+* Working with file system
+* Downloading files
 
 .. note::
 
-    В интернете часто можно встретить выражения "В Python лучше вообще не использовать потоки".
-    К сожалению, такие фразы не всегда пишут с контекстом, а именно,
-    что речь о конкретных задачах, которые завязаны на CPU. 
+    In the Internet it is often possible to find phrases like «In Python it is better not to use threads at all». Unfortunately, such phrases are not always written in context, namely that it is about specific tasks that are tied to CPU.
 
 
-В следующих разделах рассматривается, как использовать потоки для
-подключения по Telnet/SSH. И проверяется, какое суммарное время будет
-занимать исполнение скрипта, по сравнению с последовательным исполнением
-и с использованием процессов.
+The next sections discuss how to use threads to connect via Telnet/SSH. Script execution time will be checked comparing the sequential execution and execution using processes.
 
-Процессы
+Processes 
 ~~~~~~~~
 
-Процессы позволяют выполнять задачи на разных ядрах компьютера. Это
-важно для задач, которые завязаны на CPU.
-Для каждого процесса создается своя копия ресурсов, выделяется память, у
-каждого процесса свой GIL. Это же делает процессы более тяжеловесными,
-по сравнению с потоками.
+Processes allow to execute tasks on different computer cores. This is important for tasks that are tied to CPU. For each process a copy of resources is created, a memory is allocated, each process has its own GIL. This also makes processes heavier than threads.
 
-Кроме того, количество процессов, которые запускаются параллельно,
-зависит от количества ядер и CPU и обычно исчисляется в десятках, тогда
-как количество потоков для операций ввода-вывода может исчисляться в
-сотнях.
+In addition, the number of processes that run in parallel depends on the number of cores and CPU and is usually estimated in dozens, while the number of threads for input-output operations can be estimated in hundreds.
 
-Процессы и потоки можно совмещать, но это усложняет программу и на
-базовом уровне для операций ввода-вывода лучше остановиться на потоках.
+Processes and threads can be combined but this complicates the program and at the base level for input-output operations it is better to stop at threads.
 
 .. note::
     
-    Совмещение потоков и процессов, то есть запуск процесса в программе и внутри него уже
-    запуск потоков - сильно усложняет траблшутинг программы. И лучше такой вариант
-    не использовать.
+    Combining threads and processes, i.e., starting a process in a program and then starting threads inside it, makes troubleshooting difficult. And I’d rather not use that option.
 
 
-Несмотря на то, что, как правило, для задач ввода-вывода лучше использовать потоки
-с некоторыми модулями надо использовать процессы, так как они могут некорректно работать
-с потоками.
+Although it is usually better to use threads for input-output tasks, for some modules it is better to use processes because they may not work correctly with threads.
 
 .. note::
     
-    Помимо процессов и потоков есть еще один вариант одновременного подключения к оборудованию:
-    асинхронное программирование. Этот вариант не рассматривается в книге.
+    In addition to processes and threads, there is another variant of concurrent connections to device: asynchronous programming. This option is not discussed in the book..
 

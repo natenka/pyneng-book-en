@@ -1,10 +1,10 @@
-Полезные методы для работы со словарями
+Useful methods for working with dictionaries
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``clear()``
 ^^^^^^^^^^^
 
-Метод **clear()** позволяет очистить словарь:
+The **clear()** method allows to clear the dictionary:
 
 .. code:: python
 
@@ -18,9 +18,9 @@
 ``copy()``
 ^^^^^^^^^^
 
-Метод **copy()** позволяет создать полную копию словаря.
+The **copy()** method allows to create a full copy of the dictionary.
 
-Если указать, что один словарь равен другому:
+If one dictionary is equal to the other:
 
 .. code:: python
 
@@ -39,12 +39,9 @@
     In [9]: london2['vendor']
     Out[9]: 'Juniper'
 
-В этом случае london2 это еще одно имя, которое ссылается на словарь. И
-при изменениях словаря london меняется и словарь london2, так как это
-ссылки на один и тот же объект.
+In this case london2 is another name that refers to the dictionary. And when you change the “london” dictionary the “london2” dictionary changes as well because it’s a link to the same object.
 
-Поэтому, если нужно сделать копию словаря, надо использовать метод
-copy():
+Therefore, if you want to make a copy of the dictionary, use copy() method:
 
 .. code:: python
 
@@ -66,8 +63,7 @@ copy():
 ``get()``
 ^^^^^^^^^
 
-Если при обращении к словарю указывается ключ, которого нет в словаре,
-возникает ошибка:
+If you query a key that is not present in the dictionary, an error occurs:
 
 .. code:: python
 
@@ -81,8 +77,7 @@ copy():
 
     KeyError: 'ios'
 
-Метод **get()** запрашивает ключ, и если его нет, вместо ошибки
-возвращает ``None``.
+The **get()** method query for the key and if there is no key, returns ``None`` instead.
 
 .. code:: python
 
@@ -91,7 +86,7 @@ copy():
     In [19]: print(london.get('ios'))
     None
 
-Метод get() позволяет также указывать другое значение вместо ``None``:
+The get() method also allows you to specify another value instead of ``None``:
 
 .. code:: python
 
@@ -101,8 +96,7 @@ copy():
 ``setdefault()``
 ^^^^^^^^^^^^^^^^
 
-Метод **setdefault()** ищет ключ, и если его нет, вместо ошибки создает
-ключ со значением ``None``.
+The **setdefault()** method searches for the key and if there is no key, instead of error it creates a key with ``None`` value.
 
 .. code:: python
 
@@ -116,16 +110,14 @@ copy():
     In [24]: london
     Out[24]: {'name': 'London1', 'location': 'London Str', 'vendor': 'Cisco', 'ios': None}
 
-Если ключ есть, setdefault возвращает значение, которое ему
-соответствует:
+If the key is present, setdefault() returns the value that corresponds to it:
 
 .. code:: python
 
     In [25]: london.setdefault('name')
     Out[25]: 'London1'
 
-Второй аргумент позволяет указать, какое значение должно соответствовать
-ключу:
+The second argument allows to specify which value should correspond to the key:
 
 .. code:: python
 
@@ -143,7 +135,7 @@ copy():
      'model': 'Cisco3580'}
 
 
-Метод setdefault заменяет такую конструкцию:
+The setdefault() method replaces this construction:
 
 .. code:: python
 
@@ -157,7 +149,7 @@ copy():
 ``keys(), values(), items()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Методы **keys()**, **values()**, **items()**:
+Methods **keys()**, **values()**, **items()**:
 
 .. code:: python
 
@@ -172,14 +164,11 @@ copy():
     In [27]: london.items()
     Out[27]: dict_items([('name', 'London1'), ('location', 'London Str'), ('vendor', 'Cisco')])
 
-Все три метода возвращают специальные объекты view, которые отображают
-ключи, значения и пары ключ-значение словаря соответственно.
+All three methods return special view objects that display keys, values, and key-value pairs of the dictionary, respectively.
 
-Очень важная особенность view заключается в том, что они меняются вместе
-с изменением словаря. И фактически они лишь дают способ посмотреть на
-соответствующие объекты, но не создают их копию.
+A very important feature of view is that they change together with dictionary. And in fact, they just give you a way to look at the objects, but they don’t make a copy of them.
 
-На примере метода keys():
+Using the example of keys():
 
 .. code:: python
 
@@ -190,11 +179,9 @@ copy():
     In [30]: print(keys)
     dict_keys(['name', 'location', 'vendor'])
 
-Сейчас переменной keys соответствует view dict\_keys, в котором три
-ключа: name, location и vendor.
+Now the keys variable corresponds to view dict\_keys, in which three keys: name, location and vendor.
 
-Но, если мы добавим в словарь еще одну пару ключ-значение, объект keys
-тоже поменяется:
+But if we add another key-value pair to the dictionary, the keys object will also change:
 
 .. code:: python
 
@@ -203,8 +190,7 @@ copy():
     In [32]: keys
     Out[32]: dict_keys(['name', 'location', 'vendor', 'ip'])
 
-Если нужно получить обычный список ключей, который не будет меняться с
-изменениями словаря, достаточно конвертировать view в список:
+If you want to get a simple list of keys that will not be changed with the dictionary changes, it is enough to convert view to the list:
 
 .. code:: python
 
@@ -216,7 +202,7 @@ copy():
 ``del``
 ^^^^^^^
 
-Удалить ключ и значение:
+Remove key and value:
 
 .. code:: python
 
@@ -230,7 +216,7 @@ copy():
 ``update``
 ^^^^^^^^^^
 
-Метод update позволяет добавлять в словарь содержимое другого словаря:
+The update() method allows you to add the contents of one dictionary to another dictionary:
 
 .. code:: python
 
@@ -241,7 +227,7 @@ copy():
     In [40]: r1
     Out[40]: {'name': 'London1', 'location': 'London Str', 'vendor': 'Cisco', 'ios': '15.2'}
 
-Аналогичным образом можно обновить значения:
+Values can be updated in the same way:
 
 .. code:: python
 

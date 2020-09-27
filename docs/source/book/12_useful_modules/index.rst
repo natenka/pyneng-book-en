@@ -4,10 +4,10 @@
 
 .. _useful_modules_index:
 
-12. Полезные модули
+12. Useful modules
 ============================
 
-В этом разделе описаны такие модули:
+This section describes the modules:
 
 * subprocess
 * os

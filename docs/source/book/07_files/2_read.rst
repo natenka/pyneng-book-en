@@ -1,13 +1,13 @@
-Чтение файлов
+File reading
 -------------
 
-В Python есть несколько методов чтения файла:
+Python has several file reading methods:
 
-* ``read()`` - считывает содержимое файла в строку
-* ``readline()`` - считывает файл построчно
-* ``readlines()`` - считывает строки файла и создает список из строк
+* ``read()`` - reads the contents of the file to the string
+* ``readline()`` - reads file line by line
+* ``readlines()`` - reads the file lines and creates a list from the lines
 
-Посмотрим как считывать содержимое файлов, на примере файла r1.txt:
+Let’s see how to read contents of files using the example of r1.txt:
 
 ::
 
@@ -25,9 +25,9 @@
 ``read()``
 ^^^^^^^^^^
 
-Метод ``read()`` - считывает весь файл в одну строку.
+The ``read()`` method reads the entire file to one string.
 
-Пример использования метода ``read()``:
+Example of the use of ``read()``:
 
 .. code:: python
 
@@ -39,15 +39,12 @@
     In [3]: f.read()
     Out[3]: ''
 
-При повторном чтении файла в 3 строке, отображается пустая строка. Так
-происходит из-за того, что при вызове метода ``read()``, считывается
-весь файл. И после того, как файл был считан, курсор остается в конце
-файла. Управлять положением курсора можно с помощью метода ``seek()``.
+When reading a file once again an empty line is displayed in line 3. This is because the whole file is read when the ``read()`` method is called. And after the file has been read the cursor stays at the end of the file. The cursor position can be controlled by means of ``seek()`` method.
 
 ``readline()``
 ^^^^^^^^^^^^^^
 
-Построчно файл можно считать с помощью метода ``readline()``:
+File can be read line by line using ``readline()`` method:
 
 .. code:: python
 
@@ -59,8 +56,7 @@
     In [6]: f.readline()
     Out[6]: 'service timestamps debug datetime msec localtime show-timezone year\n'
 
-Но чаще всего проще пройтись по объекту file в цикле, не используя
-методы ``read...``:
+But most often it is easier to walk through a **file** object in a loop without using  ``read...`` methods:
 
 .. code:: python
 
@@ -92,8 +88,7 @@
 ``readlines()``
 ^^^^^^^^^^^^^^^
 
-Еще один полезный метод - ``readlines()``. Он считывает строки файла в
-список:
+Another useful method is ``readlines()``. It reads file lines to the list:
 
 .. code:: python
 
@@ -112,9 +107,7 @@
      'ip ssh version 2\n',
      '!\n']
 
-Если нужно получить строки файла, но без перевода строки в конце, можно
-воспользоваться методом ``split`` и как разделитель, указать символ
-``\n``:
+If you want to get lines of a file but without a line feed character at the end, you can use ``split()`` method and specify the symbol ``\n`` as a separator:
 
 ::
 
@@ -134,10 +127,9 @@
      '!',
      '']
 
-Обратите внимание, что последний элемент списка - пустая строка.
+Note that the last item in the list is an empty string.
 
-Если перед выполнением ``split()``, воспользоваться методом
-``rstrip()``, список будет без пустой строки в конце:
+If you use ``split()`` before ``rstrip()``, the list will be without empty string at the end:
 
 .. code:: python
 
@@ -159,14 +151,12 @@
 ``seek()``
 ^^^^^^^^^^
 
-До сих пор, файл каждый раз приходилось открывать заново, чтобы снова
-его считать. Так происходит из-за того, что после методов чтения, курсор
-находится в конце файла. И повторное чтение возвращает пустую строку.
+Until now, the file had to be reopened to read it again. This is because after reading methods the cursor is at the end of the file. And second reading returns an empty string.
 
-Чтобы ещё раз считать информацию из файла, нужно воспользоваться методом
-``seek``, который перемещает курсор в необходимое положение.
+To read information from a file again you need to use the 
+``seek`` method which moves the cursor to the desired position.
 
-Пример открытия файла и считывания содержимого:
+Example of file opening and content reading:
 
 .. code:: python
 
@@ -184,21 +174,19 @@
     ip ssh version 2
     !
 
-Если вызывать ещё раз метод ``read``, возвращается пустая строка:
+If you call ``read`` method again the empty string returns:
 
 .. code:: python
 
     In [17]: print(f.read())
 
-Но с помощью метода ``seek`` можно перейти в начало файла (0 означает
-начало файла):
+But with the ``seek`` method you can go to the beginning of the file (0 means the beginning of the file):
 
 .. code:: python
 
     In [18]: f.seek(0)
 
-После того как с помощью ``seek`` курсор был переведен в начало
-файла, можно опять считывать содержимое:
+Once the cursor has been set to the beginning of the file you can read the content again:
 
 .. code:: python
 

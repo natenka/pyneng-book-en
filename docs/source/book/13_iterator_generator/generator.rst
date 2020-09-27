@@ -1,48 +1,34 @@
-Генератор (generator)
+Generator
 ---------------------
 
-Генераторы - это специальный класс функций, который позволяет легко
-создавать свои итераторы. В отличие от обычных функций, генератор не
-просто возвращает значение и завершает работу, а возвращает итератор,
-который отдает элементы по одному.
+Generators are a special class of functions that can easily create their own iterators. Unlike normal functions, the generator does not just return the value and finish the work, but returns the iterator which gives the elements one by one.
 
-Обычная функция завершает работу, если: 
+The usual function ends if:
 
-* встретилось выражение ``return``
-* закончился код функции (это срабатывает как выражение ``return None``) 
-* возникло исключение
+* ``return`` expression is met
+* function code is ended (this works as ``return None`` expression) 
+* exception has arisen
 
-После выполнения функции управление возвращается, и программа
-выполняется дальше. Все аргументы, которые передавались в функцию,
-локальные переменные, все это теряется. Остается только результат,
-который вернула функция.
+After function execution is finished, the control is returned and program execution goes further. All the arguments that were passed to the function, the local variables, all of this is lost. Only the result that returned the function remains.
 
-Функция может возвращать список элементов, несколько объектов или
-возвращать разные результаты в зависимости от аргументов, но она всегда
-возвращает какой-то один результат.
+A function can return a list of elements, multiple objects or different results depending on the arguments, but it always returns a single result.
 
-Генератор же генерирует значения. При этом значения возвращаются по
-запросу, и после возврата одного значения выполнение функции-генератора
-приостанавливается до запроса следующего значения. Между запросами
-генератор сохраняет свое состояние.
+The generator generates values. The values are then returned on demand and after the return of one value the function-generator is suspended until the next value is requested. Between requests, the generator retains its state.
 
-Python позволяет создавать генераторы двумя способами: 
+Python allows generators to be created in two ways:
 
-* генераторное выражение 
-* функция-генератор
+* generator expression
+* generator function
 
-Ниже пример генераторного выражения, а по функциям-генераторам -
-`отдельная
-заметка <https://natenka.github.io/python/fluent-python-generator/>`__
+The following is an example of a generator expression and a
+`separate note <https://natenka.github.io/python/fluent-python-generator/>`__ for generator functions
 
-generator expression (генераторное выражение)
+generator expression
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Генераторное выражение использует такой же синтаксис, как list
-comprehensions, но возвращает итератор, а не список.
+The generator expression uses the same syntax as the list comprehensions, but returns the iterator, not the list.
 
-Генераторное выражение выглядит точно так же, как list comprehensions,
-но используются круглые скобки:
+The generator expression looks exactly the same as the list comprehensions, but the brackets are used:
 
 .. code:: python
 
@@ -60,8 +46,6 @@ comprehensions, но возвращает итератор, а не список
     In [5]: next(genexpr)
     Out[5]: 4
 
-Обратите внимание, что это не tuple comprehensions, а генераторное
-выражение.
+Note that this is not a tuple comprehensions but a generator expression.
 
-Оно полезно в том случае, когда надо работать с большим итерируемым
-объектом или бесконечным итератором.
+It is useful when working with a large iterable object or infinite iterator.

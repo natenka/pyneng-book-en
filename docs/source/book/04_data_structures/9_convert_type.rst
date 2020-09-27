@@ -1,21 +1,19 @@
-Преобразование типов
+Types conversion
 --------------------
 
-В Python есть несколько полезных встроенных функций, которые позволяют
-преобразовать данные из одного типа в другой.
+Python has several useful built-in features that allow data to be converted from one type to another.
 
 ``int()``
 ~~~~~~~~~
 
-``int()`` преобразует строку в int:
+``int()`` converts a string to int:
 
 .. code:: python
 
     In [1]: int("10")
     Out[1]: 10
 
-С помощью функции int можно преобразовать и число в двоичной записи в
-десятичную (двоичная запись должна быть в виде строки)
+Using the int() function you can convert a binary number into a decimal number (the binary number must be written as a string)
 
 .. code:: python
 
@@ -25,8 +23,7 @@
 ``bin()``
 ~~~~~~~~~
 
-Преобразовать десятичное число в двоичный формат можно с помощью
-``bin()``:
+You can convert a decimal number to binary format with ``bin()``:
 
 .. code:: python
 
@@ -39,8 +36,7 @@
 ``hex()``
 ~~~~~~~~~
 
-Аналогичная функция есть и для преобразования в шестнадцатеричный
-формат:
+A similar function exists for conversion to hexadecimal format:
 
 .. code:: python
 
@@ -53,7 +49,7 @@
 ``list()``
 ~~~~~~~~~~
 
-Функция ``list()`` преобразует аргумент в список:
+The ``list()`` function converts an argument to a list:
 
 .. code:: python
 
@@ -69,7 +65,7 @@
 ``set()``
 ~~~~~~~~~
 
-Функция ``set()`` преобразует аргумент в множество:
+The ``set()`` function converts an argument into a set:
 
 .. code:: python
 
@@ -82,13 +78,12 @@
     In [12]: set("string string")
     Out[12]: {' ', 'g', 'i', 'n', 'r', 's', 't'}
 
-Эта функция очень полезна, когда нужно получить уникальные элементы в
-последовательности.
+This function is very useful when you need to get unique elements in a sequence.
 
 ``tuple()``
 ~~~~~~~~~~~
 
-Функция ``tuple()`` преобразует аргумент в кортеж:
+The ``tuple()`` function converts the argument into a tuple:
 
 .. code:: python
 
@@ -101,13 +96,12 @@
     In [15]: tuple("string")
     Out[15]: ('s', 't', 'r', 'i', 'n', 'g')
 
-Это может пригодиться в том случае, если нужно получить неизменяемый
-объект.
+This can be useful if you want an immutable object.
 
 ``str()``
 ~~~~~~~~~
 
-Функция ``str()`` преобразует аргумент в строку:
+The ``str()`` function converts an argument into a string:
 
 .. code:: python
 

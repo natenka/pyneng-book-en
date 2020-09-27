@@ -1,16 +1,15 @@
-Объект Match
+Match object
 ------------
 
-В модуле re несколько функций возвращают объект Match, если было найдено
-совпадение: 
+In **re** module, several functions return Match object if a match is found:
 
 * search 
 * match 
-* finditer возвращает итератор с объектами Match
+* finditer - returns an iterator with Match objects
 
-В этом подразделе рассматриваются методы объекта Match.
+This subsection deals with methods of Match object.
 
-Пример объекта Match:
+Example of Match object:
 
 .. code:: python
 
@@ -21,31 +20,28 @@
     In [3]: match
     Out[3]: <_sre.SRE_Match object; span=(47, 124), match='Host f03a.b216.7ad7 in vlan 10 is flapping betwee>'
 
-Вывод в 3 строке просто отображает информацию об объекте. Поэтому не
-стоит полагаться на то, что отображается в части match, так как
-отображаемая строка обрезается по фиксированному количеству знаков.
+The 3rd line output simply displays information about the object. Therefore, it is not necessary to rely on what is displayed in the match part as the displayed line is cut by a fixed number of characters.
 
 group()
 ^^^^^^^
 
-Метод group возвращает подстроку, которая совпала с выражением или с
-выражением в группе.
+The group() method returns a substring that matches an expression or an expression in a group.
 
-Если метод вызывается без аргументов, отображается вся подстрока:
+If method is called without arguments, the whole substring is displayed:
 
 .. code:: python
 
     In [4]: match.group()
     Out[4]: 'Host f03a.b216.7ad7 in vlan 10 is flapping between port Gi0/5 and port Gi0/15'
 
-Аналогичный вывод возвращает группа 0:
+The same result returns group 0:
 
 .. code:: python
 
     In [5]: match.group(0)
     Out[5]: 'Host f03a.b216.7ad7 in vlan 10 is flapping between port Gi0/5 and port Gi0/15'
 
-Другие номера отображают только содержимое соответствующей группы:
+Other numbers show only the contents of relevant group:
 
 .. code:: python
 
@@ -61,8 +57,7 @@ group()
     In [9]: match.group(4)
     Out[9]: 'Gi0/15'
 
-Если вызвать метод group с номером группы, который больше, чем
-количество существующих групп, возникнет ошибка:
+If you call a group() method with a group number that is larger than the number of existing groups, there is an error:
 
 .. code:: python
 
@@ -74,16 +69,14 @@ group()
 
     IndexError: no such group
 
-Если вызвать метод с несколькими номерами групп, результатом будет
-кортеж со строками, которые соответствуют совпадениям:
+If you call a method with multiple group numbers, the result is a tuple with strings that correspond to matches:
 
 .. code:: python
 
     In [11]: match.group(1, 2, 3)
     Out[11]: ('f03a.b216.7ad7', '10', 'Gi0/5')
 
-В группу может ничего не попасть, тогда ей будет соответствовать пустая
-строка:
+Group may not get anything, then it will be matched with an empty string:
 
 .. code:: python
 
@@ -94,8 +87,7 @@ group()
     In [14]: match.group(2)
     Out[14]: ''
 
-Если группа описывает часть шаблона и совпадений было несколько, метод
-отобразит последнее совпадение:
+If group describes a part of the template and there are more than one match, the method displays the last match:
 
 .. code:: python
 
@@ -106,13 +98,9 @@ group()
     In [17]: match.group(1)
     Out[17]: 'b216.'
 
-Такой вывод получился из-за того, что выражение в скобках описывает 4
-буквы или цифры, точка и после этого стоит плюс. Соответственно, сначала с
-выражением в скобках совпала первая часть MAC-адреса, потом вторая. Но
-запоминается и возвращается только последнее выражение.
+This is because expression in brackets describes four letters or numbers, dot and then there is a  plus. Accordingly, the first and the second part of the MAC address matched to expression in parentheses. But only the last expression is remembered and returned.
 
-Если в выражении использовались именованные группы, методу group можно
-передать имя группы и получить соответствующую подстроку:
+If named groups are used in the expression, the group name can be passed to group() method and the corresponding substring can be obtained:
 
 .. code:: python
 
@@ -131,7 +119,7 @@ group()
     In [21]: match.group('int2')
     Out[21]: 'Gi0/15'
 
-При этом группы доступны и по номеру:
+Groups are also available via number:
 
 .. code:: python
 
@@ -144,8 +132,7 @@ group()
 groups()
 ^^^^^^^^
 
-Метод groups() возвращает кортеж со строками, в котором элементы - это
-те подстроки, которые попали в соответствующие группы:
+The group() method returns a tuple with strings in which the elements are those substrings that fall into the respective groups:
 
 .. code:: python
 
@@ -161,11 +148,9 @@ groups()
     In [26]: match.groups()
     Out[26]: ('f03a.b216.7ad7', '10', 'Gi0/5', 'Gi0/15')
 
-У метода groups есть опциональный параметр - default. Он срабатывает в
-ситуации, когда все, что попадает в группу, опционально.
+The group method has an optional parameter  - default. It works when anything that comes into the group is optional.
 
-Например, при такой строке, совпадение будет и в первой группе, и во
-второй:
+For example, with this line the match will be in both the first group and the second:
 
 .. code:: python
 
@@ -176,9 +161,7 @@ groups()
     In [28]: match.groups()
     Out[28]: ('100', 'aab1')
 
-Если же в строке нет ничего после пробела, в группу ничего не попадет.
-Но совпадение будет, так как в регулярном выражении описано, что группа
-опциональна:
+If there is nothing in the line after the space, nothing will get into the group. But the match will be because it is stated in regular expression that the group is optional:
 
 .. code:: python
 
@@ -189,9 +172,9 @@ groups()
     In [32]: match.groups()
     Out[32]: ('100', None)
 
-Соответственно, для второй группы значением будет None.
+Accordingly, for the second group the value is None.
 
-Если передать методу groups значение default, оно будет возвращаться вместо None:
+If group() method is given a default value, it will be returned instead of None:
 
 .. code:: python
 
@@ -208,8 +191,7 @@ groups()
 groupdict()
 ^^^^^^^^^^^
 
-Метод groupdict возвращает словарь, в котором ключи - имена групп, а
-значения - соответствующие строки:
+The groupdict() method returns a dictionary in which the keys are group names and the values are corresponding lines:
 
 .. code:: python
 
@@ -228,11 +210,9 @@ groupdict()
 start(), end()
 ^^^^^^^^^^^^^^
 
-Методы start и end возвращают индексы начала и конца совпадения с
-регулярным выражением.
+start() and end() methods return indexes of the beginning and end of the match of regular expression.
 
-Если методы вызываются без аргументов, они возвращают индексы для всего
-совпадения:
+If the methods are called without arguments, they return indexes for whole match:
 
 .. code:: python
 
@@ -249,8 +229,7 @@ start(), end()
     In [45]: line[match.start():match.end()]
     Out[45]: '10     aab1.a1a1.a5d3    FastEthernet0/1'
 
-Методам можно передавать номер или имя группы. Тогда они возвращают
-индексы для этой группы:
+You can transfer number or name of the group to methods. Then they return indexes for this group:
 
 .. code:: python
 
@@ -263,7 +242,7 @@ start(), end()
     In [48]: line[match.start(2):match.end(2)]
     Out[48]: 'aab1.a1a1.a5d3'
 
-Аналогично для именованных групп:
+Similarly for named groups:
 
 .. code:: python
 
@@ -285,10 +264,9 @@ start(), end()
 span()
 ^^^^^^
 
-Метод span возвращает кортеж с индексом начала и конца подстроки. Он
-работает аналогично методам start, end, но возвращает пару чисел.
+The span() method returns a tuple with an index of the beginning and end of substring. It works in a similar way to start() and end() methods, but returns a pair of numbers.
 
-Без аргументов метод span возвращает индексы для всего совпадения:
+Without arguments span() returns indexes for whole match:
 
 .. code:: python
 
@@ -299,7 +277,7 @@ span()
     In [55]: match.span()
     Out[55]: (2, 42)
 
-Но ему также можно передать номер группы:
+But you can also pass number of the group:
 
 .. code:: python
 
@@ -310,7 +288,7 @@ span()
     In [58]: match.span(2)
     Out[58]: (9, 23)
 
-Аналогично для именованных групп:
+Similarly for named groups:
 
 .. code:: python
 

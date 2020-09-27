@@ -1,13 +1,12 @@
-Синтаксис Python
+Python syntax
 ~~~~~~~~~~~~~~~~
 
-Первое, что, как правило, бросается в глаза, если говорить о синтаксисе
-в Python, это то, что отступы имеют значение:
+The first thing that meets the eye when it comes to Python syntax is that indentation matters:
 
--  они определяют, какой код попадает в блок;
--  когда блок кода начинается и заканчивается.
+-  It determines which code enters the block;
+-  When a block of code starts and ends.
 
-Пример кода Python:
+Example of Python code:
 
 .. code:: python
 
@@ -15,83 +14,62 @@
     b = 5
 
     if a > b:
-        print("A больше B")
+        print("A greater than B")
         print(a - b)
     else:
-        print("B больше или равно A")
+        print("B is greater than or equal to A")
         print(b - a)
 
-    print("Конец")
+    print("End")
 
     def open_file(filename):
-        print("Чтение файла", filename)
+        print("Reading File", filename)
         with open(filename) as f:
             return f.read()
-            print("Готово")
+            print("Ready")
 
 .. note::
-    Этот код показан для демонстрации синтаксиса. И, несмотря на то, что ещё не
-    рассматривалась конструкция if/else, скорее всего, суть кода будет понятной.
+    This code is shown for syntax demonstration. Although the if/else construction has not yet been considered, it is likely that the meaning of the code will be understood.
 
-Python понимает, какие строки относятся к if на основе отступов.
-Выполнение блока ``if a > b`` заканчивается, когда встречается строка с
-тем же отступом, что и сама строка ``if a > b``. Аналогично с блоком else.
-Вторая особенность Python: после некоторых выражений должно идти
-двоеточие (например, после ``if a > b`` и после ``else``).
+Python understands which lines refer to "if" on the indentation basis.
+The execution of a block ``if a > b`` ends when another string with the same indent as the string ``if a > b`` appears. Similarly to the block “else”. 
+The second feature of Python is that some expressions must be followed by colon (for example, after ``if a > b`` and after ``else``).
 
-Несколько правил и рекомендаций по отступам:
+Several rules and recommendations on indentation:
 
--  В качестве отступов могут использоваться табы или пробелы (лучше
-   использовать пробелы, а точнее, настроить редактор так, чтобы
-   таб был равен 4 пробелам – тогда при использовании клавиши
-   табуляции будут ставиться 4 пробела, вместо 1 знака табуляции).
--  Количество пробелов должно быть одинаковым в одном блоке (лучше,
-   чтобы количество пробелов было одинаковым во всём коде – популярный
-   вариант, это использовать 2-4 пробела, так, например, в этой книге
-   используются 4 пробела).
+-  Tabs or spaces can be used as indents (it is better to use spaces or more precisely to configure the editor so that the tab is 4 spaces - then when using the tab key, 4 spaces will be placed instead of 1 tab sign).
+-  The number of spaces must be the same in one block (it is better to have the same number of spaces in the whole code - the popular option is to use 2-4 spaces, for example, this book uses 4 spaces).
 
-Ещё одна особенность приведённого кода, это пустые строки. С их помощью
-код форматируется, чтобы его было проще читать. Остальные особенности
-синтаксиса будут показаны в процессе знакомства со структурами данных в
-Python.
+Another feature of the code above is the empty lines. It makes reading code easier. Other syntax features will be shown during the process of familiarization with data structures in Python.
 
 .. note::
-    В Python есть специальный документ, в котором описано как лучше писать
-    код Python `PEP 8 <https://pep8.org/>`__ - the Style Guide for Python Code.
+    Python has a special document that describes how best to write Python code `PEP 8 <https://pep8.org/>`__ - the Style Guide for Python Code.
 
 
-Комментарии
+Comments
 ^^^^^^^^^^^
 
-При написании кода часто нужно оставить комментарий, например, чтобы
-описать особенности работы кода.
+When writing code you often need to leave a comment, for example, to describe the features of the code.
 
-Комментарии в Python могут быть однострочными:
+Comments in Python can be one-line:
 
 .. code:: python
 
-    # Очень важный комментарий
+    # A very important comment
     a = 10
-    b = 5 # Очень нужный комментарий
+    b = 5 # A much needed comment   
 
-Однострочные комментарии начинаются со знака решётки. Обратите внимание,
-что комментарий может быть как в строке, где находится сам код, так и в
-отдельной строке.
+One-line comments start with the pound sign. Note that the comment can be in the line where the code itself is or in a separate line.
 
-При необходимости написать несколько строк с комментариями, чтобы не
-ставить перед каждой решётку, можно сделать многострочный комментарий:
+If it is necessary to write several lines with comments in order to not put pound sign before each line, you can make a multi-line comment:
 
 .. code:: python
 
     """
-    Очень важный
-    и длинный комментарий
+    Very important
+    and long comment
     """
     a = 10
     b = 5
 
-Для многострочного комментария можно использовать три двойные или три
-одинарные кавычки. Комментарии могут использоваться как для того, чтобы
-комментировать, что происходит в коде, так и для того, чтобы исключить
-выполнение определённой строки или блока кода (то есть закомментировать
-их).
+Three double or three single quotes may be used for a multi-line comment. Comments can be used both to comment on what happens in the code and to exclude the execution of a particular line or block of code (i.e., to comment it).

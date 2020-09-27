@@ -2,15 +2,15 @@
 
    \newpage
 
-Задания
+Tasks
 =======
 
 .. include:: ./exercises_intro.rst
 
-Задание 7.1
+Task 7.1
 ~~~~~~~~~~~
 
-Обработать строки из файла ospf.txt и вывести информацию по каждой строке в таком виде:
+Process lines from ospf.txt file and display information for each line as follows:
 
 ::
 
@@ -20,73 +20,68 @@
     Last update           3d18h
     Outbound Interface    FastEthernet0/0
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
-Задание 7.2
+Task 7.2
 ~~~~~~~~~~~
 
-Создать скрипт, который будет обрабатывать конфигурационный файл config_sw1.txt. Имя файла передается как аргумент скрипту.
+Create a script that will process configuration file config_sw1.txt. The file name is passed as a  script argument.
 
-Скрипт должен возвращать на стандартный поток вывода команды из переданного
-конфигурационного файла, исключая строки, которые начинаются с ``!``.
+Script should return commands from passed configuration file, excluding lines that start with ``!``.
 
-Вывод должен быть без пустых строк.
+Output should be without empty lines.
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
-Задание 7.2a
+Task 7.2a
 ~~~~~~~~~~~~
 
-Сделать копию скрипта задания 7.2.
+Make a copy of script from task 7.2.
 
-Дополнить скрипт: Скрипт не должен выводить команды, в которых содержатся слова, которые указаны в списке ignore.
+Complete script: Script should not display commands containing words that are specified in *ignore* list.
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
 .. code:: python
 
     ignore = ["duplex", "alias", "Current configuration"]
 
-Задание 7.2b
+Task 7.2b
 ~~~~~~~~~~~~
 
-Дополнить скрипт из задания 7.2a: вместо вывода на стандартный поток вывода, скрипт должен записать полученные строки в файл config_sw1_cleared.txt
+Complete script from task 7.2a: instead of displaying to standard output stream, script should write received lines to config_sw1_cleared.txt file
 
-При этом, должны быть отфильтрованы строки, которые содержатся в списке ignore.
-Строки, которые начинаются на ``!`` отфильтровывать не нужно.
+You have to filter lines from *ignore* list.
+Lines that start with  ``!`` should not be filtered.
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
 .. code:: python
 
     ignore = ["duplex", "alias", "Current configuration"]
 
-Задание 7.2c
+Task 7.2c
 ~~~~~~~~~~~~
 
-Переделать скрипт из задания 7.2b: передавать как аргументы скрипту:
+Redo script from task 7.2b: pass to script as arguments:
 
-* имя исходного файла конфигурации
-* имя итогового файла конфигурации
+* source configuration file name
+* resulting configuration file name
 
-Внутри, скрипт должен отфильтровать те строки, в исходном файле конфигурации,
-в которых содержатся слова из списка ignore.
-И записать остальные строки в итоговый файл.
+Inside, script should filter those lines in original configuration file that contain words from *ignore* list. And write the rest of lines to resulting file.
 
-Проверить работу скрипта на примере файла config_sw1.txt.
+Check script with config_sw1.txt.
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
 .. code:: python
 
     ignore = ["duplex", "alias", "Current configuration"]
 
-Задание 7.3
+Task 7.3
 ~~~~~~~~~~~
 
-Скрипт должен обрабатывать записи в файле CAM_table.txt.
-Каждая строка, где есть MAC-адрес, должна быть обработана таким образом,
-чтобы на стандартный поток вывода была выведена таблица вида (показаны не все строки из файла):
+Script should process entries in CAM_table.txt file. Every line with MAC address should be processed in a way that such view table is displayed on standard output stream (not all lines from the file are shown):
 
 ::
 
@@ -98,17 +93,17 @@
     200    1a4b.c580.7000   Gi0/6
     300    0a1b.5c80.7000   Gi0/7
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
 
-Задание 7.3a
+Task 7.3a
 ~~~~~~~~~~~~
 
-Сделать копию скрипта задания 7.3.
+Make a copy of script from task 7.3.
 
-Дополнить скрипт: Отсортировать вывод по номеру VLAN.
+Complete script: Sort output by VLAN number.
 
-В результате должен получиться такой вывод:
+The result should be like this:
 
 ::
 
@@ -123,21 +118,20 @@
     1000     0a4b.c380.7d00      Gi0/9
 
 
-Обратите внимание на vlan 1000 - он должен выводиться последним.
-Правильной сортировки можно добиться, если vlan будет числом, а не строкой.
+Note, vlan 1000 should be the last to be displayed. The correct sort can be achieved if vlan is a number rather than a string.
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 
 
-Задание 7.3b
+Task 7.3b
 ~~~~~~~~~~~~
 
-Сделать копию скрипта задания 7.3a.
+Make a copy of script from task 7.3a.
 
-Переделать скрипт:
+Redo script:
 
-* Запросить у пользователя ввод номера VLAN.
-* Выводить информацию только по указанному VLAN.
+* Ask user to enter VLAN number.
+* Display information only for specified VLAN.
 
-Ограничение: Все задания надо выполнять используя только пройденные темы.
+Restriction: All tasks must be performed using only covered topics.
 

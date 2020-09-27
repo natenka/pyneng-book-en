@@ -1,24 +1,18 @@
 .. _unpacking_args:
 
-Распаковка аргументов
+Unpacking arguments
 ---------------------
 
-В Python выражения ``*args`` и ``**kwargs`` позволяют выполнять ещё одну
-задачу - **распаковку аргументов**.
+In Python the expressions ``*args`` and ``**kwargs`` allow for another task - **unpacking arguments**.
 
-До сих пор мы вызывали все функции вручную. И соответственно
-передавали все нужные аргументы.
+So far we’ve called all functions manually. Hence, we passed on all the relevant arguments.
 
-В реальности, как правило, данные необходимо передавать в функцию
-программно. И часто данные идут в виде какого-то объекта Python.
+In reality, it is usually necessary to transfer data to the function programmatically. And often data comes in the form of a Python object.
 
-Распаковка позиционных аргументов
+Unpacking positional arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Например, при форматировании строк часто надо передать методу format
-несколько аргументов. И часто эти аргументы уже находятся в списке или
-кортеже. Чтобы их передать методу format, приходится использовать
-индексы таким образом:
+For example, when formatting strings you often need to pass multiple arguments to format() method. And often these arguments are already in the list or tuple. To transfer them to the format() method you have to use indexes:
 
 .. code:: python
 
@@ -27,7 +21,7 @@
     In [2]: print('One: {}, Two: {}, Three: {}'.format(items[0], items[1], items[2]))
     One: 1, Two: 2, Three: 3
 
-Вместо этого, можно воспользоваться распаковкой аргументов и сделать так:
+Instead, you can take advantage of unpacking argument and do this:
 
 .. code:: python
 
@@ -37,8 +31,7 @@
     One: 1, Two: 2, Three: 3
 
 
-Еще один пример - функция config_interface (файл
-func_config_interface_unpacking.py):
+Another example is config_interface function (func_config_interface_unpacking.py file):
 
 .. code:: python
 
@@ -51,13 +44,13 @@ func_config_interface_unpacking.py):
         ..:
 
 
-Функция ожидает такие аргументы:
+The function expects such arguments:
 
-* intf_name - имя интерфейса
-* ip_address - IP-адрес
-* mask - маска
+* intf_name - interface name
+* ip_address - IP address
+* mask - subnet mask
 
-Функция возвращает список строк для настройки интерфейса:
+Function returns a list of strings to configure the interface:
 
 .. code:: python
 
@@ -69,11 +62,9 @@ func_config_interface_unpacking.py):
     Out[11]: ['interface Fa0/10', 'no shutdown', 'ip address 10.255.4.1 255.255.255.0']
 
 
-Допустим, нужно вызвать функцию и передать ей информацию, которая
-была получена из другого источника, к примеру, из БД.
+Suppose you call a function and pass it information that has been obtained from another source, for example from the database.
 
-Например, список interfaces_info, в котором находятся параметры для
-настройки интерфейсов:
+For example, interfaces_info list contains parameters for configuring interfaces:
 
 .. code:: python
 
@@ -85,8 +76,7 @@ func_config_interface_unpacking.py):
         ...:
 
 
-Если пройтись по списку в цикле и передавать вложенный список как
-аргумент функции, возникнет ошибка:
+If you go through the list in the loop and pass the nested list as a function argument, an error will occur:
 
 .. code:: python
 
@@ -102,11 +92,9 @@ func_config_interface_unpacking.py):
 
     TypeError: config_interface() missing 2 required positional arguments: 'ip_address' and 'mask'
 
-Ошибка вполне логичная: функция ожидает три аргумента, а ей передан 1
-аргумент - список.
+The error is quite logical: the function expects three arguments and it is given 1 argument - a list.
 
-В такой ситуации пригодится распаковка аргументов. Достаточно добавить
-``*`` перед передачей списка как аргумента, и ошибки уже не будет:
+In such a situation it is necessary to unpack the arguments. Just add ``*`` before passing the list as an argument and there is no error anymore:
 
 .. code:: python
 
@@ -120,36 +108,34 @@ func_config_interface_unpacking.py):
     ['interface Lo0', 'no shutdown', 'ip address 10.0.0.1 255.255.255.255']
 
 
-Python сам 'распакует' список info и передаст в функцию элементы списка
-как аргументы.
+Python will unpack the *info* list itself and transfer list elements to the function as arguments.
 
 .. note::
-    Таким же образом можно распаковывать и кортеж.
+    Tuple can also be unpacked in this way.
 
-Распаковка ключевых аргументов
+Unpacking keyword alrguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Аналогичным образом можно распаковывать словарь, чтобы передать его как
-ключевые аргументы.
+Similarly, you can unpack dictionary to pass it as keyword arguments.
 
-Функция check_passwd (файл func_check_passwd_optional_param_2.py):
+Check_passwd function (func_check_pass_optional_param_2.py file):
 
 .. code:: python
 
     In [19]: def check_passwd(username, password, min_length=8, check_username=True):
         ...:     if len(password) < min_length:
-        ...:         print('Пароль слишком короткий')
+        ...:         print('Password is too short')
         ...:         return False
         ...:     elif check_username and username in password:
-        ...:         print('Пароль содержит имя пользователя')
+        ...:         print('Password contains username')
         ...:         return False
         ...:     else:
-        ...:         print(f'Пароль для пользователя {username} прошел все проверки')
+        ...:         print(f'Password for user {username} has passed all checks')
         ...:         return True
         ...:
 
 
-Список словарей ``username_passwd``, в которых указано имя пользователя и пароль:
+List of dictionaries ``username_passwd`` where username and password are specified:
 
 .. code:: python
 
@@ -157,7 +143,7 @@ Python сам 'распакует' список info и передаст в фу
         ...:                    {'username': 'nata', 'password': 'natapass'},
         ...:                    {'username': 'user', 'password': '123456789'}]
 
-Если передать словарь функции check_passwd, возникнет ошибка:
+If you pass dictionary to check_passwd function, there is an error:
 
 .. code:: python
 
@@ -174,32 +160,29 @@ Python сам 'распакует' список info и передаст в фу
     TypeError: check_passwd() missing 1 required positional argument: 'password'
 
 
-Ошибка такая, так как функция восприняла словарь как один аргумент и считает что ей не хватает только
-аргумента password.
+The error is because the function has taken dictionary as one argument and believes that it lacks only password argument.
 
-Если добавить ``**`` перед передачей словаря функции, функция нормально
-отработает:
+If you add ``**`` пbefore passing a dictionary to function, the function will work properly:
 
 .. code:: python
 
     In [22]: for data in username_passwd:
         ...:     check_passwd(**data)
         ...:
-    Пароль слишком короткий
-    Пароль содержит имя пользователя
-    Пароль для пользователя user прошел все проверки
+    Password is too short
+    Password contains username
+    Password for user user has passed all checks
 
     In [23]: for data in username_passwd:
         ...:     print(data)
         ...:     check_passwd(**data)
         ...:
     {'username': 'cisco', 'password': 'cisco'}
-    Пароль слишком короткий
+    Password is too short
     {'username': 'nata', 'password': 'natapass'}
-    Пароль содержит имя пользователя
+    Password contains username
     {'username': 'user', 'password': '123456789'}
-    Пароль для пользователя user прошел все проверки
+    Password for user user has passed all checks
 
-Python распаковывает словарь и передает его в функцию как ключевые аргументы.
-Запись ``check_passwd(**data)`` превращается в вызов вида ``check_passwd(username='cisco', password='cisco')``.
+Python unpacks dictionary and passes it to the function as keyword arguments. The  ``check_passwd(**data)`` is converted to a ``check_passwd(username='cisco', password='cisco')``.
 

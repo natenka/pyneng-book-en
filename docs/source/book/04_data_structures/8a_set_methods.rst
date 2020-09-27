@@ -1,10 +1,10 @@
-Полезные методы для работы с множествами
+Useful methods for working with sets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``add()``
 ^^^^^^^^^
 
-Метод ``add()`` добавляет элемент во множество:
+The ``add()`` method adds an item to the set:
 
 .. code:: python
 
@@ -18,8 +18,7 @@
 ``discard()``
 ^^^^^^^^^^^^^
 
-Метод ``discard()`` позволяет удалять элементы, не выдавая ошибку,
-если элемента в множестве нет:
+The ``discard()`` method allows deleting elements without showing an error if there is no element in the set:
 
 .. code:: python
 
@@ -39,7 +38,7 @@
 ``clear()``
 ^^^^^^^^^^^
 
-Метод ``clear()`` очищает множество:
+The method ``clear()`` empties the set:
 
 .. code:: python
 

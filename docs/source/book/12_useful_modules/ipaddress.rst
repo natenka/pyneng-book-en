@@ -1,17 +1,15 @@
-Модуль ipaddress
+Ipaddress
 ----------------
 
-Модуль ipaddress упрощает работу с IP-адресами.
+Module **ipaddress** simplifies work with IP addresses.
 
 .. note::
-    С версии Python 3.3 модуль ipaddress входит в стандартную библиотеку
-    Python.
+    Since Python 3.3, **ipaddress** module is part of the standard Python library.
 
 ``ipaddress.ip_address()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Функция ``ipaddress.ip_address()`` позволяет создавать объект
-IPv4Address или IPv6Address соответственно:
+The function ``ipaddress.ip_address()`` allows to create an Ipv4Address or Ipv6Address respectively:
 
 .. code:: python
 
@@ -25,7 +23,7 @@ IPv4Address или IPv6Address соответственно:
     In [4]: print(ipv4)
     10.0.1.1
 
-У объекта есть несколько методов и атрибутов:
+Object has several methods and attributes:
 
 .. code:: python
 
@@ -35,8 +33,7 @@ IPv4Address или IPv6Address соответственно:
     ipv4.is_global        ipv4.is_private       ipv4.packed
     ipv4.is_link_local    ipv4.is_reserved      ipv4.reverse_pointer
 
-С помощью атрибутов ``is_`` можно проверить, к какому диапазону принадлежит
-адрес:
+With ``is_`` attributes you can check to what range the address belongs to:
 
 .. code:: python
 
@@ -52,7 +49,7 @@ IPv4Address или IPv6Address соответственно:
     In [9]: ipv4.is_private
     Out[9]: True
 
-С полученными объектами можно выполнять различные операции:
+Different operations can be performed with received objects:
 
 .. code:: python
 
@@ -87,14 +84,13 @@ IPv4Address или IPv6Address соответственно:
 ``ipaddress.ip_network()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Функция ``ipaddress.ip_network()`` позволяет создать объект, который
-описывает сеть (IPv4 или IPv6):
+Function ``ipaddress.ip_network()`` allows the creation of an object that describes a network (Ipv4 or Ipv6):
 
 .. code:: python
 
     In [20]: subnet1 = ipaddress.ip_network('80.0.1.0/28')
 
-Как и у адреса, у сети есть различные атрибуты и методы:
+As with an address the network has various attributes and methods:
 
 .. code:: python
 
@@ -113,8 +109,7 @@ IPv4Address или IPv6Address соответственно:
     In [25]: subnet1.num_addresses
     Out[25]: 16
 
-Метод hosts() возвращает генератор, поэтому, чтобы посмотреть все хосты,
-надо применить функцию list:
+The hosts() method returns generator, so to view all hosts you should apply the list() function:
 
 .. code:: python
 
@@ -135,16 +130,14 @@ IPv4Address или IPv6Address соответственно:
      IPv4Address('80.0.1.13'),
      IPv4Address('80.0.1.14')]
 
-Метод subnets позволяет разбивать на подсети. По умолчанию он разбивает
-сеть на две подсети:
+The subnets() method allows dividing network (subnetting). By default, it splits network into two subnets:
 
 .. code:: python
 
     In [27]: list(subnet1.subnets())
     Out[27]: [IPv4Network('80.0.1.0/29'), IPv4Network(u'80.0.1.8/29')]
 
-Параметр prefixlen_diff позволяет указать количество бит
-для подсетей:
+**Prefixlen_diff** parameter allows you to specify the number of bits for subnets:
 
 .. code:: python
 
@@ -155,8 +148,7 @@ IPv4Address или IPv6Address соответственно:
      IPv4Network('80.0.1.8/30'),
      IPv4Network('80.0.1.12/30')]
 
-С помощью параметра new_prefix можно указать, какая маска должна
-быть у подсетей:
+With the **new_prefix** parameter you can specify which mask should be configured:
 
 .. code:: python
 
@@ -170,7 +162,7 @@ IPv4Address или IPv6Address соответственно:
     In [30]: list(subnet1.subnets(new_prefix=29))
     Out[30]: [IPv4Network('80.0.1.0/29'), IPv4Network(u'80.0.1.8/29')]
 
-По IP-адресам в сети можно проходиться в цикле:
+IP addresses of network can be iterated in a loop:
 
 .. code:: python
 
@@ -194,7 +186,7 @@ IPv4Address или IPv6Address соответственно:
     80.0.1.14
     80.0.1.15
 
-Или обращаться к конкретному адресу:
+And it is possible to get a specific address:
 
 .. code:: python
 
@@ -204,7 +196,7 @@ IPv4Address или IPv6Address соответственно:
     In [33]: subnet1[5]
     Out[33]: IPv4Address('80.0.1.5')
 
-Таким образом можно проверять, находится ли IP-адрес в сети:
+This way you can check if IP address is in the network:
 
 .. code:: python
 
@@ -216,15 +208,13 @@ IPv4Address или IPv6Address соответственно:
 ``ipaddress.ip_interface()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Функция ``ipaddress.ip_interface()`` позволяет создавать объект
-IPv4Interface или IPv6Interface соответственно:
+The ``ipaddress.ip_interface()`` function allows creating an Ipv4Interface or Ipv6Interface object respectively:
 
 .. code:: python
 
     In [36]: int1 = ipaddress.ip_interface('10.0.1.1/24')
 
-Используя методы объекта IPv4Interface, можно получать адрес, маску или
-сеть интерфейса:
+Using methods of Ipv4Interface object you can get an address, mask or interface network:
 
 .. code:: python
 
@@ -237,12 +227,10 @@ IPv4Interface или IPv6Interface соответственно:
     In [39]: int1.netmask
     Out[39]: IPv4Address('255.255.255.0')
 
-Пример использования модуля
+Example of module usage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Так как в модуль встроены проверки корректности адресов, можно ими
-пользоваться, например, чтобы проверить, является ли адрес адресом сети
-или хоста:
+Since the module has built-in address correctness checks, you can use them, for example, to check whether the address is a network or host address:
 
 .. code:: python
 

@@ -4,36 +4,18 @@
 
 .. _additional_info_pytest:
 
-Проверка заданий с помощью тестов
+Tasks checking with tests
 =================================
 
-Начиная с раздела "9. Функции" для проверки заданий
-используются автоматические тесты. Они помогают проверить все ли
-соответствует поставленной задаче, а также дают обратный отклик по тому,
-что не соответствует задаче. Как правило, после первого периода
-адаптации к тестам, становится проще делать задания с тестами.
+Starting with section "9. Functions" automatic tests are used to check tasks. They help to check that everything conforms to the task and also provide feedback on what is not up to task. Usually, after the first period of adaptation it becomes easier to do tasks with tests.
 
-Помимо перечисленных выше положительных моментов, в тестах также можно
-посмотреть какой итоговый результат нужен: прояснить структуру данных и
-мелочи, которые могут влиять на результат.
+In addition to above-mentioned positive features, tests can also show what result is expected: clarify structure of data and details that may affect the result.
 
-Для запуска тестов используется pytest - фреймворк для написания тестов.
-
-Перед запуском тестов надо установить такие модули:
-
-::
-
-    pip install pytest-clarity pyyaml
-
-Для корректной работы тестов, надо скопировать себе не только каталог заданий
-одного раздела, а весь каталог exercises из `репозитория с заданиями <https://github.com/natenka/pyneng-examples-exercises>`__.
-А лучше создать себе копию репозитория с заданиями, как написано `тут <https://pyneng.readthedocs.io/ru/latest/book/02_git_github/git_github_changes.html>`__.
+**Pytest** is used to run tests - a framework for writing tests.
 
 .. note::
 
-    `Запись лекции по использованию pytest для проверки
-    заданий <https://youtu.be/TI6-vFFV9lk>`__
-
+    `Record of lecture on using pytest for test verification <https://youtu.be/TI6-vFFV9lk>`__
 
 .. toctree::
    :maxdepth: 1

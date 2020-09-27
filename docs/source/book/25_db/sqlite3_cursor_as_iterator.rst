@@ -1,13 +1,9 @@
-Cursor как итератор
+Cursor as iterator
 -------------------
 
-Если нужно построчно обрабатывать результирующие строки, лучше
-использовать курсор как итератор. При этом не нужно использовать методы
-fetch.
+If you want to process the resulting strings, use cursor as an iterator. It is not necessary to use fetch methods.
 
-При использовании методов execute возвращается курсор. А, так как курсор
-можно использовать как итератор, можно использовать его, например, в
-цикле for:
+If you use execute() methods, the cursor is returned. Since the cursor can be used as an iterator you can use it, for example, in **for** loop:
 
 .. code:: python
 
@@ -25,7 +21,7 @@ fetch.
     ('0000.1111.0003', 'sw7', 'Cisco 3750', 'London, Green Str')
     ('0000.1111.0004', 'sw8', 'Cisco 3750', 'London, Green Str')
 
-Аналогичный вариант отработает и без присваивания переменной:
+The same option will work without assigning a variable:
 
 .. code:: python
 

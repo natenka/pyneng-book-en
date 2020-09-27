@@ -1,53 +1,45 @@
-Дополнительные возможности
+Additional facilities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 git diff
 ''''''''
 
-Команда git diff позволяет посмотреть разницу между различными
-состояниями. Например, на данный момент, в репозитории внесены изменения
-в файл README и .gitignore.
+The command "git diff" allows you to see the difference between different states. For example, README and .gitignore files have been changed in repository.
 
-Команда git status показывает, что оба файла изменены
+The "git status" command shows that both files have been changed
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_status_5.png
 
-Команда git diff показывает, какие изменения были внесены с момента
-последнего коммита
+The “git diff” command shows what changes have been made since the last commit
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_diff.png
 
-Если добавить изменения, внесённые в файлы, в staging командой ``git add`` и
-ещё раз выполнить команду ``git diff``, то она ничего не покажет
+If you add changes made to staging via “git add” command and run “git diff” again, it will show nothing
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_add_git_diff.png
 
-Чтобы показать отличия между staging и последним коммитом, надо добавить
-параметр ``--staged``
+To show the difference between staging and the last commit, add parameter ``--staged``
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_diff_staged.png
 
-Закоммитим изменения
+Commit the changes
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_commit_2.png
 
 git log
 '''''''
 
-Команда git log показывает, когда были выполнены последние изменения
+The “git log” command shows when the last changes were made
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_log.png
 
-По умолчанию команда показывает все коммиты, начиная с ближайшего по
-времени. С помощью дополнительных параметров можно не только посмотреть
-информацию о коммитах, но и то, какие именно изменения были внесены.
+By default, the command displays all commits starting from the nearest time. With the help of additional parameters it is possible not only to look at the information about commits but also what changes have been made.
 
-Флаг ``-p`` позволяет отобразить отличия, которые были внесены каждым
-коммитом
+The ``-p`` flag allows you to display the differences that have been made by each commit
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_log_p.png
 
-Более короткий вариант вывода можно вывести с флагом ``--stat``
+Shorter output option can be displayed with flag ``--stat``
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_log_stat.png
 

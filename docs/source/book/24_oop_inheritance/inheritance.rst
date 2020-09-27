@@ -1,11 +1,9 @@
-Основы наследования
+Inheritance basics
 ~~~~~~~~~~~~~~~~~~~
 
-Наследование позволяет создавать новые классы на основе существующих.
-Различают дочерний и родительские классы: дочерний класс наследует родительский.
-При наследовании, дочерний класс наследует все методы и атрибуты родительского класса.
+Inheritance allows creation of new classes based on existing ones. There are child and parents classes: child class inherits parent class. In inheritance, child class inherits all methods and attributes of parent class.
 
-Пример класса ConnectSSH, который выполняет подключение по SSH с помощью paramiko:
+Example of ConnectSSH class that performs SSH connection using paramiko:
 
 .. code:: python
 
@@ -58,18 +56,16 @@
             result = self._ssh.recv(self._MAX_READ).decode('ascii')
             return result
 
-Этот класс будет использоваться как основа для классов, которые отвечают за подключение
-к устройствам разных вендоров. Например, класс CiscoSSH будет отвечать за подключение 
-к устройствам Cisco будет наследовать класс ConnectSSH.
+This class will be used as the basis for classes that are responsible for connecting to devices of different vendors. For example, CiscoSSH class will be responsible for connecting to Cisco devices and will inherit ConnectSSH class.
 
-Синтаксис наследования:
+Inheritance syntax:
 
 .. code:: python
 
     class CiscoSSH(ConnectSSH):
         pass
 
-После этого в классе CiscoSSH доступны все методы и атрибуты класса ConnectSSH:
+After that, all ConnectSSH methods and attributes are available in CiscoSSH class:
 
 .. code:: python
 
@@ -97,23 +93,19 @@
     Out[9]: 'conf t\r\nEnter configuration commands, one per line.  End with CNTL/Z.\r\nR1(config)#int loopback 33\r\nR1(config-if)#ip address 3.3.3.3 255.255.255.255\r\nR1(config-if)#end\r\nR1#'
 
 
-После наследования всех методов родительского класса, дочерний класс может:
+After inheriting all methods of parent class, child class can:
 
-* оставить их без изменения
-* полностью переписать их
-* дополнить метод
-* добавить свои методы
+* leave them unchanged
+* rewrite them completely
+* supplement method
+* add your methods
 
-В классе CiscoSSH надо создать метод __init__ и добавить к нему параметры:
+In CiscoSSH class you have to create __init__ method and add parameters to it:
 
-* enable_password - пароль enable
-* disable_paging - отвечает за включение/отключение постраничного вывода команд
+* enable_password - enable password
+* disable_paging - is responsible for paging turning on/off
 
-Метод __init__ можно создать полностью с нуля, однако базовая логика подключения по SSH
-будет одинаковая в ConnectSSH и CiscoSSH, поэтому лучше добавить необходимые параметры,
-а для подключения, вызвать метод __init__ у класса ConnectSSH.
-Есть несколько вариантов вызова родительского метода, например, все эти варианты вызовут
-метод send_show_command родительского класса из дочернего класса CiscoSSH:
+Method __init__ can be created entirely from scratch but basic SSH connection logic is the same in ConnectSSH and CiscoSSH, so it is better to add necessary parameters and call __init__ method of ConnectSSH class for connection. There are several options for calling parent method, for example, all of these options will call send_show_command() method of parent class from child class CiscoSSH:
 
 .. code:: python
 
@@ -121,15 +113,9 @@
     command_result = super(CiscoSSH, self).send_show_command(command)
     command_result = super().send_show_command(command)
 
-Первый вариант ``ConnectSSH.send_show_command`` явно указывает имя родительского 
-класса - это самый понятный вариант для восприятия, однако его минус в том, что 
-при смене имени родительского класса, имя надо будет менять во всех местах, где
-вызывались методы родительского класса. Также у этого варианта есть минусы, при
-использовании множественного наследования.
-Второй и третий вариант по сути равнозначны, но третий короче, поэтому мы будем
-использовать его.
+The first variant of ``ConnectSSH.send_show_command`` explicitly specifies the name of parent class - this is the most understandable variant for perception, but its disadvantage is that when a parent class name is changed the name will have to be changed in all places where parent class methods were called. This option also has disadvantages when using multiple inheritance. The second and third options are essentially equivalent but the third option is shorter, so we will use it.
 
-Класс CiscoSSH с методом __init__:
+CiscoSSH class with __init__ method:
 
 .. code:: python
 
@@ -144,9 +130,8 @@
             time.sleep(1)
             self._ssh.recv(self._MAX_READ)
 
-Метод __init__ в классе CiscoSSH добавил параметры enable_password и disable_paging,
-и использует их соответственно для перехода в режим enable и отключения постраничного вывода.
-Пример подключения:
+Method __init__ in CiscoSSH class added enable_password and disable_paging parameters and uses them accordingly to enter enable mode and disable paging. 
+Example of connection:
 
 .. code:: python
 
@@ -155,12 +140,9 @@
     In [11]: r1.send_show_command('sh clock')
     Out[11]: 'sh clock\r\n*11:30:50.280 UTC Mon Aug 5 2019\r\nR1#'
 
-Теперь при подключении также выполняется переход в режим enable и по умолчанию отключен
-paging, так что можно попробовать выполнить длинную команду, например sh run.
+Now when connecting,  switch enters enable mode and paging is disabled by default, so you can try to run a long command like sh run.
 
-Еще один метод, который стоит доработать - метод send_config_commands: так как 
-класс CiscoSSH предназначен для работы с Cisco, можно в добавить в него переход 
-в конфигурационный режим перед командами и выход после.
+Another method that should be further developed is send_config_commands() method: since CiscoSSH class is designed to work with Cisco, you can add switching to configuration mode before commands and exit after.
 
 .. code:: python
 
@@ -193,7 +175,7 @@ paging, так что можно попробовать выполнить дл�
             result += self.exit_config_mode()
             return result
 
-Пример использования метода send_config_commands:
+Example of send_config_commands() method use:
 
 .. code:: python
 

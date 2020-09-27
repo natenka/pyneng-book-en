@@ -1,14 +1,12 @@
-Специальные команды ipython
+IPython special commands
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-В IPython есть специальные команды, которые упрощают работу
-с интерпретатором. Все они начинаются со знака процента.
+IPython has special commands that make work with interpreter easier. All of them are started with percent sign.
 
 %history
 ''''''''
 
-Например, команда ``%history`` позволяет просмотреть историю введённых пользователем
-команд в текущей сессии IPython:
+For example, %history command allows to look at history of commands entered by user in current IPython session.
 
 .. code:: python
 
@@ -28,13 +26,13 @@
         print("A is bigger")
     %history
 
-С помощью %history можно скопировать нужный блок кода.
+With %history you can copy needed block of code.
 
 
 %time
 '''''
 
-Команда ``%time`` показывает сколько секунд выполнялось выражение:
+The %time command shows how many seconds it took to execute expression.
 
 .. code:: python
 
@@ -70,11 +68,10 @@
 
 
 
-Подробнее об IPython можно почитать в
-`документации <http://ipython.readthedocs.io/en/stable/index.html>`__
-IPython.
+More about IPython you can find in IPython
+`documentation <http://ipython.readthedocs.io/en/stable/index.html>`__.
 
-Коротко информацию можно посмотреть в самом IPython командой %quickref:
+Briefly, the information can be viewed in IPython via %quickref  command:
 
 ::
 

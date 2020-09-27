@@ -2,31 +2,30 @@
 
    \newpage
 
-Задания
+Tasks
 =======
 
 .. include:: ./pytest.rst
 
-Задание 23.1
+Task 23.1
 ~~~~~~~~~~~~
 
-В этом задании необходимо создать класс IPAddress.
+In this task you need to create an IPaddress class.
 
-При создании экземпляра класса, как аргумент передается IP-адрес и маска,
-а также должна выполняться проверка корректности адреса и маски:
+When creating class instance, IP address and mask are passed as an argument and the correctness of address and mask should be checked:
 
-Адрес считается корректно заданным, если он:
+Address is considered correct if it:
 
-  * состоит из 4 чисел разделенных точкой
-  * каждое число в диапазоне от 0 до 255
+  * consists of 4 numbers separated by a point
+  * each number in range 0 to 255
 
-Маска считается корректной, если это число в диапазоне от 8 до 32 включительно
+Mask is considered correct if it is between 8 and 32 inclusive
 
-Если маска или адрес не прошли проверку, необходимо сгенерировать исключение ValueError с соответствующим текстом (вывод ниже).
+If mask or address didn’t pass verification, you should generate ValueError exception with appropriate text (output below).
 
-Также, при создании класса, должны быть созданы две переменных экземпляра: ip и mask, в которых содержатся адрес и маска, соответственно.
+Also, when creating a class, two instance variables should be created: *ip* and *mask* which contain address and mask, respectively.
 
-Пример создания экземпляра класса:
+Example of class instance creation:
 
 .. code:: python
 
@@ -41,7 +40,7 @@
     In [4]: ip1.mask
     Out[4]: 24
 
-Проверка корректности адреса (traceback сокращен)
+Address correctness check (traceback omitted)
 
 .. code:: python
     In [5]: ip1 = IPAddress('10.1.1/24')
@@ -49,7 +48,7 @@
     ...
     ValueError: Incorrect IPv4 address
 
-Проверка корректности маски (traceback сокращен)
+Address correctness check (traceback omitted)
 
 .. code:: python
 
@@ -59,15 +58,14 @@
     ValueError: Incorrect mask
 
 
-Задание 23.1a
+Task 23.1a
 ~~~~~~~~~~~~~
 
-Скопировать и изменить класс IPAddress из задания 23.1.
+Copy and change IPaddress class from task 23.1.
 
-Добавить два строковых представления для экземпляров класса IPAddress.
-Как дожны выглядеть строковые представления, надо определить из вывода ниже:
+Add two string views for IPaddress class instances. What line views should look like is defined in the following output:
 
-Создание экземпляра
+Instance creation
 
 .. code:: python
 
@@ -93,13 +91,12 @@
     [IPAddress('10.1.1.1/24')]
 
 
-Задание 23.2
+Task 23.2
 ~~~~~~~~~~~~
 
-Добавить к классу CiscoTelnet из задания 22.2x поддержку работы в менеджере контекста.
-При выходе из блока менеджера контекста должно закрываться соединение.
+Add to CiscoTelnet class from task 22.2x support for work in context manager. When leaving context manager block, connection should be closed.
 
-Пример работы:
+Example:
 
 .. code:: python
 
@@ -120,7 +117,7 @@
 
     In [17]: with CiscoTelnet(**r1_params) as r1:
         ...:     print(r1.send_show_command('sh clock'))
-        ...:     raise ValueError('Возникла ошибка')
+        ...:     raise ValueError('Error occurred')
         ...:
     sh clock
     *19:17:38.828 UTC Sat Apr 6 2019
@@ -130,21 +127,20 @@
     <ipython-input-17-f3141be7c129> in <module>
           1 with CiscoTelnet(**r1_params) as r1:
           2     print(r1.send_show_command('sh clock'))
-    ----> 3     raise ValueError('Возникла ошибка')
+    ----> 3     raise ValueError('Error occurred')
           4
 
     ValueError: Возникла ошибка
 
 
-Задание 23.3
+Task 23.3
 ~~~~~~~~~~~~
 
-Скопировать и изменить класс Topology из задания 22.1x.
+Copy and change Topology class from task 22.1x.
 
-Добавить метод, который позволит выполнять сложение двух экземпляров класса Topology.
-В результате сложения должен возвращаться новый экземпляр класса Topology.
+Add method that allows you to perform addition of two instances of Topology class. As a result of addition, new instance of Topology class should be returned.
 
-Создание двух топологий:
+Creation of two topologies:
 
 .. code:: python
 
@@ -167,7 +163,7 @@
     In [5]: t2.topology
     Out[5]: {('R1', 'Eth0/4'): ('R7', 'Eth0/0'), ('R1', 'Eth0/6'): ('R9', 'Eth0/0')}
 
-Суммирование топологий:
+Topology summation:
 
 .. code:: python
 
@@ -184,7 +180,7 @@
      ('R3', 'Eth0/1'): ('R4', 'Eth0/0'),
      ('R3', 'Eth0/2'): ('R5', 'Eth0/0')}
 
-Проверка, что исходные топологии не изменились
+Check that original topologies have not changed
 
 .. code:: python
 
@@ -201,17 +197,14 @@
     Out[10]: {('R1', 'Eth0/4'): ('R7', 'Eth0/0'), ('R1', 'Eth0/6'): ('R9', 'Eth0/0')}
 
 
-Задание 23.3a
+Task 23.3a
 ~~~~~~~~~~~~~
 
-В этом задании надо сделать так, чтобы экземпляры класса Topology были итерируемыми объектами.
-Основу класса Topology можно взять из любого задания 22.1x или задания 23.3.
+In this task, make sure that Topology class instances are iterable objects. The base of Topology class can be taken from any task 22.1x or task 23.3.
 
-После создания экземпляра класса, экземпляр должен работать как итерируемый объект.
-На каждой итерации должен возвращаться кортеж, который описывает одно соединение.
+After class instance creation, instance should work as an iterable object. After each iteration, tuple that describes a single connection should return.
 
-
-Пример работы класса:
+Example of class run:
 
 .. code:: python
 
@@ -228,4 +221,4 @@
     (('R3', 'Eth0/2'), ('R5', 'Eth0/0'))
 
 
-Проверить работу класса.
+Check class run.

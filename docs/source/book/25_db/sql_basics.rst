@@ -1,10 +1,9 @@
-Основы SQL (в sqlite3 CLI)
+SQL basics (in sqlite3 CLI)
 --------------------------
 
-В этом разделе рассматривается синтаксис языка SQL.
+This section deals with the SQL syntax.
 
-Если вы знакомы с базовым синтаксисом SQL, этот раздел можно пропустить
-и сразу перейти к разделу :ref:`sqlite3_index`
+If you are familiar with basic SQL syntax you can skip this section and move to section :ref:`sqlite3_index`
 
 .. toctree::
    :maxdepth: 1

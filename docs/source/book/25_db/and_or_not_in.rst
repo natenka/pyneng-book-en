@@ -1,7 +1,7 @@
 AND
 ~~~
 
-Оператор AND позволяет группировать несколько условий:
+AND operator allows grouping of several conditions:
 
 .. code:: sql
 
@@ -22,7 +22,7 @@ AND
 OR
 ~~
 
-Оператор OR:
+Operator OR:
 
 .. code:: sql
 
@@ -43,7 +43,7 @@ OR
 IN
 ~~
 
-Оператор IN:
+Operator IN:
 
 .. code:: sql
 
@@ -60,7 +60,7 @@ IN
 NOT
 ~~~
 
-Оператор NOT:
+Operator NOT:
 
 .. code:: sql
 

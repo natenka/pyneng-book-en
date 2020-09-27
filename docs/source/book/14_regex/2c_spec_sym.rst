@@ -1,26 +1,22 @@
-Специальные символы
+Special symbols
 -------------------
 
-*  ``.`` - любой символ, кроме символа новой строки
-*  ``^`` - начало строки
-*  ``$`` - конец строки
-*  ``[abc]`` - любой символ в скобках
-*  ``[^abc]`` - любой символ, кроме тех, что в скобках
-*  ``a|b`` - элемент a или b
-*  ``(regex)`` - выражение рассматривается как один элемент. Кроме того,
-   подстрока, которая совпала с выражением, запоминается
+*  ``.`` - any character except line feed character
+*  ``^`` - beginning of line
+*  ``$`` - end of line
+*  ``[abc]`` - any symbol in brackets
+*  ``[^abc]`` - any symbol except those in brackets
+*  ``a|b`` - element a or b
+*  ``(regex)`` - expression is treated as one element. In addition, the substring that matches the expression is memorized
 
 ``.``
 ~~~~~
 
-Точка обозначает любой символ.
+Dot represents any symbol.
 
-Чаще всего точка используется с символами повторения ``+`` и ``*``,
-чтобы указать, что между определенными выражениями могут находиться
-любые символы.
+Most often, a dot is used with repetition symbols ``+`` and ``*`` to indicate that any character can be found between certain expressions.
 
-Например, с помощью выражения ``Interface.+Port ID.+`` можно описать
-строку с интерфейсами в выводе sh cdp neighbors detail:
+For example, using expression ``Interface.+Port ID.+`` you can describe a line with interfaces in the output "sh cdp neighbors detail":
 
 .. code:: python
 
@@ -38,16 +34,12 @@
     In [2]: re.search('Interface.+Port ID.+', cdp).group()
     Out[2]: 'Interface: GigabitEthernet1/0/16,  Port ID (outgoing port): GigabitEthernet0/1'
 
-В результат попала только одна строка, так как точка обозначает любой
-символ, кроме символа перевода строки. Кроме того, символы повторения
-``+`` и ``*`` по умолчанию захватывают максимально длинную строку. Этот
-аспект рассматривается в подразделе "Жадность символов повторения".
+The result was only one string as the dot represents any character except line feed character. In addition, repetition characters 
+``+`` and ``*`` by default capture the longest string possible. This aspect is addressed in the subsection "Greedy symbols".
 
 ``^``
 ~~~~~
-
-Символ ``^`` означает начало строки. Выражению ``^\d+`` соответствует
-подстрока:
+Character  ``^`` means the beginning of line. The expression ``^\d+`` corresponds to the substring:
 
 .. code:: python
 
@@ -56,7 +48,7 @@
     In [4]: re.search('^\d+', line).group()
     Out[4]: '100'
 
-Символы с начала строки и до решетки (включая решетку):
+Characters from beginning of line to pound sign (including pound):
 
 .. code:: py
 
@@ -68,10 +60,9 @@
 ``$``
 ~~~~~
 
-Символ ``$`` обозначает конец строки.
+Symbol ``$`` represents the end of a line.
 
-Выражение ``\S+$`` описывает любые символы, кроме whitespace в конце
-строки:
+The expression ``\S+$`` describes any characters except whitespace at the end of the line:
 
 .. code:: python
 
@@ -83,9 +74,7 @@
 ``[]``
 ~~~~~~
 
-Символы, которые перечислены в квадратных скобках, означают, что любой
-из этих символов будет совпадением. Таким образом можно описывать разные
-регистры:
+Symbols that are listed in square brackets mean that any of these symbols will be a match. Thus, different registers can be described:
 
 .. code:: python
 
@@ -97,10 +86,7 @@
     In [11]: re.search('[Ff]ast[Ee]thernet', line).group()
     Out[11]: 'FastEthernet'
 
-С помощью квадратных скобок можно указать, какие символы могут
-встречаться на конкретной позиции. Например, выражение ``^.+[>#]``
-описывает символы с начала строки и до решетки или знака больше (включая
-их). С помощью такого выражения можно получить имя устройства:
+Using square brackets, you can specify which characters may meet at a specific position. For example, the expression ``^.+[>#]`` describes characters from the beginning of a line to # or > sign (including them). This expression can be used to derive the name of the device:
 
 .. code:: python
 
@@ -118,8 +104,7 @@
     SW1>
     r1-london-core#
 
-В квадратных скобках можно указывать диапазоны символов. Например, таким
-образом можно указать, что нас интересует любая цифра от 0 до 9:
+You can specify character ranges in square brackets. For example, it can be stated that we are interested in any number from 0 to 9:
 
 .. code:: py
 
@@ -128,7 +113,7 @@
     In [15]: re.search('[0-9]+', line).group()
     Out[15]: '100'
 
-Аналогичным образом можно указать буквы:
+Similarly, letters can be indicated:
 
 .. code:: py
 
@@ -140,7 +125,7 @@
     In [18]: re.search('[A-Z]+', line).group()
     Out[18]: 'F'
 
-В квадратных скобках можно указывать несколько диапазонов:
+Several ranges may be indicated in square brackets:
 
 .. code:: py
 
@@ -149,22 +134,17 @@
     In [20]: re.search('[a-f0-9]+\.[a-f0-9]+\.[a-f0-9]+', line).group()
     Out[20]: 'aa12.35fe.a5d3'
 
-Выражение ``[a-f0-9]+\.[a-f0-9]+\.[a-f0-9]+`` описывает три группы
-символов, разделенных точкой. Символами в каждой группе могут быть буквы
-a-f или цифры 0-9. Это выражение описывает MAC-адрес.
+The expression ``[a-f0-9]+\.[a-f0-9]+\.[a-f0-9]+`` describes three groups of symbols separated by a dot. The characters in each group can be letters a-f or digits 0-9. This expression describes MAC address.
 
-Еще одна особенность квадратных скобок - специальные символы внутри
-квадратных скобок теряют свое специальное значение и обозначают просто
-символ. Например, точка внутри квадратных скобок будет обозначать точку,
-а не любой символ.
+Another feature of the square brackets is that the special symbols within the square brackets lose their special meaning and are simply a symbol. For example, a dot inside the square brackets will denote a dot, not any symbol.
 
-Выражение ``[a-f0-9]+[./][a-f0-9]+`` описывает три группы символов:
+The expression ``[a-f0-9]+[./][a-f0-9]+`` describes three groups of symbols:
 
-1. буквы a-f или цифры от 0 до 9
-2. точка или слеш
-3. буквы a-f или цифры от 0 до 9
+1. letters a-f or digits 0-9
+2. dot or slash
+3. letters a-f or digits 0-9
 
-Для строки line совпадением будет такая подстрока:
+For *line* string the match will be a such substring:
 
 .. code:: py
 
@@ -173,8 +153,7 @@ a-f или цифры 0-9. Это выражение описывает MAC-ад
     In [22]: re.search('[a-f0-9]+[./][a-f0-9]+', line).group()
     Out[22]: 'aa12.35fe'
 
-Если после открывающейся квадратной скобки указан символ ``^``,
-совпадением будет любой символ, кроме указанных в скобках:
+If first symbol in square brackets is ``^``, the match will be any symbol except those in brackets.
 
 .. code:: python
 
@@ -183,12 +162,12 @@ a-f или цифры 0-9. Это выражение описывает MAC-ад
     In [24]: re.search('[^a-zA-Z]+', line).group()
     Out[24]: '0/0    15.0.15.1       '
 
-В данном случае выражение описывает все, кроме букв.
+In this case, the expression describes everything except letters.
 
 ``|``
 ~~~~~
 
-Вертикальная черта работает как 'или':
+Pipe symbol works like 'or':
 
 .. code:: python
 
@@ -197,19 +176,14 @@ a-f или цифры 0-9. Это выражение описывает MAC-ад
     In [26]: re.search('Fast|0/1', line).group()
     Out[26]: 'Fast'
 
-Обратите внимание на то, как срабатывает ``|`` - Fast и 0/1
-воспринимаются как целое выражение. То есть, в итоге выражение означает,
-что мы ищем Fast или 0/1, а не то, что мы ищем Fas, затем t или 0 и 0/1.
+Note how ``|`` works - Fast и 0/1 are treated as an whole expression. So in the end, the expression means that we’re looking for Fast or 0/1.
 
 ``()``
 ~~~~~~
 
-Скобки используются для группировки выражений. Как и в математических
-выражениях, с помощью скобок можно указать, к каким элементам
-применяется операция.
+Brackets are used to group expressions. As in mathematical expressions, brackets can be used to indicate which elements the operation is applied to.
 
-Например, выражение ``[0-9]([a-f]|[0-9])[0-9]`` описывает три символа:
-цифра, потом буква или цифра и цифра:
+For example, the expression ``[0-9]([a-f]|[0-9])[0-9]`` describes three characters: digit, then a letter or digit and digit:
 
 .. code:: python
 
@@ -218,8 +192,7 @@ a-f или цифры 0-9. Это выражение описывает MAC-ад
     In [28]: re.search('[0-9]([a-f]|[0-9])[0-9]', line).group()
     Out[28]: '100'
 
-Скобки позволяют указывать, какое выражение является одним целым. Это
-особенно полезно при использовании символов повторения:
+Brackets allow to indicate which expression is a one entity. This is particularly useful when using repetition symbols:
 
 .. code:: python
 
@@ -228,7 +201,4 @@ a-f или цифры 0-9. Это выражение описывает MAC-ад
     In [30]: re.search('([0-9]+\.)+[0-9]+', line).group()
     Out[30]: '15.0.15.1'
 
-Скобки позволяют не только группировать выражения. Строка, которая
-совпала с выражением в скобках, запоминается. Ее можно получить отдельно
-с помощью специальных методов groups и group(n). Это рассматривается в
-подразделе "Группировка выражений".
+Brackets not only allow you to group expressions. The string that matches the bracketed expression is memorized. It can be obtained separately by special methods groups() and group(n). This is considered in the subsection "Grouping of expressions".

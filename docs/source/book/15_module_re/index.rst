@@ -4,26 +4,24 @@
 
 .. _module_re_index:
 
-15. Модуль re
+15. Module re
 ============================
 
-В Python для работы с регулярными выражениями используется модуль
-**re**.
+Python uses **re** module to work with regular expressions.
 
-Основные функции модуля **re**: 
+Core functions of **re** module: 
 
-* ``match()`` - ищет последовательность в начале строки 
-* ``search()`` - ищет первое совпадение с шаблоном 
-* ``findall()`` - ищет все совпадения с шаблоном. Возвращает результирующие строки в виде списка 
-* ``finditer()`` - ищет все совпадения с шаблоном. Возвращает итератор 
-* ``compile()`` - компилирует регулярное выражение. К этому
-  объекту затем можно применять все перечисленные функции 
-* ``fullmatch()`` - вся строка должна соответствовать описанному регулярному выражению
+* ``match()`` - searches the sequence at the beginning of the line
+* ``search()`` - searches for first match with template
+* ``findall()`` - searches for all matches with template. Returns the resulting strings as a list 
+* ``finditer()`` - searches for any matches with template. Returns the iterator
+* ``compile()`` - compiles regular expression. You can then apply all of the listed functions to this object
+* ``fullmatch()`` - the entire line must conform to the regular expression described
 
-Кроме функций для поиска совпадений, в модуле есть такие функции:
+In addition to functions that search matches, the module has the following functions:
 
--  ``re.sub`` - для замены в строках
--  ``re.split`` - для разделения строки на части
+-  ``re.sub`` - for replacement in strings
+-  ``re.split`` - to split the string into parts
 
 
 .. toctree::

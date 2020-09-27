@@ -1,8 +1,7 @@
-Модуль pexpect
+Module pexpect
 --------------
 
-Модуль pexpect позволяет автоматизировать интерактивные подключения,
-такие как:
+Module pexpect allows to automate interactive connections such as:
 
 * telnet 
 * ssh 
@@ -10,55 +9,46 @@
 
 .. note::
 
-    Pexpect - это реализация expect на Python.
+    Pexpect is an implementation of *expect* in Python.
 
-Для начала, модуль pexpect нужно установить:
+First, pexpect module needs to install:
 
 ::
 
     pip install pexpect
 
 
-Логика работы pexpect такая: 
+The logic of pexpect is:
 
-* запускается какая-то программа 
-* pexpect ожидает определенный вывод (приглашение, запрос пароля и подобное) 
-* получив вывод, он отправляет команды/данные 
-* последние два действия повторяются столько, сколько нужно
+* some program is running
+* pexpect expects a certain output (prompt, password request, etc.) 
+* after receiving the output, it sends commands/data
+* last two actions are repeated as many as necessary
 
-При этом сам pexpect не реализует различные утилиты, а использует уже
-готовые.
+At the same time, pexpect does not implement utilities but uses ready-made ones.
 
 ``pexpect.spawn``
 ~~~~~~~~~~~~~~~~~
 
-Класс ``spawn`` позволяет взаимодействовать с вызванной
-программой, отправляя данные и ожидая ответ.
+Class ``spawn`` allows you to interact with the called program by sending data and waiting for a response.
 
-Например, таким образом можно инициировать соединение SSH:
+For example, you can initiate SSH connecton:
 
 .. code:: python
 
     In [5]: ssh = pexpect.spawn('ssh cisco@192.168.100.1')
 
-После выполнения этой строки, подключение готово. Теперь необходимо
-указать какую строку ожидать. В данном случае, надо дождаться запроса о
-пароле:
+After executing this line, the connection is established. Now you must specify which line to expect. In this case, wait for the password request:
 
 .. code:: python
 
     In [6]: ssh.expect('[Pp]assword')
     Out[6]: 0
 
-Обратите внимание как описана строка, которую ожидает pexpect:
-``[Pp]assword``. Это регулярное выражение, которое описывает строку
-password или Password. То есть, методу expect можно передавать
-регулярное выражение как аргумент.
+Note how the line that pexpect expects is described:
+``[Pp]assword``. This is a regular expression that describes a *password* or *Password* string. That is, the expect() method can be used to pass a regular expression as an argument.
 
-Метод expect вернул число 0 в результате работы. Это число указывает,
-что совпадение было найдено и что это элемент с индексом ноль. Индекс
-тут фигурирует из-за того, что expect можно передавать список строк.
-Например, можно передать список с двумя элементами:
+Method expect() returned number 0 as a result of the work. This number indicates that a match has been found and that this element with index zero. The index appears here because you can transfer a list of strings. For example, you can transfer a list with two elements:
 
 .. code:: python
 
@@ -67,26 +57,22 @@ password или Password. То есть, методу expect можно пере
     In [8]: ssh.expect(['password', 'Password'])
     Out[8]: 1
 
-Обратите внимание, что теперь возвращается 1. Это значит, что
-совпадением было слово Password.
+Note that it now returns 1. This means that *Password* word matched.
 
-Теперь можно отправлять пароль. Для этого используется команда sendline:
+Now you can send the password using *sendline* command:
 
 .. code:: python
 
     In [9]: ssh.sendline('cisco')
     Out[9]: 6
 
-Команда sendline отправляет строку, автоматически добавляет к ней
-перевод строки на основе значения os.linesep, а затем возвращает число
-указывающее сколько байт было записано.
+Command *sendline* sends a string, automatically adds a line feed character to it based on the value of os.linesep and then returns a number indicating how many bytes were written.
 
 .. note::
 
-    В pexpect есть несколько вариантов отправки команд, не только
-    sendline.
+    Pexpect has several options for sending commands, not just sendline.
 
-Для того чтобы попасть в режим enable цикл expect-sendline повторяется:
+To get into enable mode expect-sendline cycle repeats:
 
 .. code:: python
 
@@ -105,30 +91,28 @@ password или Password. То есть, методу expect можно пере
     In [14]: ssh.expect('[>#]')
     Out[14]: 0
 
-Теперь можно отправлять команду:
+Now we can send a command:
 
 .. code:: python
 
     In [15]: ssh.sendline('sh ip int br')
     Out[15]: 13
 
-После отправки команды, pexpect надо указать до какого момента считать
-вывод. Указываем, что считать надо до #:
+After sending the command, pexpect must be pointed till which moment it should read the output. We specify that it should read untill #:
 
 .. code:: python
 
     In [16]: ssh.expect('#')
     Out[16]: 0
 
-Вывод команды находится в атрибуте before:
+Command output is in *before* attribute:
 
 .. code:: python
 
     In [17]: ssh.before
     Out[17]: b'sh ip int br\r\nInterface                  IP-Address      OK? Method Status                Protocol\r\nEthernet0/0                192.168.100.1   YES NVRAM  up                    up      \r\nEthernet0/1                192.168.200.1   YES NVRAM  up                    up      \r\nEthernet0/2                19.1.1.1        YES NVRAM  up                    up      \r\nEthernet0/3                192.168.230.1   YES NVRAM  up                    up      \r\nEthernet0/3.100            10.100.0.1      YES NVRAM  up                    up      \r\nEthernet0/3.200            10.200.0.1      YES NVRAM  up                    up      \r\nEthernet0/3.300            10.30.0.1       YES NVRAM  up                    up      \r\nR1'
 
-Так как результат выводится в виде последовательности байтов, надо
-конвертировать ее в строку:
+Since the result is displayed as a sequence of bytes you should convert it to a string:
 
 .. code:: python
 
@@ -146,20 +130,19 @@ password или Password. То есть, методу expect можно пере
     Ethernet0/3.300            10.30.0.1       YES NVRAM  up                    up
     R1
 
-Завершается сессия вызовом метода close:
+The session ends with a close() call:
 
 .. code:: python
 
     In [20]: ssh.close()
 
-Специальные символы в shell
+Special characters in shell
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Pexpect не интерпретирует специальные символы shell, такие как ``>``,
+Pexpect does not interpret special shell characters such as ``>``,
 ``|``, ``*``.
 
-Для того, чтобы, например, команда ``ls -ls | grep SUMMARY`` отработала,
-нужно запустить shell таким образом:
+For example, in order make command ``ls -ls | grep SUMMARY`` work, shell must be run as follows:
 
 .. code:: python
 
@@ -179,20 +162,17 @@ Pexpect не интерпретирует специальные символы 
 pexpect.EOF
 ~~~~~~~~~~~
 
-В предыдущем примере встретилось использование pexpect.EOF.
+In the previous example we met pexpect.EOF.
 
 .. note::
 
-    EOF (end of file) — конец файла
+    EOF — end of file
 
-Это специальное значение, которое позволяет отреагировать на завершение
-исполнения команды или сессии, которая была запущена в spawn.
+This is a special value that allows you to react to the end of a command or session that has been run in spawn.
 
-При вызове команды ``ls -ls`` pexpect не получает интерактивный сеанс.
-Команда выполняется и всё, на этом завершается её работа.
+When calling ``ls -ls`` command, pexpect does not receive an interactive session. Command is simply executed and that ends its work.
 
-Поэтому если запустить её и указать в expect приглашение, возникнет
-ошибка:
+Therefore, if you run this command and set prompt in *expect*, there is an error:
 
 .. code:: python
 
@@ -205,22 +185,21 @@ pexpect.EOF
     ----> 1 p.expect('nattaur')
     ...
 
-Если передать в expect EOF, ошибки не будет.
+If EOF passed to *expect*, there will be no error.
 
-Метод pexpect.expect
+Method pexpect.expect
 ~~~~~~~~~~~~~~~~~~~~
 
-В pexpect.expect как шаблон может использоваться: 
+In pexpect.expect as a template can be used:
 
-* регулярное выражение 
-* EOF - этот шаблон позволяет среагировать на исключение EOF
-* TIMEOUT - исключение timeout (по умолчанию значение timeout = 30 секунд) 
+* regular expression
+* EOF - this template allows you to react to the EOF exception
+* TIMEOUT - timeout exception (default timeout = 30 seconds)
 * compiled re
 
-Еще одна очень полезная возможность pexpect.expect: можно передавать не
-одно значение, а список.
+Another very useful feature of pexpect.expect is that you can pass not one value, but a list.
 
-Например:
+For example:
 
 .. code:: python
 
@@ -229,22 +208,20 @@ pexpect.EOF
     In [8]: p.expect(['py3_convert', pexpect.TIMEOUT, pexpect.EOF])
     Out[8]: 2
 
-Тут несколько важных моментов: 
+Here are some important points:
 
-* когда pexpect.expect вызывается со списком, можно указывать разные ожидаемые строки 
-* кроме строк, можно указывать исключения 
-* pexpect.expect возвращает номер элемента списка, который сработал 
+* when pexpect.expect is called with the list, you can specify different expected strings 
+* apart strings, exceptions also can be specified
+* pexpect.expect returns number of element that matched
 
-  * в данном случае номер 2, так как исключение EOF находится в списке под номером два 
+  * in this case number 2 because the EOF exception is number two in the list  
 
-* за счет такого формата можно делать ответвления в программе, 
-  в зависимости от того, с каким элементом было совпадение
+* with this format you can make branches in the program depending on the element which had a match
 
-Пример использования pexpect
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Example of pexpect use
+----------------------------
 
-Пример использования pexpect для подключения к оборудованию и передачи
-команды show (файл 1_pexpect.py):
+Example of using pexpect when connecting to equipment and passing show command (file 1_pexpect.py):
 
 .. code:: python
 
@@ -273,10 +250,10 @@ pexpect.EOF
                 match = ssh.expect([prompt, pexpect.TIMEOUT, pexpect.EOF])
                 if match == 1:
                     print(
-                        f"Символ {prompt} не найден в выводе. Полученный вывод записан в словарь"
-                    )
+                        f"Symbol {prompt} is not found in output. Resulting output is written to 
+                        dictionary")
                 if match == 2:
-                    print("Соединение разорвано со стороны сервера")
+                    print("Connection was terminated by server")
                     return result
                 else:
                     output = ssh.before
@@ -291,7 +268,7 @@ pexpect.EOF
             result = send_show_command(ip, "cisco", "cisco", "cisco", commands)
             pprint(result, width=120)
 
-Эта часть функции отвечает за переход в режим enable:
+This part of the function is responsible for switching to enable mode:
 
 .. code:: python
 
@@ -302,12 +279,9 @@ pexpect.EOF
         ssh.sendline(enable)
         ssh.expect(prompt)
 
-Если ``ssh.expect([">", "#"])`` возвращает индекс 0, значит при подключении не было
-автоматического перехода в режим enable и его надо выполнить.
-Если возвращается индекс 1 - значит мы уже находимся в режиме enable, например, потому что
-на оборудовании настроено privilege 15.
+If ``ssh.expect([">", "#"])`` does not return index 0, it means that connection was not switched to enable mode automaticaly and it should be done separately. If index 1 is returned, then we are already in enable mode, for example, because device is configured with privilege 15.
 
-Еще один интересный момент в функции:
+Another interesting point about this function:
 
 .. code:: python
 
@@ -316,23 +290,22 @@ pexpect.EOF
         match = ssh.expect([prompt, pexpect.TIMEOUT, pexpect.EOF])
         if match == 1:
             print(
-                f"Символ {prompt} не найден в выводе. Полученный вывод записан в словарь"
+                f"Symbol {prompt} is not found in output. Resulting output is written to dictionary"
             )
         if match == 2:
-            print("Соединение разорвано со стороны сервера")
+            print("Connection was terminated by server")
             return result
         else:
             output = ssh.before
             result[command] = output.replace("\r\n", "\n")
     return result
 
-Тут по очереди отправляются команды и expect ждет три варианта: приглашение, таймаут или EOF.
-Если метод expect не дождался ``#``, будет возвращено значение 1 и в этом случае выводится сообщение,
-что символ не найден. При этом, и когда совпадение найдено и когда был таймаут, полученный вывод
-записывается в словарь. Таким образом можно увидеть, что было получено с устройства, даже
-если приглашение не найдено.
+Here commands are sent in turn and expect() waits for three options: prompt, timeout or EOF.
+If expect() method didn't catch ``#``, the value 1 will be returned and in this case a message is displayed,
+that the symbol was not found. But in both cases, when a match is found or timeout the resulting output is written to dictionary. Thus, you can see what was received from the device, even
+if prompt is not found.
 
-Вывод при запуске скрипта:
+Output after script execution:
 
 ::
 
@@ -368,19 +341,18 @@ pexpect.EOF
                     'Et0/3                          admin down     down     \n'
                     'Lo33                           up             up       \n'}
 
-Работа с pexpect без отключения постраничного вывода команд
+Working with pexpect without disabling commands pagination
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Иногда вывод команды сильно большой и его не получается полностью считать или оборудование не
-дает возможность отключить постраничный вывод. В этом случае необходим немного другой подход.
+Sometimes the output of a command is very large and cannot be read completely or device is not
+makes it possible to disable pagination. In this case, a slightly different approach is needed.
 
 .. note::
 
-    Эта же задача будет повторяться и для других модулей этого раздела.
+    The same task will be repeated for other modules in this section.
 
 
-Пример использования pexpect для работы с постраничным выводом команд
-show (файл 1_pexpect_more.py):
+Example of using pexpect to work with paginated output of *show* command (1_pexpect_more.py file):
 
 .. code:: python
 
@@ -413,7 +385,7 @@ show (файл 1_pexpect_more.py):
                 elif match == 1:
                     ssh.send(" ")
                 else:
-                    print("Ошибка: timeout")
+                    print("Error: timeout")
                     break
             output = re.sub("\n +\n", "\n", output)
             return output
@@ -427,13 +399,17 @@ show (файл 1_pexpect_more.py):
                 f.write(result)
 
 
-Теперь после отправки команды, метод expect ждет еще один вариант ``--More--`` - признак,
-что дальше идет еще одна страница. Так как заранее не известно сколько именно страниц будет в выводе,
-чтение выполняется в цикле ``while True``. Цикл прерывается если встретилось приглашение ``#``
-или в течение 10 секунд не появилось приглашение или ``--More--``.
+Now after sending the command, expect() method waits for another option ``--More--`` - sign,
+that there will be one more page further. Since it's not known in advance how many pages will be in the output,
+reading is performed in a loop ``while True``. Loop is interrupted if prompt is met ``#``
+or no prompt appears within 10 seconds or ``--More--``.
 
-Если встретилось ``--More--``, страницы еще не закончились и надо пролистнуть следующую.
-В Cisco для этого надо нажать пробел (без перевода строки). Поэтому тут используется метод send,
-а не sendline - sendline автоматически добавляет перевод строки.
+If ``--More--`` is met, pages are not over yet and you have to scroll through the next one.
+In Cisco, you need to press space bar to do this (without line feed). Therefore, send() method is used here,
+not sendline - sendline automatically adds a line feed.
 
-Эта строка ``page = re.sub(" +\x08+ +\x08+", "\n", page)`` удаляет backspace символы, которые находятся вокруг ``--More--`` чтобы они не попали в итоговый вывод.
+This string ``page = re.sub(" +\x08+ +\x08+", "\n", page)`` removes backspace symbols which are around ``--More--`` so they don't end up in the final output.
+
+
+
+

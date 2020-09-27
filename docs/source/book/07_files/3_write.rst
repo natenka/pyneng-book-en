@@ -1,27 +1,24 @@
-Запись файлов
+File writing
 -------------
 
-При записи, очень важно определиться с режимом открытия файла, чтобы
-случайно его не удалить:
+When writing it is very important to decide how to open a file in order not to accidentally delete it:
 
-*  ``w`` - открыть файл для записи. Если файл существует, то его
-   содержимое удаляется
-*  ``a`` - открыть файл для дополнения записи. Данные добавляются в
-   конец файла
+*  ``w`` - open file for writing. If file exists, its content is removed
+*  ``a`` - open file to add data. Data is added to the end of the file
 
-При этом оба режима создают файл, если он не существует.
+Both modes create a file if it does not exist.
 
-Для записи в файл используются такие методы:
+These methods are used to write to a file:
 
-*  ``write()`` - записать в файл одну строку
-*  ``writelines()`` - позволяет передавать в качестве аргумента список строк
+*  ``write()`` - write one line to file
+*  ``writelines()`` - allows to send as argument a list of strings
 
 ``write()``
 ^^^^^^^^^^^
 
-Метод ``write`` ожидает строку, для записи.
+The ``write`` method expects string to write.
 
-Для примера, возьмем список строк с конфигурацией:
+For example, take a list of lines with configuration:
 
 .. code:: python
 
@@ -36,13 +33,13 @@
        ...:  'ip ssh version 2',
        ...:  '!']
 
-Открытие файла r2.txt в режиме для записи:
+Open r2.txt file in write mode:
 
 .. code:: python
 
     In [2]: f = open('r2.txt', 'w')
 
-Преобразуем список команд в одну большую строку с помощью ``join``:
+Convert the list of commands to one large string using ``join``:
 
 .. code:: python
 
@@ -51,26 +48,25 @@
     In [4]: cfg_lines_as_string
     Out[4]: '!\nservice timestamps debug datetime msec localtime show-timezone year\nservice timestamps log datetime msec localtime show-timezone year\nservice password-encryption\nservice sequence-numbers\n!\nno ip domain lookup\n!\nip ssh version 2\n!'
 
-Запись строки в файл:
+Write a string to a file:
 
 .. code:: python
 
     In [5]: f.write(cfg_lines_as_string)
 
-Аналогично можно добавить строку вручную:
+Similarly, you can add a string manually:
 
 .. code:: python
 
     In [6]: f.write('\nhostname r2')
 
-После завершения работы с файлом, его необходимо закрыть:
+After work with file is finished, it should be closed:
 
 .. code:: python
 
     In [7]: f.close()
 
-Так как ipython поддерживает команду cat, можно легко посмотреть
-содержимое файла:
+Since ipython supports the *cat* command, you can easily see the content of the file:
 
 .. code:: python
 
@@ -90,9 +86,9 @@
 ``writelines()``
 ^^^^^^^^^^^^^^^^
 
-Метод ``writelines()`` ожидает список строк, как аргумент.
+The ``writelines()`` method expects list of strings as an argument.
 
-Запись списка строк cfg_lines в файл:
+Writing cfg_lines list into the file:
 
 .. code:: python
 
@@ -116,11 +112,9 @@
     In [12]: cat r2.txt
     !service timestamps debug datetime msec localtime show-timezone yearservice timestamps log datetime msec localtime show-timezone yearservice password-encryptionservice sequence-numbers!no ip domain lookup!ip ssh version 2!
 
-В результате все строки из списка записались в одну строку файла, так
-как в конце строк не было символа ``\n``.
+As a result, all lines in the list were written into one line because there was no symbol ``\n`` at the end of the lines.
 
-Добавить перевод строки можно по-разному.
-Например, можно просто обработать список в цикле:
+You can add line feed character in different ways. For example, you can simply process the list in the loop:
 
 .. code:: python
 
@@ -142,8 +136,7 @@
      '!\n',
      'ip ssh version 2\n',
 
-Если итоговый список записать заново в файл, то в нём уже
-будут переводы строк:
+If write the resulting list into the file, it already contains line feed characters:
 
 .. code:: python
 

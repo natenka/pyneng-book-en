@@ -1,57 +1,54 @@
-Пример использования ключевых аргументов переменной длины и распаковки аргументов
+Example of using variable length keyword arguments and unpacking arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-С помощью аргументов переменной длины и распаковки аргументов можно
-передавать аргументы между функциями. Посмотрим на примере.
+Using variable length arguments and unpacking arguments you can transfer arguments between functions. Let me give you an example.
 
-Функция check_passwd (файл func_add_user_kwargs_example.py):
+check_passwd function (func_add_user_kwargs_example.py file):
 
 .. code:: python
 
     In [1]: def check_passwd(username, password, min_length=8, check_username=True):
        ...:     if len(password) < min_length:
-       ...:         print('Пароль слишком короткий')
+       ...:         print('Password is too short')
        ...:         return False
        ...:     elif check_username and username in password:
-       ...:         print('Пароль содержит имя пользователя')
+       ...:         print('Password contains username')
        ...:         return False
        ...:     else:
-       ...:         print(f'Пароль для пользователя {username} прошел все проверки')
+       ...:         print(f'Password for user {username} has passed all checks')
        ...:         return True
        ...:
 
-Функция проверяет пароль и возвращает True, если пароль прошел проверки и False - если нет.
+The function checks password and returns True if password has passed verification and False if not.
 
-Вызов функции в ipython:
+Call function in ipython:
 
 .. code:: python
 
     In [3]: check_passwd('nata', '12345', min_length=3)
-    Пароль для пользователя nata прошел все проверки
+    Password for user nata has passed all checks
     Out[3]: True
 
     In [4]: check_passwd('nata', '12345nata', min_length=3)
-    Пароль содержит имя пользователя
+    Password contains username
     Out[4]: False
 
     In [5]: check_passwd('nata', '12345nata', min_length=3, check_username=False)
-    Пароль для пользователя nata прошел все проверки
+    Password for user nata has passed all checks
     Out[5]: True
 
     In [6]: check_passwd('nata', '12345nata', min_length=3, check_username=True)
-    Пароль содержит имя пользователя
+    Password contains username
     Out[6]: False
 
 
-Сделаем функцию add_user_to_users_file, которая запрашивает пароль
-для указанного пользователя, проверяет его и запрашивает заново, если пароль не 
-прошел проверки или записывает пользователя и пароль в файл, если пароль прошел проверки.
+We will create add_user_to_users_file function that requests password for the specified user, checks it and requests it again if password has not been checked or writes user and password to the file if password has been verified
 
 .. code:: python
 
     In [7]: def add_user_to_users_file(user, users_filename='users.txt'):
        ...:     while True:
-       ...:         passwd = input(f'Введите пароль для пользователя {user}: ')
+       ...:         passwd = input(f'Enter password for user {user}: ')
        ...:         if check_passwd(user, passwd):
        ...:             break
        ...:     with open(users_filename, 'a') as f:
@@ -59,25 +56,23 @@
        ...:
 
     In [8]: add_user_to_users_file('nata')
-    Введите пароль для пользователя nata: natasda
-    Пароль слишком короткий
-    Введите пароль для пользователя nata: natasdlajsl;fjd
-    Пароль содержит имя пользователя
-    Введите пароль для пользователя nata: salkfdjsalkdjfsal;dfj
-    Пароль для пользователя nata прошел все проверки
+    Enter password for user nata: natasda
+    Password is too short
+    Enter password for user nata: natasdlajsl;fjd
+    Password contains username
+    Enter password for user nata: salkfdjsalkdjfsal;dfj
+    Password for user nata has passed all checks
 
     In [9]: cat users.txt
     nata,salkfdjsalkdjfsal;dfj
 
-В таком варианте функции add_user_to_users_file нет возможности регулировать
-минимальную длину пароля и то надо ли проверять наличие имени пользователя в пароле.
-В следующем варианте функции add_user_to_users_file эти возможности добавлены:
+In this variant of add_user_to_users_file function, it is not possible to regulate the minimum password length and whether to verify the presence of a username in the password. In the following variant of add_user_to_users_file function, these features are added:
 
 .. code:: python
 
     In [5]: def add_user_to_users_file(user, users_filename='users.txt', min_length=8, check_username=True):
        ...:     while True:
-       ...:         passwd = input(f'Введите пароль для пользователя {user}: ')
+       ...:         passwd = input(f'Enter password for user {user}: ')
        ...:         if check_passwd(user, passwd, min_length, check_username):
        ...:             break
        ...:     with open(users_filename, 'a') as f:
@@ -85,26 +80,20 @@
        ...:
 
     In [6]: add_user_to_users_file('nata', min_length=5)
-    Введите пароль для пользователя nata: natas2342
-    Пароль содержит имя пользователя
-    Введите пароль для пользователя nata: dlfjgkd
-    Пароль для пользователя nata прошел все проверки
+    Enter password for user nata: natas2342
+    Password contains username
+    Enter password for user nata: dlfjgkd
+    Password for user nata has passed all checks
 
-Теперь при вызове функции можно указать параметр min_length или check_username.
-Однако, пришлось повторить параметры функции check_passwd в определении функции add_user_to_users_file.
-Это не очень хорошо и, когда параметров много, просто неудобно, особенно
-если учитывать, что у функции check_passwd могут добавиться другие параметры.
+You can now specify min_length or check_username when calling a function. However, it was necessary to repeat parameters of the check_passwd function in defining the add_user_to_users_file function. This is not very good and when there are many parameters it is just inconvenient, especially considering that check_passwd function can have other parameters.
 
-Такая ситуация случается довольно часто и в Python есть распространенное решение этой задачи:
-все аргументы для внутренней функции (в этом случае это check_passwd) будут приниматься в ``**kwargs``.
-Затем, при вызове функции check_passwd они будут распаковываться в ключевые аргументы
-тем же синтаксисом ``**kwargs``.
+This happens quite often and Python has a common solution to this problem: all arguments for the internal function (in this case it is check_passwd) will be taken in **kwargs. Then, when calling the check_passwd function they will be unpacked into keyword arguments by the same  ``**kwargs`` syntax.
 
 .. code:: python
 
     In [7]: def add_user_to_users_file(user, users_filename='users.txt', **kwargs):
        ...:     while True:
-       ...:         passwd = input(f'Введите пароль для пользователя {user}: ')
+       ...:         passwd = input(f'Enter password for user {user}: ')
        ...:         if check_passwd(user, passwd, **kwargs):
        ...:             break
        ...:     with open(users_filename, 'a') as f:
@@ -112,15 +101,14 @@
        ...:
 
     In [8]: add_user_to_users_file('nata', min_length=5)
-    Введите пароль для пользователя nata: alskfdjlksadjf
-    Пароль для пользователя nata прошел все проверки
+    Enter password for user nata: alskfdjlksadjf
+    Password for user nata has passed all checks
 
     In [9]: add_user_to_users_file('nata', min_length=5)
-    Введите пароль для пользователя nata: 345
-    Пароль слишком короткий
-    Введите пароль для пользователя nata: 309487538
-    Пароль для пользователя nata прошел все проверки
+    Enter password for user nata: 345
+    Password is too short
+    Enter password for user nata: 309487538
+    Password for user nata has passed all checks
 
 
-В таком варианте в функцию check_passwd можно добавлять аргументы
-без необходимости дублировать их в функции add_user_to_users_file.
+In this variant you can add arguments to the check_passwd function without having to duplicate them in the add_user_to_users_file function.
