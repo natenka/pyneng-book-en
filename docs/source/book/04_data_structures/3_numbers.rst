@@ -27,7 +27,7 @@ Division int and float:
     In [6]: 10/3.0
     Out[6]: 3.3333333333333335
 
-The round() function can round the numbers to the required number of characters:
+The round() function can round numbers to required number of characters:
 
 .. code:: python
 
@@ -37,7 +37,7 @@ The round() function can round the numbers to the required number of characters:
     In [10]: round(10/3.0, 4)
     Out[10]: 3.3333
 
-Remainder of the division:
+Remainder of division:
 
 .. code:: python
 
@@ -66,7 +66,7 @@ Comparison operators
     In [17]: 10.0 == 10
     Out[17]: True
 
-The int() function allows converting to int type. The second argument can specify the number system:
+The int() function allows converting to int type. The second argument can specify number system:
 
 .. code:: python
 
@@ -102,7 +102,7 @@ The bin() function produces a binary representation of a number (note that the r
     In [24]: bin(255)
     Out[24]: '0b11111111'
 
-Similarly, the function hex() produces a hexadecimal value:
+Similarly, function hex() produces a hexadecimal value:
 
 .. code:: python
 
@@ -119,7 +119,7 @@ And, of course, you can do several changes at the same time:
     In [27]: bin(int('ff', 16))
     Out[27]: '0b11111111'
 
-For more complex mathematical functions, Python has a **math** module:
+For more complex mathematical functions, Python has a *math* module:
 
 .. code:: python
 
