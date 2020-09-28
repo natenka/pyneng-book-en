@@ -3,7 +3,7 @@ Nested for
 
 Loops **for** can be nested in each other.
 
-In this example, the **commands** is a list of commands to execute on each interface in the **fast_int** list:
+In this example, *commands* is a list of commands to execute on each interface in the *fast_int* list:
 
 .. code:: python
 
@@ -29,4 +29,4 @@ In this example, the **commands** is a list of commands to execute on each inter
      spanning-tree bpduguard enable
     ...
 
-The first **for** loop passes through interfaces in the **fast_int** list and the second through commands in the list of commands.
+The first **for** loop passes through interfaces in the *fast_int* list and the second through commands in *commands* list.
