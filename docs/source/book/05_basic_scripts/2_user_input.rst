@@ -1,10 +1,10 @@
 User input
 -----------------------------
 
-Sometimes it is necessary to get information from user, for example, to request a password.
+Sometimes it is necessary to get information from user. For example, request a password.
 
 
-The ``input()`` function is used to obtain information from user:
+Function ``input()`` is used to obtain information from user:
 
 .. code:: python
 
@@ -12,7 +12,7 @@ The ``input()`` function is used to obtain information from user:
     What is your faivorite routing protocol? OSPF
     OSPF
 
-In this case the information is immediately displayed to user, but in addition, the information entered by user can be stored in a variable and can be used later in the script.
+In this case, information is immediately displayed to user, but in addition, information entered by user can be stored in a variable and can be used later in script.
 
 .. code:: python
 
@@ -41,11 +41,11 @@ Request information from script (file access_template_input.py):
     print('interface {}'.format(interface))
     print('\n'.join(access_template).format(vlan))
 
-The first two lines request information from user.
+First two lines request information from user.
 
-The ``print('\n' + '-' * 30)`` line is used to visually separate the information request from the output.
+Line ``print('\n' + '-' * 30)`` is used to visually separate information request from the output.
 
-Execution of the script:
+Script execution:
 
 ::
 
