@@ -1,7 +1,7 @@
 Working with repository of tasks and examples
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-All the examples and tasks of the book are published in a separate 
+All examples and tasks of book are published in a separate 
 `repository <https://github.com/natenka/pyneng-examples-exercises>`__.
 
 Copying repository from Github
@@ -9,7 +9,7 @@ Copying repository from Github
 
 Examples and tasks are sometimes updated, so it will be more convenient to clone this repository to your machine and periodically update it.
 
-To copy a repository from Github, run “git clone”:
+To copy a repository from Github, run *git clone*:
 
 ::
 
@@ -25,16 +25,16 @@ To copy a repository from Github, run “git clone”:
 Updating local copy of repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you need to update the local repository to synchronize it with Github version, you need to perform “git pull” from inside the created pyneng-examples-exercises directory.
+If you need to update local repository to synchronize it with Github version, you need to perform *git pull* from inside the created pyneng-examples-exercises directory.
 
-If there were no updates, the output would be:
+If there were no updates, output would be:
 
 ::
 
     $ git pull
     Already up-to-date.
 
-If there were updates, the output would be something like this:
+If there were updates, output would be something like this:
 
 ::
 
@@ -55,13 +55,13 @@ Please note that only README.md file has been changed.
 View changes
 ^^^^^^^^^^^^^^^^^^
 
-If you want to see what changes have been made, you can use “git log”:
+If you want to see what changes have been made, you can use *git log*:
 
 ::
 
     $ git log -p -1
     commit 98e393c27e7aae4b41878d9d979c7587bfeb24b4
-    Author: Наташа Самойленко <nataliya.samoylenko@gmail.com>
+    Author: Nataliya Samoylenko <nataliya.samoylenko@gmail.com>
     Date:   Fri Aug 18 17:32:07 2017 +0300
 
         Update task_24_4.md
@@ -82,14 +82,14 @@ If you want to see what changes have been made, you can use “git log”:
     -
     +
 
-     Check playbook execution on the R1 router.
+     Check playbook execution on R1 router.
 
-In this command ``-p`` flag indicates that the output of the Linux diff utility should be displayed for changes, not just the commit comment. In turn, ``-1`` indicates that only the latest commit should be shown.
+In this command ``-p`` flag indicates that the output of Linux diff utility should be displayed for changes, not just commit comment. In turn, ``-1`` indicates that only the latest commit should be shown.
 
 View changes that will be synchronized
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The previous version of “git log” relies on the number of commands but this is not always convenient. Before executing “git pull” you can see what changes have been made since the last synchronization.
+The previous version of *git log* relies on number of commands but this is not always convenient. Before executing *git pull* you can see what changes have been made since last synchronization.
 
 The following command shall be used:
 
@@ -97,7 +97,7 @@ The following command shall be used:
 
     $ git log -p ..origin/master
     commit 4c1821030d20b3682b67caf362fd777d098d9126
-    Author: Наташа Самойленко <nataliya.samoylenko@gmail.com>
+    Author: Nataliya Samoylenko <nataliya.samoylenko@gmail.com>
     Date:   Mon May 29 07:53:45 2017 +0300
 
     Update README.md
@@ -108,13 +108,13 @@ The following command shall be used:
     +++ b/tools/README.md
     @@ -1 +1,4 @@
     +
-    +Here you can find the PDF versions of configuration manuals of the tools that are used on the course.
+    +Here you can find PDF versions of configuration manuals of tools that are used on course.
 
-In this case, the changes were in only one file. This command will be very useful to see what changes have been made to the tasks and which tasks. This will make it easier to navigate and to understand whether it is related to tasks you have already done and, if so, whether they should be changed.
+In this case, changes were only in one file. This command will be very useful to see what changes have been made to tasks and which tasks. This will make it easier to navigate and to understand whether it is related to tasks you have already done and, if so, whether they should be changed.
 
 .. note::
     "..origin/master" in ``git log -p ..origin/master``
     means to show all commits that are present in origin/master
-    (in this case, it's GitHub) but that are not in the local copy of the repository
+    (in this case, it's GitHub) but that are not in local copy of repository
 
-If the changes were in tasks you haven’t yet done, this output will tell you which files should be copied from the course repository to your personal repository (and maybe the entire section if you haven’t yet done the tasks from this section).
+If changes were in tasks you haven’t yet done, this output will tell you which files should be copied from course repository to your personal repository (and maybe the entire section if you haven’t yet done tasks from this section).
