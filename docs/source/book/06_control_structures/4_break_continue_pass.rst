@@ -6,12 +6,12 @@ Python has several operators that allow to change default loop behavior.
 Break operator
 ~~~~~~~~~~~~~~
 
-The **break operator** allows early termination of the loop:
+Operator **break** allows early termination of loop:
 
-* **break** breaks the current loop and continues executing the next expressions
-* if multiple nested loops are used the **break** interrupts internal loop and continues to execute expressions following the block. **Break** can be used in loops **for** and **while**
+* **break** breaks  current loop and continues executing the next expressions
+* if multiple nested loops are used, **break** interrupts internal loop and continues to execute expressions following the block. **Break** can be used in loops **for** and **while**
 
-Example of a loop **for**:
+Example of loop **for**:
 
 .. code:: python
 
@@ -47,7 +47,7 @@ Example of a loop **while**:
     3
     4
 
-Use break in an example with a password request (check\_password\_with\_while\_break.py file):
+Use break in an example with password request (check\_password\_with\_while\_break.py file):
 
 .. code:: python
 
@@ -65,14 +65,14 @@ Use break in an example with a password request (check\_password\_with\_while\_b
             break
         password = input('Enter password once again: ')
 
-Now it is possible not to repeat the string ``password = input('Enter password once again: ')`` in each branch, it is enough to move it to the end of the loop.
+Now it is possible not to repeat string ``password = input('Enter password once again: ')`` in each branch, it is enough to move it to the end of loop.
 
-And as soon as the correct password is entered, **break** will take the program out of loop **while**.
+And as soon as  correct password is entered, **break** will take the program out of loop **while**.
 
 Continue operator
 ~~~~~~~~~~~~~~~~~
 
-The **continue** operator returns the control to the beginning of the loop. That is, **continue** allows to «jump» the remaining expressions in the loop and go to the next iteration.
+Operator **continue** returns control to the beginning of loop. That is, **continue** allows to «jump» remaining expressions in loop and go to the next iteration.
 
 Example of a loop **for**:
 
@@ -110,7 +110,7 @@ Example of a loop **while**:
     Current value:  5
     Current value:  6
 
-Use of **continue** in the example with a password request (check_password_with_while_continue.py file):
+Use of **continue** in example with password request (check_password_with_while_continue.py file):
 
 .. code:: python
 
@@ -130,7 +130,7 @@ Use of **continue** in the example with a password request (check_password_with_
             continue
         password = input('Enter password once again: ')
 
-Here you can exit the loop by checking the password_correct flag. When the correct password is entered, the flag is set to True, and with **continue** the jump to the beginning of the loop is occurred by skipping the last line with the password request.
+Here you can exit loop by checking password_correct flag. When correct password is entered, flag is set to True and with **continue** a jump to the beginning of loop is occurred by skipping the last line with password request.
 
 The result will be:
 
@@ -150,9 +150,9 @@ The result will be:
 Pass operator
 ~~~~~~~~~~~~~
 
-The ``pass`` operator does nothing. In fact, it is a null statement.
+Operator ``pass`` does nothing. In fact, it is a null statement.
 
-For example, ``pass`` can help when you need to specify a script structure. It can be set in loops, functions, classes. And it won’t affect the execution of the code.
+For example, ``pass`` can help when you need to specify a script structure. It can be set in loops, functions, classes. And it won’t affect execution of code.
 
 Example of using pass:
 
