@@ -1,17 +1,17 @@
 if/elif/else
 ============
 
-The ``if/elif/else`` construction allows make branches during program implementation. The program goes into the branch when a certain condition is met.
+The ``if/elif/else`` construction allows make branches during program implementation. The program goes into branch when a certain condition is met.
 
 In this construction only **if** is mandatory, **elif** and **else**
 are optional:
 
 * **If** condition is always checked first.
-* After **If** operator there must be some condition: if this condition is met (returns true), then the actions in block **if** are executed.
+* After **If** operator there must be some condition: if this condition is met (returns true), then actions in block **if** are executed.
 * **elif** can be used to make multiple branches, that is, to check incoming data for different conditions.
 * **elif** block is the same as **if** but it checked next. Roughly speaking, it is "what if ..."
 * There can be many **elif** blocks.
-* **else** block is executed if none of the conditions **if** or **elif** were true.
+* **else** block is executed if none of conditions **if** or **elif** were true.
 
 
 
@@ -35,13 +35,13 @@ Condition
 -------
 
 **If** construction is based on conditions: conditions are always written after **if** and **elif**.
-Blocks if/elif are executed only when the condition returns True, so the first thing to deal with is what is true and what is false in Python.
+Blocks if/elif are executed only when condition returns True, so the first thing to deal with is what is true and what is false in Python.
 
 
 True and False
 ~~~~~~~~~~~~
 
-In Python, apart from the obvious True and False values, all other objects also have false or true value:
+In Python, apart from obvious True and False values, all other objects also have false or true value:
 
 * True value:
 
@@ -57,7 +57,7 @@ In Python, apart from the obvious True and False values, all other objects also 
   * empty object
 
 
-For example, since an empty list is a false value, it is possible to check whether the list is empty:
+For example, since an empty list is a false value, it is possible to check whether list is empty:
 
 .. code:: python
 
@@ -66,7 +66,7 @@ For example, since an empty list is a false value, it is possible to check wheth
     In [13]: if list_to_test:
        ....:     print("The list has objects")
        ....:
-    The list has objects
+    List has objects
 
 The same result could have been achieved somewhat differently:
 
@@ -75,13 +75,13 @@ The same result could have been achieved somewhat differently:
     In [14]: if len(list_to_test) != 0:
        ....:     print("The list has objects")
        ....:
-    The list has objects
+    List has objects
 
 
 Comparison operators
 ~~~~~~~~~~~~~~~~~~~
 
-**Comparison operators** can be used in conditions like:
+*Comparison operators* can be used in conditions like:
 
 .. code:: python
 
@@ -110,9 +110,9 @@ Comparison operators
     Out[10]: True
 
 .. note::
-    Note that the equality is checked by double ``==``.
+    Note that equality is checked by double ``==``.
 
-Example of the use of comparison operators:
+Example of use of comparison operators:
 
 .. code:: python
 
@@ -130,7 +130,7 @@ Example of the use of comparison operators:
 Operator in
 ~~~~~~~~~~~
 
-Operator ``in`` allows checking for the presence of an element in a sequence (for example, an element in a list or substrings in a string):
+Operator ``in`` allows checking for the presence of element in a sequence (for example, element in a list or substrings in a string):
 
 .. code:: python
 
@@ -148,7 +148,7 @@ Operator ``in`` allows checking for the presence of an element in a sequence (fo
     In [12]: 50 in vlan
     Out[12]: False
 
-When used with dictionaries the **in** condition performs check by dictionary keys:
+When used with dictionaries, **in** condition performs check by dictionary keys:
 
 .. code:: python
 
@@ -169,7 +169,7 @@ When used with dictionaries the **in** condition performs check by dictionary ke
 Operators  and, or, not
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The conditions can also use **logical operators**
+Conditions can also use *logical operators*
 ``and``, ``or``, ``not``:
 
 .. code:: python
@@ -202,9 +202,9 @@ The conditions can also use **logical operators**
 Operator and
 ^^^^^^^^^^^^
 
-In Python the ``and`` operator returns not a boolean value but a value of one of the operands.
+In Python ``and`` operator returns not a boolean value but a value of one of operands.
 
-If both operands are true, the result is a last value:
+If both operands are true, result is the last value:
 
 .. code:: python
 
@@ -214,7 +214,7 @@ If both operands are true, the result is a last value:
     In [25]: 'string1' and 'string2' and 'string3'
     Out[25]: 'string3'
 
-If one of the operators is a false, the result of the expression will be the first false value:
+If one of operators is a false, result of expression will be the first false value:
 
 .. code:: python
 
@@ -227,7 +227,7 @@ If one of the operators is a false, the result of the expression will be the fir
 Operator or
 ^^^^^^^^^^^
 
-Operator ``or``, like operator ``and``, returns the value of one of the operands.
+Operator ``or``, like operator ``and``, returns one of operands value.
 
 When checking operands, the first true operand is returned:
 
@@ -265,7 +265,7 @@ An important feature of ``or`` operator - operands, which are after the true ope
 Example of if/elif/else construction use
 ---------------------------------------------
 
-An example of a check_password.py script that checks length of the password and whether the password contains username:
+An example of a check_password.py script that checks length of password and whether password contains username:
 
 .. code:: python
 
