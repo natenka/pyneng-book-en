@@ -13,7 +13,7 @@ Python has several useful built-in features that allow data to be converted from
     In [1]: int("10")
     Out[1]: 10
 
-Using the int() function you can convert a binary number into a decimal number (the binary number must be written as a string)
+Using int() function you can convert a binary number into a decimal number (binary number must be written as a string)
 
 .. code:: python
 
@@ -49,7 +49,7 @@ A similar function exists for conversion to hexadecimal format:
 ``list()``
 ~~~~~~~~~~
 
-The ``list()`` function converts an argument to a list:
+Function ``list()`` converts an argument to a list:
 
 .. code:: python
 
@@ -65,7 +65,7 @@ The ``list()`` function converts an argument to a list:
 ``set()``
 ~~~~~~~~~
 
-The ``set()`` function converts an argument into a set:
+Function ``set()`` converts an argument into a set:
 
 .. code:: python
 
@@ -83,7 +83,7 @@ This function is very useful when you need to get unique elements in a sequence.
 ``tuple()``
 ~~~~~~~~~~~
 
-The ``tuple()`` function converts the argument into a tuple:
+Function ``tuple()`` converts argument into a tuple:
 
 .. code:: python
 
@@ -101,10 +101,9 @@ This can be useful if you want an immutable object.
 ``str()``
 ~~~~~~~~~
 
-The ``str()`` function converts an argument into a string:
+Function ``str()`` converts an argument into a string:
 
 .. code:: python
 
     In [16]: str(10)
     Out[16]: '10'
-
