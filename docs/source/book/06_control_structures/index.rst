@@ -7,10 +7,10 @@
 6. Compound statements
 ============================
 
-So far, all the code has been executed sequentially - all lines of the script have been executed in the order in which they are written in the file. This section discusses how Python can manage the program:
+So far, all code has been executed sequentially - all lines of script have been executed in order in which they are written in file. This section discusses how Python can manage the program:
 
-* branching with the help of ``if/elif/else`` construction
-* repetition of actions in the cycle using ``for`` and ``while`` constructions
+* branching with help of ``if/elif/else`` construction
+* repetition of actions in loop using ``for`` and ``while`` constructions
 * error handling with ``try/except`` construction 
 
 
