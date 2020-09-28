@@ -1,7 +1,7 @@
 Combination for and if
 ~~~~~~~~~~~~~~~~~~~
 
-Consider the example of combining **for** and **if**.
+Consider example of combining **for** and **if**.
 
 Generate_access_port_config.py file:
 
@@ -29,18 +29,18 @@ Generate_access_port_config.py file:
 Comments to the code:
 
 * The first **for** loop iterates keys and values in nested fast\_int['access'] dictionary
-* At this moment of the loop the current key is stored in **intf** variable
-* At this moment of the loop the current value is stored in **vlan** variable
-* The string “interface Fastethernet” is displayed with interface number added
-* The second cycle **for** iterates commands from the access_template list
-* Since **switchport access to vlan** command requires a VLAN number:
+* At this moment of loop the current key is stored in *intf* variable
+* At this moment of loop the current value is stored in *vlan* variable
+* String “interface Fastethernet” is displayed with interface number added
+* The second loop **for** iterates commands from *access_template* list
+* Since *switchport access to vlan* command requires a VLAN number:
 
-  * within the second loop **for** commands are checked
+  * within second loop **for** commands are checked
   * if command ends with “access vlan”
   
-    * command is displayed and a VLAN number is added to it
+    * command is displayed and VLAN number is added to it
 
-  * in all other cases the command is simply displayed
+  * in all other cases, command is simply displayed
 
 
 Result of script execution:
