@@ -1,9 +1,9 @@
 for
 ---
 
-Very often the same action should be performed for a set of the same data type. For example, convert all strings in the list to uppercase. Python uses ``for`` loop for such purposes.
+Very often the same action should be performed for a set of the same data type. For example, convert all strings in list to uppercase. Python uses ``for`` loop for such purposes.
 
-Loop **for** iterates elements of specified sequence and performs the actions specified for each element.
+Loop **for** iterates elements of specified sequence and performs actions specified for each element.
 
 Examples of sequences of elements that can be iterated by **for**:
 
@@ -13,7 +13,7 @@ Examples of sequences of elements that can be iterated by **for**:
 -  :ref:`range`
 -  Any :ref:`iterable`
 
-An example of converting strings in a list to uppercase without a loop **for**:
+An example of converting strings in a list to uppercase without loop **for**:
 
 .. code:: python
 
@@ -43,7 +43,7 @@ An example of converting strings in a list to uppercase without a loop **for**:
 This solution has several nuances:
 
 * the same action need to be repeated several times
-* code is tied to a certain number of elements in **words** list
+* code is tied to a certain number of elements in *words* list
 
 
 Same actions with loop **for**:
@@ -61,15 +61,15 @@ Same actions with loop **for**:
     In [13]: upper_words
     Out[13]: ['LIST', 'DICT', 'TUPLE']
 
-The expression ``for word in words: upper_words.append(word.upper())``
-means "for each word in the **words** list to perform actions in the block **for**".
-Note, that **word** is the name of variable that refers to different values for each iteration of the loop.
+Expression ``for word in words: upper_words.append(word.upper())``
+means "for each word in *words* list to perform actions in block **for**".
+Note, that *word* is name of variable that refers to different values for each iteration of the loop.
 
 .. note::
-    The ` pythontutor <http://www.pythontutor.com/>`__ project can help to understand the loops. There is a special visualization of the code that allows you to see what happens at every stage of the code execution, which is especially useful in the first steps of learning loops. The `pythontutor <http://www.pythontutor.com/visualize.html#mode=edit>`__ allows you to upload your code but, for instance, you can see `example above <http://www.pythontutor.com/visualize.html#code=words%20%3D%20%5B'list',%20'dict',%20'tuple'%5D%0Aupper_words%20%3D%20%5B%5D%0A%0Afor%20word%20in%20words%3A%0A%20%20%20%20upper_words.append%28word.upper%28%29%29%0A&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false>`__.
+    The `pythontutor <http://www.pythontutor.com/>`__ project can help to understand loops. There is a special visualization of code that allows you to see what happens at every stage of code execution, which is especially useful in first steps of learning loops. The `pythontutor <http://www.pythontutor.com/visualize.html#mode=edit>`__ allows you to upload your code, for instance, see `example above <http://www.pythontutor.com/visualize.html#code=words%20%3D%20%5B'list',%20'dict',%20'tuple'%5D%0Aupper_words%20%3D%20%5B%5D%0A%0Afor%20word%20in%20words%3A%0A%20%20%20%20upper_words.append%28word.upper%28%29%29%0A&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false>`__.
 
 
-The **for** loop can work with any sequence of elements. For example, the list was used above and the loop iterates through the list elements. Similarly, **for** works with tuples.
+Loop **for** can work with any sequence of elements. For example, list was used above and loop iterates through list elements. Similarly, **for** works with tuples.
 
 When working with strings **for** loop iterates through string characters, for example:
 
@@ -91,12 +91,12 @@ When working with strings **for** loop iterates through string characters, for e
     g
 
 .. note::
-    The loop uses a variable named **letter**. Although the name can be any name, it is convenient when the name tells you which objects go through a loop.
+    Loop uses a variable named *letter*. Although, it could be any name, it is convenient when name tells you which objects go through a loop.
 
-Sometimes it is necessary to use sequence of numbers in the loop. In this case, it is best to use 
+Sometimes it is necessary to use sequence of numbers in loop. In this case, it is best to use 
 :ref:`range`
 
-Example of a loop **for** with range() function:
+Example of loop **for** with range() function:
 
 .. code:: python
 
@@ -114,9 +114,9 @@ Example of a loop **for** with range() function:
     interface FastEthernet0/8
     interface FastEthernet0/9
 
-This loop uses ``range(10)``. The range() function generates numbers in range from zero to the specified number (in this example, up to 10) not including it.
+This loop uses ``range(10)``. Function range() generates numbers in range from zero to specified number (in this example, up to 10) not including it.
 
-In this example, the loop runs through the Vlans list, so the variable can be called **vlan**:
+In this example, loop runs through *vlans* list, so variable can be called *vlan*:
 
 .. code:: python
 
@@ -137,7 +137,7 @@ In this example, the loop runs through the Vlans list, so the variable can be ca
      name VLAN_100
 
 
-When a loop runs through dictionary, it actually goes by the keys:
+When a loop runs through dictionary, it actually goes through keys:
 
 .. code:: python
 
@@ -161,7 +161,7 @@ When a loop runs through dictionary, it actually goes by the keys:
     vendor
 
 
-If you want to print key-value pairs in the loop, you can do this:
+If you want to print key-value pairs in loop, you can do this:
 
 .. code:: python
 
@@ -175,7 +175,7 @@ If you want to print key-value pairs in the loop, you can do this:
     model => 4451
     vendor => Cisco
 
-Or use the items() method which allows you to run the loop over a key-value pair:
+Or use items() method which allows you to run loop over a key-value pair:
 
 .. code:: python
 
@@ -190,7 +190,7 @@ Or use the items() method which allows you to run the loop over a key-value pair
     vendor => Cisco
 
 
-The items() method returns a special view object that displays key-value pairs:
+Method items() returns a special view object that displays key-value pairs:
 
 .. code:: python
 
