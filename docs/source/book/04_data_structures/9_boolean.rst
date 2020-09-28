@@ -20,7 +20,7 @@ In Python, not only True and False constants have the same values.
 
 Other true and false values tend to follow the condition logically.
 
-To check boolean value of the object you can use ``bool``:
+To check boolean value of object you can use ``bool``:
 
 .. code:: python
 
