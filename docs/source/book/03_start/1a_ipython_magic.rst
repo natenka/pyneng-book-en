@@ -32,7 +32,7 @@ With %history you can copy needed block of code.
 %time
 '''''
 
-The %time command shows how many seconds it took to execute expression.
+Command %time shows how many seconds it took to execute expression.
 
 .. code:: python
 
@@ -71,7 +71,7 @@ The %time command shows how many seconds it took to execute expression.
 More about IPython you can find in IPython
 `documentation <http://ipython.readthedocs.io/en/stable/index.html>`__.
 
-Briefly, the information can be viewed in IPython via %quickref  command:
+Briefly, information can be viewed in IPython via %quickref command:
 
 ::
 
@@ -84,7 +84,7 @@ Briefly, the information can be viewed in IPython via %quickref  command:
     %magic           : Information about IPython's 'magic' % functions.
 
     Magic functions are prefixed by % or %%, and typically take their arguments
-    without parentheses, quotes or even commas for convenience.  Line magics take a
+    without brackets, quotes or even commas for convenience.  Line magics take a
     single % and cell magics are prefixed with two %%.
 
     Example magic function calls:
@@ -94,7 +94,7 @@ Briefly, the information can be viewed in IPython via %quickref  command:
     alist = %alias   : Get list of aliases to 'alist'
     cd /usr/share    : Obvious. cd -<tab> to choose from visited dirs.
     %cd??            : See help AND source for magic %cd
-    %timeit x=10     : time the 'x=10' statement with high precision.
+    %timeit x=10     : time 'x=10' statement with high precision.
     %%timeit x=2**100
     x**100           : time 'x**100' with a setup of 'x=2**100'; setup code is not
                        counted.  This is an example of a cell magic.
