@@ -3,8 +3,8 @@ Executable file
 
 In order for a file to be executable and not have to write "python" every time before calling a file, you need to:
 
-* make the file executable (for Linux)
-* the first line of the file should have ``#!/usr/bin/env python``
+* make file executable (for Linux)
+* the first line of file should have ``#!/usr/bin/env python``
   or ``#!/usr/bin/env python3`` depending on which version of Python is used by default
 
 Example of access_template_exec.py file:
