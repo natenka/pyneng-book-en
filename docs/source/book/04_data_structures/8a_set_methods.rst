@@ -4,7 +4,7 @@ Useful methods for working with sets
 ``add()``
 ^^^^^^^^^
 
-The ``add()`` method adds an item to the set:
+Method ``add()`` adds an item to set:
 
 .. code:: python
 
@@ -18,7 +18,7 @@ The ``add()`` method adds an item to the set:
 ``discard()``
 ^^^^^^^^^^^^^
 
-The ``discard()`` method allows deleting elements without showing an error if there is no element in the set:
+Method ``discard()`` allows deleting elements without showing an error if there is no element in set:
 
 .. code:: python
 
@@ -38,7 +38,7 @@ The ``discard()`` method allows deleting elements without showing an error if th
 ``clear()``
 ^^^^^^^^^^^
 
-The method ``clear()`` empties the set:
+Method ``clear()`` empties set:
 
 .. code:: python
 
