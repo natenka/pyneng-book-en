@@ -26,10 +26,8 @@ Documentation:
 
 String formatting:
 
--  `Примеры использования форматирования
-   строк <https://pyformat.info/>`__
--  `Документация по форматированию
-   строк <https://docs.python.org/3/library/string.html#format-string-syntax>`__
+-  `String formating usage examples <https://pyformat.info/>`__
+-  `Documentaion on string formating <https://docs.python.org/3/library/string.html#format-string-syntax>`__
 -  `Python 3's f-Strings: An Improved String Formatting Syntax
    (Guide) <https://realpython.com/python-f-strings/>`__
 -  `Python String Formatting Best
