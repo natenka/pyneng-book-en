@@ -1,7 +1,7 @@
 Working with own repository
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This chapter describes how to work with a repository on your local machine.
+This chapter describes how to work with repository on your local machine.
 
 Creating a Github repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -9,19 +9,19 @@ Creating a Github repository
 To create a Github repository you need:
 
 -  log in to `GitHub <https://github.com/>`__;
--  In the upper right corner press plus and select "New repository" to create a new repository;
--  The name of the repository should be entered in the window that appears;
+-  In upper right corner press plus and select "New repository" to create a new repository;
+-  Name of repository should be entered in window that appears;
 
-You can put "Initialize this repository with a README". This will create a README.md file that only contains the repository name.
+You can put "Initialize this repository with a README". This will create a README.md file that only contains repository name.
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/github_new_repo.png
 
 Cloning a Github repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To work locally with the repository, it must be cloned.
+To work locally with repository, it should be cloned.
 
-Use “git clone" command to clone repository:
+Use *git clone* command to clone repository:
 
 ::
 
@@ -36,47 +36,47 @@ Use “git clone" command to clone repository:
 
 Compared to this command, you need to change:
 
--  The pyneng user name for your Github user name;
--  The online-2-natasha-samoylenko repository name for your Github repository.
+-  'pyneng user name' for your Github user name;
+-  'online-2-natasha-samoylenko' repository name for your Github repository.
 
-As a result, in the current directory in which "git clone" was executed, a directory with the name of the repository will appear, in my case - "online-2-natasha-samoylenko". This directory now contains the contents of the Github repository.
+As a result, in current directory in which *git clone* was executed, a directory with name of repository will appear, in my case - "online-2-natasha-samoylenko". This directory now contains the contents of Github repository.
 
-Working with the repository
+Working with repository
 ^^^^^^^^^^^^^^^^^^^^^
 
-The previous command not only copied the repository to use it locally, but also configured Git accordingly:
+The previous command not only copied repository to use it locally, but also configured Git accordingly:
 
 -  Folder .git was created
 -  All repository data is downloaded
--  Downloaded all changes that were in the repository
+-  Downloaded all changes that were in repository
 -  Github repository is configured as a remote for local repository
 
-Now you have a complete local Git repository where you can work. Typically, the sequence of steps will be as follows:
+Now you have a complete local Git repository where you can work. Typically, sequence of steps will be as follows:
 
--  Before starting, synchronize local content with Github using “git pull” command
+-  Before starting, synchronize local content with Github using *git pull* command
 -  Modifying repository files
 -  Adding modified files to staging with “git add” command
--  Commit changes using “git commit” command
--  Transferring local changes to the Github repository with “git push” command
+-  Commit changes using *git commit* command
+-  Transferring local changes to Github repository with *git push* command
 
-When working with tasks at work and at home, it is necessary to pay special attention to the first and last step:
+When working with tasks at work and at home, it is necessary to pay special attention to first and last step:
 
--  The first step is to update the local repository
+-  The first step is to update local repository
 -  The last step - load changes to Github
 
 Synchronizing local repository with remote repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-All commands are executed inside the repository directory (in the example above - online-2-natasha-samoylenko).
+All commands are executed inside repository directory (in example above - online-2-natasha-samoylenko).
 
-If the contents of the local repository are the same as those of the remote repository, the output will be:
+If contents of local repository are the same as those of remote repository, output will be:
 
 ::
 
     $ git pull
     Already up-to-date.
 
-If there were changes, the output would be something like this:
+If there were changes, output would be something like this:
 
 ::
 
@@ -95,17 +95,17 @@ If there were changes, the output would be something like this:
 Adding new files or changes to existing files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you want to add a specific file (in this case, README.md), you need to enter ``git add README.md`` command. All files of the current directory are added by ``git add .`` command.
+If you want to add a specific file (in this case, README.md), you need to enter ``git add README.md`` command. All files of current directory are added by ``git add .`` command.
 
 Commit
 ^^^^^^
 
-You must specify a message when you are running a commit. It is better if the message is with meaning, rather than just "update" or similar. Commit could be done by a command similar to ``git commit -m "Tasks 4.1-4.3 are completed"``.
+You should specify message when you are running a commit. It is better if message is with meaning, rather than just "update" or similar. Commit could be done by a command similar to ``git commit -m "Tasks 4.1-4.3 are completed"``.
 
 Push on GitHub
 ^^^^^^^^^^^^^^
 
-The “git push” command is used to load all local changes to Github:
+Command “git push” is used to load all local changes to Github:
 
 ::
 
