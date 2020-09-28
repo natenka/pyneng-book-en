@@ -1,7 +1,7 @@
 Strings
 ================
 
-The string in Python is:
+String in Python is:
 
 * sequence of characters enclosed in quotation marks
 * immutable ordered data type
@@ -50,7 +50,7 @@ Strings can be summed. Then they merge into one string:
     In [17]: intf + ' ' + tun
     Out[17]: 'interface Tunnel0'
 
-You can multiply a string by a number. In this case, the string repeats the specified number of times:
+You can multiply a string by a number. In this case, string repeats specified number of times:
 
 .. code:: python
 
@@ -79,7 +79,7 @@ All characters in a string are numbered from zero. But if you need to refer to a
     In [23]: string1[-1]
     Out[23]: '0'
 
-In addition to referring to a specific character you can make string slices by specifying a number range. The slicing starts with the first number (included) and ends at second number (excluded):
+In addition to referring to a specific character you can make string slices by specifying a number range. Slicing starts with first number (included) and ends at second number (excluded):
 
 .. code:: python
 
@@ -89,21 +89,21 @@ In addition to referring to a specific character you can make string slices by s
     In [25]: string1[10:22]
     Out[25]: 'FastEthernet'
 
-If no second number is specified, the slice is until the end of the string:
+If no second number is specified, slice is until the end of string:
 
 .. code:: python
 
     In [26]:  string1[10:]
     Out[26]: 'FastEthernet1/0'
 
-Slice the last three character of string:
+Slice last three character of string:
 
 .. code:: python
 
     In [27]: string1[-3:]
     Out[27]: '1/0'
 
-You can also specify a step in the slice. For example, you can get odd numbers:
+You can also specify a step in slice. For example, you can get odd numbers:
 
 .. code:: python
 
@@ -132,9 +132,9 @@ Slices can also be used to get a string in reverse order:
     Out[30]: '9876543210'
 
 .. note::
-    The entries ``a[::]`` and ``a[:]`` give the same result but the double colon makes it possible to indicate that not every element should be taken, but for example every second element.
+    Entries ``a[::]`` and ``a[:]`` give the same result but double colon makes it possible to indicate that not every element should be taken, but for example every second element.
 
-The ``len`` function allows you to get the number of characters in a string:
+The ``len`` function allows you to get number of characters in a string:
 
 .. code:: python
 
@@ -144,7 +144,7 @@ The ``len`` function allows you to get the number of characters in a string:
     Out[2]: 15
 
 .. note::
-    The function and method differ in that the method is tied to a particular type of object and the function is generally more universal and can be applied to objects of different types. For example, the ``len`` function can be applied to strings, lists, dictionaries and so on, but the  ``startswith`` method only applies to strings.
+    Function and method differ in that method is tied to a particular type of object and function is generally more universal and can be applied to objects of different types. For example, ``len`` function can be applied to strings, lists, dictionaries and so on, but ``startswith`` method only applies to strings.
 
 
 .. toctree::
