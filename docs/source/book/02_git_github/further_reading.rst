@@ -14,7 +14,7 @@ About Git/GitHub:
 
 -  `GitHowTo <https://githowto.com/ru>`__ - interactive howto in Russian;
 -  `git/github guide. a minimal
-   tutorial <http://kbroman.org/github_tutorial/>`__ - minimum knowledge required to work with Git и GitHub;
+   tutorial <http://kbroman.org/github_tutorial/>`__ - minimum knowledge required to work with Git and GitHub;
 -  `Pro Git book <https://git-scm.com/book/en/v2/>`__. The same
    `book <https://git-scm.com/book/ru/v2/>`__ in Russian;
 -  `Version control system (GIT) (course on
