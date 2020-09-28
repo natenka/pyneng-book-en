@@ -1,11 +1,11 @@
 Set
 ===============
 
-A set is a mutable unordered data type. The set always contains only unique elements.
+Set is a mutable unordered data type. Set always contains only unique elements.
 
-A set in Python is a sequence of elements that are separated by a comma and placed in curly brackets.
+Set in Python is a sequence of elements that are separated by a comma and placed in curly brackets.
 
-A set can easily remove repetitive elements:
+Set can easily remove repetitive elements:
 
 .. code:: python
 
