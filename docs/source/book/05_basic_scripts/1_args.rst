@@ -1,9 +1,9 @@
-Transferring argument to the script  (argv)
+Transferring argument to script  (argv)
 ----------------------------------
 
-Very often the script solves some common problem. For example, the script processes a configuration file. Of course, in this case you don’t want to edit name of file every time with your hands in the script.
+Very often script solves some common problem. For example, script processes a configuration file. Of course, in this case you don’t want to edit name of file every time with your hands in script.
 
-It will be much better to pass the file name as the script argument and then use already specified file.
+It will be much better to pass file name as script argument and then use already specified file.
 
 The sys module allows working with script arguments via argv.
 
@@ -37,19 +37,19 @@ Script test:
     spanning-tree portfast
     spanning-tree bpduguard enable
 
-Arguments that have been passed to script are substituted as values in the template.
+Arguments that have been passed to script are substituted as values in template.
 
 Several points need to be clarified:
 
 * argv is a list
-* all arguments are in the list and represented as strings
-* argv contains not only arguments that passed to the script but also the name of script itself
+* all arguments are in list and represented as strings
+* argv contains not only arguments that passed to script but also name of script itself
 
-In this case, the argv list contains the following elements:
+In this case, argv list contains the following elements:
 
 ::
 
     ['access_template_argv.py', 'Gi0/7', '4']
 
-First comes the name of script itself, then the arguments in the same order.
+First comes the name of script itself, then arguments in the same order.
 
