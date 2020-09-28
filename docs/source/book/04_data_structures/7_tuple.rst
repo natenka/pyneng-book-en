@@ -2,12 +2,12 @@ Tuple
 --------------
 
 
-The tuple in Python is:
+Tuple in Python is:
 
 * a sequence of elements separated by a comma and enclosed in brackets
 * immutable ordered data type
 
-Roughly speaking, a tuple is a list that can’t be changed. I mean, the tuple only has reading rights. It could be a defense against accidental change.
+Roughly speaking, a tuple is a list that can’t be changed. I mean, tuple only has reading rights. It could be a defense against accidental change.
 
 Create an empty tuple:
 
@@ -24,7 +24,7 @@ Tuple with one element (note the comma):
 
     In [3]: tuple2 = ('password',)
 
-Tuple from the list:
+Tuple from list:
 
 .. code:: python
 
@@ -35,14 +35,14 @@ Tuple from the list:
     In [6]: tuple_keys
     Out[6]: ('hostname', 'location', 'vendor', 'model', 'ios', 'ip')
 
-The objects in tuple can be accessed as well as the objects in list, by the order number:
+Objects in tuple can be accessed as well as objects in list, by order number:
 
 .. code:: python
 
     In [7]: tuple_keys[0]
     Out[7]: 'hostname'
 
-But since the tuple is immutable you cannot assign a new value:
+But since tuple is immutable you cannot assign a new value:
 
 .. code:: python
 
@@ -54,7 +54,7 @@ But since the tuple is immutable you cannot assign a new value:
 
     TypeError: 'tuple' object does not support item assignment
 
-The sorted() function sorts the tuple elements in ascending order and returns a new list with sorted elements:
+Function sorted() sorts tuple elements in ascending order and returns a new list with sorted elements:
 
 .. code:: python
 
