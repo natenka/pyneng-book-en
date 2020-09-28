@@ -1,17 +1,17 @@
 for/else, while/else
 --------------------
 
-In the loops **for** and **while** you may optionally use **else** block.
+In loops **for** and **while** you may optionally use **else** block.
 
 for/else
 ~~~~~~~~
 
-In the loop **for**:
+In loop **for**:
 
-* block **else** is executed if the loop has completed the iteration of the list
-* but it *does not execute* if **break** was applied in the loop.
+* block **else** is executed if loop has completed iteration of list
+* but it *does not execute* if **break** was applied in loop.
 
-Example of a loop **for** with **else** (block **else** is executed after loop **for**):
+Example of loop **for** with **else** (block **else** is executed after loop **for**):
 
 .. code:: python
 
@@ -27,7 +27,7 @@ Example of a loop **for** with **else** (block **else** is executed after loop *
     4
     Run out of numbers
 
-An example of a loop **for** with **else** and **break** in the loop (because of **break** the block **else** is not applied):
+An example of loop **for** with **else** and **break** in loop (because of **break**,  block **else** is not applied):
 
 .. code:: python
 
@@ -43,7 +43,7 @@ An example of a loop **for** with **else** and **break** in the loop (because of
     1
     2
 
-Example of the loop **for** with **else** and **continue** in the loop (**continue** does not affect the **else** block):
+Example of loop **for** with **else** and **continue** in loop (**continue** does not affect **else** block):
 
 .. code:: python
 
@@ -64,12 +64,12 @@ Example of the loop **for** with **else** and **continue** in the loop (**contin
 while/else
 ~~~~~~~~~~
 
-In the loop **while**:
+In loop **while**:
 
-* block **else** is executed if the loop has completed the iteration of the list
-* but it *does not execute* if **break** was applied in the loop.
+* block **else** is executed if loop has completed iteration of list
+* but it *does not execute* if **break** was applied in loop.
 
-Example of a loop **while** with **else** (the block **else** runs after the loop **while**):
+Example of a loop **while** with **else** (block **else** runs after loop **while**):
 
 .. code:: python
 
@@ -87,7 +87,7 @@ Example of a loop **while** with **else** (the block **else** runs after the loo
     4
     Конец
 
-An example of a loop **while** with **else** and **break** in a loop (because of **break** the block **else** is not applied):
+An example of a loop **while** with **else** and **break** in loop (because of **break**, block **else** is not applied):
 
 .. code:: python
 
