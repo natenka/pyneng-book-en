@@ -13,16 +13,16 @@ This type of error can occur when converting data types:
 
     ValueError: invalid literal for int() with base 10: 'a'
 
-The error is perfectly logical. We’re trying to convert string 'a' into decimal format.
+Error is perfectly logical. We’re trying to convert string 'a' into decimal format.
 
-And if the example here is probably stupid, however, when you want to go through a list of strings and convert to a number the strings that contain numbers, you can get that error.
+And if example here is probably stupid, however, when you want to go through a list of strings and convert to a number the strings that contain numbers, you can get that error.
 
 To avoid it, it would be nice to be able to check what we’re working with.
 
 ``isdigit()``
 ^^^^^^^^^^^^^
 
-Python has such methods. For example, the ``isdigit()`` method can be used to check whether a string consists only of digits:
+Python has such methods. For example, ``isdigit()`` method can be used to check whether a string consists only of digits:
 
 .. code:: python
 
@@ -39,7 +39,7 @@ Python has such methods. For example, the ``isdigit()`` method can be used to ch
 ``isalpha()``
 ^^^^^^^^^^^^^
 
-The ``isalpha()`` method makes it possible to check whether a string consists only of letters:
+Method ``isalpha()`` makes it possible to check whether a string consists only of letters:
 
 .. code:: python
 
@@ -58,7 +58,7 @@ The ``isalpha()`` method makes it possible to check whether a string consists on
 ``isalnum()``
 ^^^^^^^^^^^^^
 
-The ``isalnum()`` пethod makes it possible to check whether a string consists of letters or numbers:
+Method ``isalnum()`` makes it possible to check whether a string consists of letters or numbers:
 
 .. code:: python
 
@@ -71,11 +71,11 @@ The ``isalnum()`` пethod makes it possible to check whether a string consists o
 ``type()``
 ^^^^^^^^^^
 
-Sometimes, depending on the result, a library or function can output different types of objects. For example, if an there is one object a string is returned, if several a tuple is returned.
+Sometimes, depending on the result, a library or function can output different types of objects. For example, if there is one object, string is returned. If several, tuple is returned.
 
 We have to construct the program in different ways, depending on whether a string or a tuple has been returned.
 
-The ``type()`` function can help:
+Method ``type()`` function can help:
 
 .. code:: python
 
