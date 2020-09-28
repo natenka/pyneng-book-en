@@ -3,11 +3,11 @@ Dictionary
 
 Dictionaries are mutable ordered data type:
 
-* data in the dictionary are pairs ``key: value``
+* data in dictionary are pairs ``key: value``
 * values are accessible by key, not by number as in lists
-* the entries in the dictionary display in the order they were defined.
-* since dictionaries are mutable, the dictionary items can be changed, added, removed
-* the key must be an immutable object: number, string, tuple
+* entries in dictionary display in order they were defined.
+* since dictionaries are mutable, dictionary items can be changed, added, removed
+* key must be an immutable object: number, string, tuple
 * value can be data of any type
 
 .. note::
@@ -34,7 +34,7 @@ You can write it down like this:
         'port':'G1/0/11'
     }
 
-In order to get a value from the dictionary you have to refer to the key in the same way as in the lists, only the key will be used instead of the number:
+In order to get a value from dictionary you have to refer to key in the same way as in lists, only key will be used instead of number:
 
 .. code:: python
 
@@ -55,7 +55,7 @@ Similarly, a new key-value pair could be added:
     In [5]: print(london)
     {'vendor': 'Cisco', 'name': 'London1', 'location': 'London Str'}
 
-In the dictionary you can use a dictionary as a value:
+In dictionary you can use a dictionary as a value:
 
 .. code:: python
 
@@ -86,7 +86,7 @@ In the dictionary you can use a dictionary as a value:
         }
     }
 
-You can get values from the nested dictionary by:
+You can get values from nested dictionary by:
 
 .. code:: python
 
@@ -99,7 +99,7 @@ You can get values from the nested dictionary by:
     In [9]: london_co['sw1']['ip']
     Out[9]: '10.255.0.101'
 
-The sorted() function sorts the dictionary keys in ascending order and returns a new list with sorted keys:
+Function sorted() sorts dictionary keys in ascending order and returns a new list with sorted keys:
 
 .. code:: python
 
