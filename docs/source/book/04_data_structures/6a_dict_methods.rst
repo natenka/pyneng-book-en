@@ -4,7 +4,7 @@ Useful methods for working with dictionaries
 ``clear()``
 ^^^^^^^^^^^
 
-The **clear()** method allows to clear the dictionary:
+Method clear() allows to clear dictionary:
 
 .. code:: python
 
@@ -18,9 +18,9 @@ The **clear()** method allows to clear the dictionary:
 ``copy()``
 ^^^^^^^^^^
 
-The **copy()** method allows to create a full copy of the dictionary.
+Method copy() allows to create a full copy of dictionary.
 
-If one dictionary is equal to the other:
+If one dictionary is equal to other:
 
 .. code:: python
 
@@ -39,9 +39,9 @@ If one dictionary is equal to the other:
     In [9]: london2['vendor']
     Out[9]: 'Juniper'
 
-In this case london2 is another name that refers to the dictionary. And when you change the “london” dictionary the “london2” dictionary changes as well because it’s a link to the same object.
+In this case london2 is another name that refers to dictionary. And when you change “london” dictionary, “london2” dictionary changes as well because it’s a link to the same object.
 
-Therefore, if you want to make a copy of the dictionary, use copy() method:
+Therefore, if you want to make a copy of dictionary, use copy() method:
 
 .. code:: python
 
@@ -63,7 +63,7 @@ Therefore, if you want to make a copy of the dictionary, use copy() method:
 ``get()``
 ^^^^^^^^^
 
-If you query a key that is not present in the dictionary, an error occurs:
+If you query a key that is not present in dictionary, an error occurs:
 
 .. code:: python
 
@@ -77,7 +77,7 @@ If you query a key that is not present in the dictionary, an error occurs:
 
     KeyError: 'ios'
 
-The **get()** method query for the key and if there is no key, returns ``None`` instead.
+Method get() queries for key and if there is no key, returns ``None`` instead.
 
 .. code:: python
 
@@ -86,7 +86,7 @@ The **get()** method query for the key and if there is no key, returns ``None`` 
     In [19]: print(london.get('ios'))
     None
 
-The get() method also allows you to specify another value instead of ``None``:
+Method get() also allows you to specify another value instead of ``None``:
 
 .. code:: python
 
@@ -96,7 +96,7 @@ The get() method also allows you to specify another value instead of ``None``:
 ``setdefault()``
 ^^^^^^^^^^^^^^^^
 
-The **setdefault()** method searches for the key and if there is no key, instead of error it creates a key with ``None`` value.
+Method setdefault() searches for key and if there is no key, instead of error it creates a key with ``None`` value.
 
 .. code:: python
 
@@ -110,14 +110,14 @@ The **setdefault()** method searches for the key and if there is no key, instead
     In [24]: london
     Out[24]: {'name': 'London1', 'location': 'London Str', 'vendor': 'Cisco', 'ios': None}
 
-If the key is present, setdefault() returns the value that corresponds to it:
+If key is present, setdefault() returns value that corresponds to it:
 
 .. code:: python
 
     In [25]: london.setdefault('name')
     Out[25]: 'London1'
 
-The second argument allows to specify which value should correspond to the key:
+The second argument allows to specify which value should correspond to key:
 
 .. code:: python
 
@@ -135,7 +135,7 @@ The second argument allows to specify which value should correspond to the key:
      'model': 'Cisco3580'}
 
 
-The setdefault() method replaces this construction:
+Method setdefault() replaces this construction:
 
 .. code:: python
 
@@ -149,7 +149,7 @@ The setdefault() method replaces this construction:
 ``keys(), values(), items()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Methods **keys()**, **values()**, **items()**:
+Methods keys(), values(), items():
 
 .. code:: python
 
@@ -164,11 +164,11 @@ Methods **keys()**, **values()**, **items()**:
     In [27]: london.items()
     Out[27]: dict_items([('name', 'London1'), ('location', 'London Str'), ('vendor', 'Cisco')])
 
-All three methods return special view objects that display keys, values, and key-value pairs of the dictionary, respectively.
+All three methods return special view objects that display keys, values, and key-value pairs of dictionary, respectively.
 
-A very important feature of view is that they change together with dictionary. And in fact, they just give you a way to look at the objects, but they don’t make a copy of them.
+A very important feature of view is that they change together with dictionary. And in fact, they just give you a way to look at objects, but they don’t make a copy of them.
 
-Using the example of keys():
+Using example of keys():
 
 .. code:: python
 
@@ -179,9 +179,9 @@ Using the example of keys():
     In [30]: print(keys)
     dict_keys(['name', 'location', 'vendor'])
 
-Now the keys variable corresponds to view dict\_keys, in which three keys: name, location and vendor.
+Now keys variable corresponds to view dict\_keys, in which three keys: name, location and vendor.
 
-But if we add another key-value pair to the dictionary, the keys object will also change:
+But if we add another key-value pair to dictionary, keys object will also change:
 
 .. code:: python
 
@@ -190,7 +190,7 @@ But if we add another key-value pair to the dictionary, the keys object will als
     In [32]: keys
     Out[32]: dict_keys(['name', 'location', 'vendor', 'ip'])
 
-If you want to get a simple list of keys that will not be changed with the dictionary changes, it is enough to convert view to the list:
+If you want to get a simple list of keys that will not be changed with dictionary changes, it is enough to convert view to list:
 
 .. code:: python
 
@@ -216,7 +216,7 @@ Remove key and value:
 ``update``
 ^^^^^^^^^^
 
-The update() method allows you to add the contents of one dictionary to another dictionary:
+Method update() allows you to add contents of one dictionary to another dictionary:
 
 .. code:: python
 
