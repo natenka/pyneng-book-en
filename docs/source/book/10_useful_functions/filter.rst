@@ -1,7 +1,7 @@
 Filter
 --------------
 
-The ``filter()`` function applies the function to all sequence elements and returns the iterator with those objects for which the function has returned True.
+Function ``filter()`` applies function to all sequence elements and returns an iterator with those objects for which function has returned True.
 
 For example, return only those strings that contain numbers:
 
@@ -43,7 +43,7 @@ List comprehension instead of filter
 
 As a rule, you can use list comprehension instead of filter().
 
-Examples similar to those above in the list comprehension variant.
+Examples similar to those above in list comprehension variant.
 
 Return only those strings that contain numbers:
 
