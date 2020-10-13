@@ -4,7 +4,7 @@
 
 .. _textfsm_index:
 
-22. TextFSM output processing
+21. TextFSM output processing
 ===================================
 
 On equipment that does not support any software interface, the output of show commands is returned as a string. And although it’s partly structured, it’s still just a string. And it has to be processed in some way to get Python objects, like a dictionary or a list.
@@ -23,4 +23,4 @@ Using TextFSM is better than simple line processing, as templates give a better 
    2_textfsm_examples
    3_textfsm_clitable
    further_reading
-   ../../exercises/22_exercises
+   ../../exercises/21_exercises
