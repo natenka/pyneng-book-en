@@ -7,7 +7,7 @@
 7. Working with files
 ============================
 
-In real life, in order to make full use of everything considered before this section, you need to understand how to work with files.
+In real life, in order to make full use of everything considered before this section you need to understand how to work with files.
 
 When working with network equipment (and not only), files can be:
 
