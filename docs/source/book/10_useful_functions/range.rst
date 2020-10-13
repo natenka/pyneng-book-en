@@ -3,7 +3,7 @@
 Range
 -------------
 
-The range() function returns an immutable sequence of numbers as a **range** object.
+Function range() returns an immutable sequence of numbers as a **range** object.
 
 Function syntax:
 
@@ -18,7 +18,7 @@ Parameters of function:
 * **stop** - on which number the sequence of numbers ends. Mentioned number is not included in range
 * **step** - with what step numbers increase. By default 1
 
-The range function stores only **start**, **stop** and **step** values and calculates values as necessary. This means that regardless of the size of range that describes the range() function, it will always occupy a fixed amount of memory.
+Function range() stores only **start**, **stop** and **step** values and calculates values as necessary. This means that regardless of the size of range that describes range() function, it will always occupy a fixed amount of memory.
 
 The easiest range() option is to pass only **stop** value:
 
@@ -37,7 +37,7 @@ If two arguments are passed, the first is used as **start** and the second as **
     In [3]: list(range(1, 5))
     Out[3]: [1, 2, 3, 4]
 
-And in order to indicate the sequence step, you have to pass three arguments:
+And in order to indicate sequence step, you have to pass three arguments:
 
 .. code:: python
 
@@ -47,7 +47,7 @@ And in order to indicate the sequence step, you have to pass three arguments:
     In [5]: list(range(0, 10, 3))
     Out[5]: [0, 3, 6, 9]
 
-The range() can also generate descending sequences of numbers:
+Function range() can also generate descending sequences of numbers:
 
 .. code:: python
 
@@ -59,14 +59,14 @@ The range() can also generate descending sequences of numbers:
 
 To obtain a descending sequence use a negative step and specify **start** by a greater number and **stop** by a smaller number.
 
-In the descending sequence the steps can also be different:
+In descending sequence the steps can also be different:
 
 .. code:: python
 
     In [8]: list(range(10, 0, -2))
     Out[8]: [10, 8, 6, 4, 2]
 
-The function supports negative **start** and **stop** values:
+Function supports negative **start** and **stop** values:
 
 .. code:: python
 
@@ -120,7 +120,7 @@ Range supports slices:
     In [20]: nums[:3]
     Out[20]: range(0, 3)
 
-You can get the range length:
+You can get range length:
 
 .. code:: python
 
