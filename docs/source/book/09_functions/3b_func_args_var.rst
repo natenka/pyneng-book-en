@@ -9,7 +9,7 @@ Sometimes it is necessary to make function accept not a fixed number of argument
 Variable length positional arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The parameter that takes positional variable length arguments is created by adding an asterisk before parameter name. Parameter can have any name but by agreement ``*args`` is the most common name.
+Parameter that takes positional variable length arguments is created by adding an asterisk before parameter name. Parameter can have any name but by agreement ``*args`` is the most common name.
 
 Example of a function:
 
@@ -20,7 +20,7 @@ Example of a function:
       ....:     return a + sum(args)
       ....: 
 
-The sum\_arg function is created with two parameters:
+Function sum\_arg() is created with two parameters:
 
 * parameter ``a`` 
 
@@ -68,7 +68,7 @@ You can also create such a function:
 Keyword variable length arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The parameter that accepts keyword variable length arguments is created by adding two asterisk in front of the parameter name. Name of parameter can be any but by agreement most commonly use the name ``**kwargs`` (from keyword arguments).
+Parameter that accepts keyword variable length arguments is created by adding two asterisk in front of parameter name. Name of parameter can be any but by agreement most commonly use name ``**kwargs`` (from keyword arguments).
 
 Example of a function:
 
@@ -79,7 +79,7 @@ Example of a function:
       ....:     return a + sum(kwargs.values())
       ....: 
 
-The sum\_arg function is created with two parameters:
+Function sum\_arg() is created with two parameters:
 
 * parameter ``a``
   
