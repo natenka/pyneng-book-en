@@ -4,14 +4,14 @@
 Formatting lines with f-strings
 ======================================
 
-Python 3.6 added a new version of string formatting - f-strings or interpolation of strings. The f-strings allow not only to set values to the template but also to perform calls to functions, methods, etc.
+Python 3.6 added a new version of string formatting - f-strings or interpolation of strings. The f-strings allow not only to set values to template but also to perform calls to functions, methods, etc.
 
 In many situations f-strings are easier to use than format() and f-strings work faster than format() and other methods of string formatting.
 
 Syntax
 ~~~~~~~~~
 
-F-string is a literal line with a letter ``f`` in front of it. Inside the f- string, in figure brackets there are names of the variables that will be substituted: 
+F-string is a literal line with a letter ``f`` in front of it. Inside f- string, in figure brackets there are names of variables that will be substituted: 
 
 .. code:: python
 
@@ -25,10 +25,10 @@ F-string is a literal line with a letter ``f`` in front of it. Inside the f- str
     The same result with format() method you can achieve by:
     ``"IP: {ip}, mask: {mask}".format(ip=ip, mask=mask)``.
 
-A very important difference between f-strings and format(): f-strings are expressions that are processed, not just strings. That is, in the case of ipython, as soon as we wrote the expression and pressed Enter, it was performed and instead of the expressions
-``{ip}`` and ``{mask}`` the values of the variables were substituted.
+A very important difference between f-strings and format(): f-strings are expressions that are processed, not just strings. That is, in case of ipython, as soon as we wrote the expression and pressed Enter, it was performed and instead of expressions
+``{ip}`` and ``{mask}`` the values of variables were substituted.
 
-Therefore, for example, you cannot first write a template and then define the variables that are used in the template:
+Therefore, for example, you cannot first write a template and then define variables that are used in template:
 
 .. code:: python
 
@@ -71,7 +71,7 @@ Special aspects of f-strings
 
 When using f-strings you cannot first create a template and then use it as in format() method.
 
-F-string is immediately executed and contains the values of the variables that were defined earlier:
+F-string is immediately executed and contains the values of variables that were defined earlier:
 
 .. code:: python
 
@@ -94,7 +94,7 @@ If you want to set other values you must create new variables (with the same nam
     IP: 10.2.2.2, mask: 24
 
 
-When using f-strings in loops the f-string must be written in the body of the loop to «catch» new variable values within each iteration:
+When using f-strings in loops an f-string must be written in body of the loop to «catch» new variable values within each iteration:
 
 .. code:: python
 
@@ -175,7 +175,7 @@ Work with dictionary
        ...:
     Pomodoros done: 10, TODO: 5
 
-Call the len() function inside the f-string:
+Call len() function inside f-string:
 
 .. code:: python
 
@@ -211,7 +211,7 @@ Converting numbers to binary format:
 What to use format or f-strings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In many cases f-strings are more convenient to use as the template looks more understandable and compact. However, there are cases when the format() method is more convenient. For example:
+In many cases f-strings are more convenient to use as template looks more understandable and compact. However, there are cases when format() method is more convenient. For example:
 
 .. code:: python
 
@@ -227,7 +227,7 @@ In many cases f-strings are more convenient to use as the template looks more un
     In [9]: template.format(*ip)
     Out[9]: '00001010 00000001 00000001 00000001 '
 
-Another situation where format() is usually more convenient to use: the need to use the same template many times in the script. F-string will execute the first time and will set the current values of the variables and to use the template again it has to be rewritten. This means that the script will contain copies of the same line. At the same time format() allows to create a template in one place and then use it again substituting variables as needed.
+Another situation where format() is usually more convenient to use: the need to use the same template many times in script. F-string will execute the first time and will set current values of variables and to use template again it has to be rewritten. This means that script will contain copies of the same line. At the same time format() allows to create a template in one place and then use it again substituting variables as needed.
 
 This can be avoided by creating a function but creating a function to print a string based on template is not always justified. Example of creating a function:
 
