@@ -1,7 +1,7 @@
 Map
 -----------
 
-The map() function applies function to each element of sequence and returns iterator with  result.
+Function map() applies function to each element of sequence and returns iterator with  result.
 
 For example, map() can be used to perform element transformations. Convert all strings to uppercase:
 
@@ -54,7 +54,7 @@ As a rule, you can use list comprehension instead of map(). Most often, list com
 
 But map() can be more effective when you have to generate a large number of elements because map() is an iterator and list comprehension generates a list.
 
-Examples similar to those above in the list comprehension variant.
+Examples similar to those above in list comprehension variant.
 
 Convert all strings to uppercase:
 
