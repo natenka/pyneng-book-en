@@ -2,18 +2,18 @@ File closing
 ---------------
 
 .. note::
-    In real life, the most common way to close files is use of ``with`` construction. It’s much more convenient way than to close file explicitly. But since you can also find the ``close`` method in life, this section discusses how to use it.
+    In real life, the most common way to close files is use of ``with`` construction. It’s much more convenient way than to close file explicitly. But since you can also find ``close`` method in life, this section discusses how to use it.
     
-After you finish working with file you have to close it. In some cases Python can close the file itself. But it’s best not to count on it and close the file explicitly.
+After you finish working with file you have to close it. In some cases Python can close file itself. But it’s best not to count on it and close file explicitly.
 
 ``close()``
 ^^^^^^^^^^^
 
-The close() method met in `File writing  <./3_write.md>`__ section.
-It was there to make sure that the content of the file was written on disk.
+Method close() met in `File writing  <./3_write.md>`__ section.
+It was there to make sure that the content of file was written on disk.
 
 For this, Python has a separate ``flush()`` method.
-But since in the example with the file writing there was no need to perform any more operations, the file could be closed.
+But since in example with file writing there was no need to perform any more operations, file could be closed.
 
 Open the r1.txt file:
 
@@ -36,14 +36,14 @@ You can now read the content:
     !
     ip ssh version 2
     !
-The **file** object has a special ``closed`` attribute that lets you check whether a file is closed or not. If the file is open, it returns ``False``:
+The **file** object has a special ``closed`` attribute that lets you check whether a file is closed or not. If file is open, it returns ``False``:
 
 .. code:: python
 
     In [3]: f.closed
     Out[3]: False
 
-Now close the file and check ``closed`` again:
+Now close file and check ``closed`` again:
 
 .. code:: python
 
@@ -52,7 +52,7 @@ Now close the file and check ``closed`` again:
     In [5]: f.closed
     Out[5]: True
 
-If you try to read the file an exception occurs:
+If you try to read file an exception occurs:
 
 .. code:: python
 
@@ -95,7 +95,7 @@ Using ``try/except`` construction you can capture this exception and print your 
       ....:
     No such file
 
-And with ``finally`` you can close the file after all operations:
+And with ``finally`` you can close file after all operations:
 
 .. code:: python
 
