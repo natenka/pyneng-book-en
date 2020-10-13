@@ -1,9 +1,9 @@
 Construction with
 ----------------
 
-The construction **with** is a context manager.
+Construction **with** is a context manager.
 
-Python has a more convenient way of working with files than the ones used so far - the construction ``with``:
+Python has a more convenient way of working with files than the ones used so far - construction ``with``:
 
 .. code:: python
 
@@ -31,18 +31,18 @@ Python has a more convenient way of working with files than the ones used so far
 
     !
 
-In addition, the construction ``with`` guarantees file closure automatically.
+In addition, construction ``with`` guarantees file closure automatically.
 
-Pay attention to how the lines of the file are read:
+Pay attention to how lines of the file are read:
 
 .. code:: python
 
     for line in f:
         print(line)
 
-When the file needs to be run line by line, it is best to use this option.
+When file needs to be run line by line, it is best to use this option.
 
-In the previous output there were extra empty lines between the lines of the file because **print** adds another line feed character.
+In previous output there were extra empty lines between lines of the file because **print** adds another line feed character.
 
 To get rid of this you can use ``rstrip`` method:
 
