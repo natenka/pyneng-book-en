@@ -1,14 +1,14 @@
 Function parameters and arguments
 #############################
 
-The purpose of creating a function is typically to take a piece of code that performs a particular task to a separate object. This allows you to use this piece of code multiple times without having to re-create it in the program.
+The purpose of creating a function is typically to take a piece of code that performs a particular task to a separate object. This allows you to use this piece of code multiple times without having to re-create it in program.
 
 Typically, a function must perform some actions with input values and produce an output.
 
 When working with functions it is important to distinguish:
 
--  **parameters** - the variables that are used when creating a function.
--  **arguments** - the actual values (data) that are passed to the function when called.
+-  **parameters** - variables that are used when creating a function.
+-  **arguments** - actual values (data) that are passed to function when called.
 
 For a function to receive incoming values, it must be created with parameters (func_check_passwd.py file):
 
@@ -28,7 +28,7 @@ For a function to receive incoming values, it must be created with parameters (f
 
 In this case, function has two parameters: username and password.
 
-The function checks the password and returns False if checks fail and True if password passed checks:
+Function checks password and returns False if checks fail and True if password passed checks:
 
 .. code:: python
 
