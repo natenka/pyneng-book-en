@@ -3,13 +3,13 @@
 Print
 -------------
 
-The ``print()`` function has been used many times in the book but its full syntax has not yet been considered:
+Function ``print()`` has been used many times in book but its full syntax has not yet been considered:
 
 .. code:: python
 
     print(*items, sep=' ', end='\n', file=sys.stdout, flush=False)
 
-The print() function outputs all elements by separating them by their **sep** value and finishes output with the **end** value.
+Function print() outputs all elements by separating them by their **sep** value and finishes output with **end** value.
 
 All elements that are passed as arguments are converted into strings:
 
@@ -35,9 +35,9 @@ For functions f() and range() the result is equivalent to str():
 sep
 ~~~
 
-The sep parameter controls which separator will be used between elements.
+Parameter **sep** controls which separator will be used between elements.
 
-By default, the space is used:
+By default, space is used:
 
 .. code:: python
 
@@ -78,7 +78,7 @@ In some situations print() function can replace join() method:
 end
 ~~~
 
-The **end** parameter controls which value will be displayed after all elements are printed. 
+Parameter **end** controls which value will be displayed after all elements are printed. 
 By default, line feed character is used:
 
 .. code:: python
@@ -97,7 +97,7 @@ You can change **end** value to any other string:
 file
 ~~~~
 
-The **file** parameter controls where values of print() function are displayed. The default output is sys.stdout.
+Parameter **file** controls where values of print() function are displayed. The default output is sys.stdout.
 
 Python allows to pass to **file** as an argument any object with write(string) method. 
 
@@ -126,7 +126,7 @@ Python allows to pass to **file** as an argument any object with write(string) m
 flush
 ~~~~~
 
-By default, when writing to a file or print to a standard output stream, the output is buffered.  The print() function allows to disable buffering. You can control it in a file.
+By default, when writing to a file or print to a standard output stream, the output is buffered.  Function print() allows to disable buffering. You can control it in a file.
 
 Example script that displays a number from 0 to 10 every second (print_nums.py file):
 
@@ -138,7 +138,7 @@ Example script that displays a number from 0 to 10 every second (print_nums.py f
         print(num)
         time.sleep(1)
 
-Try running the script and make sure the numbers are displayed once per second.
+Try running a script and make sure the numbers are displayed once per second.
 
 Now, a similar script but the numbers will appear in one line (print_nums_oneline.py file):
 
@@ -150,11 +150,11 @@ Now, a similar script but the numbers will appear in one line (print_nums_onelin
         print(num, end=' ')
         time.sleep(1)
 
-Try running the function. The numbers does not appear one per second but all appear after 10 seconds.
+Try running a function. Numbers does not appear one per second but all appear after 10 seconds.
 
-This is because when output is displayed on standard output the **flush** is performed after line feed character.
+This is because when output is displayed on standard output, **flush** is performed after line feed character.
 
-In order to make script work properly the **flush** should be set to True (print_nums_oneline_fixed.py file):
+In order to make script work properly **flush** should be set to True (print_nums_oneline_fixed.py file):
 
 .. code:: python
 
