@@ -1,15 +1,15 @@
-Ipaddress
+IPaddress
 ----------------
 
 Module **ipaddress** simplifies work with IP addresses.
 
 .. note::
-    Since Python 3.3, **ipaddress** module is part of the standard Python library.
+    Since Python 3.3, **ipaddress** module is part of standard Python library.
 
 ``ipaddress.ip_address()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The function ``ipaddress.ip_address()`` allows to create an Ipv4Address or Ipv6Address respectively:
+Function ``ipaddress.ip_address()`` allows to create an Ipv4Address or Ipv6Address respectively:
 
 .. code:: python
 
@@ -90,7 +90,7 @@ Function ``ipaddress.ip_network()`` allows the creation of an object that descri
 
     In [20]: subnet1 = ipaddress.ip_network('80.0.1.0/28')
 
-As with an address the network has various attributes and methods:
+As with an address, a network has various attributes and methods:
 
 .. code:: python
 
@@ -109,7 +109,7 @@ As with an address the network has various attributes and methods:
     In [25]: subnet1.num_addresses
     Out[25]: 16
 
-The hosts() method returns generator, so to view all hosts you should apply the list() function:
+Method hosts() returns generator, so to view all hosts you should apply list() function:
 
 .. code:: python
 
@@ -130,7 +130,7 @@ The hosts() method returns generator, so to view all hosts you should apply the 
      IPv4Address('80.0.1.13'),
      IPv4Address('80.0.1.14')]
 
-The subnets() method allows dividing network (subnetting). By default, it splits network into two subnets:
+Method subnets() allows dividing network (subnetting). By default, it splits network into two subnets:
 
 .. code:: python
 
@@ -148,7 +148,7 @@ The subnets() method allows dividing network (subnetting). By default, it splits
      IPv4Network('80.0.1.8/30'),
      IPv4Network('80.0.1.12/30')]
 
-With the **new_prefix** parameter you can specify which mask should be configured:
+With **new_prefix** parameter you can specify which mask should be configured:
 
 .. code:: python
 
@@ -208,7 +208,7 @@ This way you can check if IP address is in the network:
 ``ipaddress.ip_interface()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ``ipaddress.ip_interface()`` function allows creating an Ipv4Interface or Ipv6Interface object respectively:
+Function ``ipaddress.ip_interface()`` allows creating an Ipv4Interface or Ipv6Interface object respectively:
 
 .. code:: python
 
@@ -230,7 +230,7 @@ Using methods of Ipv4Interface object you can get an address, mask or interface 
 Example of module usage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since the module has built-in address correctness checks, you can use them, for example, to check whether the address is a network or host address:
+Since module has built-in address correctness checks, you can use them, for example, to check whether an address is a network or host address:
 
 .. code:: python
 
