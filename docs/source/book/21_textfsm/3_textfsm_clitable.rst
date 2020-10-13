@@ -1,48 +1,29 @@
 TextFSM CLI Table
 -----------------
 
-Благодаря TextFSM можно обрабатывать вывод команд и получать
-структурированный результат. Однако, всё ещё надо вручную прописывать,
-каким шаблоном обрабатывать команды show, каждый раз, когда используется
-TextFSM.
+With TextFSM it is possible to process output of commands and obtain a structured result. However, it is still necessary to manually specify which template will handle show commands each time TextFSM is used.
 
-Было бы намного удобней иметь какое-то соответствие между командой и
-шаблоном, чтобы можно было написать общий скрипт, который выполняет
-подключения к устройствам, отправляет команды, сам выбирает шаблон и
-парсит вывод в соответствии с шаблоном.
+It would be much more convenient to have some mapping between command and template so that you can write a common script that performs connections to devices, sends commands, chooses template and parse output according to template.
 
-В TextFSM есть такая возможность.
-Для того, чтобы ею можно было воспользоваться, надо создать файл, в
-котором описаны соответствия между командами и шаблонами. В TextFSM он
-называется index.
+TextFSM has such feature. To use it, you should create a file that describes mapping between commands and templates. In TextFSM it is called **index**.
 
-Этот файл должен находиться в каталоге с шаблонами и должен иметь такой
-формат: 
+This file should be in a directory with templates and should have this format:
 
-* первая строка - названия колонок 
-* каждая следующая строка - это соответствие шаблона команде 
-* обязательные колонки, местоположение которых фиксировано 
-  (должны быть обязательно первой и последней, соответственно): 
+* first line - column names
+* every next line is a pattern match to a command
+* mandatory columns with fixed position (mandatory first and last, respectively): 
 
-  * первая колонка - имена шаблонов 
-  * последняя колонка - соответствующая команда. В этой колонке используется специальный
-    формат, чтобы описать то, что команда может быть написана не полностью
+  * first column - names of templates
+  * last column - the corresponding command. This column uses a special format to describe that a command may not be fully written
 
-* остальные колонки могут быть любыми 
+* other columns are optional 
 
-  * например, в примере ниже будут колонки Hostname, Vendor.
-    Они позволяют уточнить информацию об устройстве, 
-    чтобы определить, какой шаблон использовать. Например,
-    команда show version может быть у оборудования Cisco и HP.
-    Соответственно, только команды недостаточно, чтобы определить, какой
-    шаблон использовать. В таком случае можно передать информацию о том,
-    какой тип оборудования используется, вместе с командой, и тогда
-    получится определить правильный шаблон. 
+  * in example below there are columns Hostname, Vendor. They allow you to refine your device information to determine which template to use. For example, *show version* command may be in Cisco and HP devices. Of course, having only commands are not sufficient to determine which template to use. In this case, you can pass information about the type of equipment used with command and then you can define the correct template.
 
-* во всех столбцах, кроме первого, поддерживаются регулярные выражения. 
-  В командах внутри ``[[]]`` регулярные выражения не поддерживаются
+* all columns except the first column support regular expressions. 
+  Regular expressions are not supported inside ``[[]]``
 
-Пример файла index:
+Example of index file:
 
 ::
 
@@ -52,21 +33,19 @@ TextFSM.
     sh_ip_int_br.template, .*, Cisco, sh[[ow]] ip int[[erface]] br[[ief]]
     sh_ip_route_ospf.template, .*, Cisco, sh[[ow]] ip rou[[te]] o[[spf]]
 
-Обратите внимание на то, как записаны команды:  ``sh[[ow]] ip int[[erface]] br[[ief]]``. 
-Запись будет преобразована в выражение ``sh((ow)?)? ip int((erface)?)? br((ief)?)?``.
-Это значит, что TextFSM сможет определить, какой шаблон использовать,
-даже если команда набрана не полностью. Например, такие варианты
-команды сработают: 
+Note how commands are written: ``sh[[ow]] ip int[[erface]] br[[ief]]``. 
+Record will be converted to ``sh((ow)?)? ip int((erface)?)? br((ief)?)?``.
+This means that TextFSM will be able to determine which template to use even if command is not fully written. For example, such command variants will work:
 
 * sh ip int br 
 * show ip inter bri
 
-Как использовать CLI table
+How to use CLI table
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Посмотрим, как пользоваться классом clitable и файлом index.
+Let’s see how to use *clitable* class and index file.
 
-В каталоге templates такие шаблоны и файл index:
+*templates* directory contains such templates and index file:
 
 ::
 
@@ -76,11 +55,9 @@ TextFSM.
     sh_ip_route_ospf.template
     index
 
-Сначала попробуем поработать с CLI Table в ipython, чтобы посмотреть,
-какие возможности есть у этого класса, а затем посмотрим на финальный
-скрипт.
+First we try to work with CLI Table in ipython to see what features this class has and then we look at the final script.
 
-Для начала импортируем класс clitable:
+First, we import *clitable* class:
 
 .. code:: python
 
@@ -88,16 +65,14 @@ TextFSM.
 
 
 .. warning::
-    В зависимости от версии textfsm, надо по-разному импортировать clitable:
+    There are different ways to import *clitable* depending on textfsm version:
 
-    * ``import clitable`` для версии <= 0.4.1
-    * ``from textfsm import clitable`` для версии >= 1.1.0
+    * ``import clitable`` for version <= 0.4.1
+    * ``from textfsm import clitable`` for version >= 1.1.0
 
-    Посмотреть версию textfsm: ``pip show textfsm``.
+    See textfsm version: ``pip show textfsm``.
 
-Проверять работу clitable будем на последнем примере из прошлого раздела
-- выводе команды show ip route ospf. Считываем вывод, который хранится в
-файле output/sh_ip_route_ospf.txt, в строку:
+We will check *clitable* on the last example from previous section - *show ip route ospf* command. Read the output that is stored in output/sh_ip_route_ospf.txt file to string:
 
 .. code:: python
 
@@ -106,35 +81,27 @@ TextFSM.
        ...:
 
 
-Сначала надо инициализировать класс, передав ему имя файла, в котором
-хранится соответствие между шаблонами и командами, и указать имя
-каталога, в котором хранятся шаблоны:
+First, you should initialize a class by giving it name of the file in which mapping between templates and commands is stored, and specify name of the directory in which templates are stored:
 
 .. code:: python
 
     In [3]: cli_table = clitable.CliTable('index', 'templates')
 
-Надо указать, какая команда передается, и указать дополнительные
-атрибуты, которые помогут идентифицировать шаблон. Для этого нужно
-создать словарь, в котором ключи - имена столбцов, которые определены в
-файле index. В данном случае не обязательно указывать название вендора,
-так как команде sh ip route ospf соответствует только один шаблон.
+Specify which command should be passed and specify additional attributes that will help to identify template. To do this, you should create a dictionary in which keys are the names of columns that are defined in index file. In this case, it is not necessary to specify vendor name, since *sh ip route ospf* command corresponds to only one template.
 
 .. code:: python
 
     In [4]: attributes = {'Command': 'show ip route ospf' , 'Vendor': 'Cisco'}
 
-Методу ParseCmd надо передать вывод команды и словарь с параметрами:
+Command output and dictionary with parameters should be passed to ParseCmd method:
 
 .. code:: python
 
     In [5]: cli_table.ParseCmd(output_sh_ip_route_ospf, attributes)
 
-В результате в объекте cli_table получаем обработанный вывод команды sh
-ip route ospf.
+As a result we have processed output of *sh ip route ospf* command in cli_table object.
 
-Методы cli_table (чтобы посмотреть все методы, надо вызвать
-dir(cli_table)):
+cli_table methods (to see all methods, call dir(cli_table)):
 
 .. code:: python
 
@@ -148,7 +115,7 @@ dir(cli_table)):
     cli_table.KeyValue         cli_table.extend           cli_table.row_index
     cli_table.LabelValueTable  cli_table.header           cli_table.separator
 
-Например, если вызвать ``print cli_table``, получим такой вывод:
+For example, if you call ``print cli_table`` you get this:
 
 .. code:: python
 
@@ -161,7 +128,7 @@ dir(cli_table)):
     10.4.4.4, /32, 110, 21, ['10.0.13.3', '10.0.12.2', '10.0.14.4']
     10.5.35.0, /24, 110, 20, ['10.0.13.3']
 
-Метод FormattedTable позволяет получить вывод в виде таблицы:
+FormattedTable method produces a table output:
 
 .. code:: python
 
@@ -175,10 +142,9 @@ dir(cli_table)):
      10.4.4.4   /32   110       21      10.0.13.3, 10.0.12.2, 10.0.14.4
      10.5.35.0  /24   110       20      10.0.13.3
 
-Такой вывод может пригодиться для отображения информации.
+This can be useful for displaying information.
 
-Чтобы получить из объекта cli_table структурированный вывод, например,
-список списков, надо обратиться к объекту таким образом:
+To get a structured output from cli_table object, such as a list of lists, you have to refer to object in this way:
 
 .. code:: python
 
@@ -193,7 +159,7 @@ dir(cli_table)):
      ['10.4.4.4', '/32', '110', '21', ['10.0.13.3', '10.0.12.2', '10.0.14.4']],
      ['10.5.35.0', '/24', '110', '20', ['10.0.13.3']]]
 
-Отдельно можно получить названия столбцов:
+You can get column names separately:
 
 .. code:: python
 
@@ -202,13 +168,13 @@ dir(cli_table)):
     In [14]: header
     Out[14]: ['Network', 'Mask', 'Distance', 'Metric', 'NextHop']
 
-Теперь вывод аналогичен тому, который был получен в прошлом разделе.
+The output is now similar to that of the previous section.
 
-Соберем всё в один скрипт (файл textfsm_clitable.py):
+Assemble everything into one script (textfsm_clitable.py file):
 
 .. code:: python
 
-    from textfsm import clitable
+    import clitable
 
     output_sh_ip_route_ospf = open('output/sh_ip_route_ospf.txt').read()
 
@@ -228,11 +194,9 @@ dir(cli_table)):
     for row in data_rows:
         print(row)
 
-В упражнениях к этому разделу будет задание, в котором надо
-объединить описанную процедуру в функцию, а также вариант с
-получением списка словарей.
+In exercises to this section there will be a task to combine described procedure into a function and task to obtain a list of dictionaries.
 
-Вывод будет таким:
+The output will be:
 
 ::
 
@@ -264,6 +228,4 @@ dir(cli_table)):
     ['10.4.4.4', '/32', '110', '21', ['10.0.13.3', '10.0.12.2', '10.0.14.4']]
     ['10.5.35.0', '/24', '110', '20', ['10.0.13.3']]
 
-Теперь с помощью TextFSM можно не только получать структурированный
-вывод, но и автоматически определять, какой шаблон использовать, по
-команде и опциональным аргументам.
+Now with TextFSM it is possible not only to get a structured output, but also to automatically determine which template to use by command and optional arguments.

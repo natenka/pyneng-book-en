@@ -1,16 +1,15 @@
-Начало работы с TextFSM
+Getting started with TextFSM
 =======================
 
-Для начала библиотеку надо установить:
+First, library must be installed:
 
 ::
 
     pip install textfsm
 
-Для использования TextFSM надо создать шаблон, по которому будет
-обрабатываться вывод команды.
+To use TextFSM you should create a template to handle the output of command.
 
-Пример вывода команды traceroute:
+Example of traceroute command output:
 
 ::
 
@@ -24,10 +23,9 @@
       3 57.0.0.7  4 msec 1 msec 4 msec
       4 79.0.0.9  4 msec *  1 msec
 
-Например, из вывода надо получить хопы, через которые прошел пакет.
+For example, you have to get hops that packet went through.
 
-В таком случае шаблон TextFSM будет выглядеть так (файл
-traceroute.template):
+In this case TextFSM template will look like this (traceroute.template file):
 
 ::
 
@@ -37,26 +35,19 @@ traceroute.template):
     Start
       ^  ${ID} ${Hop} -> Record
 
-Первые две строки определяют переменные: 
+First two lines define variables:
 
-* ``Value ID (\d+)`` - эта строка определяет переменную ID,
-  которая описывает регулярное выражение: ``(\d+)`` - одна или более цифр,
-  сюда попадут номера хопов 
-* ``Value Hop (\d+(\.\d+){3})`` - эта строка определяет переменную Hop,
-  которая описывает IP-адрес таким регулярным выражением: ``(\d+(\.\d+){3})``
+* ``Value ID (\d+)`` - this line defines an *ID* variable that describes a regular expression: ``(\d+)`` - one or more digits, here are the hop numbers
+* ``Value Hop (\d+(\.\d+){3})`` - line that defines a *Hop* variable that describes an IP address by such regular expression: ``(\d+(\.\d+){3})``
 
-После строки Start начинается сам шаблон. В данном случае он очень
-простой: 
+After *Start* line, the template itself begins. In this case, it’s very simple:
 
 * ``^  ${ID} ${Hop} -> Record`` 
-* сначала идет символ начала строки, затем два пробела и переменные ID и Hop 
-* в TextFSM переменные описываются таким образом: ``${имя переменной}`` 
-* слово ``Record`` в конце означает, что строки, которые попадут под описанный шаблон, будут
-  обработаны и выведены в результаты TextFSM (с этим подробнее мы
-  разберемся в следующем разделе
+* first goes caret sign, then two spaces and *ID* and *Hop* variables
+* in TextFSM the variables are described as: ``${variable name}`` 
+* word ``Record`` at the end means that lines that will fall under the described template will be processed and displayed in the results of TextFSM (we’ll look at this in the next section)
 
-Скрипт для обработки вывода команды traceroute с помощью TextFSM
-(parse_traceroute.py):
+Script to process output of traceroute command with TextFSM  (parse_traceroute.py):
 
 .. code:: python
 
@@ -81,7 +72,7 @@ traceroute.template):
     print(fsm.header)
     print(result)
 
-Результат выполнения скрипта:
+The result of script execution:
 
 ::
 
@@ -89,30 +80,21 @@ traceroute.template):
     ['ID', 'Hop']
     [['1', '10.0.12.1'], ['2', '15.0.0.5'], ['3', '57.0.0.7'], ['4', '79.0.0.9']]
 
-Строки, которые совпали с описанным шаблоном, возвращаются в виде списка
-списков. Каждый элемент - это список, который состоит из двух элементов:
-номера хопа и IP-адреса.
+Lines that match the described template are returned as a list of lists. Each element is a list that consists of two elements: hop number and IP address.
 
-Разберемся с содержимым скрипта: 
+Let’s sort out the content of script:
 
-* traceroute - это переменная, которая содержит вывод команды traceroute 
-* ``template = open('traceroute.template')`` - содержимое файла с шаблоном
-  TextFSM считывается в переменную template 
-* ``fsm = textfsm.TextFSM(template)`` - класс, который обрабатывает шаблон
-  и создает из него объект в TextFSM 
-* ``result = fsm.ParseText(traceroute)`` - метод, который обрабатывает
-  переданный вывод согласно шаблону и возвращает список списков, в котором
-  каждый элемент - это обработанная строка 
-* В конце выводится заголовок: ``print(fsm.header)``, 
-  который содержит имена переменных и результат обработки
+* traceroute - a variable that contains traceroute command output 
+* ``template = open('traceroute.template')`` - content of TextFSM template file is read into a *template* variable
+* ``fsm = textfsm.TextFSM(template)`` - class that processes a template and creates an object from it in TextFSM
+* ``result = fsm.ParseText(traceroute)`` - method that handles output according to a template and returns a list of lists in which each element is a processed string 
+* At the end, ``print(fsm.header)`` header is displayed which contains variable names and processing result
 
-С этим выводом можно работать дальше. Например, периодически выполнять
-команду traceroute и сравнивать, изменилось ли количество хопов и их
-порядок.
+We can work with that output further. For example, periodically execute traceroute command and compare whether the number of hops and their order has changed.
 
-Для работы с TextFSM нужны вывод команды и шаблон: 
+To work with TextFSM you need command output and template: 
 
-* для разных команд нужны разные шаблоны 
-* TextFSM возвращает результат обработки в табличном виде (в виде списка списков) 
-* этот вывод легко преобразовать в csv формат или в список словарей
+* different commands need different templates 
+* TextFSM returns a tabular processing result (as a list of lists)
+* this output is easily converted to csv format or to a list of dictionaries
 

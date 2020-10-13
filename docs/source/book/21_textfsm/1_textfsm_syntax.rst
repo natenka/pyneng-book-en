@@ -1,211 +1,166 @@
-Синтаксис шаблонов TextFSM
+TextFSM template syntax
 --------------------------
 
-В этом разделе описан синтаксис шаблонов на основе документации TextFSM.
-В следующем разделе показаны примеры использования синтаксиса. Поэтому,
-в принципе, можно перейти сразу к следующему разделу, а к этому
-возвращаться по необходимости, для тех ситуаций, для которых нет
-примера, и когда нужно перечитать, что означает какой-то параметр.
+This section describes template syntax based on TextFSM documentation. The following section shows examples of syntax usage. Therefore, you can move to the next section and  return to this section as necessary for those situations for which there is no example and when you need to recall the meaning of parameter.
 
-Шаблон TextFSM описывает, каким образом данные должны обрабатываться.
+TextFSM template describes how data should be processed.
 
-Любой шаблон состоит из двух частей: 
+Each template consists of two parts:
 
-* определения переменных 
-* эти переменные описывают, какие столбцы будут в табличном представлении 
-* определения состояний
+* value definitions (or variable definitions)
+* these variables describe which columns will be in the table view 
+* state definitions
 
-Пример разбора команды traceroute:
+Example of traceroute command examination:
 
 ::
 
-    # Определение переменных:
+    # Value definition:
     Value ID (\d+)
     Value Hop (\d+(\.\d+){3})
 
-    # Секция с определением состояний всегда должна начинаться с состояния Start
+    # Section with state definition always should be started with *Start* state
     Start
     #     Переменные      действие
        ^  ${ID} ${Hop} -> Record
 
-Определение переменных
+Value definition
 ~~~~~~~~~~~~~~~~~~~~~~
 
-В секции с переменными должны идти только определения переменных.
-Единственное исключение - в этом разделе могут быть комментарии.
+Only value definitions should be used in value section. The only exception there may be comments in this section.
 
-В этом разделе не должно быть пустых строк. Для TextFSM пустая строка
-означает завершение секции определения переменных.
+This section should not contain empty strings. For TextFSM, an empty string means the end of value definition section.
 
-Формат описания переменных:
+Format of value description:
 
 ::
 
     Value [option[,option...]] name regex
 
-Синтаксис описания переменных (для каждой опции ниже мы рассмотрим
-примеры): 
+Syntax of value description (for each option below we will consider examples):
 
-* ``Value`` - это ключевое слово, которое указывает, что
-  создается переменная. Его обязательно нужно указывать 
-* option - опции, которые определяют, как работать с переменной. 
-  Если нужно указать несколько опций, они должны быть отделены запятой, 
-  без пробелов. Поддерживаются такие опции: 
+* ``Value`` - keyword that indicates that a value is being created. It must be specified
+* option - options that define how to work with a variable. If several options are to be specified, they must be separated by a comma, without spaces. These options are supported:
 
-  * **Filldown** - значение, которое ранее
-    совпало с регулярным выражением, запоминается до следующей обработки
-    строки (если не было явно очищено или снова совпало регулярное выражение). 
-    Это значит, что последнее значение столбца, которое
-    совпало с регулярным выражением, запоминается и используется в следующих
-    строках, если в них не присутствовал этот столбец. 
-  * **Key** - определяет, что это поле содержит уникальный идентификатор строки 
-  * **Required** - строка, которая обрабатывается, будет записана только в
-    том случае, если эта переменная присутствует. 
-  * **List** - значение это список, и каждое совпадение с регулярным выражением будет добавлять
-    в список элемент. По умолчанию каждое следующее совпадение перезаписывает предыдущее. 
-  * **Fillup** - работает как Filldown, но заполняет пустые значение выше до тех пор,
-    пока не найдет совпадение. Не совместимо с Required. 
+  * **Filldown** - value that previously matched with a regular expression,  remembered until the next processing line (if has not been explicitly cleared or matched again). This means that the last column value that matches the regular expression is stored and used in the following strings if this column is not present.
+  * **Key** - determines that this field contains a unique string identifier
+  * **Required** - string that is processed will only be written if this value is present.
+  * **List** - value is a list, and each match with a regular expression will add an item to the list. By default, each next match overwrites the previous one. 
+  * **Fillup** - works as Filldown but fills empty value up until it finds a match. Not compatible with Required.
 
-* ``name`` - имя переменной, которое будет использоваться как имя колонки.
-  Зарезервированные имена не должны использоваться как имя переменной. 
-* ``regex`` - регулярное выражение, которое описывает переменную. 
-  Регулярное выражение должно быть в скобках.
+* ``name`` - name of value that will be used as the column name. Reserved names should not be used as value names. 
+* ``regex`` - regular expression that describes a value. Regular expression should be in brackets.
 
-Определение состояний
+State definition
 ~~~~~~~~~~~~~~~~~~~~~
 
-После определения переменных нужно описать состояния: 
+After defining values, we need to describe the states:
 
-* каждое определение состояния должно быть отделено пустой строкой (как минимум, одной)
-* первая строка - имя состояния 
-* затем идут строки, которые описывают правила. Правила должны начинаться с двух пробелов и символа ``^``
+* each state definition must be separated by an empty line (at least one)
+* first line - state name 
+* then follows the lines that describe rules. Rules must start with two spaces and caret symbol ``^``
 
-Начальное состояние всегда **Start**. Входные данные сравниваются с
-текущим состоянием, но в строке правила может быть указано, что нужно
-перейти к другому состоянию.
+Initial state is always **Start**. Input data is compared to the current state but rule line can specify that you want to go to a different state.
 
-Проверка выполняется построчно, пока не будет достигнут **EOF** (конец
-файла), или текущее состояние перейдет в состояние **End**.
+Checking is done line-by-line until **EOF** (end of file) is reached or the current state goes to **End** state.
 
-Зарезервированные состояния
+Reserved states
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Зарезервированы такие состояния: 
+The following states are reserved:
 
-* **Start** - это состояние обязательно должно быть указано.
-  Без него шаблон не будет работать. 
-* **End** - это состояние завершает обработку входящих строк 
-  и не выполняет состояние **EOF**. 
-* **EOF** - это неявное состояние, которое выполняется всегда, 
-  когда обработка дошла до конца файла. Выглядит оно таким образом:
+* **Start** - state that must be specified. Without it the template won’t work.
+* **End** - state that completes processing of incoming strings and does not execute **EOF** state. 
+* **EOF** - implicit state that always executes when processing reaches the end of the file. It looks like this:
 
 ::
 
      EOF
        ^.* -> Record
 
-**EOF** записывает текущую строку, прежде чем обработка завершается.
-Если это поведение нужно изменить, надо явно в конце шаблона написать
-EOF:
+**EOF** writes down the current string before it is finished. If this behavior needs to be changed you should explicitly write EOF at the end of template:
 
 ::
 
     EOF
 
-Правила состояний
+State rules
 -----------------
 
-Каждое состояние состоит из одного или более правил: 
+Each state consists of one or more rules: 
 
-* TextFSM обрабатывает входящие строки и сравнивает их с правилами 
-* если правило (регулярное выражение) совпадает со строкой, выполняются действия,
-  которые описаны в правиле, и для следующей строки процесс повторяется
-  заново, с начала состояния.
+* TextFSM handles incoming strings and compares them to rules 
+* if rule (regular expression) matches the string, actions described in rule are executed and for the next string the process is repeated from the beginning of state.
 
-Правила должны быть описаны в таком формате:
+Rules should be described in this format:
 
 ::
 
       ^regex [-> action]
 
-В правиле: 
+In rule: 
 
-* каждое правило должно начинаться с двух пробелов и символа ``^``. Символ ``^`` 
-  означает начало строки и всегда должен указываться явно
-* regex - это регулярное выражение, в котором могут использоваться переменные 
+* each rule must start with two spaces and caret symbol ``^``. Caret symbol ``^`` means the beginning of a line and must always be clearly indicated
+* regex - regular expression in which variables can be used
 
-  * для указания переменной, может использоваться синтаксис
-    ``$ValueName`` или ``${ValueName}``\ (этот формат предпочтителен) 
-  * в правиле на место переменных подставляются регулярные выражения, которые
-    они описывают 
-  * если нужно явно указать символ конца строки, используется значение ``$$``
+  * to specify variable you can use syntax like ``$ValueName`` or ``${ValueName}``\ (preferred format) 
+  * in rule, variables are substituted by regular expressions 
+  * if you want to explicitly specify end of line, use ``$$``
 
-Действия в правилах
+Action in rules
 ~~~~~~~~~~~~~~~~~~~
 
-После регулярного выражения в правиле могут указываться действия: 
+After regular expression, rule may indicate actions: 
 
-* между регулярным выражением и действием должен быть символ ``->`` 
-* действия могут состоять из трех частей в таком формате: **L.R S** 
+* there must be ``->`` character between regular expression and action  
+* actions can consist of three parts in such format:  **L.R S** 
 
-  * **L - Line Action** - действия, которые применяются к входящей строке 
-  * **R - Record Action** - действия, которые применяются к собранным значениям
-  * **S - State Transition** - переход в другое состояние 
+  * **L - Line Action** - actions that apply to an input string
+  * **R - Record Action** - actions that apply to collected values
+  * **S - State Transition** - changing state
 
-* по умолчанию используется **Next.NoRecord**
+* By default **Next.NoRecord** is used
 
 Line Actions
 ^^^^^^^^^^^^
 
 Line Actions:
 
-* **Next** - обработать строку, прочитать следующую и
-  начать проверять её с начала состояния. Это действие используется по 
-  умолчанию, если не указано другое 
-* **Continue** - продолжить обработку правил, 
-  как будто совпадения не было, при этом значения присваиваются
+* **Next** - process the line, read the next line and start checking it from the beginning. This action is used by default unless otherwise specified
+* **Continue** - continue to process rules as if there was no match while the values are assigned
 
 Record Action
 ^^^^^^^^^^^^^
 
-**Record Action** - опциональное действие, которое может быть указано
-после Line Action. Они должны быть разделены точкой. Типы действий: 
+**Record Action** - optional action that can be specified after Line Action. They must be separated by a dot. Types of actions:
 
-* **NoRecord** - не выполнять ничего. Это действие по умолчанию, 
-  когда другое не указано 
-* **Record** - запомнить значения, которые совпали с правилом. 
-  Все переменные, кроме тех, где указана опция Filldown, обнуляются. 
-* **Clear** - обнулить все переменные, кроме тех, где указана опция Filldown. 
-* **Clearall** - обнулить все переменные.
+* **NoRecord** - do nothing. This is default action when no other is specified
+* **Record** - all variables except those with Filldown option are reset.
+* **Clear** - reset all variables except those where Filldown option is specified.
+* **Clearall** - reset all variables.
 
-Разделять действия точкой нужно только в том случае, если нужно
-указать и Line, и Record действия. Если нужно указать только одно из
-них, точку ставить не нужно.
+You need to split actions with a dot only if you want to specify both Line and Record actions. If you need to specify only one of them, dot is not required.
 
 State Transition
 ^^^^^^^^^^^^^^^^
 
-После действия может быть указано новое состояние: 
+A new state can be specified after action: 
 
-* состояние должно быть одним из зарезервированных или определенных в шаблоне 
-* если входная строка совпала: 
+* state must be one of reserved or defined in template
+* if input line matches:
 
-  * все действия выполняются, 
-  * считывается следующая строка, 
-  * затем текущее состояние меняется на новое, и обработка продолжается в новом состоянии.
+  * all actions are executed, 
+  * the next line is read, 
+  * then the current state changes to a new state and processing continues in new state.
 
-Если в правиле используется действие **Continue**, то в нём нельзя
-использовать переход в другое состояние. Это правило нужно для того,
-чтобы в последовательности состояний не было петель.
+If the rule uses **Continue** action, it is not possible to change state inside this rule. This rule is needed to avoid loops in sequence of states.
 
 Error Action
 ^^^^^^^^^^^^
 
-Специальное действие **Error** останавливает всю обработку строк,
-отбрасывает все строки, которые были собраны до сих пор, и возвращает
-исключение.
+**Error** stops all line processing, discards all lines that have been collected so far and returns an exception.
 
-Синтаксис этого действия такой:
+Syntax of this action is:
 
 ::
 

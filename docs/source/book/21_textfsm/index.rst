@@ -4,28 +4,16 @@
 
 .. _textfsm_index:
 
-21. Обработка вывода команд TextFSM
+22. TextFSM output processing
 ===================================
 
-На оборудовании, которое не поддерживает какого-то программного
-интерфейса, вывод команд show возвращается в виде строки. И, хотя
-отчасти она структурирована, но всё же это просто строка. И её надо
-как-то обработать, чтобы получить объекты Python, например, словарь или
-список.
+On equipment that does not support any software interface, the output of show commands is returned as a string. And although it’s partly structured, it’s still just a string. And it has to be processed in some way to get Python objects, like a dictionary or a list.
 
-Например, можно построчно обрабатывать вывод команды и, используя,
-например, регулярные выражения, получить объекты Python. Но есть более
-удобный вариант, чем просто обрабатывать каждый вывод построчно:
-TextFSM.
+For example, it is possible to handle the output of a command line by line using regular expressions to obtain Python objects. But there is a more convenient option: TextFSM
 
-TextFSM - это библиотека, созданная Google для обработки вывода с
-сетевых устройств. Она позволяет создавать шаблоны, по которым будет
-обрабатываться вывод команды.
+TextFSM - a library created by Google to handle output from network devices. It allows you to create templates to process the output of a command.
 
-Использование TextFSM лучше, чем простая построчная обработка, так как
-шаблоны дают лучшее представление о том, как вывод будет обрабатываться,
-и шаблонами проще поделиться. А значит, проще найти уже созданные
-шаблоны и использовать их, или поделиться своими.
+Using TextFSM is better than simple line processing, as templates give a better idea of how output will be handled and templates are easier to share. That means it’s easier to find templates that have already been created and use them or share your own.
 
 .. toctree::
    :maxdepth: 1
@@ -35,4 +23,4 @@ TextFSM - это библиотека, созданная Google для обра
    2_textfsm_examples
    3_textfsm_clitable
    further_reading
-   ../../exercises/21_exercises
+   ../../exercises/22_exercises

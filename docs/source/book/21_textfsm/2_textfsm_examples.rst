@@ -1,11 +1,9 @@
-Примеры использования TextFSM
+Examples of TextFSM usage
 -----------------------------
 
-В этом разделе рассматриваются примеры шаблонов и использования TextFSM.
+This section discusses examples of templates and TextFSM usage.
 
-Для обработки вывода команд по шаблону в разделе используется скрипт
-parse_output.py. Он не привязан к конкретному шаблону и выводу: шаблон
-и вывод команды будут передаваться как аргументы:
+The section uses parse_output.py script to process command output by template. It is not tied to a specific template and output: template and command output will be passed as arguments:
 
 .. code:: python
 
@@ -24,7 +22,7 @@ parse_output.py. Он не привязан к конкретному шабло
         print(tabulate(result, headers=header))
 
 
-Пример запуска скрипта:
+Example of script run:
 
 ::
 
@@ -32,34 +30,29 @@ parse_output.py. Он не привязан к конкретному шабло
 
 .. note::
 
-    Модуль tabulate используется для отображения данных в табличном виде
-    (его нужно установить, если хотите использовать этот скрипт).
-    Аналогичный вывод можно было сделать и с помощью форматирования
-    строк, но с tabulate это сделать проще.
+    Module **tabulate** is used to display data in tabular form (it must be installed if you want to use this script). A similar output could be received with string formatting but with tabulate it is easier to do.
 
-Обработка данных по шаблону всегда выполняется одинаково. Поэтому скрипт
-будет одинаковый, только шаблон и данные будут отличаться.
+Data processing by template is always done in the same way. Therefore, script will be the same only template and data will be different.
 
-Начиная с простого примера, разберемся с тем, как использовать TextFSM.
+Starting with a simple example we’ll figure out how to use TextFSM.
 
 show clock
 ~~~~~~~~~~
 
-Первый пример - разбор вывода команды sh clock (файл
-output/sh_clock.txt):
+The first example is a review of *sh clock* command output (output/sh_clock.txt file):
 
 ::
 
     15:10:44.867 UTC Sun Nov 13 2016
 
-Для начала в шаблоне надо определить переменные:
+First of all, you have to define variables in template:
 
-* в начале каждой строки должно быть ключевое слово Value
-* каждая переменная определяет столбец в таблице
-* следующее слово - название переменной
-* после названия, в скобках - регулярное выражение, которое описывает значение переменной
+* at the beginning of each line there must be a keyword Value
+* each variable defines column in table
+* next word - variable name
+* after the name, in brackets - a regular expression that describes value of a variable
 
-Определение переменных выглядит так:
+Definition of variables is as follows:
 
 ::
 
@@ -70,17 +63,15 @@ output/sh_clock.txt):
     Value MonthDay (\d+)
     Value Year (\d+)
 
-Подсказка по спецсимволам: 
+Tips on special symbols: 
 
-* ``.`` - любой символ 
-* ``+`` - одно или более повторений предыдущего символа 
-* ``\S`` - все символы, кроме whitespace 
-* ``\w`` - любая буква или цифра 
-* ``\d`` - любая цифра
+* ``.`` - any character 
+* ``+`` - one or more repetitions of previous character 
+* ``\S`` - all characters except whitespace
+* ``\w`` - any letter or number
+* ``\d`` - any number
 
-После определения переменных должна идти пустая строка и состояние
-**Start**, а после, начиная с пробела и символа ``^``, идет правило
-(файл templates/sh_clock.template):
+Once variables are defined, an empty line and **Start** state must follow, and then the rule follows starting with space and ``^`` symbol (templates/sh_clock.template file):
 
 ::
 
@@ -94,35 +85,26 @@ output/sh_clock.txt):
     Start
       ^${Time}.* ${Timezone} ${WeekDay} ${Month} ${MonthDay} ${Year} -> Record
 
-Так как в данном случае в выводе всего одна строка, можно не писать
-в шаблоне действие Record. Но лучше его использовать в ситуациях,
-когда надо записать значения, чтобы привыкать к этому синтаксису и
-не ошибиться, когда нужна обработка нескольких строк.
+Because in this case only one line in the output, it is not necessary to write Record action in template. But it is better to use it in situations where you have to write values and get used to this syntax and not make mistakes when you need to process multiple lines.
 
-Когда TextFSM обрабатывает строки вывода, он подставляет вместо
-переменных их значения. В итоге правило будет выглядеть так:
+When TextFSM handles output strings it substitutes variable by its values. In the end, the rule will look like:
 
 ::
 
     ^(..:..:..).* (\S+) (\w+) (\w+) (\d+) (\d+)
 
-Когда это регулярное выражение применяется к выводу show clock, в каждой
-группе регулярного выражения будет находиться соответствующее значение:
+When this regular expression applies to *show clock* output, each regular expression group will have a corresponding value:
 
-* 1 группа: 15:10:44 
-* 2 группа: UTC 
-* 3 группа: Sun 
-* 4 группа: Nov
-* 5 группа: 13 
-* 6 группа: 2016
+* 1 group: 15:10:44 
+* 2 group: UTC 
+* 3 group: Sun 
+* 4 group: Nov
+* 5 group: 13 
+* 6 group: 2016
 
-В правиле, кроме явного действия Record, которое указывает, что запись
-надо поместить в финальную таблицу, по умолчанию также используется
-правило Next. Оно указывает, что надо перейти к следующей строке текста.
-Так как в выводе команды sh clock только одна строка, обработка
-завершается.
+In the rule, in addition to the explicit Record action which specifies that record should be placed in final table, the Next rule is also used by default. It specifies that you want to go to the next line of text. Since there is only one line in *sh clock* command output, the processing is completed.
 
-Результат отработки скрипта будет таким:
+The result of script is:
 
 ::
 
@@ -131,15 +113,12 @@ output/sh_clock.txt):
     --------  ----------  ---------  -------  ----------  ------
     15:10:44  UTC         Sun        Nov              13    2016
 
-
-show ip interface brief
+    show ip interface brief
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-В случае, когда нужно обработать данные, которые выведены столбцами,
-шаблон TextFSM наиболее удобен.
+In case when you need to process data displayed in columns, TextFSM template is the most convenient.
 
-Шаблон для вывода команды show ip interface brief (файл
-templates/sh_ip_int_br.template):
+Template for *show ip interface brief* output (templates/sh_ip_int_br.template file):
 
 ::
 
@@ -151,9 +130,9 @@ templates/sh_ip_int_br.template):
     Start
       ^${INTF}\s+${ADDR}\s+\w+\s+\w+\s+${STATUS}\s+${PROTO} -> Record
 
-В этом случае правило можно описать одной строкой.
+In this case, the rule can be described in one line.
 
-Вывод команды (файл output/sh_ip_int_br.txt):
+Output command (output/sh_ip_int_br.txt file):
 
 ::
 
@@ -166,7 +145,7 @@ templates/sh_ip_int_br.template):
     Loopback0                  10.1.1.1        YES manual up                    up
     Loopback100                100.0.0.1       YES manual up                    up
 
-Результат выполнения будет таким:
+The result will be:
 
 ::
 
@@ -183,13 +162,12 @@ templates/sh_ip_int_br.template):
 show cdp neighbors detail
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Теперь попробуем обработать вывод команды show cdp neighbors detail.
+Now try to process output of command *show cdp neighbors detail*.
 
-Особенность этой команды в том, что данные находятся не в одной строке,
-а в разных.
+Peculiarity of this command is that the data are not in the same line but in different lines.
 
-В файле output/sh_cdp_n_det.txt находится вывод команды show cdp
-neighbors detail:
+File output/sh_cdp_n_det.txt contains output of *show cdp
+neighbors detail*:
 
 ::
 
@@ -253,17 +231,17 @@ neighbors detail:
     Duplex: full
     Management address(es):
 
-Из вывода команды надо получить такие поля: 
+From command output you need to get such fields:
 
-* LOCAL_HOST - имя устройства из приглашения 
-* DEST_HOST - имя соседа 
-* MGMNT_IP - IP-адрес соседа 
-* PLATFORM - модель соседнего устройства 
-* LOCAL_PORT - локальный интерфейс, который соединен с соседом 
-* REMOTE_PORT - порт соседнего устройства 
-* IOS_VERSION - версия IOS соседа
+* LOCAL_HOST - name of device from prompt
+* DEST_HOST - neighbor name
+* MGMNT_IP - neighbor IP address 
+* PLATFORM - model of neighbor device
+* LOCAL_PORT - local interface that connects to a neighbor
+* REMOTE_PORT - neighbor port
+* IOS_VERSION - neighbor IOS version
 
-Шаблон выглядит таким образом (файл templates/sh_cdp_n_det.template):
+Template looks like this (templates/sh_cdp_n_det.template file):
 
 ::
 
@@ -283,7 +261,7 @@ neighbors detail:
       ^Interface: ${LOCAL_PORT},  Port ID \(outgoing port\): ${REMOTE_PORT}
       ^.*Version ${IOS_VERSION},
 
-Результат выполнения скрипта:
+The result of script execution:
 
 ::
 
@@ -292,21 +270,16 @@ neighbors detail:
     ------------  -----------  ----------  ----------  ---------------------  ------------------  -------------
     SW1           R2           10.2.2.2    Cisco 2911  GigabitEthernet1/0/21  GigabitEthernet0/0  15.2(2)T1
 
-Несмотря на то, что правила с переменными описаны в разных строках, и,
-соответственно, работают с разными строками, TextFSM собирает их в одну
-строку таблицы. То есть, переменные, которые определены в начале
-шаблона, задают строку итоговой таблицы.
+Although rules with variables are described in different lines and accordingly work with different lines, TextFSM collects them into one line of the table. That is, variables that are defined at the beginning of template determine the string of resulting table.
 
-Обратите внимание, что в файле sh_cdp_n_det.txt находится вывод с
-тремя соседями, а в таблице только один сосед, последний.
+Note that sh_cdp_n_det.txt file has three neighbors, but table has only one neighbor, the last one.
 
 Record
 ^^^^^^
 
-Так получилось из-за того, что в шаблоне не указано действие **Record**.
-И в итоге в финальной таблице осталась только последняя строка.
+This is because **Record** action is not specified in template. And only the last line left in final table.
 
-Исправленный шаблон:
+Corrected template:
 
 ::
 
@@ -326,7 +299,7 @@ Record
       ^Interface: ${LOCAL_PORT},  Port ID \(outgoing port\): ${REMOTE_PORT}
       ^.*Version ${IOS_VERSION}, -> Record
 
-Теперь результат запуска скрипта выглядит так:
+Now the result is:
 
 ::
 
@@ -337,16 +310,12 @@ Record
                   R1           10.1.1.1    Cisco 3825            GigabitEthernet1/0/22  GigabitEthernet0/0  12.4(24)T1
                   R2           10.2.2.2    Cisco 2911            GigabitEthernet1/0/21  GigabitEthernet0/0  15.2(2)T1
 
-Вывод получен со всех трёх устройств. Но переменная LOCAL_HOST
-отображается не в каждой строке, а только в первой.
+Output from all three devices. But LOCAL_HOST variable is not displayed in every line, only in the first one.
 
 Filldown
 ^^^^^^^^
 
-Это связано с тем, что приглашение, из которого взято значение
-переменной, появляется только один раз. И для того, чтобы оно появлялось
-и в последующих строках, надо использовать действие **Filldown** для
-переменной LOCAL_HOST:
+This is because the prompt from which variable value is taken appears only once. And in order to make it appear in the next lines, use **Filldown** action for LOCAL_HOST variable:
 
 ::
 
@@ -366,7 +335,7 @@ Filldown
       ^Interface: ${LOCAL_PORT},  Port ID \(outgoing port\): ${REMOTE_PORT}
       ^.*Version ${IOS_VERSION}, -> Record
 
-Теперь мы получили такой вывод:
+Now we get this output:
 
 ::
 
@@ -378,17 +347,12 @@ Filldown
     SW1           R2           10.2.2.2    Cisco 2911            GigabitEthernet1/0/21  GigabitEthernet0/0  15.2(2)T1
     SW1
 
-Теперь значение переменной LOCAL_HOST появилось во всех трёх строках.
-Но появился ещё один странный эффект - последняя строка, в которой
-заполнена только колонка LOCAL_HOST.
+LOCAL_HOST now appears in all three lines. But there was another strange effect - the last line in which only LOCAL_HOST column is filled.
 
 Required
 ^^^^^^^^
 
-Дело в том, что все переменные, которые мы определили, опциональны. К
-тому же, одна переменная с параметром Filldown. И, чтобы избавиться от
-последней строки, нужно сделать хотя бы одну переменную обязательной с
-помощью параметра **Required**:
+The thing is, all variables we’ve determined are optional. Also, one variable with Filldown parameter. And to get rid of the last line, you have to make at least one variable mandatory by using **Required** option:
 
 ::
 
@@ -408,7 +372,7 @@ Required
       ^Interface: ${LOCAL_PORT},  Port ID \(outgoing port\): ${REMOTE_PORT}
       ^.*Version ${IOS_VERSION}, -> Record
 
-Теперь мы получим корректный вывод:
+Now we get the correct output:
 
 ::
 
@@ -423,16 +387,11 @@ Required
 show ip route ospf
 ~~~~~~~~~~~~~~~~~~
 
-Рассмотрим случай, когда нам нужно обработать вывод команды show ip
-route ospf, и в таблице маршрутизации есть несколько маршрутов к одной
-сети.
+Consider the case where we need to process output of *show ip route ospf* command and in routing table there are several routes to the same network.
 
-Для маршрутов к одной и той же сети вместо нескольких строк, где будет
-повторяться сеть, будет создана одна запись, в которой все доступные
-next-hop адреса собраны в список.
+For routes to the same network, instead of multiple lines where the network is repeated, one record will be created in which all available next-hop addresses are in list.
 
-Пример вывода команды show ip route ospf (файл
-output/sh_ip_route_ospf.txt):
+Example of *show ip route ospf* output (output/sh_ip_route_ospf.txt file):
 
 ::
 
@@ -460,11 +419,9 @@ output/sh_ip_route_ospf.txt):
     O        10.6.6.0/24 [110/20] via 10.0.13.3, 1w2d, Ethernet0/2
 
 
-Для этого примера упрощаем задачу и считаем, что маршруты могут быть
-только OSPF и с обозначением только O (то есть, только
-внутризональные маршруты).
+For this example we simplify the task and consider that routes can only be OSPF and only with “O” designation (i.e., only intra-zone routes).
 
-Первая версия шаблона выглядит так:
+The first version of template:
 
 ::
 
@@ -478,7 +435,7 @@ output/sh_ip_route_ospf.txt):
       ^O +${network}/${mask}\s\[${distance}/${metric}\]\svia\s${nexthop}, -> Record
 
 
-Результат получился такой:
+The result is:
 
 ::
 
@@ -492,11 +449,9 @@ output/sh_ip_route_ospf.txt):
     10.6.6.0       24         110        20  10.0.13.3
 
 
-Всё нормально, но потерялись варианты путей для маршрутов 10.4.4.4/32 и 10.5.5.5/32.
-Это логично, ведь нет правила, которое подошло бы для такой строки.
+All right, but we’ve lost path options for routes 10.4.4.4/32 and 10.5.5.5/32. This is logical, because there is no rule that would be appropriate for such a line.
 
-
-Добавляем в шаблон правило для строк с частичными записями:
+Add a rule to the template for lines with partial entries:
 
 ::
 
@@ -510,7 +465,7 @@ output/sh_ip_route_ospf.txt):
       ^O +${network}/${mask}\s\[${distance}/${metric}\]\svia\s${nexthop}, -> Record
       ^\s+\[${distance}/${metric}\]\svia\s${nexthop}, -> Record
 
-Теперь вывод выглядит так:
+Now the output is:
 
 ::
 
@@ -527,13 +482,13 @@ output/sh_ip_route_ospf.txt):
     10.6.6.0   24             110        20  10.0.13.3
 
 
-В частичных записях нехватает сети и маски, но в предыдущих примерах мы уже рассматривали Filldown и, при желании, его можно применить тут, но для этого примера будет использоваться другая опция - List.
+Partial entries are missing networks and masks, but in previous examples we have already considered Filldown and, if desired, it can be applied here. But for this example we will use another option - List.
 
 
 List
 ^^^^
 
-Воспользуемся опцией **List** для переменной nexthop:
+Use List option for *nexthop* variable:
 
 ::
 
@@ -548,7 +503,7 @@ List
       ^\s+\[${distance}/${metric}\]\svia\s${nexthop}, -> Record
 
 
-Теперь вывод получился таким:
+Now the output is:
 
 ::
 
@@ -566,9 +521,7 @@ List
 
 
 
-Изменилось то, что в столбце nexthop отображается список, но пока с
-одним элементом. При использовании List - значение это список, и каждое совпадение с регулярным выражением будет добавлять в список элемент. По умолчанию каждое следующее совпадение перезаписывает предыдущее.
-Если, например, оставить действие Record только для полных строк:
+Now *nexthop* column displays a list but so far with one element. When using List the value is a list, and each match with a regular expression will add an item to the list. By default, each next match overwrites the previous one. If, for example, leave Record action for full lines only:
 
 ::
 
@@ -582,7 +535,7 @@ List
       ^O +${network}/${mask}\s\[${distance}/${metric}\]\svia\s${nexthop}, -> Record
       ^\s+\[${distance}/${metric}\]\svia\s${nexthop},
 
-Результат будет таким:
+The result will be:
 
 ::
 
@@ -595,10 +548,7 @@ List
     10.5.5.5       32         110        21  ['10.0.14.4', '10.0.13.3']
     10.6.6.0       24         110        20  ['10.0.12.2', '10.0.14.4', '10.0.13.3']
 
-Сейчас результат не совсем правильный, адреса хопов записались не к тем маршрутам.
-Так получилось потому что запись выполняется на полном маршруте, затем хопы 
-неполных маршрутов собираются в список (другие переменные перезаписываются)
-и когда встречается следующий полный маршрут, список записывается к нему.
+Now the result is not quite correct, address hops are assigned to wrong routes. This happens because writing is done on full route entry, then hops of incomplete route entries are collected in the list (other variables are overwritten) and when the next full route entry appears, the list is written to it.
 
 ::
 
@@ -610,24 +560,15 @@ List
     O        10.6.6.0/24 [110/20] via 10.0.13.3, 1w2d, Ethernet0/2
 
 
-Фактически неполные маршруты действительно надо записывать, когда встретился следующий полный,
-но при этом, надо записать их к соответствующему маршруту.
-Надо сделать следующее: как только встретился полный маршрут, надо записать 
-предыдущие значения, а затем продолжить обрабатывать тот же полный маршрут
-для получения его информации. В TextFSM это можно сделать с помощью действий Continue.Record:
+In fact, incomplete route entry should really be written when the next full route entry appears, but at the same time they should be written to appropriate route. The following should be done: once the full route entry is met, the previous values should be written down and then continue to process the same full route entry to get its information. In TextFSM, you can do this with Continue.Record:
 
 ::
 
       ^O -> Continue.Record
 
-В ней действие **Record** говорит, что надо записать текущее значение
-переменных. Так как в этом правиле нет переменных, записывается то,
-что было в предыдущих значениях.
+Here, **Record** action tells you to write down the current value of variables. Since there are no variables in this rule, what was in the previous values is written.
 
-Действие **Continue** говорит, что надо продолжить работать с текущей
-строкой так, как будто совпадения не было. За счет этого сработает
-следующая строка шаблона. Итоговый шаблон выглядит так (файл
-templates/sh_ip_route_ospf.template):
+**Continue** action says to continue working with the current line as if there was no match. So, the next line of template will work. The resulting template looks like (templates/sh_ip_route_ospf.template):
 
 ::
 
@@ -643,7 +584,7 @@ templates/sh_ip_route_ospf.template):
       ^\s+\[${distance}/${metric}\]\svia\s${nexthop},
 
 
-В результате мы получим такой вывод:
+The result is:
 
 ::
 
@@ -660,13 +601,9 @@ templates/sh_ip_route_ospf.template):
 show etherchannel summary
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TextFSM удобно использовать для разбора вывода, который отображается
-столбцами, или для обработки вывода, который находится в разных строках.
-Менее удобными получаются шаблоны, когда надо получить несколько
-однотипных элементов из одной строки.
+TextFSM is convenient to use to parse output that is displayed by columns or to process output that is in different lines. Templates are less convenient when it is necessary to get several identical elements from one line.
 
-Пример вывода команды show etherchannel summary (файл
-output/sh_etherchannel_summary.txt):
+Example of *show etherchannel summary* output (output/sh_etherchannel_summary.txt file):
 
 ::
 
@@ -691,16 +628,14 @@ output/sh_etherchannel_summary.txt):
     1      Po1(SU)         LACP      Fa0/1(P)   Fa0/2(P)   Fa0/3(P)
     3      Po3(SU)          -        Fa0/11(P)   Fa0/12(P)   Fa0/13(P)   Fa0/14(P)
 
-В данном случае нужно получить: 
+In this case, it is necessary to obtain:
 
-* имя и номер port-channel. Например, Po1 
-* список всех портов в нём. Например, ['Fa0/1', 'Fa0/2', 'Fa0/3']
+* port-channel name and number. For example, Po1 
+* list of all the ports in it. For example, ['Fa0/1', 'Fa0/2', 'Fa0/3']
 
-Сложность тут в том, что порты находятся в одной строке, а в TextFSM
-нельзя указывать одну и ту же переменную несколько раз в строке. Но есть
-возможность несколько раз искать совпадение в строке.
+The difficulty is that the ports are in the same line and TextFSM cannot specify the same variable multiple times in the line. But it is possible to search multiple times for a match in a line.
 
-Первая версия шаблона выглядит так:
+The first version of template:
 
 ::
 
@@ -710,13 +645,12 @@ output/sh_etherchannel_summary.txt):
     Start
       ^\d+ +${CHANNEL}\(\S+ +[\w-]+ +[\w ]+ +${MEMBERS}\( -> Record
 
-В шаблоне две переменные: 
+Template has two variables:
 
-* CHANNEL - имя и номер агрегированного порта
-* MEMBERS - список портов, которые входят в агрегированный порт. 
-  Для этой переменной указан тип - List
+* CHANNEL - name and number of aggregated port
+* MEMBERS - list of ports that are included in an aggregated port. List – type which is specified for this variable.
 
-Результат:
+The result is:
 
 ::
 
@@ -725,15 +659,11 @@ output/sh_etherchannel_summary.txt):
     Po1        ['Fa0/1']
     Po3        ['Fa0/11']
 
-Пока что в выводе только первый порт, а нужно, чтобы попали все порты. В
-данном случае надо продолжить обработку строки с портами после
-найденного совпадения. То есть, использовать действие Continue и описать
-следующее выражение.
+So far, only the first port is in output but we need all ports to hit. In this case after match is found, you should continue processing string with ports. That is, use Continue action and describe the following expression.
 
-Единственная строка, которая есть в шаблоне, описывает первый порт. Надо
-добавить строку, которая описывает следующий порт.
+The only line in template describes the first port. Add a line that describes the next port.
 
-Следующая версия шаблона:
+The next version of template:
 
 ::
 
@@ -744,10 +674,9 @@ output/sh_etherchannel_summary.txt):
       ^\d+ +${CHANNEL}\(\S+ +[\w-]+ +[\w ]+ +${MEMBERS}\( -> Continue
       ^\d+ +${CHANNEL}\(\S+ +[\w-]+ +[\w ]+ +\S+ +${MEMBERS}\( -> Record
 
-Вторая строка описывает такое же выражение, но переменная MEMBERS
-смещается на следующий порт.
+The second line describes the same expression, but MEMBERS variable is moved to the next port.
 
-Результат:
+The result is:
 
 ::
 
@@ -756,16 +685,11 @@ output/sh_etherchannel_summary.txt):
     Po1        ['Fa0/1', 'Fa0/2']
     Po3        ['Fa0/11', 'Fa0/12']
 
-Аналогично надо дописать в шаблон строки, которые описывают третий и
-четвертый порт. Но, так как в выводе может быть переменное количество
-портов, надо перенести правило Record на отдельную строку, чтобы оно не
-было привязано к конкретному количеству портов в строке.
+Similarly, lines that describe the third and fourth ports should be written to template. But, because the output can have a different number of ports, you have to move Record rule to separate line so that it is not tied to a specific number of ports in string.
 
-Если Record будет находиться, например, после строки, в которой
-описаны четыре порта, для ситуации, когда портов в строке меньше,
-запись не будет выполняться.
+For example, if Record is located after the line that describes four ports, for a situation with fewer ports in the line the entry will not be executed.
 
-Итоговый шаблон (файл templates/sh_etherchannel_summary.txt):
+The resulting template (templates/sh_ether_channelsummary.txt file):
 
 ::
 
@@ -778,7 +702,7 @@ output/sh_etherchannel_summary.txt):
       ^\d+ +${CHANNEL}\(\S+ +[\w-]+ +[\w ]+ +(\S+ +){2} +${MEMBERS}\( -> Continue
       ^\d+ +${CHANNEL}\(\S+ +[\w-]+ +[\w ]+ +(\S+ +){3} +${MEMBERS}\( -> Continue
 
-Результат обработки:
+The result of processing:
 
 ::
 
@@ -787,14 +711,11 @@ output/sh_etherchannel_summary.txt):
     Po1        ['Fa0/1', 'Fa0/2', 'Fa0/3']
     Po3        ['Fa0/11', 'Fa0/12', 'Fa0/13', 'Fa0/14']
 
-Теперь все порты попали в вывод.
+Now all ports are in output.
 
-    Шаблон предполагает, что в одной строке будет максимум четыре порта.
-    Если портов может быть больше, надо добавить соответствующие строки
-    в шаблон.
+    The template assumes a maximum of four ports in line. If there are more ports, add the corresponding lines to template.
 
-Возможен ещё один вариант вывода команды sh etherchannel summary (файл
-output/sh_etherchannel_summary2.txt):
+Another variant of *sh etherchannel summary* output (output/sh_etherchannel_summary2.txt file):
 
 ::
 
@@ -820,11 +741,9 @@ output/sh_etherchannel_summary2.txt):
     3      Po3(SU)          -        Fa0/11(P)   Fa0/12(P)   Fa0/13(P)   Fa0/14(P)
                                      Fa0/15(P)   Fa0/16(P)
 
-В таком выводе появляется новый вариант - строки, в которых находятся
-только порты.
+In this output a new variant appears - lines containing only ports.
 
-Для того, чтобы шаблон обрабатывал и этот вариант, надо его
-модифицировать (файл templates/sh_etherchannel_summary2.txt):
+To process this variant you should modify template (templates/sh_etherchannel_summary2.txt file):
 
 ::
 
@@ -842,7 +761,7 @@ output/sh_etherchannel_summary2.txt):
       ^ +(\S+ +){2} +${MEMBERS} -> Continue
       ^ +(\S+ +){3} +${MEMBERS} -> Continue
 
-Результат будет таким:
+The result will be:
 
 ::
 
@@ -851,9 +770,8 @@ output/sh_etherchannel_summary2.txt):
     Po1        ['Fa0/1', 'Fa0/2', 'Fa0/3']
     Po3        ['Fa0/11', 'Fa0/12', 'Fa0/13', 'Fa0/14', 'Fa0/15', 'Fa0/16']
 
-На этом мы заканчиваем разбираться с шаблонами TextFSM.
+This concludes our work with TextFSM templates.
 
-Примеры шаблонов для Cisco и другого оборудования можно посмотреть в
-проекте
+Examples of templates for Cisco and other vendors can be seen in project
 `ntc-ansible <https://github.com/networktocode/ntc-templates/tree/89c57342b47c9990f0708226fb3f268c6b8c1549/templates>`__.
 
