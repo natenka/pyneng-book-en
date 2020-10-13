@@ -1,9 +1,9 @@
 Os
 ---------
 
-The ``os`` module allows working with the filesystem, environment and managing processes.
+Module ``os`` allows working with filesystem, environment and managing processes.
 
-This subsection addresses only several useful features. For a more complete description of the capabilities of the module please refer to 
+This subsection addresses only several useful features. For a more complete description of capabilities of module please refer to 
 `documentation <https://docs.python.org/3/library/os.html>`__ or 
 `article on Pymotw <https://pymotw.com/3/os/>`__.
 
@@ -19,7 +19,7 @@ Module **os** allows you to create directories:
     total 0
     0 drwxr-xr-x  2 nata  nata  68 Jan 23 18:58 test/
 
-In addition, the module contains relevant existence checks. For example, if you try to re-create a directory, an error will occur:
+In addition, module contains relevant existence checks. For example, if you try to re-create a directory, an error will occur:
 
 .. code:: python
 
@@ -63,7 +63,7 @@ By checking ``os.path.isdir`` and ``os.path.isfile`` you can get a separate list
     In [11]: files
     Out[11]: ['cover3.png', 'README.txt']
 
-Also in the module there are separate methods for working with paths:
+Also in module there are separate methods for working with paths:
 
 .. code:: python
 
