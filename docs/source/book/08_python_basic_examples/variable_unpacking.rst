@@ -1,10 +1,10 @@
 Variable unpacking
 ---------------------
 
-The unpacking of variables is a special syntax that allows to assign elements of an iterated object to variables.
+Variable unpacking is a special syntax that allows to assign elements of an iterated object to variables.
 
 .. note::
-    This functionality is often referred to as tuple unpacking but the unpacking works on any iterable object, not only with tuples
+    This functionality is often referred to as tuple unpacking but unpacking works on any iterable object, not only with tuples
 
 Example of variable unpacking:
 
@@ -26,7 +26,7 @@ This option is much more convenient than the use of indexes:
 
     In [5]: intf, ip, status, protocol = interface[0], interface[1], interface[2], interface[3]
 
-When you unpack variables, each item in the list falls into the corresponding variable. It is important to keep in mind that the variables on the left should be exactly as many elements in the list.
+When you unpack variables, each item in list falls into the corresponding variable. It is important to keep in mind that variables on the left should be exactly as many elements in the list.
 
 If amount of variables are less or more, there will be an exception:
 
@@ -51,7 +51,7 @@ If amount of variables are less or more, there will be an exception:
 Replacement of unnecessary elements ``_``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Often only some of the elements of an iterated object are needed. The unpacking syntax requires that exactly as many variables as the elements in the object being iterated be specified.
+Often only some of elements of an iterated object are needed. Unpacking syntax requires that exactly as many variables as elements in the object being iterated be specified.
 
 If, for example, only VLAN, MAC and interface should be obtained from line, you still need to specify a variable for record type:
 
@@ -67,7 +67,7 @@ If, for example, only VLAN, MAC and interface should be obtained from line, you 
     In [11]: intf
     Out[11]: 'Gi0/1'
 
-If record type is no longer needed, you can replace the item_type variable with underline character:
+If record type is no longer needed, you can replace item_type variable with underline character:
 
 .. code:: python
 
@@ -75,7 +75,7 @@ If record type is no longer needed, you can replace the item_type variable with 
 
 This clearly indicates that this element is not needed.
 
-The underline character can be used more than once:
+Underline character can be used more than once:
 
 .. code:: python
 
@@ -92,9 +92,9 @@ The underline character can be used more than once:
 Use ``*``
 ~~~~~~~~~~~~~~~~~~~
 
-The unpacking  of variables supports a special syntax that allows unpacking  of several elements into one. If you put ``*`` in front of the variable name all elements except those that are explicitly assigned will be written into it.
+Unpacking  of variables supports a special syntax that allows unpacking  of several elements into one. If you put ``*`` in front of variable name, all elements except those that are explicitly assigned will be written into it.
 
-For example, you can get the first element in the *first* variable and the rest in the *rest*:
+For example, you can get the first element in *first* variable and the rest in *rest*:
 
 .. code:: python
 
@@ -108,7 +108,7 @@ For example, you can get the first element in the *first* variable and the rest 
     In [21]: rest
     Out[21]: [11, 13, 30]
 
-The variable with an asterisk will always contain a list:
+Variable with an asterisk will always contain a list:
 
 .. code:: python
 
@@ -146,7 +146,7 @@ There could be only one variable with an asterisk in terms of unpacking.
                                      ^
     SyntaxError: two starred expressions in assignment
 
-This variable may not only be at the end of the expression:
+This variable may not only be at the end of expression:
 
 .. code:: python
 
@@ -225,7 +225,7 @@ Unpacking zip:
 Example of unpacking in *for* loop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-An example of a loop that runs through the keys:
+Example of a loop that runs through the keys:
 
 .. code:: python
 
