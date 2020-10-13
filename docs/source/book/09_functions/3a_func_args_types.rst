@@ -3,12 +3,12 @@ Function argument types
 
 When a function is called the arguments can be passed in two ways:
 
-* as **positional** - passed in the same order in which they are defined at the creation of the function. That is, the order of argument transfer determines what value each argument will get.
-* as **keyword** - passed with the argument name and its value. In such a case, the arguments can be stated in any order as their name is clearly indicated.
+* as **positional** - passed in the same order in which they are defined at creation of function. That is, the order of argument transfer determines what value each argument will get.
+* as **keyword** - passed with argument name and its value. In such a case, arguments can be stated in any order as their name is clearly indicated.
 
 Positional and keyword arguments can be mixed when calling a function. That is, it is possible to use both methods when passing arguments of the same function. In this process, Positional arguments must be indicated before keyword arguments.
 
-Look at the different ways to pass arguments using check_passwd (func_check_check_passwd_optional_param.py file):
+Look at different ways to pass arguments using check_passwd (func_check_check_passwd_optional_param.py file):
 
 .. code:: python
 
@@ -43,7 +43,7 @@ Positional arguments when calling a function must be passed in the correct order
     Password for user nata has passed all checks
     Out[4]: True
 
-If you swap arguments when calling a function the error will likely occur depending on the function.
+If you swap arguments when calling a function the error will likely occur depending on function.
 
 Keyword arguments
 ~~~~~~~~~~~~~~~~~~
@@ -102,7 +102,7 @@ For example, you can add a flag that will control whether or not a username shou
         ...:         return True
         ...:
 
-By default, the flag is True which means check should be done:
+By default, flag is True which means check should be done:
 
 .. code:: python
 
