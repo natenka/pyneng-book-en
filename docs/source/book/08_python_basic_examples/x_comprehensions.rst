@@ -6,7 +6,7 @@ List, dict, set comprehensions
 
 Python supports special expressions that allow for compact creation of lists, dictionaries, and sets.
 
-The terms are as follows:
+Terms are as follows:
 
 -  List comprehensions
 -  Dict comprehensions
@@ -14,7 +14,7 @@ The terms are as follows:
 
 Unfortunately, official translation into Russian sounds like `abstraction of lists or list inclusion <https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BA%D0%BE%D0%B2%D0%BE%D0%B5_%D0%B2%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5>`__ which does not help to understand the essence of the object.
 
-The book used the term «list generator» which unfortunately is also not the best version because in Python there is a separate concept of generator and generator expressions, but it better reflects the essence of expression.
+Book used term «list generator» which unfortunately is also not the best version because in Python there is a separate concept of generator and generator expressions, but it better reflects the essence of expression.
 
 These expressions not only enable more compact objects to be created but also create them faster. Although they require a certain habit of use and understanding at first, they are very often used.
 
@@ -32,7 +32,7 @@ List generator is an expression like:
 
 In general, it is an expression that converts an iterable object into a list. That is, a sequence of elements is converted and added to a new list.
 
-The expression above is similar to this loop:
+Expression above is similar to this loop:
 
 .. code:: python
 
@@ -45,7 +45,7 @@ The expression above is similar to this loop:
     In [5]: print(vlans)
     ['vlan 10', 'vlan 11', 'vlan 12', 'vlan 13', 'vlan 14', 'vlan 15']
 
-In the list comprehensions you can use **if**. Thus, you can only add some objects to the list.
+In list comprehensions you can use **if**. Thus, you can only add some objects to the list.
 
 For example, a loop selects only those elements that are digits, converts them and adds them to the resulting list only_digits:
 
@@ -74,12 +74,12 @@ A similar version with list comprehensions:
     In [12]: print(only_digits)
     [10, 20, 30, 40]
 
-Of course, not all loops can be rewritten as a list generator but when it is possible to do so without making the expression more complex, it is better to use the list generators.
+Of course, not all loops can be rewritten as a list generator but when it is possible to do so without making the expression more complex, it is better to use list generators.
 
 .. note::
     In Python, list generators can also replace filter and map functions and are considered  as more understandable solutions.
 
-With the help of the list generator it is also convenient to obtain elements from nested dictionaries:
+With the help of list generator it is also convenient to obtain elements from nested dictionaries:
 
 .. code:: python
 
@@ -116,7 +116,7 @@ With the help of the list generator it is also convenient to obtain elements fro
     In [15]: [london_co[device]['IP'] for device in london_co]
     Out[15]: ['10.255.0.1', '10.255.0.2', '10.255.0.101']
 
-In fact, the syntax of the list generator looks like:
+In fact, syntax of list generator looks like:
 
 .. code:: python
 
@@ -125,9 +125,9 @@ In fact, the syntax of the list generator looks like:
                 ...
                 for itemN in iterableN if conditionN ]
 
-This means you can use several **for** in the expression.
+This means you can use several **for** in expression.
 
-For example, the *vlans* list contains several nested lists with VLANs:
+For example, *vlans* list contains several nested lists with VLANs:
 
 .. code:: python
 
@@ -147,7 +147,7 @@ It’s necessary to form only one list with VLAN numbers. The first option is to
     In [19]: print(result)
     [10, 21, 35, 101, 115, 150, 111, 40, 50]
 
-Similar to the list generator:
+Similar to list generator:
 
 .. code:: python
 
