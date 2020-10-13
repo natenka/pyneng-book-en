@@ -5,13 +5,13 @@ Argparse
 
 -  create arguments and options with which script can be called
 -  specify argument types, default values
--  indicate which actions correspond to the arguments
--  invoke functions when the argument is specified
+-  indicate which actions correspond to arguments
+-  invoke functions when argument is specified
 -  display messages with hints of script usage
 
-**argparse** is not the only module for handling command line arguments. And not even the only one in the standard library.
+**argparse** is not the only module for handling command line arguments. And not even the only one in standard library.
 
-This book deals only with **argparse**, but in addition it is worth looking at modules that are not part of the standard Python library. For example, `click <https://click.palletsprojects.com/>`__.
+This book deals only with **argparse**, but in addition it is worth looking at modules that are not part of standard Python library. For example, `click <https://click.palletsprojects.com/>`__.
 
 .. note::
     `A good article <https://realpython.com/blog/python/comparing-python-command-line-parsing-libraries-argparse-docopt-click/>`__,
@@ -69,7 +69,7 @@ Adding arguments:
 
   * argument that is passed after ``-c`` option will be saved to variable  ``count``, but will be converted to a number first. If no argument was specified, the default is 2
 
-String ``args = parser.parse_args()`` is specified after all arguments have been defined. After running it, variable ``args`` contains all the arguments that were passed to the script. They can be accessed using ``args.ip`` syntax.
+String ``args = parser.parse_args()`` is specified after all arguments have been defined. After running it, variable ``args`` contains all arguments that were passed to the script. They can be accessed using ``args.ip`` syntax.
 
 Let’s try a script with different arguments. If both arguments are passed:
 
@@ -125,12 +125,12 @@ Call script without arguments:
         restore_signals, start_new_session, preexec_fn)
     TypeError: expected str, bytes or os.PathLike object, not NoneType
 
-If the function was called without arguments when **argparse** is not used, an error would occur that not all arguments are specified.
+If function was called without arguments when **argparse** is not used, an error would occur that not all arguments are specified.
 
 Because of **argparse** the argument is actually passed, but it has ``None`` value.
 You can see this in ``Namespace(count=2, ip=None)`` string.
 
-In such a script the IP address must be specified at all times. And in **argparse** you can specify that the argument is mandatory. To do this, change ``-a`` option: add ``required=True`` at the end:
+In such a script the IP address must be specified at all times. And in **argparse** you can specify that argument is mandatory. To do this, change ``-a`` option: add ``required=True`` at the end:
 
 .. code:: python
 
@@ -160,10 +160,10 @@ Also, thanks to **argparse**, *help* is available:
       -a IP
       -c COUNT
 
-Note that in the message all options are in ``optional arguments`` section.
-**argparse** itself determines that options are specified because they start with ``-`` and only one letter in the name.
+Note that in message all options are in ``optional arguments`` section.
+**argparse** itself determines that options are specified because they start with ``-`` and only one letter in name.
 
-Set the IP address as a positional argument (ping_function_ver2.py file):
+Set IP address as a positional argument (ping_function_ver2.py file):
 
 .. code:: python
 
@@ -203,11 +203,11 @@ Set the IP address as a positional argument (ping_function_ver2.py file):
     rc, message = ping_ip( args.host, args.count )
     print(message)
 
-Now instead of giving ``-a`` option you can simply pass the IP address. 
+Now instead of giving ``-a`` option you can simply pass IP address. 
 It will be automatically saved in ``host`` variable.
 And it’s automatically considered as a mandatory. Тhat is, it is no longer necessary to specify ``required=True`` and ``dest="ip"``.
 
-In addition, the script specifies messages that will be displayed when you call *help*. Now the script call looks like this:
+In addition, script specifies messages that will be displayed when you call *help*. Now script call looks like this:
 
 ::
 
@@ -321,9 +321,9 @@ File parse_dhcp_snooping.py:
         else:
             args.func(args)
 
-Now not only a parser is created as in the previous example, but also nested parsers. Nested parsers will be displayed as commands. In fact, they will be used as mandatory arguments.
+Now not only a parser is created as in previous example, but also nested parsers. Nested parsers will be displayed as commands. In fact, they will be used as mandatory arguments.
 
-With help of nested parsers a hierarchy of arguments and options is created. The arguments that are added to the nested parser will be available as arguments for this parser. For example, this part creates a nested *create_db* parser and adds ``-n`` option:
+With help of nested parsers a hierarchy of arguments and options is created. Arguments that are added to nested parser will be available as arguments for this parser. For example, this part creates a nested *create_db* parser and adds ``-n`` option:
 
 .. code:: python
 
@@ -331,7 +331,7 @@ With help of nested parsers a hierarchy of arguments and options is created. The
     create_parser.add_argument('-n', dest='name', default=DFLT_DB_NAME,
                                help='db filename')
 
-The syntax for creating nested parsers and adding arguments to them is the same:
+Syntax for creating nested parsers and adding arguments to them is the same:
 
 .. code:: python
 
@@ -342,11 +342,11 @@ The syntax for creating nested parsers and adding arguments to them is the same:
                                help='db schema filename')
     create_parser.set_defaults(func=create)
 
-The ``add_argument`` method adds an argument. Here the syntax is exactly the same as without nested parsers.
+Method ``add_argument`` adds an argument. Here, syntax is exactly the same as without nested parsers.
 
 String ``create_parser.set_defaults(func=create)`` specifies that the create() function will be called when calling the *create_parser* parser.
 
-The create() function receives as an argument all the arguments that have been passed. And within the function you can access to necessary arguments:
+Function create() receives as an argument all arguments that have been passed. And within function you can access to necessary arguments:
 
 .. code:: python
 
@@ -370,7 +370,7 @@ If you call *help* for this script, the output is:
         add                add data to db
         get                get data from db
 
-Note that each nested parser that is created in the script is displayed as a command in the usage hint:
+Note that each nested parser that is created in the script is displayed as a command in usage hint:
 
 ::
 
@@ -393,7 +393,7 @@ In addition to nested parsers, there are also several new features of **argparse
 ``metavar``
 ^^^^^^^^^^^
 
-The *create_parser* parser uses a new argument - ``metavar``:
+Parser *create_parser* uses a new argument - ``metavar``:
 
 .. code:: python
 
@@ -402,7 +402,7 @@ The *create_parser* parser uses a new argument - ``metavar``:
     create_parser.add_argument('-s', dest='schema', default=DFLT_DB_SCHEMA,
                                help='db schema filename')
 
-The **metavar** argument allows you to specify the argument name to display it in *usage* message and *help*:
+Argument **metavar** allows you to specify argument name to display it in *usage* message and *help*:
 
 ::
 
@@ -417,7 +417,7 @@ The **metavar** argument allows you to specify the argument name to display it i
 Look at the difference between ``-n`` and ``-s`` options:
 
 -  after ``-n`` option in both *usage* and *help* the name is specified in the **metavar** parameter 
--  after ``-s`` option the name is specified to which the value is saved
+-  after ``-s`` option the name is specified to which value is saved
 
 ``nargs``
 ^^^^^^^^^
@@ -428,9 +428,9 @@ Parser *add_parser* uses ``nargs``:
 
     add_parser.add_argument('filename', nargs='+', help='file(s) to add to db')
 
-Parameter ``nargs`` allows to specify a certain number of elements that must be entered into this argument. In this case, all arguments that have been passed to the script after ``filename`` argument will be included in the **nargs** list, but at least one argument must be passed.
+Parameter ``nargs`` allows to specify a certain number of elements that must be entered into this argument. In this case, all arguments that have been passed to the script after ``filename`` argument will be included in **nargs** list, but at least one argument must be passed.
 
-In this case the *help* message looks like:
+In this case, *help* message looks like:
 
 ::
 
@@ -446,7 +446,7 @@ In this case the *help* message looks like:
       --db DB_FILE  db name
       -s            add switch data if set, else add normal data
 
-If you pass several files, they’ll be on the list. And since the add() function simply displays file names, the output is:
+If you pass several files, they’ll be in the list. And since add() function simply displays file names, the output is:
 
 ::
 
@@ -461,7 +461,7 @@ If you pass several files, they’ll be on the list. And since the add() functio
 -  ``N`` - - number of arguments should be specified. Arguments will be in list (even if only one is specified)
 -  ``?`` - 0 or 1 argument
 -  ``*`` - all arguments will be in list
--  ``+`` - all arguments will be the list, but at least one argument has to be passed
+-  ``+`` - all arguments will be in list, but at least one argument has to be passed
 
 ``choices``
 ^^^^^^^^^^^
@@ -476,7 +476,7 @@ Parser *get\_parser* uses ``choices``:
 
 For some arguments it is important that the value is selected only from certain options. In such cases you can specify ``choices``.
 
-For this parser the *help* looks like this:
+For this parser *help* looks like this:
 
 ::
 
@@ -508,7 +508,7 @@ And if you choose the wrong option:
 Parser import
 ^^^^^^^^^^^^^^
 
-In parse_dhcp_snooping.py, the last two lines will only be executed if the script has been called as a main script.
+In parse_dhcp_snooping.py, the last two lines will only be executed if script has been called as a main script.
 
 .. code:: python
 
@@ -518,7 +518,7 @@ In parse_dhcp_snooping.py, the last two lines will only be executed if the scrip
 
 Therefore, if you import a file these lines will not be called.
 
-Trying to import the parser into another file (call\_pds.py file):
+Trying to import parser into another file (call\_pds.py file):
 
 .. code:: python
 
@@ -574,7 +574,7 @@ Arguments can be passed as a list when calling ``parse_args()`` method
 
     It is necessary to use ``split()`` method since ``parse_args()`` method expects list of arguments.
 
-The result will be the same as if the script was called with arguments:
+The result will be the same as if script was called with arguments:
 
 ::
 
