@@ -1,16 +1,16 @@
 ``if __name__ == "__main__"``
 -----------------------------
 
-Often the script can be executed independently and can be imported as a module by another script. Since importing a script runs this script, it is often necessary to specify that some strings should not be executed when importing.
+Often script can be executed independently and can be imported as a module by another script. Since importing a script runs this script, it is often necessary to specify that some strings should not be executed when importing.
 
-In the previous example there were two scripts: check_ip_function.py and get_correct_ip.py. And when starting get_correct_ip.py, print() from check_ip_function.py was displayed.
+In previous example there were two scripts: check_ip_function.py and get_correct_ip.py. And when starting get_correct_ip.py, print() from check_ip_function.py was displayed.
 
 
-Python has a special technique that specifies that a code must not be executed at import: all lines that are in the ``if __name__ == '__main__'`` block are not executed at import.
+Python has a special technique that specifies that a code must not be executed at import: all lines that are in ``if __name__ == '__main__'`` block are not executed at import.
 
-The variable ``__name__`` is a special variable that will be equal to ``"__main__"`` only if the file is run as the main program and is set equal to the module name when importing the module. That is, the ``if __name__ == '__main__'`` condition checks whether the file was run directly.
+Variable ``__name__`` is a special variable that will be equal to ``"__main__"`` only if file is run as the main program and is set equal to module name when importing the module. That is, ``if __name__ == '__main__'`` condition checks whether a file was run directly.
 
-As a rule, the ``if __name__ == '__main__'`` block includes all function calls and information output on the standard output stream. That is, in the check_ip_function.py script this block conytains everything except import and the return_correct_ip function:
+As a rule, ``if __name__ == '__main__'`` block includes all function calls and information output on the standard output stream. That is, in check_ip_function.py script this block conytains everything except import and return_correct_ip() function:
 
 .. code:: python
 
@@ -43,9 +43,9 @@ Result of script execution:
     10.1.1.1 True
     10.1.1 False
 
-When you start the check_ip_function.py script directly, all lines are executed, because the variable ``__name__`` in this case is equal to ``'__main__'``.
+When you start check_ip_function.py script directly, all lines are executed, because ``__name__`` variable in this case is equal to ``'__main__'``.
 
-The get_correct_ip.py script remains unchanged
+Script get_correct_ip.py remains unchanged
 
 .. code:: python
 
@@ -66,7 +66,7 @@ The get_correct_ip.py script remains unchanged
     print(correct)
 
 
-Execution of the get_correct_ip.py script:
+Execution of get_correct_ip.py script:
 
 ::
 
@@ -74,11 +74,11 @@ Execution of the get_correct_ip.py script:
     Checking list of IP addresses
     ['10.1.1.1', '8.8.8.8']
 
-Now the output contains only information from the script getcorrect__ip.py.
+Now the output contains only information from script getcorrect__ip.py.
 
 
-In general, it is better to write all the code that calls functions and outputs something to the standard output stream inside the block ``if __name__ == '__main__'``.
+In general, it is better to write all code that calls functions and outputs something to the standard output stream inside ``if __name__ == '__main__'`` block.
 
 .. warning::
-    Starting with Section 9, there are program tests for tasks that can be used to check whether the tasks are properly executed. To work correctly with tests you have to always write a function call in the job file within the block ``if __name__ == '__main__'``. The absence of this block will cause errors, not in all tasks, but it will still avoid problems.
+    Starting with Section 9, there are program tests for tasks that can be used to check whether the tasks are properly executed. To work correctly with tests you have to always write a function call in task file within ``if __name__ == '__main__'`` block. Absence of this block will cause errors, not in all tasks, but it will still avoid problems.
 
