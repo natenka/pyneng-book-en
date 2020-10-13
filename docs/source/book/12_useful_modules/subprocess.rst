@@ -3,7 +3,7 @@ Subprocess
 
 Subprocess module allows you to create new processes. It can then connect to `standard input/output/error streams <http://xgu.ru/wiki/stdin>`__ and receive a return code.
 
-Subprocess can for example execute any Linux commands from the script. And depending on the situation get the output or just check that command has been performed correctly.
+Subprocess can for example execute any Linux commands from script. And depending on situation, get the output or just check that command has been performed correctly.
 
 .. note::
     In Python 3.5, syntax of subprocess module has changed.
@@ -11,7 +11,7 @@ Subprocess can for example execute any Linux commands from the script. And depen
 Function ``subprocess.run()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Function ``subprocess.run()`` is the main way of working with the subprocess module.
+Function ``subprocess.run()`` is the main way of working with subprocess module.
 
 The easiest way to use a function is to call it in this way:
 
@@ -24,7 +24,7 @@ The easiest way to use a function is to call it in this way:
     module_search.md             useful_functions
     naming_conventions           useful_modules
 
-The **result** variable now contains a special CompletedProcess object. From this object you can get information about the execution of the process, such as the return code:
+The **result** variable now contains a special CompletedProcess object. From this object you can get information about execution of process, such as return code:
 
 .. code:: python
 
@@ -57,7 +57,7 @@ Trying to execute a command using wildcard expressions, for example using ``*``,
     In [6]: result = subprocess.run(['ls', '-ls', '*md'])
     ls: cannot access *md: No such file or directory
 
-To call commands in which wildcard expressions are used, you add a **shell** argument and call the command:
+To call commands in which wildcard expressions are used, you add **shell** argument and call a command:
 
 .. code:: python
 
@@ -67,7 +67,7 @@ To call commands in which wildcard expressions are used, you add a **shell** arg
     4 -rw-r--r-- 1 vagrant vagrant  277 Jun  7 19:35 README.md
     4 -rw-r--r-- 1 vagrant vagrant   49 Jun  7 19:35 version_control.md
 
-Another feature of the ``run()`` If you try to run a ping command, for example, this aspect will be visible:
+Another feature of ``run()`` If you try to run a ping command, for example, this aspect will be visible:
 
 .. code:: python
 
@@ -84,7 +84,7 @@ Another feature of the ``run()`` If you try to run a ping command, for example, 
 Getting the result of a command execution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default, the run() function returns the result of a command execution to a standard output stream. If you want to get the result of command execution, add **stdout** argument with  value **subprocess.PIPE**:
+By default, run() function returns the result of a command execution to a standard output stream. If you want to get the result of command execution, add **stdout** argument with  value **subprocess.PIPE**:
 
 .. code:: python
 
@@ -150,7 +150,7 @@ Sometimes it is enough to get only return code and need to disable output of exe
 Working with standard error stream
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If the command was executed with error or failed, the output of command will fall on standard error stream.
+If command was executed with error or failed, the output of command will fall on standard error stream.
 
 This can be obtained in the same way as the standard output stream:
 
@@ -172,7 +172,7 @@ Now result.stdout has empty string and result.stderr has standard output stream:
     In [20]: print(result.returncode)
     2
 
-Примеры использования модуля
+Examples of module use
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Example of subprocess module use (subprocess_run_basic.py file):
@@ -205,7 +205,7 @@ The result will be:
 
 That is, the result of command execution is printed to standard output stream.
 
-The ping_ip function checks the availability of the IP address and returns True and **stdout** if address is available, or False and **stderr** if address is not available (subprocess\_ping\_function.py file):
+Function ping_ip() checks the availability of IP address and returns True and **stdout** if address is available, or False and **stderr** if address is not available (subprocess\_ping\_function.py file):
 
 .. code:: python
 
@@ -242,9 +242,9 @@ The result will be:
     (True, 'PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.\n64 bytes from 8.8.8.8: icmp_seq=1 ttl=43 time=63.8 ms\n64 bytes from 8.8.8.8: icmp_seq=2 ttl=43 time=55.6 ms\n64 bytes from 8.8.8.8: icmp_seq=3 ttl=43 time=55.9 ms\n\n--- 8.8.8.8 ping statistics ---\n3 packets transmitted, 3 received, 0% packet loss, time 2003ms\nrtt min/avg/max/mdev = 55.643/58.492/63.852/3.802 ms\n')
     (False, 'ping: unknown host a\n')
 
-Based on this function you can make a function that will check the list of IP addresses and return as a result two lists: accessible and inaccessible addresses.
+Based on this function you can make a function that will check list of IP addresses and return as a result two lists: reachable and unreachable addresses.
 
 .. note::
     You will find it in tasks of section
 
-If the number of IP addresses to check is large, you can use threading or multiprocessing modules to speed up verification.
+If number of IP addresses to check is large, you can use threading or multiprocessing modules to speed up verification.
