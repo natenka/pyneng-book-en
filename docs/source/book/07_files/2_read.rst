@@ -3,9 +3,9 @@ File reading
 
 Python has several file reading methods:
 
-* ``read()`` - reads the contents of the file to the string
+* ``read()`` - reads the contents of file to string
 * ``readline()`` - reads file line by line
-* ``readlines()`` - reads the file lines and creates a list from the lines
+* ``readlines()`` - reads file lines and creates a list from the lines
 
 Let’s see how to read contents of files using the example of r1.txt:
 
@@ -25,7 +25,7 @@ Let’s see how to read contents of files using the example of r1.txt:
 ``read()``
 ^^^^^^^^^^
 
-The ``read()`` method reads the entire file to one string.
+Method ``read()`` reads the entire file to one string.
 
 Example of the use of ``read()``:
 
@@ -39,7 +39,7 @@ Example of the use of ``read()``:
     In [3]: f.read()
     Out[3]: ''
 
-When reading a file once again an empty line is displayed in line 3. This is because the whole file is read when the ``read()`` method is called. And after the file has been read the cursor stays at the end of the file. The cursor position can be controlled by means of ``seek()`` method.
+When reading a file once again an empty line is displayed in line 3. This is because the whole file is read when ``read()`` method is called. And after the file has been read the cursor stays at the end of file. The cursor position can be controlled by means of ``seek()`` method.
 
 ``readline()``
 ^^^^^^^^^^^^^^
@@ -107,7 +107,7 @@ Another useful method is ``readlines()``. It reads file lines to the list:
      'ip ssh version 2\n',
      '!\n']
 
-If you want to get lines of a file but without a line feed character at the end, you can use ``split()`` method and specify the symbol ``\n`` as a separator:
+If you want to get lines of a file but without a line feed character at the end, you can use ``split()`` method and specify symbol ``\n`` as a separator:
 
 ::
 
@@ -127,9 +127,9 @@ If you want to get lines of a file but without a line feed character at the end,
      '!',
      '']
 
-Note that the last item in the list is an empty string.
+Note that the last item in list is an empty string.
 
-If you use ``split()`` before ``rstrip()``, the list will be without empty string at the end:
+If you use ``split()`` before ``rstrip()``, list will be without empty string at the end:
 
 .. code:: python
 
@@ -151,7 +151,7 @@ If you use ``split()`` before ``rstrip()``, the list will be without empty strin
 ``seek()``
 ^^^^^^^^^^
 
-Until now, the file had to be reopened to read it again. This is because after reading methods the cursor is at the end of the file. And second reading returns an empty string.
+Until now, file had to be reopened to read it again. This is because after reading methods a cursor is at the end of the file. And second reading returns an empty string.
 
 To read information from a file again you need to use the 
 ``seek`` method which moves the cursor to the desired position.
@@ -174,19 +174,19 @@ Example of file opening and content reading:
     ip ssh version 2
     !
 
-If you call ``read`` method again the empty string returns:
+If you call ``read`` method again an empty string returns:
 
 .. code:: python
 
     In [17]: print(f.read())
 
-But with the ``seek`` method you can go to the beginning of the file (0 means the beginning of the file):
+But with ``seek`` method you can go to the beginning of file (0 means the beginning of file):
 
 .. code:: python
 
     In [18]: f.seek(0)
 
-Once the cursor has been set to the beginning of the file you can read the content again:
+Once cursor has been set to the beginning of file you can read the content again:
 
 .. code:: python
 
