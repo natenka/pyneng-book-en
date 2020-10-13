@@ -12,7 +12,7 @@ The terms are as follows:
 -  Dict comprehensions
 -  Set comprehensions
 
-Unfortunately, the official translation into Russian sounds like `abstraction of lists or list inclusion <https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BA%D0%BE%D0%B2%D0%BE%D0%B5_%D0%B2%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5>`__ which does not help to understand the essence of the object.
+Unfortunately, official translation into Russian sounds like `abstraction of lists or list inclusion <https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BA%D0%BE%D0%B2%D0%BE%D0%B5_%D0%B2%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5>`__ which does not help to understand the essence of the object.
 
 The book used the term «list generator» which unfortunately is also not the best version because in Python there is a separate concept of generator and generator expressions, but it better reflects the essence of expression.
 
@@ -255,7 +255,7 @@ A similar variant with a dictionary generator:
      'model': '4451',
      'vendor': 'Cisco'}
 
-Like the list comprehensions, dict comprehensions can be nested. Try to convert keys in nested dictionaries in the same way:
+Like list comprehensions, dict comprehensions can be nested. Try to convert keys in nested dictionaries in the same way:
 
 .. code:: python
 
