@@ -1,7 +1,7 @@
 All
 -----------
 
-The ``all()`` function returns True if all elements are true (or the object is empty).
+Function ``all()`` returns True if all elements are true (or object is empty).
 
 .. code:: python
 
@@ -29,7 +29,7 @@ For example, it is possible to check that all octets in an IP address are number
 Any
 -----------
 
-The any() function returns True if at least one element is true.
+Function any() returns True if at least one element is true.
 
 .. code:: python
 
