@@ -1,7 +1,7 @@
 enumerate
 ---------
 
-Sometimes, when iterating objects in **for** loop, it is necessary not only to get the object itself but also its sequence number. This can be done by creating an additional variable that will increase by one with each iteration. However, it is much more convenient to do this with iterator ``enumerate()``.
+Sometimes, when iterating objects in **for** loop, it is necessary not only to get object itself but also its sequence number. This can be done by creating an additional variable that will increase by one with each iteration. However, it is much more convenient to do this with iterator ``enumerate()``.
 
 Basic example:
 
@@ -29,7 +29,7 @@ Basic example:
     101 str2
     102 str3
 
-Sometimes it is necessary to check what iterator has generated. If you want to see full content that iterator generates you can use the list() function:
+Sometimes it is necessary to check what iterator has generated. If you want to see full content that iterator generates you can use list() function:
 
 .. code:: python
 
@@ -43,7 +43,7 @@ An example of using enumerate for EEM
 
 This example uses Cisco `EEM <http://xgu.ru/wiki/EEM>`__. In a nutshell, EEM allows you to perform some actions in response to an event.
 
-The EEM applet looks like this:
+EEM applet looks like this:
 
 .. code:: python
 
@@ -54,9 +54,9 @@ The EEM applet looks like this:
      action 3 cli command "interface fa0/1"
      action 4 cli command "no sh"
 
-In the EEM, in a situation where many actions need to be performed it is inconvenient to type  ``action x cli command`` each time. Plus, most often, there is already a ready piece of configuration that must be executed by the EEM.
+In EEM, in a situation where many actions need to be performed it is inconvenient to type  ``action x cli command`` each time. Plus, most often, there is already a ready piece of configuration that must be executed by EEM.
 
-A simple Python script can generate EEM commands based on the existing command list (enumerate_eem.py file):
+A simple Python script can generate EEM commands based on existing command list (enumerate_eem.py file):
 
 .. code:: python
 
