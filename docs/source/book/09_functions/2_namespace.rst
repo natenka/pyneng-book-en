@@ -1,16 +1,16 @@
 Namespace. Scope of variables
 ------------------------------------
 
-Variables in Python have a scope. Depending on the location in the code where variable has been defined, the scope is also defined, it determines where variable will be available.
+Variables in Python have a scope. Depending on location in code where variable has been defined, scope is also defined, it determines where variable will be available.
 
-When using variable names in a program, Python searches, creates or changes these names in the corresponding namespace each time. The namespace that is available at each moment depends on the area in which the code is located.
+When using variable names in a program, Python searches, creates or changes these names in the corresponding namespace each time. Namespace that is available at each moment depends on area in which code is located.
 
 Python has a LEGB rule that it uses for variables search.
 
 For example, when accessing a variable within a function, Python searches for a variable in this order in scopes (before the first match):
 
 * L (local) - in local (within function)
-* E (enclosing) - in the local area of outer functions (these are the functions within which our function is located)
+* E (enclosing) - in local area of outer functions (these are functions within which our function is located)
 * G (global) - in global (in script)
 * B (built-in) - in built-in (reserved Python values)
 
@@ -24,7 +24,7 @@ Accordingly, there are local and global variables:
 * global variables:
   
   * variables that are defined outside the function
-  * these variables are 'global' only within the module
+  * these variables are 'global' only within a module
   * for example, to be available in another module they must be imported
 
 Example of local intf_config:
@@ -45,7 +45,7 @@ Example of local intf_config:
     NameError: name 'intf_config' is not defined
 
 
-Note that the intf_config variable is not available outside of the function. To get the result of a function you must call a function and assign result to a variable:
+Note that intf_config variable is not available outside of function. To get the result of a function you must call a function and assign result to a variable:
 
 .. code:: python
 
