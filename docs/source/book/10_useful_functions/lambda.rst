@@ -1,7 +1,7 @@
 Anonymous function (lambda expression)
 ------------------------------------
 
-In Python, lambda expression allows the creation of anonymous functions - functions that are not tied to a name.
+In Python, lambda expression allows creation of anonymous functions - functions that are not tied to a name.
 
 Anonymous function:
 
@@ -28,9 +28,9 @@ Similar anonymous function or lambda function:
 
 Note that there is no **return** operator in lambda function definition because there can only be one expression in this function that always returns a value and closes the function.
 
-The lambda function is convenient to use in expressions where you need to write a small function for data processing.
+Function lambda() is convenient to use in expressions where you need to write a small function for data processing.
 
-For example, in sorted() function you can use lambda expression to specify the sorting key:
+For example, in sorted() function you can use lambda expression to specify sorting key:
 
 .. code:: python
 
@@ -42,4 +42,4 @@ For example, in sorted() function you can use lambda expression to specify the s
     In [6]: sorted(list_of_tuples, key=lambda x: x[1])
     Out[6]: [('DB_VLAN', 11), ('Mngmt_VLAN', 99), ('IT_VLAN', 320), ('User_VLAN', 1010)]
 
-The lambda function is also useful in map() and filter() functions which will be discussed in the following sections.
+Function lambda() is also useful in map() and filter() functions which will be discussed in the following sections.
