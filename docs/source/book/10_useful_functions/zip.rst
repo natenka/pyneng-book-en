@@ -1,11 +1,11 @@
 Zip
 -----------
 
-The ``zip()`` function:
+``zip()`` function:
 
--  sequences are passed to the function
--  zip() returns an iterator with tuples in which the n-tuple consists of n-elements of sequences that have been passed as arguments
--  for example, the 10th tuple will contain the 10th element of each of the passed sequences
+-  sequences are passed to function
+-  zip() returns an iterator with tuples in which n-tuple consists of n-elements of sequences that have been passed as arguments
+-  for example, 10th tuple will contain 10th element of each of passed sequences
 -  if sequences with different lengths have been passed to input, they will all be cut by the shortest sequence
 -  the order of elements is respected
 
@@ -74,7 +74,7 @@ Example of using zip()  to create a dictionary:
      'model': '4451',
      'vendor': 'Cisco'}
 
-In the example below there is a separate list which stores keys and a dictionary which stores  information about each device in form of list (to preserve order).
+In example below there is a separate list which stores keys and a dictionary which stores  information about each device in form of list (to preserve order).
 
 Collect them in dictionary with keys from list and information from dictionary *data*:
 
