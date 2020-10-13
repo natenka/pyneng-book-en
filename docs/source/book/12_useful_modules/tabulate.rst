@@ -1,7 +1,7 @@
 Tabulate
 ---------------
 
-**tabulate** is a module that allows you to display table data beautifully. It is not part of the standard Python library, so **tabulate** needs to be installed:
+**tabulate** is a module that allows you to display table data beautifully. It is not part of standard Python library, so **tabulate** needs to be installed:
 
 ::
 
@@ -13,7 +13,7 @@ Module supports such tabular data types as:
 * dictionary list (or any other iterable object with dictionaries). Keys are used as column names
 * dictionary with iterable objects. Keys are used as column names
 
-The tabulate() function is used to generate the table:
+Function tabulate() is used to generate table:
 
 .. code:: python
 
@@ -38,7 +38,7 @@ The tabulate() function is used to generate the table:
 headers
 ~~~~~~~
 
-The **headers** parameter allows you to pass an additional argument that specifies column names:
+Parameter **headers** allows you to pass an additional argument that specifies column names:
 
 .. code:: python
 
@@ -53,7 +53,7 @@ The **headers** parameter allows you to pass an additional argument that specifi
     Loopback0        10.1.1.1   up        up
     Loopback100      100.0.0.1  up        up
 
-Quite often, the first data set is the headers. Then it is enough to specify headers equal to "firstrow":
+Quite often, the first data set is headers. Then it is enough to specify headers equal to "firstrow":
 
 .. code:: python
 
@@ -75,7 +75,7 @@ Quite often, the first data set is the headers. Then it is enough to specify hea
     Loopback0        10.1.1.1   up        up
     Loopback100      100.0.0.1  up        up
 
-If the data is in the form of a list of dictionaries, you should specify headers equal to "keys":
+If data is in the form of a list of dictionaries, you should specify headers equal to "keys":
 
 .. code:: python
 
@@ -182,7 +182,7 @@ You can specify alignment for columns:
     |    Loopback0    | 10.1.1.1  |    up    |     up     |
     |   Loopback100   | 100.0.0.1 |    up    |     up     |
 
-Note that not only columns are displayed centrally, but the Markdown syntax has been changed accordingly.
+Note that not only columns are displayed centrally, but Markdown syntax has been changed accordingly.
 
 Additional material
 ~~~~~~~~~~~~~~~~~~~~~~~~
