@@ -7,9 +7,9 @@
 8. Python basic examples
 ==============================
 
-This section collects topics that were not included in the previous sections and also provides examples of using the Python to solve problems.
+This section collects topics that were not included in the previous sections and also provides examples of using Python to solve problems.
 
-While most examples will be file-oriented the same data-processing principles can be applied to network equipment. Only part with reading from the file will be replaced to get output from the hardware.
+While most examples will be file-oriented the same data-processing principles can be applied to network equipment. Only part with reading from file will be replaced to get output from hardware.
 
 .. toctree::
    :maxdepth: 1
