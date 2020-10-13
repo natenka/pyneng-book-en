@@ -16,7 +16,7 @@ These methods are used to write to a file:
 ``write()``
 ^^^^^^^^^^^
 
-The ``write`` method expects string to write.
+Method ``write`` expects string to write.
 
 For example, take a list of lines with configuration:
 
@@ -66,7 +66,7 @@ After work with file is finished, it should be closed:
 
     In [7]: f.close()
 
-Since ipython supports the *cat* command, you can easily see the content of the file:
+Since ipython supports *cat* command, you can easily see the content of file:
 
 .. code:: python
 
@@ -86,7 +86,7 @@ Since ipython supports the *cat* command, you can easily see the content of the 
 ``writelines()``
 ^^^^^^^^^^^^^^^^
 
-The ``writelines()`` method expects list of strings as an argument.
+Method ``writelines()`` expects list of strings as an argument.
 
 Writing cfg_lines list into the file:
 
@@ -112,9 +112,9 @@ Writing cfg_lines list into the file:
     In [12]: cat r2.txt
     !service timestamps debug datetime msec localtime show-timezone yearservice timestamps log datetime msec localtime show-timezone yearservice password-encryptionservice sequence-numbers!no ip domain lookup!ip ssh version 2!
 
-As a result, all lines in the list were written into one line because there was no symbol ``\n`` at the end of the lines.
+As a result, all lines in the list were written into one line because there was no symbol ``\n`` at the end of lines.
 
-You can add line feed character in different ways. For example, you can simply process the list in the loop:
+You can add line feed character in different ways. For example, you can simply process list in the loop:
 
 .. code:: python
 
@@ -136,7 +136,7 @@ You can add line feed character in different ways. For example, you can simply p
      '!\n',
      'ip ssh version 2\n',
 
-If write the resulting list into the file, it already contains line feed characters:
+If write the resulting list into a file, it already contains line feed characters:
 
 .. code:: python
 
