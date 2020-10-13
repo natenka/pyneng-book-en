@@ -7,7 +7,7 @@
 12. Useful modules
 ============================
 
-This section describes the modules:
+This section describes these modules:
 
 * subprocess
 * os
