@@ -5,14 +5,14 @@ Unpacking arguments
 
 In Python the expressions ``*args`` and ``**kwargs`` allow for another task - **unpacking arguments**.
 
-So far we’ve called all functions manually. Hence, we passed on all the relevant arguments.
+So far we’ve called all functions manually. Hence, we passed on all relevant arguments.
 
-In reality, it is usually necessary to transfer data to the function programmatically. And often data comes in the form of a Python object.
+In reality, it is usually necessary to transfer data to function programmatically. And often data comes in the form of a Python object.
 
 Unpacking positional arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For example, when formatting strings you often need to pass multiple arguments to format() method. And often these arguments are already in the list or tuple. To transfer them to the format() method you have to use indexes:
+For example, when formatting strings you often need to pass multiple arguments to format() method. And often these arguments are already in list or tuple. To transfer them to format() method you have to use indexes:
 
 .. code:: python
 
@@ -44,13 +44,13 @@ Another example is config_interface function (func_config_interface_unpacking.py
         ..:
 
 
-The function expects such arguments:
+Function expects such arguments:
 
 * intf_name - interface name
 * ip_address - IP address
 * mask - subnet mask
 
-Function returns a list of strings to configure the interface:
+Function returns a list of strings to configure interface:
 
 .. code:: python
 
@@ -62,7 +62,7 @@ Function returns a list of strings to configure the interface:
     Out[11]: ['interface Fa0/10', 'no shutdown', 'ip address 10.255.4.1 255.255.255.0']
 
 
-Suppose you call a function and pass it information that has been obtained from another source, for example from the database.
+Suppose you call a function and pass it information that has been obtained from another source, for example from database.
 
 For example, interfaces_info list contains parameters for configuring interfaces:
 
@@ -76,7 +76,7 @@ For example, interfaces_info list contains parameters for configuring interfaces
         ...:
 
 
-If you go through the list in the loop and pass the nested list as a function argument, an error will occur:
+If you go through list in the loop and pass nested list as a function argument, an error will occur:
 
 .. code:: python
 
@@ -92,9 +92,9 @@ If you go through the list in the loop and pass the nested list as a function ar
 
     TypeError: config_interface() missing 2 required positional arguments: 'ip_address' and 'mask'
 
-The error is quite logical: the function expects three arguments and it is given 1 argument - a list.
+Error is quite logical: function expects three arguments and it is given 1 argument - a list.
 
-In such a situation it is necessary to unpack the arguments. Just add ``*`` before passing the list as an argument and there is no error anymore:
+In such a situation it is necessary to unpack arguments. Just add ``*`` before passing the list as an argument and there is no error anymore:
 
 .. code:: python
 
@@ -108,7 +108,7 @@ In such a situation it is necessary to unpack the arguments. Just add ``*`` befo
     ['interface Lo0', 'no shutdown', 'ip address 10.0.0.1 255.255.255.255']
 
 
-Python will unpack the *info* list itself and transfer list elements to the function as arguments.
+Python will unpack *info* list itself and transfer list elements to function as arguments.
 
 .. note::
     Tuple can also be unpacked in this way.
@@ -160,9 +160,9 @@ If you pass dictionary to check_passwd function, there is an error:
     TypeError: check_passwd() missing 1 required positional argument: 'password'
 
 
-The error is because the function has taken dictionary as one argument and believes that it lacks only password argument.
+Error is because the function has taken dictionary as one argument and believes that it lacks only password argument.
 
-If you add ``**`` пbefore passing a dictionary to function, the function will work properly:
+If you add ``**`` before passing a dictionary to function, function will work properly:
 
 .. code:: python
 
@@ -184,5 +184,5 @@ If you add ``**`` пbefore passing a dictionary to function, the function will w
     {'username': 'user', 'password': '123456789'}
     Password for user user has passed all checks
 
-Python unpacks dictionary and passes it to the function as keyword arguments. The  ``check_passwd(**data)`` is converted to a ``check_passwd(username='cisco', password='cisco')``.
+Python unpacks dictionary and passes it to function as keyword arguments. The  ``check_passwd(**data)`` is converted to a ``check_passwd(username='cisco', password='cisco')``.
 
