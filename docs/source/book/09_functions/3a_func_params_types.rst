@@ -28,9 +28,9 @@ Function with mandatory parameters (func_params_types.py file):
        ...:
 
 
-The check_passwd function expects two arguments: username and password.
+Function check_passwd() expects two arguments: username and password.
 
-The function checks the password and returns False if checks fail and True if password passed all checks:
+Function checks password and returns False if checks fail and True if password passed all checks:
 
 .. code:: python
 
@@ -50,10 +50,10 @@ The function checks the password and returns False if checks fail and True if pa
 Optional parameters (default parameters)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When creating a function you can specify default value for parameter in this way: ``def check_passwd(username, password, min_length=8)``. In this case, the min_length option is specified with the default value and may not be passed when a function is called.
+When creating a function you can specify default value for parameter in this way: ``def check_passwd(username, password, min_length=8)``. In this case, min_length option is specified with default value and may not be passed when a function is called.
 
 
-Example of a check_passwd function with default parameter (func_check_passwd_optional_param.py file):
+Example of a check_passwd() function with default parameter (func_check_passwd_optional_param.py file):
 
 .. code:: python
 
@@ -69,7 +69,7 @@ Example of a check_passwd function with default parameter (func_check_passwd_opt
        ...:         return True
        ...:
 
-Since the min_length parameter has a default value the corresponding argument can be omitted when a function is called if the default value fits you:
+Since min_length parameter has a default value the corresponding argument can be omitted when a function is called if default value fits you:
 
 .. code:: python
 
@@ -78,7 +78,7 @@ Since the min_length parameter has a default value the corresponding argument ca
     Out[7]: False
 
 
-If you want to change the default value:
+If you want to change default value:
 
 .. code:: python
 
