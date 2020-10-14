@@ -59,14 +59,14 @@ You can write a string as a sequence of Unicode codes:
     In [23]: len(hi2)
     Out[23]: 6
 
-The ord() function returns the value of Unicode code for the character:
+Function ord() returns value of Unicode code for character:
 
 .. code:: python
 
     In [6]: ord('ö')
     Out[6]: 246
 
-The chr() function returns the Unicode character that corresponds to the code:
+Function chr() returns Unicode character that corresponds to the code:
 
 .. code:: python
 
@@ -78,7 +78,7 @@ Bytes
 
 Bytes are an immutable sequence of bytes.
 
-Bytes are denoted in the same way as strings but with the addition of  letter "b" before the string:
+Bytes are denoted in the same way as strings but with addition of  letter "b" before string:
 
 .. code:: python
 
