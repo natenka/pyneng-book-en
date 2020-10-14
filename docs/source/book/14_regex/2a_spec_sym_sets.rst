@@ -15,9 +15,9 @@ Python has special designations for character sets:
     These are not all character sets that support Python. See 
     `documentation <https://docs.python.org/3/library/re.html>`__ for details.
 
-Character sets allow you to write shorter expressions without having to list all the necessary characters.
+Character sets allow you to write shorter expressions without having to list all necessary characters.
 
-For example, get time from the log file string:
+For example, get time from log file string:
 
 .. code:: python
 
@@ -26,7 +26,7 @@ For example, get time from the log file string:
     In [2]: re.search('\d\d:\d\d:\d\d', log).group()
     Out[2]: '06:15:18'
 
-The expression ``\d\d:\d\d:\d\d`` describes 3 pairs of numbers separated by colons.
+Expression ``\d\d:\d\d:\d\d`` describes 3 pairs of numbers separated by colons.
 
 Getting MAC address from log message:
 
@@ -37,6 +37,6 @@ Getting MAC address from log message:
     In [4]: re.search('\w\w\w\w\.\w\w\w\w\.\w\w\w\w', log2).group()
     Out[4]: 'f03a.b216.7ad7'
 
-The expression ``\w\w\w\w\.\w\w\w\w\.\w\w\w\w`` describes 12 letters or digits that are divided into three groups of four characters and separated by dot. 
+Expression ``\w\w\w\w\.\w\w\w\w\.\w\w\w\w`` describes 12 letters or digits that are divided into three groups of four characters and separated by dot. 
 
-The symbol groups are very convenient, but for now it is necessary to manually specify the character repetition. The following subsection deals with repetition symbols which will simplify the description of expressions.
+Symbol groups are very convenient, but for now it is necessary to manually specify a character repetition. The following subsection deals with repetition symbols which will simplify description of expressions.
