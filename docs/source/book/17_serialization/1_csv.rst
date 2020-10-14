@@ -3,7 +3,7 @@ Work with CSV files
 
 **CSV (comma-separated value)** - a tabular data format (for example, it may be data from a table or data from a database).
 
-In this format, each line of a file is a line of a table. Despite the format name the separator can be not only a comma.
+In this format, each line of a file is a line of a table. Despite format name the separator can be not only a comma.
 
 Although formats with a different separator may have their own name such as TSV (tab separated values), CSV is generally understood by all separators.
 
@@ -40,9 +40,9 @@ The output is:
     ['sw3', 'Cisco', '3650', 'Liverpool']
     ['sw4', 'Cisco', '3650', 'London']
 
-First list contains the column names and remaining list contains the corresponding values.
+First list contains column names and remaining list contains the corresponding values.
 
-Note that csv.reader returns the iterator:
+Note that csv.reader returns an iterator:
 
 .. code:: python
 
@@ -73,7 +73,7 @@ Most often column headers are more convenient to get by a separate object. This 
 
 Sometimes it is more convenient to obtain dictionaries in which keys are column names and values are column values.
 
-For this purpose, the module has **DictReader** (csv_read_dict.py file):
+For this purpose, module has **DictReader** (csv_read_dict.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/csv/csv_read_dict.py
   :language: python
@@ -94,7 +94,7 @@ The output is:
     OrderedDict([('hostname', 'sw4'), ('vendor', 'Cisco'), ('model', '3650'), ('location', 'London')])
     sw4 3650
 
-Dictreader does not create standard Python dictionaries but ordered dictionaries. Thus, the order of elements corresponds to order of the columns in the CSV file.
+Dictreader does not create standard Python dictionaries but ordered dictionaries. Thus, the order of elements corresponds to order of columns in CSV file.
 
 .. note::
 
@@ -112,7 +112,7 @@ Similarly, a csv module can be used to write data to file in CSV format (csv_wri
   :linenos:
 
 
-In the example above, strings from the list are written to the file and then the content of file is displayed on standard output stream.
+In example above, strings from list are written to the file and then the content of file is displayed on standard output stream.
 
 The output will be as follows:
 
@@ -127,11 +127,11 @@ The output will be as follows:
 
 Note the interesting thing: strings in the last column are quoted and other values are not.
 
-This is because all strings in the last column have a comma. And the quotation marks indicate what is an entire string. When a comma is inside quotation marks the csv module does not perceive it as a separator.
+This is because all strings in the last column have a comma. And quotation marks indicate what is an entire string. When a comma is inside quotation marks the csv module does not perceive it as a separator.
 
-Sometimes it’s better to have all strings quoted. Of course, in this case, example is simple enough but when there are more values in the strings, the quotation marks indicate where the value begins and ends.
+Sometimes it’s better to have all strings quoted. Of course, in this case, example is simple enough but when there are more values in the strings, the quotation marks indicate where value begins and ends.
 
-The csv module allows you to control this. For all strings to be written in a CSV file with quotation marks you should change the script this way (csv_write_quoting.py file):
+Csv module allows you to control this. For all strings to be written in a CSV file with quotation marks you should change script this way (csv_write_quoting.py file):
 
 .. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/csv/csv_write_quoting.py
   :language: python
@@ -149,9 +149,9 @@ Now the output is this:
     "sw3","Cisco","3650","Liverpool, Better str"
     "sw4","Cisco","3650","London, Best str"
 
-Now all values are quoted. And because the model number is given as a string in original list, it is quoted here as well.
+Now all values are quoted. And because model number is given as a string in original list, it is quoted here as well.
 
-Besides writerow() method, the writerows() method is supported. It accepts any iterable object.
+Besides writerow() method, writerows() method is supported. It accepts any iterable object.
 
 So, previous example can be written this way (csv_writerows.py file):
 
@@ -175,7 +175,7 @@ In general, DictWriter() works as writer() but since dictionaries are not ordere
 Delimiter
 ~~~~~~~~~~~~~~~~~~~~
 
-Sometimes other values are used as the separator. In this case, it should be possible to tell the module which separator to use.
+Sometimes other values are used as a separator. In this case, it should be possible to tell module which separator to use.
 
 For example, if the file uses separator ``;`` (sw_data2.csv file):
 
