@@ -64,12 +64,12 @@ The result will be:
 
 Empty lines after block were removed.
 
-In front of ``neighbor ... remote-as`` lines two spaces appeared. This is because there is a space in front of *for* block. Once line feed has been disabled, spaces and tabs in front of the block are added to the first line of the  block.
+In front of ``neighbor ... remote-as`` lines two spaces appeared. This is because there is a space in front of *for* block. Once line feed has been disabled, spaces and tabs in front of the block are added to the first line of block.
 
 This does not affect the next lines. Therefore, lines with 
 ``neighbor ... update-source`` are displayed with one space.
 
-Parameter ``lstrip_blocks`` controls whether spaces and tabs will be removed from the beginning of the line to the beginning of the block (untill opening curly bracket).
+Parameter ``lstrip_blocks`` controls whether spaces and tabs will be removed from the beginning of line to the beginning of block (untill opening curly bracket).
 
 If add ``lstrip_blocks=True``:
 
