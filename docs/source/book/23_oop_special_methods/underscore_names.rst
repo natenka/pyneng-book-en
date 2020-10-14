@@ -7,7 +7,7 @@ In Python, underscore at the beginning or at the end of a name indicates special
 One underscore before name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-One underscore before method name indicates that method is an internal feature of the implementation and it should not be used directly.
+One underscore before method name indicates that method is an internal feature of implementation and it should not be used directly.
 
 For example, CiscoSSH class uses paramiko to connect to equipment:
 
@@ -55,7 +55,7 @@ After creating an instance of the class, not only send_show_command method is av
                 ssh
 
 
-If you want to specify that *client* and *ssh* are internal attributes that are needed for class operation but are not intended for the user, you need to underscore name below:
+If you want to specify that *client* and *ssh* are internal attributes that are needed for class operation but are not intended for user, you need to underscore name below:
 
 .. code:: python
 
@@ -88,7 +88,7 @@ If you want to specify that *client* and *ssh* are internal attributes that are 
 
 .. note::
 
-    Often such methods and attributes are called private but this does not mean that methods and variables are not available to the user.
+    Often such methods and attributes are called private but this does not mean that methods and variables are not available to user.
 
 
 
@@ -137,7 +137,7 @@ Thus, special variables and methods are denoted.
 For example, Python module has such special variables:
 
 * ``__name__`` - this variable is equal to ``__main__`` when the script runs directly and is equal to module name when imported
-* ``__file__`` - this variable is equal  to name of the script that was run directly and equals to complete path to module when it is imported
+* ``__file__`` - this variable is equal to name of the script that was run directly and equals to complete path to module when it is imported
 
 Variable ``__name__`` is most commonly used to indicate that a certain part of code must be executed only when module is called directly:
 
