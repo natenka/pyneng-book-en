@@ -17,7 +17,7 @@ Example of creating a connection:
 
 Once you have created a connection you should create a Cursor object which is the main way to work with database.
 
-Cursor is created from the DB connection:
+Cursor is created from DB connection:
 
 .. code:: python
 
