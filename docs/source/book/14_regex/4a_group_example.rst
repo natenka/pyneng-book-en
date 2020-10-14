@@ -27,16 +27,16 @@ In regex terms, named groups are used for those parts of the output that need to
 
     In [2]: match = re.search('(?P<mac>\S+) +(?P<ip>\S+) +\d+ +\S+ +(?P<vlan>\d+) +(?P<port>\S+)', line)
 
-Comments on the regular expression:
+Comments on regular expression:
 
--  ``(?P<mac>\S+) +`` - group with name ‘mac’ matches any characters except whitespace characters. So the expression describes the sequence of any characters before the space
--  ``(?P<ip>\S+) +`` - the same here: a sequence of any non-whitespace characters up to the space. Group name - ‘ip’
+-  ``(?P<mac>\S+) +`` - group with name ‘mac’ matches any characters except whitespace characters. So expression describes a sequence of any characters before space
+-  ``(?P<ip>\S+) +`` - the same here: a sequence of any non-whitespace characters up to space. Group name - ‘ip’
 -  ``\d+ +`` - numerical sequence (one or more digits) followed by one or more spaces. *Lease* value gets here
 -  ``\S+ +``- sequence of any characters other than whitespace. This matches *Type* (in this case all of them ‘dhcp-snooping’)
 -  ``(?P<vlan>\d+) +`` - named group ‘vlan’. Only numerical sequences with one or more characters are included here
 -  ``(?P<port>.\S+)`` - named group 'port'. All characters except whitespace are included here
 
-As a result, the groupdict() method will return such a dictionary:
+As a result, groupdict() method will return such a dictionary:
 
 .. code:: python
 
@@ -47,7 +47,7 @@ As a result, the groupdict() method will return such a dictionary:
      'mac': '00:09:BB:3D:D6:58',
      'vlan': '10'}
 
-Since the regular expression has worked well, you can create a script. In the script all lines of dhcp\_snooping.txt file are iterated and information about the devices is displayed on the standard output stream.
+Since regular expression has worked well, you can create a script. In script all lines of dhcp\_snooping.txt file are iterated and information about devices is displayed on the standard output stream.
 
 File parse_dhcp_snooping.py:
 
