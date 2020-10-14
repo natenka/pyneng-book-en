@@ -47,7 +47,7 @@ You can use this query:
 
     In [6]: query = "INSERT into switch values (?, ?, ?, ?)"
 
-The question marks in command are used to fill in the data that will be passed to execute().
+Question marks in command are used to fill in the data that will be passed to execute().
 
 Data can now be passed as follows:
 
@@ -94,7 +94,7 @@ Method executemany() allows one SQL command to be executed for parameter sequenc
 
 Using executemany() method you can add a similar data list to *switch* table by a single command.
 
-For example, you should add data from the *data2* list to *switch* table:
+For example, you should add data from *data2* list to *switch* table:
 
 .. code:: python
 
