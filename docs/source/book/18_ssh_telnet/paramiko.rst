@@ -9,7 +9,7 @@ Since Paramiko is not part of standard Python module library, it needs to be ins
 
     pip install paramiko
 
-The connection is established in this way: first, client is created and client configuration is set, then connection is initiated and an interactive session is received:
+Connection is established in this way: first, client is created and client configuration is set, then connection is initiated and an interactive session is received:
 
 .. code:: python
 
@@ -32,7 +32,7 @@ Method ``connect`` connects to SSH server and authenticates the connection. Para
 * ``look_for_keys`` - by default paramiko performs key authentication. To disable this, put the flag in False
 * ``allow_agent`` - paramiko can connect to a local SSH agent. This is necessary when working with keys and since in this case authentication is done by login/password, it should be disabled.  
 
-After execution of previous command there is already a connection to the server. Method ``invoke_shell`` allows to set an interactive SSH session with server.
+After execution of previous command there is already a connection to server. Method ``invoke_shell`` allows to set an interactive SSH session with server.
 
 Method send
 ~~~~~~~~~~
@@ -53,7 +53,7 @@ Method ``send`` - sends specified string to session and returns amount of sent b
 
 .. warning::
 
-     In the code, after send() you will need to put time.sleep, especially between send and recv. Since this is an interactive session and commands are slow to type, everything works without pauses.
+     In code, after send() you will need to put time.sleep, especially between send and recv. Since this is an interactive session and commands are slow to type, everything works without pauses.
 
 Method recv
 ~~~~~~~~~~
