@@ -1,15 +1,15 @@
 Module telnetlib
 ----------------
 
-Module telnetlib is part of standard Python library. This is the telnet client implementation.
+Module telnetlib is part of standard Python library. This is telnet client implementation.
 
 .. note::
 
     It is also possible to connect via telnet using pexpect. Plus of telnetlib is that this module is part of standard Python library.
     
-Telnetlib resembles pexpect but has several differences. The most notable difference is that telnetlib requires the transfer of a byte string, rather than normal one.
+Telnetlib resembles pexpect but has several differences. The most notable difference is that telnetlib requires a transfer of a byte string, rather than normal one.
 
-The connection is performed as follows:
+Connection is performed as follows:
 
 .. code:: python
 
@@ -25,7 +25,7 @@ Method read_until() specifies till which line the output should be read. However
     In [2]: telnet.read_until(b'Username')
     Out[2]: b'\r\n\r\nUser Access Verification\r\n\r\nUsername'
 
-Method read_until() returns everything it has read before the specified string.
+Method read_until() returns everything it has read before specified string.
 
 Method write
 ~~~~~~~~~~~
@@ -165,7 +165,7 @@ You can then transfer byte strings or compiled regular expressions:
      <_sre.SRE_Match object; span=(46, 47), match=b'>'>,
      b'sh clock\r\n*19:35:10.984 UTC Fri Nov 3 2017\r\nR1>')
 
-Method expect() returns the tuple of their three elements:
+Method expect() returns tuple of their three elements:
 
 * index of matched expression 
 * object Match 
