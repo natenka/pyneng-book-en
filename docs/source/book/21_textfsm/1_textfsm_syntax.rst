@@ -42,23 +42,23 @@ Syntax of value description (for each option below we will consider examples):
 * ``Value`` - keyword that indicates that a value is being created. It must be specified
 * option - options that define how to work with a variable. If several options are to be specified, they must be separated by a comma, without spaces. These options are supported:
 
-  * **Filldown** - value that previously matched with a regular expression,  remembered until the next processing line (if has not been explicitly cleared or matched again). This means that the last column value that matches the regular expression is stored and used in the following strings if this column is not present.
+  * **Filldown** - value that previously matched with a regular expression,  remembered until the next processing line (if has not been explicitly cleared or matched again). This means that the last column value that matches regular expression is stored and used in the following strings if this column is not present.
   * **Key** - determines that this field contains a unique string identifier
   * **Required** - string that is processed will only be written if this value is present.
   * **List** - value is a list, and each match with a regular expression will add an item to the list. By default, each next match overwrites the previous one. 
   * **Fillup** - works as Filldown but fills empty value up until it finds a match. Not compatible with Required.
 
-* ``name`` - name of value that will be used as the column name. Reserved names should not be used as value names. 
+* ``name`` - name of value that will be used as column name. Reserved names should not be used as value names. 
 * ``regex`` - regular expression that describes a value. Regular expression should be in brackets.
 
 State definition
 ~~~~~~~~~~~~~~~~~~~~~
 
-After defining values, we need to describe the states:
+After defining values, we need to describe states:
 
 * each state definition must be separated by an empty line (at least one)
 * first line - state name 
-* then follows the lines that describe rules. Rules must start with two spaces and caret symbol ``^``
+* then follows lines that describe rules. Rules must start with two spaces and caret symbol ``^``
 
 Initial state is always **Start**. Input data is compared to the current state but rule line can specify that you want to go to a different state.
 
@@ -127,7 +127,7 @@ Line Actions
 Line Actions:
 
 * **Next** - process the line, read the next line and start checking it from the beginning. This action is used by default unless otherwise specified
-* **Continue** - continue to process rules as if there was no match while the values are assigned
+* **Continue** - continue to process rules as if there was no match while values are assigned
 
 Record Action
 ^^^^^^^^^^^^^
@@ -153,7 +153,7 @@ A new state can be specified after action:
   * the next line is read, 
   * then the current state changes to a new state and processing continues in new state.
 
-If the rule uses **Continue** action, it is not possible to change state inside this rule. This rule is needed to avoid loops in sequence of states.
+If rule uses **Continue** action, it is not possible to change state inside this rule. This rule is needed to avoid loops in sequence of states.
 
 Error Action
 ^^^^^^^^^^^^
