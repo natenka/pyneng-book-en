@@ -131,7 +131,7 @@ In the second version of the script, the output in dhcp_snooping.txt file is pro
 
 Comments to the script:
 
-* in regular expression that processes the output of *sh ip dhcp snooping binding*, numbered groups are used instead of named groups as it was in example of section `Regular expressions <../14_regex/4a_group_example.md>`__
+* in regular expression that processes the output of *sh ip dhcp snooping binding*, numbered groups are used instead of named groups as it was in example of section `https://pyneng.readthedocs.io/en/latest/book/14_regex/4a_group_example.html>`__
 
   * groups were created only for those elements we are interested in
 
