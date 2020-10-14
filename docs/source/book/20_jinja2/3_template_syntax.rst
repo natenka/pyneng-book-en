@@ -12,7 +12,7 @@ In Jinja2 templates you can use :
 * tests - are used to check whether a variable meets a condition
 
 In addition, Jinja supports inheritance between templates and also allows adding the contents of one template to another.
-This section deals only with the basis of these possibilities. More information about Jinja2 templates can be found in `documentation <http://jinja.pocoo.org/docs/dev/templates/>`__.
+This section deals only with basis of these possibilities. More information about Jinja2 templates can be found in `documentation <http://jinja.pocoo.org/docs/dev/templates/>`__.
 
 .. note::
 
