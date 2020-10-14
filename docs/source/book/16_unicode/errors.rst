@@ -107,7 +107,7 @@ Parameter 'errors' in decode
 
 The decode() method also uses strict mode by default and generates a UnicodeDecodeError exception.
 
-If you change the mode to ignore, as in encode, the characters will simply be ignored:
+If you change mode to ignore, as in encode, characters will simply be ignored:
 
 .. code:: python
 
