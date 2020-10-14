@@ -5,7 +5,7 @@ To deal with Jinja2, it is better to use previous examples. This section describ
 
 .. note::
 
-    The term "software interface" refers to the way Jinja works with input data and a template for generating output files.
+    Term "software interface" refers to the way Jinja works with input data and a template for generating output files.
     
 Modified example of previous script, template and data file (all files are in 2_example directory):
 
@@ -100,10 +100,10 @@ File router_config_generator.py imports from jinja2 module:
 
 * **FileSystemLoader** - a loader that allows working with a file system
 
-  * the path to the directory where templates are located is specified here
+  * path to directory where templates are located is specified here
   * in this case template is in *template* directory
   
-* **Environment** - a class for describing environment parameters. In this case only the loader is specified, but you can specify how to process the template
+* **Environment** - a class for describing environment parameters. In this case only loader is specified, but you can specify how to process a template
 
-Note that the template is now in **templates** directory.
+Note that template is now in **templates** directory.
 
