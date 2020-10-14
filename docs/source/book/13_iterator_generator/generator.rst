@@ -1,19 +1,19 @@
 Generator
 ---------------------
 
-Generators are a special class of functions that can easily create their own iterators. Unlike normal functions, the generator does not just return the value and finish the work, but returns the iterator which gives the elements one by one.
+Generators are a special class of functions that can easily create their own iterators. Unlike normal functions, generator does not just return value and finish work, but returns an iterator which gives elements one by one.
 
-The usual function ends if:
+Usual function ends if:
 
 * ``return`` expression is met
 * function code is ended (this works as ``return None`` expression) 
 * exception has arisen
 
-After function execution is finished, the control is returned and program execution goes further. All the arguments that were passed to the function, the local variables, all of this is lost. Only the result that returned the function remains.
+After function execution is finished the control is returned and program execution goes further. All arguments that were passed to function like local variables, all of this is lost. Only the result that returned a function remains.
 
-A function can return a list of elements, multiple objects or different results depending on the arguments, but it always returns a single result.
+A function can return a list of elements, multiple objects or different results depending on arguments, but it always returns a single result.
 
-The generator generates values. The values are then returned on demand and after the return of one value the function-generator is suspended until the next value is requested. Between requests, the generator retains its state.
+Generator generates values. Values are then returned on demand and after return of one value a function-generator is suspended until the next value is requested. Between requests, generator retains its state.
 
 Python allows generators to be created in two ways:
 
@@ -26,9 +26,9 @@ The following is an example of a generator expression and a
 generator expression
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The generator expression uses the same syntax as the list comprehensions, but returns the iterator, not the list.
+Generator expression uses the same syntax as a list comprehensions, but returns iterator, not list.
 
-The generator expression looks exactly the same as the list comprehensions, but the brackets are used:
+Generator expression looks exactly the same as a list comprehensions, but brackets are used:
 
 .. code:: python
 
