@@ -1,19 +1,19 @@
 Repeating characters
 ------------------
 
-*  ``regex+`` - one or more repetitions of the preceding element
-*  ``regex*`` - zero or more repetitions of the preceding element
-*  ``regex?`` -- zero or one repetition of the preceding element
-*  ``regex{n}`` - exactly 'n' repetitions of the preceding element
-*  ``regex{n,m}`` - from ‘n’ to ‘m’ repetitions of the preceding element
-*  ``regex{n, }`` - ‘n’ or more repetitions of the preceding element
+*  ``regex+`` - one or more repetitions of preceding element
+*  ``regex*`` - zero or more repetitions of preceding element
+*  ``regex?`` -- zero or one repetition of preceding element
+*  ``regex{n}`` - exactly 'n' repetitions of preceding element
+*  ``regex{n,m}`` - from ‘n’ to ‘m’ repetitions of preceding element
+*  ``regex{n, }`` - ‘n’ or more repetitions of preceding element
 
 ``+``
 ~~~~~
 
 Plus indicates that the previous expression can be repeated as many times as you like, but at least once.
 
-For example, here the repetition refers to the letter 'a':
+For example, here the repetition refers to letter 'a':
 
 .. code:: py
 
@@ -31,13 +31,13 @@ And in this expression, string ‘a1’ is repeated:
     In [4]: re.search('(a1)+', line).group()
     Out[4]: 'a1a1'
 
-    The expresson ``(a1)+`` uses brackets to specify that repetition is related to sequence of symbols 'a1'.
+    Expresson ``(a1)+`` uses brackets to specify that repetition is related to sequence of symbols 'a1'.
 
 IP address can be described by ``\d+\.\d+\.\d+\.\d+``. This plus is used to indicate that there can be several digits. And there’s also an expression  ``\.``.
 
-It is required because the point is a special symbol (it denotes any symbol). And in order to indicate that we are interested in a point as a symbol, you have to screen it - put a backslash in front of the point.
+It is required because the dot is a special symbol (it denotes any symbol). And in order to indicate that we are interested in a dot as a symbol, you have to screen it - put a backslash in front of a dot.
 
-Using this expression, you can get an IP address from the sh_ip_int_br string:
+Using this expression, you can get an IP address from sh_ip_int_br string:
 
 .. code:: python
 
@@ -46,7 +46,7 @@ Using this expression, you can get an IP address from the sh_ip_int_br string:
     In [6]: re.search('\d+\.\d+\.\d+\.\d+', sh_ip_int_br).group()
     Out[6]: '192.168.200.1'
 
-Another example of an expression: ``\d+\s+\S+`` - describes the string which has digits first, then whitespace characters, and then the not whitespace characters (all except the space, tab, and other similar characters).
+Another example of an expression: ``\d+\s+\S+`` - describes a string which has digits first, then whitespace characters, and then non-whitespace characters (all except space, tab, and other similar characters).
 Using it you can get VLAN and MAC address from string:
 
 .. code:: py
@@ -59,11 +59,11 @@ Using it you can get VLAN and MAC address from string:
 ``*``
 ~~~~~
 
-The asterisk indicates that the previous expression can be repeated 0 or more times.
+Asterisk indicates that the previous expression can be repeated 0 or more times.
 
 For example, if an asterisk stands after 'a' symbol, it means a repetition of that symbol.
 
-The expression ``ba*`` means ‘b’ and then zero or more repetitions of ‘a’:
+Expression ``ba*`` means ‘b’ and then zero or more repetitions of ‘a’:
 
 .. code:: py
 
@@ -81,7 +81,7 @@ In *line* string, if ‘b’ meets before ‘baaa’ substring, then the match i
     In [12]: re.search('ba*', line).group()
     Out[12]: 'b'
 
-Suppose you write a regular expression that describes the email addresses in two formats: user@example.com and user.test@example.com. That is, the left side of the address can have either one word or two words separated by a dot.
+Suppose you write a regular expression that describes email addresses in two formats: user@example.com and user.test@example.com. That is, the left side of address can have either one word or two words separated by a dot.
 
 The first variant is an example of email without a dot:
 
@@ -135,9 +135,9 @@ This regular expression describes both options:
 ``?``
 ~~~~~
 
-In the last example, the regular expression indicates that the dot is optional, but at the same time determines that it can appear many times.
+In the last example, regular expression indicates that the dot is optional, but at the same time determines that it can appear many times.
 
-In this situation, it is more logical to use a question mark. It denotes zero or one repetition of a preceding expression or symbol. Now the regular expression looks like ``\w+\.?\w+@\w+\.\w+``:
+In this situation, it is more logical to use a question mark. It denotes zero or one repetition of a preceding expression or symbol. Now regular expression looks like ``\w+\.?\w+@\w+\.\w+``:
 
 .. code:: python
 
@@ -155,9 +155,9 @@ In this situation, it is more logical to use a question mark. It denotes zero or
 ``{n}``
 ~~~~~~~
 
-You can set how many times the previous expression should be repeated with the curly brackets.
+You can set how many times the previous expression should be repeated with curly brackets.
 
-For example, the expression ``\w{4}\.\w{4}\.\w{4}`` describes 12 letters or digits that are divided into three groups of four characters and separated by dot. This way you can get a MAC address:
+For example, expression ``\w{4}\.\w{4}\.\w{4}`` describes 12 letters or digits that are divided into three groups of four characters and separated by dot. This way you can get a MAC address:
 
 .. code:: py
 
@@ -166,7 +166,7 @@ For example, the expression ``\w{4}\.\w{4}\.\w{4}`` describes 12 letters or digi
     In [25]: re.search('\w{4}\.\w{4}\.\w{4}', line).group()
     Out[25]: 'aab1.a1a1.a5d3'
 
-You can specify a repetition range in curly brackets. For example, try to get all VLAN numbers from the string mac\_table:
+You can specify a repetition range in curly brackets. For example, try to get all VLAN numbers from string mac\_table:
 
 .. code:: python
 
@@ -186,8 +186,8 @@ You can specify a repetition range in curly brackets. For example, try to get al
         ...: 1300    aa0b.cc70.7000    DYNAMIC     Gi0/7
         ...: '''
 
-Since search() only looks for the first match, the expression ``\d{1,4}`` 
-will have the VLAN number:
+Since search() only looks for the first match, expression ``\d{1,4}`` 
+will have VLAN number:
 
 .. code:: python
 
@@ -205,11 +205,11 @@ will have the VLAN number:
     VLAN:  1200
     VLAN:  1300
 
-The expression ``\d{1,4}`` describes one to four digits.
+Expression ``\d{1,4}`` describes one to four digits.
 
-Note that the output of the command from equipment does not have a VLAN with number 1. The regular expression got a number 1 from somewhere. The number 1 was in the output from the hostname in the line ``sw1#sh mac address-table``.
+Note that the output of command from equipment does not have a VLAN with number 1. Regular expression got a number 1 from somewhere. Number 1 was in the output from hostname in line ``sw1#sh mac address-table``.
 
-To correct this, it suffices to complete the expression and indicate that at least one space must follow the numbers:
+To correct this, it suffices to complete an expression and indicate that at least one space must follow the numbers:
 
 .. code:: python
 
