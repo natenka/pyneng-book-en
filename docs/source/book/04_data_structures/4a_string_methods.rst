@@ -1,20 +1,20 @@
-Полезные методы для работы со строками
+Useful methods for working with strings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-При автоматизации очень часто надо будет работать со строками, так как
-конфигурационный файл, вывод команд и отправляемые команды - это строки.
+When automating, very often it will be necessary to work with strings, since
+config file, command output and commands sent - are strings.
 
-Знание различных методов (действий), которые можно применять к
-строкам, помогает более эффективно работать с ними.
+Knowledge of various methods (actions) that can be applied to
+strings helps to work with them more efficiently.
 
-Строки неизменяемый тип данных, поэтому все методы, которые преобразуют
-строку возвращают новую строку, а исходная строка остается неизменной.
+Strings are immutable data type, so all methods that convert
+string returns a new string and the original string remains unchanged.
 
-Методы upper, lower, swapcase, capitalize
+Methods upper, lower, swapcase, capitalize
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Методы ``upper()``, ``lower()``, ``swapcase()``,
-``capitalize()`` выполняют преобразование регистра строки:
+Methods ``upper()``, ``lower()``, ``swapcase()``,
+``capitalize()`` perform string case conversion:
 
 .. code:: python
 
@@ -34,9 +34,9 @@
     In [30]: string2.capitalize()
     Out[30]: 'Tunnel 0'
 
-Очень важно обращать внимание на то, что часто методы возвращают
-преобразованную строку. И, значит, надо не забыть присвоить ее какой-то
-переменной (можно той же).
+It is very important to pay attention to the fact that methods often return
+the converted string. And, therefore, we must not forget to assign it to some
+variable (you can use the same).
 
 .. code:: python
 
@@ -45,11 +45,10 @@
     In [32]: print(string1)
     FASTETHERNET
 
-Метод count
+Method count
 ^^^^^^^^^^^
 
-Метод ``count()`` используется для подсчета того, сколько раз символ
-или подстрока встречаются в строке:
+Method ``count()`` or a substring occurs in a string:
 
 .. code:: python
 
@@ -64,12 +63,12 @@
     In [36]: string1.count('l')
     Out[36]: 8
 
-Метод find
+Method find
 ^^^^^^^^^^
 
-Методу ``find()`` можно передать подстроку или символ, и он покажет,
-на какой позиции находится первый символ подстроки (для первого
-совпадения):
+Method `` find () '' can be passed a substring or a character and it will show
+at what position is the first character of the substring (for the first
+matches):
 
 .. code:: python
 
@@ -81,13 +80,13 @@
     In [39]: string1[string1.find('Fast')::]
     Out[39]: 'FastEthernet0/1'
 
-Если совпадение не найдено, метод find возвращает ``-1``.
+If no match is found, find() method returns ``-1``.
 
-Методы startswith, endswith
+Methods startswith, endswith
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Проверка на то, начинается или заканчивается ли строка на определенные
-символы (методы ``startswith()``, ``endswith()``):
+Checking if a string starts or ends with certain
+symbols (methods ``startswith()``, ``endswith()``):
 
 .. code:: python
 
@@ -105,11 +104,11 @@
     In [44]: string1.endswith('0/2')
     Out[44]: False
 
-Метод replace
+Method replace
 ^^^^^^^^^^^^^
 
-Замена последовательности символов в строке на другую последовательность
-(метод ``replace()``):
+Replacing a sequence of characters in a string with another sequence
+(method ``replace()``):
 
 .. code:: python
 
@@ -118,15 +117,12 @@
     In [46]: string1.replace('Fast', 'Gigabit')
     Out[46]: 'GigabitEthernet0/1'
 
-Метод strip
+Method strip
 ^^^^^^^^^^^
 
-Часто при обработке файла файл открывается построчно. Но в конце каждой
-строки, как правило, есть какие-то спецсимволы (а могут быть и в
-начале). Например, перевод строки.
+Often when a file is processed, the file is opened line by line. But at the end of each line, there are usually some special characters (and may be at the beginning). For example, line feed character.
 
-Для того, чтобы избавиться от них, очень удобно использовать метод
-``strip()``:
+To get rid of them, it is very convenient to use method ``strip()``:
 
 .. code:: python
 
@@ -143,11 +139,9 @@
     In [50]: string1.strip()
     Out[50]: 'interface FastEthernet0/1'
 
-По умолчанию метод strip() убирает пробельные символы. В этот набор
-символов входят: ``\t\n\r\f\v``
+By default, strip() method removes blank characters. This character set includes: ``\t\n\r\f\v``
 
-Методу strip можно передать как аргумент любые символы. Тогда в начале и
-в конце строки будут удалены все символы, которые были указаны в строке:
+Method strip() can be passed as an argument of any characters. Then at the beginning and at the end of the line all characters that were specified in the line will be removed:
 
 .. code:: python
 
@@ -156,16 +150,12 @@
     In [52]: ad_metric.strip('[]')
     Out[52]: '110/1045'
 
-Метод strip() убирает спецсимволы и в начале, и в конце строки. Если
-необходимо убрать символы только слева или только справа, можно
-использовать, соответственно, методы ``lstrip()`` и
-``rstrip()``.
+Method strip() removes special characters at the beginning and at the end of the line. If you want to remove characters only on the left or only on the right, you can use ``lstrip()`` and ``rstrip()``.
 
-Метод split
+Method split
 ^^^^^^^^^^^
 
-Метод ``split()`` разбивает строку на части, используя как
-разделитель какой-то символ (или символы) и возвращает список строк:
+Method ``split()`` split() splits the string using a symbol (or symbols) as separator and returns a list of strings:
 
 .. code:: python
 
@@ -176,11 +166,9 @@
     In [55]: print(commands)
     ['switchport', 'trunk', 'allowed', 'vlan', '10,20,30,100-200']
 
-В примере выше ``string1.split()`` разбивает строку по пробельным символам
-и возвращает список строк. Список записан в переменную commands.
+In example above, ``string1.split()`` splits the string by spaces and returns a list of strings. The list is saved to *commands* variable.
 
-По умолчанию в качестве разделителя используются пробельные символы 
-(пробелы, табы, перевод строки), но в скобках можно указать любой разделитель:
+By default, separator is a space symbol (spaces, tabs, line feed), but you can specify any separator in brackets:
 
 .. code:: python
 
@@ -189,13 +177,11 @@
     In [57]: print(vlans)
     ['10', '20', '30', '100-200']
 
-В списке commands последний элемент это строка с вланами, поэтому используется индекс -1.
-Затем строка разбивается на части с помощью split ``commands[-1].split(',')``.
-Так как, как разделитель указана запятая, получен такой список ``['10', '20', '30', '100-200']``.
+In *commands* list, the last element is a string with vlans, so the index -1 is used.
+Then string is split into parts using split() ``commands[-1].split(',')``.
+Since separator is a comma, this list is received ``['10', '20', '30', '100-200']``.
 
-Полезная особенность метода split с разделителем по умолчанию — строка не только разделяется
-в список строк по пробельным символам, но пробельные символы также удаляются в начале и 
-в конце строки:
+A useful feature of split() method with default separator is that the string is not only split into a list of strings by space characters, but the space characters are also removed at the beginning and at the end of the line:
 
 .. code:: python
 
@@ -205,9 +191,7 @@
     Out[59]: ['switchport', 'trunk', 'allowed', 'vlan', '10,20,30,100-200']
 
 
-У метода ``split()`` есть ещё одна хорошая особенность: по умолчанию
-метод разбивает строку не по одному пробельному символу, а по любому количеству.
-Это будет, например, очень полезным при обработке команд show:
+Method ``split()`` has another good feature: by default, method splits a string not by one whitespace character, but by any number. For example, this will be very useful when processing show commands:
 
 .. code:: python
 
@@ -216,8 +200,7 @@
     In [61]: sh_ip_int_br.split()
     Out[61]: ['FastEthernet0/0', '15.0.15.1', 'YES', 'manual', 'up', 'up']
 
-А вот так выглядит разделение той же строки, когда один пробел
-используется как разделитель:
+And this is the same string when one space is used as the separator:
 
 .. code:: python
 
