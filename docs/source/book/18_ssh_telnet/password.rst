@@ -3,9 +3,9 @@ Password input
 
 During manual connection to device the password is also manually entered.
 
-When automating the connection it is necessary to decide how the password will be transmitted:
+When automating connection it is necessary to decide how password will be transmitted:
 
-* Request password at start of the script and read user input. Disadvantage is that you can see which characters the user is typing
+* Request password at start of the script and read user input. Disadvantage is that you can see which characters user is typing
 * Write login and password in some file (it’s not secure).
 
 As a rule, the same user uses the same login and password to connect to devices. And usually it’s enough to request login and password at the start of the script and then use them to connect to different devices.
