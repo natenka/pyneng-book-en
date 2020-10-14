@@ -3,7 +3,7 @@ Repeating the captured result
 
 When working with groups, it is possible to use the result that has fallen into the group further in the same expression.
 
-For example, in the output of ‘sh ip bgp’ the last column describes the AS Path attribute (through which autonomous systems the route passed):
+For example, in the output of ‘sh ip bgp’ the last column describes AS Path attribute (through which autonomous systems the route passed):
 
 .. code:: python
 
@@ -34,11 +34,11 @@ This can be done by reference to a result that has been captured by the group. F
     *  192.168.88.0/24  192.168.79.7                       0 700 700 700 i
     *>                  192.168.89.8         0             0 800 800 i
 
-In this expression, ``\1`` denotes the result that falls into the group. Number one indicates a specific group. In this case, it’s Group 1, it’s the only one group here.
+In this expression, ``\1`` denotes the result that falls into the group. Number one indicates a specific group. In this case, it’s Group 1, it’s only one group here.
 
-Additionally, the regular expression is preceded by the letter **r**. It is a so-called raw string.
+Additionally, regular expression is preceded by letter **r**. It is a so-called raw string.
 
-It is more convenient to use it, because otherwise you will have to screen the backslash in order for the link to the group works correctly:
+It is more convenient to use it, because otherwise you will have to screen backslash in order for the link to group works correctly:
 
 .. code:: python
 
