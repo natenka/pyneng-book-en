@@ -3,7 +3,7 @@ Examples of TextFSM usage
 
 This section discusses examples of templates and TextFSM usage.
 
-The section uses parse_output.py script to process command output by template. It is not tied to a specific template and output: template and command output will be passed as arguments:
+Section uses parse_output.py script to process command output by template. It is not tied to a specific template and output: template and command output will be passed as arguments:
 
 .. code:: python
 
@@ -50,7 +50,7 @@ First of all, you have to define variables in template:
 * at the beginning of each line there must be a keyword Value
 * each variable defines column in table
 * next word - variable name
-* after the name, in brackets - a regular expression that describes value of a variable
+* after name, in brackets - a regular expression that describes value of a variable
 
 Definition of variables is as follows:
 
@@ -87,7 +87,7 @@ Once variables are defined, an empty line and **Start** state must follow, and t
 
 Because in this case only one line in the output, it is not necessary to write Record action in template. But it is better to use it in situations where you have to write values and get used to this syntax and not make mistakes when you need to process multiple lines.
 
-When TextFSM handles output strings it substitutes variable by its values. In the end, the rule will look like:
+When TextFSM handles output strings it substitutes variable by its values. In the end, rule will look like:
 
 ::
 
@@ -102,7 +102,7 @@ When this regular expression applies to *show clock* output, each regular expres
 * 5 group: 13 
 * 6 group: 2016
 
-In the rule, in addition to the explicit Record action which specifies that record should be placed in final table, the Next rule is also used by default. It specifies that you want to go to the next line of text. Since there is only one line in *sh clock* command output, the processing is completed.
+In rule, in addition to explicit Record action which specifies that record should be placed in final table, the Next rule is also used by default. It specifies that you want to go to the next line of text. Since there is only one line in *sh clock* command output, the processing is completed.
 
 The result of script is:
 
@@ -389,7 +389,7 @@ show ip route ospf
 
 Consider the case where we need to process output of *show ip route ospf* command and in routing table there are several routes to the same network.
 
-For routes to the same network, instead of multiple lines where the network is repeated, one record will be created in which all available next-hop addresses are in list.
+For routes to the same network, instead of multiple lines where network is repeated, one record will be created in which all available next-hop addresses are in list.
 
 Example of *show ip route ospf* output (output/sh_ip_route_ospf.txt file):
 
@@ -451,7 +451,7 @@ The result is:
 
 All right, but we’ve lost path options for routes 10.4.4.4/32 and 10.5.5.5/32. This is logical, because there is no rule that would be appropriate for such a line.
 
-Add a rule to the template for lines with partial entries:
+Add a rule to template for lines with partial entries:
 
 ::
 
@@ -560,7 +560,7 @@ Now the result is not quite correct, address hops are assigned to wrong routes. 
     O        10.6.6.0/24 [110/20] via 10.0.13.3, 1w2d, Ethernet0/2
 
 
-In fact, incomplete route entry should really be written when the next full route entry appears, but at the same time they should be written to appropriate route. The following should be done: once the full route entry is met, the previous values should be written down and then continue to process the same full route entry to get its information. In TextFSM, you can do this with Continue.Record:
+In fact, incomplete route entry should really be written when the next full route entry appears, but at the same time they should be written to appropriate route. The following should be done: once full route entry is met, the previous values should be written down and then continue to process the same full route entry to get its information. In TextFSM, you can do this with Continue.Record:
 
 ::
 
@@ -633,7 +633,7 @@ In this case, it is necessary to obtain:
 * port-channel name and number. For example, Po1 
 * list of all the ports in it. For example, ['Fa0/1', 'Fa0/2', 'Fa0/3']
 
-The difficulty is that the ports are in the same line and TextFSM cannot specify the same variable multiple times in the line. But it is possible to search multiple times for a match in a line.
+The difficulty is that ports are in the same line and TextFSM cannot specify the same variable multiple times in line. But it is possible to search multiple times for a match in a line.
 
 The first version of template:
 
