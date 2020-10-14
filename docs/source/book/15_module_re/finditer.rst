@@ -7,7 +7,7 @@ Function ``finditer()``:
 * returns an iterator with Match objects
 * finditer() returns iterator even if no match is found
 
-The finditer() function is well suited to handle those commands whose output is displayed by columns. For example: ‘sh ip int br’, ‘sh mac address-table’, etc. In this case it can be applied to the entire output of command.
+Function finditer() is well suited to handle those commands whose output is displayed by columns. For example: ‘sh ip int br’, ‘sh mac address-table’, etc. In this case it can be applied to the entire output of command.
 
 Example of 'sh ip int br' output:
 
@@ -89,7 +89,7 @@ A similar result can be obtained by a list generator:
 
 Now we will analyze the same log file that was used in *search* and *match* subsections.
 
-In this case it is possible to pass the entire contents of the file (parse_log_finditer.py):
+In this case it is possible to pass the entire contents of file (parse_log_finditer.py):
 
 .. code:: python
 
@@ -126,7 +126,7 @@ Processing of ‘show cdp neighbors detail’ output
 
 Finditer() can handle output of ‘sh cdp neighbors detail’ as well as in re.search subsection.
 
-The script is almost identical to the version with re.search (parse_sh_cdp_neighbors_detail_finditer.py file):
+The script is almost identical to version with re.search (parse_sh_cdp_neighbors_detail_finditer.py file):
 
 .. code:: python
 
