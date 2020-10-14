@@ -100,9 +100,9 @@ Additional parameters of write methods
 
 Methods dump() and dumps() can pass additional parameters to manage the output format.
 
-By default, these methods write information in a compact view. As a rule, when data is used by other programs, visual presentation of data is not important. If data in file needs to be read  by the person, this format is not very convenient to perceive.
+By default, these methods write information in a compact view. As a rule, when data is used by other programs, visual presentation of data is not important. If data in file needs to be read by person, this format is not very convenient to perceive.
 
-Fortunately, the json module allows you to manage such things.
+Fortunately, json module allows you to manage such things.
 
 By passing additional parameters to dump() method (or dumps() method) you can get a more readable output (json_write_indent.py file):
 
