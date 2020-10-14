@@ -1,43 +1,37 @@
-Форматирование строк
+String formatting
 ====================
 
-При работе со строками часто возникают ситуации, когда в шаблон строки
-надо подставить разные данные.
+When working with strings, there are often situations where different data needs to be substituted in string template.
 
-Это можно делать объединяя, части строки и данные, но в Python есть
-более удобный способ — форматирование строк.
+This can be done by combining string parts and data, but Python has a more convenient way - strings formatting.
 
-Форматирование строк может помочь, например, в таких ситуациях:
+String formatting can help, for example, in such situations:
 
-* необходимо подставить значения в строку по определенному шаблону
-* необходимо отформатировать вывод столбцами
-* надо конвертировать числа в двоичный формат
+* need to set values to a string by a certain template
+* need to format output by columns
+* need to convert numbers to binary format
 
-Существует несколько вариантов форматирования строк:
+There are several options for string formatting:
 
-* с оператором ``%`` — более старый вариант
-* метод ``format()`` — относительно новый вариант
-* f-строки — новый вариант, который появился в Python 3.6. 
+* with operator ``%`` — older option
+* method ``format()`` — relatively new option
+* f-строки — new option that appeared in Python 3.6.
 
-Несмотря на то, что рекомендуется использовать метод ``format``, часто
-можно встретить форматирование строк и через оператор ``%``.
+Although ``format``is recommended, string formatting can often be found through  ``%``.
 
-Форматирование строк с методом format
+String formatting with format() method
 -------------------------------------
 
-Пример использования метода format:
+Example of format() method use:
 
 .. code:: python
 
     In [1]: "interface FastEthernet0/{}".format('1')
     Out[1]: 'interface FastEthernet0/1'
 
-Специальный символ ``{}`` указывает, что сюда подставится значение,
-которое передается методу format. При этом каждая пара фигурных скобок
-обозначает одно место для подстановки.
+A special symbol ``{}`` indicates that the value that is passed to format() method is placed here. Each pair of curly brackets represents one place for the substitution.
 
-Значения, которые подставляются в фигурные скобки, могут быть разного
-типа. Например, это может быть строка, число или список:
+Values that are placed in curly brackets may be of different types. For example, it can be a string, number or list:
 
 .. code:: python
 
@@ -50,13 +44,9 @@
     In [5]: print('{}'.format([10, 1, 1,1]))
     [10, 1, 1, 1]
 
-С помощью форматирования строк можно выводить результат столбцами. В
-форматировании строк можно указывать, какое количество символов выделено
-на данные. Если количество символов в данных меньше, чем выделенное
-количество символов, недостающие символы заполняются пробелами.
+You can display the result with columns by formatting strings. In string formatting, you can specify how many characters are selected for the data. If number of characters in the data is less than number of characters selected, the missing characters are filled with blanks.
 
-Например, таким образом можно вывести данные столбцами одинаковой ширины
-по 15 символов с выравниванием по правой стороне:
+For example, you can derive data by columns of equal width of 15 characters with right side alignment:
 
 .. code:: python
 
@@ -65,14 +55,14 @@
     In [4]: print("{:>15} {:>15} {:>15}".format(vlan, mac, intf))
                 100  aabb.cc80.7000           Gi0/1
 
-Выравнивание по левой стороне:
+Alignment to the left:
 
 .. code:: python
 
     In [5]: print("{:15} {:15} {:15}".format(vlan, mac, intf))
     100             aabb.cc80.7000  Gi0/1
 
-Шаблон для вывода может быть и многострочным:
+Output template can also be multi-string:
 
 .. code:: python
 
@@ -86,56 +76,51 @@
     IP address:
     10.1.1.1
 
-С помощью форматирования строк можно также влиять на отображение чисел.
+You can also use string formatting to influence the display of numbers.
 
-Например, можно указать, сколько цифр после запятой выводить:
+For example, you can specify how many digits after the comma to display:
 
 .. code:: python
 
     In [9]: print("{:.3f}".format(10.0/3))
     3.333
 
-С помощью форматирования строк можно конвертировать числа в двоичный
-формат:
+Using string formatting, you can convert numbers to binary format:
 
 .. code:: python
 
     In [11]: '{:b} {:b} {:b} {:b}'.format(192, 100, 1, 1)
     Out[11]: '11000000 1100100 1 1'
 
-При этом по-прежнему можно указывать дополнительные параметры, например,
-ширину столбца:
+You can still specify additional parameters such as column width:
 
 .. code:: python
 
     In [12]: '{:8b} {:8b} {:8b} {:8b}'.format(192, 100, 1, 1)
     Out[12]: '11000000  1100100        1        1'
 
-А также можно указать, что надо дополнить числа нулями, вместо пробелов:
+You can also specify that numbers should be supplemented with zeros instead of spaces:
 
 .. code:: python
 
     In [13]: '{:08b} {:08b} {:08b} {:08b}'.format(192, 100, 1, 1)
     Out[13]: '11000000 01100100 00000001 00000001'
 
-В фигурных скобках можно указывать имена. Это позволяет передавать
-аргументы в любом порядке, а также делает шаблон более понятным:
+You can enter names in curly brackets. This makes it possible to pass arguments in any order and also makes template more understandable:
 
 .. code:: python
 
     In [15]: '{ip}/{mask}'.format(mask=24, ip='10.1.1.1')
     Out[15]: '10.1.1.1/24'
 
-Еще одна полезная возможность форматирования строк - указание номера
-аргумента:
+Another useful feature of string formatting is argument number specification:
 
 .. code:: python
 
     In [16]: '{1}/{0}'.format(24, '10.1.1.1')
     Out[16]: '10.1.1.1/24'
 
-За счет этого, например, можно избавиться от повторной передачи одних и
-тех же значений:
+For example this can prevent repetitive transmission of the same values:
 
 .. code:: python
 
@@ -151,11 +136,9 @@
     192      100      1        1
     11000000 01100100 00000001 00000001
 
-В примере выше октеты адреса приходится передавать два раза - один для
-отображения в десятичном формате, а второй - для двоичного.
+In example above the octet address has to be passed twice - one for decimal display and other for binary.
 
-Указав индексы значений, которые передаются методу format, можно
-избавиться от дублирования:
+By specifying value indexes that are passed to format() method, it is possible to avoid duplication:
 
 .. code:: python
 
@@ -172,25 +155,17 @@
     11000000 01100100 00000001 00000001
 
 
-Форматирование строк с помощью f-строк
+Strings formatting with f-Strings
 --------------------------------------
 
-В Python 3.6 добавился новый вариант форматирования строк - f-строки или
-интерполяция строк. F-строки позволяют не только подставлять какие-то
-значения в шаблон, но и позволяют выполнять вызовы функций, методов и
-т.п.
+Python 3.6 added a new version of string formatting - f-strings or interpolation of strings. The f-strings allow not only to set values to template, but also to perform calls to functions, methods, etc.
 
-Во многих ситуациях f-строки удобней и проще использовать, чем format,
-кроме того, f-строки работают быстрее, чем format и другие методы
-форматирования строк.
+In many situations f-strings are easier to use than format, and f-strings work faster than format and other methods of string formatting.
 
-
-Синтаксис
+Syntax
 ~~~~~~~~~
 
-F-строки — это литерал строки с буквой ``f`` перед ним. Внутри f-строки
-в паре фигурных скобок указываются имена переменных, которые надо
-подставить:
+F-string is a literal line with a letter f in front of it. Inside f- string, in figure brackets there are names of variables that will be substituted:
 
 .. code:: python
 
@@ -201,16 +176,12 @@ F-строки — это литерал строки с буквой ``f`` пе
     In [3]: f"IP: {ip}, mask: {mask}"
     Out[3]: 'IP: 10.1.1.1, mask: 24'
 
-    Аналогичный результат с format можно получить так:
+    The same result with format() method you can achieve by:
     ``"IP: {ip}, mask: {mask}".format(ip=ip, mask=mask)``.
 
-Очень важное отличие f-строк от format: f-строки — это выражение, которое
-выполняется, а не просто строка. То есть, в случае с ipython, как только
-мы написали выражение и нажали Enter, оно выполнилось и вместо выражений
-``{ip}`` и ``{mask}`` подставились значения переменных.
+A very important difference between f-strings and format(): f-strings are expressions that are processed, not just strings. That is, in case of ipython, as soon as we wrote the expression and pressed Enter, it was performed and instead of expressions ``{ip}`` and ``{mask}`` the values of variables were substituted.
 
-Поэтому, например, нельзя сначала написать шаблон, а затем определить
-переменные, которые используются в шаблоне:
+Therefore, for example, you cannot first write a template and then define variables that are used in template:
 
 .. code:: python
 
@@ -222,8 +193,7 @@ F-строки — это литерал строки с буквой ``f`` пе
 
     NameError: name 'ip' is not defined
 
-Кроме подстановки значений переменных, в фигурных скобках можно писать
-выражения:
+In addition to substituting variable values you can write expressions in curly brackets:
 
 .. code:: python
 
@@ -234,8 +204,7 @@ F-строки — это литерал строки с буквой ``f`` пе
     In [7]: f"{first_name.upper()} {second_name.upper()}"
     Out[7]: 'WILLIAM SHAKESPEARE'
 
-После двоеточия в f-строках можно указывать те же значения, что и при
-использовании format:
+After colon in f-strings you can specify the same values as in format():
 
 .. code:: python
 
@@ -252,7 +221,5 @@ F-строки — это литерал строки с буквой ``f`` пе
 
 .. warning::
 
-  Так как для полноценного объяснения f-строк, надо показывать
-  примеры с циклами и работой с объектами, которые  еще не рассматривались,
-  это тема также есть в разделе :ref:`f_string` с дополнительными примерами и пояснениями.
+  Since for full explanation of f-strings it is necessary to show examples with loops and work with objects that have not yet been considered, this topic is also in the section :ref:`f_string` with additional examples and explanations.
 
