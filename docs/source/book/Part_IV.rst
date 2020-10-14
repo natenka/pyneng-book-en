@@ -17,11 +17,11 @@ This section deals with data reading and writing in CSV, JSON and YAML formats:
 
 .. note::
 
-    Python allows the objects of language itself to be written into files and read through the Pickle module, but this aspect is not considered in this book.
+    Python allows objects of language itself to be written into files and read through Pickle module, but this aspect is not considered in this book.
 
 Databases are also discussed in this part. Although you can write data to CSV or JSON based on a structure, it is not always convenient to query information from files in this format. This is particularly the case for more complex requests with more than one criterion.
 
-For tasks of this kind, databases are excellent. Section 18 deals with  SQLite as well as the basics of SQL language.
+For tasks of this kind, databases are excellent. Section 18 deals with SQLite as well as basics of SQL language.
 
 .. toctree::
    :maxdepth: 1
