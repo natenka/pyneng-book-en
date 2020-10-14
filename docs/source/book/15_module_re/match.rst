@@ -3,7 +3,7 @@ Match function
 
 Function ``match()``: 
 
-* is used to search at the beginning of string that corresponds to the template
+* is used to search at the beginning of string that corresponds to template
 * returns Match object if substring is found
 * returns ``None`` if no substring was found
 
@@ -28,7 +28,7 @@ The result will be None:
     In [6]: print(match)
     None
 
-This is because match() searches for the word *Host* at the beginning of the line. But this message is in the middle.
+This is because match() searches for *Host* word at the beginning of the line. But this message is in the middle.
 
 In this case it is easy to fix expression so that match() function finds match:
 
@@ -40,7 +40,7 @@ In this case it is easy to fix expression so that match() function finds match:
        ...:                  r'(\S+) and port (\S+)', log)
        ...:
 
-The expression ``\S+:`` was added before *Host* word. Now match will be found:
+Expression ``\S+:`` was added before *Host* word. Now match will be found:
 
 .. code:: python
 
@@ -50,7 +50,7 @@ The expression ``\S+:`` was added before *Host* word. Now match will be found:
     In [12]: match.groups()
     Out[12]: ('10', 'Gi0/16', 'Gi0/24')
 
-The example is similar to one used in search() function with minor changes (parse_log_match match.py file):
+Example is similar to one used in search() function with minor changes (parse_log_match match.py file):
 
 .. code:: python
 
