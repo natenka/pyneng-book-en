@@ -1,7 +1,7 @@
 Function re.split
 ----------------
 
-The split() function works similary to split() method in strings, but in re.split function you can use regular expressions which means dividing the string into parts using more complex conditions.
+Function split() works similary to split() method in strings, but in re.split function you can use regular expressions which means dividing a string into parts using more complex conditions.
 
 For example, *ospf_route* string should be split by spaces (as in str.split method):
 
@@ -40,7 +40,7 @@ And if necessary, get rid of square brackets:
     In [4]: re.split(r'[ ,\[\]]+', ospf_route)
     Out[4]: ['O', '10.0.24.0/24', '110/41', 'via', '10.0.13.3', '3d18h', 'FastEthernet0/0']
 
-The split() function has a peculiarity of working with groups (expressions in parentheses). If you specify the same expression with parentheses, the resulting list will include the separators.
+Function split() has a peculiarity of working with groups (expressions in parentheses). If you specify the same expression with parentheses, the resulting list will include separators.
 
 For example, word *via* is specified as a separator:
 
