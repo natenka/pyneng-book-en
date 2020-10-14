@@ -7,9 +7,9 @@
 16. Unicode
 ============================
 
-The programs we write are not isolated. They download data from the Internet, read and write data on disk, transmit data over the network.
+Programs we write are not isolated. They download data from the Internet, read and write data on disk, transmit data over the network.
 
-So it’s very important to understand the difference between how a computer stores and transmits data and how that data is perceived by a person. We take the text, computer takes the bytes.
+So it’s very important to understand the difference between how a computer stores and transmits data and how that data is perceived by a person. We take text, computer takes bytes.
 
 Python 3, respectively, has two concepts:
 
@@ -18,7 +18,7 @@ Python 3, respectively, has two concepts:
 
 .. note::
 
-    It is more correct to say that the text is an immutable sequence of codes (codepoints) Unicode.
+    It is more correct to say that text is an immutable sequence of codes (codepoints) Unicode.
     
 .. toctree::
    :maxdepth: 1
