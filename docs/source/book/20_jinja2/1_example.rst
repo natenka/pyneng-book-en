@@ -101,13 +101,13 @@ File router_config_generator.py:
 * imports template template_r1 
 * from routers_info.yml file the parameter list is read to *routers* variable
 
-Then the objects (dictionaries) in *routers* list are iterated in the loop:
+Then objects (dictionaries) in *routers* list are iterated in the loop:
 
-* name of the file into which the final configuration is written consists of *name* field in dictionary and r1.txt string. For example, Liverpool_r1.txt
+* name of file into which the final configuration is written consists of *name* field in dictionary and r1.txt string. For example, Liverpool_r1.txt
 * file with this name opens in write mode
 * file records the result of template rendering using current dictionary 
 * construction *with* closes the file
-* control returns to the beginning of the loop (until all dictionaries are iterated)
+* control returns to the beginning of loop (until all dictionaries are iterated)
 
 Run file router_config_generator.py:
 
