@@ -6,7 +6,7 @@ Consider a few examples of working with bytes and converting bytes to string.
 subprocess
 ~~~~~~~~~~
 
-The subprocess module returns the result of command as bytes:
+Module subprocess returns the result of command as bytes:
 
 .. code:: python
 
@@ -35,7 +35,7 @@ If it is necessary to work with this output further you should immediately conve
     3 packets transmitted, 3 received, 0% packet loss, time 2002ms
     rtt min/avg/max/mdev = 54.470/56.346/59.440/2.220 ms
 
-The subprocess module supports another conversion option - *encoding* parameter. If you specify it when you call the run() function, the result will be as a string:
+Module subprocess supports another conversion option - *encoding* parameter. If you specify it when you call run() function, the result will be as a string:
 
 .. code:: python
 
@@ -59,9 +59,9 @@ The subprocess module supports another conversion option - *encoding* parameter.
 telnetlib
 ~~~~~~~~~
 
-Depending on the module, conversion between strings and bytes can be performed automatically or may be required explicitly.
+Depending on module, conversion between strings and bytes can be performed automatically or may be required explicitly.
 
-For example, the telnetlib module must transfer bytes to read\_until() and write() methods:
+For example, telnetlib module must transfer bytes to read\_until() and write() methods:
 
 .. code:: python
 
@@ -82,12 +82,12 @@ For example, the telnetlib module must transfer bytes to read\_until() and write
     output = t.read_very_eager().decode('utf-8')
     print(output)
 
-Method returns bytes, so the penultimate line uses decode.
+Method returns bytes, so penultimate line uses decode.
 
 pexpect
 ~~~~~~~
 
-The pexpect module waits for a string as an argument and returns bytes:
+Module pexpect waits for a string as an argument and returns bytes:
 
 .. code:: python
 
@@ -121,7 +121,7 @@ So far, the following construction has been used to handle files:
         for line in f:
             print(line)
 
-But actually, when you read a file you convert bytes to a string. And the default encoding was used:
+But actually, when you read a file you convert bytes to a string. And default encoding was used:
 
 .. code:: python
 
@@ -139,7 +139,7 @@ Default encoding in file:
     In [3]: f
     Out[3]: <_io.TextIOWrapper name='r1.txt' mode='r' encoding='UTF-8'>
 
-When working with files it is better to specify the encoding explicitly because it may differ in different operating systems:
+When working with files it is better to specify encoding explicitly because it may differ in different operating systems:
 
 .. code:: python
 
@@ -161,4 +161,4 @@ When working with files it is better to specify the encoding explicitly because 
 Conclusion
 ~~~~~~
 
-These examples are shown here to show that different modules can treat the issue of conversion between strings and bytes differently. And different functions and methods of these modules can expect arguments and return values of different types. However, all of these items are in the documentation.
+These examples are shown here to show that different modules can treat the issue of conversion between strings and bytes differently. And different functions and methods of these modules can expect arguments and return values of different types. However, all of these items are in documentation.
