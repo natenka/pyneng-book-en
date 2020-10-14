@@ -15,7 +15,7 @@ For example, it could be:
 * files in CSV format
 * database
 
-In addition, Python allows you to write down the objects of the language itself (this aspect is not covered, but if you are interested, look at the Pickle module).
+In addition, Python allows you to write down objects of language itself (this aspect is not covered, but if you are interested, look at the Pickle module).
 
 This section covers CSV, JSON, YAML formats and the following section covers databases.
 
@@ -29,7 +29,7 @@ For which YAML, JSON, CSV formats can be useful:
 * YAML is very convenient to use to describe parameters because it has a nice syntax
 
   * for example, it can be settings for different objects (IP addresses, VLANs, etc.)
-  * at least knowing the YAML format will be useful when using Ansible
+  * at least knowing YAML format will be useful when using Ansible
 
 For each of these formats, Python has a module that makes them easier to work with.
 
