@@ -15,7 +15,7 @@ For example, add an IP address for sw1 switch:
     Query OK, 1 row affected
     Time: 0.009s
 
-Now the table is like this:
+Now table is like this:
 
 .. code:: sql
 
@@ -82,7 +82,7 @@ You can change several fields at a time:
     Time: 0.033s
 
 
-To avoid filling fields mngmt_ip and mngmt_vid manually, fill in the rest from the update_fields_in_testdb.txt file (command ``source update_fields_in_testdb.txt``):
+To avoid filling fields mngmt_ip and mngmt_vid manually, fill in the rest from update_fields_in_testdb.txt file (command ``source update_fields_in_testdb.txt``):
 
 ::
 
@@ -92,7 +92,7 @@ To avoid filling fields mngmt_ip and mngmt_vid manually, fill in the rest from t
     UPDATE switch set mngmt_ip = '10.255.1.6', mngmt_vid = 255 WHERE hostname = 'sw6';
     UPDATE switch set mngmt_ip = '10.255.1.7', mngmt_vid = 255 WHERE hostname = 'sw7';
 
-After commands upload the table is as follows:
+After commands upload table is as follows:
 
 .. code:: sql
 
