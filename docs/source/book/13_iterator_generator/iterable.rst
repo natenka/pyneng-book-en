@@ -24,10 +24,10 @@ In Python the iter() function is responsible for iterator deriving.
     In [2]: iter(lista)
     Out[2]: <list_iterator at 0xb4ede28c>
 
-The ``iter()`` function will work on any object that has ``__iter__`` or  ``__getitem__`` method.
+``iter()`` function will work on any object that has ``__iter__`` or  ``__getitem__`` method.
 
-The ``__iter__`` method returns the iterator. If this method is not available, the iter() function checks if there is ``__getitem__`` method that allows getting elements by index.
+``__iter__`` method returns an iterator. If this method is not available, iter() function checks if there is ``__getitem__`` method that allows getting elements by index.
 
-If method ``__getitem__`` is present the iterator is returned, which iterates through the elements using index (starting with 0).
+If method ``__getitem__`` is present an iterator is returned, which iterates through the elements using index (starting with 0).
 
 In practice, the use of ``__getitem__`` means that all sequence elements are iterable objects. For example, a list, a tuple, a string. Although these data types have ``__iter__`` method.
