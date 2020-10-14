@@ -87,9 +87,9 @@ For example:
 
     result = ssh.send_command('show ip int br')
 
-The method works as follows:
+Method works as follows:
 
-* sends command to device and gets the output until the string with prompt or until the specified string
+* sends command to device and gets the output until string with prompt or until specified string
 
   * prompt is automatically determined
   * if your device does not determine it, you can simply specify a string till which to read the output
