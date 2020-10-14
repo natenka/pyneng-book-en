@@ -88,15 +88,13 @@ Function should process the output of show ip int br command and return such fie
 * Status
 * Protocol
 
-Информация должна возвращаться в виде списка кортежей:
+Information should be returned in the form of a list of tuples:
 
 .. code:: python
 
     [("FastEthernet0/0", "10.0.1.1", "up", "up"),
      ("FastEthernet0/1", "10.0.2.1", "up", "up"),
      ("FastEthernet0/2", "unassigned", "down", "down")]
-
-Information should be returned in the form of a list of tuples:
 
 To get this result, use regular expressions.
 
