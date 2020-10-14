@@ -3,7 +3,7 @@ CREATE
 
 CREATE operator allows you to create tables.
 
-First connect to the database or create it with litecli:
+First connect to database or create it with litecli:
 
 ::
 
@@ -25,14 +25,14 @@ Create a *switch* table which stores information about switches:
 
 In this example, we described *switch* table: we defined which fields would be in the table and which types of values would be in them.
 
-Additionally, *mac* field is the primary key. That automatically means that:
+Additionally, *mac* field is primary key. That automatically means that:
 
 * field must be unique
 * field cannot have null value (in SQLite this must be stated explicitly)
 
 In this example this is quite logical as MAC address must be unique.
 
-There are no entries in the table at the moment, only a definition. You can view the definition with this command:
+There are no entries in the table at the moment, only a definition. You can view definition with this command:
 
 .. code:: sql
 
