@@ -34,7 +34,7 @@ Python has several modules that allow you to connect to equipment and execute co
 
 This section deals with all four modules and describes how to connect to several devices in parallel. Three routers are used in section examples. There are no requirements for them, only configured SSH.
 
-The parameters used in the section:
+Parameters used in these section:
 
 * user: cisco 
 * password: cisco 
