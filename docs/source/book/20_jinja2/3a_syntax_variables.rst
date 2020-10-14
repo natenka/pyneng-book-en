@@ -12,7 +12,7 @@ Variables in template are given in double curly brackets:
 
 Variable values are set based on dictionary that is passed to template.
 
-Variable that is passed on in a dictionary may not only be a number or a string, but also for example, a list or a dictionary. Inside the template, you can refer to the item by number or key.
+Variable that is passed on in a dictionary may not only be a number or a string, but also for example, a list or a dictionary. Inside template, you can refer to the item by number or key.
 
 Template example templates/variables.txt with usage of different variable variants:
 
@@ -44,7 +44,7 @@ And corresponding data_files/vars.yml file with variables:
       network: 10.0.1.0 0.0.0.255
       area: 0
 
-Note the use of *vlans* variable in template: since *vlans* variable is a list, you can specify which item from the list we need
+Note the use of *vlans* variable in template: since *vlans* variable is a list, you can specify which item from list we need
 
 If a dictionary is passed (as in case of  *ospf* variable), you can refer to dictionary objects inside template using one of the variants:  ``ospf.network or ospf['network']``
 
