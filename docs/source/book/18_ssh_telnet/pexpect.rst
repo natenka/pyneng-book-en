@@ -30,7 +30,7 @@ At the same time, pexpect does not implement utilities but uses ready-made ones.
 ``pexpect.spawn``
 ~~~~~~~~~~~~~~~~~
 
-Class ``spawn`` allows you to interact with the called program by sending data and waiting for a response.
+Class ``spawn`` allows you to interact with called program by sending data and waiting for a response.
 
 For example, you can initiate SSH connecton:
 
@@ -38,17 +38,17 @@ For example, you can initiate SSH connecton:
 
     In [5]: ssh = pexpect.spawn('ssh cisco@192.168.100.1')
 
-After executing this line, the connection is established. Now you must specify which line to expect. In this case, wait for the password request:
+After executing this line, connection is established. Now you must specify which line to expect. In this case, wait for password request:
 
 .. code:: python
 
     In [6]: ssh.expect('[Pp]assword')
     Out[6]: 0
 
-Note how the line that pexpect expects is described:
-``[Pp]assword``. This is a regular expression that describes a *password* or *Password* string. That is, the expect() method can be used to pass a regular expression as an argument.
+Note how line that pexpect expects is described:
+``[Pp]assword``. This is a regular expression that describes a *password* or *Password* string. That is, expect() method can be used to pass a regular expression as an argument.
 
-Method expect() returned number 0 as a result of the work. This number indicates that a match has been found and that this element with index zero. The index appears here because you can transfer a list of strings. For example, you can transfer a list with two elements:
+Method expect() returned number 0 as a result of the work. This number indicates that a match has been found and that this element with index zero. Index appears here because you can transfer a list of strings. For example, you can transfer a list with two elements:
 
 .. code:: python
 
@@ -59,7 +59,7 @@ Method expect() returned number 0 as a result of the work. This number indicates
 
 Note that it now returns 1. This means that *Password* word matched.
 
-Now you can send the password using *sendline* command:
+Now you can send password using *sendline* command:
 
 .. code:: python
 
@@ -130,7 +130,7 @@ Since the result is displayed as a sequence of bytes you should convert it to a 
     Ethernet0/3.300            10.30.0.1       YES NVRAM  up                    up
     R1
 
-The session ends with a close() call:
+Session ends with a close() call:
 
 .. code:: python
 
@@ -193,7 +193,7 @@ Method pexpect.expect
 In pexpect.expect as a template can be used:
 
 * regular expression
-* EOF - this template allows you to react to the EOF exception
+* EOF - this template allows you to react to EOF exception
 * TIMEOUT - timeout exception (default timeout = 30 seconds)
 * compiled re
 
@@ -210,11 +210,11 @@ For example:
 
 Here are some important points:
 
-* when pexpect.expect is called with the list, you can specify different expected strings 
+* when pexpect.expect is called with a list, you can specify different expected strings 
 * apart strings, exceptions also can be specified
 * pexpect.expect returns number of element that matched
 
-  * in this case number 2 because the EOF exception is number two in the list  
+  * in this case number 2 because EOF exception is number two in the list  
 
 * with this format you can make branches in the program depending on the element which had a match
 
@@ -268,7 +268,7 @@ Example of using pexpect when connecting to equipment and passing show command (
             result = send_show_command(ip, "cisco", "cisco", "cisco", commands)
             pprint(result, width=120)
 
-This part of the function is responsible for switching to enable mode:
+This part of function is responsible for switching to enable mode:
 
 .. code:: python
 
@@ -301,8 +301,8 @@ Another interesting point about this function:
     return result
 
 Here commands are sent in turn and expect() waits for three options: prompt, timeout or EOF.
-If expect() method didn't catch ``#``, the value 1 will be returned and in this case a message is displayed,
-that the symbol was not found. But in both cases, when a match is found or timeout the resulting output is written to dictionary. Thus, you can see what was received from the device, even
+If expect() method didn't catch ``#``, value 1 will be returned and in this case a message is displayed,
+that symbol was not found. But in both cases, when a match is found or timeout the resulting output is written to dictionary. Thus, you can see what was received from device, even
 if prompt is not found.
 
 Output after script execution:
