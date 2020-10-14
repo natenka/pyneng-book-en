@@ -1,9 +1,9 @@
 Using sqlite3 module without explicit cursor creation 
 --------------------------------------------------------
 
-The execute methods are available in Connection object and in Cursor object but fetch() methods are only available in Cursor object.
+Execute methods are available in Connection object and in Cursor object but fetch() methods are only available in Cursor object.
 
-When using execute() methods with Connection object, the cursor is returned as a result of execute() method. It can be used as an iterator and receive data without fetch() methods. This allows you not to create cursor when working with sqlite3 module.
+When using execute() methods with Connection object, cursor is returned as a result of execute() method. It can be used as an iterator and receive data without fetch() methods. This allows you not to create cursor when working with sqlite3 module.
 
 Example of the resulting script (create_sw_inventory_ver1.py):
 
