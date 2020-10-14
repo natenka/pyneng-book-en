@@ -1,7 +1,7 @@
 SQL basics (in sqlite3 CLI)
 --------------------------
 
-This section deals with the SQL syntax.
+This section deals with SQL syntax.
 
 If you are familiar with basic SQL syntax you can skip this section and move to section :ref:`sqlite3_index`
 
