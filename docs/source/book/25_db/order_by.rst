@@ -22,7 +22,7 @@ If you perform a simple SELECT query, the output is:
     7 rows in set
     Time: 0.039s
 
-With help of ORDER BY operator you can derive entries from *switch* table by sorting them by the switch name:
+With help of ORDER BY operator you can derive entries from *switch* table by sorting them by switch name:
 
 .. code:: sql
 
@@ -42,7 +42,7 @@ With help of ORDER BY operator you can derive entries from *switch* table by sor
     Time: 0.034s
 
 
-By default, sorting is ascending, so the query could be without ASC parameter:
+By default, sorting is ascending, so query could be without ASC parameter:
 
 .. code:: sql
 
