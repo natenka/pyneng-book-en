@@ -5,12 +5,12 @@ You can’t avoid working with bytes. For example, when working with a network o
 
 Accordingly, you need to know how to convert bytes to string and vice versa. That’s what the encoding is for.
 
-The encoding can be represented as an encryption key that specifies:
+Encoding can be represented as an encryption key that specifies:
 
 * how to "encrypt" a string to bytes (str -> bytes). Encode method used (similar to encrypt)
 * how to "decrypt" bytes to string (bytes -> str). Decode method used (similar to decrypt)
 
-This analogy makes it clear that the string-byte and byte-string transformations must use the same encoding.
+This analogy makes it clear that string-byte and byte-string transformations must use the same encoding.
 
 encode, decode
 ~~~~~~~~~~~~~~
@@ -49,7 +49,7 @@ Method encode() is also present in *str* class (as are other methods of working 
     In [7]: str.encode(hi, encoding='utf-8')
     Out[7]: b'\xd0\xbf\xd1\x80\xd0\xb8\xd0\xb2\xd0\xb5\xd1\x82'
 
-And decode() method is available in the *bytes* class (like other methods):
+And decode() method is available in *bytes* class (like other methods):
 
 .. code:: python
 
