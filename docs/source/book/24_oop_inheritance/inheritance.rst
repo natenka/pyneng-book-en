@@ -100,12 +100,12 @@ After inheriting all methods of parent class, child class can:
 * supplement method
 * add your methods
 
-In CiscoSSH class you have to create __init__ method and add parameters to it:
+In CiscoSSH class you have to create __init__() method and add parameters to it:
 
 * enable_password - enable password
 * disable_paging - is responsible for paging turning on/off
 
-Method __init__ can be created entirely from scratch but basic SSH connection logic is the same in ConnectSSH and CiscoSSH, so it is better to add necessary parameters and call __init__ method of ConnectSSH class for connection. There are several options for calling parent method, for example, all of these options will call send_show_command() method of parent class from child class CiscoSSH:
+Method __init__() can be created entirely from scratch but basic SSH connection logic is the same in ConnectSSH and CiscoSSH, so it is better to add necessary parameters and call __init__() method of ConnectSSH class for connection. There are several options for calling parent method, for example, all of these options will call send_show_command() method of parent class from child class CiscoSSH:
 
 .. code:: python
 
@@ -115,7 +115,7 @@ Method __init__ can be created entirely from scratch but basic SSH connection lo
 
 The first variant of ``ConnectSSH.send_show_command`` explicitly specifies the name of parent class - this is the most understandable variant for perception, but its disadvantage is that when a parent class name is changed the name will have to be changed in all places where parent class methods were called. This option also has disadvantages when using multiple inheritance. The second and third options are essentially equivalent but the third option is shorter, so we will use it.
 
-CiscoSSH class with __init__ method:
+CiscoSSH class with __init__() method:
 
 .. code:: python
 
@@ -130,7 +130,7 @@ CiscoSSH class with __init__ method:
             time.sleep(1)
             self._ssh.recv(self._MAX_READ)
 
-Method __init__ in CiscoSSH class added enable_password and disable_paging parameters and uses them accordingly to enter enable mode and disable paging. 
+Method __init__() in CiscoSSH class added enable_password and disable_paging parameters and uses them accordingly to enter enable mode and disable paging. 
 Example of connection:
 
 .. code:: python
