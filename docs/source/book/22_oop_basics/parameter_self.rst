@@ -1,7 +1,7 @@
 Parameter self
 ~~~~~~~~~~~~~
 
-Parameter **self** was specified before in method definition, as well as when using instance variables in the method. Parameter **self** is a reference to a particular instance of the class. Parameter **self** is not a special name but an arrangement. Instead of **self** you can use a different name but you shouldn't do that.
+Parameter **self** was specified before in method definition, as well as when using instance variables in method. Parameter **self** is a reference to a particular instance of class. Parameter **self** is not a special name but an arrangement. Instead of **self** you can use a different name but you shouldn't do that.
 
 Example of using a different name instead of **self**:
 
@@ -32,7 +32,7 @@ It will work the same way:
 
 In all "usual" methods of class the first parameter will always be **self**. Furthermore, creating an instance variable within a class is also done via **self**.
 
-An example of Switch class with new generate_interfaces method: generate_interfaces method must generate a list with interfaces based on specified type and quantity and create variable in an instance of the class. First, the option of creating a usual variable within method:
+An example of Switch class with new generate_interfaces method: generate_interfaces method must generate a list with interfaces based on specified type and quantity and create variable in an instance of class. First, an option of creating a usual variable within method:
 
 .. code:: python
 
@@ -72,7 +72,7 @@ For list with interfaces to be available as a variable in instances, you have to
        ...:         self.interfaces = interfaces
        ...:
 
-Now, after generate_interfaces method is called the *interfaces* variable is created in instance:
+Now, after generate_interfaces method is called *interfaces* variable is created in instance:
 
 .. code:: python
 
