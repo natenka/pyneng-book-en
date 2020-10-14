@@ -11,7 +11,7 @@ A few facts about Unicode:
 
 Each character in Unicode has a specific code. This is a number that is usually written as follows: ``U+0073``, where 0073 - hexadecimal digits.
 
-Apart from the code, each symbol has its own unique name. For example, the letter "s" corresponds to the code ``U+0073`` and the name "LATIN SMALL LETTER S".
+Apart from the code, each symbol has its own unique name. For example, letter "s" corresponds to code ``U+0073`` and the name "LATIN SMALL LETTER S".
 
 Examples of codes, names and corresponding symbols:
 
@@ -24,7 +24,7 @@ Examples of codes, names and corresponding symbols:
 Encodings
 ~~~~~~~~~
 
-Encodings allow to write the character code in bytes.
+Encodings allow to write character code in bytes.
 
 Unicode supports several encodings:
 
