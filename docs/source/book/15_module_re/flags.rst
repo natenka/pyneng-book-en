@@ -46,9 +46,9 @@ For example, from *sh_cdp* string you need to get a device name, platform and IO
        ...:   IP address: 10.1.1.2
        ...: '''
 
-Of course, in this case it is possible to divide a string into parts and work with each string separately, but you can get the necessary data without splitting.
+Of course, in this case it is possible to divide a string into parts and work with each string separately, but you can get necessary data without splitting.
 
-In this expression, the strings with the required data are described:
+In this expression, strings with required data are described:
 
 .. code:: python
 
@@ -62,7 +62,7 @@ In this case, there will be no match because by default a dot means any characte
     In [4]: print(re.search(regex, sh_cdp))
     None
 
-You can change the default behavior by using the re.DOTALL flag:
+You can change default behavior by using re.DOTALL flag:
 
 .. code:: python
 
@@ -108,9 +108,9 @@ A short output to ease understanding of result:
     R1               Gi 1/0/22         158              R     C3825     Gi 0/0
     R2               Gi 1/0/21         177              R     C2911     Gi 0/0
 
-This is because there is a ``.+`` combination between the desired parts of the output.
-Without the ``re.DOTALL`` flag, such an expression would capture everything before line feed character, but with the flag it captures the longest possible piece of text because ``+`` is greedy.
-As a result, the regular expression describes a string from the first Device ID to the last place where ``Cisco IOS Software.+ Version`` meets.
+This is because there is a ``.+`` combination between desired parts of the output.
+Without ``re.DOTALL`` flag, such an expression would capture everything before line feed character, but with a flag it captures the longest possible piece of text because ``+`` is greedy.
+As a result, regular expression describes a string from the first Device ID to the last place where ``Cisco IOS Software.+ Version`` meets.
 
 This situation occurs very often when using ``re.DOTALL`` and in order to correct it remember to disable greedy behavior:
 
