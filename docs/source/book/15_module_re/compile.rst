@@ -3,7 +3,7 @@ Compile function
 
 Python has the ability to pre-compile a regular expression and then use it. This is particularly useful when regular expression is used a lot in the script.
 
-The use of a compiled expression can speed up processing and it is generally more convenient to use this option as the program divides the creation of a regular expression and its use. In addition, using re.compile function creates a RegexObject object that has several additional features that are not present in the MatchObject object.
+The use of a compiled expression can speed up processing and it is generally more convenient to use this option as the program divides the creation of a regular expression and its use. In addition, using re.compile function creates a RegexObject object that has several additional features that are not present in MatchObject object.
 
 To compile a regular expression, use re.compile:
 
@@ -11,7 +11,7 @@ To compile a regular expression, use re.compile:
 
     In [52]: regex = re.compile(r'\d+ +\S+ +\w+ +\S+')
 
-It returns the RegexObject object:
+It returns RegexObject object:
 
 .. code:: python
 
@@ -38,7 +38,7 @@ RegexObject has such methods and attributes:
      'sub',
      'subn']
 
-Note that Regex object has search(), match(), finditer(), findall() methods available. These are the same functions that are available in the module globally, but now they have to be applied to the object.
+Note that Regex object has search(), match(), finditer(), findall() methods available. These are the same functions that are available in module globally, but now they have to be applied to object.
 
 An example of using search() method:
 
@@ -48,7 +48,7 @@ An example of using search() method:
 
     In [68]: match = regex.search(line)
 
-Now search() should be called as the method of *regex* object. And pass the string as an argument.
+Now search() should be called as method of *regex* object. And pass a string as an argument.
 
 The result is a Match object:
 
@@ -101,10 +101,10 @@ Options that are available only when using re.compile
 
 When using re.compile in search(), match(), findall(), finditer() and fullmatch() methods, additional parameters appear:
 
-* pos - allows you to specify an index in the string from where to start looking for a match
+* pos - allows you to specify an index in string from where to start looking for a match
 * endpos - specifies from which index the search should be started
 
-Their use is similar to the execution of a string slice.
+Their use is similar to execution of a string slice.
 
 For example, this is the result without specifying *pos*, *endpos* parameters:
 
