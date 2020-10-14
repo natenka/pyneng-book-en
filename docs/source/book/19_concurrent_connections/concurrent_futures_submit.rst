@@ -60,14 +60,13 @@ Example of running a function in threads using submit() (netmiko_threads_submit_
         for device in devices:
             future = executor.submit(send_show, device, 'sh clock')
             future_list.append(future)
-        # то же самое в виде list comprehensions:
+        # the same in the form of list comprehensions:
         # future_list = [executor.submit(send_show, device, 'sh clock') for device in devices]
         for f in as_completed(future_list):
             print(f.result())
 
 
-Остальной код не изменился, поэтому разобраться надо только с блоком,
-который запускает функцию send_show в потоках:
+The rest of the code has not changed, so you only need to deal with the block which runs send_show() function in threads:
 
 .. code:: python
 
