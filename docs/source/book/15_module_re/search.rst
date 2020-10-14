@@ -3,15 +3,15 @@ Search function
 
 Function ``search()``: 
 
-* is used to find a substring that matches the template
-* returns the Match object if a substring is found
+* is used to find a substring that matches a template
+* returns Match object if a substring is found
 * returns ``None`` if no substring was found
 
-The search() function is suitable when you need to find only one match in a string, for example when a regular expression describes the entire string or part of a string.
+Function search() is suitable when you need to find only one match in a string, for example when a regular expression describes the entire string or part of a string.
 
-Consider an example of using the search() function to parse a log file.
+Consider an example of using search() function to parse a log file.
 
-The log.txt file contains log messages indicating that the same MAC is too often re-learned on one or another interface. One of the reasons for these messages is loop in network.
+File log.txt contains log messages indicating that the same MAC is too often re-learned on one or another interface. One of the reasons for these messages is loop in network.
 
 Contents of log.txt file:
 
@@ -22,7 +22,7 @@ Contents of log.txt file:
     %SW_MATM-4-MACFLAP_NOTIF: Host 01e2.4c18.0156 in vlan 10 is flapping between port Gi0/24 and port Gi0/19
     %SW_MATM-4-MACFLAP_NOTIF: Host 01e2.4c18.0156 in vlan 10 is flapping between port Gi0/24 and port Gi0/16
 
-The MAC address can jump between several ports. In this case it is very important to know from which ports the MAC comes.
+MAC address can jump between several ports. In this case it is very important to know from which ports MAC comes.
 
 Try to figure out which ports and which VLAN was the problem. Check regular expression with one line from log file:
 
@@ -38,12 +38,12 @@ Try to figure out which ports and which VLAN was the problem. Check regular expr
        ...:                   r'(\S+) and port (\S+)', log)
        ...:
 
-The regular expression is divided into parts for ease of reading. It has three groups:
+Regular expression is divided into parts for ease of reading. It has three groups:
 
 * ``(\d+)`` - describes VLAN number
 * ``(\S+) and port (\S+)`` - describes port numbers
 
-As a result, the following parts of the line fell into the groups:
+As a result, the following parts of line fell into the groups:
 
 .. code:: python
 
@@ -146,9 +146,9 @@ Explanations for the second option:
 
 * in regular expression, all line variants are described via ``|`` sign (or) 
 * without checking a line the match is searched 
-* if a match is found, the lastgroup() method is checked
+* if a match is found, lastgroup() method is checked
 * lastgroup() method returns name of the last named group in regular expression for which a match has been found
-* if a match was found for the *device* group, the value that fells into the group is written to *device* variable 
+* if a match was found for *device* group, the value that fells into the group is written to *device* variable 
 * otherwise the mapping of ‘group name’: ‘corresponding value’ is written to dictionary
 
 Result will be the same:
