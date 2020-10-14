@@ -1,8 +1,7 @@
-Объединение литералов строк
+Literal strings concatenation
 ---------------------------
 
-В Python есть очень удобная функциональность — объединение литералов
-строк.
+Python has very convenient functionality — literal strings concatenation
 
 .. code:: python
 
@@ -16,8 +15,7 @@
     In [4]: s
     Out[4]: 'TestString'
 
-Можно даже переносить составляющие строки на разные строки, но только
-если они в скобках:
+It is even possible to transfer the composite strings to different strings, but only if they are in brackets:
 
 .. code:: python
 
@@ -27,7 +25,7 @@
     In [6]: s
     Out[6]: 'TestString'
 
-Этим очень удобно пользоваться в регулярных выражениях:
+This is very convenient to use in regular expressions:
 
 .. code:: python
 
@@ -36,8 +34,7 @@
              '(up|down|administratively down) +'
              '(\w+)')
 
-Так регулярное выражение можно разбивать на части и его будет проще
-понять. Плюс можно добавлять поясняющие комментарии в строках.
+This way, the regular expression can be split and made easier to understand. Plus you can add explanatory comments in strings.
 
 .. code:: python
 
@@ -46,15 +43,14 @@
              '(up|down|administratively down) +' # Status
              '(\w+)') # Protocol
 
-Также этим приемом удобно пользоваться, когда надо написать длинное
-сообщение:
+It is also convenient to use this technique when writing a long message:
 
 .. code:: python
 
-    In [7]: message = ('При выполнении команды "{}" '
-       ...: 'возникла такая ошибка "{}".\n'
-       ...: 'Исключить эту команду из списка? [y/n]')
+    In [7]: message = ('During command execution "{}" '
+       ...: 'such error occured "{}".\n'
+       ...: 'Exclude this command from the list? [y/n]')
 
     In [8]: message
-    Out[8]: 'При выполнении команды "{}" возникла такая ошибка "{}".\nИсключить эту команду из списка? [y/n]'
+    Out[8]: 'During command execution "{}" such error occured "{}".\nExclude this command from the list? [y/n]'
 
