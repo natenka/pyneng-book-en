@@ -20,12 +20,12 @@ Example of Match object:
     In [3]: match
     Out[3]: <_sre.SRE_Match object; span=(47, 124), match='Host f03a.b216.7ad7 in vlan 10 is flapping betwee>'
 
-The 3rd line output simply displays information about the object. Therefore, it is not necessary to rely on what is displayed in the match part as the displayed line is cut by a fixed number of characters.
+The 3rd line output simply displays information about object. Therefore, it is not necessary to rely on what is displayed in match part as displayed line is cut by a fixed number of characters.
 
 group()
 ^^^^^^^
 
-The group() method returns a substring that matches an expression or an expression in a group.
+Method group() returns a substring that matches an expression or an expression in a group.
 
 If method is called without arguments, the whole substring is displayed:
 
@@ -57,7 +57,7 @@ Other numbers show only the contents of relevant group:
     In [9]: match.group(4)
     Out[9]: 'Gi0/15'
 
-If you call a group() method with a group number that is larger than the number of existing groups, there is an error:
+If you call a group() method with a group number that is larger than number of existing groups, there is an error:
 
 .. code:: python
 
@@ -87,7 +87,7 @@ Group may not get anything, then it will be matched with an empty string:
     In [14]: match.group(2)
     Out[14]: ''
 
-If group describes a part of the template and there are more than one match, the method displays the last match:
+If group describes a part of template and there are more than one match, method displays the last match:
 
 .. code:: python
 
@@ -98,9 +98,9 @@ If group describes a part of the template and there are more than one match, the
     In [17]: match.group(1)
     Out[17]: 'b216.'
 
-This is because expression in brackets describes four letters or numbers, dot and then there is a  plus. Accordingly, the first and the second part of the MAC address matched to expression in parentheses. But only the last expression is remembered and returned.
+This is because expression in brackets describes four letters or numbers, dot and then there is a  plus. Accordingly, the first and the second part of MAC address matched to expression in parentheses. But only the last expression is remembered and returned.
 
-If named groups are used in the expression, the group name can be passed to group() method and the corresponding substring can be obtained:
+If named groups are used in expression, group name can be passed to group() method and the corresponding substring can be obtained:
 
 .. code:: python
 
@@ -132,7 +132,7 @@ Groups are also available via number:
 groups()
 ^^^^^^^^
 
-The group() method returns a tuple with strings in which the elements are those substrings that fall into the respective groups:
+Method group() returns a tuple with strings in which the elements are those substrings that fall into respective groups:
 
 .. code:: python
 
@@ -148,7 +148,7 @@ The group() method returns a tuple with strings in which the elements are those 
     In [26]: match.groups()
     Out[26]: ('f03a.b216.7ad7', '10', 'Gi0/5', 'Gi0/15')
 
-The group method has an optional parameter  - default. It works when anything that comes into the group is optional.
+Method group() has an optional parameter  - default. It works when anything that comes into group is optional.
 
 For example, with this line the match will be in both the first group and the second:
 
@@ -161,7 +161,7 @@ For example, with this line the match will be in both the first group and the se
     In [28]: match.groups()
     Out[28]: ('100', 'aab1')
 
-If there is nothing in the line after the space, nothing will get into the group. But the match will be because it is stated in regular expression that the group is optional:
+If there is nothing in the line after space, nothing will get into the group. But the match will be because it is stated in regular expression that the group is optional:
 
 .. code:: python
 
@@ -191,7 +191,7 @@ If group() method is given a default value, it will be returned instead of None:
 groupdict()
 ^^^^^^^^^^^
 
-The groupdict() method returns a dictionary in which the keys are group names and the values are corresponding lines:
+Method groupdict() returns a dictionary in which keys are group names and values are corresponding lines:
 
 .. code:: python
 
@@ -212,7 +212,7 @@ start(), end()
 
 start() and end() methods return indexes of the beginning and end of the match of regular expression.
 
-If the methods are called without arguments, they return indexes for whole match:
+If methods are called without arguments, they return indexes for whole match:
 
 .. code:: python
 
@@ -264,7 +264,7 @@ Similarly for named groups:
 span()
 ^^^^^^
 
-The span() method returns a tuple with an index of the beginning and end of substring. It works in a similar way to start() and end() methods, but returns a pair of numbers.
+Method span() returns a tuple with an index of the beginning and end of substring. It works in a similar way to start() and end() methods, but returns a pair of numbers.
 
 Without arguments span() returns indexes for whole match:
 
