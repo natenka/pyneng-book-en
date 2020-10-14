@@ -6,9 +6,9 @@ Function ``findall()``:
 * is used to search for all disjoint matches in template
 * returns:
 
-  * list of strings that are described by the regular expression if there are no groups in regular expression
-  * list of strings that match with the regular expression in the group if there is only one group in regular expression 
-  * list of tuples containing strings that matches with the expression in the group if there are more than one group
+  * list of strings that are described by regular expression if there are no groups in regular expression
+  * list of strings that match with regular expression in the group if there is only one group in regular expression 
+  * list of tuples containing strings that matches with expression in the group if there are more than one group
 
 Consider the work of findall() with an example of ‘sh mac address-table output’:
 
@@ -63,7 +63,7 @@ As soon as a group appears in regular expression, findall() behaves differently.
      'a1bb.1c60.7000',
      'aa0b.cc70.7000']
 
-findall() searches for a match of the entire string but returns a result similar to the group() method in Match object.
+findall() searches for a match of the entire string but returns a result similar to group() method in Match object.
 
 If there are several groups, findall() will return the list of tuples:
 
