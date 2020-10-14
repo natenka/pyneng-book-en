@@ -9,7 +9,7 @@ After you finish working with file you have to close it. In some cases Python ca
 ``close()``
 ^^^^^^^^^^^
 
-Method close() met in `File writing  <./3_write.md>`__ section.
+Method close() met in `File writing  <https://pyneng.readthedocs.io/en/latest/book/07_files/3_write.html>`__ section.
 It was there to make sure that the content of file was written on disk.
 
 For this, Python has a separate ``flush()`` method.
