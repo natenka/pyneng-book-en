@@ -32,8 +32,8 @@ Example of script with logging settings: (logging_basics.py file)
     import yaml
 
 
-    # эта строка указывает, что лог-сообщения paramiko будут выводиться
-    # только если они уровня WARNING и выше
+    # this string indicates that paramiko log messages will be displayed
+    # only if they have WARNING level or higher 
     logging.getLogger("paramiko").setLevel(logging.WARNING)
 
     logging.basicConfig(
