@@ -1,7 +1,7 @@
 Greedy symbols
 ----------------------------
 
-By default, repetition symbols in regular expressions are greedy. This means that the resulting substring which corresponds to the template will have the longest match.
+By default, repetition symbols in regular expressions are greedy. This means that the resulting substring which corresponds to template will have the longest match.
 
 An example of greedy behavior:
 
@@ -14,9 +14,9 @@ An example of greedy behavior:
     In [4]: match.group()
     Out[4]: '<text line> some text>'
 
-That is, in this case, the expression captured the maximum possible piece of symbols contained in <>.
+That is, in this case, expression captured maximum possible piece of symbols contained in <>.
 
-If greedy behavior need to be disabled, it is sufficient to add a question mark after the repetition symbols:
+If greedy behavior need to be disabled, it is sufficient to add a question mark after repetition symbols:
 
 .. code:: python
 
@@ -27,7 +27,7 @@ If greedy behavior need to be disabled, it is sufficient to add a question mark 
     In [7]: match.group()
     Out[7]: '<text line>'
 
-But greed is often useful. For example, without turning off the greed of the last plus, the expression ``\d+\s+\S+`` describes such a line:
+But greed is often useful. For example, without turning off greed of the last plus, expression ``\d+\s+\S+`` describes such a line:
 
 .. code:: python
 
@@ -36,7 +36,7 @@ But greed is often useful. For example, without turning off the greed of the las
     In [9]: re.search('\d+\s+\S+', line).group()
     Out[9]: '1500     aab1.a1a1.a5d3'
 
-Symbol ``\S`` denotes everything except whitespace characters. Therefore, the expression ``\S+`` with the greedy repetition symbol describes the maximal long string until the first whitespace character. In this case up to the first space.
+Symbol ``\S`` denotes everything except whitespace characters. Therefore, expression ``\S+`` with greedy repetition symbol describes maximum long string until the first whitespace character. In this case up to the first space.
 
 If greed is disabled, the result is:
 
