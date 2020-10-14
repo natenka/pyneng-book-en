@@ -81,13 +81,13 @@ We will check *clitable* on the last example from previous section - *show ip ro
        ...:
 
 
-First, you should initialize a class by giving it name of the file in which mapping between templates and commands is stored, and specify name of the directory in which templates are stored:
+First, you should initialize a class by giving it name of file in which mapping between templates and commands is stored, and specify name of directory in which templates are stored:
 
 .. code:: python
 
     In [3]: cli_table = clitable.CliTable('index', 'templates')
 
-Specify which command should be passed and specify additional attributes that will help to identify template. To do this, you should create a dictionary in which keys are the names of columns that are defined in index file. In this case, it is not necessary to specify vendor name, since *sh ip route ospf* command corresponds to only one template.
+Specify which command should be passed and specify additional attributes that will help to identify template. To do this, you should create a dictionary in which keys are names of columns that are defined in index file. In this case, it is not necessary to specify vendor name, since *sh ip route ospf* command corresponds to only one template.
 
 .. code:: python
 
