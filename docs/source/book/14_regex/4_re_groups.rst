@@ -1,11 +1,11 @@
 Expressions grouping
 ---------------------
 
-Expressions grouping indicates that the sequence of symbols should be considered as a one. However, this is not the only advantage of grouping.
+Expressions grouping indicates that sequence of symbols should be considered as a one. However, this is not the only advantage of grouping.
 
-In addition, by use of groups you can get only a certain portion of the string that has been described by the expression.
+In addition, by use of groups you can get only a certain portion of string that has been described by expression.
 
-For example, from a log file you should select strings in which "%SW_MATM-4-MACFLAP_NOTIF" meets and then from each such string get MAC address, VLAN and interfaces. In this case, the regular expression simply has to describe the string and all the parts of the string to be obtained are simply placed in brackets.
+For example, from a log file you should select strings in which "%SW_MATM-4-MACFLAP_NOTIF" meets and then from each such string get MAC address, VLAN and interfaces. In this case, regular expression simply has to describe a string and all parts of string to be obtained are simply placed in brackets.
 
 Python has two options for using groups:
 
@@ -15,9 +15,9 @@ Python has two options for using groups:
 Numbered groups
 ~~~~~~~~~~~~~~~~~~~
 
-The group is defined by placing the expression in brackets ``()``.
+Group is defined by placing expression in brackets ``()``.
 
-Inside the expression, group are numbered from left to right starting with 1. Groups can then be approached by numbers and receive text that corresponds to the group expression.
+Inside expression, group are numbered from left to right starting with 1. Groups can then be approached by numbers and receive text that corresponds to group expression.
 
 Example of groups use:
 
@@ -28,12 +28,12 @@ Example of groups use:
 
 In this example, two groups are specified:
 
--  the first group - any characters other than whitespaces
--  the second group - any letter or digit (symbol ``\w``) or dot
+-  first group - any characters other than whitespaces
+-  second group - any letter or digit (symbol ``\w``) or dot
 
-The second group could be described as the first. The other version is just for example.
+The second group could be described as the first. Other version is just for example.
 
-You can now access the group by number. Group 0 is a string that corresponds to the entire template:
+You can now access a group by number. Group 0 is a string that corresponds to the entire template:
 
 .. code:: python
 
@@ -69,7 +69,7 @@ Starting with Python 3.6, groups can be accessed as follows:
     In [17]: match[2]
     Out[17]: '10.0.12.1'
 
-Method groups() is used to display all substrings that correspond to the specified groups:
+Method groups() is used to display all substrings that correspond to specified groups:
 
 .. code:: python
 
@@ -79,11 +79,11 @@ Method groups() is used to display all substrings that correspond to the specifi
 Named groups
 ~~~~~~~~~~~~~~~~~~
 
-When the expression is complex, it is not very convenient to determine the number of the group. Plus, when you modify an expression the order of groups can be changed and you will need to change the code that refers to the groups.
+When expression is complex, it is not very convenient to determine number of group. Plus, when you modify an expression the order of groups can be changed and you will need to change the code that refers to groups.
 
-The named groups allow you to give a name to the group.
+Named groups allow you to give a name to the group.
 
-Syntax of the named group ``(?P<name>regex)``:
+Syntax of named group ``(?P<name>regex)``:
 
 .. code:: python
 
@@ -101,14 +101,14 @@ These groups can now be accessed by name:
     In [22]: match.group('address')
     Out[22]: '10.0.12.1'
 
-It is also very useful that with the groupdict() method you can get a dictionary where the keys are the names of groups and the values are the substrings that correspond to them:
+It is also very useful that with groupdict() method you can get a dictionary where keys are the names of groups and values are the substrings that correspond to them:
 
 .. code:: python
 
     In [23]: match.groupdict()
     Out[23]: {'address': '10.0.12.1', 'intf': 'FastEthernet0/1'}
 
-And then you can add groups to the regular expression and rely on their name instead of order:
+And then you can add groups to regular expression and rely on their name instead of order:
 
 .. code:: python
 
