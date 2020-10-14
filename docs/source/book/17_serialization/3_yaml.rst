@@ -63,7 +63,7 @@ This line, for example, should be quoted to be correctly understood by YAML:
 Combination of elements
 ^^^^^^^^^^^^^^^^^^^^
 
-A dictionary with two keys: access and trunk. The values that correspond to these keys - command lists:
+A dictionary with two keys: access and trunk. Values that correspond to these keys - command lists:
 
 .. code:: yaml
 
@@ -112,7 +112,7 @@ Python uses a PyYAML module to work with YAML. It is not part of the standard mo
 
     pip install pyyaml
 
-Work with it is similar to the csv and json modules.
+Work with it is similar to csv and json modules.
 
 Reading from YAML
 ^^^^^^^^^^^^^^
