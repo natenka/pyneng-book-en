@@ -87,7 +87,7 @@ In Python, iter() function is responsible for getting an iterator :
     Out[2]: <list_iterator at 0xb4ede28c>
 
 ``iter`` function will work on any object that has __iter__ or __getitem__ method.
-Method __iter__ returns the iterator. If this method is not available, iter() function checks availability of __getitem__ method that can get elements by index. If __getitem__ method exists, the elements will be iterated through index (starting with 0).
+Method __iter__ returns an iterator. If this method is not available, iter() function checks availability of __getitem__ method that can get elements by index. If __getitem__ method exists, elements will be iterated through index (starting with 0).
 
 
 **iterator** - object that returns its elements one at a time.
@@ -133,7 +133,7 @@ After elements are ended, Stopiteration exception is returned. In order for iter
     2
     3
 
-When we iterate list items, iter() function is first applied to the list to create the iterator and then __next__ method is called until Stopiteration exception occurs.
+When we iterate list items, iter() function is first applied to the list to create an iterator and then __next__ method is called until Stopiteration exception occurs.
 
 An example of my_for() function that works with any iterable object and imitates built-in function **for**:
 
@@ -287,7 +287,7 @@ Creation of iterable object
 
 Very often it is sufficient for class to be an iterable object and not necessarily an iterator. If an object is iterable, it can be used in *for* loop, *map* functions, *filter*, *sorted*, *enumerate* and others. It is also generally easier to make an iterable object than an iterator.
 
-In order for Network class to create iterable objects, the class must have __iter__ (__next__ is not needed) and method must return iterator. Since in this case, Network iterates addresses that are in self.addresses list, the easiest option to return iterator is to return  ``iter(self.addresses)``:
+In order for Network class to create iterable objects, class must have __iter__ (__next__ is not needed) and method must return iterator. Since in this case, Network iterates addresses that are in self.addresses list, the easiest option to return iterator is to return  ``iter(self.addresses)``:
 
 .. code:: python
 
