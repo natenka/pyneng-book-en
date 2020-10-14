@@ -26,7 +26,7 @@ Adding entries using ALTER command:
     Query OK, 0 rows affected
     Time: 0.010s
 
-Now the table looks like this (new fields are set to NULL):
+Now table looks like this (new fields are set to NULL):
 
 .. code:: sql
 
