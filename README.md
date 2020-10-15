@@ -1,4 +1,4 @@
-# Python for network engineers
+# [Python for network engineers](https://pyneng.readthedocs.io/en/latest/)
 
 * [Russian](https://pyneng.readthedocs.io/ru/latest/)
 * [English translation](https://pyneng.readthedocs.io/en/latest/)
