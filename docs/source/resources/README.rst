@@ -87,8 +87,7 @@ Books
 Basic level:
 
 * `Think Python <https://greenteapress.com/wp/think-python-2e/>`__ - good book on Python basics. There are tasks in the book.
-* `Python Crash Course: A Hands-On, Project-Based Introduction to Programming <https://www.amazon.com/Python-Crash-Course-Hands-Project-Based-ebook/dp/B018UXJ9RI/>`__ - a book on Python basics. Half of the book is dedicated to "standard" description of Python basics and in the second half these bases are used
-for projects. There are tasks in the book.
+* `Python Crash Course: A Hands-On, Project-Based Introduction to Programming <https://www.amazon.com/Python-Crash-Course-Hands-Project-Based-ebook/dp/B018UXJ9RI/>`__ - a book on Python basics. Half of the book is dedicated to "standard" description of Python basics and in the second half these bases are used for projects. There are tasks in the book.
 * `Automate the Boring Stuff with Python <https://automatetheboringstuff.com/>`__ - in this book you can find many ideas on automation of daily work. These topics are: working with PDF, Excel, Word, sending letters, working with pictures, working with the web
 
 Medium/advanced level:
