@@ -19,8 +19,8 @@ Using TextFSM is better than simple line processing, as templates give a better 
    :maxdepth: 1
 
    README
-   1_textfsm_syntax
-   2_textfsm_examples
-   3_textfsm_clitable
+   textfsm_syntax
+   textfsm_examples
+   textfsm_clitable
    further_reading
    ../../exercises/21_exercises

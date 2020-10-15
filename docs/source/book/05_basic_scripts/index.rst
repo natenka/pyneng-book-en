@@ -47,7 +47,7 @@ All scripts that will be created in this course have an extension. You can say t
 .. toctree::
    :maxdepth: 1
 
-   0_executable
-   1_args
-   2_user_input
+   executable
+   args
+   user_input
    ../../exercises/05_exercises

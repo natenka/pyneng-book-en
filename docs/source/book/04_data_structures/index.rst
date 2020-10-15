@@ -17,27 +17,26 @@ Python has several standard data types:
 -  Sets
 -  Boolean (logical data type)
 
-These data types, in turn, can be classified by several grounds:
+These data types, in turn, can be classified by several criteria:
 
 -  mutable (lists, dictionaries and sets)
 -  immutable (integers, strings and tuples)
 -  ordered (lists, tuples, strings and dictionaries)
 -  unordered (sets)
 
-Content of section:
 
 .. toctree::
    :maxdepth: 1
 
    README
-   3_numbers
-   4_strings
-   5_lists
-   6_dicts
-   7_tuple
-   8_set
-   9_boolean
-   9_convert_type
-   9a_check_type
+   numbers
+   strings
+   lists
+   dicts
+   tuple
+   set
+   boolean
+   convert_type
+   check_type
    further_reading
    ../../exercises/04_exercises

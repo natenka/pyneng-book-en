@@ -36,8 +36,8 @@ For each of these formats, Python has a module that makes them easier to work wi
 .. toctree::
    :maxdepth: 1
 
-   1_csv
-   2_json
-   3_yaml
+   csv
+   json
+   yaml
    further_reading
    ../../exercises/17_exercises
