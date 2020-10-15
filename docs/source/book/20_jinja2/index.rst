@@ -22,7 +22,6 @@ Examples of use:
 
    README
    example
-   example
    template_syntax
    template_inheritance
    further_reading
