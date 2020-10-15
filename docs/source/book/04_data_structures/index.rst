@@ -7,7 +7,7 @@
 4. Python data types
 ============================
 
-Python has several standard data types:
+Python has several data types:
 
 -  Numbers
 -  Strings
@@ -15,7 +15,7 @@ Python has several standard data types:
 -  Dictionaries
 -  Tuples
 -  Sets
--  Boolean (logical data type)
+-  Boolean
 
 These data types, in turn, can be classified by several criteria:
 

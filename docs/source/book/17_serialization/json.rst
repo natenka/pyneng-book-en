@@ -13,10 +13,24 @@ Reading
 
 File sw_templates.json:
 
+.. code:: json
 
-.. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/json/sw_templates.json
-  :language: json
-  :linenos:
+    {
+      "access": [
+        "switchport mode access",
+        "switchport access vlan",
+        "switchport nonegotiate",
+        "spanning-tree portfast",
+        "spanning-tree bpduguard enable"
+      ],
+      "trunk": [
+        "switchport trunk encapsulation dot1q",
+        "switchport mode trunk",
+        "switchport trunk native vlan 999",
+        "switchport trunk allowed vlan"
+      ]
+    }
+
 
 There are two methods for reading in json module:
 
@@ -28,10 +42,18 @@ json.load()
 
 Reading JSON file to Python object (json_read_load.py file):
 
+.. code:: python
 
-.. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/json/json_read_load.py
-  :language: python
-  :linenos:
+    import json
+
+    with open('sw_templates.json') as f:
+        templates = json.load(f)
+
+    print(templates)
+
+    for section, commands in templates.items():
+        print(section)
+        print('\n'.join(commands))
 
 The output will be as follows:
 
@@ -56,9 +78,20 @@ json.loads()
 
 Reading JSON string to Python object (json_read_loads.py file):
 
-.. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/json/json_read_loads.py
-  :language: python
-  :linenos:
+.. code:: python
+
+    import json
+
+    with open('sw_templates.json') as f:
+        file_content = f.read()
+        templates = json.loads(file_content)
+
+    print(templates)
+
+    for section, commands in templates.items():
+        print(section)
+        print('\n'.join(commands))
+
 
 The result will be similar to previous output.
 
@@ -77,9 +110,28 @@ json.dumps()
 
 Convert object to string in JSON format (json_write_dumps.py):
 
-.. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/json/json_write_dumps.py
-  :language: python
-  :linenos:
+.. code:: python
+
+    import json
+
+    trunk_template = [
+        'switchport trunk encapsulation dot1q', 'switchport mode trunk',
+        'switchport trunk native vlan 999', 'switchport trunk allowed vlan'
+    ]
+
+    access_template = [
+        'switchport mode access', 'switchport access vlan',
+        'switchport nonegotiate', 'spanning-tree portfast',
+        'spanning-tree bpduguard enable'
+    ]
+
+    to_json = {'trunk': trunk_template, 'access': access_template}
+
+    with open('sw_templates.json', 'w') as f:
+        f.write(json.dumps(to_json))
+
+    with open('sw_templates.json') as f:
+        print(f.read())
 
 
 Method json.dumps() is suitable for situations where you want to return a string in JSON format. For example, to pass it to the API.
@@ -89,9 +141,30 @@ json.dump()
 
 Write a Python object to a JSON file (json_write_dump.py file):
 
-.. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/json/json_write_dump.py
-  :language: python
-  :linenos:
+.. code:: python
+
+    import json
+
+    trunk_template = [
+        'switchport trunk encapsulation dot1q', 'switchport mode trunk',
+        'switchport trunk native vlan 999', 'switchport trunk allowed vlan'
+    ]
+
+    access_template = [
+        'switchport mode access', 'switchport access vlan',
+        'switchport nonegotiate', 'spanning-tree portfast',
+        'spanning-tree bpduguard enable'
+    ]
+
+    to_json = {'trunk': trunk_template, 'access': access_template}
+
+    with open('sw_templates.json', 'w') as f:
+        json.dump(to_json, f)
+
+    with open('sw_templates.json') as f:
+        print(f.read())
+
+
 
 When you want to write information in JSON format into a file, it is better to use dump() method.
 
@@ -106,9 +179,28 @@ Fortunately, json module allows you to manage such things.
 
 By passing additional parameters to dump() method (or dumps() method) you can get a more readable output (json_write_indent.py file):
 
-.. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/json/json_write_indent.py
-  :language: python
-  :linenos:
+.. code:: python
+
+    import json
+
+    trunk_template = [
+        'switchport trunk encapsulation dot1q', 'switchport mode trunk',
+        'switchport trunk native vlan 999', 'switchport trunk allowed vlan'
+    ]
+
+    access_template = [
+        'switchport mode access', 'switchport access vlan',
+        'switchport nonegotiate', 'spanning-tree portfast',
+        'spanning-tree bpduguard enable'
+    ]
+
+    to_json = {'trunk': trunk_template, 'access': access_template}
+
+    with open('sw_templates.json', 'w') as f:
+        json.dump(to_json, f, sort_keys=True, indent=2)
+
+    with open('sw_templates.json') as f:
+        print(f.read())
 
 Now the content of sw_templates.json file is:
 

@@ -52,9 +52,27 @@ As a result, the following parts of line fell into the groups:
 
 In the resulting script, log.txt is processed line by line and port information is collected from each line. Since ports can be duplicated we add them immediately to the set in order to get a compilation of unique interfaces (parse_log_search.py file):
 
-.. literalinclude:: /pyneng-examples-exercises/examples/15_module_re/parse_log_search.py
-  :language: python
-  :linenos:
+.. code:: python
+
+    import re
+
+    regex = ('Host \S+ '
+             'in vlan (\d+) '
+             'is flapping between port '
+             '(\S+) and port (\S+)')
+
+    ports = set()
+
+    with open('log.txt') as f:
+        for line in f:
+            match = re.search(regex, line)
+            if match:
+                vlan = match.group(1)
+                ports.add(match.group(2))
+                ports.add(match.group(3))
+
+    print('Петля между портами {} в VLAN {}'.format(', '.join(ports), vlan))
+
 
 The result of script execution:
 
@@ -113,9 +131,35 @@ Example is checked on file sh_cdp_neighbors_sw1.txt.
 
 The first solution (parse_sh_cdp_neighbors_detail_ver1.py file):
 
-.. literalinclude:: /pyneng-examples-exercises/examples/15_module_re/parse_sh_cdp_neighbors_detail_ver1.py
-  :language: python
-  :linenos:
+.. code:: python
+
+    import re
+    from pprint import pprint
+
+
+    def parse_cdp(filename):
+        result = {}
+
+        with open(filename) as f:
+            for line in f:
+                if line.startswith('Device ID'):
+                    neighbor = re.search('Device ID: (\S+)', line).group(1)
+                    result[neighbor] = {}
+                elif line.startswith('  IP address'):
+                    ip = re.search('IP address: (\S+)', line).group(1)
+                    result[neighbor]['ip'] = ip
+                elif line.startswith('Platform'):
+                    platform = re.search('Platform: (\S+ \S+),', line).group(1)
+                    result[neighbor]['platform'] = platform
+                elif line.startswith('Cisco IOS Software'):
+                    ios = re.search('Cisco IOS Software, (.+), RELEASE',
+                                    line).group(1)
+                    result[neighbor]['ios'] = ios
+
+        return result
+
+
+    pprint(parse_cdp('sh_cdp_neighbors_sw1.txt'))
 
 The desired strings are selected using startswith() string method. And in a string, a regular expression takes required part of the string. It all ends up in a dictionary.
 
@@ -138,9 +182,35 @@ It worked out well, but it can be done in a more compact way.
 
 The second version of solution (parse_sh_cdp_neighbors_detail_ver2.py file):
 
-.. literalinclude:: /pyneng-examples-exercises/examples/15_module_re/parse_sh_cdp_neighbors_detail_ver2.py
-  :language: python
-  :linenos:
+.. code:: python
+
+    import re
+    from pprint import pprint
+
+
+    def parse_cdp(filename):
+        regex = ('Device ID: (?P<device>\S+)'
+                 '|IP address: (?P<ip>\S+)'
+                 '|Platform: (?P<platform>\S+ \S+),'
+                 '|Cisco IOS Software, (?P<ios>.+), RELEASE')
+
+        result = {}
+
+        with open(filename) as f:
+            for line in f:
+                match = re.search(regex, line)
+                if match:
+                    if match.lastgroup == 'device':
+                        device = match.group(match.lastgroup)
+                        result[device] = {}
+                    elif device:
+                        result[device][match.lastgroup] = match.group(
+                            match.lastgroup)
+
+        return result
+
+
+    pprint(parse_cdp('sh_cdp_neighbors_sw1.txt'))
 
 Explanations for the second option:
 

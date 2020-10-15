@@ -24,9 +24,14 @@ Reading
 
 Example of reading a file in CSV format (csv_read.py file):
 
-.. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/csv/csv_read.py
-  :language: python
-  :linenos:
+.. code:: python
+
+    import csv
+
+    with open('sw_data.csv') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            print(row)
 
 
 The output is:
@@ -66,18 +71,32 @@ If necessary it could be converted into a list in the following way:
 
 Most often column headers are more convenient to get by a separate object. This can be done in this way (csv_read_headers.py file):
 
-.. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/csv/csv_read_headers.py
-  :language: python
-  :linenos:
+.. code:: python
+
+    import csv
+
+    with open('sw_data.csv') as f:
+        reader = csv.reader(f)
+        headers = next(reader)
+        print('Headers: ', headers)
+        for row in reader:
+            print(row)
 
 
 Sometimes it is more convenient to obtain dictionaries in which keys are column names and values are column values.
 
 For this purpose, module has **DictReader** (csv_read_dict.py file):
 
-.. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/csv/csv_read_dict.py
-  :language: python
-  :linenos:
+.. code:: python
+
+    import csv
+
+    with open('sw_data.csv') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            print(row)
+            print(row['hostname'], row['model'])
+
 
 
 The output is:
@@ -107,9 +126,24 @@ Writing
 
 Similarly, a csv module can be used to write data to file in CSV format (csv_write.py file):
 
-.. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/csv/csv_write.py
-  :language: python
-  :linenos:
+.. code:: python
+
+    import csv
+
+    data = [['hostname', 'vendor', 'model', 'location'],
+            ['sw1', 'Cisco', '3750', 'London, Best str'],
+            ['sw2', 'Cisco', '3850', 'Liverpool, Better str'],
+            ['sw3', 'Cisco', '3650', 'Liverpool, Better str'],
+            ['sw4', 'Cisco', '3650', 'London, Best str']]
+
+
+    with open('sw_data_new.csv', 'w') as f:
+        writer = csv.writer(f)
+        for row in data:
+            writer.writerow(row)
+
+    with open('sw_data_new.csv') as f:
+        print(f.read())
 
 
 In example above, strings from list are written to the file and then the content of file is displayed on standard output stream.
@@ -133,9 +167,25 @@ Sometimes it’s better to have all strings quoted. Of course, in this case, exa
 
 Csv module allows you to control this. For all strings to be written in a CSV file with quotation marks you should change script this way (csv_write_quoting.py file):
 
-.. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/csv/csv_write_quoting.py
-  :language: python
-  :linenos:
+.. code:: python
+
+    import csv
+
+
+    data = [['hostname', 'vendor', 'model', 'location'],
+            ['sw1', 'Cisco', '3750', 'London, Best str'],
+            ['sw2', 'Cisco', '3850', 'Liverpool, Better str'],
+            ['sw3', 'Cisco', '3650', 'Liverpool, Better str'],
+            ['sw4', 'Cisco', '3650', 'London, Best str']]
+
+
+    with open('sw_data_new.csv', 'w') as f:
+        writer = csv.writer(f, quoting=csv.QUOTE_NONNUMERIC)
+        for row in data:
+            writer.writerow(row)
+
+    with open('sw_data_new.csv') as f:
+        print(f.read())
 
 
 Now the output is this:
@@ -155,9 +205,23 @@ Besides writerow() method, writerows() method is supported. It accepts any itera
 
 So, previous example can be written this way (csv_writerows.py file):
 
-.. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/csv/csv_writerows.py
-  :language: python
-  :linenos:
+.. code:: python
+
+    import csv
+
+    data = [['hostname', 'vendor', 'model', 'location'],
+            ['sw1', 'Cisco', '3750', 'London, Best str'],
+            ['sw2', 'Cisco', '3850', 'Liverpool, Better str'],
+            ['sw3', 'Cisco', '3650', 'Liverpool, Better str'],
+            ['sw4', 'Cisco', '3650', 'London, Best str']]
+
+
+    with open('sw_data_new.csv', 'w') as f:
+        writer = csv.writer(f, quoting=csv.QUOTE_NONNUMERIC)
+        writer.writerows(data)
+
+    with open('sw_data_new.csv') as f:
+        print(f.read())
 
 
 DictWriter
@@ -167,9 +231,38 @@ With DictWriter() you can write dictionaries in CSV format.
 
 In general, DictWriter() works as writer() but since dictionaries are not ordered it is necessary to specify the order of columns in file. The *fieldnames* option is used for this purpose (csv_write_dict.py file):
 
-.. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/csv/csv_write_dict.py
-  :language: python
-  :linenos:
+.. code:: python
+
+    import csv
+
+    data = [{
+        'hostname': 'sw1',
+        'location': 'London',
+        'model': '3750',
+        'vendor': 'Cisco'
+    }, {
+        'hostname': 'sw2',
+        'location': 'Liverpool',
+        'model': '3850',
+        'vendor': 'Cisco'
+    }, {
+        'hostname': 'sw3',
+        'location': 'Liverpool',
+        'model': '3650',
+        'vendor': 'Cisco'
+    }, {
+        'hostname': 'sw4',
+        'location': 'London',
+        'model': '3650',
+        'vendor': 'Cisco'
+    }]
+
+    with open('csv_write_dictwriter.csv', 'w') as f:
+        writer = csv.DictWriter(
+            f, fieldnames=list(data[0].keys()), quoting=csv.QUOTE_NONNUMERIC)
+        writer.writeheader()
+        for d in data:
+            writer.writerow(d)
 
 
 Delimiter
@@ -189,7 +282,11 @@ For example, if the file uses separator ``;`` (sw_data2.csv file):
 
 Simply specify which separator is used in reader() (csv_read_delimiter.py file):
 
-.. literalinclude:: /pyneng-examples-exercises/examples/17_serialization/csv/csv_read_delimiter.py
-  :language: python
-  :linenos:
+.. code:: python
 
+    import csv
+
+    with open('sw_data2.csv') as f:
+        reader = csv.reader(f, delimiter=';')
+        for row in reader:
+            print(row)
