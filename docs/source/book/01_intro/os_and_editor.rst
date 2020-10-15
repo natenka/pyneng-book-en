@@ -1,9 +1,9 @@
 OS and editor
 =============
 
-You can choose any OS and any editor but it is desirable to use Python version 3.7 because book uses this version.
+You can choose any OS and any editor but it is better to use Python version 3.7 because book uses this version.
 
-All examples in book were run on Debian but other operating systems may have a slightly different output. You can use Linux, macOS or Windows to perform tasks from a book. However, it is worth considering that, for example, Ansible can only be installed on Linux/macOS.
+All examples in book were run on Debian, other operating systems may have a slightly different output. You can use Linux, macOS or Windows to perform tasks from a book.
 
 You can select any text editor or IDE that supports Python to work with Python. Generally, working with Python requires minimal editor settings and often the editor recognizes Python by default.
 
