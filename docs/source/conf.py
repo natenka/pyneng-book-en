@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Python for network engineers'
-copyright = '2015-2019, Natasha Samoylenko'
+copyright = '2015-2020, Natasha Samoylenko'
 author = 'Natasha Samoylenko'
 
 # The full version, including alpha/beta/rc tags
