@@ -9,7 +9,7 @@ Copying repository from Github
 
 Examples and tasks are sometimes updated, so it will be more convenient to clone this repository to your machine and periodically update it.
 
-To copy a repository from Github, run *git clone*:
+To copy a repository from Github, run ``git clone``:
 
 ::
 
@@ -25,7 +25,7 @@ To copy a repository from Github, run *git clone*:
 Updating local copy of repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you need to update local repository to synchronize it with Github version, you need to perform *git pull* from inside the created pyneng-examples-exercises directory.
+If you need to update local repository to synchronize it with Github version, you need to perform ``git pull`` from inside the created pyneng-examples-exercises directory.
 
 If there were no updates, output would be:
 
@@ -55,7 +55,7 @@ Please note that only README.md file has been changed.
 View changes
 ^^^^^^^^^^^^^^^^^^
 
-If you want to see what changes have been made, you can use *git log*:
+If you want to see what changes have been made, you can use ``git log``:
 
 ::
 
@@ -89,7 +89,7 @@ In this command ``-p`` flag indicates that the output of Linux diff utility shou
 View changes that will be synchronized
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The previous version of *git log* relies on number of commands but this is not always convenient. Before executing *git pull* you can see what changes have been made since last synchronization.
+The previous version of ``git log`` relies on number of commands but this is not always convenient. Before executing ``git pull`` you can see what changes have been made since last synchronization.
 
 The following command shall be used:
 

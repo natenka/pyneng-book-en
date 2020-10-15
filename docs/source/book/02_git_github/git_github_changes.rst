@@ -8,9 +8,9 @@ Creating a Github repository
 
 To create a Github repository you need:
 
--  log in to `GitHub <https://github.com/>`__;
--  In upper right corner press plus and select "New repository" to create a new repository;
--  Name of repository should be entered in window that appears;
+-  log in to `GitHub <https://github.com/>`__
+-  In upper right corner press plus and select "New repository" to create a new repository
+-  Name of repository should be entered in window that appears
 
 You can put "Initialize this repository with a README". This will create a README.md file that only contains repository name.
 
@@ -21,7 +21,7 @@ Cloning a Github repository
 
 To work locally with repository, it should be cloned.
 
-Use *git clone* command to clone repository:
+Use ``git clone`` command to clone repository:
 
 ::
 
@@ -36,10 +36,10 @@ Use *git clone* command to clone repository:
 
 Compared to this command, you need to change:
 
--  'pyneng user name' for your Github user name;
--  'online-2-natasha-samoylenko' repository name for your Github repository.
+-  ``pyneng user name`` for your Github user name
+-  ``online-2-natasha-samoylenko`` repository name for your Github repository
 
-As a result, in current directory in which *git clone* was executed, a directory with name of repository will appear, in my case - "online-2-natasha-samoylenko". This directory now contains the contents of Github repository.
+As a result, in current directory in which ``git clone`` was executed, a directory with name of repository will appear, in my case - "online-2-natasha-samoylenko". This directory now contains the contents of Github repository.
 
 Working with repository
 ^^^^^^^^^^^^^^^^^^^^^
@@ -53,11 +53,11 @@ The previous command not only copied repository to use it locally, but also conf
 
 Now you have a complete local Git repository where you can work. Typically, sequence of steps will be as follows:
 
--  Before starting, synchronize local content with Github using *git pull* command
+-  Before starting, synchronize local content with Github using ``git pull`` command
 -  Modifying repository files
 -  Adding modified files to staging with “git add” command
--  Commit changes using *git commit* command
--  Transferring local changes to Github repository with *git push* command
+-  Commit changes using ``git commit`` command
+-  Transferring local changes to Github repository with ``git push`` command
 
 When working with tasks at work and at home, it is necessary to pay special attention to first and last step:
 

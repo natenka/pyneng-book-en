@@ -1,20 +1,20 @@
-Additional facilities
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Additional features
+^^^^^^^^^^^^^^^^^^^
 
 git diff
 ''''''''
 
-Command *git diff* allows you to see the difference between different states. For example, README and .gitignore files have been changed in repository.
+Command ``git diff`` allows you to see the difference between different states. For example, README and .gitignore files have been changed in repository.
 
-Command *git status* shows that both files have been changed
+Command ``git status`` shows that both files have been changed
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_status_5.png
 
-Command *git diff* command shows what changes have been made since last commit
+Command ``git diff`` command shows what changes have been made since last commit
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_diff.png
 
-If you add changes made to staging via *git add* command and run *git diff* again, it will show nothing
+If you add changes made to staging via ``git add`` command and run ``git diff`` again, it will show nothing
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_add_git_diff.png
 
@@ -29,7 +29,7 @@ Commit changes
 git log
 '''''''
 
-Command *git log* command shows when last changes were made
+Command ``git log`` command shows when last changes were made
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_log.png
 
