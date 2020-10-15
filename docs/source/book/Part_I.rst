@@ -1,12 +1,12 @@
 I. Python basics
 ################
 
-First part of the book is dedicated to Python basics. It examines:
+First part of the book is dedicated to Python basics. It covers:
 
--  Python data types;
--  How to create basic scripts;
--  Compound statements;
--  Working with files;
+-  Python data types
+-  How to create basic scripts
+-  Control structures
+-  Working with files
 
 
 .. toctree::

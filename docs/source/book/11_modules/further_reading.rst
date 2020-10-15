@@ -1,12 +1,12 @@
-Дополнительные материалы
+Further reading
 ------------------------
 
-Стандартная библиотека модулей Python:
+The Python Standard Library:
 
 -  `Индекс модулей <https://docs.python.org/3/py-modindex.html>`__
 -  `Python 3 Module of the Week <https://pymotw.com/3/>`__
 
-Документация:
+Docs:
 
 -  `Python tutorial.
    Modules <https://docs.python.org/3/tutorial/modules.html>`__
@@ -15,7 +15,7 @@
 -  `subprocess <https://docs.python.org/3/library/subprocess.html>`__
 -  `ipaddress <https://docs.python.org/3/library/ipaddress.html>`__
 
-Видео:
+Video:
 
 -  `David Beazley - Modules and Packages: Live and Let Die! - PyCon
    2015 <https://www.youtube.com/watch?v=0oTh1CXRaQ0>`__
@@ -23,25 +23,19 @@
 argparse
 ~~~~~~~~
 
--  `Документация
-   модуля <https://docs.python.org/3/library/argparse.html>`__
--  `Статья на PyMOTW <https://pymotw.com/3/argparse/>`__
+-  `Argparse docs <https://docs.python.org/3/library/argparse.html>`__
+-  `PyMOTW <https://pymotw.com/3/argparse/>`__
 
 tabulate
 ~~~~~~~~
 
--  `Документация
-   tabulate <https://bitbucket.org/astanin/python-tabulate>`__
+-  `tabulate docs <https://bitbucket.org/astanin/python-tabulate>`__
+- `Pretty printing tables in Python <https://txt.arboreus.com/2013/03/13/pretty-print-tables-in-python.html>`__
+- `Tabulate 0.7.1 with LaTeX & MediaWiki tables <https://txt.arboreus.com/2013/12/12/tabulate-0-7-1-with-latex-tables-named-tuples-etc.html>`__
 
-Статьи от автора tabulate: \* `Pretty printing tables in
-Python <https://txt.arboreus.com/2013/03/13/pretty-print-tables-in-python.html>`__
-\* `Tabulate 0.7.1 with LaTeX & MediaWiki
-tables <https://txt.arboreus.com/2013/12/12/tabulate-0-7-1-with-latex-tables-named-tuples-etc.html>`__
+Stack Overflow:
 
-Stack Overflow: \* `Printing Lists as Tabular
-Data <https://stackoverflow.com/questions/9535954/printing-lists-as-tabular-data>`__.
-Обратите внимание на `ответ <https://stackoverflow.com/a/26937531>`__ -
-в нем указаны другие аналоги tabulate.
+- `Printing Lists as Tabular Data <https://stackoverflow.com/questions/9535954/printing-lists-as-tabular-data>`__.
 
 pprint
 ~~~~~~

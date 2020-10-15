@@ -1,4 +1,4 @@
-Additional material
+Further reading
 ------------------------
 
 Regular expressions in Python:

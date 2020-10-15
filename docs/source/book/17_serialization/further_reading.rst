@@ -1,4 +1,4 @@
-Additional material
+Further reading
 ------------------------
 
 In this section only basic read and write operations were considered with no additional parameters. More details can be found in the module documentation.
