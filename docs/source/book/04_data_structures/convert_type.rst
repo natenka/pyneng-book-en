@@ -13,7 +13,7 @@ Python has several useful built-in features that allow data to be converted from
     In [1]: int("10")
     Out[1]: 10
 
-Using int() function you can convert a binary number into a decimal number (binary number must be written as a string)
+Using ``int()`` function you can convert a binary number into a decimal number (binary number must be written as a string)
 
 .. code:: python
 

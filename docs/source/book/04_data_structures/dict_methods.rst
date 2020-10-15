@@ -1,5 +1,5 @@
-Useful methods for working with dictionaries
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Dictionary methods
+~~~~~~~~~~~~~~~~~~
 
 ``clear()``
 ^^^^^^^^^^^

@@ -7,7 +7,8 @@ Tuple in Python is:
 * a sequence of elements separated by a comma and enclosed in brackets
 * immutable ordered data type
 
-Roughly speaking, a tuple is a list that can’t be changed. I mean, tuple only has reading rights. It could be a defense against accidental change.
+Roughly speaking, a tuple is a list that can’t be changed. We can say that the tuple has read-only permissions. 
+It could be a defense against accidental change.
 
 Create an empty tuple:
 

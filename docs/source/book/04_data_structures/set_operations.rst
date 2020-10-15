@@ -1,7 +1,7 @@
 Operations with sets
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Sets are useful in performing different operations such us finding union of sets, intersection and so on. 
+Sets are useful in performing different operations such as finding union of sets, intersection and so on. 
 
 Union of sets can be obtained by ``union()`` or
 operator ``|``:

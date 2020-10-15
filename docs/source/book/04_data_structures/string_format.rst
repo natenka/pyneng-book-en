@@ -2,7 +2,6 @@ String formatting
 ====================
 
 When working with strings, there are often situations where different data needs to be substituted in string template.
-
 This can be done by combining string parts and data, but Python has a more convenient way - strings formatting.
 
 String formatting can help, for example, in such situations:
@@ -15,9 +14,9 @@ There are several options for string formatting:
 
 * with operator ``%`` — older option
 * method ``format()`` — relatively new option
-* f-строки — new option that appeared in Python 3.6.
+* f-строки — new option that appeared in Python 3.6
 
-Although ``format``is recommended, string formatting can often be found through  ``%``.
+Although ``format`` is recommended, string formatting can often be found through  ``%``.
 
 String formatting with format() method
 -------------------------------------

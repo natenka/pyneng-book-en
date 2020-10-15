@@ -1,7 +1,7 @@
-Useful methods for working with lists
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+List methods
+~~~~~~~~~~~~
 
-List is a mutable  data type, so it is important to note that most methods for working with lists change a list on spot without returning anything.
+List is a mutable data type, so it is important to note that most methods for working with lists change a list on spot without returning anything.
 
 ``join()``
 ^^^^^^^^^^
@@ -37,8 +37,7 @@ Method append() changes list on spot and does not return anything.
 ``extend()``
 ^^^^^^^^^^^^
 
-If you want to combine two lists you can use two methods: extend() method and addition operation.
-
+If you want to combine two lists you can use one of two methods: ``extend()`` method or addition operation.
 These methods have an important difference: extend() changes list to which method is applied and addition returns a new list that consists of two.
 
 Method extend():
@@ -77,7 +76,7 @@ Note that when adding lists in IPython the 'Out' line appeared. This means that 
 ``pop()``
 ^^^^^^^^^
 
-Method pop() removes item that corresponds to specified number. But, importantly, method returns this item:
+Method pop() removes item that corresponds to specified number. Method returns this item:
 
 .. code:: python
 
@@ -95,7 +94,6 @@ Without number specified the last item in list is deleted.
 ^^^^^^^^^^^^
 
 Method remove() removes specified item.
-
 remove() does not return deleted item:
 
 .. code:: python
@@ -107,7 +105,7 @@ remove() does not return deleted item:
     In [33]: vlans
     Out[33]: ['10', '30', '100-200']
 
-In remove() you must specify item to be deleted, not its number in list. If item number is specified, error occurs:
+In remove() you must specify item to be deleted, not its index. If item number is specified, error occurs:
 
 .. code:: python
 
@@ -122,7 +120,7 @@ In remove() you must specify item to be deleted, not its number in list. If item
 ``index()``
 ^^^^^^^^^^^
 
-Method index() is used to check under which number item is stored in list:
+Method index() - returns the first index of the passed value:
 
 .. code:: python
 
@@ -134,7 +132,7 @@ Method index() is used to check under which number item is stored in list:
 ``insert()``
 ^^^^^^^^^^^^
 
-Method insert() allows you to insert an item into a specific place in list:
+Method insert() allows to insert an item into a specific place in list:
 
 .. code:: python
 
@@ -148,7 +146,7 @@ Method insert() allows you to insert an item into a specific place in list:
 ``sort()``
 ^^^^^^^^^^
 
-Method sort() sorts on spot:
+Method sort() sorts in place:
 
 .. code:: python
 

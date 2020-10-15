@@ -5,12 +5,13 @@ Dictionaries are mutable ordered data type:
 
 * data in dictionary are pairs ``key: value``
 * values are accessible by key, not by number as in lists
-* entries in dictionary display in order they were defined.
+* entries in dictionary stored in order they were added
 * since dictionaries are mutable, dictionary items can be changed, added, removed
 * key must be an immutable object: number, string, tuple
 * value can be data of any type
 
 .. note::
+
     In other programming languages a similar dictionary can be called an associative array, hash, or hash table.
 
 Example of dictionary:
@@ -54,6 +55,15 @@ Similarly, a new key-value pair could be added:
 
     In [5]: print(london)
     {'vendor': 'Cisco', 'name': 'London1', 'location': 'London Str'}
+
+Or rewritten:
+
+.. code:: python
+
+    In [6]: london['vendor'] = 'cisco ios'
+
+    In [7]: print(london)
+    {'vendor': 'cisco ios', 'name': 'London1', 'location': 'London Str'}
 
 In dictionary you can use a dictionary as a value:
 

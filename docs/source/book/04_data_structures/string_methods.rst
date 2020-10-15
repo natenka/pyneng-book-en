@@ -1,9 +1,8 @@
-Useful methods for working with strings
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+String methods
+~~~~~~~~~~~~~~
 
 When automating, very often it will be necessary to work with strings, since
 config file, command output and commands sent - are strings.
-
 Knowledge of various methods (actions) that can be applied to
 strings helps to work with them more efficiently.
 
@@ -48,7 +47,7 @@ variable (you can use the same).
 Method count
 ^^^^^^^^^^^
 
-Method ``count()`` or a substring occurs in a string:
+Method ``count()`` used to count how many times a character or substring occurs in a string:
 
 .. code:: python
 
@@ -66,9 +65,7 @@ Method ``count()`` or a substring occurs in a string:
 Method find
 ^^^^^^^^^^
 
-Method `` find () '' can be passed a substring or a character and it will show
-at what position is the first character of the substring (for the first
-matches):
+You can pass a substring or character to ``find()`` and it will return the lowest index where first character of the substring is (for the first match):
 
 .. code:: python
 
@@ -80,7 +77,7 @@ matches):
     In [39]: string1[string1.find('Fast')::]
     Out[39]: 'FastEthernet0/1'
 
-If no match is found, find() method returns ``-1``.
+If no match is found, ``find()`` method returns ``-1``.
 
 Methods startswith, endswith
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -166,7 +163,7 @@ Method ``split()`` split() splits the string using a symbol (or symbols) as sepa
     In [55]: print(commands)
     ['switchport', 'trunk', 'allowed', 'vlan', '10,20,30,100-200']
 
-In example above, ``string1.split()`` splits the string by spaces and returns a list of strings. The list is saved to *commands* variable.
+In example above, ``string1.split()`` splits the string by spaces and returns a list of strings. The list is saved to ``commands`` variable.
 
 By default, separator is a space symbol (spaces, tabs, line feed), but you can specify any separator in brackets:
 
@@ -177,7 +174,7 @@ By default, separator is a space symbol (spaces, tabs, line feed), but you can s
     In [57]: print(vlans)
     ['10', '20', '30', '100-200']
 
-In *commands* list, the last element is a string with vlans, so the index -1 is used.
+In ``commands`` list, the last element is a string with vlans, so the index -1 is used.
 Then string is split into parts using split() ``commands[-1].split(',')``.
 Since separator is a comma, this list is received ``['10', '20', '30', '100-200']``.
 

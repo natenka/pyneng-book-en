@@ -112,7 +112,7 @@ You can also specify a step in slice. For example, you can get odd numbers:
     In [29]: a[1::2]
     Out[29]: '13579'
 
-Or you can get all even numbers of string “a”:
+Or you can get all even numbers of string ``a``:
 
 .. code:: python
 

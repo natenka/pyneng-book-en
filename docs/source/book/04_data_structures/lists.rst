@@ -14,13 +14,14 @@ Examples of lists:
     In [2]: list2 = ['one', 'dog', 'seven']
     In [3]: list3 = [1, 20, 4.0, 'word']
 
-Creation of a list by means of a literal:
+Creating a list using a literal:
 
 .. code:: python
 
     In [1]: vlans = [10, 20, 30, 50]
 
 .. note::
+
     Literal is an expression that creates an object.
 
 Create a list using list() function:

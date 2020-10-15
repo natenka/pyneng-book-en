@@ -3,7 +3,7 @@ Boolean values
 
 Boolean values in Python are two constants ``True`` and ``False``.
 
-In Python, not only True and False constants have the same values.
+In Python, not only True and False are considered true and false values.
 
 * True value:
 
