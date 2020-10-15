@@ -3,9 +3,9 @@ Virtual environment
 
 Virtual environments:
 
--  Allow different projects to be isolated from each other;
--  Packages that are needed by different projects are in different places - for example, if one project requires 1.0 package and another project requires the same package but version 3.1, they will not interfere with each other;
--  Packages that are installed in virtual environments do not impact on global packages.
+-  Allow different projects to be isolated from each other
+-  Packages that are needed by different projects are in different places - for example, if one project requires 1.0 package and another project requires the same package but version 3.1, they will not interfere with each other
+-  Packages that are installed in virtual environments do not impact on global packages
 
 .. note::
     Python has several options for creating virtual environments. You can use any of them. To start with, you can use virtualenvwrapper and then eventually you can figure out which options are still available.

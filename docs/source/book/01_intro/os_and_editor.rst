@@ -2,28 +2,27 @@ OS and editor
 =============
 
 You can choose any OS and any editor but it is better to use Python version 3.7 because book uses this version.
-
 All examples in book were run on Debian, other operating systems may have a slightly different output. You can use Linux, macOS or Windows to perform tasks from a book.
 
-You can select any text editor or IDE that supports Python to work with Python. Generally, working with Python requires minimal editor settings and often the editor recognizes Python by default.
+You can select any text editor or IDE that supports Python. Generally, working with Python requires minimal editor settings and often the editor recognizes Python by default.
 
 Mu editor
-^^^^^^^^^^^
+^^^^^^^^^
 
-It is worth mentioning that `Mu editor <https://codewith.mu/>`__ it is an editor for beginners to learn Python (it supports only Python).
+`Mu editor <https://codewith.mu/>`__ is a simple Python editor for beginner programmers.
 
-On the one hand, there’s nothing superfluous about it that can initially be very distracting and confusing. At the same time, it has important features such as checking code against PEP 8 and debugger. Plus, Mu runs on different operating systems (macOS, Windows, Linux).
+Mu has clean and simple user interface. It has important features such as checking code against PEP 8 and debugger.
+Plus, Mu runs on different operating systems (macOS, Windows, Linux).
 
 .. note::
-    Video tutorials on Mu (in Russian):
-    `Basics of Mu <https://youtu.be/9qH92jz0p58>`__,
-    `Using Debugger in Mu <https://youtu.be/s9Lskg37xss>`__
+    `Mu tutorials <https://codewith.mu/en/tutorials/>`__
 
 
 IDE PyCharm 
 ^^^^^^^^^^^
 
-`PyCharm <https://www.jetbrains.com/pycharm/>`__ — is an integrated development environment for Python. For beginners it may be difficult because of plethora of settings but it depends on personal preferences. Pycharm supports a huge number of features, even in free version.
+`PyCharm <https://www.jetbrains.com/pycharm/>`__ — is an integrated development environment for Python. For beginners it may be difficult
+option due to the large number of settings but it depends on personal preferences. Pycharm supports a huge number of features, even in free version.
 
 Pycharm is a great IDE but I think it’s a little difficult for beginners. I wouldn’t recommend using it if you're not familiar with it and you’re just starting to learn Python. You can always switch to it after book but for now it’s better to try something else.
 
