@@ -11,7 +11,7 @@ Book provides only basics of Python and therefore it is necessary to continue to
 -  learn more Python for network automation
 -  learn Python without binding to network equipment
 
-    These resources are listed selectively, considering you’ve already read the book. But in addition, I’ve made a compilation of resources  <https://natenka.github.io/pyneng-resources/>`__ where other materials can be found.
+These resources are listed selectively, considering you’ve already read the book. But in addition, I’ve made a `compilation of resources  <https://natenka.github.io/pyneng-resources-en/>`__ where other materials can be found.
 
 You have ideas for the scripts you want to write
 ------------------------------------------------
