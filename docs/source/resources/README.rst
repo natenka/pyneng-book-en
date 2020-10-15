@@ -1,5 +1,5 @@
-Continuing education
-====================
+What's next
+===========
 
 Information is usually hard to grasp from the first time. Especially new information.
 
@@ -13,8 +13,8 @@ Book provides only basics of Python and therefore it is necessary to continue to
 
     These resources are listed selectively, considering you’ve already read the book. But in addition, I’ve made a compilation of resources  <https://natenka.github.io/pyneng-resources/>`__ where other materials can be found.
 
-Scripting for workflow automation
-------------------------------------------------------
+You have ideas for the scripts you want to write
+------------------------------------------------
 
 Most likely, after reading the book there will be ideas what you can automate at work. It’s a great option, because it’s always easier to learn on a real problem. But it is better to go beyond work tasks and study Python further.
 
@@ -23,7 +23,7 @@ Python allows you to do quite a lot with only basic knowledge. Therefore, with w
 The following resources are connected to network equipment and generally Python. Depending on from what materials you learn best you can select a book or video course from list
 
 Python for network equipment automation
--------------------------------------------------------
+---------------------------------------
 
 Books:
 
@@ -78,30 +78,29 @@ Projects:
 -  `Nornir <https://github.com/nornir-automation/nornir>`__
 -  `eNMS <https://github.com/afourmy/eNMS>`__
 
-Python without binding to network equipment
--------------------------------------------
+General Python
+--------------
 
 Books
 ~~~~~
 
 Basic level:
 
-* [Think Python](https://greenteapress.com/wp/think-python-2e/) - good book on Python basics. There are tasks in the book.
-* [Python Crash Course: A Hands-On, Project-Based Introduction to Programming](https://www.amazon.com/Python-Crash-Course-Hands-Project-Based-ebook/dp/B018UXJ9RI/) - a book on Python basics. Half of the book is dedicated to "standard" description of Python basics and in the second half these bases are used for projects. There are tasks in the book.
-* [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/). [In Russian](https://www.ozon.ru/context/detail/id/137673590/) -  in this book you can find many ideas on automation of daily work. These topics are: working with PDF, Excel, Word, sending letters, working with pictures, working with the web
-
+* `Think Python <https://greenteapress.com/wp/think-python-2e/>`__ - good book on Python basics. There are tasks in the book.
+* `Python Crash Course: A Hands-On, Project-Based Introduction to Programming <https://www.amazon.com/Python-Crash-Course-Hands-Project-Based-ebook/dp/B018UXJ9RI/>`__ - a book on Python basics. Half of the book is dedicated to "standard" description of Python basics and in the second half these bases are used
+for projects. There are tasks in the book.
+* `Automate the Boring Stuff with Python <https://automatetheboringstuff.com/>`__ - in this book you can find many ideas on automation of daily work. These topics are: working with PDF, Excel, Word, sending letters, working with pictures, working with the web
 
 Medium/advanced level:
 
-* [Python Tricks](https://www.amazon.com/Python-Tricks-Buffet-Awesome-Features-ebook/dp/B0785Q7GSY) - excellent for 2-3 books on Python. Book describes various aspects of Python and how to use it correctly. The book is fairly new (late 2017) and reviews Python 3.
-* [Effective Python: 59 Specific Ways to Write Better Python (Effective Software Development Series)](https://www.amazon.com/Effective-Python-Specific-Software-Development-ebook-dp-B00TKGY0GU/dp/B00TKGY0GU/) - book of useful advice on how best to write code. At the end of 2019 [the second edition of book is planned] (https://www.amazon.com/Effective-Python-Specific-Software-Development/dp/0134853989/).
-* [Dive Into Python 3](http://diveintopython3.problemsolving.io/) - briefly considered fundamentals of Python and then more advanced topics: closure, generators, tests and so on. Book written in 2009 but considered by Python 3 and 99% of topics remained unchanged.
-* [Problem Solving with Algorithms and Data Structures using Python](https://runestone.academy/runestone/static/pythonds/index.html) - excellent book on data structures and algorithms. Many examples and homework. [In Russian] (http://aliev.me/runestone/)
-* [Fluent Python](https://www.amazon.com/gp/product/1491946008/) -  excellent book on more advanced topics. Even topics that are obsolete in the current version of Python (asyncio) are worth reading for a perfect explanation of topic.
-* [Python Cookbook](https://www.amazon.com/gp/product/1449340377/) - great recipe book. A huge number of scenarios are considered with solutions and explanations.
+* `Python Tricks <https://www.amazon.com/Python-Tricks-Buffet-Awesome-Features-ebook/dp/B0785Q7GSY>`__ - excellent for 2-3 books on Python. Book describes various aspects of Python and how to use it correctly. The book is fairly new (late 2017) and covers Python 3.
+* `Effective Python: 59 Specific Ways to Write Better Python (Effective Software Development Series) <https://www.amazon.com/Effective-Python-Specific-Software-Development-ebook-dp-B07ZG18BH3/dp/B07ZG18BH3/>`__ - book of useful advice on how best to write code
+* `Dive Into Python 3 <http://diveintopython3.problemsolving.io/>`__ - briefly covers fundamentals of Python and then more advanced topics: closure, generators, tests and so on. Book written in 2009 but covers Python 3 and 99% of topics remained unchanged. * `Problem Solving with Algorithms and Data Structures using Python <https://runestone.academy/runestone/static/pythonds/index.html>`__ - excellent book on data structures and algorithms. Many examples and homework.
+* `Fluent Python <https://www.amazon.com/gp/product/1491946008/>`__ - excellent book on more advanced topics. Even topics that are obsolete in the current version of Python (asyncio) are worth reading for a perfect explanation of topic.
+* `Python Cookbook <https://www.amazon.com/gp/product/1449340377/>`__ - great recipe book. A huge number of scenarios are considered with solutions and explanations.
 
 
-Cources
+Courses
 ~~~~~~
 
 -  `MITx - 6.00.1x Introduction to Computer Science and Programming
@@ -113,8 +112,8 @@ Cources
    - an excellent video lecture on Python. There are some basics and more advanced topics
 -  `Talk Python courses <https://training.talkpython.fm/courses/all>`__
 
-Resources with tasks
-~~~~~~~~~~~~~~~~
+Coding challenges
+~~~~~~~~~~~~~~~~~
 
 -  `Bites of Py <https://codechalleng.es/bites/>`__
 -  `HackerRank <https://www.hackerrank.com/>`__ - on this resource tasks are broken down by fields: algorithms, regular expressions, databases and others. But there are basic tasks as well
@@ -135,6 +134,4 @@ Documentation
 
 -  `Official Python documentation <https://docs.python.org/3/index.html>`__
 -  `Python Module of the Week <https://pymotw.com/3/index.html>`__
--  `Tiny-Python-3.6-Notebook <https://github.com/mattharrison/Tiny-Python-3.6-Notebook/blob/master/python.rst>`__
-   - excellent Python 3 cheat sheet
 
