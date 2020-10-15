@@ -2,7 +2,7 @@ User input
 -----------------------------
 
 Sometimes it is necessary to get information from user. For example, request a password.
-Function ``input()`` is used to obtain information from user:
+The ``input()`` function is used to get information from the user:
 
 .. code:: python
 
@@ -20,8 +20,8 @@ In this case, information is immediately displayed to user, but in addition, inf
     In [3]: print(protocol)
     OSPF
 
-In brackets, a question is usually written that specifies what information to enter.
-Request information from script (file access_template_input.py):
+In parentheses, a question is usually written that specifies what information needs to be entered.
+A script that asks the user for information using input (file access_template_input.py):
 
 .. code:: python
 
