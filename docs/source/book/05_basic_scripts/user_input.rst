@@ -2,8 +2,6 @@ User input
 -----------------------------
 
 Sometimes it is necessary to get information from user. For example, request a password.
-
-
 Function ``input()`` is used to obtain information from user:
 
 .. code:: python
@@ -23,7 +21,6 @@ In this case, information is immediately displayed to user, but in addition, inf
     OSPF
 
 In brackets, a question is usually written that specifies what information to enter.
-
 Request information from script (file access_template_input.py):
 
 .. code:: python
@@ -42,10 +39,9 @@ Request information from script (file access_template_input.py):
     print('\n'.join(access_template).format(vlan))
 
 First two lines request information from user.
-
 Line ``print('\n' + '-' * 30)`` is used to visually separate information request from the output.
 
-Script execution:
+Script output:
 
 ::
 
