@@ -112,5 +112,5 @@ Function sorted() sorts dictionary keys in ascending order and returns a new lis
 .. toctree::
    :maxdepth: 1
 
-   6a_dict_methods
-   6b_create_dict
+   dict_methods
+   create_dict

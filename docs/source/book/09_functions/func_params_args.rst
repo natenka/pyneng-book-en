@@ -63,8 +63,8 @@ Similarly, an error will occur if three or more arguments are passed.
 .. toctree::
    :maxdepth: 1
 
-   3a_func_params_types.rst
-   3a_func_args_types.rst
-   3b_func_args_var.rst      
-   3b_func_unpacking_args.rst
+   func_params_types.rst
+   func_args_types.rst
+   func_args_var.rst      
+   func_unpacking_args.rst
 

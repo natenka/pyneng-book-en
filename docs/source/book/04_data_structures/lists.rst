@@ -113,4 +113,4 @@ And sorted() function sorts list items in ascending order and returns a new list
 .. toctree::
    :maxdepth: 1
 
-   5a_list_methods
+   list_methods

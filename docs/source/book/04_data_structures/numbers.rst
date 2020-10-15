@@ -27,7 +27,7 @@ Division int and float:
     In [6]: 10/3.0
     Out[6]: 3.3333333333333335
 
-The round() function can round numbers to required number of characters:
+The round() function - round a number to a given precision in decimal digits:
 
 .. code:: python
 
@@ -119,7 +119,7 @@ And, of course, you can do several changes at the same time:
     In [27]: bin(int('ff', 16))
     Out[27]: '0b11111111'
 
-For more complex mathematical functions, Python has a *math* module:
+For more complex mathematical functions, Python has a ``math`` module:
 
 .. code:: python
 
