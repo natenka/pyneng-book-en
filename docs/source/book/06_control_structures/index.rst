@@ -4,14 +4,17 @@
 
 .. _control_structures_index:
 
-6. Compound statements
-============================
+6. Control structures
+=====================
 
-So far, all code has been executed sequentially - all lines of script have been executed in order in which they are written in file. This section discusses how Python can manage the program:
+So far, all code has been executed sequentially - all lines of script have been executed 
+in order in which they are written in file.
+This section covers program flow control:
 
-* branching with help of ``if/elif/else`` construction
+* branching with ``if/elif/else``
 * repetition of actions in loop using ``for`` and ``while`` constructions
-* error handling with ``try/except`` construction 
+* repeating actions using for and while loops
+* error (exception) handling with ``try/except``
 
 
 .. toctree::
