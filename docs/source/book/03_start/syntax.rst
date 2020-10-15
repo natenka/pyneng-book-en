@@ -1,10 +1,10 @@
 Python syntax
 ~~~~~~~~~~~~~~~~
 
-The first thing that meets the eye when it comes to Python syntax is that indentation matters:
+The first thing that tends to catch your eye when it comes to Python syntax is that indentation matters:
 
--  It determines which code enters the block;
--  When a block of code starts and ends.
+-  It determines which code is inside the block
+-  When a block of code starts and ends
 
 Example of Python code:
 
@@ -29,10 +29,10 @@ Example of Python code:
             print("Ready")
 
 .. note::
-    This code is shown for syntax demonstration. Although if/else construction has not yet been considered, it is likely that the meaning of code will be understood.
+    This code is shown for syntax demonstration. Although if/else construction has not yet been covered, it is likely that the meaning of code will be clear in general.
 
 Python understands which lines refer to "if" on indentation basis.
-Execution of a block ``if a > b`` ends when another string with the same indent as string ``if a > b`` appears. Similarly to block “else”. 
+Execution of a block ``if a > b`` ends when another string with the same indent as string ``if a > b`` appears. Similarly to block ``else``. 
 The second feature of Python is that some expressions must be followed by colon (for example, after ``if a > b`` and after ``else``).
 
 Several rules and recommendations on indentation:
@@ -59,9 +59,9 @@ Comments in Python can be one-line:
     a = 10
     b = 5 # A much needed comment   
 
-One-line comments start with pound sign. Note that comment can be in line where code itself is or in a separate line.
+One-line comments start with hash sign. Note that comment can be in line where code itself is or in a separate line.
 
-If it is necessary to write several lines with comments in order to not put pound sign before each line, you can make a multi-line comment:
+If it is necessary to write several lines with comments in order to not put hash sign before each line, you can make a multi-line comment:
 
 .. code:: python
 

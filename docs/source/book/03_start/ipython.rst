@@ -6,10 +6,10 @@ Interpreter makes it possible to receive an instant response to executed actions
 In previous section, a standard interpreter was called to verify Python installation. There is also an improved interpreter `IPython <http://ipython.readthedocs.io/en/stable/index.html>`__.
 Ipython allows much more than standard interpreter called by "python" command. Some examples (Ipython features are much broader):
 
--  Autocomplete Tab commands or hints if there are more than one command variant;
--  More structured and understandable output of commands;
--  Automatic indentation in loops and other objects;
--  You can either walk through the command execution history or watch it with %history 'magic' command.
+-  Autocomplete Tab commands or hints if there are more than one command variant
+-  More structured and understandable output of commands
+-  Automatic indentation in loops and other objects
+-  You can either walk through the command execution history or watch it with %history 'magic' command
 
 You can install Ipython using pip (installation will be done in a virtual environment if configured):
 

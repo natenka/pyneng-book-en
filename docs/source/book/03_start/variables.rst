@@ -3,9 +3,9 @@ Variables
 
 Variables in Python do not require variable type declaration (since Python is a language with dynamic typing) and they are references to a memory area. Variable naming rules:
 
--  Name of variable can consist only of letters, digits and an underscore;
--  Name cannot start with a digit;
--  Name cannot contain special characters @, $, %.
+-  Name of variable can consist only of letters, digits and an underscore
+-  Name cannot start with a digit
+-  Name cannot contain special characters @, $, %
 
 An example of creating variables in Python:
 
@@ -22,7 +22,7 @@ An example of creating variables in Python:
 
 Note that Python does not need to specify that "a" is a number, and "b" is a string.
 
-Variables are references to memory area. This can be demonstrated by using id() which shows object ID:
+Variables are references to memory area. This can be demonstrated by using ``id()`` which shows object ID:
 
 .. code:: python
 
@@ -100,7 +100,7 @@ Variable names
 
 Variable names should not overlap with names of operators and modules or other reserved words. Python has recommendations for naming functions, classes and variables:
 
--  variable names are usually written in lowercase or in uppercase (e.g., DB_NAME, db_name);
--  function names are written in lowercase, with underline between words (for example get_names);
--  class names are given with capital letters without spaces, it is called CamelCase (for example, CiscoSwitch).
+-  variable names are usually written in lowercase or in uppercase (e.g., DB_NAME, db_name)
+-  function names are written in lowercase, with underline between words (for example get_names)
+-  class names are given with capital letters without spaces, it is called CamelCase (for example, CiscoSwitch)
 

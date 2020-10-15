@@ -5,7 +5,7 @@
 .. _intro_index:
 
 1. Preparing for work
-**********************
+=====================
 
 In order to start working with Python, you need to decide on a few things:
 

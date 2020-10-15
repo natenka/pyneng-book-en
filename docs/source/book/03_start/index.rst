@@ -8,7 +8,7 @@
 ============================
 
 
-This section examines:
+This section covers:
 
 -  Python syntax
 -  Work in interactive mode
@@ -18,8 +18,8 @@ This section examines:
 .. toctree::
    :maxdepth: 1
 
-   0_syntax
-   1_ipython
-   1a_ipython_magic
-   2_variables
+   syntax
+   ipython
+   ipython_magic
+   variables
    ../../exercises/03_exercises
