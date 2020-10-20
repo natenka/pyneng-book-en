@@ -1,7 +1,7 @@
-Construction with
+with statement
 ----------------
 
-Construction **with** is a context manager.
+The ``with`` statement is called the context manager.
 
 Python has a more convenient way of working with files than the ones used so far - construction ``with``:
 
@@ -42,7 +42,7 @@ Pay attention to how lines of the file are read:
 
 When file needs to be run line by line, it is best to use this option.
 
-In previous output there were extra empty lines between lines of the file because **print** adds another line feed character.
+In previous output there were extra empty lines between lines of the file because ``print`` adds another line feed character.
 
 To get rid of this you can use ``rstrip`` method:
 
@@ -89,7 +89,7 @@ Open two files
 
 Sometimes you have to work with two files simultaneously. For example, write some lines from one file to another.
 
-In this case you can open two files in **with** block as follows:
+In this case you can open two files in ``with`` block as follows:
 
 .. code:: python
 

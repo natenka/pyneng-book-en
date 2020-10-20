@@ -30,6 +30,7 @@ File opening modes:
   *  if file does not exist, a new one is created
 
 *  ``w+`` - open file for reading and writing
+
   *  if file exists, its content is removed
   *  if file does not exist, a new one is created
 
@@ -37,4 +38,5 @@ File opening modes:
 *  ``a+`` - open file for reading and writing. Data is added to the end of file
 
 .. note::
+
     r - read; a - append; w - write

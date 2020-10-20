@@ -25,9 +25,7 @@ Let’s see how to read contents of files using the example of r1.txt:
 ``read()``
 ^^^^^^^^^^
 
-Method ``read()`` reads the entire file to one string.
-
-Example of the use of ``read()``:
+Method ``read()`` reads the entire file to one string:
 
 .. code:: python
 
@@ -39,7 +37,10 @@ Example of the use of ``read()``:
     In [3]: f.read()
     Out[3]: ''
 
-When reading a file once again an empty line is displayed in line 3. This is because the whole file is read when ``read()`` method is called. And after the file has been read the cursor stays at the end of file. The cursor position can be controlled by means of ``seek()`` method.
+When reading a file once again an empty line is displayed in line 3. 
+This is because the whole file is read when ``read()`` method is called. 
+And after the file has been read the cursor stays at the end of file. 
+The cursor position can be controlled by means of ``seek()`` method.
 
 ``readline()``
 ^^^^^^^^^^^^^^

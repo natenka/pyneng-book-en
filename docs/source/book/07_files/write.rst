@@ -1,14 +1,14 @@
 File writing
 -------------
 
-When writing it is very important to decide how to open a file in order not to accidentally delete it:
+When writing information to a file, it is very important to specify the correct mode for opening the file, so as not to accidentally delete it:
 
 *  ``w`` - open file for writing. If file exists, its content is removed
-*  ``a`` - open file to add data. Data is added to the end of the file
+*  ``a`` - open file to add data. Data is appended to the end of the file
 
 Both modes create a file if it does not exist.
 
-These methods are used to write to a file:
+The following methods are used to write to a file:
 
 *  ``write()`` - write one line to file
 *  ``writelines()`` - allows to send as argument a list of strings
@@ -113,15 +113,14 @@ Writing cfg_lines list into the file:
     !service timestamps debug datetime msec localtime show-timezone yearservice timestamps log datetime msec localtime show-timezone yearservice password-encryptionservice sequence-numbers!no ip domain lookup!ip ssh version 2!
 
 As a result, all lines in the list were written into one line because there was no symbol ``\n`` at the end of lines.
-
-You can add line feed character in different ways. For example, you can simply process list in the loop:
+You can add newline character in different ways. For example, you can loop through a list:
 
 .. code:: python
 
     In [13]: cfg_lines2 = []
 
     In [14]: for line in cfg_lines:
-       ....:     cfg_lines2.append( line + '\n' )
+       ....:     cfg_lines2.append(line + '\n')
        ....:
 
     In [15]: cfg_lines2
@@ -136,7 +135,7 @@ You can add line feed character in different ways. For example, you can simply p
      '!\n',
      'ip ssh version 2\n',
 
-If write the resulting list into a file, it already contains line feed characters:
+If the final list is written anew to the file, then it will already contain newlines:
 
 .. code:: python
 
