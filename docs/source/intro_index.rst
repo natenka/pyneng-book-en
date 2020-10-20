@@ -6,7 +6,6 @@ Introduction
    :maxdepth: 1
 
    about
-   course_links
    faq
    acknowledgments
 

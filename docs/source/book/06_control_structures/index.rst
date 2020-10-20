@@ -12,7 +12,6 @@ in order in which they are written in file.
 This section covers program flow control:
 
 * branching with ``if/elif/else``
-* repetition of actions in loop using ``for`` and ``while`` constructions
 * repeating actions using for and while loops
 * error (exception) handling with ``try/except``
 

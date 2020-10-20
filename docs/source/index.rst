@@ -22,6 +22,7 @@ All examples are shown using Cisco equipment as an example, but of course they a
    :maxdepth: 2
 
    intro_index
+   course_links
    book/Part_I
    book/Part_II
    book/Part_III

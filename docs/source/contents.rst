@@ -3,7 +3,13 @@ Python for network engineers
 
 The book covers Python basics  with examples and tasks built around networking topics.
 
-From the one hand, book is basic enough so everyone can handle it, from the other hand, book covers all main topics which allow you to develop skill independently in the future. Python deep dive is not a goal of this book. The goal is to explain Python basics in plain language and provide understanding of necessary tools for practical usage. Everything in this book is focused on network equipment and interaction with it. It right away gives opportunity to use knowledge gained at the course in network engineers daily work. All shown examples are based on Cisco equipment but, of course, they could be applied to any other equipment.
+On the one hand, this book is basic enough to be mastered by anyone, and on the other hand, 
+covers all the main topics that will allow you to further grow on your own.
+This book is not intended to be an in-depth look at Python. 
+The purpose of this book is to explain the basics of Python in clear language and provide an understanding of the necessary tools for practical use.
+Everything in the book is focused on network equipment and interaction with it. 
+This immediately makes it possible to use the knowledge gained in the daily work of network engineers.
+All examples are shown using Cisco equipment as an example, but of course they apply to any other equipment.
 
 .. note::
 
@@ -16,6 +22,7 @@ From the one hand, book is basic enough so everyone can handle it, from the othe
    :maxdepth: 2
 
    intro_index
+   course_links
    book/Part_I
    book/Part_II
    book/Part_III
