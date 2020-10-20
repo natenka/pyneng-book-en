@@ -1,5 +1,5 @@
-Useful resources
-================
+Book resources
+==============
 
 
 Virtual machine
