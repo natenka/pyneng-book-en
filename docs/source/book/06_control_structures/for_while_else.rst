@@ -1,17 +1,17 @@
 for/else, while/else
 --------------------
 
-In loops **for** and **while** you may optionally use **else** block.
+In loops ``for`` and ``while`` you may optionally use ``else`` block.
 
 for/else
 ~~~~~~~~
 
-In loop **for**:
+In loop ``for``:
 
-* block **else** is executed if loop has completed iteration of list
-* but it *does not execute* if **break** was applied in loop.
+* block ``else`` is executed if loop has completed iteration of list
+* but it *does not execute* if ``break`` was applied in loop.
 
-Example of loop **for** with **else** (block **else** is executed after loop **for**):
+Example of loop ``for`` with ``else`` (block ``else`` is executed after loop ``for``):
 
 .. code:: python
 
@@ -19,7 +19,7 @@ Example of loop **for** with **else** (block **else** is executed after loop **f
        ....:     print(num)
        ....: else:
        ....:     print("Run out of numbers")
-       ....:     
+       ....:
     0
     1
     2
@@ -27,7 +27,7 @@ Example of loop **for** with **else** (block **else** is executed after loop **f
     4
     Run out of numbers
 
-An example of loop **for** with **else** and **break** in loop (because of **break**,  block **else** is not applied):
+An example of loop ``for`` with ``else`` and ``break`` in loop (because of ``break``,  block ``else`` is not applied):
 
 .. code:: python
 
@@ -38,12 +38,12 @@ An example of loop **for** with **else** and **break** in loop (because of **bre
        ....:         print(num)
        ....: else:
        ....:     print("Run out of numbers")
-       ....:     
+       ....:
     0
     1
     2
 
-Example of loop **for** with **else** and **continue** in loop (**continue** does not affect **else** block):
+Example of loop ``for`` with ``else`` and ``continue`` in loop (``continue`` does not affect ``else`` block):
 
 .. code:: python
 
@@ -54,7 +54,7 @@ Example of loop **for** with **else** and **continue** in loop (**continue** doe
        ....:         print(num)
        ....: else:
        ....:     print("Run out of numbers")
-       ....:     
+       ....:
     0
     1
     2
@@ -64,12 +64,12 @@ Example of loop **for** with **else** and **continue** in loop (**continue** doe
 while/else
 ~~~~~~~~~~
 
-In loop **while**:
+In loop ``while``:
 
-* block **else** is executed if loop has completed iteration of list
-* but it *does not execute* if **break** was applied in loop.
+* block ``else`` is executed if loop has completed iteration of list
+* but it *does not execute* if ``break`` was applied in loop.
 
-Example of a loop **while** with **else** (block **else** runs after loop **while**):
+Example of a loop ``while`` with ``else`` (block ``else`` runs after loop ``while``):
 
 .. code:: python
 
@@ -78,16 +78,16 @@ Example of a loop **while** with **else** (block **else** runs after loop **whil
        ....:     print(i)
        ....:     i += 1
        ....: else:
-       ....:     print("Конец")
-       ....:     
+       ....:     print("The End")
+       ....:
     0
     1
     2
     3
     4
-    Конец
+    The End
 
-An example of a loop **while** with **else** and **break** in loop (because of **break**, block **else** is not applied):
+An example of a loop ``while`` with ``else`` and ``break`` in loop (because of ``break``, block ``else`` is not applied):
 
 .. code:: python
 
@@ -100,8 +100,8 @@ An example of a loop **while** with **else** and **break** in loop (because of *
        ....:         print(i)
        ....:         i += 1
        ....: else:
-       ....:     print("Конец")
-       ....:     
+       ....:     print("The End")
+       ....:
     0
     1
     2

@@ -6,12 +6,12 @@ Python has several operators that allow to change default loop behavior.
 Break operator
 ~~~~~~~~~~~~~~
 
-Operator **break** allows early termination of loop:
+Operator ``break`` allows early termination of loop:
 
-* **break** breaks  current loop and continues executing the next expressions
-* if multiple nested loops are used, **break** interrupts internal loop and continues to execute expressions following the block. **Break** can be used in loops **for** and **while**
+* ``break`` breaks current loop and continues executing the next expressions
+* if multiple nested loops are used, ``break`` interrupts internal loop and continues to execute expressions following the block. ``Break`` can be used in loops ``for`` and ``while``
 
-Example of loop **for**:
+Example of loop ``for``:
 
 .. code:: python
 
@@ -20,7 +20,7 @@ Example of loop **for**:
        ...:         print(num)
        ...:     else:
        ...:         break
-       ...:     
+       ...:
     0
     1
     2
@@ -29,7 +29,7 @@ Example of loop **for**:
     5
     6
 
-Example of a loop **while**:
+Example of a loop ``while``:
 
 .. code:: python
 
@@ -40,14 +40,14 @@ Example of a loop **while**:
        ...:     else:
        ...:         print(i)
        ...:         i += 1
-       ...:         
+       ...:
     0
     1
     2
     3
     4
 
-Use break in an example with password request (check\_password\_with\_while\_break.py file):
+Using break in the password request example (check_password_with_while_break.py file):
 
 .. code:: python
 
@@ -67,14 +67,14 @@ Use break in an example with password request (check\_password\_with\_while\_bre
 
 Now it is possible not to repeat string ``password = input('Enter password once again: ')`` in each branch, it is enough to move it to the end of loop.
 
-And as soon as  correct password is entered, **break** will take the program out of loop **while**.
+And as soon as  correct password is entered, ``break`` will take the program out of loop ``while``.
 
 Continue operator
 ~~~~~~~~~~~~~~~~~
 
-Operator **continue** returns control to the beginning of loop. That is, **continue** allows to «jump» remaining expressions in loop and go to the next iteration.
+Operator ``continue`` returns control to the beginning of loop. That is, ``continue`` allows to «jump» remaining expressions in loop and go to the next iteration.
 
-Example of a loop **for**:
+Example of a loop ``for``:
 
 .. code:: python
 
@@ -83,13 +83,13 @@ Example of a loop **for**:
        ...:         continue
        ...:     else:
        ...:         print(num)
-       ...:         
+       ...:
     0
     1
     2
     4
 
-Example of a loop **while**:
+Example of a loop ``while``:
 
 .. code:: python
 
@@ -102,7 +102,7 @@ Example of a loop **while**:
        ....:         print("No one will see it")
        ....:     else:
        ....:         print("Current value: ", i)
-       ....:         
+       ....:
     Current value:  1
     Current value:  2
     Skip 3
@@ -110,7 +110,7 @@ Example of a loop **while**:
     Current value:  5
     Current value:  6
 
-Use of **continue** in example with password request (check_password_with_while_continue.py file):
+Use of ``continue`` in example with password request (check_password_with_while_continue.py file):
 
 .. code:: python
 
@@ -130,7 +130,7 @@ Use of **continue** in example with password request (check_password_with_while_
             continue
         password = input('Enter password once again: ')
 
-Here you can exit loop by checking password_correct flag. When correct password is entered, flag is set to True and with **continue** a jump to the beginning of loop is occurred by skipping the last line with password request.
+Here you can exit loop by checking password_correct flag. When correct password is entered, flag is set to True and with ``continue`` a jump to the beginning of loop is occurred by skipping the last line with password request.
 
 The result will be:
 
@@ -150,7 +150,7 @@ The result will be:
 Pass operator
 ~~~~~~~~~~~~~
 
-Operator ``pass`` does nothing. In fact, it is a null statement.
+Operator ``pass`` does nothing. Basically it is a placeholder.
 
 For example, ``pass`` can help when you need to specify a script structure. It can be set in loops, functions, classes. And it won’t affect execution of code.
 
@@ -163,7 +163,7 @@ Example of using pass:
        ....:         pass
        ....:     else:
        ....:         print(num)
-       ....:         
+       ....:
     3
     4
 

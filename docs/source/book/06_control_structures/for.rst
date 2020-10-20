@@ -3,9 +3,9 @@ for
 
 Very often the same action should be performed for a set of the same data type. For example, convert all strings in list to uppercase. Python uses ``for`` loop for such purposes.
 
-Loop **for** iterates elements of specified sequence and performs actions specified for each element.
+Loop ``for`` iterates elements of specified sequence and performs actions specified for each element.
 
-Examples of sequences of elements that can be iterated by **for**:
+Examples of sequences of elements that can be iterated by ``for``:
 
 -  string
 -  list
@@ -13,7 +13,7 @@ Examples of sequences of elements that can be iterated by **for**:
 -  :ref:`range`
 -  Any :ref:`iterable`
 
-An example of converting strings in a list to uppercase without loop **for**:
+An example of converting strings in a list to uppercase without ``for`` loop:
 
 .. code:: python
 
@@ -46,8 +46,8 @@ This solution has several nuances:
 * code is tied to a certain number of elements in *words* list
 
 
-Same actions with loop **for**:
-
+The same steps with the ``for`` loop:
+ 
 .. code:: python
 
     In [10]: words = ['list', 'dict', 'tuple']
@@ -62,16 +62,22 @@ Same actions with loop **for**:
     Out[13]: ['LIST', 'DICT', 'TUPLE']
 
 Expression ``for word in words: upper_words.append(word.upper())``
-means "for each word in *words* list to perform actions in block **for**".
-Note, that *word* is name of variable that refers to different values for each iteration of the loop.
+means "for each word in ``words`` list to perform actions in block ``for``".
+In this case, ``word`` is the name of the variable, which refers to different values each iteration of the loop.
 
 .. note::
-    The `pythontutor <http://www.pythontutor.com/>`__ project can help to understand loops. There is a special visualization of code that allows you to see what happens at every stage of code execution, which is especially useful in first steps of learning loops. The `pythontutor <http://www.pythontutor.com/visualize.html#mode=edit>`__ allows you to upload your code, for instance, see `example above <http://www.pythontutor.com/visualize.html#code=words%20%3D%20%5B'list',%20'dict',%20'tuple'%5D%0Aupper_words%20%3D%20%5B%5D%0A%0Afor%20word%20in%20words%3A%0A%20%20%20%20upper_words.append%28word.upper%28%29%29%0A&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false>`__.
+    The `pythontutor <http://www.pythontutor.com/>`__ project can be very helpful in understanding loops.
+    The project visualize code execution and allows you to see what happens at every stage
+    of code execution, which is especially useful in first steps of learning loops.
+    The `pythontutor <http://www.pythontutor.com/visualize.html#mode=edit>`__ allows you to upload your code, for instance, see `example above <http://www.pythontutor.com/visualize.html#code=words%20%3D%20%5B'list',%20'dict',%20'tuple'%5D%0Aupper_words%20%3D%20%5B%5D%0A%0Afor%20word%20in%20words%3A%0A%20%20%20%20upper_words.append%28word.upper%28%29%29%0A&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false>`__.
 
 
-Loop **for** can work with any sequence of elements. For example, list was used above and loop iterates through list elements. Similarly, **for** works with tuples.
+``For`` loop can work with any sequence of elements.
+For example, the above code used a list and the loop iterated over the elements of the list.
+The for loop works in a similar way with tuples.
 
-When working with strings **for** loop iterates through string characters, for example:
+
+When working with strings ``for`` loop iterates through string characters, for example:
 
 .. code:: python
 
@@ -91,12 +97,13 @@ When working with strings **for** loop iterates through string characters, for e
     g
 
 .. note::
-    Loop uses a variable named *letter*. Although, it could be any name, it is convenient when name tells you which objects go through a loop.
 
-Sometimes it is necessary to use sequence of numbers in loop. In this case, it is best to use 
+    Loop uses a variable named *letter*. Although, it could be any name, it is better when name tells you which objects go through a loop.
+
+Sometimes it is necessary to use sequence of numbers in loop. In this case, it is best to use
 :ref:`range`
 
-Example of loop **for** with range() function:
+Example of loop ``for`` with range() function:
 
 .. code:: python
 
@@ -124,7 +131,7 @@ In this example, loop runs through *vlans* list, so variable can be called *vlan
     In [4]: for vlan in vlans:
        ...:     print('vlan {}'.format(vlan))
        ...:     print(' name VLAN_{}'.format(vlan))
-       ...:     
+       ...:
     vlan 10
      name VLAN_10
     vlan 20

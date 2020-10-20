@@ -4,11 +4,10 @@ Working with try/except/else/finally
 try/except
 ~~~~~~~~~~
 
-If you repeated examples that were used before, there could be situations where a mistake was made. It was probably a syntax error when there was a lack of colon, for example.
-
+If you repeated examples that were used before, there could be situations where a mistake was made. 
+It was probably a syntax error when a colon was missing, for example.
 Python generally reacts quite understandably to such errors and they can easily be corrected.
-
-However, even if code is written correctly, errors can occur. In Python, these errors are called *exceptions*.
+However, even if the code is syntactically correct, errors can occur. In Python, these errors are called *exceptions*.
 
 Examples of exceptions:
 
@@ -22,15 +21,15 @@ Examples of exceptions:
     -----------------------------------------------------
     TypeError: must be str, not int
 
-There are two exceptions: *ZeroDivisionError* and *TypeError*.
+In this case, two exceptions were raised: ``ZeroDivisionError`` and ``TypeError``.
 
 Most often, it is possible to predict what kind of exceptions will occur during execution of the program.
-
 For example, if program expects two numbers in input and output returns their sum and user has entered a string instead of one of numbers a TypeError error will appear as in example above.
 
 Python allows working with exceptions. They can be intercepted and acted upon if an exception has been occurred.
 
 .. note::
+
     When an exception appears, program is immediately interrupted.
 
 In order to work with exceptions ``try/except`` construction is used:
@@ -41,18 +40,19 @@ In order to work with exceptions ``try/except`` construction is used:
        ...:     2/0
        ...: except ZeroDivisionError:
        ...:     print("You can't divide by zero")
-       ...:     
+       ...:
     You can't divide by zero
 
-The **try** construction works as follows:
+The ``try`` construction works as follows:
 
-* first execute expressions that are written in **try** block
-* if there are no exceptions during execution of **try** block, block **except** is skipped and the following code is executed
-* if there is an exception within **try** block, the rest part of **try** block is skipped
-  * if **except** block contains an exception which has been occurred, code in **except** block is executed
-  * if exception that has raised is not specified in **except** block, program execution is interrupted and an error is generated
+* first execute expressions that are written in ``try`` block
+* if there are no exceptions during execution of ``try`` block, block ``except`` is skipped and the following code is executed
+* if there is an exception within ``try`` block, the rest part of ``try`` block is skipped
 
-Note that ``Cool!`` string in **try** block is not displayed:
+  * if ``except`` block contains an exception which has been occurred, code in ``except`` block is executed
+  * if exception that has raised is not specified in ``except`` block, program execution is interrupted and an error is generated
+
+Note that ``Cool!`` string in ``try`` block is not displayed:
 
 .. code:: python
 
@@ -62,11 +62,11 @@ Note that ``Cool!`` string in **try** block is not displayed:
        ...:     print('Cool!')
        ...: except ZeroDivisionError:
        ...:     print("You can't divide by zero")
-       ...:     
+       ...:
     Let's divide some numbers
     You can't divide by zero
 
-Construction try/except may have many **except** if different actions are needed depending on type of error.
+Construction try/except may have many ``except`` if different actions are needed depending on type of error.
 
 For example, divide.py script divides two numbers entered by user:
 
@@ -90,7 +90,7 @@ Examples of script execution:
     $ python divide.py
     Enter first number: 3
     Enter second number: 1
-    Результат:  3
+    Result:  3
 
     $ python divide.py
     Enter first number: 5
@@ -135,16 +135,16 @@ Verification:
     Something went wrong...
 
 .. note::
-    In block **except** you don’t have to specify a specific exception or exceptions. In that case, all exceptions would be intercepted.
-    
-    **That is not recommended!**
+    In block ``except`` you don’t have to specify a specific exception or exceptions. In that case, all exceptions would be intercepted.
+
+    ``That is not recommended!``
 
 try/except/else
 ~~~~~~~~~~~~~~~
 
-Try/except has an optional **else** block. It is implemented if there is no exception.
+Try/except has an optional ``else`` block. It is implemented if there is no exception.
 
-For example, if you need to perform any further operations with data that user entered, you can write them in **else** block (divide_ver3.py file):
+For example, if you need to perform any further operations with data that user entered, you can write them in ``else`` block (divide_ver3.py file):
 
 .. code:: python
 
@@ -157,7 +157,7 @@ For example, if you need to perform any further operations with data that user e
     except (ValueError, ZeroDivisionError):
         print("Something went wrong...")
     else:
-        print("Result is squared: ", result**2)
+        print("Result is squared: ", result``2)
 
 Example of execution:
 
@@ -176,7 +176,7 @@ Example of execution:
 try/except/finally
 ~~~~~~~~~~~~~~~~~~
 
-Block **finally** is another optional block in **try** construction. It is *always* implemented, whether an exception has been raised or not.
+Block ``finally`` is another optional block in ``try`` construction. It is *always* implemented, whether an exception has been raised or not.
 
 It’s about actions that you have to do anyway. For example, it could be a file closing.
 
@@ -193,7 +193,7 @@ File divide_ver4.py с блоком finally:
     except (ValueError, ZeroDivisionError):
         print("Something went wrong...")
     else:
-        print("Result is squared: ", result**2)
+        print("Result is squared: ", result``2)
     finally:
         print("And they lived happily ever after.")
 

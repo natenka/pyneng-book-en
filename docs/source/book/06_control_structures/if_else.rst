@@ -1,17 +1,17 @@
 if/elif/else
 ============
 
-The ``if/elif/else`` construction allows make branches during program implementation. The program goes into branch when a certain condition is met.
+The ``if/elif/else`` construction allows make branches during program execution. The program goes into branch when a certain condition is met.
 
-In this construction only **if** is mandatory, **elif** and **else**
+In this construction only ``if`` is mandatory, ``elif`` and ``else``
 are optional:
 
-* **If** condition is always checked first.
-* After **If** operator there must be some condition: if this condition is met (returns true), then actions in block **if** are executed.
-* **elif** can be used to make multiple branches, that is, to check incoming data for different conditions.
-* **elif** block is the same as **if** but it checked next. Roughly speaking, it is "what if ..."
-* There can be many **elif** blocks.
-* **else** block is executed if none of conditions **if** or **elif** were true.
+* ``If`` condition is always checked first.
+* After ``If`` operator there must be some condition: if this condition is met (returns true), then actions in block ``if`` are executed.
+* ``elif`` can be used to make multiple branches, that is, to check incoming data for different conditions.
+* ``elif`` block is the same as ``if`` but it checked next. Roughly speaking, it is "otherwise if ..."
+* There can be many ``elif`` blocks.
+* ``else`` block is executed if none of conditions ``if`` or ``elif`` were true.
 
 
 
@@ -34,7 +34,7 @@ Example of construction:
 Condition
 -------
 
-**If** construction is based on conditions: conditions are always written after **if** and **elif**.
+``If`` expression is based on conditions: conditions are always written after ``if`` and ``elif``.
 Blocks if/elif are executed only when condition returns True, so the first thing to deal with is what is true and what is false in Python.
 
 
@@ -148,7 +148,7 @@ Operator ``in`` allows checking for the presence of element in a sequence (for e
     In [12]: 50 in vlan
     Out[12]: False
 
-When used with dictionaries, **in** condition performs check by dictionary keys:
+When used with dictionaries, ``in`` condition performs check by dictionary keys:
 
 .. code:: python
 
@@ -291,7 +291,7 @@ Script check:
     Password contains username
 
     $ python check_password.py
-    Enter username: nata 
+    Enter username: nata
     Enter password: 123nata123
     Password contains username
 
