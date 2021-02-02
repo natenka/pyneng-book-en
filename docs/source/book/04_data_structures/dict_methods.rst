@@ -1,24 +1,24 @@
 Dictionary methods
 ~~~~~~~~~~~~~~~~~~
 
-``clear()``
+``clear``
 ^^^^^^^^^^^
 
-Method clear() allows to clear dictionary:
+Method ``clear`` allows to clear dictionary:
 
 .. code:: python
 
-    In [1]: london = {'name': 'London1', 'location': 'London Str', 'vendor': 'Cisco', 'model': '4451', 'ios': '15.4'}
+    In [1]: london = {'name': 'London1', 'location': 'London Str'}
 
     In [2]: london.clear()
 
     In [3]: london
     Out[3]: {}
 
-``copy()``
+``copy``
 ^^^^^^^^^^
 
-Method copy() allows to create a full copy of dictionary.
+Method ``copy`` allows to create a full copy of dictionary.
 
 If one dictionary is equal to other:
 
@@ -39,9 +39,10 @@ If one dictionary is equal to other:
     In [9]: london2['vendor']
     Out[9]: 'Juniper'
 
-In this case london2 is another name that refers to dictionary. And when you change “london” dictionary, “london2” dictionary changes as well because it’s a link to the same object.
+In this case ``london2`` is another name that refers to dictionary ``london``. And when
+you change ``london`` dictionary, ``london2`` dictionary changes as well because it’s a link to the same object.
 
-Therefore, if you want to make a copy of dictionary, use copy() method:
+Therefore, if you want to make a copy of dictionary, use ``copy`` method:
 
 .. code:: python
 
@@ -60,7 +61,7 @@ Therefore, if you want to make a copy of dictionary, use copy() method:
     In [15]: london2['vendor']
     Out[15]: 'Cisco'
 
-``get()``
+``get``
 ^^^^^^^^^
 
 If you query a key that is not present in dictionary, an error occurs:
@@ -77,7 +78,7 @@ If you query a key that is not present in dictionary, an error occurs:
 
     KeyError: 'ios'
 
-Method get() queries for key and if there is no key, returns ``None`` instead.
+Method ``get`` queries for key and if there is no key, returns ``None`` instead.
 
 .. code:: python
 
@@ -93,7 +94,7 @@ Method get() also allows you to specify another value instead of ``None``:
     In [20]: print(london.get('ios', 'Ooops'))
     Ooops
 
-``setdefault()``
+``setdefault``
 ^^^^^^^^^^^^^^^^
 
 Method setdefault() searches for key and if there is no key, instead of error it creates a key with ``None`` value.
@@ -146,10 +147,10 @@ Method setdefault() replaces this construction:
         ...:     value = london[key]
         ...:
 
-``keys(), values(), items()``
+``keys, values, items``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Methods keys(), values(), items():
+Methods ``keys``, ``values``, ``items``:
 
 .. code:: python
 
@@ -168,7 +169,7 @@ All three methods return special view objects that display keys, values, and key
 
 A very important feature of view is that they change together with dictionary. And in fact, they just give you a way to look at objects, but they don’t make a copy of them.
 
-Using example of keys():
+Example of uning ``keys``:
 
 .. code:: python
 
@@ -179,7 +180,7 @@ Using example of keys():
     In [30]: print(keys)
     dict_keys(['name', 'location', 'vendor'])
 
-Now keys variable corresponds to view dict\_keys, in which three keys: name, location and vendor.
+Now keys variable corresponds to view ``dict_keys``, in which three keys: name, location and vendor.
 
 But if we add another key-value pair to dictionary, keys object will also change:
 
@@ -216,7 +217,7 @@ Remove key and value:
 ``update``
 ^^^^^^^^^^
 
-Method update() allows you to add contents of one dictionary to another dictionary:
+Method ``update`` allows you to add contents of one dictionary to another dictionary:
 
 .. code:: python
 

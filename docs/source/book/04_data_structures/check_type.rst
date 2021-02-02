@@ -17,10 +17,10 @@ Error is perfectly logical. We’re trying to convert string 'a' into decimal fo
 For example, this can be useful when you want to go through a list of strings and convert to a number the strings that contain numbers, you can get that error.
 To avoid error, it would be nice to be able to check what we’re working with.
 
-``isdigit()``
+``isdigit``
 ^^^^^^^^^^^^^
 
-Python has such methods. For example, ``isdigit()`` method can be used to check whether a string consists only of digits:
+Python has such methods. For example, ``isdigit`` method can be used to check whether a string consists only of digits:
 
 .. code:: python
 
@@ -34,10 +34,10 @@ Python has such methods. For example, ``isdigit()`` method can be used to check 
     Out[4]: True
 
 
-``isalpha()``
+``isalpha``
 ^^^^^^^^^^^^^
 
-Method ``isalpha()`` makes it possible to check whether a string consists only of letters:
+Method ``isalpha`` makes it possible to check whether a string consists only of letters:
 
 .. code:: python
 
@@ -53,10 +53,10 @@ Method ``isalpha()`` makes it possible to check whether a string consists only o
     In [10]: "a ".isalpha()
     Out[10]: False
 
-``isalnum()``
+``isalnum``
 ^^^^^^^^^^^^^
 
-Method ``isalnum()`` makes it possible to check whether a string consists of letters or numbers:
+Method ``isalnum`` makes it possible to check whether a string consists of letters or numbers:
 
 .. code:: python
 
@@ -66,32 +66,32 @@ Method ``isalnum()`` makes it possible to check whether a string consists of let
     In [12]: "a10".isalnum()
     Out[12]: True
 
-``type()``
+``type``
 ^^^^^^^^^^
 
 Sometimes, depending on the result, a library or function can return different types of objects. For example, if there is one object, string is returned. If several, tuple is returned.
 We have to construct the program in different ways, depending on whether a string or a tuple has been returned.
 
-Method ``type()`` function can help:
+Method ``type`` function can help:
 
 .. code:: python
 
     In [13]: type("string")
     Out[13]: str
 
-    In [14]: type("string") is str
+    In [14]: type("string") == str
     Out[14]: True
 
 Similar to tuple (and other data types):
 
 .. code:: python
 
-    In [15]: type((1,2,3))
+    In [15]: type((1, 2, 3))
     Out[15]: tuple
 
-    In [16]: type((1,2,3)) is tuple
+    In [16]: type((1, 2, 3)) == tuple
     Out[16]: True
 
-    In [17]: type((1,2,3)) is list
+    In [17]: type((1, 2, 3)) == list
     Out[17]: False
 

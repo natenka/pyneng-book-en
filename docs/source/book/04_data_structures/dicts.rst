@@ -26,13 +26,13 @@ You can write it down like this:
 
     london = {
         'id': 1,
-        'name':'London',
-        'it_vlan':320,
-        'user_vlan':1010,
-        'mngmt_vlan':99,
+        'name': 'London',
+        'it_vlan': 320,
+        'user_vlan': 1010,
+        'mngmt_vlan': 99,
         'to_name': None,
         'to_id': None,
-        'port':'G1/0/11'
+        'port': 'G1/0/11'
     }
 
 In order to get a value from dictionary you have to refer to key in the same way as in lists, only key will be used instead of number:

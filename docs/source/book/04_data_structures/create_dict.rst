@@ -90,4 +90,4 @@ This option of creating a dictionary is not suitable for all cases. For example,
 In this case, each key refers to the same list. Therefore, when a value is added to one of lists, others are updated.
 
 .. note::
-    A dictionary generator is better for this task. See section :ref:`x_comprehensions`
+    A dictionary comprehension is better for this task. See section :ref:`x_comprehensions`

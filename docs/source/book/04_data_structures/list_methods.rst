@@ -3,10 +3,10 @@ List methods
 
 List is a mutable data type, so it is important to note that most methods for working with lists change a list on spot without returning anything.
 
-``join()``
+``join``
 ^^^^^^^^^^
 
-Method join() collects a list of strings into one string with separator specified before join:
+Method ``join`` collects a list of strings into one string with separator specified before join:
 
 .. code:: python
 
@@ -16,9 +16,9 @@ Method join() collects a list of strings into one string with separator specifie
     Out[17]: '10,20,30'
 
 .. note::
-    Method join() actually relates to strings but since value must be given as a list, it is considered in this section.
+    Method ``join`` actually relates to strings but since value must be given as a list, it is considered in this section.
 
-``append()``
+``append``
 ^^^^^^^^^^^^
 
 Method append() adds specified item to the end of list:
@@ -32,15 +32,15 @@ Method append() adds specified item to the end of list:
     In [20]: vlans
     Out[20]: ['10', '20', '30', '100-200', '300']
 
-Method append() changes list on spot and does not return anything.
+Method ``append`` changes list on spot and does not return anything.
 
-``extend()``
+``extend``
 ^^^^^^^^^^^^
 
-If you want to combine two lists you can use one of two methods: ``extend()`` method or addition operation.
-These methods have an important difference: extend() changes list to which method is applied and addition returns a new list that consists of two.
+If you want to combine two lists you can use one of two methods: ``extend`` method or addition operation.
+These methods have an important difference: ``extend`` changes list to which method is applied and addition returns a new list that consists of two.
 
-Method extend():
+Method ``extend``:
 
 .. code:: python
 
@@ -73,10 +73,10 @@ Note that when adding lists in IPython the 'Out' line appeared. This means that 
     In [31]: result
     Out[31]: ['10', '20', '30', '100-200', '300', '400', '500']
 
-``pop()``
+``pop``
 ^^^^^^^^^
 
-Method pop() removes item that corresponds to specified number. Method returns this item:
+Method ``pop`` removes item that corresponds to specified number. Method returns this item:
 
 .. code:: python
 
@@ -90,11 +90,10 @@ Method pop() removes item that corresponds to specified number. Method returns t
 
 Without number specified the last item in list is deleted.
 
-``remove()``
+``remove``
 ^^^^^^^^^^^^
 
-Method remove() removes specified item.
-remove() does not return deleted item:
+Method ``remove`` removes specified item (``remove`` does not return deleted item):
 
 .. code:: python
 
@@ -105,7 +104,7 @@ remove() does not return deleted item:
     In [33]: vlans
     Out[33]: ['10', '30', '100-200']
 
-In remove() you must specify item to be deleted, not its index. If item number is specified, error occurs:
+In ``remove`` you must specify item to be deleted, not its index. If item number is specified, error occurs:
 
 .. code:: python
 
@@ -117,10 +116,10 @@ In remove() you must specify item to be deleted, not its index. If item number i
 
     ValueError: list.remove(x): x not in list
 
-``index()``
+``index``
 ^^^^^^^^^^^
 
-Method index() - returns the first index of the passed value:
+Method ``index`` - returns the first index of the passed value:
 
 .. code:: python
 
@@ -129,10 +128,10 @@ Method index() - returns the first index of the passed value:
     In [36]: vlans.index('30')
     Out[36]: 2
 
-``insert()``
+``insert``
 ^^^^^^^^^^^^
 
-Method insert() allows to insert an item into a specific place in list:
+Method ``insert`` allows to insert an item into a specific place in list:
 
 .. code:: python
 
@@ -143,10 +142,10 @@ Method insert() allows to insert an item into a specific place in list:
     In [39]: vlans
     Out[39]: ['10', '15', '20', '30', '100-200']
 
-``sort()``
+``sort``
 ^^^^^^^^^^
 
-Method sort() sorts in place:
+Method ``sort`` sorts list in place:
 
 .. code:: python
 
