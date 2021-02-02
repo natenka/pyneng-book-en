@@ -53,20 +53,20 @@ check_password_with_while.py file:
 
     # -*- coding: utf-8 -*-
 
-    username = input('Enter username: ' )
-    password = input('Enter password: ' )
+    username = input('Enter username: ')
+    password = input('Enter password: ')
 
     password_correct = False
 
     while not password_correct:
         if len(password) < 8:
             print('Password is too short\n')
-            password = input('Enter password once again: ' )
+            password = input('Enter password once again: ')
         elif username in password:
             print('Password contains username\n')
             password = input('Enter password once again: ' )
         else:
-            print('Password for user {} is set'.format( username ))
+            print('Password for user {} is set'.format(username))
             password_correct = True
 
 In this case, ``while`` loop is useful because it returns script back to the beginning of checks and allows password to be typed again but does not require script to restart.

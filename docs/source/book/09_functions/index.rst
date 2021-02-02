@@ -7,9 +7,9 @@
 9. Functions
 ============================
 
-Function is a block of code that performs certain actions:
+Function:
 
-* function has a name to run this code block as many times as you want
+* has a name to run this code block as many times as you want
 
   * launch of function code is called a function call
 
@@ -17,12 +17,11 @@ Function is a block of code that performs certain actions:
 
   * function parameters determine which arguments a function can accept
   * arguments can be passed to functions
-  * hence, function code will be executed according to the stated arguments
+  * function code will be executed taking into account the specified arguments
 
 **What are functions for?**
 
 Typically, problems that code solves are very similar and often have something in common.
-
 For example, when working with configuration files each time it is necessary to perform such actions:
 
 * file opening
@@ -33,14 +32,13 @@ For example, when working with configuration files each time it is necessary to 
 
 Beyond that, actions can vary depending on what needs to be done.
 
-Often there’s a piece of code that repeats itself. Of course, you can copy it from one script to another. But this is very inconvenient because when you change code you have to update it in all files in which it is copied.
+Often there’s a piece of code that repeats itself. Of course, you can copy
+it from one script to another. But this is very inconvenient because when
+you change code you have to update it in all files in which it is copied.
 
 It is much easier and more accurate to put this code into a function (it can also be several functions).
-
 And then you will call this function - in this file or another one.
-
 This section discusses when a function is in the same file.
-
 And in :ref:`modules_index` we will see how to reuse objects that are in other scripts.
 
 .. toctree::

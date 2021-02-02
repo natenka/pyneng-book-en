@@ -199,7 +199,7 @@ If you do dir() with no value, it shows existing methods, attributes, and variab
 
     In [12]: dir()
     Out[12]: 
-    [ '__builtin__',
+    ['__builtin__',
      '__builtins__',
      '__doc__',
      '__name__',

@@ -311,7 +311,7 @@ It's not possible to write a dictionary in JSON format if it has tuples as a key
 
 .. code:: python
 
-    In [23]: to_json = { ('trunk', 'cisco'): trunk_template, 'access': access_template}
+    In [23]: to_json = {('trunk', 'cisco'): trunk_template, 'access': access_template}
 
     In [24]: with open('sw_templates.json', 'w') as f:
         ...:     json.dump(to_json, f)
@@ -323,7 +323,7 @@ By using additional parameter you can ignore such keys:
 
 .. code:: python
 
-    In [25]: to_json = { ('trunk', 'cisco'): trunk_template, 'access': access_template}
+    In [25]: to_json = {('trunk', 'cisco'): trunk_template, 'access': access_template}
 
     In [26]: with open('sw_templates.json', 'w') as f:
         ...:     json.dump(to_json, f, skipkeys=True)

@@ -6,7 +6,7 @@ Repeating characters
 *  ``regex?`` -- zero or one repetition of preceding element
 *  ``regex{n}`` - exactly 'n' repetitions of preceding element
 *  ``regex{n,m}`` - from ‘n’ to ‘m’ repetitions of preceding element
-*  ``regex{n, }`` - ‘n’ or more repetitions of preceding element
+*  ``regex{n,}`` - ‘n’ or more repetitions of preceding element
 
 ``+``
 ~~~~~

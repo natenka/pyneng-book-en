@@ -3,17 +3,18 @@ Creation of functions
 
 Creation of function:
 
-* functions are created with a reserved word **def**
-* **def** followed by function name and round brackets
+* functions are created with a reserved word ``def``
+* ``def`` followed by function name and round brackets
 * parameters that function accepts inside brackets
 * after round brackets goes colon and from a new line with indent there is a block of code that function executes
-* optionally, the first line may be a comment, so-called **docstring**
-* function can use **return** operator
+* optionally, the first line can be ``docstring``
+* function can use ``return`` operator
 
   * it is used to terminate and exit a function
-  * most often **return** operator returns some value
+  * most often ``return`` operator returns some value
 
 .. note::
+
     Function code used in this subsection can be copied from create_func file.
 
 Example of function:
@@ -25,11 +26,13 @@ Example of function:
        ...:     print('ip address', ip, mask)
        ...:
 
-Function configure_intf() creates an interface configuration with specified name and IP address. 
+Function ``configure_intf`` creates an interface configuration with specified name and IP address. 
 Function has three parameters: intf_name, ip, mask. When function is called the real data will replace these parameters.
 
 .. note::
-    When function is created, it does nothing yet. Actions listed in it will be executed only when you call function. This is something like ACL in network equipment: when creating ACL in configuration, it does nothing until it is applied.
+    When function is created, it does nothing yet. Actions listed in it will
+    be executed only when you call function. This is something like ACL in
+    network equipment: when creating ACL in configuration, it does nothing until it is applied.
     
 Function call
 ~~~~~~~~~~~~~
@@ -40,7 +43,7 @@ When calling a function you must specify its name and pass arguments if necessar
     Parameters are variables that are used to create a function.
     Arguments are the actual values (data) that are passed to functions when called.
 
-Function configure_intf() expects three values when called because it was created with three parameters:
+Function ``configure_intf`` expects three values when called because it was created with three parameters:
 
 .. code:: python
 
@@ -52,9 +55,11 @@ Function configure_intf() expects three values when called because it was create
     interface Fa0/1
     ip address 94.150.197.1 255.255.255.248
 
-Current configure_intf() function prints commands to a standard output, commands can be seen but the result of function cannot be saved to a variable.
+The current version of the ``configure_intf`` function prints commands
+to a standard output, commands can be seen but the result of function cannot be saved to a variable.
 
-For example, sorted() function does not simply print the sorting result to standard output stream but *returns* it, so it can be saved to variable in this way:
+For example, ``sorted`` function does not simply print the sorting result to standard output
+stream but **returns** it, so it can be saved to variable in this way:
 
 .. code:: python
 
@@ -69,9 +74,12 @@ For example, sorted() function does not simply print the sorting result to stand
     Out[7]: [0, 2, 22, 40]
 
 .. note::
-    Note string ``Out[5]`` in ipython: thus ipython shows that function/method returns something and shows what it returns.
 
-If you try to write the result of configure_intf() function to a variable, the variable will have None:
+    Note string ``Out[5]`` in ipython: this is how ipython shows that
+    the function/method is returning something and shows what it returns.
+
+If you try to write the result of the ``configure_intf`` function to
+a variable, the value of the variable will be None::
 
 .. code:: python
 
@@ -87,9 +95,12 @@ For a function to return a value, use ``return`` operator.
 Operator return
 ~~~~~~~~~~~~~~~
 
-Operator **return** is used to return a value while it completes the function. Function can return any Python object. By default, function always returns ``None``.
+Operator **return** is used to return a value,
+and at the same time it exits the function.
+Function can return any Python object. By default, function always returns ``None``.
 
-In order for configure_intf() function to return a value that can then be assigned to a variable, you must use ``return`` operator:
+In order for ``configure_intf`` function to return a value that can then
+be assigned to a variable, you must use ``return`` operator:
 
 .. code:: python
 
@@ -109,10 +120,10 @@ In order for configure_intf() function to return a value that can then be assign
 
 
 Now the result variable contains a line with commands to configure interface.
+In real life, function will almost always return some value.
 
-In real life, function will almost always return some value. However, it is possible to use print() to add some messages.
-
-Another important aspect of **return** operator is that after **return** the function closes, meaning that the expressions that follow **return** are not executed.
+Another important aspect of **return** operator is that after **return**
+the function closes, meaning that the expressions that follow **return** are not executed.
 
 For example, in function below the line «Configuration is ready» will not be displayed because it stands after **return**:
 
@@ -179,3 +190,4 @@ The first line in function definition is docstring, documentation string. This i
 
 
 It is best not to be lazy to write short comments that describe function. For example, describe what function expects to input, what type of arguments should be and what will be the output. Besides, it is better to write a couple of sentences about what function does. This will help when in a month or two you will be trying to understand what function you wrote is doing.
+

@@ -71,7 +71,7 @@ Now in *groups* list there are tuples with strings that fallen into groups::
      ('Loopback0', '10.1.1.1', 'up', 'up'),
      ('Loopback100', '100.0.0.1', 'up', 'up')]
 
-A similar result can be obtained by a list generator:
+A similar result can be obtained by a list comprehension:
 
 .. code:: python
 

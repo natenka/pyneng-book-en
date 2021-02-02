@@ -51,8 +51,8 @@ Using break in the password request example (check_password_with_while_break.py 
 
 .. code:: python
 
-    username = input('Enter username: ' )
-    password = input('Enter password: ' )
+    username = input('Enter username: ')
+    password = input('Enter password: ')
 
     while True:
         if len(password) < 8:

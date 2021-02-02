@@ -83,7 +83,8 @@ Messages from imported script are not scary, they are just confusing. Worse when
 Python can specify that some strings should not be executed when importing. This is discussed in the following subsection.
 
 .. note::
-    Function return_correct_ip() can be replaced by a filter() or a list generator. Above is used the longer but most likely more understandable option:
+    Function ``return_correct_ip`` can be replaced by a ``filter`` or a list comprehension.
+    Above is used the longer but most likely more understandable option:
 
     .. code:: python
 

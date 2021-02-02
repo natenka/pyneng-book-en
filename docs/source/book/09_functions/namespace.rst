@@ -1,12 +1,13 @@
 Namespace. Scope of variables
 ------------------------------------
 
-Variables in Python have a scope. Depending on location in code where variable has been defined, scope is also defined, it determines where variable will be available.
+Variables in Python have a scope. Depending on location in code where
+variable has been defined, scope is also defined, it determines where variable will be available.
 
-When using variable names in a program, Python searches, creates or changes these names in the corresponding namespace each time. Namespace that is available at each moment depends on area in which code is located.
+When using variable names in a program, Python searches, creates or changes
+these names in the corresponding namespace each time. Namespace that is available at each moment depends on area in which code is located.
 
 Python has a LEGB rule that it uses for variables search.
-
 For example, when accessing a variable within a function, Python searches for a variable in this order in scopes (before the first match):
 
 * L (local) - in local (within function)
