@@ -61,7 +61,7 @@ Using break in the password request example (check_password_with_while_break.py 
             print('Password contains username\n')
         else:
             print('Password for user {} is set'.format(username))
-            # finish while loop
+            # exit while loop
             break
         password = input('Enter password once again: ')
 

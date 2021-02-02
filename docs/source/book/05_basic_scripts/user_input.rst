@@ -2,7 +2,7 @@ User input
 -----------------------------
 
 Sometimes it is necessary to get information from user. For example, request a password.
-The ``input()`` function is used to get information from the user:
+The ``input`` function is used to get information from the user:
 
 .. code:: python
 

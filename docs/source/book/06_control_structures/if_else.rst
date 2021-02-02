@@ -253,10 +253,10 @@ An important feature of ``or`` operator - operands, which are after the true ope
 
 .. code:: python
 
-    In [33]: '' or sorted([44,1,67])
+    In [33]: '' or sorted([44, 1, 67])
     Out[33]: [1, 44, 67]
 
-    In [34]: '' or 'string1' or sorted([44,1,67])
+    In [34]: '' or 'string1' or sorted([44, 1, 67])
     Out[34]: 'string1'
 
 

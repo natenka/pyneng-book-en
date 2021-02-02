@@ -22,7 +22,8 @@ To do this, you need to create an access_template.py file with this content:
 
     print('\n'.join(access_template).format(5))
 
-First, items in list are combined into a string that is separated by ``\n`` and VLAN number is inserted into string using string formatting.
+First, items in list are combined into a string that is separated by ``\n``
+and VLAN number is inserted into string using string formatting.
 After this you should save file and go to command line.
 This is how the script execution looks like:
 

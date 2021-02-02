@@ -1,7 +1,9 @@
 Passing arguments to the script (sys.argv)
 ------------------------------------------
 
-Very often script solves some common problem. For example, script processes a configuration file. Of course, in this case you don’t want to edit name of file every time with your hands in script.
+Very often script solves some common problem. For example, script processes
+a configuration file. Of course, in this case you don’t want to edit name of
+file every time with your hands in script.
 It will be much better to pass file name as script argument and then use already specified file.
 The sys module allows working with script arguments via argv.
 

@@ -8,7 +8,7 @@ In this example, *commands* is a list of commands to execute on each interface i
 .. code:: python
 
     In [7]: commands = ['switchport mode access', 'spanning-tree portfast', 'spanning-tree bpduguard enable']
-    In [8]: fast_int = ['0/1','0/3','0/4','0/7','0/9','0/10','0/11']
+    In [8]: fast_int = ['0/1', '0/3', '0/4', '0/7', '0/9', '0/10', '0/11']
 
     In [9]: for intf in fast_int:
        ...:     print('interface FastEthernet {}'.format(intf))
