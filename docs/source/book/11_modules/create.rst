@@ -1,7 +1,7 @@
 Create your own modules
 ----------------------
 
-Module is a file with . py extension and Python code.
+Module is a file with ``.py`` extension and Python code.
 
 Example of creating your own modules and importing a function from one module to another.
 
@@ -27,11 +27,13 @@ File check_ip_function.py:
     print(ip1, check_ip(ip1))
     print(ip2, check_ip(ip2))
 
-File check_ip_function.py has created check_ip function which checks that argument is an IP address. This is done by using **ipaddress** module which will be discussed in the next section.
+File check_ip_function.py has created check_ip function which
+checks that argument is an IP address. This is done by using
+**ipaddress** module which will be discussed in the next section.
 
-Function ipaddress.ip_address() itself checks the correctness of IP address and generates ValueError exception if address is not validated.
-
-Function check_ip() returns True if address is validated and False if not.
+Function ``ipaddress.ip_address`` checks the correctness of IP
+address and generates ValueError exception if address is not validated.
+Function ``check_ip`` returns True if address is valid and False if not.
 
 If you run check_ip_function.py script, the output is:
 
@@ -43,7 +45,8 @@ If you run check_ip_function.py script, the output is:
     10.1.1 False
 
 
-The second script imports check_ip() function and uses it to select from address list only those that passed the check (get_correct_ip.py file):
+The second script imports ``check_ip`` function and uses it to select from address
+list only those that passed the check (get_correct_ip.py file):
 
 .. code:: python
 
@@ -76,7 +79,11 @@ Result of script execution:
     Cheking list of IP addresses
     ['10.1.1.1', '8.8.8.8']
 
-Note that not only information from get_correct_ip.py script is displayed, but also information from check_ip_function.py. This is because any type of import executes the entire script. That is, even when import looks like ``from check_ip_function import check_ip``, entire check_ip_function.py script is executed, not just check_ip function. As a result, all messages of imported script will be displayed.
+Note that not only information from get_correct_ip.py script is displayed,
+but also information from check_ip_function.py. This is because any type of
+import executes the entire script. That is, even when import looks like
+``from check_ip_function import check_ip``, entire check_ip_function.py script
+is executed, not just check_ip function. As a result, all messages of imported script will be displayed.
 
 Messages from imported script are not scary, they are just confusing. Worse when script performed some kind of connection to equipment and when importing a function from it, we will have to wait for connection to take place.
 

@@ -3,7 +3,7 @@ Further reading
 
 The Python Standard Library:
 
--  `Индекс модулей <https://docs.python.org/3/py-modindex.html>`__
+-  `Python Module Index <https://docs.python.org/3/py-modindex.html>`__
 -  `Python 3 Module of the Week <https://pymotw.com/3/>`__
 
 Docs:

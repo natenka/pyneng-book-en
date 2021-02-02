@@ -36,7 +36,7 @@ Example of **import module**:
      'os',
      'quit']
 
-After importing the **os** module appeared in the output ``dir()``.This means that it is now in the current namespace.
+After importing the **os** module appeared in the output ``dir``.This means that it is now in the current namespace.
 
 To invoke some function or method from **os** module you should specify
 ``os.`` and then object name:
@@ -46,10 +46,14 @@ To invoke some function or method from **os** module you should specify
     In [4]: os.getlogin()
     Out[4]: 'natasha'
 
-This import method is good because module objects do not enter the namespace of current program. That is, if you create a function named getlogin() it will not conflict with the same function of **os** module.
+This import method is good because module objects do not enter the namespace of
+current program. That is, if you create a function named ``getlogin`` it will
+not conflict with the same function of **os** module.
 
 .. note::
-    If file name contains a dot, the standard way of importing will not work. In such cases, `another method <http://stackoverflow.com/questions/1828127/how-to-reference-python-package-when-filename-contains-a-period/1828249#1828249>`__ is used.
+    If file name contains a dot, the standard way of importing will not work.
+    In such cases,
+    `another method <http://stackoverflow.com/questions/1828127/how-to-reference-python-package-when-filename-contains-a-period/1828249#1828249>`__ is used.
 
 ``import module as``
 ~~~~~~~~~~~~~~~~~~~~
@@ -66,7 +70,8 @@ Construction **import module as** allows importing a module under a different na
 ``from module import object``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Option **from module import object** is convenient to use when only one or two functions are needed from whole module:
+Option **from module import object** is convenient to use when only
+few functions are needed from whole module:
 
 .. code:: python
 
@@ -121,6 +126,8 @@ Option ``from module import *`` imports all module names into the current namesp
     In [3]: len(dir())
     Out[3]: 218
 
-There are many objects in **os** module, so the output is shortened. At the end, length of the list of names of current namespace is specified.
+There are many objects in **os** module, so the output is shortened. At the end,
+length of the list of names of current namespace is specified.
 
-This import option is best not to use. With such code import it is not clear which function is taken, for example from **os** module. This makes it much harder to understand the code.
+This import option is best not to use. With such code import it is not clear which
+function is taken, for example from **os** module. This makes it much harder to understand the code.
