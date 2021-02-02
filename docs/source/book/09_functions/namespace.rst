@@ -46,7 +46,8 @@ Example of local intf_config:
     NameError: name 'intf_config' is not defined
 
 
-Note that intf_config variable is not available outside of function. To get the result of a function you must call a function and assign result to a variable:
+Note that intf_config variable is not available outside of function. To get the
+result of a function you must call a function and assign result to a variable:
 
 .. code:: python
 

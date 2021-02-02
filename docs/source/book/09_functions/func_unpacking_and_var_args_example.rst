@@ -3,7 +3,7 @@ Example of using variable length keyword arguments and unpacking arguments
 
 Using variable length arguments and unpacking arguments you can transfer arguments between functions. Let me give you an example.
 
-Function check_passwd() (func_add_user_kwargs_example.py file):
+Function ``check_passwd`` (func_add_user_kwargs_example.py file):
 
 .. code:: python
 
@@ -42,7 +42,9 @@ Call function in ipython:
     Out[6]: False
 
 
-We will create add_user_to_users_file() function that requests password for specified user, checks it and requests it again if password has not been checked or writes user and password to file if password has been verified
+We will create ``add_user_to_users_file`` function that requests password for
+specified user, checks it and requests it again if password has not been checked
+or writes user and password to file if password has been verified
 
 .. code:: python
 
@@ -85,9 +87,16 @@ In this variant of add_user_to_users_file() function, it is not possible to regu
     Enter password for user nata: dlfjgkd
     Password for user nata has passed all checks
 
-You can now specify min_length or check_username when calling a function. However, it was necessary to repeat parameters of check_passwd() function in defining of add_user_to_users_file() function. This is not very good and when there are many parameters it is just inconvenient, especially considering that check_passwd function can have other parameters.
+You can now specify min_length or check_username when calling a function. However,
+it was necessary to repeat parameters of ``check_passwd`` function in defining of
+``add_user_to_users_file`` function. This is not very good and when there are many
+parameters it is just inconvenient, especially considering that check_passwd function
+can have other parameters.
 
-This happens quite often and Python has a common solution to this problem: all arguments for internal function (in this case it is check_passwd) will be taken in **kwargs. Then, when calling check_passwd() function they will be unpacked into keyword arguments by the same  ``**kwargs`` syntax.
+This happens quite often and Python has a common solution to this problem: all
+arguments for internal function (in this case it is check_passwd) will be taken
+in **kwargs. Then, when calling check_passwd() function they will be unpacked
+into keyword arguments by the same  ``**kwargs`` syntax.
 
 .. code:: python
 
@@ -111,4 +120,5 @@ This happens quite often and Python has a common solution to this problem: all a
     Password for user nata has passed all checks
 
 
-In this variant you can add arguments to check_passwd() function without having to duplicate them in add_user_to_users_file function.
+In this variant you can add arguments to check_passwd() function without having
+to duplicate them in add_user_to_users_file function.

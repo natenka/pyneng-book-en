@@ -50,10 +50,12 @@ Function checks password and returns False if checks fail and True if password p
 Optional parameters (default parameters)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When creating a function you can specify default value for parameter in this way: ``def check_passwd(username, password, min_length=8)``. In this case, min_length option is specified with default value and may not be passed when a function is called.
+When creating a function you can specify default value for parameter in
+this way: ``def check_passwd(username, password, min_length=8)``.
+In this case, min_length option is specified with default value and may not be passed when a function is called.
 
 
-Example of a check_passwd() function with default parameter (func_check_passwd_optional_param.py file):
+Example of a ``check_passwd`` function with default parameter (func_check_passwd_optional_param.py file):
 
 .. code:: python
 

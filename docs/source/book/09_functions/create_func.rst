@@ -95,7 +95,7 @@ For a function to return a value, use ``return`` operator.
 Operator return
 ~~~~~~~~~~~~~~~
 
-Operator **return** is used to return a value,
+Operator ``return`` is used to return a value,
 and at the same time it exits the function.
 Function can return any Python object. By default, function always returns ``None``.
 
@@ -122,10 +122,10 @@ be assigned to a variable, you must use ``return`` operator:
 Now the result variable contains a line with commands to configure interface.
 In real life, function will almost always return some value.
 
-Another important aspect of **return** operator is that after **return**
-the function closes, meaning that the expressions that follow **return** are not executed.
+Another important aspect of ``return`` operator is that after ``return``
+the function closes, meaning that the expressions that follow ``return`` are not executed.
 
-For example, in function below the line «Configuration is ready» will not be displayed because it stands after **return**:
+For example, in function below the line «Configuration is ready» will not be displayed because it stands after ``return``:
 
 .. code:: python
 
@@ -138,7 +138,7 @@ For example, in function below the line «Configuration is ready» will not be d
     In [15]: configure_intf('Fa0/0', '10.1.1.1', '255.255.255.0')
     Out[15]: 'interface Fa0/0\nip address 10.1.1.1 255.255.255.0'
 
-Function can return multiple values. In this case, they are separated by a comma after **return** operator. In fact, function returns tuple:
+Function can return multiple values. In this case, they are separated by a comma after ``return`` operator. In fact, function returns tuple:
 
 .. code:: python
 
@@ -189,5 +189,9 @@ The first line in function definition is docstring, documentation string. This i
 
 
 
-It is best not to be lazy to write short comments that describe function. For example, describe what function expects to input, what type of arguments should be and what will be the output. Besides, it is better to write a couple of sentences about what function does. This will help when in a month or two you will be trying to understand what function you wrote is doing.
+It is best to write short comments that describe function. For example,
+describe what function expects to input, what type of arguments should be
+and what will be the output. Besides, it is better to write a couple of
+sentences about what function does. This will help when in a month or two
+you will be trying to understand what function you wrote is doing.
 

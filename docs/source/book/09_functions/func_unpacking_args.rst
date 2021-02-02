@@ -3,20 +3,24 @@
 Unpacking arguments
 ---------------------
 
-In Python the expressions ``*args`` and ``**kwargs`` allow for another task - **unpacking arguments**.
+In Python the expressions ``*args`` and ``**kwargs`` allow for another
+task - **unpacking arguments**.
 
 So far we’ve called all functions manually. Hence, we passed on all relevant arguments.
 
-In reality, it is usually necessary to transfer data to function programmatically. And often data comes in the form of a Python object.
+In reality, it is usually necessary to transfer data to function
+programmatically. And often data comes in the form of a Python object.
 
 Unpacking positional arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For example, when formatting strings you often need to pass multiple arguments to format() method. And often these arguments are already in list or tuple. To transfer them to format() method you have to use indexes:
+For example, when formatting strings you often need to pass multiple arguments
+to ``format`` method. And often these arguments are already in list or tuple.
+To transfer them to ``format`` method you have to use indexes:
 
 .. code:: python
 
-    In [1]: items = [1,2,3]
+    In [1]: items = [1, 2, 3]
 
     In [2]: print('One: {}, Two: {}, Three: {}'.format(items[0], items[1], items[2]))
     One: 1, Two: 2, Three: 3
@@ -25,7 +29,7 @@ Instead, you can take advantage of unpacking argument and do this:
 
 .. code:: python
 
-    In [4]: items = [1,2,3]
+    In [4]: items = [1, 2, 3]
 
     In [5]: print('One: {}, Two: {}, Three: {}'.format(*items))
     One: 1, Two: 2, Three: 3
@@ -63,7 +67,6 @@ Function returns a list of strings to configure interface:
 
 
 Suppose you call a function and pass it information that has been obtained from another source, for example from database.
-
 For example, interfaces_info list contains parameters for configuring interfaces:
 
 .. code:: python
@@ -92,9 +95,9 @@ If you go through list in the loop and pass nested list as a function argument, 
 
     TypeError: config_interface() missing 2 required positional arguments: 'ip_address' and 'mask'
 
-Error is quite logical: function expects three arguments and it is given 1 argument - a list.
-
-In such a situation it is necessary to unpack arguments. Just add ``*`` before passing the list as an argument and there is no error anymore:
+Error is quite logical: function expects three arguments and it is
+given 1 argument - a list. In such a situation it is necessary to unpack
+arguments. Just add ``*`` before passing the list as an argument and there is no error anymore:
 
 .. code:: python
 
@@ -184,5 +187,6 @@ If you add ``**`` before passing a dictionary to function, function will work pr
     {'username': 'user', 'password': '123456789'}
     Password for user user has passed all checks
 
-Python unpacks dictionary and passes it to function as keyword arguments. The  ``check_passwd(**data)`` is converted to a ``check_passwd(username='cisco', password='cisco')``.
+Python unpacks dictionary and passes it to function as keyword arguments.
+The  ``check_passwd(**data)`` is converted to a ``check_passwd(username='cisco', password='cisco')``.
 
