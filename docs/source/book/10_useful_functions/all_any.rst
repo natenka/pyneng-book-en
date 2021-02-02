@@ -1,7 +1,7 @@
-All
+all
 -----------
 
-Function ``all()`` returns True if all elements are true (or object is empty).
+Function ``all`` returns True if all elements are true (or object is empty).
 
 .. code:: python
 
@@ -26,10 +26,10 @@ For example, it is possible to check that all octets in an IP address are number
     In [6]: all( i.isdigit() for i in '10.1.1.a'.split('.'))
     Out[6]: False
 
-Any
+any
 -----------
 
-Function any() returns True if at least one element is true.
+Function ``any`` returns True if at least one element is true.
 
 .. code:: python
 
@@ -45,7 +45,7 @@ Function any() returns True if at least one element is true.
     In [10]: any( i.isdigit() for i in '10.1.1.a'.split('.'))
     Out[10]: True
 
-For example, with any() you can replace ignore_command() function:
+For example, with ``any`` you can replace ``ignore_command`` function:
 
 .. code:: python
 

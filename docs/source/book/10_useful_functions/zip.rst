@@ -1,18 +1,18 @@
-Zip
+zip
 -----------
 
-``zip()`` function:
+``zip`` function:
 
 -  sequences are passed to function
--  zip() returns an iterator with tuples in which n-tuple consists of n-elements of sequences that have been passed as arguments
+-  zip returns an iterator with tuples in which n-tuple consists of n-elements of sequences that have been passed as arguments
 -  for example, 10th tuple will contain 10th element of each of passed sequences
 -  if sequences with different lengths have been passed to input, they will all be cut by the shortest sequence
 -  the order of elements is respected
 
 .. note::
-    Since zip() is an iterator, list() is used to display its contents
+    Since ``zip`` is an iterator, ``list`` is used to display its contents
 
-Example of using zip():
+Example of using zip:
 
 .. code:: python
 
@@ -23,7 +23,7 @@ Example of using zip():
     In [3]: list(zip(a,b))
     Out[3]: [(1, 100), (2, 200), (3, 300)]
 
-Use zip() with lists of different lengths:
+Use zip with lists of different lengths:
 
 .. code:: python
 
@@ -36,10 +36,10 @@ Use zip() with lists of different lengths:
     In [7]: list(zip(a,b,c))
     Out[7]: [(1, 10, 100), (2, 20, 200), (3, 30, 300)]
 
-Using zip() to create a dictionary
+Using zip to create a dictionary
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Example of using zip()  to create a dictionary:
+Example of using zip  to create a dictionary:
 
 .. code:: python
 

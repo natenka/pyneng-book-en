@@ -1,10 +1,11 @@
-Sorted
+sorted
 --------------
 
-Function ``sorted()`` returns a new sorted list that is obtained from an iterable object that has been passed as an argument. Function also supports additional options that allow you to control sorting.
+Function ``sorted`` returns a new sorted list that is obtained from an
+iterable object that has been passed as an argument. Function also supports
+additional options that allow you to control sorting.
 
-The first aspect that is important to pay attention to - **sorted** returns a list.
-
+The first aspect that is important to pay attention to - ``sorted`` returns a list.
 If you sort a list of items, a new list is returned:
 
 .. code:: python
@@ -41,7 +42,7 @@ Sorting string:
     In [8]: sorted(string_to_sort)
     Out[8]: [' ', 'g', 'g', 'i', 'l', 'n', 'n', 'o', 'r', 's', 't']
 
-If you pass a dictionary to sorted() the function will return sorted list of keys:
+If you pass a dictionary to ``sorted`` the function will return sorted list of keys:
 
 .. code:: python
 
@@ -70,9 +71,8 @@ If you pass a dictionary to sorted() the function will return sorted list of key
 reverse
 ~~~~~~~
 
-The **reverse** flag allows you to control the sorting order. By default, sorting will be incremental.
-
-The **reverse** flag changes the order:
+The **reverse** flag allows you to control the sorting order.
+By default, sorting will be in ascending order of items:
 
 .. code:: python
 
@@ -87,7 +87,8 @@ The **reverse** flag changes the order:
 key
 ~~~
 
-With **key** option you can specify how to perform sorting. The **key** parameter expects function by which the comparison should be performed.
+With **key** option you can specify how to perform sorting. The **key**
+parameter expects function by which the comparison should be performed.
 
 For example you can sort a list of strings by string length:
 

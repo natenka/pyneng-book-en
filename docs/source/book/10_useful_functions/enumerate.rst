@@ -1,7 +1,10 @@
 enumerate
 ---------
 
-Sometimes, when iterating objects in **for** loop, it is necessary not only to get object itself but also its sequence number. This can be done by creating an additional variable that will increase by one with each iteration. However, it is much more convenient to do this with iterator ``enumerate()``.
+Sometimes, when iterating objects in **for** loop, it is necessary
+not only to get object itself but also its sequence number. This
+can be done by creating an additional variable that will increase by
+one with each iteration. However, it is much more convenient to do this with iterator ``enumerate``.
 
 Basic example:
 
@@ -16,7 +19,7 @@ Basic example:
     1 str2
     2 str3
 
-``enumerate()`` can count not only from scratch but from any value that has been given to it after object:
+``enumerate`` can count not only from scratch but from any value that has been given to it after object:
 
 .. code:: python
 

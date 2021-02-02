@@ -1,15 +1,16 @@
 .. _print:
 
-Print
--------------
+print
+-----
 
-Function ``print()`` has been used many times in book but its full syntax has not yet been considered:
+Function ``print`` has been used many times in book, but its full
+syntax has not yet been discussed:
 
 .. code:: python
 
     print(*items, sep=' ', end='\n', file=sys.stdout, flush=False)
 
-Function print() outputs all elements by separating them by their **sep** value and finishes output with **end** value.
+Function ``print`` outputs all elements by separating them by their **sep** value and finishes output with **end** value.
 
 All elements that are passed as arguments are converted into strings:
 
@@ -22,7 +23,7 @@ All elements that are passed as arguments are converted into strings:
     In [5]: print(1, 2, f, range(10))
     1 2 <function f at 0xb4de926c> range(0, 10)
 
-For functions f() and range() the result is equivalent to str():
+For functions f and range the result is equivalent to str:
 
 .. code:: python
 
@@ -64,13 +65,13 @@ You can change **sep** value to any other string:
     3
 
 .. note::
-    Note that all arguments that manage behavior of print() function must be passed on as keyword, not positional.
+    Note that all arguments that manage behavior of ``print`` function must be passed on as keyword, not positional.
 
-In some situations print() function can replace join() method:
+In some situations ``print`` function can replace join method:
 
 .. code:: python
 
-    In [12]: items = [1,2,3,4,5]
+    In [12]: items = [1, 2, 3, 4, 5]
 
     In [13]: print(*items, sep=', ')
     1, 2, 3, 4, 5
@@ -83,21 +84,21 @@ By default, line feed character is used:
 
 .. code:: python
 
-    In [19]: print(1,2,3)
+    In [19]: print(1, 2, 3)
     1 2 3
 
 You can change **end** value to any other string:
 
 .. code:: python
 
-    In [20]: print(1,2,3, end='\n'+'-'*10)
+    In [20]: print(1, 2, 3, end='\n'+'-'*10)
     1 2 3
     ----------
 
 file
 ~~~~
 
-Parameter **file** controls where values of print() function are displayed. The default output is sys.stdout.
+Parameter **file** controls where values of ``print`` function are displayed. The default output is sys.stdout.
 
 Python allows to pass to **file** as an argument any object with write(string) method. 
 
@@ -126,7 +127,8 @@ Python allows to pass to **file** as an argument any object with write(string) m
 flush
 ~~~~~
 
-By default, when writing to a file or print to a standard output stream, the output is buffered.  Function print() allows to disable buffering. You can control it in a file.
+By default, when writing to a file or print to a standard output stream, the output is buffered.
+Function ``print`` allows to disable buffering. You can control it in a file.
 
 Example script that displays a number from 0 to 10 every second (print_nums.py file):
 

@@ -9,15 +9,6 @@
 
 This section discusses the following functions:
 
--  print
--  range
--  sorted
--  enumerate
--  zip
--  all, any
--  lambda
--  map, filter
-
 
 .. toctree::
    :maxdepth: 1
