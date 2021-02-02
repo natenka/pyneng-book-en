@@ -10,10 +10,10 @@ Both modes create a file if it does not exist.
 
 The following methods are used to write to a file:
 
-*  ``write()`` - write one line to file
-*  ``writelines()`` - allows to send as argument a list of strings
+*  ``write`` - write one line to file
+*  ``writelines`` - allows to send as argument a list of strings
 
-``write()``
+``write``
 ^^^^^^^^^^^
 
 Method ``write`` expects string to write.
@@ -83,10 +83,10 @@ Since ipython supports *cat* command, you can easily see the content of file:
     !
     hostname r2
 
-``writelines()``
+``writelines``
 ^^^^^^^^^^^^^^^^
 
-Method ``writelines()`` expects list of strings as an argument.
+Method ``writelines`` expects list of strings as an argument.
 
 Writing cfg_lines list into the file:
 

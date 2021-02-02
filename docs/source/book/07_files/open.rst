@@ -3,10 +3,10 @@ File opening
 
 To start working with a file you have to open it.
 
-``open()``
+``open``
 ^^^^^^^^^^
 
-Function ``open()`` is most often used to open files:
+Function ``open`` is most often used to open files:
 
 .. code:: python
 
@@ -18,7 +18,7 @@ In open() function:
 -  You can specify not only the name but also the path (absolute or relative)
 -  ``'r'`` - file opening mode
 
-Function ``open()`` creates a **file** object to which different methods can then be applied to work with it.
+Function ``open`` creates a **file** object to which different methods can then be applied to work with it.
 
 File opening modes:
 

@@ -3,9 +3,9 @@ File reading
 
 Python has several file reading methods:
 
-* ``read()`` - reads the contents of file to string
-* ``readline()`` - reads file line by line
-* ``readlines()`` - reads file lines and creates a list from the lines
+* ``read`` - reads the contents of file to string
+* ``readline`` - reads file line by line
+* ``readlines`` - reads file lines and creates a list from the lines
 
 Let’s see how to read contents of files using the example of r1.txt:
 
@@ -22,10 +22,10 @@ Let’s see how to read contents of files using the example of r1.txt:
     ip ssh version 2
     !
 
-``read()``
+``read``
 ^^^^^^^^^^
 
-Method ``read()`` reads the entire file to one string:
+Method ``read`` reads the entire file to one string:
 
 .. code:: python
 
@@ -38,14 +38,14 @@ Method ``read()`` reads the entire file to one string:
     Out[3]: ''
 
 When reading a file once again an empty line is displayed in line 3. 
-This is because the whole file is read when ``read()`` method is called. 
+This is because the whole file is read when ``read`` method is called. 
 And after the file has been read the cursor stays at the end of file. 
-The cursor position can be controlled by means of ``seek()`` method.
+The cursor position can be controlled by means of ``seek`` method.
 
-``readline()``
+``readline``
 ^^^^^^^^^^^^^^
 
-File can be read line by line using ``readline()`` method:
+File can be read line by line using ``readline`` method:
 
 .. code:: python
 
@@ -86,10 +86,10 @@ But most often it is easier to walk through a **file** object in a loop without 
 
     !
 
-``readlines()``
+``readlines``
 ^^^^^^^^^^^^^^^
 
-Another useful method is ``readlines()``. It reads file lines to the list:
+Another useful method is ``readlines``. It reads file lines to the list:
 
 .. code:: python
 
@@ -108,7 +108,7 @@ Another useful method is ``readlines()``. It reads file lines to the list:
      'ip ssh version 2\n',
      '!\n']
 
-If you want to get lines of a file but without a line feed character at the end, you can use ``split()`` method and specify symbol ``\n`` as a separator:
+If you want to get lines of a file but without a line feed character at the end, you can use ``split`` method and specify symbol ``\n`` as a separator:
 
 ::
 
@@ -130,7 +130,7 @@ If you want to get lines of a file but without a line feed character at the end,
 
 Note that the last item in list is an empty string.
 
-If you use ``split()`` before ``rstrip()``, list will be without empty string at the end:
+If you use ``split`` before ``rstrip``, list will be without empty string at the end:
 
 .. code:: python
 
@@ -149,7 +149,7 @@ If you use ``split()`` before ``rstrip()``, list will be without empty string at
      'ip ssh version 2',
      '!']
 
-``seek()``
+``seek``
 ^^^^^^^^^^
 
 Until now, file had to be reopened to read it again. This is because after reading methods a cursor is at the end of the file. And second reading returns an empty string.
