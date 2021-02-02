@@ -2,9 +2,9 @@ Iteration protocol
 ~~~~~~~~~~~~~~~~~
 
 
-**iterable object (iterable)** - object that can return elements one at a time. 
+**iterable** - object that can return elements one at a time. 
 For Python, it is any object that has ``__iter__`` or ``__getitem__`` method.
-If an object has __iter__ method, the iterated object becomes an iterator by calling ``iter(name)`` where *name* - name of iterable object. If __iter__ method is not present, Python iterates elements using __getitem__.
+If an object has __iter__ method, the iterable becomes an iterator by calling ``iter(name)`` where *name* - name of iterable. If __iter__ method is not present, Python iterates elements using __getitem__.
 
 
 .. code:: python
@@ -135,7 +135,7 @@ After elements are ended, Stopiteration exception is returned. In order for iter
 
 When we iterate list items, iter() function is first applied to the list to create an iterator and then __next__ method is called until Stopiteration exception occurs.
 
-An example of my_for() function that works with any iterable object and imitates built-in function **for**:
+An example of my_for() function that works with any iterable and imitates built-in function **for**:
 
 .. code:: python
 
@@ -282,12 +282,12 @@ Most of the time, iterator is a disposable object and once we’ve iterated elem
     Calling __next__
 
 
-Creation of iterable object
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Creation of iterable
+^^^^^^^^^^^^^^^^^^^^
 
-Very often it is sufficient for class to be an iterable object and not necessarily an iterator. If an object is iterable, it can be used in *for* loop, *map* functions, *filter*, *sorted*, *enumerate* and others. It is also generally easier to make an iterable object than an iterator.
+Very often it is sufficient for class to be an iterable and not necessarily an iterator. If an object is iterable, it can be used in *for* loop, *map* functions, *filter*, *sorted*, *enumerate* and others. It is also generally easier to make an iterable than an iterator.
 
-In order for Network class to create iterable objects, class must have __iter__ (__next__ is not needed) and method must return iterator. Since in this case, Network iterates addresses that are in self.addresses list, the easiest option to return iterator is to return  ``iter(self.addresses)``:
+In order for Network class to be iterable, class must have __iter__ (__next__ is not needed) and method must return iterator. Since in this case, Network iterates addresses that are in self.addresses list, the easiest option to return iterator is to return  ``iter(self.addresses)``:
 
 .. code:: python
 

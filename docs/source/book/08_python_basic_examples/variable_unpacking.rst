@@ -1,7 +1,7 @@
 Variable unpacking
 ---------------------
 
-Variable unpacking is a special syntax that allows to assign elements of an iterated object to variables.
+Variable unpacking is a special syntax that allows to assign elements of an iterable to variables.
 
 .. note::
     This functionality is often referred to as tuple unpacking but unpacking works on any iterable object, not only with tuples
@@ -26,7 +26,9 @@ This option is much more convenient than the use of indexes:
 
     In [5]: intf, ip, status, protocol = interface[0], interface[1], interface[2], interface[3]
 
-When you unpack variables, each item in list falls into the corresponding variable. It is important to keep in mind that variables on the left should be exactly as many elements in the list.
+When you unpack variables, each item in list falls into the corresponding variable.
+It is important to take into account that there should be exactly as many variables
+on the left as there are elements in the list.
 
 If amount of variables are less or more, there will be an exception:
 
@@ -51,9 +53,11 @@ If amount of variables are less or more, there will be an exception:
 Replacement of unnecessary elements ``_``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Often only some of elements of an iterated object are needed. Unpacking syntax requires that exactly as many variables as elements in the object being iterated be specified.
+Often only some of elements of an iterable are needed. Unpacking syntax
+requires that exactly as many variables as elements in the object being iterated be specified.
 
-If, for example, only VLAN, MAC and interface should be obtained from line, you still need to specify a variable for record type:
+If, for example, only VLAN, MAC and interface should be obtained from line,
+you still need to specify a variable for "DYNAMIC":
 
 .. code:: python
 
@@ -92,7 +96,9 @@ Underline character can be used more than once:
 Use ``*``
 ~~~~~~~~~~~~~~~~~~~
 
-Unpacking  of variables supports a special syntax that allows unpacking  of several elements into one. If you put ``*`` in front of variable name, all elements except those that are explicitly assigned will be written into it.
+Variable unpacking supports a special syntax that allows unpacking
+of several elements into one. If you put ``*`` in front of variable name,
+all elements except those that are explicitly assigned will be written into it.
 
 For example, you can get the first element in *first* variable and the rest in *rest*:
 
@@ -134,7 +140,7 @@ If there is only one item, unpacking will still work:
     In [27]: rest
     Out[27]: []
 
-There could be only one variable with an asterisk in terms of unpacking.
+There can be only one variable with an asterisk in the unpacking expression.
 
 .. code:: python
 

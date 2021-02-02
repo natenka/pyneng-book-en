@@ -4,24 +4,20 @@
 List, dict, set comprehensions
 ==============================
 
-Python supports special expressions that allow for compact creation of lists, dictionaries, and sets.
+Python supports special expressions that allow for compact creation
+of lists, dictionaries, and sets:
 
-Terms are as follows:
+-  list comprehensions
+-  dict comprehensions
+-  set comprehensions
 
--  List comprehensions
--  Dict comprehensions
--  Set comprehensions
+These expressions not only enable more compact objects to be created but also
+create them faster. Although they require a certain habit of use and understanding at first, they are very often used.
 
-Unfortunately, official translation into Russian sounds like `abstraction of lists or list inclusion <https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BA%D0%BE%D0%B2%D0%BE%D0%B5_%D0%B2%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5>`__ which does not help to understand the essence of the object.
+List comprehensions
+-------------------
 
-Book used term «list generator» which unfortunately is also not the best version because in Python there is a separate concept of generator and generator expressions, but it better reflects the essence of expression.
-
-These expressions not only enable more compact objects to be created but also create them faster. Although they require a certain habit of use and understanding at first, they are very often used.
-
-List comprehensions (list generators)
-----------------------------------------
-
-List generator is an expression like:
+List comprehension is an expression like:
 
 .. code:: python
 
@@ -46,7 +42,6 @@ Expression above is similar to this loop:
     ['vlan 10', 'vlan 11', 'vlan 12', 'vlan 13', 'vlan 14', 'vlan 15']
 
 In list comprehensions you can use **if**. Thus, you can only add some objects to the list.
-
 For example, a loop selects only those elements that are digits, converts them and adds them to the resulting list only_digits:
 
 .. code:: python
@@ -74,12 +69,15 @@ A similar version with list comprehensions:
     In [12]: print(only_digits)
     [10, 20, 30, 40]
 
-Of course, not all loops can be rewritten as a list generator but when it is possible to do so without making the expression more complex, it is better to use list generators.
+Of course, not all loops can be rewritten as a list comprehension but when
+it is possible to do so without making the expression more complex, it is better to use list comprehension.
 
 .. note::
-    In Python, list generators can also replace filter and map functions and are considered  as more understandable solutions.
 
-With the help of list generator it is also convenient to obtain elements from nested dictionaries:
+    In Python, list comprehensions can also replace filter and map functions
+    and are considered  as more understandable solutions.
+
+With the help of list comprehension it is also convenient to obtain elements from nested dictionaries:
 
 .. code:: python
 
@@ -116,7 +114,7 @@ With the help of list generator it is also convenient to obtain elements from ne
     In [15]: [london_co[device]['IP'] for device in london_co]
     Out[15]: ['10.255.0.1', '10.255.0.2', '10.255.0.101']
 
-In fact, syntax of list generator looks like:
+In fact, syntax of list comprehension looks like:
 
 .. code:: python
 
@@ -147,7 +145,7 @@ It’s necessary to form only one list with VLAN numbers. The first option is to
     In [19]: print(result)
     [10, 21, 35, 101, 115, 150, 111, 40, 50]
 
-Similar to list generator:
+List comprehension:
 
 .. code:: python
 
@@ -178,12 +176,11 @@ Two sequences can be processed simultaneously using zip():
     vlan 200
      name dmz
 
-Dict comprehensions (dictionary generators)
------------------------------------------
+Dict comprehensions
+-------------------
 
-Dictionary generators are similar to list generators but they are used to create dictionaries.
-
-For example, the expression:
+Dict comprehensions are similar to list comprehensions but they are
+used to create dictionaries. For example, the expression:
 
 .. code:: python
 
@@ -196,7 +193,7 @@ For example, the expression:
     In [29]: print(d)
     {1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81, 10: 100}
 
-You can replace it with a dictionary generator:
+Can be replaced with a dict comprehension:
 
 .. code:: python
 
@@ -205,7 +202,9 @@ You can replace it with a dictionary generator:
     In [31]: print(d)
     {1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81, 10: 100}
 
-Another example where you need to convert an existing dictionary and transfer all keys to a lower register. First, a solution without a dictionary generator:
+Another example in which you need to change an existing dictionary
+and convert all keys to lowercase.
+First, a solution without a dict comprehension:
 
 .. code:: python
 
@@ -232,7 +231,7 @@ Another example where you need to convert an existing dictionary and transfer al
      'model': '4451',
      'vendor': 'Cisco'}
 
-A similar variant with a dictionary generator:
+Dict comprehension version:
 
 .. code:: python
 
@@ -319,7 +318,8 @@ Similar conversion with dict comprehensions:
 
 .. code:: python
 
-    In [43]: result = {device: {str.lower(key):value for key, value in params.items()} for device, params in london_co.items()}
+    In [43]: result = {device: {str.lower(key):value for key, value in params.items()}
+             for device, params in london_co.items()}
 
     In [44]: result
     Out[44]:
@@ -342,11 +342,10 @@ Similar conversion with dict comprehensions:
       'model': '3850',
       'vendor': 'Cisco'}}
 
-Set comprehensions (set generators)
-----------------------------------------
+Set comprehensions
+------------------
 
-Set generators are generally similar to list generators.
-
+Set comprehensions are generally similar to list comprehensions.
 For example, get a set with unique VLAN numbers:
 
 .. code:: python

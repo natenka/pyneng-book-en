@@ -9,9 +9,9 @@ Documentation:
 Articles:
 
 -  `List, Dict And Set Comprehensions By
-   Example <https://www.smallsurething.com/list-dict-and-set-comprehensions-by-example/>`__ - a good article. And at the end of the article there are several exercises (with answers) 
+   Example <https://www.smallsurething.com/list-dict-and-set-comprehensions-by-example/>`__
 -  `Python List Comprehensions: Explained
-   Visually <http://treyhunner.com/2015/12/python-list-comprehensions-now-in-color/>`__ - a great explanation of list comprehensions, plus video
+   Visually <http://treyhunner.com/2015/12/python-list-comprehensions-now-in-color/>`__
 
 Stack Overflow:
 

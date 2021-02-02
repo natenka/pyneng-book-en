@@ -1,27 +1,32 @@
 Working with dictionary
 -------------------
 
-When processing output of commands or configuration, often it will be necessary to write summary data to the dictionary.
+When processing output of commands or configuration, often it will
+be necessary to write summary data to the dictionary.
+It is not always obvious how to handle the output of commands and
+how to deal with the output in general. This subsection discusses
+several examples with increasing complexity.
 
-It is not always obvious how to handle the output of commands and how to deal with the output in general. This subsection discusses several examples with increasing complexity.
+Parsing column output
+~~~~~~~~~~~~~~~~~~~~~
 
-Parsing of output with columns
-~~~~~~~~~~~~~~~~~~~~~~~
+This example will deal with the output of ``sh ip int br`` command.
+From the output of command we need to get interface name and IP address.
+Interface name is dictionary key and IP address is value. At the
+same time, match must be made only for those interfaces with IP address assigned.
 
-This example will deal with the output of *sh ip int br* command. From the output of command we need to get interface name - IP address. So interface name is dictionary key and IP address is value. At the same time, match must be made only for those interfaces with IP address assigned.
-
-An example of *sh ip int br* output (sh_ip_int_br.txt file):
+An example of ``sh ip int br`` output (sh_ip_int_br.txt file):
 
 ::
 
     R1#show ip interface brief
-    Interface                  IP-Address      OK? Method Status                Protocol
-    FastEthernet0/0            15.0.15.1       YES manual up                    up
-    FastEthernet0/1            10.0.12.1       YES manual up                    up
-    FastEthernet0/2            10.0.13.1       YES manual up                    up
-    FastEthernet0/3            unassigned      YES unset  up                    down
-    Loopback0                  10.1.1.1        YES manual up                    up
-    Loopback100                100.0.0.1       YES manual up                    up
+    Interface             IP-Address      OK? Method Status        Protocol
+    FastEthernet0/0       15.0.15.1       YES manual up            up
+    FastEthernet0/1       10.0.12.1       YES manual up            up
+    FastEthernet0/2       10.0.13.1       YES manual up            up
+    FastEthernet0/3       unassigned      YES unset  up            down
+    Loopback0             10.1.1.1        YES manual up            up
+    Loopback100           100.0.0.1       YES manual up            up
 
 Working_with_dict_example_1.py file:
 
@@ -38,15 +43,20 @@ Working_with_dict_example_1.py file:
 
     print(result)
 
-Command *sh ip int br* displays the output with columns. So desired fields are in the same line. Script processes the output line by line and divides each line using split() method.
+Command ``sh ip int br`` displays the output with columns. So desired
+fields are in the same line. Script processes the output line by line
+and divides each line using split() method.
 
-The resulting list contains output columns. Because we need only interfaces on which IP address is configured, first character of second column is checked: if first character is a number the address is assigned to interface and string has to be processed.
+The resulting list contains output columns. Because we need only interfaces
+on which IP address is configured, first character of second column is checked:
+if first character is a number the address is assigned to interface and string has to be processed.
 
-In ``interface, address, *other = line`` - variables are unpacked. Variable *interface* will have interface name, *address* will have IP address and *other* - all other fields.
-
+In ``interface, address, *other = line`` - variables are unpacked.
+Variable *interface* will have interface name, *address* will have IP address and *other* - all other fields.
 Since each line has a key-value pair, they are assigned to dictionary: ``result[interface] = address``.
 
-The result of script execution will be a dictionary (here it is split into key-value pairs for convenience, in real script the dictionary output will be displayed in one line):
+The result of script execution will be a dictionary (here it is split into
+key-value pairs for convenience, in real script the dictionary output will be displayed in one line):
 
 .. code:: python
 
@@ -59,9 +69,10 @@ The result of script execution will be a dictionary (here it is split into key-v
 Getting key and value from different output lines
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Very often the output of commands looks like that key and value are in different lines. And you have to figure out how to process the output to get right match.
-
-For example, from the output of *sh ip int br* command you need to get match *interface name – MTU* (sh_ip_interface.txt file):
+Very often the output of commands looks like that key and value are in
+different lines. And you have to figure out how to process the output to get right match.
+For example, from the output of *sh ip int br* command you need to get
+match *interface name – MTU* (sh_ip_interface.txt file):
 
 ::
 
@@ -107,8 +118,10 @@ For example, try to remember interface each time and print its value when MTU pa
     Ethernet0/3    1500
     Loopback0      1514
 
-Command output is organized in such a way that there is always a line with interface first and then a line with MTU after several lines. If you remember the name of interface every time it appears and at the time when line meets with MTU, the last memorized interface is the one which matches this MTU.
-
+Command output is organized in such a way that there is always a line
+with interface first and then a line with MTU after several lines.
+If you remember the name of interface every time it appears and at
+the time when line meets with MTU, the last memorized interface is the one which matches this MTU.
 Now, if you want to create a dictionary that matches *interface – MTU*, it’s enough to write values when MTU was found.
 
 Working_with_dict_example_2.py file:
@@ -127,7 +140,8 @@ Working_with_dict_example_2.py file:
 
     print(result)
 
-The result of script execution will be a dictionary (here it is split into key-value pairs for convenience, in real script the dictionary output will be displayed in one line):
+The result of script execution will be a dictionary (here it is split into
+key-value pairs for convenience, in real script the dictionary output will be displayed in one line):
 
 .. code:: python
 
@@ -142,9 +156,10 @@ This technique will be quite often useful because command output is generally or
 Nested dictionary
 ~~~~~~~~~~~~~~~~~
 
-If you want to get several parameters from the output, it is very convenient to use a dictionary with a nested dictionary.
-
-For example, from output ```sh ip interface``` you need to get two parameters: IP address and MTU. First, output of information:
+If you want to get several parameters from the output, it is very convenient
+to use a dictionary with a nested dictionary.
+For example, from output ``sh ip interface`` you need to get two parameters:
+IP address and MTU. First, output of information:
 
 ::
 
@@ -170,7 +185,8 @@ For example, from output ```sh ip interface``` you need to get two parameters: I
       Helper address is not set
       ...
 
-In the first step, each value is stored in a variable and then all three values are displayed. Values are displayed when a string has MTU because it is the last string:
+In the first step, each value is stored in a variable and then all three values are
+displayed. Values are displayed when a string has MTU because it is the last string:
 
 .. code:: python
 
@@ -210,9 +226,13 @@ It uses the same technique as in previous example but adds another nested dictio
 
     print(result)
 
-Each time an interface is detected, ```result``` dictionary creates a key with the name of interface that corresponds to an empty dictionary. This blank is used so that at the time when IP address or MTU is detected, parameter can be written into nested dictionary of the corresponding interface.
+Each time an interface is detected, ``result`` dictionary creates a key with the
+name of interface that corresponds to an empty dictionary. This blank is used
+so that at the time when IP address or MTU is detected, parameter can be written
+into nested dictionary of the corresponding interface.
 
-The result of script execution will be a dictionary (here it is split into key-value pairs for convenience, in real script the dictionary output will be displayed in one line):
+The result of script execution will be a dictionary (here it is split into key-value
+pairs for convenience, in real script the dictionary output will be displayed in one line):
 
 .. code:: python
 
@@ -225,7 +245,9 @@ The result of script execution will be a dictionary (here it is split into key-v
 Output with empty values
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Sometimes, sections with empty values will be found in the output. For example, in case of output ```sh ip interface```, interfaces may look like:
+Sometimes, sections with empty values will be found in the output.
+For example, in case of output ```sh ip interface```, interfaces may look like:
+
 ::
 
     Ethernet0/1 is up, line protocol is up
@@ -236,7 +258,6 @@ Sometimes, sections with empty values will be found in the output. For example, 
       Internet protocol processing disabled
 
 Consequently, there is no MTU or IP address.
-
 And if you execute previous script for a file with such interfaces, the result is this (output for file sh_ip_interface2.txt):
 
 .. code:: python
@@ -247,7 +268,9 @@ And if you execute previous script for a file with such interfaces, the result i
      'Ethernet0/3': {},
      'Loopback0': {'ip': '2.2.2.2/32', 'mtu': '1514'}}
 
-If you need to add interfaces to dictionary only when an IP address is assigned to interface, you need to move the creation of key with interface name to a moment when line with IP address is detected (working_with_dict_example_4.py file):
+If you need to add interfaces to dictionary only when an IP address is assigned to interface,
+you need to move the creation of key with interface name to a moment when line with
+IP address is detected (working_with_dict_example_4.py file):
 
 .. code:: python
 
