@@ -14,7 +14,7 @@ Standard function:
 
     In [1]: def sum_arg(a, b): return a + b
 
-    In [2]: sum_arg(1,2)
+    In [2]: sum_arg(1, 2)
     Out[2]: 3
 
 Similar anonymous function or ``lambda`` function:
@@ -23,7 +23,7 @@ Similar anonymous function or ``lambda`` function:
 
     In [3]: sum_arg = lambda a, b: a + b
 
-    In [4]: sum_arg(1,2)
+    In [4]: sum_arg(1, 2)
     Out[4]: 3
 
 Note that there is no **return** operator in ``lambda`` function definition

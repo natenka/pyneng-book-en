@@ -10,7 +10,7 @@ syntax has not yet been discussed:
 
     print(*items, sep=' ', end='\n', file=sys.stdout, flush=False)
 
-Function ``print`` outputs all elements by separating them by their **sep** value and finishes output with **end** value.
+Function ``print`` outputs all elements by separating them by their ``sep`` value and finishes output with ``end`` value.
 
 All elements that are passed as arguments are converted into strings:
 
@@ -36,7 +36,7 @@ For functions f and range the result is equivalent to str:
 sep
 ~~~
 
-Parameter **sep** controls which separator will be used between elements.
+Parameter ``sep`` controls which separator will be used between elements.
 
 By default, space is used:
 
@@ -45,7 +45,7 @@ By default, space is used:
     In [8]: print(1, 2, 3)
     1 2 3
 
-You can change **sep** value to any other string:
+You can change ``sep`` value to any other string:
 
 .. code:: python
 
@@ -57,7 +57,7 @@ You can change **sep** value to any other string:
     2
     3
 
-    In [11]: print(1, 2, 3, sep='\n'+'-'*10+'\n')
+    In [11]: print(1, 2, 3, sep=f"\n{'-' * 10}\n")
     1
     ----------
     2
@@ -79,7 +79,7 @@ In some situations ``print`` function can replace join method:
 end
 ~~~
 
-Parameter **end** controls which value will be displayed after all elements are printed. 
+Parameter ``end`` controls which value will be displayed after all elements are printed. 
 By default, line feed character is used:
 
 .. code:: python
@@ -87,20 +87,20 @@ By default, line feed character is used:
     In [19]: print(1, 2, 3)
     1 2 3
 
-You can change **end** value to any other string:
+You can change ``end`` value to any other string:
 
 .. code:: python
 
-    In [20]: print(1, 2, 3, end='\n'+'-'*10)
+    In [20]: print(1, 2, 3, end='\n' + '-' * 10)
     1 2 3
     ----------
 
 file
 ~~~~
 
-Parameter **file** controls where values of ``print`` function are displayed. The default output is sys.stdout.
+Parameter ``file`` controls where values of ``print`` function are displayed. The default output is sys.stdout.
 
-Python allows to pass to **file** as an argument any object with write(string) method. 
+Python allows to pass to ``file`` as an argument any object with write(string) method. 
 
 .. code:: python
 
@@ -154,9 +154,9 @@ Now, a similar script but the numbers will appear in one line (print_nums_onelin
 
 Try running a function. Numbers does not appear one per second but all appear after 10 seconds.
 
-This is because when output is displayed on standard output, **flush** is performed after line feed character.
+This is because when output is displayed on standard output, ``flush`` is performed after line feed character.
 
-In order to make script work properly **flush** should be set to True (print_nums_oneline_fixed.py file):
+In order to make script work properly ``flush`` should be set to True (print_nums_oneline_fixed.py file):
 
 .. code:: python
 

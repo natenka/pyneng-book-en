@@ -20,14 +20,14 @@ From the list of numbers leave only odd:
 
 .. code:: python
 
-    In [3]: list(filter(lambda x: x%2, [10, 111, 102, 213, 314, 515]))
+    In [3]: list(filter(lambda x: x % 2, [10, 111, 102, 213, 314, 515]))
     Out[3]: [111, 213, 515]
 
 Similarly, only even ones:
 
 .. code:: python
 
-    In [4]: list(filter(lambda x: not x%2, [10, 111, 102, 213, 314, 515]))
+    In [4]: list(filter(lambda x: not x % 2, [10, 111, 102, 213, 314, 515]))
     Out[4]: [10, 102, 314]
 
 From the list of words leave only those with more than two letters:

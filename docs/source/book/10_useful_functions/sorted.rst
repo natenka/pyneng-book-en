@@ -48,30 +48,30 @@ If you pass a dictionary to ``sorted`` the function will return sorted list of k
 
     In [9]: dict_for_sort = {
        ...:         'id': 1,
-       ...:         'name':'London',
-       ...:         'IT_VLAN':320,
-       ...:         'User_VLAN':1010,
-       ...:         'Mngmt_VLAN':99,
+       ...:         'name': 'London',
+       ...:         'it_vlan': 320,
+       ...:         'user_vlan': 1010,
+       ...:         'mngmt_vlan': 99,
        ...:         'to_name': None,
        ...:         'to_id': None,
-       ...:         'port':'G1/0/11'
+       ...:         'port': 'G1/0/11'
        ...: }
 
     In [10]: sorted(dict_for_sort)
     Out[10]:
-    ['IT_VLAN',
-     'Mngmt_VLAN',
-     'User_VLAN',
-     'id',
+    ['id',
+     'it_vlan',
+     'mngmt_vlan',
      'name',
      'port',
      'to_id',
-     'to_name']
+     'to_name',
+     'user_vlan']
 
 reverse
 ~~~~~~~
 
-The **reverse** flag allows you to control the sorting order.
+The ``reverse`` flag allows you to control the sorting order.
 By default, sorting will be in ascending order of items:
 
 .. code:: python
@@ -87,7 +87,7 @@ By default, sorting will be in ascending order of items:
 key
 ~~~
 
-With **key** option you can specify how to perform sorting. The **key**
+With ``key`` option you can specify how to perform sorting. The ``key``
 parameter expects function by which the comparison should be performed.
 
 For example you can sort a list of strings by string length:
@@ -105,13 +105,13 @@ If you want to sort dictionary keys but ignore string register:
 
     In [16]: dict_for_sort = {
         ...:         'id': 1,
-        ...:         'name':'London',
-        ...:         'IT_VLAN':320,
-        ...:         'User_VLAN':1010,
-        ...:         'Mngmt_VLAN':99,
+        ...:         'name': 'London',
+        ...:         'IT_VLAN': 320,
+        ...:         'User_VLAN': 1010,
+        ...:         'Mngmt_VLAN': 99,
         ...:         'to_name': None,
         ...:         'to_id': None,
-        ...:         'port':'G1/0/11'
+        ...:         'port': 'G1/0/11'
         ...: }
 
     In [17]: sorted(dict_for_sort, key=str.lower)
@@ -125,9 +125,11 @@ If you want to sort dictionary keys but ignore string register:
      'to_name',
      'User_VLAN']
 
-The **key** option can accept any functions, not only embedded ones. It is also convenient to use anonymous lambda() function.
+The ``key`` option can accept any functions, not only embedded ones. It is also
+convenient to use anonymous lambda() function.
 
-Using **key** option you can sort objects by any element. However, this requires either lambda() or special functions from **operator** module.
+Using ``key`` option you can sort objects by any element. However, this requires
+either lambda() or special functions from **operator** module.
 
 For example, in order to sort the list of tuples with two items in the second element, you should use this technique:
 

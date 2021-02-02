@@ -20,10 +20,10 @@ For example, it is possible to check that all octets in an IP address are number
 
     In [4]: IP = '10.0.1.1'
 
-    In [5]: all( i.isdigit() for i in IP.split('.'))
+    In [5]: all(i.isdigit() for i in IP.split('.'))
     Out[5]: True
 
-    In [6]: all( i.isdigit() for i in '10.1.1.a'.split('.'))
+    In [6]: all(i.isdigit() for i in '10.1.1.a'.split('.'))
     Out[6]: False
 
 any
@@ -42,7 +42,7 @@ Function ``any`` returns True if at least one element is true.
     In [9]: any([])
     Out[9]: False
 
-    In [10]: any( i.isdigit() for i in '10.1.1.a'.split('.'))
+    In [10]: any(i.isdigit() for i in '10.1.1.a'.split('.'))
     Out[10]: True
 
 For example, with ``any`` you can replace ``ignore_command`` function:

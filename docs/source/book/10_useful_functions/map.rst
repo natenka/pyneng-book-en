@@ -93,6 +93,6 @@ Use ``zip`` to get pairs of elements:
 
     In [55]: nums2 = [100, 200, 300, 400, 500]
 
-    In [56]: [x*y for x, y in zip(nums, nums2)]
+    In [56]: [x * y for x, y in zip(nums, nums2)]
     Out[56]: [100, 400, 900, 1600, 2500]
 
