@@ -21,7 +21,7 @@ List comprehension is an expression like:
 
 .. code:: python
 
-    In [1]: vlans = ['vlan {}'.format(num) for num in range(10,16)]
+    In [1]: vlans = [f'vlan {num}' for num in range(10, 16)]
 
     In [2]: print(vlans)
     ['vlan 10', 'vlan 11', 'vlan 12', 'vlan 13', 'vlan 14', 'vlan 15']
@@ -34,8 +34,8 @@ Expression above is similar to this loop:
 
     In [3]: vlans = []
 
-    In [4]: for num in range(10,16):
-       ...:     vlans.append('vlan {}'.format(num))
+    In [4]: for num in range(10, 16):
+       ...:     vlans.append(f'vlan {num}')
        ...:
 
     In [5]: print(vlans)
@@ -164,7 +164,7 @@ Two sequences can be processed simultaneously using zip():
 
     In [24]: names = ['mngmt', 'voice', 'video', 'dmz']
 
-    In [25]: result = ['vlan {}\n name {}'.format(vlan, name) for vlan, name in zip(vlans, names)]
+    In [25]: result = [f'vlan {vl}\n name {name}' for vl, name in zip(vlans, names)]
 
     In [26]: print('\n'.join(result))
     vlan 100
@@ -186,7 +186,7 @@ used to create dictionaries. For example, the expression:
 
     In [27]: d = {}
 
-    In [28]: for num in range(1,11):
+    In [28]: for num in range(1, 11):
         ...:     d[num] = num**2
         ...:
 
@@ -197,7 +197,7 @@ Can be replaced with a dict comprehension:
 
 .. code:: python
 
-    In [30]: d = {num: num**2 for num in range(1,11)}
+    In [30]: d = {num: num**2 for num in range(1, 11)}
 
     In [31]: print(d)
     {1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81, 10: 100}
@@ -219,7 +219,7 @@ First, a solution without a dict comprehension:
     In [33]: lower_r1 = {}
 
     In [34]: for key, value in r1.items():
-        ...:     lower_r1[str.lower(key)] = value
+        ...:     lower_r1[key.lower()] = value
         ...:
 
     In [35]: lower_r1
@@ -243,7 +243,7 @@ Dict comprehension version:
         ...:   'vendor': 'Cisco'}
         ...:
 
-    In [37]: lower_r1 = {str.lower(key): value for key, value in r1.items()}
+    In [37]: lower_r1 = {key.lower(): value for key, value in r1.items()}
 
     In [38]: lower_r1
     Out[38]:
@@ -290,7 +290,7 @@ Like list comprehensions, dict comprehensions can be nested. Try to convert keys
     In [41]: for device, params in london_co.items():
         ...:     lower_london_co[device] = {}
         ...:     for key, value in params.items():
-        ...:         lower_london_co[device][str.lower(key)] = value
+        ...:         lower_london_co[device][key.lower()] = value
         ...:
 
     In [42]: lower_london_co
@@ -318,7 +318,7 @@ Similar conversion with dict comprehensions:
 
 .. code:: python
 
-    In [43]: result = {device: {str.lower(key):value for key, value in params.items()}
+    In [43]: result = {device: {key.lower(): value for key, value in params.items()}
              for device, params in london_co.items()}
 
     In [44]: result

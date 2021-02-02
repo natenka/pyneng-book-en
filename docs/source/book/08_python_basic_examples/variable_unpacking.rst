@@ -195,7 +195,7 @@ Unpacking the range:
 
 .. code:: python
 
-    In [39]: first, *rest = range(1,6)
+    In [39]: first, *rest = range(1, 6)
 
     In [40]: first
     Out[40]: 1
@@ -207,9 +207,9 @@ Unpacking zip:
 
 .. code:: python
 
-    In [42]: a = [1,2,3,4,5]
+    In [42]: a = [1, 2, 3, 4, 5]
 
-    In [43]: b = [100,200,300,400,500]
+    In [43]: b = [100, 200, 300, 400, 500]
 
     In [44]: zip(a, b)
     Out[44]: <zip at 0xb4df4fac>

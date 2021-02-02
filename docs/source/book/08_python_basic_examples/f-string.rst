@@ -4,14 +4,18 @@
 Formatting lines with f-strings
 ======================================
 
-Python 3.6 added a new version of string formatting - f-strings or interpolation of strings. The f-strings allow not only to set values to template but also to perform calls to functions, methods, etc.
+Python 3.6 added a new version of string formatting - f-strings or interpolation
+of strings. The f-strings allow not only to set values to template but also to
+perform calls to functions, methods, etc.
 
-In many situations f-strings are easier to use than format() and f-strings work faster than format() and other methods of string formatting.
+In many situations f-strings are easier to use than ``format`` and f-strings
+work faster than ``format`` and other methods of string formatting.
 
 Syntax
 ~~~~~~~~~
 
-F-string is a string literal with a letter ``f`` in front of it. Inside f-string, in curly braces there are names of variables that will be substituted: 
+F-string is a string literal with a letter ``f`` in front of it. Inside f-string,
+in curly braces there are names of variables that will be substituted: 
 
 .. code:: python
 
@@ -22,10 +26,10 @@ F-string is a string literal with a letter ``f`` in front of it. Inside f-string
     In [3]: f"IP: {ip}, mask: {mask}"
     Out[3]: 'IP: 10.1.1.1, mask: 24'
 
-    The same result with format() method you can achieve by:
+    The same result with ``format`` method you can achieve by:
     ``"IP: {ip}, mask: {mask}".format(ip=ip, mask=mask)``.
 
-A very important difference between f-strings and format(): f-strings are expressions
+A very important difference between f-strings and ``format``: f-strings are expressions
 that are processed, not just strings. That is, in case of ipython, as soon as we wrote
 the expression and pressed Enter, it was performed and instead of expressions
 ``{ip}`` and ``{mask}`` the values of variables were substituted.
@@ -53,7 +57,7 @@ In addition to substituting variable values you can write expressions in curly b
     In [3]: f"IP: {'.'.join(octets)}, mask: {mask}"
     Out[3]: 'IP: 10.1.1.1, mask: 24'
 
-After colon in f-strings you can specify the same values as in format():
+After colon in f-strings you can specify the same values as in ``format``:
 
 .. code:: python
 
@@ -71,7 +75,7 @@ After colon in f-strings you can specify the same values as in format():
 Special aspects of f-strings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When using f-strings you cannot first create a template and then use it as in format() method.
+When using f-strings you cannot first create a template and then use it as in ``format`` method.
 
 F-string is immediately executed and contains the values of variables that were defined earlier:
 
@@ -214,7 +218,7 @@ What to use format or f-strings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In many cases f-strings are more convenient to use as template looks more understandable and compact.
-However, there are cases when format() method is more convenient. For example:
+However, there are cases when ``format`` method is more convenient. For example:
 
 .. code:: python
 
@@ -230,10 +234,10 @@ However, there are cases when format() method is more convenient. For example:
     In [9]: template.format(*ip)
     Out[9]: '00001010 00000001 00000001 00000001 '
 
-Another situation where format() is usually more convenient to use: the need to use the same
+Another situation where ``format`` is usually more convenient to use: the need to use the same
 template many times in script. F-string will execute the first time and will set current values
 of variables and to use template again it has to be rewritten. This means that script will
-contain copies of the same line. At the same time format() allows to create a template
+contain copies of the same line. At the same time ``format`` allows to create a template
 in one place and then use it again substituting variables as needed.
 
 This can be avoided by creating a function but creating a function to print a string based
