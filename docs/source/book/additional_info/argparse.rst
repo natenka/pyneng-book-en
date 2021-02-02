@@ -1,7 +1,7 @@
-Argparse
+argparse
 ---------------
 
-**argparse** is a module for handling command line arguments. Examples of what a module does:
+``argparse`` is a module for handling command line arguments. Examples of what a module does:
 
 -  create arguments and options with which script can be called
 -  specify argument types, default values
@@ -9,9 +9,9 @@ Argparse
 -  invoke functions when argument is specified
 -  display messages with hints of script usage
 
-**argparse** is not the only module for handling command line arguments. And not even the only one in standard library.
+``argparse`` is not the only module for handling command line arguments. And not even the only one in standard library.
 
-This book deals only with **argparse**, but in addition it is worth looking at modules that are not part of standard Python library. For example, `click <https://click.palletsprojects.com/>`__.
+This book deals only with ``argparse``, but in addition it is worth looking at modules that are not part of standard Python library. For example, `click <https://click.palletsprojects.com/>`__.
 
 .. note::
     `A good article <https://realpython.com/blog/python/comparing-python-command-line-parsing-libraries-argparse-docopt-click/>`__,
@@ -125,12 +125,12 @@ Call script without arguments:
         restore_signals, start_new_session, preexec_fn)
     TypeError: expected str, bytes or os.PathLike object, not NoneType
 
-If function was called without arguments when **argparse** is not used, an error would occur that not all arguments are specified.
+If function was called without arguments when ``argparse`` is not used, an error would occur that not all arguments are specified.
 
-Because of **argparse** the argument is actually passed, but it has ``None`` value.
+Because of ``argparse`` the argument is actually passed, but it has ``None`` value.
 You can see this in ``Namespace(count=2, ip=None)`` string.
 
-In such a script the IP address must be specified at all times. And in **argparse** you can specify that argument is mandatory. To do this, change ``-a`` option: add ``required=True`` at the end:
+In such a script the IP address must be specified at all times. And in ``argparse`` you can specify that argument is mandatory. To do this, change ``-a`` option: add ``required=True`` at the end:
 
 .. code:: python
 
@@ -146,7 +146,7 @@ Now, if you call a script without arguments, the output is:
 
 Now you see a clear message that you need to specify a mandatory argument and a usage hint.
 
-Also, thanks to **argparse**, *help* is available:
+Also, thanks to ``argparse``, *help* is available:
 
 ::
 
@@ -161,7 +161,7 @@ Also, thanks to **argparse**, *help* is available:
       -c COUNT
 
 Note that in message all options are in ``optional arguments`` section.
-**argparse** itself determines that options are specified because they start with ``-`` and only one letter in name.
+``argparse`` itself determines that options are specified because they start with ``-`` and only one letter in name.
 
 Set IP address as a positional argument (ping_function_ver2.py file):
 
@@ -243,7 +243,7 @@ Nested parsers
 Consider one of the methods to organize a more complex hierarchy of arguments.
 
 .. note::
-    This example will show more features of **argparse** but they are not limited to that, so if you use **argparse** you should check `module documentation <https://docs.python.org/3/library/argparse.html>`__ or
+    This example will show more features of ``argparse`` but they are not limited to that, so if you use ``argparse`` you should check `module documentation <https://docs.python.org/3/library/argparse.html>`__ or
     `article on PyMOTW <https://pymotw.com/3/argparse/>`__.
 
 File parse_dhcp_snooping.py:
@@ -388,7 +388,7 @@ Each nested parser now has its own *help*:
       -n db-filename  db filename
       -s SCHEMA       db schema filename
 
-In addition to nested parsers, there are also several new features of **argparse** in this example.
+In addition to nested parsers, there are also several new features of ``argparse`` in this example.
 
 ``metavar``
 ^^^^^^^^^^^
@@ -560,7 +560,7 @@ Everything works without a problem.
 Passing of arguments manually
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The last feature of **argparse** is the ability to pass arguments manually.
+The last feature of ``argparse`` is the ability to pass arguments manually.
 
 Arguments can be passed as a list when calling ``parse_args()`` method
 (call\_pds2.py file):

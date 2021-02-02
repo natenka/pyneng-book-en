@@ -7,14 +7,8 @@
 12. Useful modules
 ============================
 
-This section describes these modules:
+This section covers these modules:
 
-* subprocess
-* os
-* argparse
-* ipaddress
-* pprint
-* tabulate
 
 .. toctree::
    :maxdepth: 1
@@ -24,5 +18,4 @@ This section describes these modules:
    ipaddress
    tabulate
    pprint
-   argparse
    ../../exercises/12_exercises

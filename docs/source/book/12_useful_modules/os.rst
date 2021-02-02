@@ -1,4 +1,4 @@
-Os
+os
 ---------
 
 Module ``os`` allows working with filesystem, environment and managing processes.
@@ -7,7 +7,7 @@ This subsection addresses only several useful features. For a more complete desc
 `documentation <https://docs.python.org/3/library/os.html>`__ or 
 `article on Pymotw <https://pymotw.com/3/os/>`__.
 
-Module **os** allows you to create directories:
+Module ``os`` allows you to create directories:
 
 .. code:: python
 
@@ -42,7 +42,7 @@ In this case, testing with ``os.path.exists`` is useful:
        ...:     os.mkdir('test')
        ...:
 
-Method listdir() allows you to view the content of directory:
+Method ``listdir`` allows you to view the content of directory:
 
 .. code:: python
 
@@ -53,12 +53,12 @@ By checking ``os.path.isdir`` and ``os.path.isfile`` you can get a separate list
 
 .. code:: python
 
-    In [8]: dirs = [ d for d in os.listdir('.') if os.path.isdir(d)]
+    In [8]: dirs = [d for d in os.listdir('.') if os.path.isdir(d)]
 
     In [9]: dirs
     Out[9]: ['dir2', 'dir3', 'test']
 
-    In [10]: files = [ f for f in os.listdir('.') if os.path.isfile(f)]
+    In [10]: files = [f for f in os.listdir('.') if os.path.isfile(f)]
 
     In [11]: files
     Out[11]: ['cover3.png', 'README.txt']
