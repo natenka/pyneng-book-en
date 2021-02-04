@@ -4,7 +4,7 @@ Tuple
 
 Tuple in Python is:
 
-* a sequence of elements separated by a comma and enclosed in brackets
+* a sequence of elements separated by a comma and enclosed in parentheses
 * immutable ordered data type
 
 Roughly speaking, a tuple is a list that can’t be changed. We can say that the tuple has read-only permissions. 

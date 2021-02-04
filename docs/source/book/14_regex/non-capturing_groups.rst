@@ -23,7 +23,7 @@ Expression consists of the following parts:
 
 * ``((\w{4}\.){2}\w{4})`` - MAC address gets here 
 * ``\w{4}\.`` - this part describes 4 letters or digits and a dot
-* ``(\w{4}\.){2}`` - here brackets are used to indicate that 4 letters or digits and a dot are repeated twice
+* ``(\w{4}\.){2}`` - here parentheses are used to indicate that 4 letters or digits and a dot are repeated twice
 * ``\w{4}`` - then 4 letters or numbers
 * ``.+vlan (\d+)`` - VLAN number falls into the group 
 * ``.+port (\S+)`` - first interface
@@ -37,10 +37,10 @@ Method ``groups`` returns:
     Out[3]: ('f03a.b216.7ad7', 'b216.', '10', 'Gi0/5', 'Gi0/15')
 
 The second element is essentially superfluous. It appeared in the output because
-of brackets in expression ``(\w{4}\.){2}``.
+of parentheses in expression ``(\w{4}\.){2}``.
 
-In that case, we need to disable group capturing. This is done by adding 
-``?:`` after group bracket opens.
+In this case, you need to disable capture in the group. This is done by
+adding ``?:`` after the group's opening parenthesis.
 
 Now the expression looks like this:
 

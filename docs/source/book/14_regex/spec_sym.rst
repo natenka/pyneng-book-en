@@ -4,8 +4,8 @@ Special symbols
 *  ``.`` - any character except line feed character
 *  ``^`` - beginning of line
 *  ``$`` - end of line
-*  ``[abc]`` - any symbol in brackets
-*  ``[^abc]`` - any symbol except those in brackets
+*  ``[abc]`` - any symbol in square brackets
+*  ``[^abc]`` - any symbol except those in square brackets
 *  ``a|b`` - element a or b
 *  ``(regex)`` - expression is treated as one element. In addition, substring that matches an expression is memorized
 
@@ -89,7 +89,10 @@ be a match. Thus, different registers can be described:
     In [11]: re.search('[Ff]ast[Ee]thernet', line).group()
     Out[11]: 'FastEthernet'
 
-Using square brackets, you can specify which characters may meet at a specific position. For example, expression ``^.+[>#]`` describes characters from the beginning of a line to # or > sign (including them). This expression can be used to derive the name of device:
+Using square brackets, you can specify which characters may meet at a
+specific position. For example, expression ``^.+[>#]`` describes characters
+from the beginning of a line to ``#`` or ``>`` sign (including them).
+This expression can be used to get the name of device:
 
 .. code:: python
 
@@ -190,8 +193,8 @@ So in the end, expression means that we’re looking for Fast or 0/1.
 ``()``
 ~~~~~~
 
-Brackets are used to group expressions. As in mathematical expressions,
-brackets can be used to indicate which elements the operation is applied to.
+Parentheses are used to group expressions. As in mathematical expressions,
+parentheses can be used to indicate which elements the operation is applied to.
 
 For example, expression ``[0-9]([a-f]|[0-9])[0-9]`` describes three characters: digit, then a letter or digit and digit:
 
@@ -202,7 +205,7 @@ For example, expression ``[0-9]([a-f]|[0-9])[0-9]`` describes three characters: 
     In [28]: re.search('[0-9]([a-f]|[0-9])[0-9]', line).group()
     Out[28]: '100'
 
-Brackets allow to indicate which expression is a one entity. This is
+Parentheses allow to indicate which expression is a one entity. This is
 particularly useful when using repetition symbols:
 
 .. code:: python
@@ -212,6 +215,6 @@ particularly useful when using repetition symbols:
     In [30]: re.search('([0-9]+\.)+[0-9]+', line).group()
     Out[30]: '15.0.15.1'
 
-Brackets not only allow you to group expressions. String that matches bracketed
-expression is memorized. It can be obtained separately by special methods
+Parentheses not only allow you to group expressions. String that matches
+expression in parentheses is memorized. It can be obtained separately by special methods
 ``groups`` and ``group(n)``. This is covered in subsection "Grouping".

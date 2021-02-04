@@ -3,7 +3,7 @@ Flags
 
 When using functions or creating a compiled regular expression you can specify additional flags that affect the behavior of regular expression.
 
-The **re** module supports such flags (in brackets - a short variant of flag designation):
+The ``re`` module supports flags (in parentheses - a short version of flag):
 
 * re.ASCII (re.A) 
 * re.IGNORECASE (re.I) 

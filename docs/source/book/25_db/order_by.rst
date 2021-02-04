@@ -22,7 +22,7 @@ If you perform a simple SELECT query, the output is:
     7 rows in set
     Time: 0.039s
 
-With help of ORDER BY operator you can derive entries from *switch* table by sorting them by switch name:
+With help of ORDER BY operator you can get entries from *switch* table by sorting them by switch name:
 
 .. code:: sql
 

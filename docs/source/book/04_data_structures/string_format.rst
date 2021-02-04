@@ -28,9 +28,10 @@ Example of format() method use:
     In [1]: "interface FastEthernet0/{}".format('1')
     Out[1]: 'interface FastEthernet0/1'
 
-A special symbol ``{}`` indicates that the value that is passed to format() method is placed here. Each pair of curly brackets represents one place for the substitution.
+A special symbol ``{}`` indicates that the value that is passed to ``format``
+method is placed here. Each pair of curly braces represents one place for the substitution.
 
-Values that are placed in curly brackets may be of different types. For example, it can be a string, number or list:
+Values that are placed in curly braces may be of different types. For example, it can be a string, number or list:
 
 .. code:: python
 
@@ -43,9 +44,13 @@ Values that are placed in curly brackets may be of different types. For example,
     In [5]: print('{}'.format([10, 1, 1,1]))
     [10, 1, 1, 1]
 
-You can display the result with columns by formatting strings. In string formatting, you can specify how many characters are selected for the data. If number of characters in the data is less than number of characters selected, the missing characters are filled with blanks.
+You can display the result with columns by formatting strings. In string
+formatting, you can specify how many characters are selected for the data. If
+number of characters in the data is less than number of characters selected,
+the missing characters are filled with blanks.
 
-For example, you can derive data by columns of equal width of 15 characters with right side alignment:
+For example, you can allign data in columns of equal width of
+15 characters with right side alignment:
 
 .. code:: python
 
@@ -105,7 +110,7 @@ You can also specify that numbers should be supplemented with zeros instead of s
     In [13]: '{:08b} {:08b} {:08b} {:08b}'.format(192, 100, 1, 1)
     Out[13]: '11000000 01100100 00000001 00000001'
 
-You can enter names in curly brackets. This makes it possible to pass arguments in any order and also makes template more understandable:
+You can enter names in curly braces. This makes it possible to pass arguments in any order and also makes template more understandable:
 
 .. code:: python
 
@@ -164,7 +169,9 @@ In many situations f-strings are easier to use than format, and f-strings work f
 Syntax
 ~~~~~~~~~
 
-F-string is a literal line with a letter f in front of it. Inside f- string, in figure brackets there are names of variables that will be substituted:
+F-string is a literal line with a letter f in front of it. Inside
+f-string, in curly braces there are names of variables that will
+be substituted:
 
 .. code:: python
 
@@ -178,7 +185,10 @@ F-string is a literal line with a letter f in front of it. Inside f- string, in 
     The same result with format() method you can achieve by:
     ``"IP: {ip}, mask: {mask}".format(ip=ip, mask=mask)``.
 
-A very important difference between f-strings and format(): f-strings are expressions that are processed, not just strings. That is, in case of ipython, as soon as we wrote the expression and pressed Enter, it was performed and instead of expressions ``{ip}`` and ``{mask}`` the values of variables were substituted.
+A very important difference between f-strings and format(): f-strings are
+expressions that are processed, not just strings. That is, in case of ipython,
+as soon as we wrote the expression and pressed Enter, it was performed and
+instead of expressions ``{ip}`` and ``{mask}`` the values of variables were substituted.
 
 Therefore, for example, you cannot first write a template and then define variables that are used in template:
 
@@ -192,7 +202,7 @@ Therefore, for example, you cannot first write a template and then define variab
 
     NameError: name 'ip' is not defined
 
-In addition to substituting variable values you can write expressions in curly brackets:
+In addition to substituting variable values you can write expressions in curly braces:
 
 .. code:: python
 

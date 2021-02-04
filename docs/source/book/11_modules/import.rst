@@ -38,7 +38,7 @@ Example of **import module**:
 
 After importing the **os** module appeared in the output ``dir``.This means that it is now in the current namespace.
 
-To invoke some function or method from **os** module you should specify
+To call some function or method from **os** module you should specify
 ``os.`` and then object name:
 
 .. code:: python

@@ -1,7 +1,8 @@
 Module paramiko
 ---------------
 
-Paramiko is an implementation of SSHv2 protocol on Python. Paramiko provides client-server functionality. We will consider only client functionality.
+Paramiko is an implementation of SSHv2 protocol on Python. Paramiko provides
+client-server functionality. We will cover only client functionality.
 
 Since Paramiko is not part of standard Python module library, it needs to be installed:
 
@@ -58,7 +59,8 @@ Method ``send`` - sends specified string to session and returns amount of sent b
 Method recv
 ~~~~~~~~~~
 
-Method ``recv`` receives data from session. In brackets, the maximum value in bytes that can be obtained is indicated. This method returns a received string
+Method ``recv`` receives data from session. In parentheses, the maximum value in
+bytes that can be obtained is indicated. This method returns a received string
 
 .. code:: python
 

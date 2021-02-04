@@ -2,7 +2,8 @@ Set
 ===============
 
 Set is a mutable unordered data type. Set always contains only unique elements.
-Set in Python is a sequence of elements that are separated by a comma and placed in curly brackets.
+Set in Python is a sequence of elements that are separated by a comma and placed
+in curly braces.
 
 Set can easily remove repetitive elements:
 

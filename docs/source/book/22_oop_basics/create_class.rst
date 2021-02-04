@@ -26,7 +26,8 @@ To create a class instance, call class:
     In [3]: print(sw1)
     <__main__.Switch object at 0xb44963ac>
 
-Using dot notation, it is possible to derive values of instance variables, create new variables and assign a new value to existing ones:
+Using dot notation, it is possible to get values of instance variables, create
+new variables and assign a new value to existing ones:
 
 .. code:: python
 

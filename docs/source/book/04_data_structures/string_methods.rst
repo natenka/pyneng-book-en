@@ -165,7 +165,8 @@ Method ``split()`` split() splits the string using a symbol (or symbols) as sepa
 
 In example above, ``string1.split()`` splits the string by spaces and returns a list of strings. The list is saved to ``commands`` variable.
 
-By default, separator is a space symbol (spaces, tabs, line feed), but you can specify any separator in brackets:
+By default, separator is a space symbol (spaces, tabs, line feed), but you can
+specify any separator in parentheses:
 
 .. code:: python
 

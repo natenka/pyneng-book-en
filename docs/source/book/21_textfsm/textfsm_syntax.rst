@@ -49,7 +49,7 @@ Syntax of value description (for each option below we will consider examples):
   * **Fillup** - works as Filldown but fills empty value up until it finds a match. Not compatible with Required.
 
 * ``name`` - name of value that will be used as column name. Reserved names should not be used as value names. 
-* ``regex`` - regular expression that describes a value. Regular expression should be in brackets.
+* ``regex`` - regular expression that describes a value. Regular expression should be in curly braces.
 
 State definition
 ~~~~~~~~~~~~~~~~~~~~~

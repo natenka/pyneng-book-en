@@ -161,11 +161,16 @@ The output will be as follows:
 
 Note the interesting thing: strings in the last column are quoted and other values are not.
 
-This is because all strings in the last column have a comma. And quotation marks indicate what is an entire string. When a comma is inside quotation marks the csv module does not perceive it as a separator.
+This is because all strings in the last column have a comma. And quotes indicate
+what is an entire string. When a comma is inside quotation marks the csv module
+does not perceive it as a separator.
 
-Sometimes it’s better to have all strings quoted. Of course, in this case, example is simple enough but when there are more values in the strings, the quotation marks indicate where value begins and ends.
+Sometimes it’s better to have all strings quoted. Of course, in this case,
+example is simple enough but when there are more values in the strings, the
+quotes indicate where value begins and ends.
 
-Csv module allows you to control this. For all strings to be written in a CSV file with quotation marks you should change script this way (csv_write_quoting.py file):
+Csv module allows you to control this. For all strings to be written in a CSV
+file with quotes you should change script this way (csv_write_quoting.py file):
 
 .. code:: python
 

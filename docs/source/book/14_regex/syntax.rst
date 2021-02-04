@@ -105,7 +105,7 @@ This can be done through regular expression:
     Out[13]: ('f04d.a206.7fd6', '1', 'Gi0/5', 'Gi0/16')
 
 Method ``group`` returns only those parts of original string that are in
-brackets. Thus, by placing a part of expression in brackets, you can specify
+parentheses. Thus, by placing a part of expression in parentheses, you can specify
 which parts of the line you want to remember.
 
 Expression ``\d+`` has been used before - it describes one or more digits.

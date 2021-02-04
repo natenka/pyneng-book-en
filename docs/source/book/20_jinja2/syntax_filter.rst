@@ -7,7 +7,8 @@ In addition, several filters can be applied to variable. In this case, filters a
 
 Jinja supports a large number of built-in filters. We will look at only a few of them. Other filters can be found in `documentation <http://jinja.pocoo.org/docs/dev/templates/#builtin-filters>`__.
 
-You can also easily create your own filters. We will not consider this possibility but it is `well documented <http://jinja.pocoo.org/docs/2.9/api/#custom-filters>`__.
+You can also easily create your own filters. We will not cover this
+possibility but it is `well documented <http://jinja.pocoo.org/docs/2.9/api/#custom-filters>`__.
 
 default
 ~~~~~~~

@@ -40,7 +40,8 @@ In Python 3 `print() - function <../10_useful_functions/print.md>`__:
     In [7]: print(1, 'test')
     1 test
 
-In Python 2.7 it is possible to put arguments in brackets, but it doesn’t make *print* a function and *print* returns another result (tuple):
+In Python 2.7 it is possible to put arguments in parentheses, but it doesn’t make
+``print`` a function and ``print`` returns another result (tuple):
 
 .. code:: python
 

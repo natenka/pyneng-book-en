@@ -50,7 +50,7 @@ First of all, you have to define variables in template:
 * at the beginning of each line there must be a keyword Value
 * each variable defines column in table
 * next word - variable name
-* after name, in brackets - a regular expression that describes value of a variable
+* after name, in parentheses - a regular expression that describes value of a variable
 
 Definition of variables is as follows:
 
@@ -419,7 +419,7 @@ Example of *show ip route ospf* output (output/sh_ip_route_ospf.txt file):
     O        10.6.6.0/24 [110/20] via 10.0.13.3, 1w2d, Ethernet0/2
 
 
-For this example we simplify the task and consider that routes can only be OSPF and only with “O” designation (i.e., only intra-zone routes).
+For this example we simplify the task and assume that routes can only be OSPF and only with “O” designation (i.e., only intra-zone routes).
 
 The first version of template:
 

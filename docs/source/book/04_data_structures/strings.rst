@@ -3,7 +3,7 @@ Strings
 
 String in Python is:
 
-* sequence of characters enclosed in quotation marks
+* sequence of characters enclosed in quotes
 * immutable ordered data type
 
 Examples of strings:

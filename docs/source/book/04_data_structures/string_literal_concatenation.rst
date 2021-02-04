@@ -15,7 +15,8 @@ Python has very convenient functionality — literal strings concatenation
     In [4]: s
     Out[4]: 'TestString'
 
-It is even possible to transfer the composite strings to different strings, but only if they are in brackets:
+It is even possible to transfer the composite strings to different strings,
+but only if they are in parentheses:
 
 .. code:: python
 

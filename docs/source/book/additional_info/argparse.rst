@@ -6,7 +6,7 @@ argparse
 -  create arguments and options with which script can be called
 -  specify argument types, default values
 -  indicate which actions correspond to arguments
--  invoke functions when argument is specified
+-  call functions when argument is specified
 -  display messages with hints of script usage
 
 ``argparse`` is not the only module for handling command line arguments. And not even the only one in standard library.

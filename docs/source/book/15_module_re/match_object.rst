@@ -98,7 +98,10 @@ If group describes a part of template and there are more than one match, method 
     In [17]: match.group(1)
     Out[17]: 'b216.'
 
-This is because expression in brackets describes four letters or numbers, dot and then there is a  plus. Accordingly, the first and the second part of MAC address matched to expression in parentheses. But only the last expression is remembered and returned.
+This is because expression in parentheses describes four letters or numbers, dot
+and then there is a plus. The first and the second part of MAC
+address matched to expression in parentheses. But only the last expression is
+remembered and returned.
 
 If named groups are used in expression, group name can be passed to group() method and the corresponding substring can be obtained:
 

@@ -32,7 +32,8 @@ And in this expression, string ‘a1’ is repeated:
     Out[4]: 'a1a1'
 
 
-Expresson ``(a1)+`` uses brackets to specify that repetition is related to sequence of symbols 'a1'.
+Expresson ``(a1)+`` uses parentheses to specify that repetition is related to
+sequence of symbols 'a1'.
 
 IP address can be described by ``\d+\.\d+\.\d+\.\d+``. Plus is used to indicate
 that there can be several digits. Expression  ``\.`` is required because the dot
@@ -165,7 +166,7 @@ looks like ``\w+\.?\w+@\w+\.\w+``:
 ~~~~~~~
 
 You can set how many times the previous expression should be repeated with
-curly brackets.
+curly braces.
 
 For example, expression ``\w{4}\.\w{4}\.\w{4}`` describes 12 letters or digits
 that are divided into three groups of four characters and separated by dot.
@@ -178,7 +179,7 @@ This way you can get a MAC address:
     In [25]: re.search('\w{4}\.\w{4}\.\w{4}', line).group()
     Out[25]: 'aab1.a1a1.a5d3'
 
-You can specify a repetition range in curly brackets. For example, try to get
+You can specify a repetition range in curly braces. For example, try to get
 all VLAN numbers from string mac_table:
 
 .. code:: python

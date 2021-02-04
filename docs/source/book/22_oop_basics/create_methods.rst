@@ -49,7 +49,9 @@ If you look closely, info() method looks exactly like info() function, only inst
 
 In example above, first an instance of Switch class is created, then *hostname* and *model* variables are added to instance and then info() method is called. Method info() outputs information about switch using values that are stored in instance variables.
 
-Method call is different from the function call: we do not pass a link to an instance of Switch class. We don’t need that because we invoke method from instance itself. Another unclear thing - why we wrote *self* then?
+Method call is different from the function call: we do not pass a link to an
+instance of Switch class. We don’t need that because we call method from
+instance itself. Another unclear thing - why we wrote *self* then?
 
 The point is that Python transforms such a call:
 

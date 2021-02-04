@@ -129,7 +129,10 @@ The second option is:
 print()
 ^^^^^^^
 
-Function ``print()`` displays information on a standard output (current terminal screen). If you want to get a string, you should place it in quotation marks (double or single). If you want to derive, for example, a computation result or just a number, quotes are not needed:
+Function ``print()`` displays information on a standard output (current
+terminal screen). If you want to get a string, you should place it in
+quotes(double or single). If you want to get, for example, a computation result
+or just a number, quotes are not needed:
 
 .. code:: python
 

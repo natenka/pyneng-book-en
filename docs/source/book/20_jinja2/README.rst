@@ -36,7 +36,7 @@ Example of Jinja template:
 
 Comments to template:
 
-* In Jinja, variables are written in double curly brackets.
+* In Jinja, variables are written in double curly braces.
 * When script is executed, these variables are replaced with desired values.
 
 This template can be used to generate configuration of different devices by substituting other sets of variables.

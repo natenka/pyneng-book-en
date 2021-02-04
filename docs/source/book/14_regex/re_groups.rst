@@ -8,7 +8,9 @@ of string that has been described by expression.
 
 For example, from a log file you should select strings in which
 "%SW_MATM-4-MACFLAP_NOTIF" meets and then from each such string get
-MAC address, VLAN and interfaces. In this case, regular expression simply has to describe a string and all parts of string to be obtained are simply placed in brackets.
+MAC address, VLAN and interfaces. In this case, regular expression
+has to describe a string and all parts of string to be remembered
+are placed in parentheses.
 
 For example, from the log file, you need to select the lines that contain
 "%SW_MATM-4-MACFLAP_NOTIF", and then get the MAC address, VLAN and interfaces
@@ -24,9 +26,11 @@ Python has two options for using groups:
 Numbered groups
 ~~~~~~~~~~~~~~~~~~~
 
-Group is defined by placing expression in brackets ``()``.
+Group is defined by placing expression in parentheses ``()``.
 
-Inside expression, group are numbered from left to right starting with 1. Groups can then be approached by numbers and receive text that corresponds to group expression.
+Inside expression, group are numbered from left to right starting
+with 1. Groups can then be selected by numbers to get text that
+corresponds to group expression.
 
 Example of groups use:
 

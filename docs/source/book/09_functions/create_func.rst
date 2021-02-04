@@ -4,9 +4,9 @@ Creation of functions
 Creation of function:
 
 * functions are created with a reserved word ``def``
-* ``def`` followed by function name and round brackets
-* parameters that function accepts inside brackets
-* after round brackets goes colon and from a new line with indent there is a block of code that function executes
+* ``def`` followed by function name and parentheses
+* parameters that function accepts inside parentheses
+* after parentheses goes colon and from a new line with indent there is a block of code that function executes
 * optionally, the first line can be ``docstring``
 * function can use ``return`` operator
 

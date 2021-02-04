@@ -1,7 +1,7 @@
 Variables
 ----------
 
-Variables in template are given in double curly brackets:
+Variables in template are given in double curly braces:
 
 ::
 

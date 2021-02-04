@@ -56,7 +56,11 @@ Creating a new virtual environment in which Python 3.7 is used by default:
     Installing pip...............done.
     (pyneng)$ 
 
-The name of virtual environment is shown in brackets before standard invitation. That means you’re inside it. Virtualenvwrapper uses Tab to autocomplete name of virtual environment. This is particularly useful when there are many virtual environments. Now “pyneng” directory was created in directory specified in environment variable WORKON_HOME:
+The name of virtual environment is shown in parentheses before standard invitation.
+That means you’re inside it. Virtualenvwrapper uses Tab to autocomplete name of
+virtual environment. This is particularly useful when there are many virtual
+environments. Now “pyneng” directory was created in directory specified in
+environment variable WORKON_HOME:
 
 ::
 
