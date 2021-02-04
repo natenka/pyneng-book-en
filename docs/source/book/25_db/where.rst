@@ -68,7 +68,7 @@ Now *switch* table looks like:
     7 rows in set
     Time: 0.040s
 
-Using WHERE operator you can display only switches of 3850 model:
+Using the WHERE clause, you can show only those switches whose model is 3850:
 
 .. code:: sql
 

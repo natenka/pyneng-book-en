@@ -1,10 +1,12 @@
 Iteration protocol
 ~~~~~~~~~~~~~~~~~
 
-
-**iterable** - object that can return elements one at a time. 
+``iterable`` - object that can return elements one at a time. 
 For Python, it is any object that has ``__iter__`` or ``__getitem__`` method.
-If an object has __iter__ method, the iterable becomes an iterator by calling ``iter(name)`` where *name* - name of iterable. If __iter__ method is not present, Python iterates elements using __getitem__.
+If an object has ``__iter__`` method, the iterable becomes an iterator by
+calling ``iter(name)`` where ``name`` - name of iterable.
+If ``__iter__`` method is not present, Python iterates
+elements using ``__getitem__``.
 
 
 .. code:: python
@@ -45,7 +47,8 @@ If an object has __iter__ method, the iterable becomes an iterator by calling ``
     Calling __getitem__
     Out[5]: ['1', '2', '3', '4']
 
-If object has __iter__ method (which must return iterator), it is used for values iteration:
+If object has ``__iter__`` method (which must return iterator), it is used
+for values iteration:
 
 .. code:: python
 
@@ -77,7 +80,7 @@ If object has __iter__ method (which must return iterator), it is used for value
     Calling __iter__
     Out[14]: ['1', '2', '3', '4']
 
-In Python, iter() function is responsible for getting an iterator :
+In Python, ``iter`` function is responsible for getting an iterator:
 
 .. code:: python
 
@@ -86,12 +89,21 @@ In Python, iter() function is responsible for getting an iterator :
     In [2]: iter(lista)
     Out[2]: <list_iterator at 0xb4ede28c>
 
-``iter`` function will work on any object that has __iter__ or __getitem__ method.
-Method __iter__ returns an iterator. If this method is not available, iter() function checks availability of __getitem__ method that can get elements by index. If __getitem__ method exists, elements will be iterated through index (starting with 0).
+``iter`` function will work on any object that has ``__iter__`` or
+``__getitem__`` method. Method ``__iter__`` returns an iterator.
+If this method is not available, ``iter`` function checks
+availability of ``__getitem__`` method that can get elements by index.
+If ``__getitem__`` method exists, elements will be iterated through
+index (starting with 0).
 
 
-**iterator** - object that returns its elements one at a time.
-From Python point of view, it is any object that has __next__method. This method returns the next item if any or returns Stopiteration exception when items are ended. In addition, iterator remembers which object it stopped at in the last iteration. Each iterator also has __iter__ method - that is, every iterator is an iterable object. This method returns iterator itself.
+``iterator`` - object that returns its elements one at a time.
+From Python point of view, it is any object that has ``__next__`` method.
+This method returns the next item if any or raises ``Stopiteration``
+exception when items are ended. In addition, iterator remembers which
+object it stopped at in the last iteration. Each iterator also has
+``__iter__`` method - that is, every iterator is an iterable object.
+This method returns iterator itself.
 
 An example of creating iterator from list:
 
@@ -101,7 +113,7 @@ An example of creating iterator from list:
 
     In [4]: i = iter(lista)
 
-Now you can use next() function that calls __next__method to take the next element:
+Now you can use ``next`` function that calls ``__next__`` method to take the next element:
 
 .. code:: python
 
@@ -122,7 +134,9 @@ Now you can use next() function that calls __next__method to take the next eleme
 
     StopIteration:
 
-After elements are ended, Stopiteration exception is returned. In order for iterator to return elements again, it has to be re-created. Similar actions are performed when **for** loop iterates items in the list:
+After elements are ended, ``Stopiteration`` exception is raised. In order for
+iterator to return elements again, it has to be re-created. Similar steps are
+performed when ``for`` loop iterates items in the list:
 
 .. code:: python
 
@@ -133,9 +147,12 @@ After elements are ended, Stopiteration exception is returned. In order for iter
     2
     3
 
-When we iterate list items, iter() function is first applied to the list to create an iterator and then __next__ method is called until Stopiteration exception occurs.
+When we iterate list items, ``iter`` function is first applied to the list to
+create an iterator and then ``__next__`` method is called until
+``Stopiteration`` exception raised.
 
-An example of my_for() function that works with any iterable and imitates built-in function **for**:
+An example of ``my_for`` function that works with any iterable and loosely imitates
+built-in function ``for``:
 
 .. code:: python
 
@@ -158,18 +175,18 @@ An example of my_for() function that works with any iterable and imitates built-
                 except IndexError:
                     break
 
-Check function on object that has __iter__:
+Check function on object that has ``__iter__``:
 
 .. code:: python
 
-    In [18]: my_for([1,2,3,4])
+    In [18]: my_for([1, 2, 3, 4])
     Есть __iter__
     1
     2
     3
     4
 
-Check function on object that does not have __iter__ but has __getitem__:
+Check function on object that does not have ``__iter__`` but has ``__getitem__``:
 
 .. code:: python
 
@@ -182,7 +199,7 @@ Check function on object that does not have __iter__ but has __getitem__:
             return self.items[index]
 
 
-    In [20]: iterable_1 = Items([1,2,3,4,5])
+    In [20]: iterable_1 = Items([1, 2, 3, 4, 5])
 
     In [21]: my_for(iterable_1)
     Нет __iter__, но есть __getitem__
@@ -254,7 +271,10 @@ Create an iterator from Network class:
         ...:             raise StopIteration
         ...:
 
-Method __iter__ in iterator must return object itself, therefore  ``return self`` is specified in method and __next__ method returns elements one at a time and generates Stoeratipiton exception when elements have run out.
+Method ``__iter__`` in iterator must return object itself, therefore
+``return self`` is specified in method and ``__next__`` method
+returns elements one at a time and raises ``StopIteration`` exception
+when elements have run out.
 
 
 .. code:: python
@@ -271,7 +291,8 @@ Method __iter__ in iterator must return object itself, therefore  ``return self`
     10.1.1.194
     Calling __next__
 
-Most of the time, iterator is a disposable object and once we’ve iterated elements, we can’t do it again:
+Most of the time, iterator is a disposable object and once we've iterated
+elements, we can't do it again:
 
 .. code:: python
 
@@ -285,9 +306,15 @@ Most of the time, iterator is a disposable object and once we’ve iterated elem
 Creation of iterable
 ^^^^^^^^^^^^^^^^^^^^
 
-Very often it is sufficient for class to be an iterable and not necessarily an iterator. If an object is iterable, it can be used in *for* loop, *map* functions, *filter*, *sorted*, *enumerate* and others. It is also generally easier to make an iterable than an iterator.
+Very often it is sufficient for class to be an iterable and not necessarily
+an iterator. If an object is iterable, it can be used in ``for`` loop,
+``map`` functions, ``filter``, ``sorted``, ``enumerate`` and others.
+It is also generally easier to make an iterable than an iterator.
 
-In order for Network class to be iterable, class must have __iter__ (__next__ is not needed) and method must return iterator. Since in this case, Network iterates addresses that are in self.addresses list, the easiest option to return iterator is to return  ``iter(self.addresses)``:
+In order for Network class to be iterable, class must have ``__iter__``
+(``__next__`` is not needed) and method must return iterator. Since
+in this case, Network iterates addresses that are in ``self.addresses`` list,
+the easiest option to return iterator is to return  ``iter(self.addresses)``:
 
 .. code:: python
 

@@ -8,14 +8,14 @@ of string that has been described by expression.
 
 For example, from a log file you should select strings in which
 "%SW_MATM-4-MACFLAP_NOTIF" match occur and then from each such string get
-MAC address, VLAN and interfaces. In this case, regular expression
+MAC address, VLAN and interfaces. In this case, regex
 has to describe a string and all parts of string to be remembered
 are placed in parentheses.
 
 For example, from the log file, you need to select the lines that contain
 "%SW_MATM-4-MACFLAP_NOTIF", and then get the MAC address, VLAN and interfaces
 from each such line.
-In this case, the regular expression not only describes the string, but
+In this case, the regex not only describes the string, but
 also indicates all parts of the string to be returned in parentheses.
 
 Python has two options for using groups:
@@ -82,7 +82,7 @@ Starting with Python 3.6, groups can be accessed as follows:
     In [17]: match[2]
     Out[17]: '10.0.12.1'
 
-Method ``groups`` is used to display all substrings that correspond to groups:
+Method ``groups`` is used to return all substrings that correspond to groups:
 
 .. code:: python
 
@@ -123,7 +123,7 @@ where keys are the names of groups and values are the substrings that correspond
     In [23]: match.groupdict()
     Out[23]: {'address': '10.0.12.1', 'intf': 'FastEthernet0/1'}
 
-And then you can add groups to regular expression and rely on their name instead of order:
+And then you can add groups to regex and rely on their name instead of order:
 
 .. code:: python
 

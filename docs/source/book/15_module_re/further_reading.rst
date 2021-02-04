@@ -14,7 +14,7 @@ Websites for regular expressions checking:
 * `for Python <http://www.pyregex.com/>`__ - you can specify search, match, findall methods and flags.
   `An example of a regular expression <http://www.pyregex.com/?id=eyJyZWdleCI6IihcXGQrKSArKFthLWYsMC05LFxcLl0rKSArXFx3KyArKD9QPGludGY%2BXFxTKykuKiIsImZsYWdzIjowLCJtYXRjaF90eXBlIjoic2VhcmNoIiwidGVzdF9zdHJpbmciOiIxMDAgICAgYWFiYi5jYzEwLjcwMDAgICAgRFlOQU1JQyAgICAgR2kwLzFcbiAgMjAwICAgIGFhYmIuY2MyMC43MDAwICAgIERZTkFNSUMgICAgIEdpMC8yIn0%3D>`__.
   Unfortunately, sometimes not all expressions are perceived.
-* `Another site for Python <http://pythex.org/>`__ - does not support methods but works well and has worked out the expressions which didn’t work in previous site. It’s perfect for one-line text. With the multiline, it worth considering that Python will have a different situation.
+* `Another site for Python <http://pythex.org/>`__ - does not support methods but works well and has worked out the expressions which didn't work in previous site. It's perfect for one-line text. With the multiline, it worth considering that Python will have a different situation.
 
 General guidance on the use of regular expressions:
 

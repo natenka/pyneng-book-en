@@ -152,7 +152,7 @@ Pass operator
 
 Operator ``pass`` does nothing. Basically it is a placeholder.
 
-For example, ``pass`` can help when you need to specify a script structure. It can be set in loops, functions, classes. And it won’t affect execution of code.
+For example, ``pass`` can help when you need to specify a script structure. It can be set in loops, functions, classes. And it won't affect execution of code.
 
 Example of using pass:
 

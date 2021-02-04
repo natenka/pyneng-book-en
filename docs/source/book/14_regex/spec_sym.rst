@@ -188,7 +188,7 @@ Pipe symbol works like 'or':
     Out[26]: 'Fast'
 
 Note how ``|`` works - Fast и 0/1 are treated as an whole expression.
-So in the end, expression means that we’re looking for Fast or 0/1.
+So in the end, expression means that we're looking for Fast or 0/1.
 
 ``()``
 ~~~~~~

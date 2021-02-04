@@ -13,9 +13,9 @@ This type of error can occur when converting data types:
 
     ValueError: invalid literal for int() with base 10: 'a'
 
-Error is perfectly logical. We’re trying to convert string 'a' into decimal format.
+Error is perfectly logical. We're trying to convert string 'a' into decimal format.
 For example, this can be useful when you want to go through a list of strings and convert to a number the strings that contain numbers, you can get that error.
-To avoid error, it would be nice to be able to check what we’re working with.
+To avoid error, it would be nice to be able to check what we're working with.
 
 ``isdigit``
 ^^^^^^^^^^^^^

@@ -32,7 +32,7 @@ Python allows working with exceptions. They can be intercepted and acted upon if
 
     When an exception appears, program is immediately interrupted.
 
-In order to work with exceptions ``try/except`` construction is used:
+In order to work with exceptions ``try/except`` statement is used:
 
 .. code:: python
 
@@ -43,7 +43,7 @@ In order to work with exceptions ``try/except`` construction is used:
        ...:
     You can't divide by zero
 
-The ``try`` construction works as follows:
+The ``try`` statement works as follows:
 
 * first execute expressions that are written in ``try`` block
 * if there are no exceptions during execution of ``try`` block, block ``except`` is skipped and the following code is executed
@@ -66,7 +66,7 @@ Note that ``Cool!`` string in ``try`` block is not displayed:
     Let's divide some numbers
     You can't divide by zero
 
-Construction try/except may have many ``except`` if different actions are needed depending on type of error.
+try/except statement may have many ``except`` if different actions are needed depending on type of error.
 
 For example, divide.py script divides two numbers entered by user:
 
@@ -102,11 +102,10 @@ Examples of script execution:
     Enter second number: 3
     Please enter only numbers
 
-In this case, ValueError exception occurs when user has entered a string instead of a number.
+In this case, ValueError exception raised when user has entered a string instead of a number.
+ZeroDivisionError exception raised if second number is 0.
 
-ZeroDivisionError exception occurs if second number is 0.
-
-If you do not need to display different messages on ValueError
+If you do not need to print different messages on ValueError
 and ZeroDivisionError, you can do this (divide\_ver2.py file):
 
 .. code:: python
@@ -135,9 +134,10 @@ Verification:
     Something went wrong...
 
 .. note::
-    In block ``except`` you don’t have to specify a specific exception or exceptions. In that case, all exceptions would be intercepted.
+    In block ``except`` you don't have to specify a specific exception or
+    exceptions. In that case, all exceptions would be intercepted.
 
-    ``That is not recommended!``
+    That is not recommended!
 
 try/except/else
 ~~~~~~~~~~~~~~~
@@ -176,9 +176,8 @@ Example of execution:
 try/except/finally
 ~~~~~~~~~~~~~~~~~~
 
-Block ``finally`` is another optional block in ``try`` construction. It is *always* implemented, whether an exception has been raised or not.
-
-It’s about actions that you have to do anyway. For example, it could be a file closing.
+Block ``finally`` is another optional block in ``try`` statement. It is *always* implemented, whether an exception has been raised or not.
+It's about actions that you have to do anyway. For example, it could be a file closing.
 
 File divide_ver4.py с блоком finally:
 
@@ -261,4 +260,7 @@ But the same option without exceptions will not always be simple and understanda
 
 It is important to assess in each specific situation which version of code is more comprehensible, compact and universal - with or without exceptions.
 
-If you’ve used some other programming language before, it’s possible that use of exceptions was considered as a bad form. In Python this is not true. To get a little bit more into this issue, look at the links to additional material at the end of this section.
+If you've used some other programming language before, it's possible that use
+of exceptions was considered a bad form. In Python this is not true. To get a
+little bit more into this issue, look at the links to additional material at
+the end of this section.

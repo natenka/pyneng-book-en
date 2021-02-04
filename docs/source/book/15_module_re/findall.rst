@@ -1,16 +1,16 @@
 Findall function
 ----------------
 
-Function ``findall()``: 
+Function ``findall``: 
 
 * is used to search for all disjoint matches in template
 * returns:
 
-  * list of strings that are described by regular expression if there are no groups in regular expression
-  * list of strings that match with regular expression in the group if there is only one group in regular expression 
+  * list of strings that are described by regex if there are no groups in regex
+  * list of strings that match with regex in the group if there is only one group in regex 
   * list of tuples containing strings that matches with expression in the group if there are more than one group
 
-Consider the work of findall() with an example of ‘sh mac address-table output’:
+Consider the work of ``findall`` with an example of 'sh mac address-table output':
 
 .. code:: python
 
@@ -31,9 +31,11 @@ Consider the work of findall() with an example of ‘sh mac address-table output
      200    a1bb.1c60.7000    DYNAMIC     Gi0/6
      300    aa0b.cc70.7000    DYNAMIC     Gi0/7
 
-The first example is a regular expression without groups. In this case findall() returns a list of strings that matches with regular expression.
+The first example is a regex without groups. In this case ``findall`` returns
+a list of strings that matches with regex.
 
-For example, with findall() you can get a list of  matching strings with *vlan - mac – interface* and get rid of header in the output of command:
+For example, with ``findall`` you can get a list of  matching strings
+with ``vlan - mac – interface`` and get rid of header in the output of command:
 
 .. code:: python
 
@@ -47,9 +49,11 @@ For example, with findall() you can get a list of  matching strings with *vlan -
      '200    a1bb.1c60.7000    DYNAMIC     Gi0/6',
      '300    aa0b.cc70.7000    DYNAMIC     Gi0/7']
 
-Note that findall() returns a list of strings, not a Match object.
+Note that ``findall`` returns a list of strings, not a Match object.
 
-As soon as a group appears in regular expression, findall() behaves differently. If one group is used in the expression, findall() returns a list of strings that matches with expression in the group:
+As soon as a group appears in regex, ``findall`` behaves differently. If one
+group is used in the expression, ``findall`` returns a list of strings that
+matches with expression in the group:
 
 .. code:: python
 
@@ -63,9 +67,8 @@ As soon as a group appears in regular expression, findall() behaves differently.
      'a1bb.1c60.7000',
      'aa0b.cc70.7000']
 
-findall() searches for a match of the entire string but returns a result similar to group() method in Match object.
-
-If there are several groups, findall() will return the list of tuples:
+``findall`` searches for a match of the entire string but returns a result similar to group() method in Match object.
+If there are several groups, ``findall`` will return the list of tuples:
 
 .. code:: python
 
@@ -79,9 +82,11 @@ If there are several groups, findall() will return the list of tuples:
      ('200', 'a1bb.1c60.7000', 'Gi0/6'),
      ('300', 'aa0b.cc70.7000', 'Gi0/7')]
 
-If such features of findall() function prevent you from getting the desired result, it is better to use finditer() function, but sometimes this behavior is appropriate and convenient to use.
+If such features of ``findall`` function prevent you from getting the needed
+result, it is better to use ``finditer`` function, but sometimes this
+behavior is appropriate and convenient to use.
 
-An example of using findall() in a log file parsing (parse_log_findall.py file):
+An example of using ``findall`` in a log file parsing (parse_log_findall.py file):
 
 .. code:: python
 

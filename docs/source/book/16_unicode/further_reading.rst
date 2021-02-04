@@ -3,7 +3,7 @@ Further reading
 
 Python documentation:
 
--  🐍 `What’s New In Python 3: Text Vs. Data Instead Of Unicode Vs.
+-  🐍 `What's New In Python 3: Text Vs. Data Instead Of Unicode Vs.
    8-bit <https://docs.python.org/3.0/whatsnew/3.0.html#text-vs-data-instead-of-unicode-vs-8-bit>`__
 -  🐍 `Unicode HOWTO <https://docs.python.org/3/howto/unicode.html>`__
 

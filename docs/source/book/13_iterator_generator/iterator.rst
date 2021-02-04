@@ -119,7 +119,7 @@ iterate file line by line - only one line is loaded into each iteration.
 This is very important when working with large files of thousands and hundreds
 of thousands of lines, such as log files.
 
-Therefore, when working with files in Python, the most commonly used construction is:
+Therefore, when working with files in Python, the most commonly used expression is:
 
 .. code:: python
 

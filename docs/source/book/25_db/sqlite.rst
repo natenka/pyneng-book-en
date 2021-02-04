@@ -44,7 +44,7 @@ Examples of metacommands:
 * ``.databases`` - shows connected databases
 * ``.tables`` - shows available tables
 
-Examples of implementation:
+Examples:
 
 ::
 

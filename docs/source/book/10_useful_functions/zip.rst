@@ -10,7 +10,7 @@ zip
 -  the order of elements is respected
 
 .. note::
-    Since ``zip`` is an iterator, ``list`` is used to display its contents
+    Since ``zip`` is an iterator, ``list`` is used to show its contents
 
 Example of using zip:
 

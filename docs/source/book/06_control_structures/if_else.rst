@@ -1,13 +1,13 @@
 if/elif/else
 ============
 
-The ``if/elif/else`` construction allows make branches during program execution. The program goes into branch when a certain condition is met.
+The ``if/elif/else`` statement allows make branches during program execution. The program goes into branch when a certain condition is met.
 
-In this construction only ``if`` is mandatory, ``elif`` and ``else``
+In this statement only ``if`` is mandatory, ``elif`` and ``else``
 are optional:
 
-* ``If`` condition is always checked first.
-* After ``If`` operator there must be some condition: if this condition is met (returns true), then actions in block ``if`` are executed.
+* ``if`` condition is always checked first.
+* After ``if`` statement there must be some condition: if this condition is met (returns True), then actions in block ``if`` are executed.
 * ``elif`` can be used to make multiple branches, that is, to check incoming data for different conditions.
 * ``elif`` block is the same as ``if`` but it checked next. Roughly speaking, it is "otherwise if ..."
 * There can be many ``elif`` blocks.
@@ -15,7 +15,7 @@ are optional:
 
 
 
-Example of construction:
+Example of if statement:
 
 .. code:: python
 
@@ -262,10 +262,11 @@ An important feature of ``or`` operator - operands, which are after the true ope
 
 .. _if_example:
 
-Example of if/elif/else construction use
----------------------------------------------
+Example of if/elif/else statement
+---------------------------------
 
-An example of a check_password.py script that checks length of password and whether password contains username:
+An example of a check_password.py script that checks length of password and
+whether password contains username:
 
 .. code:: python
 

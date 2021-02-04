@@ -1,9 +1,10 @@
 for
 ---
 
-Very often the same action should be performed for a set of the same data type. For example, convert all strings in list to uppercase. Python uses ``for`` loop for such purposes.
+Very often the same step should be performed for a set of the same data type. For example, convert all strings in list to uppercase. Python uses ``for`` loop for such purposes.
 
-Loop ``for`` iterates elements of specified sequence and performs actions specified for each element.
+``For`` loop iterates elements of specified sequence and performs actions
+specified for each element.
 
 Examples of sequences of elements that can be iterated by ``for``:
 
@@ -63,7 +64,8 @@ The same steps with the ``for`` loop:
 
 Expression ``for word in words: upper_words.append(word.upper())``
 means "for each word in ``words`` list to perform actions in block ``for``".
-In this case, ``word`` is the name of the variable, which refers to different values each iteration of the loop.
+In this case, ``word`` is the name of the variable, which refers to different
+values each iteration of the loop.
 
 .. note::
     The `pythontutor <http://www.pythontutor.com/>`__ project can be very helpful in understanding loops.

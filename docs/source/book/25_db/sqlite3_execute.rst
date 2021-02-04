@@ -4,14 +4,14 @@ Executing SQL commands
 There are several methods for execution of SQL commands in module:
 
 * ``execute()`` - method for executing one SQL expression 
-* ``executemany()`` - method allows to execute one SQL expression for a sequence of parameters (or for iterator) 
+* ``executemany()`` - method allows to execute one SQL expression for a
+  sequence of parameters (or for iterator) 
 * ``executescript()`` - method allows to execute multiple SQL expressions at once
 
 Method execute
 ^^^^^^^^^^^^^
 
-Method execute() allows one SQL command to be executed.
-
+Method ``execute`` allows one SQL command to be executed.
 First, create connection and cursor:
 
 .. code:: python
@@ -22,16 +22,17 @@ First, create connection and cursor:
 
     In [3]: cursor = connection.cursor()
 
-Creates a *switch* table using execute():
+Creates a switch table using ``execute``:
 
 .. code:: python
 
     In [4]: cursor.execute("create table switch (mac text not NULL primary key, hostname text, model text, location text)")
     Out[4]: <sqlite3.Cursor at 0x1085be880>
 
-SQL expressions can be parameterized - data can be substituted by special values. Due to this you can use the same SQL command to transfer different data.
+SQL expressions can be parameterized - data can be substituted by special
+values. Due to this you can use the same SQL command to transfer different data.
 
-For example, *switch* table needs to be filled with data from *data* list:
+For example, switch table needs to be filled with data from data list:
 
 .. code:: python
 
@@ -47,7 +48,8 @@ You can use this query:
 
     In [6]: query = "INSERT into switch values (?, ?, ?, ?)"
 
-Question marks in command are used to fill in the data that will be passed to execute().
+Question marks in command are used to fill in the data that will be
+passed to ``execute``.
 
 Data can now be passed as follows:
 
@@ -57,15 +59,17 @@ Data can now be passed as follows:
        ...:     cursor.execute(query, row)
        ...:
 
-The second argument that is passed to execute() must be a tuple. If you want to transfer a tuple with one element, ``(value, )`` entry is used.
+The second argument that is passed to ``execute`` must be a tuple. If you want
+to transfer a tuple with one element, ``(value, )`` entry is used.
 
-For changes to be applied, commit must be executed (note that commit() method is called at the connection):
+For changes to be applied, commit must be executed (note that ``commit`` method
+is called at the connection):
 
 .. code:: python
 
     In [8]: connection.commit()
 
-Now, when querying from sqlite3 command line you can see these rows in *switch* table:	
+Now, when querying from sqlite3 command line you can see these rows in switch table:	
 
 ::
 
@@ -90,11 +94,12 @@ Now, when querying from sqlite3 command line you can see these rows in *switch* 
 Method executemany
 ^^^^^^^^^^^^^^^^^
 
-Method executemany() allows one SQL command to be executed for parameter sequence (or for iterator).
+Method ``executemany`` allows one SQL command to be executed for parameter
+sequence (or for iteratoAr).
+Using ``executemany`` method you can add a similar data list to
+switch table by a single command.
 
-Using executemany() method you can add a similar data list to *switch* table by a single command.
-
-For example, you should add data from *data2* list to *switch* table:
+For example, you should add data from data2 list to switch table:
 
 .. code:: python
 
@@ -143,12 +148,13 @@ After commit, data is available in the table:
     8 rows in set
     Time: 0.034s
 
-Method executemany() placed corresponding tuples to SQL command and all data was added to the table.
+Method ``executemany`` placed corresponding tuples to SQL command
+and all data was added to the table.
 
 Method executescript
 ^^^^^^^^^^^^^^^^^^^
 
-Method executescript allows multiple SQL expressions to be executed at once.
+Method ``executescript`` allows multiple SQL expressions to be executed at once.
 
 This method is particularly useful when creating tables:
 

@@ -11,7 +11,7 @@ Module pexpect allows to automate interactive connections such as:
 
     Pexpect is an implementation of *expect* in Python.
 
-First, pexpect module needs to install:
+First, pexpect module needs to be installed:
 
 ::
 
@@ -23,14 +23,15 @@ The logic of pexpect is:
 * some program is running
 * pexpect expects a certain output (prompt, password request, etc.) 
 * after receiving the output, it sends commands/data
-* last two actions are repeated as many as necessary
+* last two actions are repeated as many times as necessary
 
 At the same time, pexpect does not implement utilities but uses ready-made ones.
 
 ``pexpect.spawn``
 ~~~~~~~~~~~~~~~~~
 
-Class ``spawn`` allows you to interact with called program by sending data and waiting for a response.
+Class ``spawn`` allows you to interact with called program by sending data and
+waiting for a response.
 
 For example, you can initiate SSH connecton:
 
@@ -38,17 +39,22 @@ For example, you can initiate SSH connecton:
 
     In [5]: ssh = pexpect.spawn('ssh cisco@192.168.100.1')
 
-After executing this line, connection is established. Now you must specify which line to expect. In this case, wait for password request:
+After executing this line, connection is established. Now you must specify
+which line to expect. In this case, wait for password request:
 
 .. code:: python
 
     In [6]: ssh.expect('[Pp]assword')
     Out[6]: 0
 
-Note how line that pexpect expects is described:
-``[Pp]assword``. This is a regular expression that describes a *password* or *Password* string. That is, expect() method can be used to pass a regular expression as an argument.
+Note how line that pexpect expects is written as ``[Pp]assword``. This is a
+regex that describes a ``password`` or ``Password`` string. That is, ``expect``
+method can be used to pass a regex as an argument.
 
-Method expect() returned number 0 as a result of the work. This number indicates that a match has been found and that this element with index zero. Index appears here because you can transfer a list of strings. For example, you can transfer a list with two elements:
+Method ``expect`` returned number 0 as a result of the work. This number
+indicates that a match has been found and that this element with index zero.
+Index appears here because you can transfer a list of strings. For example,
+you can transfer a list with two elements:
 
 .. code:: python
 
@@ -57,20 +63,22 @@ Method expect() returned number 0 as a result of the work. This number indicates
     In [8]: ssh.expect(['password', 'Password'])
     Out[8]: 1
 
-Note that it now returns 1. This means that *Password* word matched.
+Note that it now returns 1. This means that ``Password`` word matched.
 
-Now you can send password using *sendline* command:
+Now you can send password using ``sendline`` method:
 
 .. code:: python
 
     In [9]: ssh.sendline('cisco')
     Out[9]: 6
 
-Command *sendline* sends a string, automatically adds a new line character to it based on the value of os.linesep and then returns a number indicating how many bytes were written.
+Method ``sendline`` sends a string, automatically adds a new line character
+to it based on the value of ``os.linesep`` and then returns a number
+indicating how many bytes were written.
 
 .. note::
 
-    Pexpect has several options for sending commands, not just sendline.
+    Pexpect has several methods for sending commands, not just sendline.
 
 To get into enable mode expect-sendline cycle repeats:
 
@@ -106,14 +114,15 @@ We specify that it should read untill ``#``:
     In [16]: ssh.expect('#')
     Out[16]: 0
 
-Command output is in *before* attribute:
+Command output is in ``before`` attribute:
 
 .. code:: python
 
     In [17]: ssh.before
     Out[17]: b'sh ip int br\r\nInterface                  IP-Address      OK? Method Status                Protocol\r\nEthernet0/0                192.168.100.1   YES NVRAM  up                    up      \r\nEthernet0/1                192.168.200.1   YES NVRAM  up                    up      \r\nEthernet0/2                19.1.1.1        YES NVRAM  up                    up      \r\nEthernet0/3                192.168.230.1   YES NVRAM  up                    up      \r\nEthernet0/3.100            10.100.0.1      YES NVRAM  up                    up      \r\nEthernet0/3.200            10.200.0.1      YES NVRAM  up                    up      \r\nEthernet0/3.300            10.30.0.1       YES NVRAM  up                    up      \r\nR1'
 
-Since the result is displayed as a sequence of bytes you should convert it to a string:
+Since the result is displayed as a sequence of bytes you should convert
+it to a string:
 
 .. code:: python
 
@@ -131,7 +140,7 @@ Since the result is displayed as a sequence of bytes you should convert it to a 
     Ethernet0/3.300            10.30.0.1       YES NVRAM  up                    up
     R1
 
-Session ends with a close() call:
+Session ends with a ``close`` call:
 
 .. code:: python
 
@@ -143,7 +152,8 @@ Special characters in shell
 Pexpect does not interpret special shell characters such as ``>``,
 ``|``, ``*``.
 
-For example, in order make command ``ls -ls | grep SUMMARY`` work, shell must be run as follows:
+For example, in order make command ``ls -ls | grep SUMMARY`` work, shell
+must be run as follows:
 
 .. code:: python
 
@@ -169,11 +179,13 @@ In the previous example we met pexpect.EOF.
 
     EOF — end of file
 
-This is a special value that allows you to react to the end of a command or session that has been run in spawn.
+This is a special value that allows you to react to the end of a command or
+session that has been run in spawn.
 
-When calling ``ls -ls`` command, pexpect does not receive an interactive session. Command is simply executed and that ends its work.
+When calling ``ls -ls`` command, pexpect does not receive an interactive
+session. Command is simply executed and that ends its work.
 
-Therefore, if you run this command and set prompt in *expect*, there is an error:
+Therefore, if you run this command and set prompt in ``expect``, there is an error:
 
 .. code:: python
 
@@ -186,19 +198,20 @@ Therefore, if you run this command and set prompt in *expect*, there is an error
     ----> 1 p.expect('nattaur')
     ...
 
-If EOF passed to *expect*, there will be no error.
+If EOF passed to ``expect``, there will be no error.
 
-Method pexpect.expect
+Method ``pexpect.expect``
 ~~~~~~~~~~~~~~~~~~~~
 
-In pexpect.expect as a template can be used:
+In ``pexpect.expect`` as a value can be used:
 
-* regular expression
+* regex
 * EOF - this template allows you to react to EOF exception
 * TIMEOUT - timeout exception (default timeout = 30 seconds)
-* compiled re
+* compiled regex
 
-Another very useful feature of pexpect.expect is that you can pass not one value, but a list.
+Another very useful feature of ``pexpect.expect`` is that you can pass
+not a single value, but a list.
 
 For example:
 
@@ -222,7 +235,8 @@ Here are some important points:
 Example of pexpect use
 ----------------------------
 
-Example of using pexpect when connecting to equipment and passing show command (file 1_pexpect.py):
+Example of using pexpect when connecting to equipment and passing
+show command (file 1_pexpect.py):
 
 .. code:: python
 
@@ -280,7 +294,10 @@ This part of function is responsible for switching to enable mode:
         ssh.sendline(enable)
         ssh.expect(prompt)
 
-If ``ssh.expect([">", "#"])`` does not return index 0, it means that connection was not switched to enable mode automaticaly and it should be done separately. If index 1 is returned, then we are already in enable mode, for example, because device is configured with privilege 15.
+If ``ssh.expect([">", "#"])`` does not return index 0, it means that connection
+was not switched to enable mode automaticaly and it should be done separately.
+If index 1 is returned, then we are already in enable mode, for example,
+because device is configured with privilege 15.
 
 Another interesting point about this function:
 
@@ -301,10 +318,12 @@ Another interesting point about this function:
             result[command] = output.replace("\r\n", "\n")
     return result
 
-Here commands are sent in turn and expect() waits for three options: prompt, timeout or EOF.
-If expect() method didn't catch ``#``, value 1 will be returned and in this case a message is displayed,
-that symbol was not found. But in both cases, when a match is found or timeout the resulting output is written to dictionary. Thus, you can see what was received from device, even
-if prompt is not found.
+Here commands are sent in turn and ``expect`` waits for three options:
+prompt, timeout or EOF.
+If ``expect`` method didn't catch ``#``, value 1 will be returned and in this
+case a message is displayed, that symbol was not found. But in both cases,
+when a match is found or timeout the resulting output is written to dictionary.
+Thus, you can see what was received from device, even if prompt is not found.
 
 Output after script execution:
 
@@ -345,15 +364,17 @@ Output after script execution:
 Working with pexpect without disabling commands pagination
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Sometimes the output of a command is very large and cannot be read completely or device is not
-makes it possible to disable pagination. In this case, a slightly different approach is needed.
+Sometimes the output of a command is very large and cannot be read completely
+or device is not makes it possible to disable pagination. In this case, a
+slightly different approach is needed.
 
 .. note::
 
     The same task will be repeated for other modules in this section.
 
 
-Example of using pexpect to work with paginated output of *show* command (1_pexpect_more.py file):
+Example of using pexpect to work with paginated output of show
+command (1_pexpect_more.py file):
 
 .. code:: python
 
@@ -400,16 +421,19 @@ Example of using pexpect to work with paginated output of *show* command (1_pexp
                 f.write(result)
 
 
-Now after sending the command, expect() method waits for another option ``--More--`` - sign,
-that there will be one more page further. Since it's not known in advance how many pages will be in the output,
-reading is performed in a loop ``while True``. Loop is interrupted if prompt is met ``#``
-or no prompt appears within 10 seconds or ``--More--``.
+Now after sending the command, expect() method waits for another
+option ``--More--`` - sign, that there will be one more page further.
+Since it's not known in advance how many pages will be in the output,
+reading is performed in a loop ``while True``. Loop is interrupted if
+prompt is met ``#`` or no prompt appears within 10 seconds or ``--More--``.
 
-If ``--More--`` is met, pages are not over yet and you have to scroll through the next one.
-In Cisco, you need to press space bar to do this (without new line). Therefore, send() method is used here,
-not sendline - sendline automatically adds a new line character.
+If ``--More--`` is met, pages are not over yet and you have to scroll through
+the next one. In Cisco, you need to press space bar to do this (without new line).
+Therefore, ``send`` method is used here, not ``sendline`` - sendline automatically
+adds a new line character.
 
-This string ``page = re.sub(" +\x08+ +\x08+", "\n", page)`` removes backspace symbols which are around ``--More--`` so they don't end up in the final output.
+This string ``page = re.sub(" +\x08+ +\x08+", "\n", page)`` removes backspace
+symbols which are around ``--More--`` so they don't end up in the final output.
 
 
 

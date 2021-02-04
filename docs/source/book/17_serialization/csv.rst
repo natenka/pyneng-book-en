@@ -1,11 +1,13 @@
 Work with CSV files
 ------------------------------
 
-**CSV (comma-separated value)** - a tabular data format (for example, it may be data from a table or data from a database).
+**CSV (comma-separated value)** - a tabular data format (for example, it may
+be data from a table or data from a database).
 
-In this format, each line of a file is a line of a table. Despite format name the separator can be not only a comma.
-
-Although formats with a different separator may have their own name such as TSV (tab separated values), CSV is generally understood by all separators.
+In this format, each line of a file is a line of a table. Despite format name
+the separator can be not only a comma.
+Although formats with a different separator may have their own name such
+as TSV (tab separated values), CSV is generally understood by all separators.
 
 Example of a CSV file (sw_data.csv):
 
@@ -17,7 +19,8 @@ Example of a CSV file (sw_data.csv):
     sw3,Cisco,3650,Liverpool
     sw4,Cisco,3650,London
 
-The standard Python library has a csv module that allows working with files in CSV format.
+The standard Python library has a csv module that allows working with
+files in CSV format.
 
 Reading
 ~~~~~~
@@ -47,7 +50,7 @@ The output is:
 
 First list contains column names and remaining list contains the corresponding values.
 
-Note that csv.reader returns an iterator:
+Note that ``csv.reader`` returns an iterator:
 
 .. code:: python
 
@@ -69,7 +72,8 @@ If necessary it could be converted into a list in the following way:
        ...:
     [['hostname', 'vendor', 'model', 'location'], ['sw1', 'Cisco', '3750', 'London'], ['sw2', 'Cisco', '3850', 'Liverpool'], ['sw3', 'Cisco', '3650', 'Liverpool'], ['sw4', 'Cisco', '3650', 'London']]
 
-Most often column headers are more convenient to get by a separate object. This can be done in this way (csv_read_headers.py file):
+Most often column headers are more convenient to get by a separate object.
+This can be done in this way (csv_read_headers.py file):
 
 .. code:: python
 
@@ -83,9 +87,10 @@ Most often column headers are more convenient to get by a separate object. This 
             print(row)
 
 
-Sometimes it is more convenient to obtain dictionaries in which keys are column names and values are column values.
+Sometimes it is more convenient to get dictionaries in which keys are column
+names and values are column values.
 
-For this purpose, module has **DictReader** (csv_read_dict.py file):
+For this purpose, module has ``DictReader`` (csv_read_dict.py file):
 
 .. code:: python
 
@@ -113,13 +118,15 @@ The output is:
     OrderedDict([('hostname', 'sw4'), ('vendor', 'Cisco'), ('model', '3650'), ('location', 'London')])
     sw4 3650
 
-Dictreader does not create standard Python dictionaries but ordered dictionaries. Thus, the order of elements corresponds to order of columns in CSV file.
+Dictreader does not create standard Python dictionaries but ordered
+dictionaries. Thus, the order of elements corresponds to order of columns in CSV file.
 
 .. note::
 
     Prior to Python 3.6 regular dictionaries were returned, not ordered dictionaries.
 
-Otherwise, it is possible to work with ordered dictionaries using the same methods as in regular dictionaries.
+Otherwise, it is possible to work with ordered dictionaries using the same
+methods as in regular dictionaries.
 
 Writing
 ~~~~~~
@@ -146,7 +153,8 @@ Similarly, a csv module can be used to write data to file in CSV format (csv_wri
         print(f.read())
 
 
-In example above, strings from list are written to the file and then the content of file is displayed on standard output stream.
+In example above, strings from list are written to the file and then the
+content of file is displayed on standard output stream.
 
 The output will be as follows:
 
@@ -165,7 +173,7 @@ This is because all strings in the last column have a comma. And quotes indicate
 what is an entire string. When a comma is inside quotation marks the csv module
 does not perceive it as a separator.
 
-Sometimes it’s better to have all strings quoted. Of course, in this case,
+Sometimes it's better to have all strings quoted. Of course, in this case,
 example is simple enough but when there are more values in the strings, the
 quotes indicate where value begins and ends.
 
@@ -206,7 +214,8 @@ Now the output is this:
 
 Now all values are quoted. And because model number is given as a string in original list, it is quoted here as well.
 
-Besides writerow() method, writerows() method is supported. It accepts any iterable object.
+Besides ``writerow`` method, ``writerows`` method is supported. It accepts
+any iterable object.
 
 So, previous example can be written this way (csv_writerows.py file):
 
@@ -232,9 +241,11 @@ So, previous example can be written this way (csv_writerows.py file):
 DictWriter
 ^^^^^^^^^^
 
-With DictWriter() you can write dictionaries in CSV format.
+With ``DictWriter`` you can write dictionaries in CSV format.
 
-In general, DictWriter() works as writer() but since dictionaries are not ordered it is necessary to specify the order of columns in file. The *fieldnames* option is used for this purpose (csv_write_dict.py file):
+In general, ``DictWriter`` works as ``writer`` but since dictionaries are not
+ordered it is necessary to specify the order of columns in file.
+The ``fieldnames`` option is used for this purpose (csv_write_dict.py file):
 
 .. code:: python
 
@@ -271,9 +282,10 @@ In general, DictWriter() works as writer() but since dictionaries are not ordere
 
 
 Delimiter
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~
 
-Sometimes other values are used as a separator. In this case, it should be possible to tell module which separator to use.
+Sometimes other values are used as a separator. In this case,
+it should be possible to tell module which separator to use.
 
 For example, if the file uses separator ``;`` (sw_data2.csv file):
 

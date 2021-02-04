@@ -7,11 +7,19 @@ Method syntax:
 
     map(func, *iterables, timeout=None)
 
-Method map() is similar to built-in map function: applying func() function to one or more iterable objects. Each call to a function is then started in a separate thread/process. Method map() returns an iterator with function results for each element of object being iterated. The results are arranged in the same order as elements in iterable object.
+Method ``map`` is similar to built-in map function: applying ``func`` function
+to one or more iterable objects. Each call to a function is then started in a
+separate thread/process. Method ``map`` returns an iterator with function
+results for each element of object being iterated. The results are arranged
+in the same order as elements in iterable object.
 
-When working with thread/process pools, a certain number of threads/processes are created and the code is executed in these threads. For example, if the pool is created with 5 threads and function has to be started for 10 different devices, connection will be performed first to the first five devices and then, as they liberated, to the others.
+When working with thread/process pools, a certain number of threads/processes
+are created and the code is executed in these threads. For example, if the pool
+is created with 5 threads and function has to be started for 10 different devices,
+connection will be performed first to the first five devices and then, as they
+liberated, to the others.
 
-An example of using a map() function with ThreadPoolExecutor (netmiko_threads_map_basics.py file):
+An example of using a ``map`` function with ThreadPoolExecutor (netmiko_threads_map_basics.py file):
 
 .. code:: python
 
@@ -56,7 +64,9 @@ An example of using a map() function with ThreadPoolExecutor (netmiko_threads_ma
             print(device['ip'], output)
 
 
-Since function should be passed to map() method, send_show() function is created which connects to devices, passes specified show command and returns the result with command output.
+Since function should be passed to ``map`` method, ``send_show`` function is
+created which connects to devices, passes specified show command and returns
+the result with command output.
 
 .. code:: python
 
@@ -74,7 +84,11 @@ Since function should be passed to map() method, send_show() function is created
             logging.info(received_msg.format(datetime.now().time(), ip))
             return result
 
-Function send_show() outputs log message at the beginning and at the end of work. This will determine when function has worked for the particular device. Also within function it is specified that when connecting to device with address 192.168.100.1, the pause for 5 seconds is required - thus router with this address will respond longer.
+Function ``send_show`` outputs log message at the beginning and at the end of
+work. This will determine when function has worked for the particular device.
+Also within function it is specified that when connecting to device with
+address 192.168.100.1, the pause for 5 seconds is required - thus router
+with this address will respond longer.
 
 Last 4 lines of code are responsible for connecting to devices in separate threads:
 
@@ -85,13 +99,13 @@ Last 4 lines of code are responsible for connecting to devices in separate threa
         for device, output in zip(devices, result):
             print(device['ip'], output)
 
-* ``with ThreadPoolExecutor(max_workers=3) as executor:`` - ThreadPoolExecutor class is initiated in *with* block with indicated number of threads.
-* ``result = executor.map(send_show, devices, repeat('sh clock'))`` - map() method is similar to map() function, but here the send_show() function is called in different threads. However, in different threads the function will be called with different arguments:
+* ``with ThreadPoolExecutor(max_workers=3) as executor:`` - ThreadPoolExecutor class is initiated in ``with`` block with indicated number of threads.
+* ``result = executor.map(send_show, devices, repeat('sh clock'))`` - ``map`` method is similar to ``map`` function, but here the send_show() function is called in different threads. However, in different threads the function will be called with different arguments:
 
-  * elements of iterable object *devices* and the same command *sh clock*.
-  * since instead of a list of commands only one command is used, it must be repeated in some way, so that map() method will set this command to different devices. It uses repeat() function - it repeats command exactly as many times as map() requests
+  * elements of iterable object ``devices`` and the same command "sh clock".
+  * since instead of a list of commands only one command is used, it must be repeated in some way, so that ``map`` method will set this command to different devices. It uses ``repeat`` function - it repeats command exactly as many times as ``map`` requests
   
-*  map() method returns generator. This generator contains results of functions. Results are in the same order as devices in the list of devices, so zip() function is used to combine device IP addresses and command output.
+*  ``map`` method returns generator. This generator contains results of functions. Results are in the same order as devices in the list of devices, so zip() function is used to combine device IP addresses and command output.
 
 Execution result:
 
@@ -124,7 +138,9 @@ The following three messages show time of receipt of information and completion 
     ThreadPoolExecutor-0_2 root INFO: <=== 08:29:15.497324 Received:   192.168.100.3
     ThreadPoolExecutor-0_0 root INFO: <=== 08:29:16.854344 Received:   192.168.100.1
 
-Since *sleep* was added for the first device for 5 seconds, information from the first router was actually received later. However, since map() method returns values in the same order as devices in *device* list, the result is:
+Since ``sleep`` was added for the first device for 5 seconds, information from
+the first router was actually received later. However, since ``map`` method
+returns values in the same order as devices in ``device`` list, the result is:
 
 ::
 
@@ -136,7 +152,7 @@ Since *sleep* was added for the first device for 5 seconds, information from the
 Map exception handling
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Example of map() with exception handling:
+Example of ``map`` with exception handling:
 
 .. code:: python
 
@@ -190,7 +206,11 @@ Example of map() with exception handling:
         pprint(send_command_to_devices(devices, 'sh ip int br'))
 
 
-Example is generally similar to the previous one but  NetMikoAuthenticationException was introduced in send_show() function, and the code that started send_show() function in threads is now in send_command_to_devices() function.
+Example is generally similar to the previous one but
+NetMikoAuthenticationException was introduced in ``send_show`` function,
+and the code that started ``send_show`` function in threads is now in
+``send_command_to_devices`` function.
 
-When using map() method, exception handling is best done within a function that runs in threads, in this case send_show() function.
+When using ``map`` method, exception handling is best done within a function
+that runs in threads, in this case ``send_show`` function.
 

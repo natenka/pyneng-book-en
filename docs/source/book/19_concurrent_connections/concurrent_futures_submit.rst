@@ -1,22 +1,25 @@
 Method submit and work with futures
 -------------------------------
 
-Method submit() differs from map() method:
+Method ``submit`` differs from ``map`` method:
 
-* submit() runs only one function in thread
-* submit() can run different functions with different unrelated arguments, when map() must run with iterable objects as arguments
-* submit() immediately returns the result without having to wait for function execution
-* submit() returns special Future object that represents execution of function.
+* ``submit`` runs only one function in thread
+* ``submit`` can run different functions with different unrelated arguments, when ``map`` must run with iterable objects as arguments
+* ``submit`` immediately returns the result without having to wait for function execution
+* ``submit`` returns special Future object that represents execution of function.
 
-  * submit() returns Future in order that the call of submit() does not block the code. Once submit() has returned Future, code can be executed further. And once all functions in threads are running, you can start requesting Future if results are ready. Or take advantage of special function as_completed(), which requests the result itself and code gets it when it’s ready
+  * ``submit`` returns Future in order that the call of ``submit`` does not block the code. Once ``submit`` has returned Future, code can be executed further. And once all functions in threads are running, you can start requesting Future if results are ready. Or take advantage of special function as_completed(), which requests the result itself and code gets it when it's ready
 
-* submit() returns results in readiness order, not in argument order
-* submit() can pass key arguments when map() only position arguments
+* ``submit`` returns results in readiness order, not in argument order
+* ``submit`` can pass key arguments when ``map`` only position arguments
 
-Method submit() uses `Future <https://en.wikipedia.org/wiki/Futures_and_promises>`__ object - an object that represents a delayed computation. This object can be resquested for status (completed or not), and results or exceptions can be obtained from the job. Future does not need to create manually, these objects are created by submit().
+Method ``submit`` uses `Future <https://en.wikipedia.org/wiki/Futures_and_promises>`__ object - an
+object that represents a delayed computation. This object can be requested for
+status (completed or not), and results or exceptions can be obtained from the
+job. Future does not need to create manually, these objects are created by ``submit``.
 
 
-Example of running a function in threads using submit() (netmiko_threads_submit_basics.py file)
+Example of running a function in threads using ``submit`` (netmiko_threads_submit_basics.py file)
 
 .. code:: python
 
@@ -66,7 +69,8 @@ Example of running a function in threads using submit() (netmiko_threads_submit_
             print(f.result())
 
 
-The rest of the code has not changed, so you only need to deal with the block which runs send_show() function in threads:
+The rest of the code has not changed, so you only need to deal with the block
+which runs ``send_show`` function in threads:
 
 .. code:: python
 
@@ -79,7 +83,8 @@ The rest of the code has not changed, so you only need to deal with the block wh
             print(f.result())
 
 
-The rest of the code has not changed, so only block that runs send_show() needs an attention:
+The rest of the code has not changed, so only block that runs ``send_show``
+needs an attention:
 
 .. code:: python
 
@@ -91,12 +96,12 @@ The rest of the code has not changed, so only block that runs send_show() needs 
         for f in as_completed(future_list):
             print(f.result())
 
-Now block *with* has two cycles:
+Now block ``with`` has two cycles:
 
 * ``future_list`` - a list of Future objects:
 
-  * submit() function is used to create Future object
-  * submit() expects the name of function to be executed and its arguments
+  * ``submit`` function is used to create Future object
+  * ``submit`` expects the name of function to be executed and its arguments
 
 * the next cycle runs through future_list using as_completed() function. This function returns a Future objects only when they have finished or been cancelled. Future is then returned as soon as work is completed, not in the order of adding to future_list
 
@@ -122,12 +127,14 @@ The result is:
     {'192.168.100.3': '*17:33:23.188 UTC Thu Jul 4 2019'}
 
 
-Please note that the order is not preserved and depends on which function was previously completed.
+Please note that the order is not preserved and depends on which function was
+previously completed.
 
 Future
 ~~~~~~
 
-An example of running send_show() function with submit() and displaying information about Future (note the status of Future at different points in time):
+An example of running ``send_show`` function with ``submit`` and displaying
+information about Future (note the status of Future at different points in time):
 
 .. code:: python
 
@@ -166,7 +173,8 @@ An example of running send_show() function with submit() and displaying informat
     <Future at 0xb488e72c state=finished returned dict>
 
 
-In order to look at Future, several lines with information output are added to the script (netmiko_threads_submit_futures.py):
+In order to look at Future, several lines with information output are added to
+the script (netmiko_threads_submit_futures.py):
 
 .. code:: python
 
@@ -224,7 +232,6 @@ In order to look at Future, several lines with information output are added to t
 
 
 
-
 The result is:
 
 ::
@@ -247,14 +254,16 @@ The result is:
      '192.168.100.3': '*07:14:37.413 UTC Fri Jul 26 2019'}
 
 
-Since two threads are used by default, only two out of three Future shows running status. The third is in pending state and is waiting for queue to arrive.
+Since two threads are used by default, only two out of three Future shows
+running status. The third is in pending state and is waiting for queue to arrive.
 
 Processing of exceptions
 ~~~~~~~~~~~~~~~~~~~~
 
-If there is an exception in function execution, it will be generated when the result is obtained
-
-For example, in device.yaml file the password for device 192.168.100.2 was changed to the wrong one:
+If there is an exception in function execution, it will be generated when
+the result is obtained
+For example, in device.yaml file the password for device 192.168.100.2 was
+changed to the wrong one:
 
 ::
 
@@ -271,7 +280,8 @@ For example, in device.yaml file the password for device 192.168.100.2 was chang
     netmiko.ssh_exception.NetMikoAuthenticationException: Authentication failure: unable to connect cisco_ios 192.168.100.2:22
     Authentication failed.
 
-Since an exception occurs when result is obtained, it is easy to add exception processing (netmiko_threads_submit_exception.py file):
+Since an exception occurs when result is obtained, it is easy to add exception
+processing (netmiko_threads_submit_exception.py file):
 
 
 .. code:: python
@@ -328,6 +338,8 @@ Since an exception occurs when result is obtained, it is easy to add exception p
         with open('devices.yaml') as f:
             devices = yaml.safe_load(f)
         pprint(send_command_to_devices(devices, 'sh clock'))
+
+
 The result is:
 
 ::
@@ -344,5 +356,6 @@ The result is:
      '192.168.100.3': '*07:21:28.930 UTC Fri Jul 26 2019'}
 
 
-Of course, exception handling can be performed within send_show() function, but it is just an example of how you can work with exceptions when using a Future.
+Of course, exception handling can be performed within ``send_show`` function,
+but it is just an example of how you can work with exceptions when using a Future.
 

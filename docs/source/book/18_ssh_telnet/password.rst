@@ -6,11 +6,14 @@ During manual connection to device the password is also manually entered.
 When automating connection it is necessary to decide how password will be transmitted:
 
 * Request password at start of the script and read user input. Disadvantage is that you can see which characters user is typing
-* Write login and password in some file (it’s not secure).
+* Write login and password in some file (it's not secure).
 
-As a rule, the same user uses the same login and password to connect to devices. And usually it’s enough to request login and password at the start of the script and then use them to connect to different devices.
+As a rule, the same user uses the same login and password to connect to devices.
+And usually it's enough to request login and password at the start of the
+script and then use them to connect to different devices.
 
-Unfortunately, if you use ``input()`` the typed password will be visible. But it is desirable that no characters are displayed when entering a password.
+Unfortunately, if you use ``input`` the typed password will be visible.
+But it is better if no characters are displayed when entering a password.
 
 Module getpass
 ~~~~~~~~~~~~~~

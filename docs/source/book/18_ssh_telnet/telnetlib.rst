@@ -1,13 +1,17 @@
 Module telnetlib
 ----------------
 
-Module telnetlib is part of standard Python library. This is telnet client implementation.
+Module telnetlib is part of standard Python library. This is telnet
+client implementation.
 
 .. note::
 
-    It is also possible to connect via telnet using pexpect. Plus of telnetlib is that this module is part of standard Python library.
+    It is also possible to connect via telnet using pexpect. The advantage of
+    telnetlib is that this module is part of standard Python library.
     
-Telnetlib resembles pexpect but has several differences. The most notable difference is that telnetlib requires a transfer of a byte string, rather than normal one.
+Telnetlib resembles pexpect but has several differences. The most notable
+difference is that telnetlib requires a transfer of a byte string,
+rather than normal one.
 
 Connection is performed as follows:
 
@@ -15,28 +19,29 @@ Connection is performed as follows:
 
     In [1]: telnet = telnetlib.Telnet('192.168.100.1')
 
-Method read_until
+Method ``read_until``
 ~~~~~~~~~~~~~~~~
 
-Method read_until() specifies till which line the output should be read. However, as an argument, it is necessary to pass bytes, not the usual string:
+Method ``read_until`` specifies till which line the output should be read.
+However, as an argument, it is necessary to pass bytes, not the usual string:
 
 .. code:: python
 
     In [2]: telnet.read_until(b'Username')
     Out[2]: b'\r\n\r\nUser Access Verification\r\n\r\nUsername'
 
-Method read_until() returns everything it has read before specified string.
+Method ``read_until`` returns everything it has read before specified string.
 
 Method write
 ~~~~~~~~~~~
 
-Method write() is used for data transmission. Byte string has to be passed to it:
+Method ``write`` is used for data transmission. Byte string has to be passed to it:
 
 .. code:: python
 
     In [3]: telnet.write(b'cisco\n')
 
-Read output till *Password* and pass the password:
+Read output till Password and pass the password:
 
 .. code:: python
 
@@ -54,17 +59,18 @@ You can now specify what should be read untill prompt and then send the command:
 
     In [7]: telnet.write(b'sh ip int br\n')
 
-After sending a command, you can continue to use read_until() method:
+After sending a command, you can continue to use ``read_until`` method:
 
 .. code:: python
 
     In [8]: telnet.read_until(b'>')
     Out[8]: b'sh ip int br\r\nInterface                  IP-Address      OK? Method Status                Protocol\r\nEthernet0/0                192.168.100.1   YES NVRAM  up                    up      \r\nEthernet0/1                192.168.200.1   YES NVRAM  up                    up      \r\nEthernet0/2                19.1.1.1        YES NVRAM  up                    up      \r\nEthernet0/3                192.168.230.1   YES NVRAM  up                    up      \r\nEthernet0/3.100            10.100.0.1      YES NVRAM  up                    up      \r\nEthernet0/3.200            10.200.0.1      YES NVRAM  up                    up      \r\nEthernet0/3.300            10.30.0.1       YES NVRAM  up                    up      \r\nR1>'
 
-Method read_very_eager
+Method ``read_very_eager``
 ~~~~~~~~~~~~~~~~~~~~~
 
-Or use another read method read_very_eager(). When using read_very_eager() method, you can send multiple commands and then read all available output:
+Or use another read method ``read_very_eager``. When using ``read_very_eager``
+method, you can send multiple commands and then read all available output:
 
 .. code:: python
 
@@ -105,9 +111,11 @@ Or use another read method read_very_eager(). When using read_very_eager() metho
 
 .. warning::
 
-    You should always set time.sleep(n) before using read_very_eager.
+    You should always set ``time.sleep(n)`` before using ``read_very_eager``.
 
-With read_until() will be a slightly different approach. You can execute the same three commands, but then get the output one by one because of reading till prompt string:
+With ``read_until`` will be a slightly different approach. You can execute
+the same three commands, but then get the output one by one because of
+reading till prompt string:
 
 .. code:: python
 
@@ -126,12 +134,15 @@ With read_until() will be a slightly different approach. You can execute the sam
     In [19]: telnet.read_until(b'>')
     Out[19]: b'sh ip int br\r\nInterface                  IP-Address      OK? Method Status                Protocol\r\nEthernet0/0                192.168.100.1   YES NVRAM  up                    up      \r\nEthernet0/1                192.168.200.1   YES NVRAM  up                    up      \r\nEthernet0/2                19.1.1.1        YES NVRAM  up                    up      \r\nEthernet0/3                192.168.230.1   YES NVRAM  up                    up      \r\nEthernet0/3.100            10.100.0.1      YES NVRAM  up                    up      \r\nEthernet0/3.200            10.200.0.1      YES NVRAM  up                    up      \r\nEthernet0/3.300            10.30.0.1       YES NVRAM  up                    up      \r\nR1>'
 
-read_until vs read_very_eager
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+``read_until`` vs ``read_very_eager``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-An important difference between read_until() and read_very_eager() is how they react to the lack of output.
+An important difference between ``read_until`` and ``read_very_eager``
+is how they react to the lack of output.
 
-Method read_until() waits for a certain string. By default, if it does not exist, method will "freeze". Timeout option allows you to specify how long to wait for the desired string:
+Method ``read_until`` waits for a certain string. By default, if it does not
+exist, method will "freeze". Timeout option allows you to specify how long
+to wait for the desired string:
 
 .. code:: python
 
@@ -140,7 +151,7 @@ Method read_until() waits for a certain string. By default, if it does not exist
 
 If no string appears during the specified time, an empty string is returned.
 
-Method read_very_eager() simply returns an empty string if there is no output:
+Method ``read_very_eager`` simply returns an empty string if there is no output:
 
 .. code:: python
 
@@ -148,10 +159,11 @@ Method read_very_eager() simply returns an empty string if there is no output:
     Out[21]: b''
 
 
-Method expect
-~~~~~~~~~~~~
+Method ``expect``
+~~~~~~~~~~~~~~~~~
 
-Method expect() allows you to specify a list with regular expressions. It works like pexpect but telnetlib always has to pass a list of regular expressions.
+Method ``expect`` allows you to specify a list with regular expressions. It
+works like pexpect but telnetlib always has to pass a list of regular expressions.
 
 You can then transfer byte strings or compiled regular expressions:
 
@@ -165,7 +177,7 @@ You can then transfer byte strings or compiled regular expressions:
      <_sre.SRE_Match object; span=(46, 47), match=b'>'>,
      b'sh clock\r\n*19:35:10.984 UTC Fri Nov 3 2017\r\nR1>')
 
-Method expect() returns tuple of their three elements:
+Method ``expect`` returns tuple of their three elements:
 
 * index of matched expression 
 * object Match 
@@ -200,7 +212,8 @@ Accordingly, if necessary you can continue working with these elements:
 Method close
 ~~~~~~~~~~~
 
-Method close() closes connection but it's better to open and close connection using context manager:
+Method ``close`` closes connection but it's better to open and close
+connection using context manager:
 
 .. code:: python
 
@@ -211,11 +224,10 @@ Method close() closes connection but it's better to open and close connection us
     Using Telnet object as context manager added in version 3.6
 
 Telnetlib usage example
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Working principle of telnetlib resembles pexpect, so the example below should be clear.
-
-File 2_telnetlib.py:
+Working principle of telnetlib resembles pexpect, so the example below
+should be clear (2_telnetlib.py):
 
 .. code:: python
 
@@ -313,7 +325,8 @@ Script execution:
 Paginated command output
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Example of using telnetlib to work with paginated output of *show* commands (2_telnetlib_more.py file):
+Example of using telnetlib to work with paginated output of show
+commands (2_telnetlib_more.py file):
 
 .. code:: python
 

@@ -85,17 +85,17 @@ Script to generate configurations router_config_generator_ver2.py
 
     for router in routers:
         r1_conf = router['name']+'_r1.txt'
-        with open(r1_conf,'w') as f:
+        with open(r1_conf, 'w') as f:
             f.write(template.render(router))
 
 File router_config_generator.py imports from jinja2 module:
 
-* **FileSystemLoader** - a loader that allows working with a file system
+* ``FileSystemLoader`` - a loader that allows working with a file system
 
   * path to directory where templates are located is specified here
-  * in this case template is in *template* directory
+  * in this case template is in templates directory
   
-* **Environment** - a class for describing environment parameters. In this case only loader is specified, but you can specify how to process a template
+* ``Environment`` - a class for describing environment parameters. In this case only loader is specified, but you can specify how to process a template
 
-Note that template is now in **templates** directory.
+Note that template is now in ``templates`` directory.
 

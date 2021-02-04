@@ -62,7 +62,7 @@ One underscore before name
 
 One underscore before name indicates that the name is used as an internal name.
 
-For example, if one underscore is specified in name of function or method, this means that the object is an internal feature of implementation and should not be used directly.
+For example, if one underscore is specified in name of function or method, this means that the object is an internal implementation and should not be used directly.
 
 But also, when importing ``from module import *`` the objects that start with underscore will not be imported.
 
@@ -196,7 +196,9 @@ As a rule, such methods need not be called directly. But for example, when creat
 
 For example, in order to get object length, it must support ``__len__`` method.
 
-Another special method ``__str__`` is called when print() operator is used or str() function is called. If it is necessary to get a certain form of display, you have to create this method in the class:
+Another special method ``__str__`` is called when ``print`` operator is used or
+``str`` function is called. If it is necessary to get a certain output,
+you have to create this method in the class:
 
 .. code:: python
 

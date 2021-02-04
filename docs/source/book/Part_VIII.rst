@@ -1,7 +1,8 @@
 VIII. Additional information
 ###############################
 
-This section collects information that is not included in main sections of the book, but which can still be useful.
+This section covers information that is not included in main sections of the
+book, but which can still be useful.
 
 .. toctree::
    :maxdepth: 1

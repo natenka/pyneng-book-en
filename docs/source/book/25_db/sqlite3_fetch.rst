@@ -3,14 +3,13 @@ Fetching query results
 
 There are several ways to get query results in sqlite3:
 
-* using ``fetch...()`` - depending on the method one, more or all rows are returned
+* using ``fetch...`` - depending on the method one, more or all rows are returned
 * using cursor as an iterator - iterator returns
 
 Method fetchone
 ^^^^^^^^^^^^^^
 
-Method fetchone() returns one data row.
-
+Method ``fetchone`` returns one data row.
 Example of fetching information from sw_inventory.db database:
 
 .. code:: python
@@ -27,8 +26,8 @@ Example of fetching information from sw_inventory.db database:
     In [20]: cursor.fetchone()
     Out[20]: ('0000.AAAA.CCCC', 'sw1', 'Cisco 3750', 'London, Green Str')
 
-Note that while the SQL query requests all table content, fetchone() returned only one row.
-
+Note that while the SQL query requests all table content, ``fetchone`` returned
+only one row.
 If you re-call method, it returns the next row:
 
 .. code:: python
@@ -36,7 +35,8 @@ If you re-call method, it returns the next row:
     In [21]: print(cursor.fetchone())
     ('0000.BBBB.CCCC', 'sw2', 'Cisco 3780', 'London, Green Str')
 
-Similarly, method will return the next rows. After processing all rows, method starts returning None.
+Similarly, method will return the next rows. After processing all rows,
+method starts returning None.
 
 In this way, method can be used in the loop, for example:
 
@@ -64,7 +64,7 @@ In this way, method can be used in the loop, for example:
 Method fetchmany
 ^^^^^^^^^^^^^^^
 
-Method fetchmany() returns a list of data rows.
+Method ``fetchmany`` returns a list of data rows.
 
 Method syntax:
 
@@ -72,7 +72,8 @@ Method syntax:
 
     cursor.fetchmany([size=cursor.arraysize])
 
-Size parameter allows you to specify how many rows are returned. By default the size parameter is cursor.arraysize:
+Size parameter allows you to specify how many rows are returned. By default
+the size parameter is ``cursor.arraysize``:
 
 .. code:: python
 
@@ -105,12 +106,13 @@ For example, you can return three rows at a time from query:
     [('0000.1111.0003', 'sw7', 'Cisco 3750', 'London, Green Str'),
      ('0000.1111.0004', 'sw8', 'Cisco 3750', 'London, Green Str')]
 
-Method displays required number of rows and if amount of rows are less than the size parameter, it returns remaining rows.
+Method displays required number of rows and if amount of rows are less
+than the size parameter, it returns remaining rows.
 
 Method fetchall
 ^^^^^^^^^^^^^^
 
-Method fetchall() returns all rows as a list:
+Method ``fetchall`` returns all rows as a list:
 
 .. code:: python
 
@@ -130,7 +132,8 @@ Method fetchall() returns all rows as a list:
 
 An important aspect of method - it returns all remaining rows.
 
-That is, if fetchone() method was used before fetchall(), then fetchall() would return remaining query rows:
+That is, if ``fetchone`` method was used before ``fetchall``,
+then ``fetchall`` would return remaining query rows:
 
 .. code:: python
 
@@ -152,5 +155,5 @@ That is, if fetchone() method was used before fetchall(), then fetchall() would 
      ('0000.1111.0003', 'sw7', 'Cisco 3750', 'London, Green Str'),
      ('0000.1111.0004', 'sw8', 'Cisco 3750', 'London, Green Str')]
 
-Method fetchmany() works similarly in this aspect.
+Method ``fetchmany`` works similarly in this aspect.
 

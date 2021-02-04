@@ -1,9 +1,11 @@
 Module netmiko
 --------------
 
-Netmiko is a module that makes it easier to use paramiko for network devices. Netmiko uses paramiko but also creates interface and methods needed to work with network devices.
+Netmiko is a module that makes it easier to use paramiko for network devices.
+Netmiko uses paramiko but also creates interface and methods needed to work
+with network devices.
 
-Netmiko first needs to install:
+First you need to install netmiko:
 
 ::
 
@@ -36,13 +38,14 @@ Dictionary may have the next parameters:
 
 .. code:: python
 
-    cisco_router = {'device_type': 'cisco_ios', # predefined device type
-                    'ip': '192.168.1.1', # device IP address
-                    'username': 'user', # username
-                    'password': 'userpass', # user password
-                    'secret': 'enablepass', # enable password
-                    'port': 20022, # port SSH, by default 22
-                     }
+    cisco_router = {
+        'device_type': 'cisco_ios',
+        'host': '192.168.1.1',
+        'username': 'user',
+        'password': 'userpass',
+        'secret': 'enablepass',
+        'port': 20022,
+    }
 
 Connect via SSH
 ~~~~~~~~~~~~~~~~~~
@@ -73,7 +76,7 @@ Netmiko has several ways to send commands:
 
 * ``send_command`` - send one command
 * ``send_config_set`` - send list of commands or command in configuration mode 
-* ``send_config_from_file`` - send commands from the file (uses  ``send_config_set``  method inside)
+* ``send_config_from_file`` - send commands from the file (uses ``send_config_set`` method inside)
 * ``send_command_timing`` - send command and wait for the output based on timer
 
 ``send_command``
@@ -110,9 +113,10 @@ In most cases, only command will be sufficient to specify.
 ``send_config_set``
 *******************
 
-Method ``send_config_set`` allows you to send command or multiple commands in configuration mode.
+Method ``send_config_set`` allows you to send command or multiple commands
+in configuration mode.
 
-Example of use:
+Example:
 
 .. code:: python
 
@@ -148,38 +152,41 @@ Additional methods
 
 Besides the above methods for sending commands, netmiko supports such methods:
 
-* ``config_mode`` - switch to configuration mode: ``ssh.config_mode()`` 
-* ``exit_config_mode`` - exit configuration mode: ``ssh.exit_config_mode()`` 
-* ``check_config_mode`` - check whether netmiko is in configuration mode (returns True if in configuration mode and False if not): ``ssh.check_config_mode()`` 
-* ``find_prompt`` - returns the current prompt of device: ``ssh.find_prompt()`` 
-* ``commit`` - commit on IOS-XR and Juniper: ``ssh.commit()`` 
+* ``config_mode`` - switch to configuration mode: ``ssh.config_mode`` 
+* ``exit_config_mode`` - exit configuration mode: ``ssh.exit_config_mode`` 
+* ``check_config_mode`` - check whether netmiko is in configuration mode (returns True if in configuration mode and False if not): ``ssh.check_config_mode`` 
+* ``find_prompt`` - returns the current prompt of device: ``ssh.find_prompt`` 
+* ``commit`` - commit on IOS-XR and Juniper: ``ssh.commit`` 
 * ``disconnect`` - terminate SSH connection
 
 .. note::
 
-    Above ssh is a pre-created SSH connection:
+    Variable ssh is a pre-created SSH connection:
     ``ssh = ConnectHandler(**cisco_router)``
 
 Telnet support
 ~~~~~~~~~~~~~~~~
 
-Since version 1.0.0 netmiko supports Telnet connections, so far only for Cisco IOS devices.
+Since version 1.0.0 netmiko supports Telnet connections, so far only for Cisco
+IOS devices.
+Inside netmiko uses telnetlib to connect via Telnet. But, at the same time,
+it provides the same interface for work as for SSH connection.
 
-Inside netmiko uses telnetlib to connect via Telnet. But, at the same time, it provides the same interface for work as for SSH connection.
-
-In order to connect via Telnet, it is sufficient in the dictionary that defines connection parameters specify device type 'cisco_ios_telnet':
+In order to connect via Telnet, it is enough in the dictionary that defines
+connection parameters specify device type ``cisco_ios_telnet``:
 
 .. code:: python
 
     device = {
         "device_type": "cisco_ios_telnet",
-        "ip": "192.168.100.1",
+        "host": "192.168.100.1",
         "username": "cisco",
         "password": "cisco",
         "secret": "cisco",
     }
 
-Otherwise, methods that apply to SSH apply to Telnet. An example similar to SSH (4_netmiko_telnet.py file):
+Otherwise, methods that apply to SSH apply to Telnet. An example similar to SSH
+(4_netmiko_telnet.py file):
 
 .. code:: python
 
@@ -208,7 +215,7 @@ Otherwise, methods that apply to SSH apply to Telnet. An example similar to SSH 
     if __name__ == "__main__":
         device = {
             "device_type": "cisco_ios_telnet",
-            "ip": "192.168.100.1",
+            "host": "192.168.100.1",
             "username": "cisco",
             "password": "cisco",
             "secret": "cisco",
@@ -220,12 +227,12 @@ Otherwise, methods that apply to SSH apply to Telnet. An example similar to SSH 
 
 Other methods works similarly: 
 
-* ``send_command_timing()`` 
-* ``find_prompt()`` 
-* ``send_config_set()`` 
-* ``send_config_from_file()`` 
-* ``check_enable_mode()`` 
-* ``disconnect()``
+* ``send_command_timing`` 
+* ``find_prompt`` 
+* ``send_config_set`` 
+* ``send_config_from_file`` 
+* ``check_enable_mode`` 
+* ``disconnect``
 
 
 Example of netmiko use
@@ -266,7 +273,8 @@ Example of netmiko use (4_netmiko.py file):
 
 
 
-In this example *terminal length* command is not passed because netmiko executes this command by default.
+In this example ``terminal length`` command is not passed because netmiko
+executes this command by default.
 
 The result of script execution:
 
@@ -295,7 +303,7 @@ The result of script execution:
 Paginated command output
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Example of using netmiko with paginated output of *show* command (4_netmiko_more.py file):
+Example of using netmiko with paginated output of show command (4_netmiko_more.py file):
 
 .. code:: python
 

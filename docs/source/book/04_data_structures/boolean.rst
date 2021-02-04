@@ -3,7 +3,7 @@ Boolean values
 
 Boolean values in Python are two constants ``True`` and ``False``.
 
-In Python, not only True and False are considered true and false values.
+In Python, not only True and False are considered True and False values.
 
 * True value:
 
@@ -18,7 +18,7 @@ In Python, not only True and False are considered true and false values.
   * empty string
   * empty object
 
-Other true and false values tend to follow the condition logically.
+Other True and False values tend to follow the condition logically.
 
 To check boolean value of object you can use ``bool``:
 

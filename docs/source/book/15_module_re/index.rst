@@ -7,16 +7,16 @@
 15. Module re
 ============================
 
-Python uses **re** module to work with regular expressions.
+Python uses ``re`` module to work with regular expressions.
 
-Core functions of **re** module: 
+Core functions of ``re`` module: 
 
-* ``match()`` - searches a sequence at the beginning of the line
-* ``search()`` - searches for first match with template
-* ``findall()`` - searches for all matches with template. Returns the resulting strings as a list 
-* ``finditer()`` - searches for any matches with template. Returns an iterator
-* ``compile()`` - compiles regular expression. You can then apply all of listed functions to this object
-* ``fullmatch()`` - the entire line must conform to regular expression described
+* ``match`` - searches a sequence at the beginning of the line
+* ``search`` - searches for first match with template
+* ``findall`` - searches for all matches with template. Returns the resulting strings as a list 
+* ``finditer`` - searches for any matches with template. Returns an iterator
+* ``compile`` - compiles regex. You can then apply all of listed functions to this object
+* ``fullmatch`` - the entire line must conform to regex described
 
 In addition to functions that search matches, module has the following functions:
 

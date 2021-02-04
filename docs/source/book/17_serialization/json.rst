@@ -34,11 +34,11 @@ File sw_templates.json:
 
 There are two methods for reading in json module:
 
-* json.load() - method reads JSON file and returns Python objects
-* json.loads() - method reads string in JSON format and returns Python objects
+* ``json.load`` - method reads JSON file and returns Python objects
+* ``json.loads`` - method reads string in JSON format and returns Python objects
 
-json.load()
-^^^^^^^^^^^
+``json.load``
+^^^^^^^^^^^^^
 
 Reading JSON file to Python object (json_read_load.py file):
 
@@ -73,8 +73,8 @@ The output will be as follows:
     switchport trunk native vlan 999
     switchport trunk allowed vlan
 
-json.loads()
-^^^^^^^^^^^^
+``json.loads``
+^^^^^^^^^^^^^^
 
 Reading JSON string to Python object (json_read_loads.py file):
 
@@ -102,8 +102,8 @@ Writing a file in JSON format is also fairly easy.
 
 There are also two methods for writing information in JSON format in json module:
 
-* json.dump() - method writes Python object to file in JSON format
-* json.dumps() - method returns string in JSON format
+* ``json.dump`` - method writes Python object to file in JSON format
+* ``json.dumps`` - method returns string in JSON format
 
 json.dumps()
 ^^^^^^^^^^^^
@@ -134,10 +134,11 @@ Convert object to string in JSON format (json_write_dumps.py):
         print(f.read())
 
 
-Method json.dumps() is suitable for situations where you want to return a string in JSON format. For example, to pass it to the API.
+Method ``json.dumps`` is suitable for situations where you want to return
+a string in JSON format. For example, to pass it to the API.
 
-json.dump()
-^^^^^^^^^^^
+``json.dump``
+^^^^^^^^^^^^^
 
 Write a Python object to a JSON file (json_write_dump.py file):
 
@@ -166,18 +167,23 @@ Write a Python object to a JSON file (json_write_dump.py file):
 
 
 
-When you want to write information in JSON format into a file, it is better to use dump() method.
+When you want to write information in JSON format into a file, it is better
+to use ``dump`` method.
 
 Additional parameters of write methods
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Methods dump() and dumps() can pass additional parameters to manage the output format.
+Methods ``dump`` and ``dumps`` can pass additional parameters to manage
+the output format.
 
-By default, these methods write information in a compact view. As a rule, when data is used by other programs, visual presentation of data is not important. If data in file needs to be read by person, this format is not very convenient to perceive.
+By default, these methods write information in a compact view. As a rule, when
+data is used by other programs, visual presentation of data is not important.
+If data in file needs to be read by person, this format is not very convenient
+to perceive.
+Fortunately, ``json`` module allows you to manage such things.
 
-Fortunately, json module allows you to manage such things.
-
-By passing additional parameters to dump() method (or dumps() method) you can get a more readable output (json_write_indent.py file):
+By passing additional parameters to ``dump`` method (or ``dumps`` method)
+you can get a more readable output (json_write_indent.py file):
 
 .. code:: python
 
@@ -225,7 +231,8 @@ Now the content of sw_templates.json file is:
 Changing data type
 ^^^^^^^^^^^^^^^^^^^^^
 
-Another important aspect of data conversion to JSON format is that data will not always be the same type as source data in Python.
+Another important aspect of data conversion to JSON format is that data will
+not always be the same type as source data in Python.
 
 For example, when you write a tuple to JSON it becomes a list:
 
@@ -260,7 +267,8 @@ For example, when you write a tuple to JSON it becomes a list:
     In [8]: print(templates)
     ['switchport trunk encapsulation dot1q', 'switchport mode trunk', 'switchport trunk native vlan 999', 'switchport trunk allowed vlan']
 
-This is because JSON uses different data types and does not have matches for all Python data types.
+This is because JSON uses different data types and does not have matches for
+all Python data types.
 
 Python data conversion table to JSON:
 
@@ -333,7 +341,9 @@ By using additional parameter you can ignore such keys:
     In [27]: cat sw_templates.json
     {"access": ["switchport mode access", "switchport access vlan", "switchport nonegotiate", "spanning-tree portfast", "spanning-tree bpduguard enable"]}
 
-Beside that, dictionary keys can only be strings in JSON. But if numbers are used in Python dictionary there will be no error. But conversion from numbers to strings will take place:
+Beside that, dictionary keys can only be strings in JSON. But if numbers are
+used in Python dictionary there will be no error. But conversion from numbers
+to strings will take place:
 
 .. code:: python
 

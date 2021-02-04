@@ -1,9 +1,11 @@
-Methods __str__, __repr__
+Methods ``__str__``, ``__repr__``
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Special methods __str__ and __repr__ are responsible for string representation of the object. They are used in different places.
+Special methods ``__str__`` and ``__repr__`` are responsible for string
+representation of the object. They are used in different places.
 
-Consider example of IPAddress class that is responsible for representing IPv4 address:
+Consider example of IPAddress class that is responsible for representing
+IPv4 address:
 
 .. code:: python
 
@@ -12,7 +14,8 @@ Consider example of IPAddress class that is responsible for representing IPv4 ad
        ...:         self.ip = ip
        ...:
 
-After creating class instances, they have a default string view that looks like this (the same output is displayed when print() is used):
+After creating class instances, they have a default string view that looks
+like this (the same output is displayed when ``print`` is used):
 
 .. code:: python
 
@@ -26,7 +29,10 @@ After creating class instances, they have a default string view that looks like 
     In [5]: str(ip2)
     Out[5]: '<__main__.IPAddress object at 0xb1bd376c>'
 
-Unfortunately, this presentation is not very informative. It would be better to display information about which address this instance represents. Special method __str__ is responsible for displaying information when using str() function. As an argument this method expects only instance and must return string.
+Unfortunately, this presentation is not very informative. It would be better
+to show information about which address this instance represents. Special
+method ``__str__`` is responsible for displaying information when using ``str``
+function. As an argument this method expects only instance and must return string.
 
 .. code:: python
 
@@ -48,7 +54,8 @@ Unfortunately, this presentation is not very informative. It would be better to 
     In [10]: str(ip2)
     Out[10]: 'IPAddress: 10.2.2.2'
 
-A second string view which is used in Python objects is displayed when using repr() function and when adding objects to containers such as lists:
+A second string view which is used in Python objects is displayed when using
+``repr`` function and when adding objects to containers such as lists:
 
 
 .. code:: python
@@ -61,9 +68,9 @@ A second string view which is used in Python objects is displayed when using rep
     In [13]: repr(ip1)
     Out[13]: '<__main__.IPAddress object at 0xb4e40c8c>'
 
-Method __repr__ is responsible for this display and it should also return a string, but it would return a string by copying which you can
-get an instance of a class:
-
+Method ``__repr__`` is responsible for this output and it should also return a
+string, but it would return a string by copying which you can get an instance
+of a class:
 
 .. code:: python
 

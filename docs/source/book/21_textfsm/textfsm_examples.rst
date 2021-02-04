@@ -3,7 +3,9 @@ Examples of TextFSM usage
 
 This section discusses examples of templates and TextFSM usage.
 
-Section uses parse_output.py script to process command output by template. It is not tied to a specific template and output: template and command output will be passed as arguments:
+Section uses parse_output.py script to process command output by template.
+It is not tied to a specific template and output: template and command
+output will be passed as arguments:
 
 .. code:: python
 
@@ -30,16 +32,19 @@ Example of script run:
 
 .. note::
 
-    Module **tabulate** is used to display data in tabular form (it must be installed if you want to use this script). A similar output could be received with string formatting but with tabulate it is easier to do.
+    Module ``tabulate`` is used to output data in tabular form (it must be
+    installed if you want to use this script). A similar output could be
+    received with string formatting but with tabulate it is easier to do.
 
-Data processing by template is always done in the same way. Therefore, script will be the same only template and data will be different.
+Data processing by template is always done in the same way. Therefore,
+script will be the same only template and data will be different.
 
-Starting with a simple example we’ll figure out how to use TextFSM.
+Starting with a simple example we'll figure out how to use TextFSM.
 
 show clock
 ~~~~~~~~~~
 
-The first example is a review of *sh clock* command output (output/sh_clock.txt file):
+The first example is a review of "sh clock" command output (output/sh_clock.txt file):
 
 ::
 
@@ -50,7 +55,7 @@ First of all, you have to define variables in template:
 * at the beginning of each line there must be a keyword Value
 * each variable defines column in table
 * next word - variable name
-* after name, in parentheses - a regular expression that describes value of a variable
+* after name, in parentheses - a regex that describes data
 
 Definition of variables is as follows:
 
@@ -71,7 +76,8 @@ Tips on special symbols:
 * ``\w`` - any letter or number
 * ``\d`` - any number
 
-Once variables are defined, an empty line and **Start** state must follow, and then the rule follows starting with space and ``^`` symbol (templates/sh_clock.template file):
+Once variables are defined, an empty line and ``Start`` state must follow, and
+then the rule follows starting with space and ``^`` symbol (templates/sh_clock.template file):
 
 ::
 
@@ -85,15 +91,19 @@ Once variables are defined, an empty line and **Start** state must follow, and t
     Start
       ^${Time}.* ${Timezone} ${WeekDay} ${Month} ${MonthDay} ${Year} -> Record
 
-Because in this case only one line in the output, it is not necessary to write Record action in template. But it is better to use it in situations where you have to write values and get used to this syntax and not make mistakes when you need to process multiple lines.
+Because in this case only one line in the output, it is not necessary to write
+``Record`` action in template. But it is better to use it in situations where
+you have to write values and get used to this syntax and not make mistakes
+when you need to process multiple lines.
 
-When TextFSM handles output strings it substitutes variable by its values. In the end, rule will look like:
+When TextFSM handles output strings it substitutes variable by its values.
+In the end, rule will look like:
 
 ::
 
     ^(..:..:..).* (\S+) (\w+) (\w+) (\d+) (\d+)
 
-When this regular expression applies to *show clock* output, each regular expression group will have a corresponding value:
+When this regex applies to "show clock" output, each regex group will have a corresponding value:
 
 * 1 group: 15:10:44 
 * 2 group: UTC 
@@ -102,7 +112,10 @@ When this regular expression applies to *show clock* output, each regular expres
 * 5 group: 13 
 * 6 group: 2016
 
-In rule, in addition to explicit Record action which specifies that record should be placed in final table, the Next rule is also used by default. It specifies that you want to go to the next line of text. Since there is only one line in *sh clock* command output, the processing is completed.
+In addition to explicit ``Record`` action which specifies that record should
+be placed in final table, the ``Next`` rule is also used by default. It
+specifies that you want to go to the next line of text. Since there is only
+one line in "sh clock" command output, the processing is completed.
 
 The result of script is:
 
@@ -113,12 +126,13 @@ The result of script is:
     --------  ----------  ---------  -------  ----------  ------
     15:10:44  UTC         Sun        Nov              13    2016
 
-    show ip interface brief
+
+show ip interface brief
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 In case when you need to process data displayed in columns, TextFSM template is the most convenient.
 
-Template for *show ip interface brief* output (templates/sh_ip_int_br.template file):
+Template for "show ip interface brief" output (templates/sh_ip_int_br.template file):
 
 ::
 
@@ -130,8 +144,7 @@ Template for *show ip interface brief* output (templates/sh_ip_int_br.template f
     Start
       ^${INTF}\s+${ADDR}\s+\w+\s+\w+\s+${STATUS}\s+${PROTO} -> Record
 
-In this case, the rule can be described in one line.
-
+In this case, the rule can be written in one line.
 Output command (output/sh_ip_int_br.txt file):
 
 ::
@@ -162,12 +175,10 @@ The result will be:
 show cdp neighbors detail
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now try to process output of command *show cdp neighbors detail*.
-
+Now try to process output of command "show cdp neighbors detail".
 Peculiarity of this command is that the data are not in the same line but in different lines.
 
-File output/sh_cdp_n_det.txt contains output of *show cdp
-neighbors detail*:
+File output/sh_cdp_n_det.txt contains output of "show cdp neighbors detail":
 
 ::
 
@@ -270,14 +281,16 @@ The result of script execution:
     ------------  -----------  ----------  ----------  ---------------------  ------------------  -------------
     SW1           R2           10.2.2.2    Cisco 2911  GigabitEthernet1/0/21  GigabitEthernet0/0  15.2(2)T1
 
-Although rules with variables are described in different lines and accordingly work with different lines, TextFSM collects them into one line of the table. That is, variables that are defined at the beginning of template determine the string of resulting table.
+Although rules with variables are described in different lines and accordingly work with
+different lines, TextFSM collects them into one line of the table. That is, variables
+that are defined at the beginning of template determine the string of resulting table.
 
 Note that sh_cdp_n_det.txt file has three neighbors, but table has only one neighbor, the last one.
 
 Record
 ^^^^^^
 
-This is because **Record** action is not specified in template. And only the last line left in final table.
+This is because ``Record`` action is not specified in template. And only the last line left in final table.
 
 Corrected template:
 
@@ -315,7 +328,8 @@ Output from all three devices. But LOCAL_HOST variable is not displayed in every
 Filldown
 ^^^^^^^^
 
-This is because the prompt from which variable value is taken appears only once. And in order to make it appear in the next lines, use **Filldown** action for LOCAL_HOST variable:
+This is because the prompt from which variable value is taken appears only once.
+And in order to make it appear in the next lines, use ``Filldown`` action for LOCAL_HOST variable:
 
 ::
 
@@ -347,12 +361,15 @@ Now we get this output:
     SW1           R2           10.2.2.2    Cisco 2911            GigabitEthernet1/0/21  GigabitEthernet0/0  15.2(2)T1
     SW1
 
-LOCAL_HOST now appears in all three lines. But there was another strange effect - the last line in which only LOCAL_HOST column is filled.
+LOCAL_HOST now appears in all three lines. But there was another strange
+effect - the last line in which only LOCAL_HOST column is filled.
 
 Required
 ^^^^^^^^
 
-The thing is, all variables we’ve determined are optional. Also, one variable with Filldown parameter. And to get rid of the last line, you have to make at least one variable mandatory by using **Required** option:
+The thing is, all variables we've determined are optional. Also, one variable
+with ``Filldown`` parameter. And to get rid of the last line, you have to make
+at least one variable mandatory by using ``Required`` option:
 
 ::
 
@@ -387,11 +404,14 @@ Now we get the correct output:
 show ip route ospf
 ~~~~~~~~~~~~~~~~~~
 
-Consider the case where we need to process output of *show ip route ospf* command and in routing table there are several routes to the same network.
+Consider the case where we need to process output of "show ip route ospf"
+command and in routing table there are several routes to the same network.
 
-For routes to the same network, instead of multiple lines where network is repeated, one record will be created in which all available next-hop addresses are in list.
+For routes to the same network, instead of multiple lines where network is
+repeated, one record will be created in which all available next-hop
+addresses are in list.
 
-Example of *show ip route ospf* output (output/sh_ip_route_ospf.txt file):
+Example of "show ip route ospf" output (output/sh_ip_route_ospf.txt file):
 
 ::
 
@@ -419,7 +439,8 @@ Example of *show ip route ospf* output (output/sh_ip_route_ospf.txt file):
     O        10.6.6.0/24 [110/20] via 10.0.13.3, 1w2d, Ethernet0/2
 
 
-For this example we simplify the task and assume that routes can only be OSPF and only with “O” designation (i.e., only intra-zone routes).
+For this example we simplify the task and assume that routes can only be OSPF
+and only with "O" designation (i.e., only intra-zone routes).
 
 The first version of template:
 
@@ -449,7 +470,8 @@ The result is:
     10.6.6.0       24         110        20  10.0.13.3
 
 
-All right, but we’ve lost path options for routes 10.4.4.4/32 and 10.5.5.5/32. This is logical, because there is no rule that would be appropriate for such a line.
+All right, but we've lost path options for routes 10.4.4.4/32 and 10.5.5.5/32.
+This is logical, because there is no rule that would be appropriate for such a line.
 
 Add a rule to template for lines with partial entries:
 
@@ -482,13 +504,15 @@ Now the output is:
     10.6.6.0   24             110        20  10.0.13.3
 
 
-Partial entries are missing networks and masks, but in previous examples we have already considered Filldown and, if desired, it can be applied here. But for this example we will use another option - List.
+Partial entries are missing networks and masks, but in previous examples we have
+already covered Filldown and, if desired, it can be applied here. But for this
+example we will use another option - List.
 
 
 List
 ^^^^
 
-Use List option for *nexthop* variable:
+Use ``List`` option for nexthop variable:
 
 ::
 
@@ -521,7 +545,10 @@ Now the output is:
 
 
 
-Now *nexthop* column displays a list but so far with one element. When using List the value is a list, and each match with a regular expression will add an item to the list. By default, each next match overwrites the previous one. If, for example, leave Record action for full lines only:
+Now nexthop column displays a list but so far with one element. When using
+``List`` the value is a list, and each match with a regex will add an item
+to the list. By default, each next match overwrites the previous one.
+If, for example, leave Record action for full lines only:
 
 ::
 
@@ -548,7 +575,10 @@ The result will be:
     10.5.5.5       32         110        21  ['10.0.14.4', '10.0.13.3']
     10.6.6.0       24         110        20  ['10.0.12.2', '10.0.14.4', '10.0.13.3']
 
-Now the result is not quite correct, address hops are assigned to wrong routes. This happens because writing is done on full route entry, then hops of incomplete route entries are collected in the list (other variables are overwritten) and when the next full route entry appears, the list is written to it.
+Now the result is not quite correct, address hops are assigned to wrong routes.
+This happens because writing is done on full route entry, then hops of
+incomplete route entries are collected in the list (other variables are
+overwritten) and when the next full route entry appears, the list is written to it.
 
 ::
 
@@ -560,15 +590,22 @@ Now the result is not quite correct, address hops are assigned to wrong routes. 
     O        10.6.6.0/24 [110/20] via 10.0.13.3, 1w2d, Ethernet0/2
 
 
-In fact, incomplete route entry should really be written when the next full route entry appears, but at the same time they should be written to appropriate route. The following should be done: once full route entry is met, the previous values should be written down and then continue to process the same full route entry to get its information. In TextFSM, you can do this with Continue.Record:
+In fact, incomplete route entry should really be written when the next full
+route entry appears, but at the same time they should be written to appropriate
+route. The following should be done: once full route entry is met, the previous
+values should be written down and then continue to process the same full route
+entry to get its information. In TextFSM, you can do this with ``Continue.Record``:
 
 ::
 
       ^O -> Continue.Record
 
-Here, **Record** action tells you to write down the current value of variables. Since there are no variables in this rule, what was in the previous values is written.
+Here, ``Record`` action tells you to write down the current value of variables.
+Since there are no variables in this rule, what was in the previous values is written.
 
-**Continue** action says to continue working with the current line as if there was no match. So, the next line of template will work. The resulting template looks like (templates/sh_ip_route_ospf.template):
+``Continue`` action says to continue working with the current line as if there
+was no match. So, the next line of template will work. The resulting template
+(templates/sh_ip_route_ospf.template):
 
 ::
 
@@ -601,9 +638,11 @@ The result is:
 show etherchannel summary
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TextFSM is convenient to use to parse output that is displayed by columns or to process output that is in different lines. Templates are less convenient when it is necessary to get several identical elements from one line.
+TextFSM is convenient to use to parse output that is displayed by columns or
+to process output that is in different lines. Templates are less convenient
+when it is necessary to get several identical elements from one line.
 
-Example of *show etherchannel summary* output (output/sh_etherchannel_summary.txt file):
+Example of "show etherchannel summary" output (output/sh_etherchannel_summary.txt file):
 
 ::
 
@@ -628,12 +667,14 @@ Example of *show etherchannel summary* output (output/sh_etherchannel_summary.tx
     1      Po1(SU)         LACP      Fa0/1(P)   Fa0/2(P)   Fa0/3(P)
     3      Po3(SU)          -        Fa0/11(P)   Fa0/12(P)   Fa0/13(P)   Fa0/14(P)
 
-In this case, it is necessary to obtain:
+In this case, it is necessary to get:
 
 * port-channel name and number. For example, Po1 
-* list of all the ports in it. For example, ['Fa0/1', 'Fa0/2', 'Fa0/3']
+* list of all the ports in it. For example, ``['Fa0/1', 'Fa0/2', 'Fa0/3']``
 
-The difficulty is that ports are in the same line and TextFSM cannot specify the same variable multiple times in line. But it is possible to search multiple times for a match in a line.
+The difficulty is that ports are in the same line and TextFSM cannot specify
+the same variable multiple times in line. But it is possible to search multiple
+times for a match in a line.
 
 The first version of template:
 
@@ -659,7 +700,9 @@ The result is:
     Po1        ['Fa0/1']
     Po3        ['Fa0/11']
 
-So far, only the first port is in output but we need all ports to hit. In this case after match is found, you should continue processing string with ports. That is, use Continue action and describe the following expression.
+So far, only the first port is in output but we need all ports to hit. In this
+case after match is found, you should continue processing string with ports.
+That is, use Continue action and describe the following expression.
 
 The only line in template describes the first port. Add a line that describes the next port.
 
@@ -685,9 +728,13 @@ The result is:
     Po1        ['Fa0/1', 'Fa0/2']
     Po3        ['Fa0/11', 'Fa0/12']
 
-Similarly, lines that describe the third and fourth ports should be written to template. But, because the output can have a different number of ports, you have to move Record rule to separate line so that it is not tied to a specific number of ports in string.
+Similarly, lines that describe the third and fourth ports should be written to
+template. But, because the output can have a different number of ports, you
+have to move Record rule to separate line so that it is not tied to a specific
+number of ports in string.
 
-For example, if Record is located after the line that describes four ports, for a situation with fewer ports in the line the entry will not be executed.
+For example, if Record is located after the line that describes four ports,
+for a situation with fewer ports in the line the entry will not be executed.
 
 The resulting template (templates/sh_ether_channelsummary.txt file):
 
@@ -713,9 +760,9 @@ The result of processing:
 
 Now all ports are in output.
 
-    The template assumes a maximum of four ports in line. If there are more ports, add the corresponding lines to template.
+The template assumes a maximum of four ports in line. If there are more ports, add the corresponding lines to template.
 
-Another variant of *sh etherchannel summary* output (output/sh_etherchannel_summary2.txt file):
+Another variant of "sh etherchannel summary" output (output/sh_etherchannel_summary2.txt file):
 
 ::
 

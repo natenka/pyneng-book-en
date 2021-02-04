@@ -35,7 +35,8 @@ If it is necessary to work with this output further you should immediately conve
     3 packets transmitted, 3 received, 0% packet loss, time 2002ms
     rtt min/avg/max/mdev = 54.470/56.346/59.440/2.220 ms
 
-Module subprocess supports another conversion option - *encoding* parameter. If you specify it when you call run() function, the result will be as a string:
+Module subprocess supports another conversion option - ``encoding`` parameter.
+If you specify it when you call run() function, the result will be as a string:
 
 .. code:: python
 
@@ -59,26 +60,28 @@ Module subprocess supports another conversion option - *encoding* parameter. If 
 telnetlib
 ~~~~~~~~~
 
-Depending on module, conversion between strings and bytes can be performed automatically or may be required explicitly.
+Depending on module, conversion between strings and bytes can be performed
+automatically or may be required explicitly.
 
-For example, telnetlib module must transfer bytes to read\_until() and write() methods:
+For example, ``telnetlib`` module must pass bytes to ``read_until`` and
+``write`` methods:
 
 .. code:: python
 
     import telnetlib
     import time
-     
+
     t = telnetlib.Telnet('192.168.100.1')
-     
+
     t.read_until(b'Username:')
     t.write(b'cisco\n')
-     
+
     t.read_until(b'Password:')
     t.write(b'cisco\n')
     t.write(b'sh ip int br\n')
-     
+
     time.sleep(5)
-     
+
     output = t.read_very_eager().decode('utf-8')
     print(output)
 
@@ -87,7 +90,7 @@ Method returns bytes, so penultimate line uses decode.
 pexpect
 ~~~~~~~
 
-Module pexpect waits for a string as an argument and returns bytes:
+Module ``pexpect`` waits for a string as an argument and returns bytes:
 
 .. code:: python
 
@@ -101,7 +104,7 @@ Module pexpect waits for a string as an argument and returns bytes:
     In [12]: output.decode('utf-8')
     Out[12]: 'total 8\r\n4 drwxr-xr-x 2 vagrant vagrant 4096 Aug 28 12:16 concurrent_futures\r\n4 drwxr-xr-x 2 vagrant vagrant 4096 Aug  3 07:59 iterator_generator\r\n'
 
-And it also supports *encoding* parameter:
+And it also supports ``encoding`` parameter:
 
 .. code:: python
 
@@ -111,9 +114,9 @@ And it also supports *encoding* parameter:
     Out[14]: 'total 8\r\n4 drwxr-xr-x 2 vagrant vagrant 4096 Aug 28 12:16 concurrent_futures\r\n4 drwxr-xr-x 2 vagrant vagrant 4096 Aug  3 07:59 iterator_generator\r\n'
 
 Working with files
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 
-So far, the following construction has been used to handle files:
+Until now, when working with files, the following expression was used:
 
 .. code:: python
 
@@ -121,7 +124,8 @@ So far, the following construction has been used to handle files:
         for line in f:
             print(line)
 
-But actually, when you read a file you convert bytes to a string. And default encoding was used:
+But actually, when you read a file you convert bytes to a string. And default
+encoding was used:
 
 .. code:: python
 
@@ -139,7 +143,8 @@ Default encoding in file:
     In [3]: f
     Out[3]: <_io.TextIOWrapper name='r1.txt' mode='r' encoding='UTF-8'>
 
-When working with files it is better to specify encoding explicitly because it may differ in different operating systems:
+When working with files it is better to specify encoding explicitly because
+it may differ in different operating systems:
 
 .. code:: python
 
@@ -159,6 +164,9 @@ When working with files it is better to specify encoding explicitly because it m
     !
 
 Conclusion
-~~~~~~
+~~~~~~~~~~
 
-These examples are shown here to show that different modules can treat the issue of conversion between strings and bytes differently. And different functions and methods of these modules can expect arguments and return values of different types. However, all of these items are in documentation.
+These examples are shown here to show that different modules can treat the issue
+of conversion between strings and bytes differently. And different functions and
+methods of these modules can expect arguments and return values of different
+types. However, all of these items are in documentation.

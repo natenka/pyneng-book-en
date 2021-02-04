@@ -1,9 +1,11 @@
 Cursor as iterator
 -------------------
 
-If you want to process the resulting strings, use cursor as an iterator. It is not necessary to use fetch methods.
+If you want to process the resulting strings, use cursor as an iterator. It is
+not necessary to use fetch methods.
 
-If you use execute() methods, the cursor is returned. Since cursor can be used as an iterator you can use it, for example, in **for** loop:
+If you use ``execute`` methods, the cursor is returned. Since cursor can
+be used as an iterator you can use it, for example, in ``for`` loop:
 
 .. code:: python
 

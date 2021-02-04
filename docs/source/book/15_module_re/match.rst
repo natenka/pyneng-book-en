@@ -1,13 +1,15 @@
 Match function
 -------------
 
-Function ``match()``: 
+Function ``match``: 
 
 * is used to search at the beginning of string that corresponds to template
 * returns Match object if substring is found
 * returns ``None`` if no substring was found
 
-Match() function differs from search() in that match() always looks for a match at the beginning of the line. For example, if you repeat the example that was used for search() function, but with match():
+``Match`` function differs from ``search`` in that ``match`` always looks for a
+match at the beginning of the line. For example, if you repeat the example that
+was used for ``search`` function, but with ``match``:
 
 .. code:: python
 
@@ -50,7 +52,8 @@ Expression ``\S+:`` was added before *Host* word. Now match will be found:
     In [12]: match.groups()
     Out[12]: ('10', 'Gi0/16', 'Gi0/24')
 
-Example is similar to one used in search() function with minor changes (parse_log_match match.py file):
+Example is similar to one used in ``search`` function with minor changes
+(parse_log_match match.py file):
 
 .. code:: python
 

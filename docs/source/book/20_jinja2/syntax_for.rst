@@ -1,9 +1,9 @@
 Loop for
 --------
 
-Loop **for** allows you to walk through sequence of elements.
+Loop ``for`` allows you to walk through sequence of elements.
 
-Loop **for** must be inside ``{% %}``.
+Loop ``for`` must be written inside ``{% %}``.
 Furthermore, the end of the loop must be explicitly indicated:
 
 ::
@@ -51,7 +51,8 @@ File data_files/for.yml with variables:
       - network: 10.1.1.0 0.0.0.255
         area: 0
 
-In **for**, it is possible to go through both the list elements (for example, *ospf* list) and the dictionary (*vlans* dictionary). And similarly, through any sequence.
+In ``for``, it is possible to go through both the list elements (for example,
+ospf list) and the dictionary (vlans dictionary). And similarly, through any sequence.
 
 The result will be:
 

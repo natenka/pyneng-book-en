@@ -16,7 +16,8 @@ Method ``join`` collects a list of strings into one string with separator specif
     Out[17]: '10,20,30'
 
 .. note::
-    Method ``join`` actually relates to strings but since value must be given as a list, it is considered in this section.
+    Method ``join`` actually string method but since the value must be
+    passed to it as a list, it is covered here.
 
 ``append``
 ^^^^^^^^^^^^

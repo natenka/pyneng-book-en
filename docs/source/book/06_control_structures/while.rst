@@ -43,11 +43,11 @@ In addition, in the body of the loop, with each pass, the value of ``a`` is decr
 Since the value of ``a`` is decreasing, the loop will not be infinite, and at some point 
 the expression ``a > 0`` will become false.
 
-The following example is based on example about password from section which describes ``if`` construction use :ref:`if_example`.
-In that example, you had to re-run the script if the password did not meet the requirements.
-Using a while loop, you can make the script ask for a password again if it does not meet the requirements.
-
-check_password_with_while.py file:
+The following example is based on example about password from section which
+describes ``if`` statement use :ref:`if_example`.
+In that example, you had to re-run the script if the password did not meet the
+requirements. Using a while loop, you can make the script ask for a password again
+if it does not meet the requirements (check_password_with_while.py):
 
 .. code:: python
 

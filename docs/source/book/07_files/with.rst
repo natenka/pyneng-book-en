@@ -3,7 +3,7 @@ with statement
 
 The ``with`` statement is called the context manager.
 
-Python has a more convenient way of working with files than the ones used so far - construction ``with``:
+Python has a more convenient way of working with files than the ones used so far - statement ``with``:
 
 .. code:: python
 
@@ -31,7 +31,7 @@ Python has a more convenient way of working with files than the ones used so far
 
     !
 
-In addition, construction ``with`` guarantees file closure automatically.
+In addition, statement ``with`` guarantees file closure automatically.
 
 Pay attention to how lines of the file are read:
 
@@ -67,7 +67,8 @@ To get rid of this you can use ``rstrip`` method:
     In [3]: f.closed
     Out[3]: True
 
-And of course, ``with`` construction can be used not only as a line-by-line reader, all methods that have been considered before also work:
+And of course, ``with`` statement can be used not only as a line-by-line reader,
+all methods that have been covered before also work:
 
 .. code:: python
 

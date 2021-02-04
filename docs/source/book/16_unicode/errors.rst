@@ -1,9 +1,10 @@
 Converting errors
 ----------------------
 
-When converting between strings and bytes it is very important to know exactly which encoding is used as well as to know the possibilities of different encodings.
+When converting between strings and bytes it is very important to know exactly
+which encoding is used as well as to know the possibilities of different encodings.
 
-For example, ASCII cannot convert to Cyrillic bytes:
+For example, ASCII codec cannot encode Cyrillic:
 
 .. code:: python
 
@@ -17,7 +18,8 @@ For example, ASCII cannot convert to Cyrillic bytes:
 
     UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-5: ordinal not in range(128)
 
-Similarly, if the string "привет" is converted to bytes and you try to convert it into a string with ascii, we will also get an error:
+Similarly, if the string "привет" is converted to bytes and you try to convert
+it into a string with ascii, we will also get an error:
 
 .. code:: python
 
@@ -34,7 +36,7 @@ Similarly, if the string "привет" is converted to bytes and you try to con
 
     UnicodeDecodeError: 'ascii' codec can't decode byte 0xd0 in position 0: ordinal not in range(128)
 
-Another variant of error where different encodings are used to conversion:
+Another version of error where different encodings are used to conversion:
 
 .. code:: python
 
@@ -51,7 +53,8 @@ Another variant of error where different encodings are used to conversion:
 
     UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
 
-Having mistakes is good. They’re telling me what the problem is. It’s worse when it’s like this:
+Having mistakes is good. They're telling me what the problem is.
+It's worse when it's like this:
 
 .. code:: python
 
@@ -68,14 +71,16 @@ Having mistakes is good. They’re telling me what the problem is. It’s worse 
 Error processing
 ~~~~~~~~~~~~~~~~
 
-Encode and decode methods have error-processing modes that indicate how to respond to a conversion error.
+Encode and decode methods have error-processing modes that indicate how
+to respond to a conversion error.
 
-Parameter 'errors' in encode
-^^^^^^^^^^^^^^^^^^^^^^^^
+Parameter errors in encode
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default encode() uses ``strict`` mode - UnicodeError exception is generated when encoding errors occur. Examples of such behaviour are above.
+By default ``encode`` uses ``strict`` mode - UnicodeError exception is
+generated when encoding errors occur. Examples of such behaviour are above.
 
-Instead, you can use *replace* to substitute character with a question mark:
+Instead, you can use ``replace`` to substitute character with a question mark:
 
 .. code:: python
 
@@ -84,7 +89,7 @@ Instead, you can use *replace* to substitute character with a question mark:
     In [45]: de_hi_unicode.encode('ascii', 'replace')
     Out[45]: b'gr?ezi'
 
-Or *namereplace* to replace character with the name:
+Or ``namereplace`` to replace character with the name:
 
 .. code:: python
 
@@ -102,10 +107,11 @@ In addition, characters that cannot be encoded may be completely ignored:
     In [49]: de_hi_unicode.encode('ascii', 'ignore')
     Out[49]: b'grezi'
 
-Parameter 'errors' in decode
-^^^^^^^^^^^^^^^^^^^^^^^^
+Parameter errors in decode
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The decode() method also uses strict mode by default and generates a UnicodeDecodeError exception.
+The ``decode`` method also uses strict mode by default and generates
+a UnicodeDecodeError exception.
 
 If you change mode to ignore, as in encode, characters will simply be ignored:
 
@@ -121,7 +127,7 @@ If you change mode to ignore, as in encode, characters will simply be ignored:
     In [53]: de_hi_utf8.decode('ascii', 'ignore')
     Out[53]: 'grezi'
 
-Mode *replace* substitutes characters:
+Mode ``replace`` substitutes characters:
 
 .. code:: python
 

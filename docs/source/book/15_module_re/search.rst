@@ -1,17 +1,19 @@
 Search function
 --------------
 
-Function ``search()``: 
+Function ``search``: 
 
 * is used to find a substring that matches a template
 * returns Match object if a substring is found
 * returns ``None`` if no substring was found
 
-Function search() is suitable when you need to find only one match in a string, for example when a regular expression describes the entire string or part of a string.
+Function ``search`` is suitable when you need to find only one match in a
+string, for example when a regex describes the entire string or part of a string.
 
-Consider an example of using search() function to parse a log file.
-
-File log.txt contains log messages indicating that the same MAC is too often re-learned on one or another interface. One of the reasons for these messages is loop in network.
+Consider an example of using ``search`` function to parse a log file.
+File log.txt contains log messages indicating that the same MAC is too
+often re-learned on one or another interface. One of the reasons for these
+messages is loop in network.
 
 Contents of log.txt file:
 
@@ -22,9 +24,11 @@ Contents of log.txt file:
     %SW_MATM-4-MACFLAP_NOTIF: Host 01e2.4c18.0156 in vlan 10 is flapping between port Gi0/24 and port Gi0/19
     %SW_MATM-4-MACFLAP_NOTIF: Host 01e2.4c18.0156 in vlan 10 is flapping between port Gi0/24 and port Gi0/16
 
-MAC address can jump between several ports. In this case it is very important to know from which ports MAC comes.
+MAC address can jump between several ports. In this case it is very important
+to know from which ports MAC comes.
 
-Try to figure out which ports and which VLAN was the problem. Check regular expression with one line from log file:
+Try to figure out which ports and which VLAN was the problem. Check regex with
+one line from log file:
 
 .. code:: python
 
@@ -38,7 +42,7 @@ Try to figure out which ports and which VLAN was the problem. Check regular expr
        ...:                   r'(\S+) and port (\S+)', log)
        ...:
 
-Regular expression is divided into parts for ease of reading. It has three groups:
+Regex is divided into parts for ease of reading. It has three groups:
 
 * ``(\d+)`` - describes VLAN number
 * ``(\S+) and port (\S+)`` - describes port numbers
@@ -50,7 +54,10 @@ As a result, the following parts of line fell into the groups:
     In [4]: match.groups()
     Out[4]: ('10', 'Gi0/16', 'Gi0/24')
 
-In the resulting script, log.txt is processed line by line and port information is collected from each line. Since ports can be duplicated we add them immediately to the set in order to get a compilation of unique interfaces (parse_log_search.py file):
+In the resulting script, log.txt is processed line by line and port information
+is collected from each line. Since ports can be duplicated we add them
+immediately to the set in order to get a compilation of unique interfaces
+(parse_log_search.py file):
 
 .. code:: python
 
@@ -81,8 +88,8 @@ The result of script execution:
     $ python parse_log_search.py
     Loop between ports Gi0/19, Gi0/24, Gi0/16 в VLAN 10
 
-Processing of ‘show cdp neighbors detail’ output
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Processing of 'show cdp neighbors detail' output
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Try to get device parameters from 'sh cdp neighbors detail' output.
 
@@ -112,14 +119,15 @@ Example of output for one neighbor:
     Management address(es):
       IP address: 10.1.1.2
 
-The goal is to obtain such fields:
+The goal is to get such fields:
 
 * neighbor name (Device ID: SW2) 
 * IP address of neighbor (IP address: 10.1.1.2) 
 * neighbor platform (Platform: cisco WS-C2960-8TC-L) 
 * IOS version (Cisco IOS Software, C2960 Software (C2960-LANBASEK9-M), Version 12.2(55)SE9, RELEASE SOFTWARE (fc1))
 
-And for convenience you need to get data in the form of a dictionary. Example of the resulting dictionary for SW2 switch:
+And for convenience you need to get data in the form of a dictionary. Example
+of the resulting dictionary for SW2 switch:
 
 .. code:: python
 
@@ -161,7 +169,8 @@ The first solution (parse_sh_cdp_neighbors_detail_ver1.py file):
 
     pprint(parse_cdp('sh_cdp_neighbors_sw1.txt'))
 
-The desired strings are selected using startswith() string method. And in a string, a regular expression takes required part of the string. It all ends up in a dictionary.
+The desired strings are selected using startswith() string method. And in a string, a
+regex takes required part of the string. It all ends up in a dictionary.
 
 The result is:
 
@@ -214,12 +223,12 @@ The second version of solution (parse_sh_cdp_neighbors_detail_ver2.py file):
 
 Explanations for the second option:
 
-* in regular expression, all line variants are described via ``|`` sign (or) 
+* in regex, all lines written via ``|`` sign (or) 
 * without checking a line the match is searched 
-* if a match is found, lastgroup() method is checked
-* lastgroup() method returns name of the last named group in regular expression for which a match has been found
-* if a match was found for *device* group, the value that fells into the group is written to *device* variable 
-* otherwise the mapping of ‘group name’: ‘corresponding value’ is written to dictionary
+* if a match is found, ``lastgroup`` method is checked
+* ``lastgroup`` method returns name of the last named group in regex for which a match has been found
+* if a match was found for ``device`` group, the value that fells into the group is written to ``device`` variable 
+* otherwise the mapping of ``'group name': 'corresponding value'`` is written to dictionary
 
 Result will be the same:
 

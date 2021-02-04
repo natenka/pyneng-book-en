@@ -1,9 +1,10 @@
 Processing of exceptions
 --------------------
 
-Let’s  see an example of how to use execute() method when an error occurs.
+Let's see an example of how to use ``execute`` method when an error occurs.
 
-In *switch* table the *mac* field must be unique. If you try to write an overlapping MAC address, there is an error:
+In switch table the mac field must be unique. If you try to write an
+overlapping MAC address, there is an error:
 
 .. code:: python
 
@@ -30,4 +31,5 @@ Accordingly, you can catch the exception:
         ...:
     Error occurred:  UNIQUE constraint failed: switch.mac
 
-Note that you should intercept *sqlite3.IntegrityError* exception, not *IntegrityError*.
+Note that you should catch ``sqlite3.IntegrityError`` exception,
+not ``IntegrityError``.

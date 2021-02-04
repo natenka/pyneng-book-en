@@ -1,7 +1,8 @@
 tabulate
 ---------------
 
-``tabulate`` is a module that allows you to display table data beautifully. It is not part of standard Python library, so ``tabulate`` needs to be installed:
+``tabulate`` is a module that allows you to display table data beautifully.
+It is not part of standard Python library, so ``tabulate`` needs to be installed:
 
 ::
 
@@ -114,7 +115,7 @@ If data is in the form of a list of dictionaries, you should specify headers equ
 Table style
 ~~~~~~~~~~~~~
 
-``tabulate`` supports different table display styles.
+``tabulate`` supports different table styles.
 
 Table in Grid format:
 

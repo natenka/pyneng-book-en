@@ -1,11 +1,15 @@
 Compile function
 ---------------
 
-Python has the ability to pre-compile a regular expression and then use it. This is particularly useful when regular expression is used a lot in the script.
+Python has the ability to pre-compile a regular expression and then use it.
+This is particularly useful when regex is used a lot in the script.
 
-The use of a compiled expression can speed up processing and it is generally more convenient to use this option as the program divides the creation of a regular expression and its use. In addition, using re.compile function creates a RegexObject object that has several additional features that are not present in MatchObject object.
+The use of a compiled expression can speed up processing and it is generally
+more convenient to use this option as the program divides the creation of a
+regex and its use. In addition, using re.compile function creates a RegexObject
+object that has several additional features that are not present in MatchObject object.
 
-To compile a regular expression, use re.compile:
+To compile a regex, use re.compile:
 
 .. code:: python
 
@@ -38,9 +42,11 @@ RegexObject has such methods and attributes:
      'sub',
      'subn']
 
-Note that Regex object has search(), match(), finditer(), findall() methods available. These are the same functions that are available in module globally, but now they have to be applied to object.
+Note that Regex object has ``search``, ``match``, ``finditer``, ``findall``
+methods available. These are the same functions that are available in module
+globally, but now they have to be applied to object.
 
-An example of using search() method:
+An example of using ``search`` method:
 
 .. code:: python
 
@@ -48,8 +54,7 @@ An example of using search() method:
 
     In [68]: match = regex.search(line)
 
-Now search() should be called as method of *regex* object. And pass a string as an argument.
-
+Now ``search`` should be called as method of regex object.
 The result is a Match object:
 
 .. code:: python
@@ -60,7 +65,8 @@ The result is a Match object:
     In [70]: match.group()
     Out[70]: '100    a1b2.ac10.7000    DYNAMIC     Gi0/1'
 
-An example of compiling a regular expression and its use based on example of a log file (parse_log_compile.py file):
+An example of compiling a regex and its use based on example of a log
+file (parse_log_compile.py file):
 
 .. code:: python
 
@@ -81,7 +87,7 @@ An example of compiling a regular expression and its use based on example of a l
 
     print('Петля между портами {} в VLAN {}'.format(', '.join(ports), vlan))
 
-This is a modified example of finditer() usage. Description of regular expression changed:
+This is a modified example of ``finditer`` usage. Description of regex changed:
 
 .. code:: python
 
@@ -90,23 +96,24 @@ This is a modified example of finditer() usage. Description of regular expressio
                        r'is flapping between port '
                        r'(\S+) and port (\S+)')
 
-And now the call of finditer() is executed as a *regex* object method:
+And now the call of ``finditer`` is executed as a regex object method:
 
 .. code:: python
 
         for m in regex.finditer(f.read()):
 
 Options that are available only when using re.compile
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When using re.compile in search(), match(), findall(), finditer() and fullmatch() methods, additional parameters appear:
+When using re.compile in ``search``, ``match``, ``findall``, ``finditer``
+and ``fullmatch`` methods, additional parameters appear:
 
-* pos - allows you to specify an index in string from where to start looking for a match
-* endpos - specifies from which index the search should be started
+* ``pos`` - allows you to specify an index in string from where to start looking for a match
+* ``endpos`` - specifies from which index the search should be started
 
 Their use is similar to execution of a string slice.
 
-For example, this is the result without specifying *pos*, *endpos* parameters:
+For example, this is the result without specifying ``pos``, ``endpos`` parameters:
 
 .. code:: python
 
@@ -159,5 +166,5 @@ And a similar string slice:
     In [95]: match.group()
     Out[95]: '00    a1b2.ac10.7000    DYNAMIC     Gi'
 
-In match(), findall(), finditer() and fullmatch() methods *pos* and *endpos* parameters work similarly.
+In ``match``, ``findall``, ``finditer`` and ``fullmatch`` methods ``pos`` and ``endpos`` parameters work similarly.
 

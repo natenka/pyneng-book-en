@@ -1,21 +1,23 @@
 Conversion between bytes and strings
 ------------------------------------
 
-You can’t avoid working with bytes. For example, when working with a network or a filesystem, most often the result is returned in bytes.
-
-Accordingly, you need to know how to convert bytes to string and vice versa. That’s what the encoding is for.
+You can't avoid working with bytes. For example, when working with a network
+or a filesystem, most often the result is returned in bytes.
+Accordingly, you need to know how to convert bytes to string and vice versa.
+That's what the encoding is for.
 
 Encoding can be represented as an encryption key that specifies:
 
 * how to "encrypt" a string to bytes (str -> bytes). Encode method used (similar to encrypt)
 * how to "decrypt" bytes to string (bytes -> str). Decode method used (similar to decrypt)
 
-This analogy makes it clear that string-byte and byte-string transformations must use the same encoding.
+This analogy makes it clear that string-byte and byte-string transformations
+must use the same encoding.
 
-encode, decode
-~~~~~~~~~~~~~~
+``encode``, ``decode``
+~~~~~~~~~~~~~~~~~~~~~~
 
-**encode** method to convert string to bytes:
+``encode`` method is used to convert string to bytes:
 
 .. code:: python
 
@@ -26,7 +28,7 @@ encode, decode
 
     In [3]: hi_bytes = hi.encode('utf-8')
 
-**decode** method to get a string from bytes:
+``decode`` method to get a string from bytes:
 
 .. code:: python
 
@@ -36,10 +38,11 @@ encode, decode
     In [5]: hi_bytes.decode('utf-8')
     Out[5]: 'привет'
 
-str.encode, bytes.decode
-~~~~~~~~~~~~~~~~~~~~~~~~
+``str.encode``, ``bytes.decode``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Method encode() is also present in *str* class (as are other methods of working with strings):
+Method ``encode`` is also present in str class (as are other methods of
+working with strings):
 
 .. code:: python
 
@@ -49,7 +52,7 @@ Method encode() is also present in *str* class (as are other methods of working 
     In [7]: str.encode(hi, encoding='utf-8')
     Out[7]: b'\xd0\xbf\xd1\x80\xd0\xb8\xd0\xb2\xd0\xb5\xd1\x82'
 
-And decode() method is available in *bytes* class (like other methods):
+And ``decode`` method is available in bytes class (like other methods):
 
 .. code:: python
 
@@ -59,7 +62,8 @@ And decode() method is available in *bytes* class (like other methods):
     In [9]: bytes.decode(hi_bytes, encoding='utf-8')
     Out[9]: 'привет'
 
-In these methods, encoding can be used as a key argument (examples above) or as a positional argument:
+In these methods, encoding can be used as a key argument (examples above)
+or as a positional argument:
 
 .. code:: python
 
@@ -72,7 +76,7 @@ In these methods, encoding can be used as a key argument (examples above) or as 
 How to work with Unicode and bytes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There is a very simple rule, one that can avoid at least part of the problem. It’s called a «Unicode sandwich»:
+There is a rule called a "Unicode sandwich":
 
 * bytes that the program reads must be converted to Unicode (string) as early as possible
 * inside the program work with Unicode 

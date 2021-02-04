@@ -1,7 +1,9 @@
 Inheritance basics
 ~~~~~~~~~~~~~~~~~~~
 
-Inheritance allows creation of new classes based on existing ones. There are child and parents classes: child class inherits parent class. In inheritance, child class inherits all methods and attributes of parent class.
+Inheritance allows creation of new classes based on existing ones. There are
+child and parents classes: child class inherits parent class. In inheritance,
+child class inherits all methods and attributes of parent class.
 
 Example of ConnectSSH class that performs SSH connection using paramiko:
 
@@ -56,7 +58,9 @@ Example of ConnectSSH class that performs SSH connection using paramiko:
             result = self._ssh.recv(self._MAX_READ).decode('ascii')
             return result
 
-This class will be used as the basis for classes that are responsible for connecting to devices of different vendors. For example, CiscoSSH class will be responsible for connecting to Cisco devices and will inherit ConnectSSH class.
+This class will be used as the basis for classes that are responsible for
+connecting to devices of different vendors. For example, CiscoSSH class
+will be responsible for connecting to Cisco devices and will inherit ConnectSSH class.
 
 Inheritance syntax:
 
@@ -100,12 +104,18 @@ After inheriting all methods of parent class, child class can:
 * supplement method
 * add your methods
 
-In CiscoSSH class you have to create __init__() method and add parameters to it:
+In CiscoSSH class you have to create ``__init__`` method and
+add parameters to it:
 
-* enable_password - enable password
-* disable_paging - is responsible for paging turning on/off
+* ``enable_password`` - enable password
+* ``disable_paging`` - is responsible for paging turning on/off
 
-Method __init__() can be created entirely from scratch but basic SSH connection logic is the same in ConnectSSH and CiscoSSH, so it is better to add necessary parameters and call __init__() method of ConnectSSH class for connection. There are several options for calling parent method, for example, all of these options will call send_show_command() method of parent class from child class CiscoSSH:
+Method ``__init__`` can be created entirely from scratch but basic SSH
+connection logic is the same in ConnectSSH and CiscoSSH, so it is better
+to add necessary parameters and call ``__init__`` method of ConnectSSH
+class for connection. There are several options for calling parent method,
+for example, all of these options will call ``send_show_command`` method
+of parent class from child class CiscoSSH:
 
 .. code:: python
 
@@ -113,9 +123,15 @@ Method __init__() can be created entirely from scratch but basic SSH connection 
     command_result = super(CiscoSSH, self).send_show_command(command)
     command_result = super().send_show_command(command)
 
-The first variant of ``ConnectSSH.send_show_command`` explicitly specifies the name of parent class - this is the most understandable variant for perception, but its disadvantage is that when a parent class name is changed the name will have to be changed in all places where parent class methods were called. This option also has disadvantages when using multiple inheritance. The second and third options are essentially equivalent but the third option is shorter, so we will use it.
+The first variant of ``ConnectSSH.send_show_command`` explicitly specifies the
+name of parent class - this is the most understandable variant for perception,
+but its disadvantage is that when a parent class name is changed the name will
+have to be changed in all places where parent class methods were called.
+This option also has disadvantages when using multiple inheritance.
+The second and third options are essentially equivalent but the third option
+is shorter, so we will use it.
 
-CiscoSSH class with __init__() method:
+CiscoSSH class with ``__init__`` method:
 
 .. code:: python
 
@@ -130,8 +146,10 @@ CiscoSSH class with __init__() method:
             time.sleep(1)
             self._ssh.recv(self._MAX_READ)
 
-Method __init__() in CiscoSSH class added enable_password and disable_paging parameters and uses them accordingly to enter enable mode and disable paging. 
-Example of connection:
+Method ``__init__`` in CiscoSSH class added ``enable_password`` and
+``disable_paging`` parameters and uses them accordingly to enter enable
+mode and disable paging. 
+Example:
 
 .. code:: python
 
@@ -140,9 +158,12 @@ Example of connection:
     In [11]: r1.send_show_command('sh clock')
     Out[11]: 'sh clock\r\n*11:30:50.280 UTC Mon Aug 5 2019\r\nR1#'
 
-Now when connecting,  switch enters enable mode and paging is disabled by default, so you can try to run a long command like sh run.
+Now when connecting, switch enters enable mode and paging is disabled by default,
+so you can try to run a long command like sh run.
 
-Another method that should be further developed is send_config_commands() method: since CiscoSSH class is designed to work with Cisco, you can add switching to configuration mode before commands and exit after.
+Another method that should be further developed is ``send_config_commands``
+method: since CiscoSSH class is designed to work with Cisco, you can add
+switching to configuration mode before commands and exit after.
 
 .. code:: python
 
@@ -175,7 +196,7 @@ Another method that should be further developed is send_config_commands() method
             result += self.exit_config_mode()
             return result
 
-Example of send_config_commands() method use:
+Example of ``send_config_commands`` method use:
 
 .. code:: python
 

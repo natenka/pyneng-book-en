@@ -1,7 +1,7 @@
 Regular expression syntax
 ------------------------------
 
-Python uses ``re`` module to work with regular expressions.
+Python uses ``re`` module to work with regular expressions (regex).
 To get started with regular expressions, you need to import ``re`` module.
 
 This section will use ``search`` function for all examples. And in the next
@@ -24,9 +24,9 @@ match, function will return None.
 
 Important distinction of ``search`` function is that it only looks for a first
 match. That is, if there are several substrings in a line that correspond to a
-regular expression, ``search`` will return only the first match found.
+regex, ``search`` will return only the first match found.
 
-The simplest example of a regular expression is a substring:
+The simplest example of a regex is a substring:
 
 .. code:: python
 
@@ -42,7 +42,7 @@ In this example:
 * then goes an example of  string int_line 
 * in line 3 a search pattern is passed to ``search`` function plus string int_line in which the match is searched
 
-In this case we are simply looking for whether there is ‘MTU’ substring in string int_line.
+In this case we are simply looking for whether there is 'MTU' substring in string int_line.
 If it exists, ``match`` variable will contain a special Match object:
 
 .. code:: python
@@ -54,7 +54,7 @@ Match object has several methods that allow to get different information about
 received match. For example, ``group`` method shows that string matches an
 expression described.
 
-In this case, it’s just a ‘MTU’ substring:
+In this case, it's just a 'MTU' substring:
 
 .. code:: python
 
@@ -97,7 +97,7 @@ output of such log message:
 
     In [12]: log2 = 'Oct  3 12:49:15.941: %SW_MATM-4-MACFLAP_NOTIF: Host f04d.a206.7fd6 in vlan 1 is flapping between port Gi0/5 and port Gi0/16'
 
-This can be done through regular expression:
+This can be done with regex:
 
 .. code:: python
 

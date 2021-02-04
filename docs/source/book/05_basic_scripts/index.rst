@@ -9,7 +9,7 @@
 
 Generally speaking, script is a regular file. This file stores the sequence of commands that you want to execute.
 
-Let’s start with basic script and display several strings on standard output.
+Let's start with basic script and print several strings on standard output.
 To do this, you need to create an access_template.py file with this content:
 
 .. code:: python

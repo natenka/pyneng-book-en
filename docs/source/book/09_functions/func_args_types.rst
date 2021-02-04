@@ -65,7 +65,7 @@ If both arguments are keyword, they can be passed in any order:
 .. warning::
     Please note that first there should always be positional arguments and then keyword arguments.
 
-If you do the opposite, there’s an error:
+If you do the opposite, there's an error:
 
 .. code:: python
 

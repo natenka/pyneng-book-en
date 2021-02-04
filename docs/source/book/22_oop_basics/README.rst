@@ -1,7 +1,8 @@
 OOP basics
 ----------
 
--  Class - an element of a program that describes some data type. Class describes a template for creating objects, typically specifies variables of object and actions that can be performed on object.
+-  Class - an element of a program that describes some data type. Class describes
+   a template for creating objects, typically specifies variables of object and actions that can be performed on object.
 -  Instance - an object that is a representative of a class.
 -  Method - a function that is defined within a class and describes an action that class supports
 -  Instance variable (sometimes instance
@@ -16,60 +17,78 @@ A real-life OOP example:
 -  Features such as color of house, number of windows - instance variables (of this particular house)
 -  House can be sold, repainted, repaired - methods
 
-Consider a practical example of OOP use.
 
-In section "18. Working with databases" the first thing to do to work with database - connect to it:
+For example, when working with netmiko, the first thing to do was
+create connection:
+
+.. code:: python
+    
+    from netmiko import ConnectHandler
+
+    device = {
+        "device_type": "cisco_ios",
+        "host": "192.168.100.1",
+        "username": "cisco",
+        "password": "cisco",
+        "secret": "cisco",
+    }
+
+    ssh = ConnectHandler(**device)
+
+
+The ``ssh`` variable is an object that represents the real
+connection to equipment. Thanks to the type function, you can find out by
+an instance what class is the ssh object:
 
 .. code:: python
 
-    In [1]: import sqlite3
+    In [3]: type(ssh)
+    Out[3]: netmiko.cisco.cisco_ios.CiscoIosSSH
 
-    In [2]: conn = sqlite3.connect('dhcp_snooping.db')
-
-``conn`` variable - an object that represents a real database connection. Using type() function you can find out which class instance the ``conn`` object belongs to:
-
-.. code:: python
-
-    In [3]: type(conn)
-    Out[3]: sqlite3.Connection
-
-``conn`` has its own methods and variables that depend on the state of current object. For example, conn.in_transaction instance variable is available in each instance of sqlite3.Connection class and returns True or False depending on whether all changes are commited:
+``ssh`` has its own methods and variables that depend on the state
+the current object. For example, the instance variable ``ssh.host``
+is available for every instance of the class ``netmiko.cisco.cisco_ios.CiscoIosSSH``
+and returns IP address or hostname, whichever is specified in the device dictionary:
 
 .. code:: python
 
-    In [15]: conn.in_transaction
-    Out[15]: False
+    In [4]: ssh.host
+    Out[4]: '192.168.100.1'
 
-Method execute() executes SQL command:
 
-.. code:: python
-
-    In [19]: query = 'insert into dhcp (mac, ip, vlan, interface) values (?, ?, ?, ?)'
-
-    In [5]: conn.execute(query, ('0000.1111.7777', '10.255.1.1', '10', 'Gi0/7'))
-    Out[5]: <sqlite3.Cursor at 0xb57328a0>
-
-``conn`` object saves the state: now instance variable conn.in_transaction returns True:
+Method ``send_command`` executes a command on the network device:
 
 .. code:: python
 
-    In [6]: conn.in_transaction
-    Out[6]: True
+    In [5]: ssh.send_command("sh clock")
+    Out[5]: '*10:08:50.654 UTC Tue Feb 2 2021'
 
-After calling commit() method, it is again False:
+
+The ``enable`` method goes into enable mode and the ``ssh`` object
+saves state: before and after the transition, a different prompt is visible:
 
 .. code:: python
 
-    In [7]: conn.commit()
+    In [6]: ssh.find_prompt()
+    Out[6]: 'R1>'
 
-    In [8]: conn.in_transaction
-    Out[8]: False
+    In [7]: ssh.enable()
+    Out[7]: 'enable\r\nPassword: \r\nR1#'
+
+    In [8]: ssh.find_prompt()
+    Out[8]: 'R1#'
+
 
 This example illustrates important aspects of OOP: data integration, data handling and state preservation.
 
-So far in code writing, data and actions on data have been separated. Most often, actions are described as functions and data are transmitted as arguments to these functions. When creating a class, data and actions are combined. Of course, these data and actions are connected. That is, class methods become those actions that are specific to this type of object, not some arbitrary action.
+Until now, when writing code, data and actions have been separated. Most often,
+actions are described as functions, and data is passed as arguments to these functions.
+When a class is created, data and actions are combined. Of course, these data
+and actions are linked. That is, those actions that are characteristic of an
+object of this type, and not some arbitrary actions, become class methods.
 
-For example, in an class instance **str**, all methods refer to working with this string:
+
+For example, in an class instance ``str``, all methods refer to working with this string:
 
 .. code:: python
 
@@ -89,7 +108,7 @@ For example, in an class instance **str**, all methods refer to working with thi
 
 Above, the following syntax is used when referring to instance attributes
 (variables and methods): ``objectname.attribute``. This entry  ``s.lower()``
-means: call ``lower`` method on **s** object. Calling methods and variables
+means: call ``lower`` method on ``s`` object. Calling methods and variables
 is the same, but to call a method you have to add parentheses and pass all
 necessary arguments.
 

@@ -102,7 +102,8 @@ After *assert* and expression you can write a message. If there is a message, it
 Test example
 ~~~~~~~~~~~~
 
-pytest uses *assert* to specify which conditions must be met in order for test to be considered passed.
+pytest uses *assert* to specify which conditions must be met in order for test
+to be considered passed.
 
 In pytest, you can write test as a normal function but function name must start with *test_*. Below is test_check_ip test which verify check_ip() function by passing two values to it: correct address and wrong one, and after each check the message is written:
 

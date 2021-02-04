@@ -29,7 +29,8 @@ Example of Python code:
             print("Ready")
 
 .. note::
-    This code is shown for syntax demonstration. Although if/else construction has not yet been covered, it is likely that the meaning of code will be clear in general.
+    This code is shown for syntax demonstration. Although if/else statement has
+    not yet been covered, it is likely that the meaning of code will be clear in general.
 
 Python understands which lines refer to "if" on indentation basis.
 Execution of a block ``if a > b`` ends when another string with the same indent as string ``if a > b`` appears. Similarly to block ``else``. 
@@ -43,7 +44,8 @@ Several rules and recommendations on indentation:
 Another feature of code above is empty lines. It makes reading code easier. Other syntax features will be shown during process of familiarization with data structures in Python.
 
 .. note::
-    Python has a special document that describes how best to write Python code `PEP 8 <https://pep8.org/>`__ - Style Guide for Python Code.
+    Python has a special document that describes how best to write Python code
+    `PEP 8 <https://pep8.org/>`__ - Style Guide for Python Code.
 
 
 Comments

@@ -1,13 +1,15 @@
 Underscore in names
 ----------------------
 
-In Python, underscore at the beginning or at the end of a name indicates special names. Most often it’s just an arrangement, but sometimes it actually affects object behavior.
+In Python, underscore at the beginning or at the end of a name indicates special
+names. Most often it's just an arrangement, but sometimes it actually affects object behavior.
 
 
 One underscore before name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-One underscore before method name indicates that method is an internal feature of implementation and it should not be used directly.
+One underscore before method name indicates that method is an internal feature
+of implementation and it should not be used directly.
 
 For example, CiscoSSH class uses paramiko to connect to equipment:
 
@@ -43,7 +45,8 @@ For example, CiscoSSH class uses paramiko to connect to equipment:
             return result
 
 
-After creating an instance of the class, not only send_show_command method is available but also *client* and *ssh* attributes (3rd line is tab tips in ipython)::
+After creating an instance of the class, not only send_show_command method is
+available but also client and ssh attributes (3rd line is tab tips in ipython):
 
 .. code:: python
 
@@ -55,7 +58,9 @@ After creating an instance of the class, not only send_show_command method is av
                 ssh
 
 
-If you want to specify that *client* and *ssh* are internal attributes that are needed for class operation but are not intended for user, you need to underscore name below:
+If you want to specify that client and ssh are internal attributes that are
+needed for class operation but are not intended for user, you need to
+underscore name below:
 
 .. code:: python
 
@@ -88,15 +93,17 @@ If you want to specify that *client* and *ssh* are internal attributes that are 
 
 .. note::
 
-    Often such methods and attributes are called private but this does not mean that methods and variables are not available to user.
-
+    Often such methods and attributes are called private but this does not
+    mean that methods and variables are not available to user.
 
 
 
 Two underscores before name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Two underscores before method name are not used simply as an agreement. Such names are transformed into format "name of class + name of method". This allows the creation of unique methods and attributes of classes.
+Two underscores before method name are not used simply as an agreement. Such
+names are transformed into format "name of class + name of method". This
+allows the creation of unique methods and attributes of classes.
 
 This conversion is only performed if less than two underscores endings or no underscores.
 
@@ -115,7 +122,8 @@ This conversion is only performed if less than two underscores endings or no und
 
 Although methods were created without ``_Switch``, it was added.
 
-If you create a subclass then ``__configure`` method will not rewrite parent class method Switch:
+If you create a subclass then ``__configure`` method will not rewrite parent
+class method Switch:
 
 .. code:: python
 
@@ -136,10 +144,13 @@ Thus, special variables and methods are denoted.
 
 For example, Python module has such special variables:
 
-* ``__name__`` - this variable is equal to ``__main__`` when the script runs directly and is equal to module name when imported
-* ``__file__`` - this variable is equal to name of the script that was run directly and equals to complete path to module when it is imported
+* ``__name__`` - this variable is equal to ``__main__`` when the script runs
+  directly and is equal to module name when imported
+* ``__file__`` - this variable is equal to name of the script that was run
+  directly and equals to complete path to module when it is imported
 
-Variable ``__name__`` is most commonly used to indicate that a certain part of code must be executed only when module is called directly:
+Variable ``__name__`` is most commonly used to indicate that a certain part of
+code must be executed only when module is called directly:
 
 .. code:: python
 
@@ -167,9 +178,12 @@ The output will be:
     __file__ example2.py
     /home/vagrant/repos/tests/example2.py
 
-Python also denotes special methods. These methods are called when using Python functions and operators and allow to implement a certain functionality.
+Python also denotes special methods. These methods are called when using Python
+functions and operators and allow to implement a certain functionality.
 
-As a rule, such methods need not be called directly. But for example, when creating your own class it may be necessary to describe such method in order to object can support some operations in Python.
+As a rule, such methods need not be called directly. But for example, when
+creating your own class it may be necessary to describe such method in order
+to object can support some operations in Python.
 
 For example, in order to get length of an object it must support  ``__len__`` method.
 

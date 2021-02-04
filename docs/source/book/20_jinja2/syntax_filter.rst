@@ -1,11 +1,13 @@
 Filters
 -------
 
-In Jinja, variables can be changed by filters. Filters are separated from variable by a vertical line (pipe ``|``) and may contain additional arguments.
+In Jinja, variables can be changed by filters. Filters are separated from
+variable by a vertical line (pipe ``|``) and may contain additional arguments.
+In addition, several filters can be applied to variable. In this case,
+filters are simply written consecutively and each of them is separated by a vertical line.
 
-In addition, several filters can be applied to variable. In this case, filters are simply written consecutively and each of them is separated by a vertical line.
-
-Jinja supports a large number of built-in filters. We will look at only a few of them. Other filters can be found in `documentation <http://jinja.pocoo.org/docs/dev/templates/#builtin-filters>`__.
+Jinja supports a large number of built-in filters. We will look at only a few
+of them. Other filters can be found in `documentation <http://jinja.pocoo.org/docs/dev/templates/#builtin-filters>`__.
 
 You can also easily create your own filters. We will not cover this
 possibility but it is `well documented <http://jinja.pocoo.org/docs/2.9/api/#custom-filters>`__.
@@ -13,7 +15,9 @@ possibility but it is `well documented <http://jinja.pocoo.org/docs/2.9/api/#cus
 default
 ~~~~~~~
 
-Filter **default** allows you to set default value for variable. If variable is defined, it will be displayed, if variable is not defined, the value specified in default filter will be displayed.
+Filter ``default`` allows you to set default value for variable. If variable
+is defined, it will be displayed, if variable is not defined, the value
+specified in default filter will be displayed.
 
 Template example templates/filter_default.txt:
 
@@ -25,7 +29,8 @@ Template example templates/filter_default.txt:
      network {{ networks.network }} area {{ networks.area }}
      {% endfor %}
 
-If variable ref_bw is defined in dictionary, its value will be set. If there is no variable, the value of 10000 will be substituted.
+If variable ref_bw is defined in dictionary, its value will be set. If there is no variable,
+the value of 10000 will be substituted.
 
 Data file (data_files/filter_default.yml):
 
@@ -50,9 +55,12 @@ The result of execution:
      network 10.0.2.0 0.0.0.255 area 2
      network 10.1.1.0 0.0.0.255 area 0
 
-By default, if variable is defined and its value is empty, it will be assumed that variable and its value exist.
+By default, if variable is defined and its value is empty, it will be assumed
+that variable and its value exist.
 
-If you want default value to be set also when variable is empty (i.e., treated as False in Python), you need to specify additional parameter ``boolean=true``.
+If you want default value to be set also when variable is empty
+(i.e., treated as False in Python), you need to specify additional
+parameter ``boolean=true``.
 
 For example, if data file is:
 
@@ -106,7 +114,8 @@ The result will be (default value is set):
 dictsort
 ~~~~~~~~
 
-Filter **dictsort** allows you to sort the dictionary. By default, sorting is done by keys but by changing filter parameters you can sort by values.
+Filter ``dictsort`` allows you to sort the dictionary. By default, sorting is
+done by keys but by changing filter parameters you can sort by values.
 
 Filter syntax:
 
@@ -114,9 +123,9 @@ Filter syntax:
 
     dictsort(value, case_sensitive=False, by='key')
 
-After **dictsort** sorts the dictionary, it returns a list of tuples, not a dictionary.
+After ``dictsort`` sorts the dictionary, it returns a list of tuples, not a dictionary.
 
-Template example templates/filter_dictsort.txt using **dictsort** filter:
+Template example templates/filter_dictsort.txt using ``dictsort`` filter:
 
 ::
 
@@ -163,11 +172,12 @@ The result of execution will be (interfaces are ordered):
 join
 ~~~~
 
-Filter **join** works just like join() method in Python.
+Filter ``join`` works just like join() method in Python.
 
-With **join** filter you can combine sequence of elements into a string with an optional separator between elements.
+With ``join`` filter you can combine sequence of elements into a string with
+an optional separator between elements.
 
-Template example templates/filter_join.txt using **join** filter:
+Template example templates/filter_join.txt using ``join`` filter:
 
 ::
 

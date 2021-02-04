@@ -1,7 +1,8 @@
 Unicode standard
 ---------------
 
-Unicode is a standard that describes the representation and encoding of almost all languages and other characters.
+Unicode is a standard that describes the representation and encoding of almost
+all languages and other characters.
 
 A few facts about Unicode:
 
@@ -9,9 +10,10 @@ A few facts about Unicode:
 * each code is a number that corresponds to a certain character
 * standard also defines the encoding - the way of representing the symbol code in bytes
 
-Each character in Unicode has a specific code. This is a number that is usually written as follows: ``U+0073``, where 0073 - hexadecimal digits.
-
-Apart from the code, each symbol has its own unique name. For example, letter "s" corresponds to code ``U+0073`` and the name "LATIN SMALL LETTER S".
+Each character in Unicode has a specific code. This is a number that is usually
+written as follows: ``U+0073``, where 0073 - hexadecimal digits.
+Apart from the code, each symbol has its own unique name. For example,
+letter "s" corresponds to code ``U+0073`` and the name "LATIN SMALL LETTER S".
 
 Examples of codes, names and corresponding symbols:
 
@@ -32,7 +34,8 @@ Unicode supports several encodings:
 * UTF-16 
 * UTF-32
 
-One of the most popular encoding to date is UTF-8. This encoding uses a variable number of bytes to write Unicode characters.
+One of the most popular encoding to date is UTF-8. This encoding uses a variable
+number of bytes to write Unicode characters.
 
 Examples of Unicode characters and their representation in bytes in UTF-8 encoding:
 

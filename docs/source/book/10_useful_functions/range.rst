@@ -59,7 +59,8 @@ Function ``range`` can also generate descending sequences of numbers:
     In [7]: list(range(5, -1, -1))
     Out[7]: [5, 4, 3, 2, 1, 0]
 
-To obtain a descending sequence use a negative step and specify **start** by a greater number and **stop** by a smaller number.
+To get a descending sequence use a negative step and specify **start** by
+a greater number and **stop** by a smaller number.
 
 In descending sequence the steps can also be different:
 

@@ -310,7 +310,7 @@ Example of unpacking list items in the loop:
     200 a1bb.1c60.7000 Gi0/6
     300 aa0b.cc70.7000 Gi0/7
 
-But it’s better to do this:
+But it's better to do this:
 
 .. code:: python
 

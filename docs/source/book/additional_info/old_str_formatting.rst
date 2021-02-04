@@ -30,9 +30,9 @@ Left side alignment:
     In [6]: print("%-15s %-15s %-15s" % (vlan, mac, intf))
     100             aabb.cc80.7000  Gi0/1
 
-You can also use string formatting to influence the display of numbers.
+You can also use string formatting to influence the appearance of numbers.
 
-For example, you can specify how many digits to display after comma:
+For example, you can specify how many digits to show after comma:
 
 .. code:: python
 

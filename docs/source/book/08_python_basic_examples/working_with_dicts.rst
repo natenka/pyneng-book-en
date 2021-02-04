@@ -124,7 +124,7 @@ If you remember the name of interface every time it appears and at
 the time when line matches MTU, the last memorized interface is the one
 which matches this MTU.
 Now, if you want to create a dictionary that matches *interface – MTU*,
-it’s enough to write values when MTU was found.
+it's enough to write values when MTU was found.
 
 Working_with_dict_example_2.py file:
 

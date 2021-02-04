@@ -1,11 +1,11 @@
 Non-capturing group
 ------------------
 
-By default, everything that fell into the group is remembered. It’s called a
+By default, everything that fell into the group is remembered. It's called a
 capturing group.
 
 Sometimes parentheses are needed to indicate a part of expression that repeats.
-And, in doing so, you don’t need to remember an expression.
+And, in doing so, you don't need to remember an expression.
 
 For example, get a MAC address, VLAN and ports from log message:
 
@@ -13,7 +13,7 @@ For example, get a MAC address, VLAN and ports from log message:
 
     In [1]: log = 'Jun  3 14:39:05.941: %SW_MATM-4-MACFLAP_NOTIF: Host f03a.b216.7ad7 in vlan 10 is flapping between port Gi0/5 and port Gi0/15'
 
-A regular expression that describes substrings needed:
+A regex that describes substrings:
 
 .. code:: python
 

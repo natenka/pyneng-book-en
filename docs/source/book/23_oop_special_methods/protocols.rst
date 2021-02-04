@@ -1,7 +1,13 @@
 Protocols
 ---------
 
-Special methods are responsible not only for support of operations like addition and comparison, but also for protocol support. Protocol - set of methods that must be implemented in object to make object support a certain behavior. For example, Python has protocols like iteration, context manager, containers and others. After creating certain methods in the object, it will behave as built-in and use an interface understood by all who write on Python.
+Special methods are responsible not only for support of operations like
+addition and comparison, but also for protocol support. Protocol - set
+of methods that must be implemented in object to make object support a
+certain behavior. For example, Python has protocols like iteration,
+context manager, containers and others. After creating certain methods
+in the object, it will behave as built-in and use an interface understood
+by all who write on Python.
 
 .. note::
 

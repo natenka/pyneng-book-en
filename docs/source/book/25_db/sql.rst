@@ -1,7 +1,9 @@
 SQL
 ---
 
-**SQL (structured query language)** - used to describe database structure, manage data (add, edit, delete, receive), manage access rights to database and its objects, and manage transactions.
+**SQL (structured query language)** - used to describe database structure,
+manage data (add, edit, delete, receive), manage access rights to database
+and its objects, and manage transactions.
 
 SQL language is divided into the following categories:
 

@@ -7,7 +7,7 @@ Python has several file reading methods:
 * ``readline`` - reads file line by line
 * ``readlines`` - reads file lines and creates a list from the lines
 
-Let’s see how to read contents of files using the example of r1.txt:
+Let's see how to read contents of files using the example of r1.txt:
 
 ::
 
@@ -40,7 +40,7 @@ Method ``read`` reads the entire file to one string:
 When reading a file once again an empty line is displayed in line 3. 
 This is because the whole file is read when ``read`` method is called. 
 And after the file has been read the cursor stays at the end of file. 
-The cursor position can be controlled by means of ``seek`` method.
+The cursor position can be controlled by ``seek`` method.
 
 ``readline``
 ^^^^^^^^^^^^^^

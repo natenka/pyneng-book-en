@@ -1,13 +1,15 @@
 Finditer function
 -----------------
 
-Function ``finditer()``: 
+Function ``finditer``: 
 
 * is used to search for all disjoint matches in template
 * returns an iterator with Match objects
-* finditer() returns iterator even if no match is found
+* ``finditer`` returns iterator even if no match is found
 
-Function finditer() is well suited to handle those commands whose output is displayed by columns. For example: ‘sh ip int br’, ‘sh mac address-table’, etc. In this case it can be applied to the entire output of command.
+Function ``finditer`` is well suited to handle those commands whose output is
+displayed by columns. For example: 'sh ip int br', 'sh mac address-table', etc.
+In this case it can be applied to the entire output of command.
 
 Example of 'sh ip int br' output:
 
@@ -24,7 +26,7 @@ Example of 'sh ip int br' output:
        ...: Loopback100           100.0.0.1       YES manual up               up
        ...: '''
 
-Regular expression for output processing:
+regex for output processing:
 
 .. code:: python
 
@@ -36,7 +38,7 @@ Regular expression for output processing:
        ...:                      sh_ip_int_br)
        ...:
 
-*result* variable contains an iterator:
+``result`` variable contains an iterator:
 
 .. code:: python
 
@@ -59,7 +61,7 @@ Iterator contains Match objects:
     <_sre.SRE_Match object; span=(379, 447), match='Loopback0             10.1.1.1        YES manual >
     <_sre.SRE_Match object; span=(448, 516), match='Loopback100           100.0.0.1       YES manual >'
 
-Now in *groups* list there are tuples with strings that fallen into groups::
+Now in ``groups`` list there are tuples with strings that fallen into groups:
 
 .. code:: python
 
@@ -87,9 +89,11 @@ A similar result can be obtained by a list comprehension:
      ('Loopback0', '10.1.1.1', 'up', 'up'),
      ('Loopback100', '100.0.0.1', 'up', 'up')]
 
-Now we will analyze the same log file that was used in *search* and *match* subsections.
+Now we will analyze the same log file that was used in ``search``
+and ``match`` subsections.
 
-In this case it is possible to pass the entire contents of file (parse_log_finditer.py):
+In this case it is possible to pass the entire contents of file
+(parse_log_finditer.py):
 
 .. code:: python
 
@@ -112,7 +116,7 @@ In this case it is possible to pass the entire contents of file (parse_log_findi
 
 .. warning::
 
-    In real life, a log file can be very large. In that case, it’s better to process it line by line.
+    In real life, a log file can be very large. In that case, it's better to process it line by line.
 
 Output will be the same:
 
@@ -121,12 +125,13 @@ Output will be the same:
     $ python parse_log_finditer.py
     Loop between ports Gi0/19, Gi0/24, Gi0/16 в VLAN 10
 
-Processing of ‘show cdp neighbors detail’ output
+Processing of 'show cdp neighbors detail' output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Finditer() can handle output of ‘sh cdp neighbors detail’ as well as in re.search subsection.
+``finditer`` can handle output of 'sh cdp neighbors detail' as well as in re.search subsection.
 
-The script is almost identical to version with re.search (parse_sh_cdp_neighbors_detail_finditer.py file):
+The script is almost identical to version with ``re.search``
+(parse_sh_cdp_neighbors_detail_finditer.py file):
 
 .. code:: python
 
@@ -187,8 +192,8 @@ The result will be:
              'ip': '10.1.1.2',
              'platform': 'cisco WS-C2960-8TC-L'}}
 
-Although the result is similar, finditer() has more features, as you can specify not only what should be in searched string but also in strings around it.
-
+Although the result is similar, ``finditer`` has more features, as you can
+specify not only what should be in searched string but also in strings around it.
 For example, you can specify exactly which IP address to take:
 
 ::
@@ -205,7 +210,7 @@ For example, you can specify exactly which IP address to take:
     Management address(es):
       IP address: 10.1.1.2
 
-For example, if you want to take the first IP address you can supplement a regular expression like this:
+If you want to take the first IP address you can supplement a regex like this:
 
 .. code:: python
 

@@ -1,9 +1,10 @@
 if/elif/else
 ------------
 
-**if** allows you to add a condition to template. For example, you can use **if** to add parts of template depending on the presence of variables in data dictionary.
+``if`` allows you to add a condition to template. For example, you can use
+``if`` to add parts of template depending on the presence of variables in data dictionary.
 
-**if** construction must also be within  inside ``{% %}``.
+``if`` statement must also be within  inside ``{% %}``.
 End of condition must be explicitly stated:
 
 ::
@@ -37,13 +38,13 @@ Template example templates/if.txt:
      {% endfor %}
     {% endif %}
 
-``if ospf`` expression works the same way as in Python: if variable exists and is not empty, the result is True. If there is no variable or it is empty, the result is False.
-
-That is, in this template the OSPF configuration is generated only if variable *ospf* exists and is not empty.
-
+``if ospf`` expression works the same way as in Python: if variable exists and
+is not empty, the result is True. If there is no variable or it is empty, the result is False.
+That is, in this template the OSPF configuration is generated only if variable
+``ospf`` exists and is not empty.
 Configuration will be generated with two data variants.
 
-First with data_files/if.yml that does not contain *ospf* variable:
+First with data_files/if.yml that does not contain ``ospf`` variable:
 
 .. code:: yaml
 
@@ -145,7 +146,8 @@ Data file data_files/if_vlans.yml:
         action: delete
         vlans: 10
 
-In this example, different commands are generated depending on value of *action* parameter.
+In this example, different commands are generated depending on value of
+``action`` parameter.
 
 In template you could also use this option to refer to nested dictionaries:
 
@@ -174,9 +176,10 @@ This will result in the following configuration:
     interface Fa0/2
      switchport trunk allowed vlan 10,30
 
-Using **if** you can also filter which elements of sequence will be iterated in **for** loop.
+Using ``if`` you can also filter which elements of sequence will be iterated
+in ``for`` loop.
 
-Template example templates/if_for.txt with filter in **for** loop:
+Template example templates/if_for.txt with filter in ``for`` loop:
 
 ::
 

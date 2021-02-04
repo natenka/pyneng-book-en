@@ -109,7 +109,7 @@ Inside child template, everything happens inside blocks. Due to the blocks that 
     Note that lines described in child template outside blocks are ignored.
 
 There are four blocks in base template: services, ospf, bgp, alias. . In child template only two of them are filled: ospf and alias.
-That's the convenience of inheritance. You don’t have to fill all blocks in every child template.
+That's the convenience of inheritance. You don't have to fill all blocks in every child template.
 
 In this way *ospf* and *alias* blocks are used differently. In base template, *ospf* block already has part of configuration:
 
@@ -142,7 +142,7 @@ In this case the configuration is supplemented. That is why in child template te
 
 **alias** block simply describes the alias. And even if there were some settings in parent template, they would be substituted by content of child template.
 
-Let’s recap the rules for working with blocks. If block is created in parent template:
+Let's recap the rules for working with blocks. If block is created in parent template:
 
 * no content - in child template you can fill this block or ignore it. If block is filled, it will contain only what was written in child template (example - *alias* block)
 * with content - in child template you can perform such actions:

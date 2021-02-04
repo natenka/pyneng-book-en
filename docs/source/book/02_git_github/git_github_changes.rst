@@ -1,7 +1,7 @@
 Working with own repository
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This chapter describes how to work with repository on your local machine.
+This chapter covers how to work with repository on your local machine.
 
 Creating a Github repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

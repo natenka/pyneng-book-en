@@ -1,9 +1,12 @@
 Sequence protocol
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the most basic version, sequence protocol (sequence) includes two methods: __len__ and __getitem__. In more complete version also methods: __contains__, __iter__, __reversed__, index and count. If sequence is mutable, several other methods are added.
+In the most basic version, sequence protocol (sequence) includes two methods:
+``__len__`` and ``__getitem__``. In more complete version also methods:
+``__contains__``, ``__iter__``, ``__reversed__``, ``index`` and ``count``.
+If sequence is mutable, several other methods are added.
 
-Add __len__ and __getitem__ methods to Network class:
+Add ``__len__`` and ``__getitem__`` methods to Network class:
 
 .. code:: python
 
@@ -24,7 +27,7 @@ Add __len__ and __getitem__ methods to Network class:
        ...:
 
 
-Method __len__ is called by len() function:
+Method ``__len__`` is called by ``len`` function:
 
 .. code:: python
 
@@ -34,7 +37,7 @@ Method __len__ is called by len() function:
     Out[3]: 2
 
 
-And __getitem__ method is called when you acess item by index:
+And ``__getitem__`` method is called when you acess item by index:
 
 .. code:: python
 
@@ -47,7 +50,7 @@ And __getitem__ method is called when you acess item by index:
     In [6]: net1[-1]
     Out[6]: '10.1.1.194'
 
-__getitem__ method is responsible not only for access by index, but also for slices:
+``__getitem__`` method is responsible not only for access by index, but also for slices:
 
 .. code:: python
 
@@ -73,7 +76,8 @@ __getitem__ method is responsible not only for access by index, but also for sli
      '10.1.1.205',
      '10.1.1.206']
 
-In this case, because __getitem__ method uses a list, errors are processed correctly automatically:
+In this case, because ``__getitem__`` method uses a ``list``, errors are
+processed correctly automatically:
 
 .. code:: python
 
@@ -106,10 +110,17 @@ In this case, because __getitem__ method uses a list, errors are processed corre
     TypeError: list indices must be integers or slices, not str
 
 
-You will find implementation of remaining methods of sequence protocol in tasks to this section:
+You will find implementation of remaining methods of sequence protocol
+in tasks to this section:
 
-* __contains__ - this method is responsible for checking the presence of element in sequence ``'10.1.1.198' in net1``. If object does not define this method, the presence of element is checked by iteration of elements using __iter__ and if this method is also unavailable, then by index iteration with __getitem__.
-* __reversed__ - is used by built-in reversed() function. This method is usually best not to create and rely on the fact that reversed() function in absence of __reversed__ method will use methods __len__ and __getitem__.
-* index - returns index of element. Works exactly the same as index() method in lists and tuples.
-* count - returns number of values. Works exactly the same as count() method in lists and tuples.
+* ``__contains__`` - this method is responsible for checking the presence
+  of element in sequence ``'10.1.1.198' in net1``. If object does not define
+  this method, the presence of element is checked by iteration of elements
+  using ``__iter__`` and if this method is also unavailable, then by index
+  iteration with ``__getitem__``.
+* ``__reversed__`` - is used by built-in ``reversed`` function. This method
+  is usually best not to create and rely on the fact that ``reversed``
+  function in absence of ``__reversed__`` method will use methods ``__len__`` and ``__getitem__``.
+* ``index`` - returns index of element. Works exactly the same as ``index`` method in lists and tuples.
+* ``count`` - returns number of values. Works exactly the same as ``count`` method in lists and tuples.
 

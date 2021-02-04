@@ -7,7 +7,8 @@ This part of the book covers data writing and transmission. Data can be, for exa
 -  processed output of commands as dictionary, list or similar
 -  information from monitoring system
 
-So far, only the simplest option has been considered - writing information to a plain text file.
+So far, only the simplest option has been covered - writing information
+to a plain text file.
 
 This section covers data reading and writing in CSV, JSON and YAML formats:
 

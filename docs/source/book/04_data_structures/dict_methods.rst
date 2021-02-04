@@ -40,7 +40,7 @@ If one dictionary is equal to other:
     Out[9]: 'Juniper'
 
 In this case ``london2`` is another name that refers to dictionary ``london``. And when
-you change ``london`` dictionary, ``london2`` dictionary changes as well because it’s a link to the same object.
+you change ``london`` dictionary, ``london2`` dictionary changes as well because it's a link to the same object.
 
 Therefore, if you want to make a copy of dictionary, use ``copy`` method:
 
@@ -97,7 +97,7 @@ Method get() also allows you to specify another value instead of ``None``:
 ``setdefault``
 ^^^^^^^^^^^^^^^^
 
-Method setdefault() searches for key and if there is no key, instead of error it creates a key with ``None`` value.
+Method ``setdefault`` searches for key and if there is no key, instead of error it creates a key with ``None`` value.
 
 .. code:: python
 
@@ -111,7 +111,7 @@ Method setdefault() searches for key and if there is no key, instead of error it
     In [24]: london
     Out[24]: {'name': 'London1', 'location': 'London Str', 'vendor': 'Cisco', 'ios': None}
 
-If key is present, setdefault() returns value that corresponds to it:
+If key is present, ``setdefault`` returns value that corresponds to it:
 
 .. code:: python
 
@@ -136,7 +136,7 @@ The second argument allows to specify which value should correspond to key:
      'model': 'Cisco3580'}
 
 
-Method setdefault() replaces this construction:
+Method ``setdefault`` replaces this expression:
 
 .. code:: python
 
@@ -165,9 +165,12 @@ Methods ``keys``, ``values``, ``items``:
     In [27]: london.items()
     Out[27]: dict_items([('name', 'London1'), ('location', 'London Str'), ('vendor', 'Cisco')])
 
-All three methods return special view objects that display keys, values, and key-value pairs of dictionary, respectively.
+All three methods return special view objects that contains keys, values, and
+key-value pairs of dictionary, respectively.
 
-A very important feature of view is that they change together with dictionary. And in fact, they just give you a way to look at objects, but they don’t make a copy of them.
+A very important feature of view is that they change together with dictionary.
+And in fact, they just give you a way to look at objects, but they don't make
+a copy of them.
 
 Example of uning ``keys``:
 

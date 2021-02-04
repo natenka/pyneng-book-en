@@ -7,7 +7,7 @@ argparse
 -  specify argument types, default values
 -  indicate which actions correspond to arguments
 -  call functions when argument is specified
--  display messages with hints of script usage
+-  show messages with hints of script usage
 
 ``argparse`` is not the only module for handling command line arguments. And not even the only one in standard library.
 
@@ -15,7 +15,8 @@ This book covers only ``argparse``, but in addition it is worth looking at modul
 
 .. note::
     `A good article <https://realpython.com/blog/python/comparing-python-command-line-parsing-libraries-argparse-docopt-click/>`__,
-    compares different command line argument processing modules (considered argparse, click and docopt).
+    compares different command line argument processing modules (covered argparse,
+    click and docopt).
 
 Example of ping_function.py script:
 
@@ -71,7 +72,7 @@ Adding arguments:
 
 String ``args = parser.parse_args()`` is specified after all arguments have been defined. After running it, variable ``args`` contains all arguments that were passed to the script. They can be accessed using ``args.ip`` syntax.
 
-Let’s try a script with different arguments. If both arguments are passed:
+Let's try a script with different arguments. If both arguments are passed:
 
 ::
 
@@ -205,7 +206,7 @@ Set IP address as a positional argument (ping_function_ver2.py file):
 
 Now instead of giving ``-a`` option you can simply pass IP address. 
 It will be automatically saved in ``host`` variable.
-And it’s automatically considered as a mandatory. Тhat is, it is no longer necessary to specify ``required=True`` and ``dest="ip"``.
+And it's automatically considered as a mandatory. Тhat is, it is no longer necessary to specify ``required=True`` and ``dest="ip"``.
 
 In addition, script specifies messages that will be displayed when you call *help*. Now script call looks like this:
 
@@ -402,7 +403,8 @@ Parser *create_parser* uses a new argument - ``metavar``:
     create_parser.add_argument('-s', dest='schema', default=DFLT_DB_SCHEMA,
                                help='db schema filename')
 
-Argument **metavar** allows you to specify argument name to display it in *usage* message and *help*:
+Argument **metavar** allows you to specify argument name to show it in *usage*
+message and *help*:
 
 ::
 
@@ -446,7 +448,7 @@ In this case, *help* message looks like:
       --db DB_FILE  db name
       -s            add switch data if set, else add normal data
 
-If you pass several files, they’ll be in the list. And since add() function simply displays file names, the output is:
+If you pass several files, they'll be in the list. And since add() function simply displays file names, the output is:
 
 ::
 

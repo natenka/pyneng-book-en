@@ -11,8 +11,8 @@ You can install Jinja2 using pip:
 
     Further, terms Jinja and Jinja2 are used interchangeably.
 
-The main idea of Jinja is to separate data and template. This allows you to use the same template but not the same data.
-
+The main idea of Jinja is to separate data and template. This allows you to use
+the same template but not the same data.
 In the simplest case, template is simply a text file that specifies locations of Jinja variables.
 
 Example of Jinja template:
@@ -39,7 +39,8 @@ Comments to template:
 * In Jinja, variables are written in double curly braces.
 * When script is executed, these variables are replaced with desired values.
 
-This template can be used to generate configuration of different devices by substituting other sets of variables.
+This template can be used to generate configuration of different devices by
+substituting other sets of variables.
 
 Example script with file generation based on Jinja template (basic_generator.py file):
 
@@ -71,11 +72,11 @@ Example script with file generation based on Jinja template (basic_generator.py 
 Comments to basic_generator.py file:
 
 * in the first line the Template class is imported from Jinja2 
-* creates **template** object to which template is passed
+* creates ``template`` object to which template is passed
 * template uses variables in Jinja syntax
-* in *Liverpool* dictionary the keys must be the same as variable names in template 
+* in ``liverpool`` dictionary the keys must be the same as variable names in template 
 * values that correspond to the keys - data that will be substituted instead of variables
-* the last line renders template using *liverpool* dictionary, that is, sets values in variables.
+* the last line renders template using ``liverpool`` dictionary, that is, sets values in variables.
 
 If you run basic_generator.py script, the output is:
 

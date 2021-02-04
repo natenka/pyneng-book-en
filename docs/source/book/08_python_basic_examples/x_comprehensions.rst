@@ -75,9 +75,9 @@ it is possible to do so without making the expression more complex, it is better
 .. note::
 
     In Python, list comprehensions can also replace filter and map functions
-    and are considered  as more understandable solutions.
+    and are considered a clearer option.
 
-With the help of list comprehension it is also convenient to obtain elements from nested dictionaries:
+With list comprehension it is also convenient to get elements from nested dictionaries:
 
 .. code:: python
 
@@ -131,7 +131,7 @@ For example, *vlans* list contains several nested lists with VLANs:
 
     In [16]: vlans = [[10,21,35], [101, 115, 150], [111, 40, 50]]
 
-It’s necessary to form only one list with VLAN numbers. The first option is to use **for** loop:
+It's necessary to form only one list with VLAN numbers. The first option is to use **for** loop:
 
 .. code:: python
 

@@ -1,13 +1,21 @@
 SQLite use example
 ---------------------------
 
-In section 15 there was an example of reviewing the output of command *show ip dhcp snooping binding*. In the output we received information about parameters of connected devices (interface, IP, MAC, VLAN).
+In section 15 there was an example of reviewing the output of
+command "show ip dhcp snooping binding". In the output we received
+information about parameters of connected devices (interface, IP, MAC, VLAN).
 
-In this variant you can only see all devices connected to switch. If you want to find out others based on one of the parameters, it’s not  convenient in this way.
+In this variant you can only see all devices connected to switch. If you want
+to find out others based on one of the parameters, it's not  convenient in this way.
 
-For example, if you want to get information based on IP address about to which interface the host is connected, which MAC address it has and in which VLAN it is, then script is not very simple and more importantly, not convenient.
+For example, if you want to get information based on IP address about to which
+interface the host is connected, which MAC address it has and in which VLAN it is,
+then script is not very simple and more importantly, not convenient.
 
-Let’s write information obtained from the output *sh ip dhcp snooping binding* to SQLite. This will allow do queries based on any parameter and get missing ones. For this example, it is sufficient to create a single table where information will be stored.
+Let's write information obtained from the output "sh ip dhcp snooping binding"
+to SQLite. This will allow do queries based on any parameter and get missing
+ones. For this example, it is sufficient to create a single table where
+information will be stored.
 
 Table is defined in a separate dhcp_snooping_schema.sql file:
 
@@ -22,12 +30,14 @@ Table is defined in a separate dhcp_snooping_schema.sql file:
 
 For all fields the data type is "text".
 
-MAC address is the primary key of our table which is logical because MAC address must be unique.
+MAC address is the primary key of our table which is logical because MAC address
+must be unique.
 
 Additionally, by using expression ``create table if not exists`` -
 SQLite will only create a table if it does not exist.
 
-Now you have to create a database file, connect to database and create a table (create_sqlite_ver1.py file):
+Now you have to create a database file, connect to database and create
+a table (create_sqlite_ver1.py file):
 
 .. code:: python
 
@@ -66,7 +76,8 @@ Execution of script:
 
 The result should be a database file and a dhcp table.
 
-You can check that table has been created with sqlite3 utility which allows you to execute queries directly in command line.
+You can check that table has been created with sqlite3 utility which allows
+you to execute queries directly in command line.
 
 List of tables created is shown as follows:
 
@@ -75,7 +86,8 @@ List of tables created is shown as follows:
     $ sqlite3 dhcp_snooping.db "SELECT name FROM sqlite_master WHERE type='table'"
     dhcp
 
-Now it is necessary to write information from the output of *sh ip dhcp snooping binding* command to the table (dhcp_snooping.txt file):
+Now it is necessary to write information from the output of
+"sh ip dhcp snooping binding" command to the table (dhcp_snooping.txt file):
 
 ::
 
@@ -87,7 +99,9 @@ Now it is necessary to write information from the output of *sh ip dhcp snooping
     00:09:BC:3F:A6:50   10.1.10.6        76260       dhcp-snooping   10    FastEthernet0/3
     Total number of bindings: 4
 
-In the second version of the script, the output in dhcp_snooping.txt file is processed with regular expressions and then entries are added to database (create_sqlite_ver2.py file):
+In the second version of the script, the output in dhcp_snooping.txt file is
+processed with regular expressions and then entries are added
+to database (create_sqlite_ver2.py file):
 
 .. code:: python
 
@@ -127,11 +141,14 @@ In the second version of the script, the output in dhcp_snooping.txt file is pro
 
 .. note::
 
-    For now, you should delete database file every time because script tries to create it every time you start.
+    For now, you should delete database file every time because script
+    tries to create it every time you start.
 
 Comments to the script:
 
-* in regular expression that processes the output of *sh ip dhcp snooping binding*, numbered groups are used instead of named groups as it was in example of section `https://pyneng.readthedocs.io/en/latest/book/14_regex/4a_group_example.html>`__
+* in regular expression that processes the output of "sh ip dhcp snooping binding",
+  numbered groups are used instead of named groups as it was in example of
+  section `https://pyneng.readthedocs.io/en/latest/book/14_regex/4a_group_example.html>`__
 
   * groups were created only for those elements we are interested in
 
@@ -143,8 +160,8 @@ Comments to the script:
 * Scroll elements in received list of tuples
 * This script uses another version of database entry
 
-  * *query* string describes a query. But instead of values, question marks are given. This query type allows dynamicly substite field values.
-  * then execute() method is passed a query string and *row* tuple where values are
+  * ``query`` string containes a query. But instead of values, question marks are given. This query type allows dynamicly substite field values.
+  * then ``execute`` method is passed a query string and ``row`` tuple where values are
 
 Execute the script:
 
@@ -155,7 +172,7 @@ Execute the script:
     Done
     Inserting DHCP Snooping data
 
-Let’s check if data has been written:
+Let's check if data has been written:
 
 ::
 
@@ -169,7 +186,7 @@ Let’s check if data has been written:
     00:05:B3:7E:9B:60  10.1.5.4    5           FastEthernet0/9
     00:09:BC:3F:A6:50  10.1.10.6   10          FastEthernet0/3
 
-Now let’s try to ask by a certain parameter:
+Now let's try to ask by a certain parameter:
 
 ::
 
@@ -182,7 +199,8 @@ Now let’s try to ask by a certain parameter:
 
 That is, it is now possible to get others parameters based on one parameter.
 
-Let’s modify the script to make it check for the presence of dhcp_snooping.db. If you have a database file you don’t need to create a table, we believe it has already been created.
+Let's modify the script to make it check for the presence of dhcp_snooping.db.
+If you have a database file you don't need to create a table, we believe it has already been created.
 
 File create_sqlite_ver3.py:
 
@@ -232,11 +250,14 @@ File create_sqlite_ver3.py:
 
     conn.close()
 
-Now there is a verification of the presence of database file and dhcp_snooping.db file will only be created if it does not exist. Data is also written only if dhcp_snooping.db file is not created.
+Now there is a verification of the presence of database file and dhcp_snooping.db
+file will only be created if it does not exist. Data is also written only
+if dhcp_snooping.db file is not created.
 
 .. note::
 
-    Separating the process of creating a table and completing it with the data is specified in tasks to the section.
+    Separating the process of creating a table and completing it with
+    the data is specified in tasks to the section.
 
 If no file (delete it first):
 
@@ -248,7 +269,7 @@ If no file (delete it first):
     Done
     Inserting DHCP Snooping data
 
-Let’s check. In case the file already exists but the data is not written:
+Let's check. In case the file already exists but the data is not written:
 
 ::
 
@@ -316,7 +337,7 @@ Comments to the script:
 
 * key, value are read from arguments that passed to script
 
-  * selected key is removed from *keys* list. Thus, only parameters that you want to display are left in the list
+  * selected key is removed from keys list. Thus, only parameters that you want to display are left in the list
 
 * connecting to DB
 
@@ -329,9 +350,9 @@ Comments to the script:
 
 * The resulting information is displayed to standard output stream: 
 
-  * iterate over the results obtained and display only those fields that are in *keys* list
+  * iterate over the results obtained and show only those fields that are in keys list
 
-Let’s check the script.
+Let's check the script.
 
 Show host parameters with IP 10.1.10.2:
 
@@ -363,11 +384,11 @@ Show hosts in VLAN 10:
     interface   : FastEthernet0/3
     ----------------------------------------
 
-The second version of the script to obtain data with minor improvements:
+The second version of the script to get data with minor improvements:
 
-* Instead of rows formatting, a dictionary that describes queries corresponding to each key is used. 
+* Instead of rows formatting, a dictionary that contains queries corresponding to each key is used. 
 * Checking the key that was selected
-* Method keys() is used to obtain all columns that match the query
+* Method ``keys`` is used to get all columns that match the query
 
 File get_data_ver2.py:
 
@@ -408,7 +429,8 @@ File get_data_ver2.py:
 There are several drawbacks to this script:
 
 * does not check number of arguments that are passed to the script
-* It would be good to collect information from different switches. To do this, you should add a field that indicates on which switch the entry was found
+* It would be good to collect information from different switches. To do
+  this, you should add a field that indicates on which switch the entry was found
 
 In addition, a lot of work needs to be done in the script that creates database and writes the data.
 

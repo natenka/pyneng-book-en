@@ -1,9 +1,13 @@
 Parameter self
 ~~~~~~~~~~~~~
 
-Parameter **self** was specified before in method definition, as well as when using instance variables in method. Parameter **self** is a reference to a particular instance of class. Parameter **self** is not a special name but an arrangement. Instead of **self** you can use a different name but you shouldn't do that.
+Parameter ``self`` was specified before in method definition, as well as when
+using instance variables in method. Parameter ``self`` is a reference to a
+particular instance of class. Parameter ``self`` is not a special name but an
+arrangement. Instead of ``self`` you can use a different name but
+you shouldn't do that.
 
-Example of using a different name instead of **self**:
+Example of using a different name instead of ``self``:
 
 .. code:: python
 
@@ -28,11 +32,15 @@ It will work the same way:
 
 .. warning::
 
-    Although technically you can use another name but always use **self**.
+    Although technically you can use another name but always use ``self``.
 
-In all "usual" methods of class the first parameter will always be **self**. Furthermore, creating an instance variable within a class is also done via **self**.
+In all "usual" methods of class the first parameter will always be ``self``.
+Furthermore, creating an instance variable within a class is also done via ``self``.
 
-An example of Switch class with new generate_interfaces method: generate_interfaces method must generate a list with interfaces based on specified type and quantity and create variable in an instance of class. First, an option of creating a usual variable within method:
+An example of Switch class with new generate_interfaces method:
+generate_interfaces method must generate a list with interfaces based
+on specified type and quantity and create variable in an instance of class.
+First, an option of creating a usual variable within method:
 
 .. code:: python
 
@@ -41,7 +49,7 @@ An example of Switch class with new generate_interfaces method: generate_interfa
        ...:         interfaces = ['{}{}'.format(intf_type, number) for number in range(1, number_of_intf+1)]
        ...:
 
-In this case, class instances will not have *interfaces* variable:
+In this case, class instances will not have interfaces variable:
 
 .. code:: python
 
@@ -57,9 +65,12 @@ In this case, class instances will not have *interfaces* variable:
 
     AttributeError: 'Switch' object has no attribute 'interfaces'
 
-This variable does not exist because it exists only within method and visibility area of method is the same as function. Even other methods of the same class do not see variables in other methods.
+This variable does not exist because it exists only within method and visibility
+area of method is the same as function. Even other methods of the same class do
+not see variables in other methods.
 
-For list with interfaces to be available as a variable in instances, you have to assign value in self.interfaces:
+For list with interfaces to be available as a variable in instances, you have
+to assign value in self.interfaces:
 
 .. code:: python
 
@@ -72,7 +83,8 @@ For list with interfaces to be available as a variable in instances, you have to
        ...:         self.interfaces = interfaces
        ...:
 
-Now, after generate_interfaces method is called *interfaces* variable is created in instance:
+Now, after generate_interfaces method is called interfaces variable
+is created in instance:
 
 .. code:: python
 

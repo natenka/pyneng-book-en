@@ -24,7 +24,7 @@ Recommendations when working with threads:
 
 1. Do not write to the same resource from different threads if resource or what you write is not intended for multithreading. It is easy to find out by google something like "python write to file from threads".
 
-  * There are nuances to this recommendation. For example, you can write from different threads to the same file if you use a Lock or a thread-safe queue. These options are often difficult to use and are not considered in the book. It’s likely that 95 percent of problems you’ll be facing can be solved without them.
+  * There are nuances to this recommendation. For example, you can write from different threads to the same file if you use a Lock or a thread-safe queue. These options are often difficult to use and are not covered in the book. It’s likely that 95 percent of problems you’ll be facing can be solved without them.
   * This category includes writing/changing lists/dictionaries/sets from different threads. These objects are inherently thread-safe but there is no guarantee that when you change the same list from different threads, data in the list will be correct. If you want to use a common container for different threads, use queue from Queue module. It’s thread-safe and you can work with it from different threads.
 
 2. If there is a possibility, avoid communication between threads in the course of their work. This is not an easy task and it is best to avoid it.
@@ -35,6 +35,9 @@ Recommendations when working with threads:
     These recommendations are generally written for those who are just beginning to program on Python. However, they tend to be relevant to most programmers who write applications for users rather than frameworks.
     
 
-Module concurrent.futures which will be considered further, simplifies implementation of the first principle "Do not write to the same resource from different threads... ". The module interface itself encourages this, but of course it does not prohibit breaking it.
+Module concurrent.futures which will be covered further, simplifies
+implementation of the first principle "Do not write to the same resource from
+different threads... ". The module interface itself encourages this, but of
+course it does not prohibit breaking it.
 
 However, before getting to know concurrent.futures, you should consider fundamentals of logging module. It will be used instead of print() function which is not inherently thread-safe.

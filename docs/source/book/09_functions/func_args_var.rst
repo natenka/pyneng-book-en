@@ -4,7 +4,7 @@ Variable length arguments
 Sometimes it is necessary to make function accept not a fixed number of arguments, but any number. For such a case, in Python it is possible to create a function with a special parameter that accepts variable length arguments. This parameter can be both keyword and positional.
 
 .. note::
-    Even if you don’t use it in your scripts there’s a good chance you’ll find it in someone else’s code.
+    Even if you don't use it in your scripts there's a good chance you'll find it in someone else's code.
 
 Variable length positional arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

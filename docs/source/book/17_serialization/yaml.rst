@@ -3,14 +3,16 @@ Work with YAML files
 
 **YAML (YAML Ain't Markup Language)** - another text format for writing data.
 
-YAML is more human-friendly than JSON, so it is often used to describe scripts in software. Ansible, for example.
+YAML is more human-friendly than JSON, so it is often used to describe scripts
+in software. Ansible, for example.
 
 YAML syntax
 ~~~~~~~~~~~~~~
 
-Like Python, YAML uses indents to specify the structure of document. But YAML can only use spaces and cannot use tabs.
-
-Another similarity with Python is that comments start with # and continue until the end of line.
+Like Python, YAML uses indents to specify the structure of document. But YAML
+can only use spaces and cannot use tabs.
+Another similarity with Python is that comments start with ``#`` and continue until
+the end of line.
 
 List
 ^^^^^^
@@ -31,7 +33,8 @@ Or every item in the list in separate row:
     - spanning-tree portfast
     - spanning-tree bpduguard enable
 
-When a list is written in such a block, each row must start with ``-`` (minus and space) and all lines in the list must be at the same indentation level.
+When a list is written in such a block, each row must start with ``- ``
+(minus and space) and all lines in the list must be at the same indentation level.
 
 Dictionary
 ^^^^^^^
@@ -40,7 +43,7 @@ A dictionary can also be written in one line:
 
 .. code:: yaml
 
-    { vlan: 100, name: IT }
+    {vlan: 100, name: IT}
 
 Or a block:
 
@@ -52,7 +55,9 @@ Or a block:
 Strings
 ^^^^^^
 
-Strings in YAML don’t have to be quoted. This is convenient, but sometimes quotes should be used. For example, when a special character (special for YAML) is used in a string.
+Strings in YAML don't have to be quoted. This is convenient, but sometimes
+quotes should be used. For example, when a special character
+(special for YAML) is used in a string.
 
 This line, for example, should be quoted to be correctly understood by YAML:
 
@@ -63,7 +68,8 @@ This line, for example, should be quoted to be correctly understood by YAML:
 Combination of elements
 ^^^^^^^^^^^^^^^^^^^^
 
-A dictionary with two keys: access and trunk. Values that correspond to these keys - command lists:
+A dictionary with two keys: access and trunk. Values that correspond to
+these keys - command lists:
 
 .. code:: yaml
 
@@ -106,7 +112,8 @@ List of dictionaries:
 PyYAML module
 ~~~~~~~~~~~~~
 
-Python uses a PyYAML module to work with YAML. It is not part of the standard module library, so it needs to be installed:
+Python uses a PyYAML module to work with YAML. It is not part of the standard
+module library, so it needs to be installed:
 
 ::
 
@@ -117,9 +124,7 @@ Work with it is similar to csv and json modules.
 Reading from YAML
 ^^^^^^^^^^^^^^
 
-Converting data from YAML file to Python objects.
-
-info.yaml file:
+Converting data from YAML file to Python objects (info.yaml file):
 
 .. code:: yaml
 
@@ -179,7 +184,8 @@ The result is:
       'to_id': 2,
       'to_name': 'Manchester'}]
 
-YAML format is very convenient for storing different parameters, especially if they are filled manually.
+YAML format is very convenient for storing different parameters, especially
+if they are filled manually.
 
 Writing to YAML
 ^^^^^^^^^^^^^

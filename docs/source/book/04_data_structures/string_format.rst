@@ -44,7 +44,7 @@ Values that are placed in curly braces may be of different types. For example, i
     In [5]: print('{}'.format([10, 1, 1,1]))
     [10, 1, 1, 1]
 
-You can display the result with columns by formatting strings. In string
+You can align result in columns by formatting strings. In string
 formatting, you can specify how many characters are selected for the data. If
 number of characters in the data is less than number of characters selected,
 the missing characters are filled with blanks.
@@ -80,9 +80,9 @@ Output template can also be multi-string:
     IP address:
     10.1.1.1
 
-You can also use string formatting to influence the display of numbers.
+You can also use string formatting to change the display format of numbers.
 
-For example, you can specify how many digits after the comma to display:
+For example, you can specify how many digits after the comma to show:
 
 .. code:: python
 
@@ -140,7 +140,8 @@ For example this can prevent repetitive transmission of the same values:
     192      100      1        1
     11000000 01100100 00000001 00000001
 
-In example above the octet address has to be passed twice - one for decimal display and other for binary.
+In example above the octet address has to be passed twice - one for decimal
+format and other for binary.
 
 By specifying value indexes that are passed to format() method, it is possible to avoid duplication:
 
@@ -230,5 +231,7 @@ After colon in f-strings you can specify the same values as in format():
 
 .. warning::
 
-  Since for full explanation of f-strings it is necessary to show examples with loops and work with objects that have not yet been considered, this topic is also in the section :ref:`f_string` with additional examples and explanations.
+  Since for full explanation of f-strings it is necessary to show examples
+  with loops and work with objects that have not yet been covered, this topic
+  is also in the section :ref:`f_string` with additional examples and explanations.
 

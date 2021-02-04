@@ -37,17 +37,17 @@ In this case TextFSM template will look like this (traceroute.template file):
 
 First two lines define variables:
 
-* ``Value ID (\d+)`` - this line defines an *ID* variable that describes a regular expression: ``(\d+)`` - one or more digits, here are the hop numbers
-* ``Value Hop (\d+(\.\d+){3})`` - line that defines a *Hop* variable that describes an IP address by such regular expression: ``(\d+(\.\d+){3})``
+* ``Value ID (\d+)`` - this line defines an ``ID`` variable that describes a regular expression: ``(\d+)`` - one or more digits, here are the hop numbers
+* ``Value Hop (\d+(\.\d+){3})`` - line that defines a ``Hop`` variable that describes an IP address by such regular expression: ``(\d+(\.\d+){3})``
 
-After *Start* line, the template itself begins. In this case, it’s very simple:
+After ``Start`` line, the template itself begins. In this case, it's very simple:
 
 * ``^  ${ID} ${Hop} -> Record`` 
-* first goes caret sign, then two spaces and *ID* and *Hop* variables
-* in TextFSM the variables are described as: ``${variable name}`` 
-* word ``Record`` at the end means that lines that will fall under the described template will be processed and displayed in the results of TextFSM (we’ll look at this in the next section)
+* first goes caret sign, then two spaces and ``ID`` and ``Hop`` variables
+* in TextFSM the variables are written like this: ``${variable name}`` 
+* word ``Record`` at the end means that lines that matches regular expression will be processed and included in the results of TextFSM (we'll look at this in the next section)
 
-Script to process output of traceroute command with TextFSM  (parse_traceroute.py):
+Script to process output of traceroute command with TextFSM (parse_traceroute.py):
 
 .. code:: python
 
@@ -80,9 +80,10 @@ The result of script execution:
     ['ID', 'Hop']
     [['1', '10.0.12.1'], ['2', '15.0.0.5'], ['3', '57.0.0.7'], ['4', '79.0.0.9']]
 
-Lines that match the described template are returned as a list of lists. Each element is a list that consists of two elements: hop number and IP address.
+Lines that match the described template are returned as a list of lists. Each
+element is a list that consists of two elements: hop number and IP address.
 
-Let’s sort out the content of script:
+Let's sort out the content of script:
 
 * traceroute - a variable that contains traceroute command output 
 * ``template = open('traceroute.template')`` - content of TextFSM template file is read into a *template* variable
@@ -90,7 +91,8 @@ Let’s sort out the content of script:
 * ``result = fsm.ParseText(traceroute)`` - method that handles output according to a template and returns a list of lists in which each element is a processed string 
 * At the end, ``print(fsm.header)`` header is displayed which contains variable names and processing result
 
-We can work with that output further. For example, periodically execute traceroute command and compare whether the number of hops and their order has changed.
+We can work with that output further. For example, periodically execute
+traceroute command and compare whether the number of hops and their order has changed.
 
 To work with TextFSM you need command output and template: 
 

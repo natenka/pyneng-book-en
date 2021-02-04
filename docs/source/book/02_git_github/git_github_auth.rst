@@ -30,13 +30,18 @@ Add SSH key to Github
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To add a key you have to copy it.
-For example, you can display key to copy it:
+For example, you can display key with cat to copy it:
 
 ::
 
     $ cat ~/.ssh/id_rsa.pub
 
-After copying, go to Github. When you are on any Github page, in upper right-hand corner click on picture of your profile and select "Settings" in drop down list. In list on the left, select field "SSH and GPG keys". Then press "New SSH key" and in "Title" field write key name (for example "Home") and in field "Key" insert the content that was copied from file ~/. ssh/id_rsa.pub.
+After copying, go to Github. When you are on any Github page, in upper
+right-hand corner click on picture of your profile and select "Settings"
+in drop down list. In list on the left, select field "SSH and GPG keys".
+Then press "New SSH key" and in "Title" field write key name (for example
+"Home") and in field "Key" insert the content that was copied from
+file ~/. ssh/id_rsa.pub.
 
 .. note::
     If Github requests a password, enter your account password on Github.

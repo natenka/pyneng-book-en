@@ -1,10 +1,11 @@
 Context manager
 ~~~~~~~~~~~~~~~~~~
 
-Context manager allows specified actions to be performed at the beginning and end of *with* block. Two methods are responsible for context manager:
+Context manager allows specified actions to be performed at the beginning and
+end of ``with`` block. Two methods are responsible for context manager:
 
-* ``__enter__(self)`` - indicates what should be done at the beginning of *with* block. Value that returns method is assigned to variable after *as*.
-* ``__exit__(self, exc_type, exc_value, traceback)`` - indicates what should be done at the end of *with* block or when it is interrupted. If there is an exception within block, then exc_type, exc_value, traceback will contain exception information, if there is no exception they will be equal to None.
+* ``__enter__(self)`` - indicates what should be done at the beginning of ``with`` block. Value that returns method is assigned to variable after ``as``.
+* ``__exit__(self, exc_type, exc_value, traceback)`` - indicates what should be done at the end of ``with`` block or when it is interrupted. If there is an exception within block, then exc_type, exc_value, traceback will contain exception information, if there is no exception they will be equal to None.
 
 Examples of context manager usage:
 
@@ -56,7 +57,8 @@ Example of class usage:
     Out[11]: 'sh ip int br\r\nInterface                  IP-Address      OK? Method Status                Protocol\r\nEthernet0/0                192.168.100.1   YES NVRAM  up                    up      \r\nEthernet0/1                192.168.200.1   YES NVRAM  up                    up      \r\nEthernet0/2                19.1.1.1        YES NVRAM  up                    up      \r\nEthernet0/3                192.168.230.1   YES NVRAM  up                    up      \r\nLoopback0                  4.4.4.4         YES NVRAM  up                    up      \r\nLoopback90                 90.1.1.1        YES manual up                    up      \r\nR1#'
 
 
-In order for the class to support work in context manager, it is necessary to add methods __enter__ and __exit__:
+In order for the class to support work in context manager, it is necessary to
+add methods ``__enter__`` and ``__exit__``:
 
 .. code:: python
 
@@ -109,7 +111,7 @@ Example of class usage in context manager:
     R1#
     Метод __exit__
 
-Even if an exception occurs within block, __exit__ method is executed:
+Even if an exception occurs within block, ``__exit__`` method is executed:
 
 .. code:: python
 

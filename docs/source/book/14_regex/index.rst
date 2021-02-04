@@ -4,8 +4,8 @@
 
 .. _regex_index:
 
-14. Regular expression syntax
-============================
+14. Regular expression (regex) syntax
+=====================================
 
 .. toctree::
    :maxdepth: 1

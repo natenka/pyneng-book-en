@@ -1,7 +1,10 @@
 Module logging
 --------------
 
-Module logging - a module from the standard Python library that allows you to configure logging from the script. Module logging has a lot of features and a lot of configuration options. Only basic configuration option is discussed in this section.
+Module logging - a module from the standard Python library that allows you to
+configure logging from the script. Module logging has a lot of features and
+a lot of configuration options. Only basic configuration option is discussed
+in this section.
 
 The easiest way to configure logging in script, use logging.basicConfig:
 
@@ -22,7 +25,7 @@ In this variant, the settings are:
 
 Now, to output a log message in this script, you should write  ``logging.info("test")``.
 
-Example of script with logging settings: (logging_basics.py file)
+Example of script with logging settings (logging_basics.py file):
 
 .. code:: python
 
@@ -77,4 +80,6 @@ Result of script execution:
 
 .. note::
 
-    There are still many features in logging module. This section only uses basic configuration option. For more information on features of the module, see `Logging HOWTO <https://docs.python.org/3/howto/logging.html#logging-basic-tutorial>`__
+    There are still many features in logging module. This section only uses
+    basic configuration option. For more information on features of the module,
+    see `Logging HOWTO <https://docs.python.org/3/howto/logging.html#logging-basic-tutorial>`__

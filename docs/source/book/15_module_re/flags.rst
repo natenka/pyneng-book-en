@@ -1,24 +1,26 @@
 Flags
 -----
 
-When using functions or creating a compiled regular expression you can specify additional flags that affect the behavior of regular expression.
+When using functions or creating a compiled regex you can specify additional
+flags that affect the behavior of regex.
 
 The ``re`` module supports flags (in parentheses - a short version of flag):
 
-* re.ASCII (re.A) 
-* re.IGNORECASE (re.I) 
-* re.MULTILINE (re.M) 
-* re.DOTALL (re.S) 
-* re.VERBOSE (re.X) 
-* re.LOCALE (re.L) 
-* re.DEBUG
+* ``re.ASCII`` (``re.A``)
+* ``re.IGNORECASE`` (``re.I``)
+* ``re.MULTILINE`` (``re.M``)
+* ``re.DOTALL`` (``re.S``)
+* ``re.VERBOSE`` (``re.X``)
+* ``re.LOCALE`` (``re.L``)
+* ``re.DEBUG``
 
-In this subsection the re.DOTALL flag is considered. Information about other flags is available in `documentation <https://docs.python.org/3/library/re.html#re.A>`__.
+In this subsection the ``re.DOTALL`` flag is covered. Information about other flags
+is available in `documentation <https://docs.python.org/3/library/re.html#re.A>`__.
 
 re.DOTALL
 ^^^^^^^^^
 
-Regular expressions can also be used for multiline string.
+Regex can also be used for multiline string.
 
 For example, from *sh_cdp* string you need to get a device name, platform and IOS:
 
@@ -46,7 +48,8 @@ For example, from *sh_cdp* string you need to get a device name, platform and IO
        ...:   IP address: 10.1.1.2
        ...: '''
 
-Of course, in this case it is possible to divide a string into parts and work with each string separately, but you can get necessary data without splitting.
+Of course, in this case it is possible to divide a string into parts and work
+with each string separately, but you can get necessary data without splitting.
 
 In this expression, strings with required data are described:
 
@@ -54,7 +57,8 @@ In this expression, strings with required data are described:
 
     In [3]: regex = r'Device ID: (\S+).+Platform: \w+ (\S+),.+Cisco IOS Software.+ Version (\S+),'
 
-In this case, there will be no match because by default a dot means any character other than a new line character:
+In this case, there will be no match because by default a dot means any
+character other than a new line character:
 
 .. code:: python
 
@@ -62,7 +66,7 @@ In this case, there will be no match because by default a dot means any characte
     In [4]: print(re.search(regex, sh_cdp))
     None
 
-You can change default behavior by using re.DOTALL flag:
+You can change default behavior by using ``re.DOTALL`` flag:
 
 .. code:: python
 
@@ -73,7 +77,7 @@ You can change default behavior by using re.DOTALL flag:
 
 Since new line character is now included, combination ``.+`` captures everything between data.
 
-Now try to use this regular expression to get information about all neighbors from sh_cdp_neighbors_sw1.txt file.
+Now try to use this regex to get information about all neighbors from sh_cdp_neighbors_sw1.txt file.
 
 ::
 
@@ -115,7 +119,7 @@ Now try to use this regular expression to get information about all neighbors fr
     Technical Support: http://www.cisco.com/techsupport
 
 
-Search for all regular expression matches:
+Search for all regex matches:
 
 .. code:: python
 
@@ -148,7 +152,7 @@ This is because there is a ``.+`` combination between desired parts of the outpu
 Without ``re.DOTALL`` flag, such an expression would capture everything before
 new line character, but with a flag it captures the longest possible piece of text
 because ``+`` is greedy.
-As a result, regular expression describes a string from the first Device ID to the
+As a result, regex describes a string from the first Device ID to the
 last place where ``Cisco IOS Software.+ Version`` match occurs.
 
 This situation occurs very often when using ``re.DOTALL`` and in order to

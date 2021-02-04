@@ -1,7 +1,8 @@
 Class variables
 ~~~~~~~~~~~~~~~~~
 
-In addition to instance variables, there are also class variables. They are created when variables are specified within class itself, not method:
+In addition to instance variables, there are also class variables. They are
+created when variables are specified within class itself, not method:
 
 .. code:: python
 
@@ -29,7 +30,10 @@ Now not only class but every instance of the class will have ``var_a`` variable:
     In [33]: a2.var_a
     Out[33]: 5
 
-An important point when using class variables is that within method they should still be called  through name of the class (or **self**, but through name of the class better because then it is clear that it is a class variable). First, variant without class name:
+An important point when using class variables is that within method they should
+still be called  through name of the class (or ``self``, but through name of the
+class better because then it is clear that it is a class variable). First,
+version without class name:
 
 .. code:: python
 

@@ -3,8 +3,8 @@ Unicode in Python 3
 
 Python 3 has:
 
-* strings  - an immutable sequence of Unicode characters. Type *string* (str) is used to store these characters
-* bytes  - an immutable sequence of bytes. Type *bytes* is used for storage
+* strings - an immutable sequence of Unicode characters. Type string (str) is used to store these characters
+* bytes - an immutable sequence of bytes. Type bytes is used for storage
 
 Strings
 ~~~~~~
@@ -78,7 +78,8 @@ Bytes
 
 Bytes are an immutable sequence of bytes.
 
-Bytes are denoted in the same way as strings but with addition of  letter "b" before string:
+Bytes are denoted in the same way as strings but with addition of letter ``b``
+before string:
 
 .. code:: python
 
@@ -94,7 +95,9 @@ Bytes are denoted in the same way as strings but with addition of  letter "b" be
     In [37]: len(b1)
     Out[37]: 4
 
-In Python, bytes that correspond to ASCII symbols are displayed as these symbols, not as their corresponding bytes. This may be a bit confusing but it is always possible to recognize *bytes* type by letter **b**:
+In Python, bytes that correspond to ASCII symbols are displayed as these
+symbols, not as their corresponding bytes. This may be a bit confusing
+but it is always possible to recognize bytes type by letter ``b``:
 
 .. code:: python
 
@@ -114,7 +117,8 @@ In Python, bytes that correspond to ASCII symbols are displayed as these symbols
     In [43]: bytes2
     Out[43]: b'hello'
 
-If you try to write not an ASCII character in a byte literal, an error will occur:
+If you try to write not an ASCII character in a byte literal,
+an error will occur:
 
 .. code:: python
 

@@ -4,9 +4,9 @@ Control of whitespace symbols
 trim_blocks, lstrip_blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Parameter ``trim_blocks`` removes the first empty line after construction block if its value is True (default False).
+Parameter ``trim_blocks`` removes the first empty line after block if its value is True (default False).
 
-Effect of using the flag is considered by template example templates/env_flags.txt:
+Effect of using the flag is showed on example templates/env_flags.txt:
 
 ::
 

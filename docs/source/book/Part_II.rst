@@ -1,8 +1,8 @@
 II. Code reuse
 ################################
 
-When writing code, some of the actions are often repeated. It can be a small
-block of 3-5 lines, or it can be a fairly large sequence of actions.
+When writing code, some of the steps are often repeated. It can be a small
+block of 3-5 lines, or it can be a fairly large sequence of steps.
 Copying code is a bad idea. Because if you have to update one of copies later, you have to update others.
 
 Instead, you create a special code block with name - function. And every

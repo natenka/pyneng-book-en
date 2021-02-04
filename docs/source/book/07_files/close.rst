@@ -3,10 +3,10 @@ File closing
 
 .. note::
     In real life, the most common way to close files is use of ``with``
-    construction. It’s much more convenient way than to close file explicitly.
+    statement. It's much more convenient way than to close file explicitly.
     But since you can also find ``close`` method in life, this section discusses how to use it.
     
-After you finish working with file you have to close it. In some cases Python can close file itself. But it’s best not to count on it and close file explicitly.
+After you finish working with file you have to close it. In some cases Python can close file itself. But it's best not to count on it and close file explicitly.
 
 ``close``
 ^^^^^^^^^^^
@@ -54,7 +54,7 @@ Now close file and check ``closed`` again:
     In [5]: f.closed
     Out[5]: True
 
-If you try to read file an exception occurs:
+If you try to read file an exception will be raised:
 
 .. code:: python
 

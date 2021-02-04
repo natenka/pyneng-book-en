@@ -1,11 +1,16 @@
 TextFSM CLI Table
 -----------------
 
-With TextFSM it is possible to process output of commands and obtain a structured result. However, it is still necessary to manually specify which template will handle show commands each time TextFSM is used.
+With TextFSM it is possible to process output of commands and get a structured
+result. However, it is still necessary to manually specify which template will
+handle show commands each time TextFSM is used.
 
-It would be much more convenient to have some mapping between command and template so that you can write a common script that performs connections to devices, sends commands, chooses template and parse output according to template.
+It would be much more convenient to have some mapping between command and
+template so that you can write a common script that performs connections to
+devices, sends commands, chooses template and parse output according to template.
 
-TextFSM has such feature. To use it, you should create a file that describes mapping between commands and templates. In TextFSM it is called **index**.
+TextFSM has such feature. To use it, you should create a file that describes
+mapping between commands and templates. In TextFSM it is called ``index``.
 
 This file should be in a directory with templates and should have this format:
 
@@ -35,7 +40,8 @@ Example of index file:
 
 Note how commands are written: ``sh[[ow]] ip int[[erface]] br[[ief]]``. 
 Record will be converted to ``sh((ow)?)? ip int((erface)?)? br((ief)?)?``.
-This means that TextFSM will be able to determine which template to use even if command is not fully written. For example, such command variants will work:
+This means that TextFSM will be able to determine which template to use even
+if command is not fully written. For example, such command variants will work:
 
 * sh ip int br 
 * show ip inter bri
@@ -43,9 +49,8 @@ This means that TextFSM will be able to determine which template to use even if 
 How to use CLI table
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Let’s see how to use *clitable* class and index file.
-
-*templates* directory contains such templates and index file:
+Let's see how to use ``clitable`` class and index file.
+``templates`` directory contains such templates and index file:
 
 ::
 
@@ -55,9 +60,10 @@ Let’s see how to use *clitable* class and index file.
     sh_ip_route_ospf.template
     index
 
-First we try to work with CLI Table in ipython to see what features this class has and then we look at the final script.
+First we try to work with CLI Table in ipython to see what features
+this class has and then we look at the final script.
 
-First, we import *clitable* class:
+First, we import ``clitable`` class:
 
 .. code:: python
 
@@ -65,14 +71,16 @@ First, we import *clitable* class:
 
 
 .. warning::
-    There are different ways to import *clitable* depending on textfsm version:
+    There are different ways to import ``clitable`` depending on textfsm version:
 
     * ``import clitable`` for version <= 0.4.1
     * ``from textfsm import clitable`` for version >= 1.1.0
 
     See textfsm version: ``pip show textfsm``.
 
-We will check *clitable* on the last example from previous section - *show ip route ospf* command. Read the output that is stored in output/sh_ip_route_ospf.txt file to string:
+We will check ``clitable`` on the last example from previous
+section - "show ip route ospf" command. Read the output that is stored
+in output/sh_ip_route_ospf.txt file to string:
 
 .. code:: python
 
@@ -81,13 +89,19 @@ We will check *clitable* on the last example from previous section - *show ip ro
        ...:
 
 
-First, you should initialize a class by giving it name of file in which mapping between templates and commands is stored, and specify name of directory in which templates are stored:
+First, you should initialize a class by giving it name of file in which mapping
+between templates and commands is stored, and specify name of directory in
+which templates are stored:
 
 .. code:: python
 
     In [3]: cli_table = clitable.CliTable('index', 'templates')
 
-Specify which command should be passed and specify additional attributes that will help to identify template. To do this, you should create a dictionary in which keys are names of columns that are defined in index file. In this case, it is not necessary to specify vendor name, since *sh ip route ospf* command corresponds to only one template.
+Specify which command should be passed and specify additional attributes that
+will help to identify template. To do this, you should create a dictionary in
+which keys are names of columns that are defined in index file. In this case,
+it is not necessary to specify vendor name, since "sh ip route ospf" command
+corresponds to only one template.
 
 .. code:: python
 
@@ -99,7 +113,7 @@ Command output and dictionary with parameters should be passed to ParseCmd metho
 
     In [5]: cli_table.ParseCmd(output_sh_ip_route_ospf, attributes)
 
-As a result we have processed output of *sh ip route ospf* command in cli_table object.
+As a result we have processed output of "sh ip route ospf" command in cli_table object.
 
 cli_table methods (to see all methods, call dir(cli_table)):
 
@@ -115,7 +129,7 @@ cli_table methods (to see all methods, call dir(cli_table)):
     cli_table.KeyValue         cli_table.extend           cli_table.row_index
     cli_table.LabelValueTable  cli_table.header           cli_table.separator
 
-For example, if you call ``print cli_table`` you get this:
+For example, if you call ``print(cli_table)`` you get this:
 
 .. code:: python
 
@@ -144,7 +158,8 @@ FormattedTable method produces a table output:
 
 This can be useful for displaying information.
 
-To get a structured output from cli_table object, such as a list of lists, you have to refer to object in this way:
+To get a structured output from cli_table object, such as a list of lists, you
+have to refer to object in this way:
 
 .. code:: python
 
@@ -194,7 +209,8 @@ Assemble everything into one script (textfsm_clitable.py file):
     for row in data_rows:
         print(row)
 
-In exercises to this section there will be a task to combine described procedure into a function and task to obtain a list of dictionaries.
+In exercises to this section there will be a task to combine described
+procedure into a function and task to get a list of dictionaries.
 
 The output will be:
 
@@ -228,4 +244,5 @@ The output will be:
     ['10.4.4.4', '/32', '110', '21', ['10.0.13.3', '10.0.12.2', '10.0.14.4']]
     ['10.5.35.0', '/24', '110', '20', ['10.0.13.3']]
 
-Now with TextFSM it is possible not only to get a structured output, but also to automatically determine which template to use by command and optional arguments.
+Now with TextFSM it is possible not only to get a structured output, but also
+to automatically determine which template to use by command and optional arguments.

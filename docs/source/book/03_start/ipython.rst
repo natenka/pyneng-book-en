@@ -1,23 +1,30 @@
-Python interpreter. Ipython
+Python interpreter. IPython
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Interpreter makes it possible to receive an instant response to executed actions. You can say that interpreter works as CLI (Command Line Interface) of network devices: each command will be executed immediately after pressing Enter. However, there is an exception: more complex objects (such as cycles or functions) are executed only after twice pressing Enter.  
+Interpreter makes it possible to receive an instant response to executed actions.
+You can say that interpreter works as CLI (Command Line Interface) of network
+devices: each command will be executed immediately after pressing Enter.
+However, there is an exception: more complex objects (such as cycles or
+functions) are executed only after twice pressing Enter.  
 
-In previous section, a standard interpreter was called to verify Python installation. There is also an improved interpreter `IPython <http://ipython.readthedocs.io/en/stable/index.html>`__.
-Ipython allows much more than standard interpreter called by "python" command. Some examples (Ipython features are much broader):
+In previous section, a standard interpreter was called to verify Python
+installation. There is also an improved interpreter
+`IPython <http://ipython.readthedocs.io/en/stable/index.html>`__.
+IPython allows much more than standard interpreter called by "python" command.
+Some examples (IPython features are much broader):
 
 -  Autocomplete Tab commands or hints if there are more than one command variant
 -  More structured and understandable output of commands
 -  Automatic indentation in loops and other objects
 -  You can either walk through the command execution history or watch it with %history 'magic' command
 
-You can install Ipython using pip (installation will be done in a virtual environment if configured):
+You can install IPython using pip (installation will be done in a virtual environment if configured):
 
 ::
 
     pip install ipython
 
-After that, you can move to Ipython as follows:
+After that, you can move to IPython as follows:
 
 ::
 

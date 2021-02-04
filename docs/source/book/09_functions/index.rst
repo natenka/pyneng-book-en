@@ -32,7 +32,7 @@ For example, when working with configuration files each time it is necessary to 
 
 Beyond that, actions can vary depending on what needs to be done.
 
-Often there’s a piece of code that repeats itself. Of course, you can copy
+Often there's a piece of code that repeats itself. Of course, you can copy
 it from one script to another. But this is very inconvenient because when
 you change code you have to update it in all files in which it is copied.
 

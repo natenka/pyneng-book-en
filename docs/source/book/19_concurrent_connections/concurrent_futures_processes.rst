@@ -1,13 +1,15 @@
 Using ProcessPoolExecutor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Interface of concurrent.futures module is very convenient because migration from threads to processes is done by replacing  ThreadPoolExecutor with ProcessPoolExecutor, 
+Interface of concurrent.futures module is very convenient because migration
+from threads to processes is done by replacing ThreadPoolExecutor with ProcessPoolExecutor, 
 so all examples below are completely similar to examples with threads.
 
 Method map
 ^^^^^^^^^
 
-To use processes instead of threads, it is sufficient to change  ThreadPoolExecutor to ProcessPoolExecutor:
+To use processes instead of threads, it is sufficient to change
+ThreadPoolExecutor to ProcessPoolExecutor:
 
 
 .. code:: python

@@ -13,7 +13,7 @@ This section covers program flow control:
 
 * branching with ``if/elif/else``
 * repeating actions using for and while loops
-* error (exception) handling with ``try/except``
+* exception handling with ``try/except``
 
 
 .. toctree::

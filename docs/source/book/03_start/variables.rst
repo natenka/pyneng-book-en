@@ -40,7 +40,7 @@ Variables are references to memory area. This can be demonstrated by using ``id(
 In this example you can see that all three names refer to the same identifier, so it is the same object to which three references "a", "b" and "c" point. Concerning numbers Python has one feature that can be slightly misunderstood: numbers from -5 to 256 are pre-created and stored in an array (list). Therefore, when you create a number from this range you actually create a reference to number in generated array.
 
 .. note::
-    This feature is specific to implementation of Cpython which is discussed in book
+    This feature is specific to implementation of CPython which is discussed in book
 
 This can be verified as follows:
 

@@ -6,7 +6,7 @@ Unpacking arguments
 In Python the expressions ``*args`` and ``**kwargs`` allow for another
 task - **unpacking arguments**.
 
-So far we’ve called all functions manually. Hence, we passed on all relevant arguments.
+So far we've called all functions manually. Hence, we passed on all relevant arguments.
 
 In reality, it is usually necessary to transfer data to function
 programmatically. And often data comes in the form of a Python object.

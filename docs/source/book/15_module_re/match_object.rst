@@ -1,11 +1,11 @@
 Match object
 ------------
 
-In **re** module, several functions return Match object if a match is found:
+In ``re`` module, several functions return Match object if a match is found:
 
-* search 
-* match 
-* finditer - returns an iterator with Match objects
+* ``search``
+* ``match`` 
+* ``finditer`` - returns an iterator with Match objects
 
 This subsection covers methods of Match object.
 
@@ -20,12 +20,14 @@ Example of Match object:
     In [3]: match
     Out[3]: <_sre.SRE_Match object; span=(47, 124), match='Host f03a.b216.7ad7 in vlan 10 is flapping betwee>'
 
-The 3rd line output simply displays information about object. Therefore, it is not necessary to rely on what is displayed in match part as displayed line is cut by a fixed number of characters.
+The 3rd line output simply displays information about object. Therefore, it is
+not necessary to rely on what is displayed in match part as displayed line is cut
+by a fixed number of characters.
 
-group()
+``group``
 ^^^^^^^
 
-Method group() returns a substring that matches an expression or an expression in a group.
+Method ``group`` returns a substring that matches an expression or an expression in a group.
 
 If method is called without arguments, the whole substring is displayed:
 
@@ -57,7 +59,8 @@ Other numbers show only the contents of relevant group:
     In [9]: match.group(4)
     Out[9]: 'Gi0/15'
 
-If you call a group() method with a group number that is larger than number of existing groups, there is an error:
+If you call a ``group`` method with a group number that is larger than number
+of existing groups, there is an error:
 
 .. code:: python
 
@@ -69,7 +72,8 @@ If you call a group() method with a group number that is larger than number of e
 
     IndexError: no such group
 
-If you call a method with multiple group numbers, the result is a tuple with strings that correspond to matches:
+If you call a method with multiple group numbers, the result is a tuple with
+strings that correspond to matches:
 
 .. code:: python
 
@@ -87,7 +91,8 @@ Group may not get anything, then it will be matched with an empty string:
     In [14]: match.group(2)
     Out[14]: ''
 
-If group describes a part of template and there are more than one match, method displays the last match:
+If group describes a part of template and there are more than one match,
+method displays the last match:
 
 .. code:: python
 
@@ -103,7 +108,7 @@ and then there is a plus. The first and the second part of MAC
 address matched to expression in parentheses. But only the last expression is
 remembered and returned.
 
-If named groups are used in expression, group name can be passed to group() method and the corresponding substring can be obtained:
+If named groups are used in expression, group name can be passed to ``group`` method and the corresponding substring can be obtained:
 
 .. code:: python
 
@@ -132,10 +137,11 @@ Groups are also available via number:
     In [23]: match.group(4)
     Out[23]: 'Gi0/15'
 
-groups()
-^^^^^^^^
+``groups``
+^^^^^^^^^^
 
-Method group() returns a tuple with strings in which the elements are those substrings that fall into respective groups:
+Method ``group`` returns a tuple with strings in which the elements are those
+substrings that fall into respective groups:
 
 .. code:: python
 
@@ -151,7 +157,8 @@ Method group() returns a tuple with strings in which the elements are those subs
     In [26]: match.groups()
     Out[26]: ('f03a.b216.7ad7', '10', 'Gi0/5', 'Gi0/15')
 
-Method group() has an optional parameter  - default. It works when anything that comes into group is optional.
+Method ``group`` has an optional parameter - default. It returned when anything
+that comes into group is optional.
 
 For example, with this line the match will be in both the first group and the second:
 
@@ -164,7 +171,8 @@ For example, with this line the match will be in both the first group and the se
     In [28]: match.groups()
     Out[28]: ('100', 'aab1')
 
-If there is nothing in the line after space, nothing will get into the group. But the match will be because it is stated in regular expression that the group is optional:
+If there is nothing in the line after space, nothing will get into the group.
+But the match will be because it is stated in regex that the group is optional:
 
 .. code:: python
 
@@ -177,7 +185,8 @@ If there is nothing in the line after space, nothing will get into the group. Bu
 
 Accordingly, for the second group the value is None.
 
-If group() method is given a default value, it will be returned instead of None:
+If ``group`` method is given a default value, it will be returned
+instead of None:
 
 .. code:: python
 
@@ -191,10 +200,11 @@ If group() method is given a default value, it will be returned instead of None:
     In [36]: match.groups(default='No match')
     Out[36]: ('100', 'No match')
 
-groupdict()
-^^^^^^^^^^^
+``groupdict``
+^^^^^^^^^^^^^
 
-Method groupdict() returns a dictionary in which keys are group names and values are corresponding lines:
+Method ``groupdict`` returns a dictionary in which keys are group names and
+values are corresponding lines:
 
 .. code:: python
 
@@ -210,10 +220,11 @@ Method groupdict() returns a dictionary in which keys are group names and values
     In [39]: match.groupdict()
     Out[39]: {'int1': 'Gi0/5', 'int2': 'Gi0/15', 'mac': 'f03a.b216.7ad7', 'vlan': '10'}
 
-start(), end()
-^^^^^^^^^^^^^^
+``start``, ``end``
+^^^^^^^^^^^^^^^^^^
 
-start() and end() methods return indexes of the beginning and end of the match of regular expression.
+``start`` and ``end`` methods return indexes of the beginning and end of the match
+of regex.
 
 If methods are called without arguments, they return indexes for whole match:
 
@@ -232,7 +243,8 @@ If methods are called without arguments, they return indexes for whole match:
     In [45]: line[match.start():match.end()]
     Out[45]: '10     aab1.a1a1.a5d3    FastEthernet0/1'
 
-You can transfer number or name of the group to methods. Then they return indexes for this group:
+You can transfer number or name of the group to methods. Then they return
+indexes for this group:
 
 .. code:: python
 
@@ -264,12 +276,14 @@ Similarly for named groups:
     In [52]: match.end('mac')
     Out[52]: 66
 
-span()
-^^^^^^
+``span``
+^^^^^^^^
 
-Method span() returns a tuple with an index of the beginning and end of substring. It works in a similar way to start() and end() methods, but returns a pair of numbers.
+Method ``span`` returns a tuple with an index of the beginning and end of
+substring. It works in a similar way to ``start`` and ``end`` methods,
+but returns a pair of numbers.
 
-Without arguments span() returns indexes for whole match:
+Without arguments ``span`` returns indexes for whole match:
 
 .. code:: python
 

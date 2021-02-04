@@ -26,7 +26,7 @@ but only if they are in parentheses:
     In [6]: s
     Out[6]: 'TestString'
 
-This is very convenient to use in regular expressions:
+This is very convenient to use in regexs:
 
 .. code:: python
 
@@ -35,7 +35,7 @@ This is very convenient to use in regular expressions:
              '(up|down|administratively down) +'
              '(\w+)')
 
-This way, the regular expression can be split and made easier to understand. Plus you can add explanatory comments in strings.
+This way, the regex can be split and made easier to understand. Plus you can add explanatory comments in strings.
 
 .. code:: python
 

@@ -31,7 +31,7 @@ after the repetition symbols:
     Out[7]: '<text line>'
 
 But greed is often useful. For example, without turning off greed of the last
-plus, expression ``\d+\s+\S+`` describes such a line:
+plus, expression ``\d+\s+\S+`` describes line:
 
 .. code:: python
 

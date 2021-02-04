@@ -22,7 +22,7 @@ For example, here the repetition refers to letter 'a':
     In [2]: re.search('a+', line).group()
     Out[2]: 'aa'
 
-And in this expression, string ‘a1’ is repeated:
+And in this expression, string 'a1' is repeated:
 
 .. code:: python
 
@@ -86,7 +86,7 @@ If ``b`` occurs in line before ``baaa``, then ``b`` will match:
     In [12]: re.search('ba*', line).group()
     Out[12]: 'b'
 
-Suppose you write a regular expression that describes email addresses in two
+Suppose you write a regex that describes email addresses in two
 formats: user@example.com and user.test@example.com. That is, the left side
 of address can have either one word or two words separated by a dot.
 
@@ -112,7 +112,7 @@ But such an expression is not suitable for an email address with a dot:
     In [16]: re.search('\w+@\w+\.\w+', email2).group()
     Out[16]: 'test@gmail.com'
 
-Regular expression for email with a dot:
+Regex for email with a dot:
 
 .. code:: python
 
@@ -125,7 +125,7 @@ To describe both email, you have to specify that the dot is optional:
 
     '\w+\.*\w+@\w+\.\w+'
 
-This regular expression describes both options:
+This regex describes both options:
 
 .. code:: python
 
@@ -142,11 +142,11 @@ This regular expression describes both options:
 ``?``
 ~~~~~
 
-In the last example, regular expression indicates that the dot is optional,
+In the last example, regex indicates that the dot is optional,
 but at the same time determines that it can appear many times.
 
 In this situation, it is more logical to use a question mark. It denotes zero
-or one repetition of a preceding expression or symbol. Now regular expression
+or one repetition of a preceding expression or symbol. Now regex
 looks like ``\w+\.?\w+@\w+\.\w+``:
 
 .. code:: python
@@ -222,7 +222,7 @@ will have VLAN number:
 Expression ``\d{1,4}`` describes one to four digits.
 
 Note that the output of command from equipment does not have a VLAN with
-number 1. Regular expression got a number 1 from somewhere. Number 1 was
+number 1. Regex got a number 1 from somewhere. Number 1 was
 in the output from hostname in line ``sw1#sh mac address-table``.
 
 To correct this, it suffices to complete an expression and indicate that

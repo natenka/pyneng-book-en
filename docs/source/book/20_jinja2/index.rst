@@ -7,7 +7,8 @@
 20. Jinja2 configuration templates
 ============================
 
-Jinja2 is a template language used in Python. Jinja is not the only template language (template engine) for Python and not the only template language in general.
+Jinja2 is a template language used in Python. Jinja is not the only template
+language (template engine) for Python and not the only template language in general.
 
 Jinja2 is used to generate documents based on one or more templates.
 

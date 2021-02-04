@@ -1,9 +1,10 @@
 include
 -------
 
-**include** expression allows you to add one template to another.
+``Include`` expression allows you to add one template to another.
 
-Variables that are transmitted as data must contain all data for both the master template and the one that is added through **include**.
+Variables that are transmitted as data must contain all data for both the
+master template and the one that is added through ``include``.
 
 Template templates/vlans.txt:
 
@@ -37,7 +38,7 @@ Template templates/bgp.txt:
      neighbor {{ ebgp }} remote-as {{ bgp.ebgp_neighbors[ebgp] }}
     {% endfor %}
 
-Template templates/switch.txt uses created templates *ospf* and *vlans*:
+Template templates/switch.txt uses created templates ospf and vlans:
 
 ::
 
@@ -79,7 +80,8 @@ The result of script execution:
      network 10.0.2.0 0.0.0.255 area 2
      network 10.1.1.0 0.0.0.255 area 0
 
-The resulting configuration is as if lines from templates ospf.txt and vlans.txt were in switch.txt template.
+The resulting configuration is as if lines from templates ospf.txt and
+vlans.txt were in switch.txt template.
 
 Template templates/router.txt:
 
@@ -91,7 +93,8 @@ Template templates/router.txt:
 
     logging {{ log_server }}
 
-In this case, in addition to **include**, another line in template was added to show that **include** expressions can be mixed with normal template.
+In this case, in addition to ``include``, another line in template was added to
+show that ``include`` expressions can be mixed with normal template.
 
 Data file (data_files/router.yml):
 
@@ -136,4 +139,6 @@ The result of script execution will be:
 
     logging 10.1.1.1
 
-Thanks to **include**, template templates/ospf.txt is used both in template templates/switch.txt and in template templates/router.txt, instead of repeating the same thing twice.
+Thanks to ``include``, template templates/ospf.txt is used both in template
+templates/switch.txt and in template templates/router.txt, instead of
+repeating the same thing twice.

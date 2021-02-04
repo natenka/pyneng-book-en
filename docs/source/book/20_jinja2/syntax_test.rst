@@ -1,16 +1,17 @@
 Tests
 -----
 
-Besides filters, Jinja also supports tests. Tests allow variables to be tested for a certain condition.
+Besides filters, Jinja also supports tests. Tests allow variables to be tested
+for a certain condition.
 
-Jinja supports a large number of built-in tests. We will look at only a few of them. The rest of tests you can find in `documentation <http://jinja.pocoo.org/docs/dev/templates/#builtin-tests>`__.
+Jinja supports a large number of built-in tests. We will look at only a few of
+them. The rest of tests you can find in `documentation <http://jinja.pocoo.org/docs/dev/templates/#builtin-tests>`__.
 
-Tests, like filters, can be created by yourself.
 
 defined
 ~~~~~~~
 
-Test **defined** allows you to check if variable is present in the data dictionary.
+Test ``defined`` allows you to check if variable is present in the data dictionary.
 
 Template example templates/test_defined.txt:
 
@@ -26,7 +27,9 @@ Template example templates/test_defined.txt:
      network {{ networks.network }} area {{ networks.area }}
     {% endfor %}
 
-This example is more cumbersome than **default** filter option, but this test may be useful if depending on whether a variable is defined or not, different commands need to be executed.
+This example is more cumbersome than ``default`` filter option, but this test
+may be useful if depending on whether a variable is defined or not, different
+commands need to be executed.
 
 Data file (data_files/test_defined.yml):
 
@@ -54,9 +57,9 @@ The result of execution:
 iterable
 ~~~~~~~~
 
-Test **iterable** checks whether the object is an iterator.
-
-Due to these checks, it is possible to make branches in template which will take into account the type of variable.
+Test ``iterable`` checks whether the object is an iterator.
+Due to these checks, it is possible to make branches in template which will take
+into account the type of variable.
 
 Template templates/test_iterable.txt (indents made to make an idea of branches more clear):
 
@@ -102,7 +105,9 @@ Data file (data_files/test_iterable.yml):
         action: delete
         vlans: 10
 
-Note the last line: ``vlans: 10``. In this case, 10 is no longer in the list and **join** filter does not work. But, due to ``is iterable`` test (in this case the result will be false), in this case template goes into *else* branch.
+Note the last line: ``vlans: 10``. In this case, 10 is no longer in the list
+and ``join`` filter does not work. But, due to ``is iterable`` test (in this
+case the result will be false), in this case template goes into ``else`` branch.
 
 The result of execution:
 
@@ -117,5 +122,6 @@ The result of execution:
      switchport trunk allowed vlan remove 10
 
 
-Such indents appeared because the template uses indents but does not have *lstrip_blocks=True* installed (it removes spaces and tabs at the beginning of the line).
+Such indents appeared because the template uses indents but does not
+have ``lstrip_blocks=True`` installed (it removes spaces and tabs at the beginning of the line).
 
