@@ -4,7 +4,7 @@
 
 .. _iterator_generator_index:
 
-13. Iterators, iterable objects and generators
+13. Iterators, iterable and generators
 ===============================================
 
 This section discusses:

@@ -1,4 +1,4 @@
-V. Working with network equipment
+V. Working with network devices
 #################################
 
 In this part, the following topics are discussed:

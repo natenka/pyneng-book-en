@@ -4,10 +4,10 @@
 
 .. _textfsm_index:
 
-21. TextFSM output processing
+21. Parsing command output with TextFSM
 ===================================
 
-On equipment that does not support any software interface, the output of show commands is returned as a string. And although it’s partly structured, it’s still just a string. And it has to be processed in some way to get Python objects, like a dictionary or a list.
+On network devices that does not support any software interface, the output of show commands is returned as a string. And although it’s partly structured, it’s still just a string. And it has to be processed in some way to get Python objects, like a dictionary or a list.
 
 For example, it is possible to handle the output of a command line by line using regular expressions to obtain Python objects. But there is a more convenient option: TextFSM
 

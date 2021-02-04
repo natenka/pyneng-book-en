@@ -1,7 +1,7 @@
-IV. Data writing and transferring
+IV. Data writing and transmission
 ############################
 
-This part of the book covers data writing and transferring. Data can be, for example:
+This part of the book covers data writing and transmission. Data can be, for example:
 
 -  command output
 -  processed output of commands as dictionary, list or similar

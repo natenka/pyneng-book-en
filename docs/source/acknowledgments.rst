@@ -1,4 +1,4 @@
-Gratitude
+Acknowledgments
 -------------
 
 Thank you to all who expressed interest in the first announcement of the course - your interest confirmed that someone would need it.

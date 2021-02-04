@@ -4,15 +4,15 @@
 
 .. _ssh_telnet_index:
 
-18. Connection to equipment
+18. Connection to network devices
 ==============================
 
-This section discusses how to connect to equipment via:
+This section discusses how to connect to network devices via:
 
 * SSH 
 * Telnet
 
-Python has several modules that allow you to connect to equipment and execute commands:
+Python has several modules that allow you to connect to network devices and execute commands:
 
 * **pexpect** - an implementation of *expect* in Python
 
@@ -22,7 +22,7 @@ Python has several modules that allow you to connect to equipment and execute co
 
 * **telnetlib** - this module allows you connecting via Telnet
   
-  * netmiko version 1.0 also has Telnet support, so if netmiko supports the equipment you use, it is more convenient to use it
+  * netmiko version 1.0 also has Telnet support, so if netmiko supports the network devices you use, it is more convenient to use it
 
 * **paramiko** - his module allows you connecting via SSHv2
 
@@ -30,7 +30,7 @@ Python has several modules that allow you to connect to equipment and execute co
   
 * **netmiko** - module that simplifies the use of paramiko for network devices 
 
-  * netmiko is a "wrapper" which is oriented to work with network equipment
+  * netmiko is a "wrapper" which is oriented to work with network devices
 
 This section covers all four modules and describes how to connect to several
 devices in parallel. Three routers are used in section examples. There are no
