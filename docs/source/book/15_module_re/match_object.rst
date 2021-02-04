@@ -7,7 +7,7 @@ In **re** module, several functions return Match object if a match is found:
 * match 
 * finditer - returns an iterator with Match objects
 
-This subsection deals with methods of Match object.
+This subsection covers methods of Match object.
 
 Example of Match object:
 

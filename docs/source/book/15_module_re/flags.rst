@@ -54,7 +54,7 @@ In this expression, strings with required data are described:
 
     In [3]: regex = r'Device ID: (\S+).+Platform: \w+ (\S+),.+Cisco IOS Software.+ Version (\S+),'
 
-In this case, there will be no match because by default a dot means any character other than a line feed character:
+In this case, there will be no match because by default a dot means any character other than a new line character:
 
 .. code:: python
 
@@ -71,7 +71,7 @@ You can change default behavior by using re.DOTALL flag:
     In [6]: match.groups()
     Out[6]: ('SW2', 'WS-C2960-8TC-L', '12.2(55)SE9')
 
-Since line feed character is now included, combination ``.+`` captures everything between data.
+Since new line character is now included, combination ``.+`` captures everything between data.
 
 Now try to use this regular expression to get information about all neighbors from sh_cdp_neighbors_sw1.txt file.
 
@@ -145,10 +145,14 @@ A short output to ease understanding of result:
     R2               Gi 1/0/21         177              R     C2911     Gi 0/0
 
 This is because there is a ``.+`` combination between desired parts of the output.
-Without ``re.DOTALL`` flag, such an expression would capture everything before line feed character, but with a flag it captures the longest possible piece of text because ``+`` is greedy.
-As a result, regular expression describes a string from the first Device ID to the last place where ``Cisco IOS Software.+ Version`` meets.
+Without ``re.DOTALL`` flag, such an expression would capture everything before
+new line character, but with a flag it captures the longest possible piece of text
+because ``+`` is greedy.
+As a result, regular expression describes a string from the first Device ID to the
+last place where ``Cisco IOS Software.+ Version`` match occurs.
 
-This situation occurs very often when using ``re.DOTALL`` and in order to correct it remember to disable greedy behavior:
+This situation occurs very often when using ``re.DOTALL`` and in order to
+correct it remember to disable greedy behavior:
 
 .. code:: python
 

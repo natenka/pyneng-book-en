@@ -42,7 +42,8 @@ Pay attention to how lines of the file are read:
 
 When file needs to be run line by line, it is best to use this option.
 
-In previous output there were extra empty lines between lines of the file because ``print`` adds another line feed character.
+In previous output there were extra empty lines between lines of the file
+because ``print`` adds another new line character.
 
 To get rid of this you can use ``rstrip`` method:
 

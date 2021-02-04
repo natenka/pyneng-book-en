@@ -1,7 +1,7 @@
 Special symbols
 -------------------
 
-*  ``.`` - any character except line feed character
+*  ``.`` - any character except new line character
 *  ``^`` - beginning of line
 *  ``$`` - end of line
 *  ``[abc]`` - any symbol in square brackets

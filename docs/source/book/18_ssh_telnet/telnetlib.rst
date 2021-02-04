@@ -260,8 +260,9 @@ File 2_telnetlib.py:
             result = send_show_command(ip, "cisco", "cisco", "cisco", commands)
             pprint(result, width=120)
 
-Since bytes need to be passed to write() method and line feed should be added each time,
-a small function to_bytes() is created that does the conversion to bytes and adds a line feed.
+Since bytes need to be passed to ``write`` method and new line character should
+be added each time, a small function ``to_bytes`` is created that does the
+conversion to bytes and adds a new line.
 
 Script execution:
 

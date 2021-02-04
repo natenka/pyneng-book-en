@@ -117,7 +117,9 @@ Replacing a sequence of characters in a string with another sequence
 Method strip
 ^^^^^^^^^^^
 
-Often when a file is processed, the file is opened line by line. But at the end of each line, there are usually some special characters (and may be at the beginning). For example, line feed character.
+Often when a file is processed, the file is opened line by line. But at the end
+of each line, there are usually some special characters (and may be at the beginning).
+For example, new line character.
 
 To get rid of them, it is very convenient to use method ``strip()``:
 
@@ -165,7 +167,7 @@ Method ``split()`` split() splits the string using a symbol (or symbols) as sepa
 
 In example above, ``string1.split()`` splits the string by spaces and returns a list of strings. The list is saved to ``commands`` variable.
 
-By default, separator is a space symbol (spaces, tabs, line feed), but you can
+By default, separator is a space symbol (spaces, tabs, new line), but you can
 specify any separator in parentheses:
 
 .. code:: python

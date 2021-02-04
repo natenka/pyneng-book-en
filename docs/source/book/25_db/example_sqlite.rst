@@ -273,7 +273,8 @@ If both DB and data are exist:
     Error occurred:  UNIQUE constraint failed: dhcp.mac
     Error occurred:  UNIQUE constraint failed: dhcp.mac
 
-Now we make a separate script that deals with sending queries to database and displaying results. It should:
+Now we make a separate script that sends queries to database and
+displays results. It should:
 
 * expect parameters from user:
 

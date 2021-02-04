@@ -108,7 +108,8 @@ Another useful method is ``readlines``. It reads file lines to the list:
      'ip ssh version 2\n',
      '!\n']
 
-If you want to get lines of a file but without a line feed character at the end, you can use ``split`` method and specify symbol ``\n`` as a separator:
+If you want to get lines of a file but without a new line character at the end,
+you can use ``split`` method and specify symbol ``\n`` as a separator:
 
 ::
 

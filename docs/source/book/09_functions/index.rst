@@ -27,7 +27,7 @@ For example, when working with configuration files each time it is necessary to 
 * file opening
 * deletion (or skipping) of lines starting with exclamation mark (for Cisco)
 * deleting (or skipping) empty lines
-* deleting line feed characters at the end of lines
+* deleting new line characters at the end of lines
 * converting the result to a list
 
 Beyond that, actions can vary depending on what needs to be done.

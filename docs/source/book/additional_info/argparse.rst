@@ -11,7 +11,7 @@ argparse
 
 ``argparse`` is not the only module for handling command line arguments. And not even the only one in standard library.
 
-This book deals only with ``argparse``, but in addition it is worth looking at modules that are not part of standard Python library. For example, `click <https://click.palletsprojects.com/>`__.
+This book covers only ``argparse``, but in addition it is worth looking at modules that are not part of standard Python library. For example, `click <https://click.palletsprojects.com/>`__.
 
 .. note::
     `A good article <https://realpython.com/blog/python/comparing-python-command-line-parsing-libraries-argparse-docopt-click/>`__,

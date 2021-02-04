@@ -7,7 +7,7 @@ In addition, by use of groups you can get only a certain portion
 of string that has been described by expression.
 
 For example, from a log file you should select strings in which
-"%SW_MATM-4-MACFLAP_NOTIF" meets and then from each such string get
+"%SW_MATM-4-MACFLAP_NOTIF" match occur and then from each such string get
 MAC address, VLAN and interfaces. In this case, regular expression
 has to describe a string and all parts of string to be remembered
 are placed in parentheses.

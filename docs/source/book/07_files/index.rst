@@ -30,7 +30,7 @@ When working with network equipment (and not only), files can be:
   
   * section  `Modules <../11_modules/>`__ discusses how to work with modules (other Python scripts)
 
-This section deals with simple text files. For example, Cisco configuration file.
+This section covers simple text files. For example, Cisco configuration file.
 
 There are several aspects to working with files:
 
@@ -38,7 +38,7 @@ There are several aspects to working with files:
 * reading
 * writing
 
-This section only deals with the minimum required for working with files. More in 
+This section covers only the minimum required for working with files. More in 
 `Python documentation <https://docs.python.org/3/library/stdtypes.html#bltin-file-objects>`__.
 
 .. toctree::

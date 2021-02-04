@@ -8,11 +8,11 @@ In Jinja2 templates you can use :
 * variables 
 * conditions  (if/else)
 * loops (for) 
-* ilters - special built-in methods that allow to convert variables
-* tests - are used to check whether a variable meets a condition
+* filters - special built-in methods that allow to convert variables
+* tests - are used to check whether a variable matches a condition
 
 In addition, Jinja supports inheritance between templates and also allows adding the contents of one template to another.
-This section deals only with basis of these possibilities. More information about Jinja2 templates can be found in `documentation <http://jinja.pocoo.org/docs/dev/templates/>`__.
+This section covers only few possibilities. More information about Jinja2 templates can be found in `documentation <http://jinja.pocoo.org/docs/dev/templates/>`__.
 
 .. note::
 

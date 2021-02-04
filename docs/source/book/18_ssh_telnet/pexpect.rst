@@ -66,7 +66,7 @@ Now you can send password using *sendline* command:
     In [9]: ssh.sendline('cisco')
     Out[9]: 6
 
-Command *sendline* sends a string, automatically adds a line feed character to it based on the value of os.linesep and then returns a number indicating how many bytes were written.
+Command *sendline* sends a string, automatically adds a new line character to it based on the value of os.linesep and then returns a number indicating how many bytes were written.
 
 .. note::
 
@@ -98,7 +98,8 @@ Now we can send a command:
     In [15]: ssh.sendline('sh ip int br')
     Out[15]: 13
 
-After sending the command, pexpect must be pointed till which moment it should read the output. We specify that it should read untill #:
+After sending the command, pexpect must be told until what point to read the output.
+We specify that it should read untill ``#``:
 
 .. code:: python
 
@@ -405,8 +406,8 @@ reading is performed in a loop ``while True``. Loop is interrupted if prompt is 
 or no prompt appears within 10 seconds or ``--More--``.
 
 If ``--More--`` is met, pages are not over yet and you have to scroll through the next one.
-In Cisco, you need to press space bar to do this (without line feed). Therefore, send() method is used here,
-not sendline - sendline automatically adds a line feed.
+In Cisco, you need to press space bar to do this (without new line). Therefore, send() method is used here,
+not sendline - sendline automatically adds a new line character.
 
 This string ``page = re.sub(" +\x08+ +\x08+", "\n", page)`` removes backspace symbols which are around ``--More--`` so they don't end up in the final output.
 

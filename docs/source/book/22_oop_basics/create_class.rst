@@ -3,7 +3,10 @@ Class creation
 
 .. note::
 
-    Note that the basis is explained here given that the reader has no experience with OOP. Some examples are not very correct from Python’s ideology point of view, but they help to better understand how it works. At the end, an explanation is given of how this should be done in proper way.
+    Note that the basis is explained here given that the reader has no experience
+    with OOP. Some examples are not very correct from Python’s ideology point of view,
+    but they help to better understand how it works. At the end, an explanation is
+    given of how this should be done in proper way.
 
 Keyword ``class`` is used in python to create classes. The easiest class you can create in Python:
 

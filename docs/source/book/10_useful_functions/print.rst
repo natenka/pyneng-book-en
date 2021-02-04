@@ -80,7 +80,7 @@ end
 ~~~
 
 Parameter ``end`` controls which value will be displayed after all elements are printed. 
-By default, line feed character is used:
+By default, new line character is used:
 
 .. code:: python
 
@@ -154,7 +154,7 @@ Now, a similar script but the numbers will appear in one line (print_nums_onelin
 
 Try running a function. Numbers does not appear one per second but all appear after 10 seconds.
 
-This is because when output is displayed on standard output, ``flush`` is performed after line feed character.
+This is because when output is displayed on standard output, ``flush`` is performed after new line character.
 
 In order to make script work properly ``flush`` should be set to True (print_nums_oneline_fixed.py file):
 

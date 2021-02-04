@@ -32,14 +32,16 @@ Python has several modules that allow you to connect to equipment and execute co
 
   * netmiko is a "wrapper" which is oriented to work with network equipment
 
-This section deals with all four modules and describes how to connect to several devices in parallel. Three routers are used in section examples. There are no requirements for them, only configured SSH.
+This section covers all four modules and describes how to connect to several
+devices in parallel. Three routers are used in section examples. There are no
+requirements for them, only configured SSHv2 and Telnet.
 
 Parameters used in these section:
 
 * user: cisco 
 * password: cisco 
 * password for enable mode: cisco 
-* SSH version 2 
+* SSH version 2, Telnet
 * IP addresses: 192.168.100.1, 192.168.100.2, 192.168.100.3
 
 .. toctree::

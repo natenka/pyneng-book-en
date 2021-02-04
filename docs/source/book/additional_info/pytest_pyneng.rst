@@ -68,7 +68,7 @@ Test example tests/test_task_9_1.py:
         assert type(return_value) == list, "Function has to return a list"
         assert return_value == correct_return_value, "Function return wrong value"
 
-Note correct_return_value variable - this variable contains the resulting list that should return generate_access_config function. Therefore for example, if question has arisen of whether to add spaces before commands or a line feed at the end, you can look at what the result requires. Also check your output against the output in variable_return_value.
+Note correct_return_value variable - this variable contains the resulting list that should return generate_access_config function. Therefore for example, if question has arisen of whether to add spaces before commands or a new line at the end, you can look at what the result requires. Also check your output against the output in variable_return_value.
 
 How to run tests for tasks verification
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

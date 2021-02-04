@@ -41,5 +41,5 @@ Expression ``\w\w\w\w\.\w\w\w\w\.\w\w\w\w`` describes 12 letters or digits that
 are divided into three groups of four characters and separated by dot. 
 
 Symbol groups are very convenient, but for now it is necessary to manually
-specify a character repetition. The following subsection deals with repetition
+specify a character repetition. The following subsection covers repetition
 symbols which will simplify description of expressions.

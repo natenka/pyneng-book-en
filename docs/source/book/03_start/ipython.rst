@@ -49,7 +49,7 @@ In IPython, input and output are marked:
 -  Out - result that command returns (if any)
 -  Numbers after In or Out are sequential numbers of executed commands in current IPython session
 
-Example of string output by function print():
+Example of string output by function ``print``:
 
 .. code:: python
 
@@ -126,10 +126,10 @@ The second option is:
     If chars is given and not None, remove characters in chars instead.
     Type:      method_descriptor
 
-print()
+``print``
 ^^^^^^^
 
-Function ``print()`` displays information on a standard output (current
+Function ````print```` displays information on a standard output (current
 terminal screen). If you want to get a string, you should place it in
 quotes(double or single). If you want to get, for example, a computation result
 or just a number, quotes are not needed:
@@ -152,7 +152,9 @@ If you want to get several values in a row through a space, you have to enumerat
     In [9]: print('one', 'two', 'three')
     one two three
 
-By default, at the end of each expression passed to print(), there will be a line feed. If it is necessary that after the output of each expression there would be no line feed, an additional "end" argument should be specified as the last expression in print().
+By default, at the end of each expression passed to ``print``, there will be a
+new line character. If it is necessary that after the output of each expression there would
+be no new line, an additional "end" argument should be specified as the last expression in ``print``.
 
 .. seealso:: Additional parameters of print function :ref:`print`
 
