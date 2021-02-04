@@ -3,11 +3,13 @@ Iterators
 
 Iterator is an object that returns its elements one at a time.
 
-From Python point of view, it is any object that has ``__next__`` method. . This method returns the next item if any, or returns *StopIteration* exception when items are finished.
-
+From Python point of view, it is any object that has ``__next__`` method.
+This method returns the next item if any, or returns ``StopIteration``
+exception when items are finished.
 In addition, iterator remembers which object it stopped at in the last iteration.
 
-In Python, each iterator has ``__iter__`` - method - that is, every iterator is an iterable object. This method simply returns iterator itself.
+In Python, each iterator has ``__iter__`` method - that is, every iterator
+is an iterable. This method simply returns iterator itself.
 
 An example of creating an iterator from a list:
 
@@ -17,7 +19,7 @@ An example of creating an iterator from a list:
 
     In [4]: i = iter(numbers)
 
-Now you can use next() function that calls ``__next__`` method to take the next element:
+Now you can use ``next`` function that calls ``__next__`` method to take the next element:
 
 .. code:: python
 
@@ -38,9 +40,10 @@ Now you can use next() function that calls ``__next__`` method to take the next 
 
     StopIteration:
 
-After elements are finished, *StopIteration* exception is returned.
+After elements are finished, ``StopIteration`` exception is raised.
 
-To make iterator to return elements again, it has to be re-created.
+.. note::
+    To make iterator to return elements again, it has to be re-created.
 
 Similar actions are performed when loop **for** processes a list:
 
@@ -53,16 +56,18 @@ Similar actions are performed when loop **for** processes a list:
     2
     3
 
-When we search list elements, iter() function is first applied to the list to create an iterator, and then ``__next__`` method is called until *StopIteration* exception occurs.
+When we iterate over the list items, the ``iter`` function is first applied
+to the list to create the iterator, and then its ``__next__`` method is
+called until a ``StopIteration`` exception is raised.
 
-Iterators are useful because they give elements one at a time. For example, when working with a file, it is useful that memory will not contain the whole file, but only one line of a file.
+Iterators are useful because they give elements one at a time. For example,
+when working with a file, it is useful that memory will not contain the
+whole file, but only one line of a file.
 
 File as iterator
 ~~~~~~~~~~~~~~~~~
 
-One of the most common examples of an iterator is a file.
-
-File r1.txt:
+One of the most common examples of an iterator is a file (r1.txt):
 
 ::
 
@@ -77,7 +82,7 @@ File r1.txt:
     ip ssh version 2
     !
 
-If we open file with normal open() function, we get object that represents the file:
+If you open a file with the ``open`` function, an object is returned that represents the file:
 
 .. code:: python
 
@@ -109,7 +114,10 @@ You can also go through lines using **for** loop:
     ip ssh version 2
     !
 
-When working with files, using a file as an iterator does not simply allow iterate file line by line - only one line is loaded into each iteration. This is very important when working with large files of thousands and hundreds of thousands of lines, such as log files.
+When working with files, using a file as an iterator does not simply allow
+iterate file line by line - only one line is loaded into each iteration.
+This is very important when working with large files of thousands and hundreds
+of thousands of lines, such as log files.
 
 Therefore, when working with files in Python, the most commonly used construction is:
 

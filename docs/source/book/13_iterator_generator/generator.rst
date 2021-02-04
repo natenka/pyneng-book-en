@@ -1,34 +1,45 @@
 Generator
 ---------------------
 
-Generators are a special class of functions that can easily create their own iterators. Unlike normal functions, generator does not just return value and finish work, but returns an iterator which gives elements one by one.
+Generators are a special class of functions that allows you to easily create
+your own iterators. Unlike regular functions, a generator doesn't just
+return a value and exit, but returns an iterator that returns the elements one at a time.
 
-Usual function ends if:
+.. note::
 
-* ``return`` expression is met
+    Generators are not covered in this book and are only mentioned here because
+    they are a fairly straightforward way to create iterators.
+    `More about generators <https://advpyneng.readthedocs.io/ru/latest/book/14_generators/further_reading.html>`__
+
+A normal function exits if:
+
+* execution reached the ``return`` statement
 * function code is ended (this works as ``return None`` expression) 
-* exception has arisen
+* an exception raised
 
-After function execution is finished the control is returned and program execution goes further. All arguments that were passed to function like local variables, all of this is lost. Only the result that returned a function remains.
+After function execution is finished the control is returned and program
+execution goes further. All arguments that were passed to function like
+local variables, all of this is lost. Only the result that returned
+a function remains.
 
-A function can return a list of elements, multiple objects or different results depending on arguments, but it always returns a single result.
+A function can return a list of elements, multiple objects or different results
+depending on arguments, but it always returns a single result.
 
-Generator generates values. Values are then returned on demand and after return of one value a function-generator is suspended until the next value is requested. Between requests, generator retains its state.
+Generator generates values. Values are then returned on demand and after return
+of one value a function-generator is suspended until the next value is
+requested. Between requests, generator retains its state.
 
 Python allows generators to be created in two ways:
 
 * generator expression
 * generator function
 
-The following is an example of a generator expression and a
-`separate note <https://natenka.github.io/python/fluent-python-generator/>`__ for generator functions
 
 generator expression
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Generator expression uses the same syntax as a list comprehensions, but returns iterator, not list.
-
-Generator expression looks exactly the same as a list comprehensions, but brackets are used:
+Generator expression uses the same syntax as a list comprehensions, but returns
+iterator, not list (notе the parentheses instead of the square brackets):
 
 .. code:: python
 
@@ -46,6 +57,6 @@ Generator expression looks exactly the same as a list comprehensions, but bracke
     In [5]: next(genexpr)
     Out[5]: 4
 
-Note that this is not a tuple comprehensions but a generator expression.
 
 It is useful when working with a large iterable object or infinite iterator.
+

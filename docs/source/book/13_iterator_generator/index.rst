@@ -9,7 +9,7 @@
 
 This section discusses:
 
--  iterable objects
+-  iterable
 -  iterators
 -  generator expressions
 
