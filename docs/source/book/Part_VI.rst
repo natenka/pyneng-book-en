@@ -1,13 +1,17 @@
 VI.  Basics of object-oriented programming
 #######################################################
 
-Object-oriented programming (OOP) - a programming methodology in which a program consists of objects that interact with each other. Objects are created on basis of class defined in code and typically combine data and actions that can be performed with data into a single whole.
+Object-oriented programming (OOP) - a programming methodology in which a program
+consists of objects that interact with each other. Objects are created on basis
+of class defined in code and typically combine data and actions that can be
+performed with data into a single whole.
 
-It is possible to write code without using OOP, but at a minimum learning of OOP basics will help to better understand what an object, class, method, variable are. These are things that are used in Python all the time. In addition, knowledge of OOP will be useful in reading someone else’s code. For example, it will be easier to understand netmiko code.
+It is possible to write code without using OOP, but at a minimum learning of OOP
+basics will help to better understand what an object, class, method, variable are.
+These are things that are used in Python all the time. In addition, knowledge of
+OOP will be useful in reading someone else’s code. For example, it will be easier
+to understand netmiko code.
 
-Although OOP is the basis of how everything works in Python, it is not necessary to use an object-oriented approach when writing code.
-
-    The point here is that in Python you don’t have to create classes to do something.
 
 .. toctree::
    :maxdepth: 1
