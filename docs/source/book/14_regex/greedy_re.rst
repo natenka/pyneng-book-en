@@ -1,22 +1,25 @@
-Greedy symbols
-----------------------------
+Greedy qualifiers
+-----------------
 
-By default, repetition symbols in regular expressions are greedy. This means that the resulting substring which corresponds to template will have the longest match.
+By default, ``*``, ``+``, and ``?`` qualifiers are all greedy - they match
+as much text as possible.
 
 An example of greedy behavior:
 
 .. code:: python
 
     In [1]: import re
+
     In [2]: line = '<text line> some text>'
+
     In [3]: match = re.search('<.*>', line)
 
     In [4]: match.group()
     Out[4]: '<text line> some text>'
 
-That is, in this case, expression captured maximum possible piece of symbols contained in <>.
-
-If greedy behavior need to be disabled, it is sufficient to add a question mark after repetition symbols:
+In this case, expression captured maximum possible piece of symbols contained
+in ``<>``. If greedy behavior need to be disabled, just add a question mark
+after the repetition symbols:
 
 .. code:: python
 
@@ -27,7 +30,8 @@ If greedy behavior need to be disabled, it is sufficient to add a question mark 
     In [7]: match.group()
     Out[7]: '<text line>'
 
-But greed is often useful. For example, without turning off greed of the last plus, expression ``\d+\s+\S+`` describes such a line:
+But greed is often useful. For example, without turning off greed of the last
+plus, expression ``\d+\s+\S+`` describes such a line:
 
 .. code:: python
 
@@ -36,7 +40,9 @@ But greed is often useful. For example, without turning off greed of the last pl
     In [9]: re.search('\d+\s+\S+', line).group()
     Out[9]: '1500     aab1.a1a1.a5d3'
 
-Symbol ``\S`` denotes everything except whitespace characters. Therefore, expression ``\S+`` with greedy repetition symbol describes maximum long string until the first whitespace character. In this case up to the first space.
+Symbol ``\S`` denotes everything except whitespace characters. Therefore,
+expression ``\S+`` with greedy repetition symbol describes maximum long
+string until the first whitespace character. In this case up to the first space.
 
 If greed is disabled, the result is:
 

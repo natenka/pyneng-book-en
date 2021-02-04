@@ -1,11 +1,13 @@
 Non-capturing group
 ------------------
 
-By default, everything that fell into the group is remembered. It’s called a capturing group.
+By default, everything that fell into the group is remembered. It’s called a
+capturing group.
 
-Sometimes brackets are needed to indicate a part of expression that repeats. And, in doing so, you don’t need to remember an expression.
+Sometimes parentheses are needed to indicate a part of expression that repeats.
+And, in doing so, you don’t need to remember an expression.
 
-For example, get a MAC address, VLAN and ports from such log message:
+For example, get a MAC address, VLAN and ports from log message:
 
 .. code:: python
 
@@ -27,14 +29,15 @@ Expression consists of the following parts:
 * ``.+port (\S+)`` - first interface
 * ``.+port (\S+)`` - second interface
 
-Method groups() returns this result:
+Method ``groups`` returns:
 
 .. code:: python
 
     In [3]: match.groups()
     Out[3]: ('f03a.b216.7ad7', 'b216.', '10', 'Gi0/5', 'Gi0/15')
 
-The second element is essentially superfluous. It appeared in the output because of brackets in expression ``(\w{4}\.){2}``.
+The second element is essentially superfluous. It appeared in the output because
+of brackets in expression ``(\w{4}\.){2}``.
 
 In that case, we need to disable group capturing. This is done by adding 
 ``?:`` after group bracket opens.
@@ -45,7 +48,7 @@ Now the expression looks like this:
 
     In [4]: match = re.search('((?:\w{4}\.){2}\w{4}).+vlan (\d+).+port (\S+).+port (\S+)', log)
 
-Accordingly, groups() method result:
+Accordingly, ``groups`` method returns:
 
 .. code:: python
 

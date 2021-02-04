@@ -1,7 +1,8 @@
 Parsing the output of 'show ip dhcp snooping' command using named groups
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Consider another example of using named groups. In this example, the task is to get from the output of 'show ip dhcp snooping binding' the fields: MAC address, IP address, VLAN and interface.
+Consider another example of using named groups. In this example, the task is
+to get from the output of 'show ip dhcp snooping binding' the fields: MAC address, IP address, VLAN and interface.
 
 File dhcp_snooping.txt contains the output of command ‘show ip dhcp snooping binding’:
 
@@ -36,7 +37,7 @@ Comments on regular expression:
 -  ``(?P<vlan>\d+) +`` - named group ‘vlan’. Only numerical sequences with one or more characters are included here
 -  ``(?P<port>.\S+)`` - named group 'port'. All characters except whitespace are included here
 
-As a result, groupdict() method will return such a dictionary:
+As a result, ``groupdict`` method will return such a dictionary:
 
 .. code:: python
 
@@ -47,13 +48,12 @@ As a result, groupdict() method will return such a dictionary:
      'mac': '00:09:BB:3D:D6:58',
      'vlan': '10'}
 
-Since regular expression has worked well, you can create a script. In script all lines of dhcp\_snooping.txt file are iterated and information about devices is displayed on the standard output stream.
-
-File parse_dhcp_snooping.py:
+Since regular expression has worked well, you can create a script. In script all
+lines of dhcp\_snooping.txt file are iterated and information about devices is
+displayed on the standard output stream (parse_dhcp_snooping.py):
 
 .. code:: python
 
-    # -*- coding: utf-8 -*-
     import re
 
     #'00:09:BB:3D:D6:58   10.1.10.2        86250       dhcp-snooping   10    FastEthernet0/1'
@@ -66,14 +66,14 @@ File parse_dhcp_snooping.py:
             if match:
                 result.append(match.groupdict())
 
-    print('{} devices connected to switch'.format(len(result)))
+    print(f'{len(result)} devices connected to switch')
 
     for num, comp in enumerate(result, 1):
-        print('Parameters of device {}:'.format(num))
+        print(f'Parameters of device {num}:')
         for key in comp:
-            print('{:10}: {:10}'.format(key,comp[key]))
+            print(f'{key:10}: {comp[key]:10}')
 
-Result of implementation:
+Script output:
 
 ::
 

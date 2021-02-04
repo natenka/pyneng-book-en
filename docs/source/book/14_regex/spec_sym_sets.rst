@@ -15,8 +15,8 @@ Python has special designations for character sets:
     These are not all character sets that support Python. See 
     `documentation <https://docs.python.org/3/library/re.html>`__ for details.
 
-Character sets allow you to write shorter expressions without having to list all necessary characters.
-
+Character sets allow you to write shorter expressions without having to list
+all necessary characters.
 For example, get time from log file string:
 
 .. code:: python
@@ -37,6 +37,9 @@ Getting MAC address from log message:
     In [4]: re.search('\w\w\w\w\.\w\w\w\w\.\w\w\w\w', log2).group()
     Out[4]: 'f03a.b216.7ad7'
 
-Expression ``\w\w\w\w\.\w\w\w\w\.\w\w\w\w`` describes 12 letters or digits that are divided into three groups of four characters and separated by dot. 
+Expression ``\w\w\w\w\.\w\w\w\w\.\w\w\w\w`` describes 12 letters or digits that
+are divided into three groups of four characters and separated by dot. 
 
-Symbol groups are very convenient, but for now it is necessary to manually specify a character repetition. The following subsection deals with repetition symbols which will simplify description of expressions.
+Symbol groups are very convenient, but for now it is necessary to manually
+specify a character repetition. The following subsection deals with repetition
+symbols which will simplify description of expressions.

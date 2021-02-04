@@ -1,11 +1,20 @@
-Expressions grouping
----------------------
+Grouping
+--------
 
-Expressions grouping indicates that sequence of symbols should be considered as a one. However, this is not the only advantage of grouping.
+Grouping indicates that sequence of symbols should be considered
+as a one. However, this is not the only advantage of grouping.
+In addition, by use of groups you can get only a certain portion
+of string that has been described by expression.
 
-In addition, by use of groups you can get only a certain portion of string that has been described by expression.
+For example, from a log file you should select strings in which
+"%SW_MATM-4-MACFLAP_NOTIF" meets and then from each such string get
+MAC address, VLAN and interfaces. In this case, regular expression simply has to describe a string and all parts of string to be obtained are simply placed in brackets.
 
-For example, from a log file you should select strings in which "%SW_MATM-4-MACFLAP_NOTIF" meets and then from each such string get MAC address, VLAN and interfaces. In this case, regular expression simply has to describe a string and all parts of string to be obtained are simply placed in brackets.
+For example, from the log file, you need to select the lines that contain
+"%SW_MATM-4-MACFLAP_NOTIF", and then get the MAC address, VLAN and interfaces
+from each such line.
+In this case, the regular expression not only describes the string, but
+also indicates all parts of the string to be returned in parentheses.
 
 Python has two options for using groups:
 
@@ -23,7 +32,7 @@ Example of groups use:
 
 .. code:: python
 
-    In [8]: line = "FastEthernet0/1            10.0.12.1       YES manual up                    up"
+    In [8]: line = "FastEthernet0/1      10.0.12.1   YES manual up          up"
     In [9]: match = re.search('(\S+)\s+([\w.]+)\s+.*', line)
 
 In this example, two groups are specified:
@@ -33,7 +42,7 @@ In this example, two groups are specified:
 
 The second group could be described as the first. Other version is just for example.
 
-You can now access a group by number. Group 0 is a string that corresponds to the entire template:
+You can now access a group by number. Group 0 is a string that corresponds to the entire match:
 
 .. code:: python
 
@@ -69,7 +78,7 @@ Starting with Python 3.6, groups can be accessed as follows:
     In [17]: match[2]
     Out[17]: '10.0.12.1'
 
-Method groups() is used to display all substrings that correspond to specified groups:
+Method ``groups`` is used to display all substrings that correspond to groups:
 
 .. code:: python
 
@@ -79,17 +88,18 @@ Method groups() is used to display all substrings that correspond to specified g
 Named groups
 ~~~~~~~~~~~~~~~~~~
 
-When expression is complex, it is not very convenient to determine number of group. Plus, when you modify an expression the order of groups can be changed and you will need to change the code that refers to groups.
+When expression is complex, it is not very convenient to determine number of group.
+Plus, when you modify an expression the order of groups can be changed and you
+will need to change the code that refers to groups.
 
 Named groups allow you to give a name to the group.
-
 Syntax of named group ``(?P<name>regex)``:
 
 .. code:: python
 
     In [19]: line = "FastEthernet0/1            10.0.12.1       YES manual up                    up"
 
-    In [20]: match = re.search('(?P<intf>\S+)\s+(?P<address>[\d.]+)\s+', line)
+    In [20]: match = re.search('(?P<intf>\S+)\s+(?P<address>\S+)\s+', line)
 
 These groups can now be accessed by name:
 
@@ -101,7 +111,8 @@ These groups can now be accessed by name:
     In [22]: match.group('address')
     Out[22]: '10.0.12.1'
 
-It is also very useful that with groupdict() method you can get a dictionary where keys are the names of groups and values are the substrings that correspond to them:
+It is also very useful that with ``groupdict`` method you can get a dictionary
+where keys are the names of groups and values are the substrings that correspond to them:
 
 .. code:: python
 
@@ -112,7 +123,7 @@ And then you can add groups to regular expression and rely on their name instead
 
 .. code:: python
 
-    In [24]: match = re.search('(?P<intf>\S+)\s+(?P<address>[\d\.]+)\s+\w+\s+\w+\s+(?P<status>up|down|administratively down)\s+(?P<protocol>up|down)', line)
+    In [24]: match = re.search('(?P<intf>\S+)\s+(?P<address>\S+)\s+\w+\s+\w+\s+(?P<status>up|down)\s+(?P<protocol>up|down)', line)
 
     In [25]: match.groupdict()
     Out[25]:

@@ -13,10 +13,11 @@ Special symbols
 ~~~~~
 
 Dot represents any symbol.
+Most often, a dot is used with repetition symbols ``+`` and ``*`` to indicate
+that any character can be found between certain expressions.
 
-Most often, a dot is used with repetition symbols ``+`` and ``*`` to indicate that any character can be found between certain expressions.
-
-For example, using expression ``Interface.+Port ID.+`` you can describe a line with interfaces in the output "sh cdp neighbors detail":
+For example, using expression ``Interface.+Port ID.+`` you can describe a line
+with interfaces in the output "sh cdp neighbors detail":
 
 .. code:: python
 
@@ -34,8 +35,9 @@ For example, using expression ``Interface.+Port ID.+`` you can describe a line w
     In [2]: re.search('Interface.+Port ID.+', cdp).group()
     Out[2]: 'Interface: GigabitEthernet1/0/16,  Port ID (outgoing port): GigabitEthernet0/1'
 
-The result was only one string as the dot represents any character except line feed character. In addition, repetition characters 
-``+`` and ``*`` by default capture the longest string possible. This aspect is addressed in subsection "Greedy symbols".
+The result was only one string as the dot represents any character except line
+feed character. In addition, repetition characters  ``+`` and ``*`` by default
+capture the longest string possible. This aspect is addressed in subsection "Greedy qualifiers".
 
 ``^``
 ~~~~~
@@ -74,7 +76,8 @@ Expression ``\S+$`` describes any characters except whitespace at the end of lin
 ``[]``
 ~~~~~~
 
-Symbols that are listed in square brackets mean that any of these symbols will be a match. Thus, different registers can be described:
+Symbols that are listed in square brackets mean that any of these symbols will
+be a match. Thus, different registers can be described:
 
 .. code:: python
 
@@ -104,18 +107,19 @@ Using square brackets, you can specify which characters may meet at a specific p
     SW1>
     r1-london-core#
 
-You can specify character ranges in square brackets. For example, it can be stated that we are interested in any number from 0 to 9:
+You can specify character ranges in square brackets. For example,
+any number from 0 to 9:
 
-.. code:: py
+.. code:: python
 
     In [14]: line = "100     aa12.35fe.a5d3    FastEthernet0/1"
 
     In [15]: re.search('[0-9]+', line).group()
     Out[15]: '100'
 
-Similarly, letters can be indicated:
+Letters:
 
-.. code:: py
+.. code:: python
 
     In [16]: line = "100     aa12.35fe.a5d3    FastEthernet0/1"
 
@@ -134,9 +138,13 @@ Several ranges may be indicated in square brackets:
     In [20]: re.search('[a-f0-9]+\.[a-f0-9]+\.[a-f0-9]+', line).group()
     Out[20]: 'aa12.35fe.a5d3'
 
-Expression ``[a-f0-9]+\.[a-f0-9]+\.[a-f0-9]+`` describes three groups of symbols separated by a dot. Characters in each group can be letters a-f or digits 0-9. This expression describes MAC address.
+Expression ``[a-f0-9]+\.[a-f0-9]+\.[a-f0-9]+`` describes three groups of
+symbols separated by a dot. Characters in each group can be letters a-f
+or digits 0-9. This expression describes MAC address.
 
-Another feature of square brackets is that the special symbols within square brackets lose their special meaning and are simply a symbol. For example, a dot inside square brackets will denote a dot, not any symbol.
+Another feature of square brackets is that the special symbols within
+square brackets lose their special meaning and are simply a symbol.
+For example, a dot inside square brackets will denote a dot, not any symbol.
 
 Expression ``[a-f0-9]+[./][a-f0-9]+`` describes three groups of symbols:
 
@@ -144,9 +152,9 @@ Expression ``[a-f0-9]+[./][a-f0-9]+`` describes three groups of symbols:
 2. dot or slash
 3. letters a-f or digits 0-9
 
-For *line* string the match will be a such substring:
+For ``line`` string the match will be a such substring:
 
-.. code:: py
+.. code:: python
 
     In [21]: line = "100     aa12.35fe.a5d3    FastEthernet0/1"
 
@@ -176,12 +184,14 @@ Pipe symbol works like 'or':
     In [26]: re.search('Fast|0/1', line).group()
     Out[26]: 'Fast'
 
-Note how ``|`` works - Fast и 0/1 are treated as an whole expression. So in the end, expression means that we’re looking for Fast or 0/1.
+Note how ``|`` works - Fast и 0/1 are treated as an whole expression.
+So in the end, expression means that we’re looking for Fast or 0/1.
 
 ``()``
 ~~~~~~
 
-Brackets are used to group expressions. As in mathematical expressions, brackets can be used to indicate which elements the operation is applied to.
+Brackets are used to group expressions. As in mathematical expressions,
+brackets can be used to indicate which elements the operation is applied to.
 
 For example, expression ``[0-9]([a-f]|[0-9])[0-9]`` describes three characters: digit, then a letter or digit and digit:
 
@@ -192,7 +202,8 @@ For example, expression ``[0-9]([a-f]|[0-9])[0-9]`` describes three characters: 
     In [28]: re.search('[0-9]([a-f]|[0-9])[0-9]', line).group()
     Out[28]: '100'
 
-Brackets allow to indicate which expression is a one entity. This is particularly useful when using repetition symbols:
+Brackets allow to indicate which expression is a one entity. This is
+particularly useful when using repetition symbols:
 
 .. code:: python
 
@@ -201,4 +212,6 @@ Brackets allow to indicate which expression is a one entity. This is particularl
     In [30]: re.search('([0-9]+\.)+[0-9]+', line).group()
     Out[30]: '15.0.15.1'
 
-Brackets not only allow you to group expressions. String that matches bracketed expression is memorized. It can be obtained separately by special methods groups() and group(n). This is considered in subsection "Grouping of expressions".
+Brackets not only allow you to group expressions. String that matches bracketed
+expression is memorized. It can be obtained separately by special methods
+``groups`` and ``group(n)``. This is covered in subsection "Grouping".
