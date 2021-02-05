@@ -60,7 +60,7 @@ version without class name:
 
     NameError: name 'var_a' is not defined
 
-And correct variant:
+And correct version:
 
 .. code:: python
 

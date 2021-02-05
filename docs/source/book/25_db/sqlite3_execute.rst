@@ -3,10 +3,10 @@ Executing SQL commands
 
 There are several methods for execution of SQL commands in module:
 
-* ``execute()`` - method for executing one SQL expression 
-* ``executemany()`` - method allows to execute one SQL expression for a
+* ``execute`` - method for executing one SQL expression 
+* ``executemany`` - method allows to execute one SQL expression for a
   sequence of parameters (or for iterator) 
-* ``executescript()`` - method allows to execute multiple SQL expressions at once
+* ``executescript`` - method allows to execute multiple SQL expressions at once
 
 Method execute
 ^^^^^^^^^^^^^

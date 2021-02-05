@@ -17,7 +17,7 @@ The easiest way to configure logging in script, use logging.basicConfig:
         format='%(threadName)s %(name)s %(levelname)s: %(message)s',
         level=logging.INFO)
 
-In this variant, the settings are:
+In this version, the settings are:
 
 * all messages will be displayed on standard output, 
 * messages of INFO level and above will be displayed, 

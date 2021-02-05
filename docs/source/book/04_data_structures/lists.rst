@@ -24,7 +24,7 @@ Creating a list using a literal:
 
     Literal is an expression that creates an object.
 
-Create a list using list() function:
+Create a list using ``list`` function:
 
 .. code:: python
 
@@ -33,7 +33,8 @@ Create a list using list() function:
     In [3]: print(list1)
     ['r', 'o', 'u', 't', 'e', 'r']
 
-Since a list is an ordered data type just like a string, in lists you can refer to an item by number, make slices:
+Since a list is an ordered data type just like a string, in lists you can
+refer to an item by number, make slices:
 
 .. code:: python
 
@@ -51,7 +52,7 @@ Since a list is an ordered data type just like a string, in lists you can refer 
     In [8]: list3[::-1]
     Out[8]: ['word', 4.0, 20, 1]
 
-You can reverse list by reverse() method:
+You can reverse list by ``reverse`` method:
 
 .. code:: python
 
@@ -74,7 +75,8 @@ Since lists are mutable, list elements can be changed:
     In [15]: list3
     Out[15]: ['test', 20, 4.0, 'word']
 
-You can also create a list of lists. As in a regular list you can refer to items in nested lists:
+You can also create a list of lists. As in a regular list you can refer to
+items in nested lists:
 
 .. code:: python
 
@@ -91,7 +93,7 @@ You can also create a list of lists. As in a regular list you can refer to items
     In [19]: interfaces[2][1]
     Out[19]: '10.0.2.1'
 
-The len() function returns number of items in list:
+The ``len`` function returns number of items in list:
 
 .. code:: python
 
@@ -100,7 +102,8 @@ The len() function returns number of items in list:
     In [2]: len(items)
     Out[2]: 3
 
-And sorted() function sorts list items in ascending order and returns a new list with sorted items:
+And ``sorted`` function sorts list items in ascending order and returns
+a new list with sorted items:
 
 .. code:: python
 

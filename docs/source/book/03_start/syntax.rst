@@ -33,15 +33,23 @@ Example of Python code:
     not yet been covered, it is likely that the meaning of code will be clear in general.
 
 Python understands which lines refer to "if" on indentation basis.
-Execution of a block ``if a > b`` ends when another string with the same indent as string ``if a > b`` appears. Similarly to block ``else``. 
-The second feature of Python is that some expressions must be followed by colon (for example, after ``if a > b`` and after ``else``).
+Execution of a block ``if a > b`` ends when another string with the same indent
+as string ``if a > b`` appears. Similarly to block ``else``. 
+The second feature of Python is that some expressions must be followed by colon
+(for example, after ``if a > b`` and after ``else``).
 
 Several rules and recommendations on indentation:
 
--  Tabs or spaces can be used as indents (it is better to use spaces or more precisely to configure editor so that Tab is 4 spaces - then when using Tab key, 4 spaces will be placed instead of 1 tab sign).
--  Number of spaces must be the same in one block (it is better to have the same number of spaces in whole code - popular option is to use 2-4 spaces, for example, this book uses 4 spaces).
+-  Tabs or spaces can be used as indents (it is better to use spaces or more
+   precisely to configure editor so that Tab is 4 spaces - then when using Tab
+   key, 4 spaces will be placed instead of 1 tab sign).
+-  Number of spaces must be the same in one block (it is better to have the
+   same number of spaces in whole code - popular option is to use 2-4 spaces,
+   for example, this book uses 4 spaces).
 
-Another feature of code above is empty lines. It makes reading code easier. Other syntax features will be shown during process of familiarization with data structures in Python.
+Another feature of code above is empty lines. It makes reading code easier.
+Other syntax features will be shown during process of familiarization with
+data structures in Python.
 
 .. note::
     Python has a special document that describes how best to write Python code
@@ -51,7 +59,8 @@ Another feature of code above is empty lines. It makes reading code easier. Othe
 Comments
 ^^^^^^^^^^^
 
-When writing code you often need to leave a comment, for example, to describe features of code.
+When writing code you often need to leave a comment, for example, to describe
+features of code.
 
 Comments in Python can be one-line:
 
@@ -61,9 +70,11 @@ Comments in Python can be one-line:
     a = 10
     b = 5 # A much needed comment   
 
-One-line comments start with hash sign. Note that comment can be in line where code itself is or in a separate line.
+One-line comments start with hash sign. Note that comment can be in line where
+code itself is or in a separate line.
 
-If it is necessary to write several lines with comments in order to not put hash sign before each line, you can make a multi-line comment:
+If it is necessary to write several lines with comments in order to not put
+hash sign before each line, you can make a multi-line comment:
 
 .. code:: python
 
@@ -74,4 +85,6 @@ If it is necessary to write several lines with comments in order to not put hash
     a = 10
     b = 5
 
-Three double or three single quotes may be used for a multi-line comment. Comments can be used both to comment on what happens in code and to exclude execution of a particular line or block of code (i.e., to comment it).
+Three double or three single quotes may be used for a multi-line comment.
+Comments can be used both to comment on what happens in code and to exclude
+execution of a particular line or block of code (i.e., to comment it).

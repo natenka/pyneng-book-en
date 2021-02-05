@@ -3,7 +3,7 @@ Operations with sets
 
 Sets are useful in performing different operations such as finding union of sets, intersection and so on. 
 
-Union of sets can be obtained by ``union()`` or
+Union of sets can be obtained by ``union`` or
 operator ``|``:
 
 .. code:: python
@@ -18,7 +18,7 @@ operator ``|``:
     Out[4]: {10, 20, 30, 50, 100, 101, 102, 200}
 
 Intersection of sets can be obtained by
-``intersection()`` or operator ``&``:
+``intersection`` or operator ``&``:
 
 .. code:: python
 

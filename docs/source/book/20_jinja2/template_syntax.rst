@@ -1,7 +1,9 @@
 Jinja2 template syntax
 -------------------------
 
-So far, only variable substitution has been used in Jinja2 template examples. This is the simplest and most understandable example of using templates. But syntax of Jinja templates is not limited to this.
+So far, only variable substitution has been used in Jinja2 template examples.
+This is the simplest and most understandable example of using templates.
+Syntax of Jinja templates is not limited to this.
 
 In Jinja2 templates you can use :
 
@@ -11,8 +13,10 @@ In Jinja2 templates you can use :
 * filters - special built-in methods that allow to convert variables
 * tests - are used to check whether a variable matches a condition
 
-In addition, Jinja supports inheritance between templates and also allows adding the contents of one template to another.
-This section covers only few possibilities. More information about Jinja2 templates can be found in `documentation <http://jinja.pocoo.org/docs/dev/templates/>`__.
+In addition, Jinja supports inheritance between templates and also allows
+adding the contents of one template to another.
+This section covers only few possibilities. More information about Jinja2
+templates can be found in `documentation <http://jinja.pocoo.org/docs/dev/templates/>`__.
 
 .. note::
 

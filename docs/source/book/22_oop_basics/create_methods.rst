@@ -83,7 +83,7 @@ In the second case, ``self`` parameter already makes more sense, it actually
 accepts the reference to instance and displays information on this basis.
 
 From objects usage point of view, it is more convenient to call methods
-using the first syntax variant, so it is almost always used.
+using the first syntax version, so it is almost always used.
 
 .. note::
 

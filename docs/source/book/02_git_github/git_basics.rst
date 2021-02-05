@@ -1,7 +1,8 @@
 Git fundamentals
 ~~~~~~~~~~
 
-Git is a distributed version control system (Version Control System, VCS) that is widely used and released under GNU GPL v2 license. 
+Git is a distributed version control system (Version Control System, VCS) that
+is widely used and released under GNU GPL v2 license. 
 It can:
 
 -  track changes in files;
@@ -20,7 +21,8 @@ Git installation:
 Git initial setup
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-To start working with Git you need to specify user name and e-mail that will be used to synchronize local repository with Github repository:
+To start working with Git you need to specify user name and e-mail that will
+be used to synchronize local repository with Github repository:
 
 ::
 

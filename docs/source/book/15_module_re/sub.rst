@@ -1,9 +1,9 @@
 Function re.sub
 --------------
 
-Function re.sub() works similary to replace() method in strings. But in
+Function ``re.sub`` works similary to ``replace`` method in strings. But in
 ``re.sub`` you can use regex and therefore make substitutions using more complex conditions.
-Replace commas, square brackets and *via* word with space in *ospf_route* string:
+Replace commas, square brackets and via word with space in ospf_route string:
 
 .. code:: python
 
@@ -12,7 +12,7 @@ Replace commas, square brackets and *via* word with space in *ospf_route* string
     In [8]: re.sub(r'(via|[,\[\]])', ' ', ospf_route)
     Out[8]: 'O        10.0.24.0/24  110/41    10.0.13.3  3d18h  FastEthernet0/0'
 
-With re.sub() you can transform a string. For example, convert *mac_table* string to:
+With ``re.sub`` you can transform a string. For example, convert mac_table string to:
 
 .. code:: python
 
@@ -49,5 +49,7 @@ Regex is divided into groups:
 -  ``([a-f,0-9]+).([a-f,0-9]+).([a-f,0-9]+)`` - the following three groups (2, 3, 4) describe MAC address
 -  ``(\S+)`` - the fifth group. Describes an interface.
 
-In a second regex these groups are used. To refer to a group a backslash and a group number are used. To avoid backslash screening, *raw* string is used.
-As a result, the corresponding substrings will be substituted instead of group numbers. For example, format of MAC address record was also changed.
+In a second regex these groups are used. To refer to a group a backslash and a
+group number are used. To avoid backslash screening, raw string is used.
+As a result, the corresponding substrings will be substituted instead of group
+numbers. For example, format of MAC address record was also changed.

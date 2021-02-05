@@ -123,8 +123,8 @@ of parent class from child class CiscoSSH:
     command_result = super(CiscoSSH, self).send_show_command(command)
     command_result = super().send_show_command(command)
 
-The first variant of ``ConnectSSH.send_show_command`` explicitly specifies the
-name of parent class - this is the most understandable variant for perception,
+The first version of ``ConnectSSH.send_show_command`` explicitly specifies the
+name of parent class - this is the most understandable version for perception,
 but its disadvantage is that when a parent class name is changed the name will
 have to be changed in all places where parent class methods were called.
 This option also has disadvantages when using multiple inheritance.

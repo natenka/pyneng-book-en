@@ -4,7 +4,8 @@ Control of whitespace symbols
 trim_blocks, lstrip_blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Parameter ``trim_blocks`` removes the first empty line after block if its value is True (default False).
+Parameter ``trim_blocks`` removes the first empty line after block if its value
+is True (default False).
 
 Effect of using the flag is showed on example templates/env_flags.txt:
 
@@ -64,12 +65,15 @@ The result will be:
 
 Empty lines after block were removed.
 
-In front of ``neighbor ... remote-as`` lines two spaces appeared. This is because there is a space in front of *for* block. Once lstrip_blocks has been disabled, spaces and tabs in front of the block are added to the first line of block.
+In front of ``neighbor ... remote-as`` lines two spaces appeared. This is
+because there is a space in front of *for* block. Once lstrip_blocks has
+been disabled, spaces and tabs in front of the block are added to the first line of block.
 
 This does not affect the next lines. Therefore, lines with 
 ``neighbor ... update-source`` are displayed with one space.
 
-Parameter ``lstrip_blocks`` controls whether spaces and tabs will be removed from the beginning of line to the beginning of block (untill opening curly bracket).
+Parameter ``lstrip_blocks`` controls whether spaces and tabs will be 
+removed from the beginning of line to the beginning of block (untill opening curly bracket).
 
 If add ``lstrip_blocks=True``:
 
@@ -94,7 +98,8 @@ Disabling lstrip_blocks for block
 
 Sometimes you need to disable lstrip_blocks in block.
 
-For example, if ``lstrip_blocks`` is set to True in an environment, but must be disabled for the second block in template (templates/flagenv_s2.txt file):
+For example, if ``lstrip_blocks`` is set to True in an environment, but must
+be disabled for the second block in template (templates/flagenv_s2.txt file):
 
 ::
 
@@ -189,7 +194,8 @@ Template templates/env_flags3.txt:
      neighbor {{ ibgp }} update-source {{ bgp.loopback }}
      {% endfor %}
 
-Note the minus at the beginning of second block. Minus removes all whitespace characters, in this case, at the beginning of the block.
+Note the minus at the beginning of second block. Minus removes all whitespace
+characters, in this case, at the beginning of the block.
 
 The result will be:
 

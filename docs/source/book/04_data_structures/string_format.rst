@@ -1,8 +1,9 @@
 String formatting
 ====================
 
-When working with strings, there are often situations where different data needs to be substituted in string template.
-This can be done by combining string parts and data, but Python has a more convenient way - strings formatting.
+When working with strings, there are often situations where different data
+needs to be substituted in string template. This can be done by combining
+string parts and data, but Python has a more convenient way - strings formatting.
 
 String formatting can help, for example, in such situations:
 
@@ -13,15 +14,15 @@ String formatting can help, for example, in such situations:
 There are several options for string formatting:
 
 * with operator ``%`` — older option
-* method ``format()`` — relatively new option
+* method ``format`` — relatively new option
 * f-строки — new option that appeared in Python 3.6
 
 Although ``format`` is recommended, string formatting can often be found through  ``%``.
 
-String formatting with format() method
+String formatting with ``format`` method
 -------------------------------------
 
-Example of format() method use:
+Example of ``format`` method use:
 
 .. code:: python
 
@@ -110,7 +111,8 @@ You can also specify that numbers should be supplemented with zeros instead of s
     In [13]: '{:08b} {:08b} {:08b} {:08b}'.format(192, 100, 1, 1)
     Out[13]: '11000000 01100100 00000001 00000001'
 
-You can enter names in curly braces. This makes it possible to pass arguments in any order and also makes template more understandable:
+You can enter names in curly braces. This makes it possible to pass arguments
+in any order and also makes template more understandable:
 
 .. code:: python
 
@@ -143,7 +145,7 @@ For example this can prevent repetitive transmission of the same values:
 In example above the octet address has to be passed twice - one for decimal
 format and other for binary.
 
-By specifying value indexes that are passed to format() method, it is possible to avoid duplication:
+By specifying value indexes that are passed to ``format`` method, it is possible to avoid duplication:
 
 .. code:: python
 
@@ -163,9 +165,12 @@ By specifying value indexes that are passed to format() method, it is possible t
 Strings formatting with f-Strings
 --------------------------------------
 
-Python 3.6 added a new version of string formatting - f-strings or interpolation of strings. The f-strings allow not only to set values to template, but also to perform calls to functions, methods, etc.
+Python 3.6 added a new version of string formatting - f-strings or
+interpolation of strings. The f-strings allow not only to set values
+to template, but also to perform calls to functions, methods, etc.
 
-In many situations f-strings are easier to use than format, and f-strings work faster than format and other methods of string formatting.
+In many situations f-strings are easier to use than format, and f-strings
+work faster than format and other methods of string formatting.
 
 Syntax
 ~~~~~~~~~
@@ -183,15 +188,17 @@ be substituted:
     In [3]: f"IP: {ip}, mask: {mask}"
     Out[3]: 'IP: 10.1.1.1, mask: 24'
 
-    The same result with format() method you can achieve by:
-    ``"IP: {ip}, mask: {mask}".format(ip=ip, mask=mask)``.
 
-A very important difference between f-strings and format(): f-strings are
+The same result with ``format`` method you can achieve by:
+``"IP: {ip}, mask: {mask}".format(ip=ip, mask=mask)``.
+
+A very important difference between f-strings and ``format``: f-strings are
 expressions that are processed, not just strings. That is, in case of ipython,
 as soon as we wrote the expression and pressed Enter, it was performed and
 instead of expressions ``{ip}`` and ``{mask}`` the values of variables were substituted.
 
-Therefore, for example, you cannot first write a template and then define variables that are used in template:
+Therefore, for example, you cannot first write a template and then define
+variables that are used in template:
 
 .. code:: python
 
@@ -214,7 +221,7 @@ In addition to substituting variable values you can write expressions in curly b
     In [7]: f"{first_name.upper()} {second_name.upper()}"
     Out[7]: 'WILLIAM SHAKESPEARE'
 
-After colon in f-strings you can specify the same values as in format():
+After colon in f-strings you can specify the same values as in ``format``:
 
 .. code:: python
 

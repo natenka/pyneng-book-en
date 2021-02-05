@@ -1,12 +1,14 @@
 List methods
 ~~~~~~~~~~~~
 
-List is a mutable data type, so it is important to note that most methods for working with lists change a list on spot without returning anything.
+List is a mutable data type, so it is important to note that most list
+methods change a list in place without returning anything.
 
 ``join``
 ^^^^^^^^^^
 
-Method ``join`` collects a list of strings into one string with separator specified before join:
+Method ``join`` collects a list of strings into one string with separator
+specified before join:
 
 .. code:: python
 
@@ -22,7 +24,7 @@ Method ``join`` collects a list of strings into one string with separator specif
 ``append``
 ^^^^^^^^^^^^
 
-Method append() adds specified item to the end of list:
+Method ``append`` adds specified item to the end of list:
 
 .. code:: python
 
@@ -38,8 +40,10 @@ Method ``append`` changes list on spot and does not return anything.
 ``extend``
 ^^^^^^^^^^^^
 
-If you want to combine two lists you can use one of two methods: ``extend`` method or addition operation.
-These methods have an important difference: ``extend`` changes list to which method is applied and addition returns a new list that consists of two.
+If you want to combine two lists you can use one of two methods: ``extend``
+method or addition operation.
+These methods have an important difference: ``extend`` changes list to
+which method is applied and addition returns a new list that consists of two.
 
 Method ``extend``:
 
@@ -65,7 +69,8 @@ Addition operation:
     In [29]: vlans + vlans2
     Out[29]: ['10', '20', '30', '100-200', '300', '400', '500']
 
-Note that when adding lists in IPython the 'Out' line appeared. This means that the result of summation can be assigned to variable:
+Note that when adding lists in IPython the 'Out' line appeared. This means
+that the result of summation can be assigned to variable:
 
 .. code:: python
 

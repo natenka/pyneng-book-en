@@ -12,7 +12,8 @@ To create a Github repository you need:
 -  In upper right corner press plus and select "New repository" to create a new repository
 -  Name of repository should be entered in window that appears
 
-You can put "Initialize this repository with a README". This will create a README.md file that only contains repository name.
+You can put "Initialize this repository with a README". This will create
+a README.md file that only contains repository name.
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/github_new_repo.png
 
@@ -39,7 +40,9 @@ Compared to this command, you need to change:
 -  ``pyneng user name`` for your Github user name
 -  ``online-2-natasha-samoylenko`` repository name for your Github repository
 
-As a result, in current directory in which ``git clone`` was executed, a directory with name of repository will appear, in my case - "online-2-natasha-samoylenko". This directory now contains the contents of Github repository.
+As a result, in current directory in which ``git clone`` was executed, a
+directory with name of repository will appear, in my
+case - "online-2-natasha-samoylenko". This directory now contains the contents of Github repository.
 
 Working with repository
 ^^^^^^^^^^^^^^^^^^^^^
@@ -95,12 +98,15 @@ If there were changes, output would be something like this:
 Adding new files or changes to existing files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you want to add a specific file (in this case, README.md), you need to enter ``git add README.md`` command. All files of current directory are added by ``git add .`` command.
+If you want to add a specific file (in this case, README.md), you need to enter
+``git add README.md`` command. All files of current directory are added by ``git add .`` command.
 
 Commit
 ^^^^^^
 
-You should specify message when you are running a commit. It is better if message is with meaning, rather than just "update" or similar. Commit could be done by a command similar to ``git commit -m "Tasks 4.1-4.3 are completed"``.
+You should specify message when you are running a commit. It is better if
+message is with meaning, rather than just "update" or similar. Commit could
+be done by a command similar to ``git commit -m "Tasks 4.1-4.3 are completed"``.
 
 Push on GitHub
 ^^^^^^^^^^^^^^
@@ -118,4 +124,5 @@ Command “git push” is used to load all local changes to Github:
     To ssh://git@github.com/pyneng/online-2-natasha-samoylenko.git
        fc4c721..edcf417  master -> master
 
-Before executing “git push” you can run ``git log -p/origin..`` - it will show what changes you are going to add to your repository on Github.
+Before executing ``git push`` you can run ``git log -p/origin..`` - it will show
+what changes you are going to add to your repository on Github.

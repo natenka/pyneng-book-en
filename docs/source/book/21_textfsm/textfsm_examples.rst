@@ -762,7 +762,7 @@ Now all ports are in output.
 
 The template assumes a maximum of four ports in line. If there are more ports, add the corresponding lines to template.
 
-Another variant of "sh etherchannel summary" output (output/sh_etherchannel_summary2.txt file):
+Another version of "sh etherchannel summary" output (output/sh_etherchannel_summary2.txt file):
 
 ::
 
@@ -788,9 +788,9 @@ Another variant of "sh etherchannel summary" output (output/sh_etherchannel_summ
     3      Po3(SU)          -        Fa0/11(P)   Fa0/12(P)   Fa0/13(P)   Fa0/14(P)
                                      Fa0/15(P)   Fa0/16(P)
 
-In this output a new variant appears - lines containing only ports.
+In this output a new version appears - lines containing only ports.
 
-To process this variant you should modify template (templates/sh_etherchannel_summary2.txt file):
+To process this version you should modify template (templates/sh_etherchannel_summary2.txt file):
 
 ::
 

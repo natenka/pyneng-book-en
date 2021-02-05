@@ -194,7 +194,8 @@ But if we add another key-value pair to dictionary, keys object will also change
     In [32]: keys
     Out[32]: dict_keys(['name', 'location', 'vendor', 'ip'])
 
-If you want to get a simple list of keys that will not be changed with dictionary changes, it is enough to convert view to list:
+If you want to get a simple list of keys that will not be changed with
+dictionary changes, it is enough to convert view to list:
 
 .. code:: python
 

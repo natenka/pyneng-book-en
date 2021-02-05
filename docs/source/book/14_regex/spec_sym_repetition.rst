@@ -90,7 +90,7 @@ Suppose you write a regex that describes email addresses in two
 formats: user@example.com and user.test@example.com. That is, the left side
 of address can have either one word or two words separated by a dot.
 
-The first variant is an example of email without a dot:
+The first version is an example of email without a dot:
 
 .. code:: python
 

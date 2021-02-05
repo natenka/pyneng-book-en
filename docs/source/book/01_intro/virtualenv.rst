@@ -4,11 +4,15 @@ Virtual environment
 Virtual environments:
 
 -  Allow different projects to be isolated from each other
--  Packages that are needed by different projects are in different places - for example, if one project requires 1.0 package and another project requires the same package but version 3.1, they will not interfere with each other
+-  Packages that are needed by different projects are in different places - for
+   example, if one project requires 1.0 package and another project requires the
+   same package but version 3.1, they will not interfere with each other
 -  Packages that are installed in virtual environments do not impact on global packages
 
 .. note::
-    Python has several options for creating virtual environments. You can use any of them. To start with, you can use virtualenvwrapper and then eventually you can figure out which options are still available.
+    Python has several options for creating virtual environments. You can use
+    any of them. To start with, you can use virtualenvwrapper and then eventually
+    you can figure out which option you prefer.
 
 
 virtualenvwrapper
@@ -22,7 +26,7 @@ Installing virtualenvwrapper with pip:
 
     $ sudo pip3.7 install virtualenvwrapper
 
-After installation, in . bashrc file in current user’s home folder, you need to add several lines:
+After installation, in . bashrc file in current user's home folder, you need to add several lines:
 
 ::
 
@@ -30,9 +34,13 @@ After installation, in . bashrc file in current user’s home folder, you need t
     export WORKON_HOME=~/venv
     . /usr/local/bin/virtualenvwrapper.sh
 
-If you are using a command interpreter other than bash, see if it is supported in virtualenvwrapper 
-`documentation <http://virtualenvwrapper.readthedocs.io/en/latest/install.html>`__. Environment variable VIRTUALENVWRAPPER\_PYTHON
-points to Python command line binary file, WORKON\_HOME – points to location of virtual environments. The third line indicates location of script installed with virtualenvwrapper package. To start virtualenvwrapper.sh script work with virtual environments, bash must be restarted.
+If you are using a command interpreter other than bash, see if it is supported
+in virtualenvwrapper 
+`documentation <http://virtualenvwrapper.readthedocs.io/en/latest/install.html>`__.
+Environment variable VIRTUALENVWRAPPER_PYTHON points to Python command line
+binary file, WORKON_HOME – points to location of virtual environments. The
+third line indicates location of script installed with virtualenvwrapper package.
+To start virtualenvwrapper.sh script work with virtual environments, bash must be restarted.
 
 Restart command interpreter:
 
@@ -57,7 +65,7 @@ Creating a new virtual environment in which Python 3.7 is used by default:
     (pyneng)$ 
 
 The name of virtual environment is shown in parentheses before standard invitation.
-That means you’re inside it. Virtualenvwrapper uses Tab to autocomplete name of
+That means you're inside it. Virtualenvwrapper uses Tab to autocomplete name of
 virtual environment. This is particularly useful when there are many virtual
 environments. Now “pyneng” directory was created in directory specified in
 environment variable WORKON_HOME:
@@ -88,7 +96,8 @@ To move to created virtual environment, you should run "workon" command:
     $ workon pyneng
     (pyneng)$ 
 
-If you want to go from one virtual environment to another, you don’t need to do deactivate, you can go directly through "workon":
+If you want to go from one virtual environment to another, you don't need to
+do deactivate, you can go directly through "workon":
 
 ::
 
@@ -138,7 +147,9 @@ Starting from version 3.5, it is recommended that Python use venv to create virt
 
     $ python3.7 -m venv new/pyneng
 
-Python or python3 can be used instead of python 3.7, depending on how Python 3.7 is installed. This command creates specified directory and all necessary subdirectories within it if they have not been created.
+Python or python3 can be used instead of python 3.7, depending on how
+Python 3.7 is installed. This command creates specified directory and all
+necessary subdirectories within it if they have not been created.
 
 Command creates the following directory structure:
 

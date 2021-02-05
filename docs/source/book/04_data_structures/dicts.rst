@@ -35,7 +35,8 @@ You can write it down like this:
         'port': 'G1/0/11'
     }
 
-In order to get a value from dictionary you have to refer to key in the same way as in lists, only key will be used instead of number:
+In order to get a value from dictionary you have to refer to key in the same
+way as in lists, only key will be used instead of number:
 
 .. code:: python
 
@@ -109,7 +110,8 @@ You can get values from nested dictionary by:
     In [9]: london_co['sw1']['ip']
     Out[9]: '10.255.0.101'
 
-Function sorted() sorts dictionary keys in ascending order and returns a new list with sorted keys:
+Function ``sorted`` sorts dictionary keys in ascending order and
+returns a new list with sorted keys:
 
 .. code:: python
 

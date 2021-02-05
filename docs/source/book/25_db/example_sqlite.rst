@@ -5,7 +5,7 @@ In section 15 there was an example of reviewing the output of
 command "show ip dhcp snooping binding". In the output we received
 information about parameters of connected devices (interface, IP, MAC, VLAN).
 
-In this variant you can only see all devices connected to switch. If you want
+In this version you can only see all devices connected to switch. If you want
 to find out others based on one of the parameters, it's not  convenient in this way.
 
 For example, if you want to get information based on IP address about to which

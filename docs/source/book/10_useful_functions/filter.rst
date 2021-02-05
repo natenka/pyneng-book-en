@@ -44,7 +44,7 @@ List comprehension instead of filter
 
 As a rule, you can use list comprehension instead of ``filter``.
 
-Examples similar to those above in list comprehension variant.
+Examples similar to those above in list comprehension version.
 
 Return only those strings that contain numbers:
 

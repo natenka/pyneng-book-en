@@ -60,7 +60,8 @@ You can multiply a string by a number. In this case, string repeats specified nu
     In [19]: '#' * 40
     Out[19]: '########################################'
 
-The fact that strings are an ordered data type allows to refer to characters in a string by a number starting from zero:
+The fact that strings are an ordered data type allows to refer to characters
+in a string by a number starting from zero:
 
 .. code:: python
 
@@ -69,7 +70,8 @@ The fact that strings are an ordered data type allows to refer to characters in 
     In [21]: string1[0]
     Out[21]: 'i'
 
-All characters in a string are numbered from zero. But if you need to refer to a character from the end, you can specify negative values (this time with 1).
+All characters in a string are numbered from zero. But if you need to refer to
+a character from the end, you can specify negative values (this time with 1).
 
 .. code:: python
 
@@ -79,7 +81,9 @@ All characters in a string are numbered from zero. But if you need to refer to a
     In [23]: string1[-1]
     Out[23]: '0'
 
-In addition to referring to a specific character you can make string slices by specifying a number range. Slicing starts with first number (included) and ends at second number (excluded):
+In addition to referring to a specific character you can make string slices by
+specifying a number range. Slicing starts with first number (included) and
+ends at second number (excluded):
 
 .. code:: python
 
@@ -144,7 +148,11 @@ The ``len`` function allows you to get number of characters in a string:
     Out[2]: 15
 
 .. note::
-    Function and method differ in that method is tied to a particular type of object and function is generally more universal and can be applied to objects of different types. For example, ``len`` function can be applied to strings, lists, dictionaries and so on, but ``startswith`` method only applies to strings.
+    Function and method differ in that method is tied to a particular type of
+    object and function is generally more universal and can be applied to
+    objects of different types. For example, ``len`` function can be applied
+    to strings, lists, dictionaries and so on, but ``startswith`` method
+    only applies to strings.
 
 
 .. toctree::

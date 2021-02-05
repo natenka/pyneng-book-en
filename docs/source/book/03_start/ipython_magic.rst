@@ -1,12 +1,14 @@
 IPython special commands
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-IPython has special commands that make work with interpreter easier. All of them are started with percent sign.
+IPython has special commands that make work with interpreter easier. All of
+them are started with percent sign.
 
 %history
 ''''''''
 
-For example, %history command allows to look at history of commands entered by user in current IPython session.
+For example, ``%history`` command allows to look at history of commands
+entered by user in current IPython session.
 
 .. code:: python
 
@@ -26,13 +28,13 @@ For example, %history command allows to look at history of commands entered by u
         print("A is bigger")
     %history
 
-With %history you can copy needed block of code.
+With ``%history`` you can copy needed block of code.
 
 
 %time
 '''''
 
-Command %time shows how many seconds it took to execute expression.
+Command ``%time`` shows how many seconds it took to execute expression.
 
 .. code:: python
 

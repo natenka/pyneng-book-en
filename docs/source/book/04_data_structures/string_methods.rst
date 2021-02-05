@@ -12,8 +12,8 @@ string returns a new string and the original string remains unchanged.
 Methods upper, lower, swapcase, capitalize
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Methods ``upper()``, ``lower()``, ``swapcase()``,
-``capitalize()`` perform string case conversion:
+Methods ``upper``, ``lower``, ``swapcase``,
+``capitalize`` perform string case conversion:
 
 .. code:: python
 
@@ -47,7 +47,7 @@ variable (you can use the same).
 Method count
 ^^^^^^^^^^^
 
-Method ``count()`` used to count how many times a character or substring occurs in a string:
+Method ``count`` used to count how many times a character or substring occurs in a string:
 
 .. code:: python
 
@@ -65,7 +65,8 @@ Method ``count()`` used to count how many times a character or substring occurs 
 Method find
 ^^^^^^^^^^
 
-You can pass a substring or character to ``find()`` and it will return the lowest index where first character of the substring is (for the first match):
+You can pass a substring or character to ``find`` and it will return the lowest
+index where first character of the substring is (for the first match):
 
 .. code:: python
 
@@ -77,13 +78,13 @@ You can pass a substring or character to ``find()`` and it will return the lowes
     In [39]: string1[string1.find('Fast')::]
     Out[39]: 'FastEthernet0/1'
 
-If no match is found, ``find()`` method returns ``-1``.
+If no match is found, ``find`` method returns ``-1``.
 
 Methods startswith, endswith
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Checking if a string starts or ends with certain
-symbols (methods ``startswith()``, ``endswith()``):
+symbols (methods ``startswith``, ``endswith``):
 
 .. code:: python
 
@@ -105,7 +106,7 @@ Method replace
 ^^^^^^^^^^^^^
 
 Replacing a sequence of characters in a string with another sequence
-(method ``replace()``):
+(method ``replace``):
 
 .. code:: python
 
@@ -121,7 +122,7 @@ Often when a file is processed, the file is opened line by line. But at the end
 of each line, there are usually some special characters (and may be at the beginning).
 For example, new line character.
 
-To get rid of them, it is very convenient to use method ``strip()``:
+To get rid of them, it is very convenient to use method ``strip``:
 
 .. code:: python
 
@@ -138,9 +139,12 @@ To get rid of them, it is very convenient to use method ``strip()``:
     In [50]: string1.strip()
     Out[50]: 'interface FastEthernet0/1'
 
-By default, strip() method removes blank characters. This character set includes: ``\t\n\r\f\v``
+By default, ``strip`` method removes blank characters. This character set
+includes: ``\t\n\r\f\v``
 
-Method strip() can be passed as an argument of any characters. Then at the beginning and at the end of the line all characters that were specified in the line will be removed:
+Method ``strip`` can be passed as an argument of any characters. Then at
+the beginning and at the end of the line all characters that were specified in
+the line will be removed:
 
 .. code:: python
 
@@ -149,12 +153,15 @@ Method strip() can be passed as an argument of any characters. Then at the begin
     In [52]: ad_metric.strip('[]')
     Out[52]: '110/1045'
 
-Method strip() removes special characters at the beginning and at the end of the line. If you want to remove characters only on the left or only on the right, you can use ``lstrip()`` and ``rstrip()``.
+Method ``strip`` removes special characters at the beginning and at the end of
+the line. If you want to remove characters only on the left or only on the right,
+you can use ``lstrip`` and ``rstrip``.
 
 Method split
 ^^^^^^^^^^^
 
-Method ``split()`` split() splits the string using a symbol (or symbols) as separator and returns a list of strings:
+Method ``split`` splits the string using a symbol (or symbols) as
+separator and returns a list of strings:
 
 .. code:: python
 
@@ -165,7 +172,8 @@ Method ``split()`` split() splits the string using a symbol (or symbols) as sepa
     In [55]: print(commands)
     ['switchport', 'trunk', 'allowed', 'vlan', '10,20,30,100-200']
 
-In example above, ``string1.split()`` splits the string by spaces and returns a list of strings. The list is saved to ``commands`` variable.
+In example above, ``string1.split`` splits the string by spaces and returns
+a list of strings. The list is saved to ``commands`` variable.
 
 By default, separator is a space symbol (spaces, tabs, new line), but you can
 specify any separator in parentheses:
@@ -178,10 +186,12 @@ specify any separator in parentheses:
     ['10', '20', '30', '100-200']
 
 In ``commands`` list, the last element is a string with vlans, so the index -1 is used.
-Then string is split into parts using split() ``commands[-1].split(',')``.
+Then string is split into parts using ``split`` ``commands[-1].split(',')``.
 Since separator is a comma, this list is received ``['10', '20', '30', '100-200']``.
 
-A useful feature of split() method with default separator is that the string is not only split into a list of strings by space characters, but the space characters are also removed at the beginning and at the end of the line:
+A useful feature of ``split`` method with default separator is that the string
+is not only split into a list of strings by whitespace characters, but the whitespace
+characters are also removed at the beginning and at the end of the line:
 
 .. code:: python
 
@@ -191,7 +201,9 @@ A useful feature of split() method with default separator is that the string is 
     Out[59]: ['switchport', 'trunk', 'allowed', 'vlan', '10,20,30,100-200']
 
 
-Method ``split()`` has another good feature: by default, method splits a string not by one whitespace character, but by any number. For example, this will be very useful when processing show commands:
+Method ``split`` has another good feature: by default, method splits a string
+not by one whitespace character, but by any number. For example, this will be
+very useful when processing show commands:
 
 .. code:: python
 

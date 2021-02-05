@@ -1,7 +1,10 @@
 WHERE
 ~~~~~
 
-WHERE operator is used to specify a query. With the help of this operator it is possible to specify certain conditions under which data is selected. If condition is met the corresponding value is returned from table, if not - it is not returned.
+WHERE operator is used to specify a query. With the help of this operator it
+is possible to specify certain conditions under which data is selected.
+If condition is met the corresponding value is returned from table, if
+not - it is not returned.
 
 Now there are only two enties in *switch* table:
 
@@ -17,7 +20,8 @@ Now there are only two enties in *switch* table:
     2 rows in set
     Time: 0.033s
 
-To create more entries in table you need to create more rows. Litecli has a **source** command that lets you upload SQL commands from a file.
+To create more entries in table you need to create more rows. Litecli has
+a **source** command that lets you upload SQL commands from a file.
 
 File add_rows_to_testdb.txt is prepared to add entries:
 
@@ -84,16 +88,18 @@ Using the WHERE clause, you can show only those switches whose model is 3850:
     Time: 0.033s
 
 
-WHERE operator allows you to specify more than a specific field value. If you add LIKE operator to it you can specify a field template.
+WHERE operator allows you to specify more than a specific field value. If you
+add LIKE operator to it you can specify a field template.
 
 Like with characters ``_`` and ``%`` indicates what the value should look like:
 
 * ``_`` - denotes one character or number
 * ``%`` - denotes zero, one or many characters
 
-For example, if  *model* field is written in different formats the previous query will not be able to extract needed switches.
-
-For example, for sw6 switch the model field is written in this format: C3750, but for sw1 and sw3 switches: Cisco 3750.
+For example, if  *model* field is written in different formats the previous
+query will not be able to extract needed switches.
+For sw6 switch the model field is written in this format: C3750, but for
+sw1 and sw3 switches: Cisco 3750.
 
 In this version, WHERE query does not show sw6:
 

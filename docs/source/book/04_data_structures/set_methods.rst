@@ -1,10 +1,10 @@
 Set methods
 ~~~~~~~~~~~
 
-``add()``
+``add``
 ^^^^^^^^^
 
-Method ``add()`` adds an item to set:
+Method ``add`` adds an item to set:
 
 .. code:: python
 
@@ -15,10 +15,11 @@ Method ``add()`` adds an item to set:
     In [3]: set1
     Out[3]: {10, 20, 30, 40, 50}
 
-``discard()``
+``discard``
 ^^^^^^^^^^^^^
 
-Method ``discard()`` allows deleting elements without showing an error if there is no element in set:
+Method ``discard`` allows deleting elements without showing an error if there
+is no element in set:
 
 .. code:: python
 
@@ -35,10 +36,10 @@ Method ``discard()`` allows deleting elements without showing an error if there 
     In [7]: set1
     Out[7]: {10, 20, 30, 40}
 
-``clear()``
+``clear``
 ^^^^^^^^^^^
 
-Method ``clear()`` empties set:
+Method ``clear`` empties set:
 
 .. code:: python
 

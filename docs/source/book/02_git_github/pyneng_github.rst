@@ -7,7 +7,8 @@ All examples and tasks of book are published in a separate
 Copying repository from Github
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Examples and tasks are sometimes updated, so it will be more convenient to clone this repository to your machine and periodically update it.
+Examples and tasks are sometimes updated, so it will be more convenient to
+clone this repository to your machine and periodically update it.
 
 To copy a repository from Github, run ``git clone``:
 
@@ -25,7 +26,8 @@ To copy a repository from Github, run ``git clone``:
 Updating local copy of repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you need to update local repository to synchronize it with Github version, you need to perform ``git pull`` from inside the created pyneng-examples-exercises directory.
+If you need to update local repository to synchronize it with Github version,
+you need to perform ``git pull`` from inside the created pyneng-examples-exercises directory.
 
 If there were no updates, output would be:
 
@@ -84,12 +86,16 @@ If you want to see what changes have been made, you can use ``git log``:
 
      Check playbook execution on R1 router.
 
-In this command ``-p`` flag indicates that the output of Linux diff utility should be displayed for changes, not just commit comment. In turn, ``-1`` indicates that only the latest commit should be shown.
+In this command ``-p`` flag indicates that the output of Linux diff utility
+should be displayed for changes, not just commit comment. In turn, ``-1``
+indicates that only the latest commit should be shown.
 
 View changes that will be synchronized
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The previous version of ``git log`` relies on number of commands but this is not always convenient. Before executing ``git pull`` you can see what changes have been made since last synchronization.
+The previous version of ``git log`` relies on number of commands but this is
+not always convenient. Before executing ``git pull`` you can see what changes
+have been made since last synchronization.
 
 The following command shall be used:
 
@@ -110,11 +116,16 @@ The following command shall be used:
     +
     +Here you can find PDF versions of configuration manuals of tools that are used on course.
 
-In this case, changes were only in one file. This command will be very useful to see what changes have been made to tasks and which tasks. This will make it easier to navigate and to understand whether it is related to tasks you have already done and, if so, whether they should be changed.
+In this case, changes were only in one file. This command will be very useful
+to see what changes have been made to tasks and which tasks. This will make it
+easier to navigate and to understand whether it is related to tasks you have
+already done and, if so, whether they should be changed.
 
 .. note::
     "..origin/master" in ``git log -p ..origin/master``
     means to show all commits that are present in origin/master
     (in this case, it's GitHub) but that are not in local copy of repository
 
-If changes were in tasks you haven’t yet done, this output will tell you which files should be copied from course repository to your personal repository (and maybe the entire section if you haven’t yet done tasks from this section).
+If changes were in tasks you haven't yet done, this output will tell you which
+files should be copied from course repository to your personal repository (and
+maybe the entire section if you haven't yet done tasks from this section).

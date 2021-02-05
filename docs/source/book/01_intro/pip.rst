@@ -1,7 +1,9 @@
 Package management system Pip
 ===============================
 
-Pip will be used to install Python packages. It is a package management system used to install packages from Python Package Index (Pypi). Most likely, if you already have Python installed, pip is installed.
+Pip will be used to install Python packages. It is a package management system
+used to install packages from Python Package Index (Pypi). Most likely, if you
+already have Python installed, pip is installed.
 
 Check pip version:
 
@@ -37,16 +39,18 @@ In addition, it is sometimes necessary to update package:
 pip or pip3
 ^^^^^^^^^^^^
 
-Depending on how Python is installed and configured in system it may be necessary to use pip3 instead of pip. To check which option is used, you should execute command ``pip --version``.
+Depending on how Python is installed and configured in system it may be
+necessary to use pip3 instead of pip. To check which option is used,
+you should execute command ``pip --version``.
 
-A variant where pip corresponds to Python 2.7:
+A version where pip corresponds to Python 2.7:
 
 ::
 
     $ pip --version
     pip 9.0.1 from /usr/local/lib/python2.7/dist-packages (python 2.7)
 
-A variant where pip3 corresponds to 3.7:
+A version where pip3 corresponds to 3.7:
 
 ::
 
@@ -54,7 +58,8 @@ A variant where pip3 corresponds to 3.7:
     pip 19.1.1 from /home/vagrant/venv/pyneng-py3-7/lib/python3.7/site-packages/pip (python 3.7)
 
 
-If system uses pip3, then every time a Python module is installed in book it will be necessary to replace pip with pip3.
+If system uses pip3, then every time a Python module is installed in book it
+will be necessary to replace pip with pip3.
 
 Alternatively, call pip:
 

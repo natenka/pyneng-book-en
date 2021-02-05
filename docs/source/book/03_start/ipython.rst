@@ -5,7 +5,7 @@ Interpreter makes it possible to receive an instant response to executed actions
 You can say that interpreter works as CLI (Command Line Interface) of network
 devices: each command will be executed immediately after pressing Enter.
 However, there is an exception: more complex objects (such as cycles or
-functions) are executed only after twice pressing Enter.  
+functions) are executed only after twice pressing Enter.
 
 In previous section, a standard interpreter was called to verify Python
 installation. There is also an improved interpreter
@@ -13,7 +13,7 @@ installation. There is also an improved interpreter
 IPython allows much more than standard interpreter called by "python" command.
 Some examples (IPython features are much broader):
 
--  Autocomplete Tab commands or hints if there are more than one command variant
+-  Autocomplete Tab commands or hints if there are more than one command version
 -  More structured and understandable output of commands
 -  Automatic indentation in loops and other objects
 -  You can either walk through the command execution history or watch it with %history 'magic' command
@@ -35,7 +35,7 @@ After that, you can move to IPython as follows:
 
     In [1]:
 
-Command *quit* is used to exit. The following is how IPython will be used.
+Command ``quit`` is used to exit. The following is how IPython will be used.
 
 To get acquainted with interpreter, you can use it as a calculator:
 
@@ -69,7 +69,7 @@ When a loop is created in interpreter, for example, invitation changes to ellips
 
     In [5]: for i in range(5):
        ...:     print(i)
-       ...:     
+       ...:
     0
     1
     2
@@ -79,13 +79,13 @@ When a loop is created in interpreter, for example, invitation changes to ellips
 help()
 ^^^^^^
 
-In IPython you can view help for an arbitrary object, function or method using help():
+In IPython you can view help for an arbitrary object, function or method using ``help``:
 
 ::
 
     In [1]: help(str)
     Help on class str in module builtins:
-     
+
     class str(object)
      |  str(object='') -> str
      |  str(bytes_or_buffer[, encoding[, errors]]) -> str
@@ -94,13 +94,13 @@ In IPython you can view help for an arbitrary object, function or method using h
      |  errors is specified, then object must expose a data buffer
      |  that will be decoded using given encoding and error handler.
     ...
-     
+
     In [2]: help(str.strip)
     Help on method_descriptor:
-     
+
     strip(...)
         S.strip([chars]) -> str
-     
+
         Return a copy of string S with leading and trailing
         whitespace removed.
         If chars is given and not None, remove characters in chars instead.
@@ -114,7 +114,7 @@ The second option is:
     Docstring:
     str(object='') -> str
     str(bytes_or_buffer[, encoding[, errors]]) -> str
-     
+
     Create a new string object from given object. If encoding or
     errors is specified, then object must expose a data buffer
     that will be decoded using given encoding and error handler.
@@ -123,11 +123,11 @@ The second option is:
     encoding defaults to sys.getdefaultencoding().
     errors defaults to 'strict'.
     Type:           type
-     
+
     In [4]: ?str.strip
     Docstring:
     S.strip([chars]) -> str
-     
+
     Return a copy of string S with leading and trailing
     whitespace removed.
     If chars is given and not None, remove characters in chars instead.
@@ -136,7 +136,7 @@ The second option is:
 ``print``
 ^^^^^^^
 
-Function ````print```` displays information on a standard output (current
+Function ``print`` displays information on a standard output (current
 terminal screen). If you want to get a string, you should place it in
 quotes(double or single). If you want to get, for example, a computation result
 or just a number, quotes are not needed:
@@ -168,14 +168,14 @@ be no new line, an additional "end" argument should be specified as the last exp
 dir()
 ^^^^^
 
-Function ``dir()`` can be used to see what attributes (variables tied to object) and methods (functions tied to object) are available.
+Function ``dir`` can be used to see what attributes (variables tied to object) and methods (functions tied to object) are available.
 
 For example, for number the output will be (pay attention on various methods that allow arithmetic operations):
 
 .. code:: python
 
     In [10]: dir(5)
-    Out[10]: 
+    Out[10]:
     ['__abs__',
      '__add__',
      '__and__',
@@ -192,7 +192,7 @@ The same for string:
 .. code:: python
 
     In [11]: dir('hello')
-    Out[11]: 
+    Out[11]:
     ['__add__',
      '__class__',
      '__contains__',
@@ -205,12 +205,13 @@ The same for string:
      'upper',
      'zfill']
 
-If you do dir() with no value, it shows existing methods, attributes, and variables defined in current session of interpreter:
+If you call ``dir`` with no value, it shows existing methods, attributes,
+and variables defined in current session of interpreter:
 
 .. code:: python
 
     In [12]: dir()
-    Out[12]: 
+    Out[12]:
     ['__builtin__',
      '__builtins__',
      '__doc__',
@@ -224,7 +225,7 @@ If you do dir() with no value, it shows existing methods, attributes, and variab
      'i',
      'quit']
 
-For example, after creating variable “a” and test():
+For example, after creating variable a and test():
 
 .. code:: python
 
@@ -232,10 +233,10 @@ For example, after creating variable “a” and test():
 
     In [14]: def test():
        ....:     print('test')
-       ....:     
+       ....:
 
     In [15]: dir()
-    Out[15]: 
+    Out[15]:
      ...
      'a',
      'exit',

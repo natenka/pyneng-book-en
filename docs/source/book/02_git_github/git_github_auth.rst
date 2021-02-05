@@ -2,7 +2,8 @@ Github authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to start working with GitHub, you need to
-`register <https://github.com/join>`__ on it. It is better to use SSH key authentication to work safely with Github.
+`register <https://github.com/join>`__ on it. It is better to use SSH key
+authentication to work safely with Github.
 
 
 Generation of a new SSH key (use e-mail that is linked to Github):
@@ -11,8 +12,9 @@ Generation of a new SSH key (use e-mail that is linked to Github):
 
     $ ssh-keygen -t rsa -b 4096 -C "github_email@gmail.com"
 
-On all questions, just press Enter. It is more secure to use passphrase but if you press Enter when asked then passphrase
-will not be requested from you permanently during operations with repository.
+On all questions, just press Enter. It is more secure to use passphrase
+but if you press Enter when asked then passphrase will not be requested
+from you permanently during operations with repository.
 
 Start SSH agent:
 

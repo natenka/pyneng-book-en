@@ -68,7 +68,7 @@ or writes user and password to file if password has been verified
     In [9]: cat users.txt
     nata,salkfdjsalkdjfsal;dfj
 
-In this variant of add_user_to_users_file() function, it is not possible to regulate the minimum password length and whether to verify the presence of a username in password. In the following variant of add_user_to_users_file() function, these features are added:
+In this version of add_user_to_users_file() function, it is not possible to regulate the minimum password length and whether to verify the presence of a username in password. In the following version of add_user_to_users_file() function, these features are added:
 
 .. code:: python
 
@@ -120,5 +120,5 @@ into keyword arguments by the same  ``**kwargs`` syntax.
     Password for user nata has passed all checks
 
 
-In this variant you can add arguments to check_passwd() function without having
+In this version you can add arguments to check_passwd() function without having
 to duplicate them in add_user_to_users_file function.

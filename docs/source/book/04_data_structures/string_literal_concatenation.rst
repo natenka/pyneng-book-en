@@ -30,19 +30,24 @@ This is very convenient to use in regexs:
 
 .. code:: python
 
-    regex = ('(\S+) +(\S+) +'
-             '\w+ +\w+ +'
-             '(up|down|administratively down) +'
-             '(\w+)')
+    regex = (
+        '(\S+) +(\S+) +'
+        '\w+ +\w+ +'
+        '(up|down|administratively down) +'
+        '(\w+)'
+    )
 
-This way, the regex can be split and made easier to understand. Plus you can add explanatory comments in strings.
+This way, the regex can be split and made easier to understand. Plus you can
+add explanatory comments in strings.
 
 .. code:: python
 
-    regex = ('(\S+) +(\S+) +' # interface and IP
-             '\w+ +\w+ +'
-             '(up|down|administratively down) +' # Status
-             '(\w+)') # Protocol
+    regex = (
+        '(\S+) +(\S+) +' # interface and IP
+        '\w+ +\w+ +'
+        '(up|down|administratively down) +' # Status
+        '(\w+)' # Protocol
+    )
 
 It is also convenient to use this technique when writing a long message:
 

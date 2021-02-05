@@ -1,7 +1,8 @@
 Variables
 ~~~~~~~~~~
 
-Variables in Python do not require variable type declaration (since Python is a language with dynamic typing) and they are references to a memory area. Variable naming rules:
+Variables in Python do not require variable type declaration (since Python is
+a language with dynamic typing) and they are references to a memory area. Variable naming rules:
 
 -  Name of variable can consist only of letters, digits and an underscore
 -  Name cannot start with a digit
@@ -37,7 +38,11 @@ Variables are references to memory area. This can be demonstrated by using ``id(
     In [8]: id(c)
     Out[8]: 31671480
 
-In this example you can see that all three names refer to the same identifier, so it is the same object to which three references "a", "b" and "c" point. Concerning numbers Python has one feature that can be slightly misunderstood: numbers from -5 to 256 are pre-created and stored in an array (list). Therefore, when you create a number from this range you actually create a reference to number in generated array.
+In this example you can see that all three names refer to the same identifier,
+so it is the same object to which three references "a", "b" and "c" point.
+Python numbers has one feature that can be slightly misleading: numbers
+from -5 to 256 are pre-created and stored in an array (list). Therefore,
+when you create a number from this range you actually create a reference to number in generated array.
 
 .. note::
     This feature is specific to implementation of CPython which is discussed in book
@@ -79,8 +84,8 @@ If you do the same with number more than 256, all identifiers will be different:
     In [18]: id(500)
     Out[18]: 140239990502960
 
-However, if you assign variables to each other, identifiers are all the same (in this variant ``a``, ``b`` and ``c``
-are referring to the same object):
+However, if you assign variables to each other, identifiers are all the same
+(in this version ``a``, ``b`` and ``c`` are referring to the same object):
 
 .. code:: python
 
@@ -98,7 +103,8 @@ are referring to the same object):
 Variable names
 ^^^^^^^^^^^^^^^^
 
-Variable names should not overlap with names of operators and modules or other reserved words. Python has recommendations for naming functions, classes and variables:
+Variable names should not overlap with names of operators and modules or other
+reserved words. Python has recommendations for naming functions, classes and variables:
 
 -  variable names are usually written in lowercase or in uppercase (e.g., DB_NAME, db_name)
 -  function names are written in lowercase, with underline between words (for example get_names)

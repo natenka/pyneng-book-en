@@ -4,7 +4,8 @@ Additional features
 git diff
 ''''''''
 
-Command ``git diff`` allows you to see the difference between different states. For example, README and .gitignore files have been changed in repository.
+Command ``git diff`` allows you to see the difference between different states.
+For example, README and .gitignore files have been changed in repository.
 
 Command ``git status`` shows that both files have been changed
 
@@ -33,7 +34,9 @@ Command ``git log`` command shows when last changes were made
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/git/git_log.png
 
-By default, command displays all commits starting from the nearest time. With help of additional parameters it is possible not only to look at information about commits but also what changes have been made.
+By default, command displays all commits starting from the nearest time. With
+help of additional parameters it is possible not only to look at information
+about commits but also what changes have been made.
 
 Flag ``-p`` allows you to display the differences that have been made by each commit
 

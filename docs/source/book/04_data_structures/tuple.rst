@@ -7,7 +7,8 @@ Tuple in Python is:
 * a sequence of elements separated by a comma and enclosed in parentheses
 * immutable ordered data type
 
-Roughly speaking, a tuple is a list that can’t be changed. We can say that the tuple has read-only permissions. 
+Roughly speaking, a tuple is a list that can't be changed. We can say that
+the tuple has read-only permissions. 
 It could be a defense against accidental change.
 
 Create an empty tuple:
@@ -55,7 +56,8 @@ But since tuple is immutable you cannot assign a new value:
 
     TypeError: 'tuple' object does not support item assignment
 
-Function sorted() sorts tuple elements in ascending order and returns a new list with sorted elements:
+Function ``sorted`` sorts tuple elements in ascending order and returns a new
+list with sorted elements:
 
 .. code:: python
 

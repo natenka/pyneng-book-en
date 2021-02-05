@@ -56,7 +56,7 @@ The list comprehension option is often clearer, and in some cases even faster.
 But ``map`` can be more effective when you have to generate a large
 number of elements because ``map`` is an iterator and list comprehension generates a list.
 
-Examples similar to those above in list comprehension variant.
+Examples similar to those above in list comprehension version.
 
 Convert all strings to uppercase:
 

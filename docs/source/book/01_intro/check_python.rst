@@ -10,7 +10,9 @@ Before you start, check that when you call Python interpreter, the output is:
     [GCC 4.9.2] on linux
     Type "help", "copyright", "credits" or "license" for more information.
 
-Output shows that Python 3.7 is set. Invitation ``>>>``, this is a standard invitation from Python interpreter. Interpreter call is executed by python command and to exit you need to type ``quit()``, or press Ctrl+D.
+Output shows that Python 3.7 is set. Invitation ``>>>``, this is a standard
+invitation from Python interpreter. Interpreter call is executed by python
+command and to exit you need to type ``quit()``, or press Ctrl+D.
 
 .. note::
     Book will use ipython instead of standard Python interpreter

@@ -68,7 +68,7 @@ modules it is better to use processes because they may not work correctly with t
 
 .. note::
     
-    In addition to processes and threads, there is another variant of
+    In addition to processes and threads, there is another version of
     concurrent connections to device: asynchronous programming. This
     option is not covered in the book.
 
