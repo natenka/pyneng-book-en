@@ -243,7 +243,7 @@ If methods are called without arguments, they return indexes for whole match:
     In [45]: line[match.start():match.end()]
     Out[45]: '10     aab1.a1a1.a5d3    FastEthernet0/1'
 
-You can transfer number or name of the group to methods. Then they return
+You can pass number or name of the group to methods. Then they return
 indexes for this group:
 
 .. code:: python

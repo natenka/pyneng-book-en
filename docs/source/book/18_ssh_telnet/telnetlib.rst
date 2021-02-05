@@ -10,7 +10,7 @@ client implementation.
     telnetlib is that this module is part of standard Python library.
     
 Telnetlib resembles pexpect but has several differences. The most notable
-difference is that telnetlib requires a transfer of a byte string,
+difference is that telnetlib requires a pass of a byte string,
 rather than normal one.
 
 Connection is performed as follows:
@@ -35,7 +35,7 @@ Method ``read_until`` returns everything it has read before specified string.
 Method write
 ~~~~~~~~~~~
 
-Method ``write`` is used for data transmission. Byte string has to be passed to it:
+The ``write`` method is used to transmit data. You must pass a byte string as an argument:
 
 .. code:: python
 
@@ -165,7 +165,7 @@ Method ``expect``
 Method ``expect`` allows you to specify a list with regular expressions. It
 works like pexpect but telnetlib always has to pass a list of regular expressions.
 
-You can then transfer byte strings or compiled regular expressions:
+You can then pass byte strings or compiled regular expressions:
 
 .. code:: python
 

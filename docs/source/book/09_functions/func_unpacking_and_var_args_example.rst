@@ -1,7 +1,8 @@
 Example of using variable length keyword arguments and unpacking arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Using variable length arguments and unpacking arguments you can transfer arguments between functions. Let me give you an example.
+Using variable length arguments and unpacking arguments you can pass
+arguments between functions. Let me give you an example.
 
 Function ``check_passwd`` (func_add_user_kwargs_example.py file):
 

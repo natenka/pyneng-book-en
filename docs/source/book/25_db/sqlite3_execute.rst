@@ -30,7 +30,7 @@ Creates a switch table using ``execute``:
     Out[4]: <sqlite3.Cursor at 0x1085be880>
 
 SQL expressions can be parameterized - data can be substituted by special
-values. Due to this you can use the same SQL command to transfer different data.
+values. Due to this you can use the same SQL command to pass different data.
 
 For example, switch table needs to be filled with data from data list:
 
@@ -60,7 +60,7 @@ Data can now be passed as follows:
        ...:
 
 The second argument that is passed to ``execute`` must be a tuple. If you want
-to transfer a tuple with one element, ``(value, )`` entry is used.
+to pass a tuple with one element, ``(value, )`` entry is used.
 
 For changes to be applied, commit must be executed (note that ``commit`` method
 is called at the connection):

@@ -15,8 +15,8 @@ Python has very convenient functionality — literal strings concatenation
     In [4]: s
     Out[4]: 'TestString'
 
-It is even possible to transfer the composite strings to different strings,
-but only if they are in parentheses:
+You can even wrap parts of a line on different lines, but only if they are
+in parentheses:
 
 .. code:: python
 
@@ -26,7 +26,7 @@ but only if they are in parentheses:
     In [6]: s
     Out[6]: 'TestString'
 
-This is very convenient to use in regexs:
+This is very convenient to use in regex:
 
 .. code:: python
 

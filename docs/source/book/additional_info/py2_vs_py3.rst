@@ -4,7 +4,7 @@ Python 2.7 and Python 3.6 distinctions
 `Unicode <../16_unicode/>`__
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Python 2.7 has two string types: **str** and **unicode**:
+Python 2.7 has two string types: ``str`` and ``unicode``:
 
 .. code:: python
 
@@ -12,7 +12,7 @@ Python 2.7 has two string types: **str** and **unicode**:
 
     In [2]: line2 = u'test'
 
-In Python 3, string is **str** type but in addition **bytes** type appeared in Python 3:
+In Python 3, string is ``str`` type but in addition ``bytes`` type appeared in Python 3:
 
 .. code:: python
 
@@ -23,24 +23,24 @@ In Python 3, string is **str** type but in addition **bytes** type appeared in P
 
     In [5]: byte_str = b'test'
 
-`print() fucntion <../10_useful_functions/print.html>`__
+`print function <../10_useful_functions/print.html>`__
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In Python 2.7 *print* was an operator:
+In Python 2.7 ``print`` was an operator:
 
 .. code:: python
 
     In [6]: print 1, 'test'
     1 test
 
-In Python 3 `print() - function <../10_useful_functions/print.md>`__:
+In Python 3 `print - function <../10_useful_functions/print.md>`__:
 
 .. code:: python
 
     In [7]: print(1, 'test')
     1 test
 
-In Python 2.7 it is possible to put arguments in parentheses, but it doesn’t make
+In Python 2.7 it is possible to put arguments in parentheses, but it doesn't make
 ``print`` a function and ``print`` returns another result (tuple):
 
 .. code:: python
@@ -61,7 +61,8 @@ In Python 3, using Python 2.7 syntax will result in an error:
 `input instead of raw_input <../05_basic_scripts/2_user_input.html>`__
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In Python 2.7, raw_input() function was used to get information from user as a string:
+In Python 2.7, ``raw_input`` function was used to get information from
+user as a string:
 
 .. code:: python
 
@@ -71,7 +72,7 @@ In Python 2.7, raw_input() function was used to get information from user as a s
     In [11]: number
     Out[11]: '55'
 
-Python 3 uses *input*:
+Python 3 uses ``input``:
 
 .. code:: python
 
@@ -86,10 +87,10 @@ Python 3 uses *input*:
 
 Python 2.7 had two functions
 
-* range - returns list
-* xrange - returns iterator
+* ``range`` - returns list
+* ``xrange`` - returns iterator
 
-Example range() and xrange() in Python 2.7:
+Example ``range`` and ``xrange`` in Python 2.7:
 
 .. code:: python
 
@@ -102,7 +103,7 @@ Example range() and xrange() in Python 2.7:
     In [16]: list(xrange(5))
     Out[16]: [0, 1, 2, 3, 4]
 
-Python 3 has only a range() function and it returns an iterator:
+Python 3 has only a ``range`` function and it returns an iterator:
 
 .. code:: python
 
@@ -117,10 +118,13 @@ Python 3 has only a range() function and it returns an iterator:
 
 Several changes have occurred in dictionary methods.
 
-dict.keys(), values(), items()
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``dict.keys``, ``values``, ``items``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Methods keys(), values(), items() in Python 3 return "views " instead of lists. The peculiarity of view is that they change with the change of dictionary. And in fact, they just give you a way to look at corresponding objects but they don’t make a copy of them.
+Methods ``keys``, ``values``, ``items`` in Python 3 return ``views`` instead of
+lists. The peculiarity of view is that they change with the change of
+dictionary. And in fact, they just give you a way to look at corresponding
+objects but they don't make a copy of them.
 
 Python 3 has no methods:
 
@@ -178,7 +182,7 @@ Python 2.7 does not support this syntax:
     SyntaxError: invalid syntax
 
 `Iterator instead of list <../10_useful_functions/>`__
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In Python 2.7 map, filter and zip returned a list:
 
@@ -209,27 +213,33 @@ In Python 3, they return an iterator:
 `subprocess.run <../12_useful_modules/subprocess.html>`__
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Python 3.5 introduced the new run() function in subprocess module. It provides a more user-friendly interface for working with module and getting output of commands.
+Python 3.5 introduced the new ``run`` function in subprocess module.
+It provides a more user-friendly interface for working with module
+and getting output of commands.
 
-Accordingly, run() function is used instead of call() and check\_output() functions. But call() and check\_output() functions remain.
+Accordingly, ``run`` function is used instead of ``call`` and ``check_output``
+functions. But ``call`` and ``check_output`` functions remain.
 
 Jinja2
 ~~~~~~
 
-In Jinja2 module it is no longer necessary to use such code, since the default encoding is utf-8:
+In Jinja2 module it is no longer necessary to use such code, since the default
+encoding is utf-8:
 
 .. code:: python
 
-    import sys     
-    reload(sys)       
+    import sys
+    reload(sys)
     sys.setdefaultencoding('utf-8')
 
-In the templates themselves as in Python, dictionary methods have changed. Here, you should use items() instead of iteritems().
+In the templates themselves as in Python, dictionary methods have changed. Here,
+you should use ``items`` instead of ``iteritems``.
 
 Modules pexpect, telnetlib, paramiko
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Modules pexpect, telnetlib, paramiko send and receive bytes, so you have to make encode/decode accordingly.
+Modules pexpect, telnetlib, paramiko send and receive bytes, so you have to
+make encode/decode accordingly.
 
 In netmiko this conversion is performed automatically.
 
@@ -246,7 +256,7 @@ Below are links to resources with information about changes in Python 3.
 
 Documentation:
 
--  `What’s New In Python
+-  `What's New In Python
    3.0 <https://docs.python.org/3.0/whatsnew/3.0.html>`__
 -  `Should I use Python 2 or Python 3 for my development
    activity? <https://wiki.python.org/moin/Python2orPython3>`__

@@ -3,8 +3,11 @@ Function argument types
 
 When a function is called the arguments can be passed in two ways:
 
-* as **positional** - passed in the same order in which they are defined at creation of function. That is, the order of argument transfer determines what value each argument will get.
-* as **keyword** - passed with argument name and its value. In such a case, arguments can be stated in any order as their name is clearly indicated.
+* as **positional** - passed in the same order in which they are defined at
+  creation of function. That is, the order in which arguments are passed
+  determines what value each argument will receive.
+* as **keyword** - passed with argument name and its value. In such a case,
+  arguments can be stated in any order as their name is clearly indicated.
 
 Positional and keyword arguments can be mixed when calling a function. That is, it is possible to use both methods when passing arguments of the same function. In this process, Positional arguments must be indicated before keyword arguments.
 

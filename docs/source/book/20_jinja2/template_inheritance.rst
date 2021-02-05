@@ -164,7 +164,7 @@ Let's recap the rules for working with blocks. If block is created in parent tem
   * rewrite block - then child template will contain only what it has 
   * move content of the block from parent template and supplement it - then
     child template will contain both the content of the block from parent
-    template and the content from child template. To transfer content from
+    template and the content from child template. To pass content from
     parent template the expression ``{{ super() }}`` is used (example - *ospf* block)
 
 Data file for template configuration generation 

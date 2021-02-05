@@ -53,8 +53,8 @@ method can be used to pass a regex as an argument.
 
 Method ``expect`` returned number 0 as a result of the work. This number
 indicates that a match has been found and that this element with index zero.
-Index appears here because you can transfer a list of strings. For example,
-you can transfer a list with two elements:
+Index appears here because you can pass a list of strings. For example,
+you can pass a list with two elements:
 
 .. code:: python
 

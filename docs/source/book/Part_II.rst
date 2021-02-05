@@ -3,13 +3,14 @@ II. Code reuse
 
 When writing code, some of the steps are often repeated. It can be a small
 block of 3-5 lines, or it can be a fairly large sequence of steps.
-Copying code is a bad idea. Because if you have to update one of copies later, you have to update others.
+Copying code is a bad idea. Because if you have to update one of copies later,
+you have to update others.
 
 Instead, you create a special code block with name - function. And every
 time code has to be repeated, you just call a function. Function allows
 not only to name a block of code but also to make it more abstract through
-parameters. Parameters make it possible to transfer different source data
-for execution of function. And get different results depending on input parameters.
+parameters. Parameters make it possible to pass different data
+for function. And get different results depending on input parameters.
 
 Section :ref:`functions_index` covers with creation of functions,
 section :ref:`useful_functions_index` discusses useful built-in functions.

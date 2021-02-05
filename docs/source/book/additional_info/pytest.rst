@@ -7,11 +7,15 @@
 Tasks checking with tests
 =================================
 
-Starting with section "9. Functions" automatic tests are used to check tasks. They help to check that everything conforms to the task and also provide feedback on what is not up to task. Usually, after the first period of adaptation it becomes easier to do tasks with tests.
+Starting with section "9. Functions" automatic tests are used to check tasks.
+They help to check that everything conforms to the task and also provide
+feedback on what is not up to task. Usually, after the first period of
+adaptation it becomes easier to do tasks with tests.
 
-In addition to above-mentioned positive features, tests can also show what result is expected: clarify structure of data and details that may affect the result.
+In addition to above-mentioned positive features, tests can also show what
+result is expected: clarify structure of data and details that may affect the result.
 
-**Pytest** is used to run tests - a framework for writing tests.
+Pytest is used to run tests - a framework for writing tests.
 
 .. note::
 

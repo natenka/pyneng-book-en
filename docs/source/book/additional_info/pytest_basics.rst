@@ -8,7 +8,9 @@ First, you need to install pytest and pyyaml:
     pip install pytest
     pip install pyyaml
 
-Although you don’t have to write tests code but to understand it you should look at an example of a test. For example, there is the following code with check_ip() function:
+Although you don't have to write tests code but to understand it you should
+look at an example of a test. For example, there is the following code
+with ``check_ip`` function:
 
 .. code:: python
 
@@ -27,7 +29,8 @@ Although you don’t have to write tests code but to understand it you should lo
         result = check_ip('10.1.1.1')
         print('Function result:', result)
 
-Function check_ip() checks whether the argument given to it is an IP address. An example of calling a function with different arguments:
+Function ``check_ip`` checks whether the argument given to it is an IP address.
+An example of calling a function with different arguments:
 
 .. code:: python
 
@@ -54,14 +57,19 @@ Function check_ip() checks whether the argument given to it is an IP address. An
     In [5]: check_ip('500.1.1.1')
     Out[5]: False
 
-Now it is necessary to write a test for check_ip() function. Test must check that function returns True when correct address is passed and False when wrong argument is passed.
+Now it is necessary to write a test for ``check_ip`` function. Test must check
+that function returns True when correct address is passed and False when wrong
+argument is passed.
 
-To simplify task, test can be written in the same file. In pytest, test can be a normal function with a name that starts with *test_*. Inside function you have to write conditions that are checked. In pytest this is done with *assert*.
+To simplify task, test can be written in the same file. In pytest, test can be
+a normal function with a name that starts with ``test_``. Inside function you
+have to write conditions that are checked. In pytest this is done with ``assert``.
 
 assert
 ~~~~~~
 
-*assert* does nothing if expression is True and generates an exception if expression is False:
+``assert`` does nothing if expression is True and generates an exception
+if expression is False:
 
 .. code:: python
 
@@ -87,7 +95,8 @@ assert
 
     AssertionError:
 
-After *assert* and expression you can write a message. If there is a message, it is displayed in exception:
+After ``assert`` and expression you can write a message. If there is a message,
+it is displayed in exception:
 
 .. code:: python
 
@@ -102,10 +111,13 @@ After *assert* and expression you can write a message. If there is a message, it
 Test example
 ~~~~~~~~~~~~
 
-pytest uses *assert* to specify which conditions must be met in order for test
+pytest uses ``assert`` to specify which conditions must be met in order for test
 to be considered passed.
 
-In pytest, you can write test as a normal function but function name must start with *test_*. Below is test_check_ip test which verify check_ip() function by passing two values to it: correct address and wrong one, and after each check the message is written:
+In pytest, you can write test as a normal function but function name must start
+with ``test_``. Below is ``test_check_ip`` test which verify ``check_ip``
+function by passing two values to it: correct address and wrong one, and after
+each check the message is written:
 
 .. code:: python
 
@@ -129,7 +141,13 @@ In pytest, you can write test as a normal function but function name must start 
         result = check_ip('10.1.1.1')
         print('Function result:', result)
 
-Code is written in check_ip_functions.py. Now you have to figure out how to call tests. The easiest option is to write *pytest* word. In this case, pytest will automatically detect tests in the current directory. However, pytest has certain rules, not only by name of function but also by name of test files - file names should also start with *test_*. If rules are respected, pytest will automatically find tests, if not - you have to specify a test file.
+Code is written in check_ip_functions.py. Now you have to figure out how to
+call tests. The easiest option is to write ``pytest`` word. In this case,
+pytest will automatically detect tests in the current directory. However,
+pytest has certain rules, not only by name of function but also by name
+of test files - file names should also start with ``test_``. If rules
+are respected, pytest will automatically find tests, if not - you have
+to specify a test file.
 
 In the case of example above, you have to call a command:
 
@@ -145,9 +163,14 @@ In the case of example above, you have to call a command:
 
     ======================= 1 passed in 0.02 seconds =======================
 
-By default if tests pass, each test (test_check_ip function) is marked with a dot. Since in this case there is only one test - test_check_ip()function, there is a dot after name check_ip_functions.py and it is also written below that 1 test has passed.
+By default if tests pass, each test (test_check_ip function) is marked with a
+dot. Since in this case there is only one test - ``test_check_ip`` function,
+there is a dot after name check_ip_functions.py and it is also written below
+that 1 test has passed.
 
-Now, suppose the function does not work correctly and always returns False (write return False at the beginning of function). In this case, test execution will look like:
+Now, suppose the function does not work correctly and always returns False
+(write return False at the beginning of function). In this case, test
+execution will look like:
 
 ::
 
@@ -171,10 +194,14 @@ Now, suppose the function does not work correctly and always returns False (writ
     check_ip_functions.py:14: AssertionError
     ======================= 1 failed in 0.06 seconds =======================
 
-If test fails, pytest displays more information and shows where things went wrong. In this case, after execution of ``assert check_ip('10.1.1.1') == True`` string, the expression did not return True result, so an exception was generated.
+If test fails, pytest displays more information and shows where things went
+wrong. In this case, after execution of ``assert check_ip('10.1.1.1') == True``
+string, the expression did not return True result, so an exception was generated.
 
 Below, pytest shows what it has compared:
-``assert False == True`` and specifies that False is  ``check_ip('10.1.1.1')``. Looking at the output, one suspects that something is wrong with check_ip() function because it returns False to correct address.
+``assert False == True`` and specifies that False is  ``check_ip('10.1.1.1')``.
+Looking at the output, one suspects that something is wrong with ``check_ip``
+function because it returns False to correct address.
 
 Most tests are written in separate files. For this example, test is only one but it is still in a separate file.
 

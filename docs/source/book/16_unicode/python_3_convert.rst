@@ -80,6 +80,6 @@ There is a rule called a "Unicode sandwich":
 
 * bytes that the program reads must be converted to Unicode (string) as early as possible
 * inside the program work with Unicode 
-* Unicode must be converted to bytes as soon as possible before transfer
+* Unicode must be converted to bytes as soon as possible before transmitting
 
 

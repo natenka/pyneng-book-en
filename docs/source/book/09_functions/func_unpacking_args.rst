@@ -8,7 +8,7 @@ task - **unpacking arguments**.
 
 So far we've called all functions manually. Hence, we passed on all relevant arguments.
 
-In reality, it is usually necessary to transfer data to function
+In reality, it is usually necessary to pass data to function
 programmatically. And often data comes in the form of a Python object.
 
 Unpacking positional arguments
@@ -16,7 +16,7 @@ Unpacking positional arguments
 
 For example, when formatting strings you often need to pass multiple arguments
 to ``format`` method. And often these arguments are already in list or tuple.
-To transfer them to ``format`` method you have to use indexes:
+To pass them to ``format`` method you have to use indexes:
 
 .. code:: python
 
@@ -111,7 +111,7 @@ arguments. Just add ``*`` before passing the list as an argument and there is no
     ['interface Lo0', 'no shutdown', 'ip address 10.0.0.1 255.255.255.255']
 
 
-Python will unpack *info* list itself and transfer list elements to function as arguments.
+Python will unpack info list itself and pass list elements to function as arguments.
 
 .. note::
     Tuple can also be unpacked in this way.

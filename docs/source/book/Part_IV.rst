@@ -20,8 +20,8 @@ This section covers data reading and writing in CSV, JSON and YAML formats:
    structured format and then read them from a JSON file and get the same
    data structures in Python.
 -  YAML format is often used to describe playbooks. For example, it is used
-  in Ansible. In addition, in this format it is convenient to write manually
-  the parameters that should  be read by scripts.
+   in Ansible. In addition, in this format it is convenient to write manually
+   the parameters that should  be read by scripts.
 
 .. note::
 

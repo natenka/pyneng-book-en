@@ -1,7 +1,7 @@
 String formatting with ``%`` operator
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Example of % operator use:
+Example of ``%`` operator use:
 
 .. code:: python
 
@@ -40,5 +40,6 @@ For example, you can specify how many digits to show after comma:
     3.333
 
 .. note::
-    String formatting still has many possibilities. Good examples and explanations of two string formatting options can be found
+    String formatting still has many possibilities. Good examples and
+    explanations of two string formatting options can be found
     `here <https://pyformat.info/>`__.

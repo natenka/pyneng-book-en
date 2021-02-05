@@ -1,15 +1,24 @@
 Specifics of using pytest to check tasks
------------------------------------------------------
+----------------------------------------
 
-Pytest in course is primarily used for self-tests of tasks. However, this test is not optional - task is considered done when it complies with all specified points and passes tests. For my part, I also check tasks with automatic tests and then look at the code, write comments if necessary and show a solution option.
+Pytest in course is primarily used for self-tests of tasks. However, this
+test is not optional - task is considered done when it complies with all
+specified points and passes tests. For my part, I also check tasks with
+automatic tests and then look at the code, write comments if necessary
+and show a solution option.
 
-At first, tests require effort but through a couple of sections they will help solve tasks.
+At first, tests require effort but through a couple of sections they
+will help solve tasks.
 
 .. warning::
 
-    Tests that are written for course are not a benchmark or best practice of test writing. Tests are written with maximum emphasis on clarity and many things are done differently.
+    Tests that are written for course are not a benchmark or best practice of
+    test writing. Tests are written with maximum emphasis on clarity and many
+    things are done differently.
 
-When solving tasks especially when there are doubts about the final format of data to be obtained, it is better to look into test. For example, if task_9_1.py the corresponding test will be in test/test_task_9_1.py.
+When solving tasks especially when there are doubts about the final format of
+data to be obtained, it is better to look into test. For example,
+if task_9_1.py the corresponding test will be in test/test_task_9_1.py.
 
 Test example tests/test_task_9_1.py:
 
@@ -68,12 +77,18 @@ Test example tests/test_task_9_1.py:
         assert type(return_value) == list, "Function has to return a list"
         assert return_value == correct_return_value, "Function return wrong value"
 
-Note correct_return_value variable - this variable contains the resulting list that should return generate_access_config function. Therefore for example, if question has arisen of whether to add spaces before commands or a new line at the end, you can look at what the result requires. Also check your output against the output in variable_return_value.
+Note correct_return_value variable - this variable contains the resulting list
+that should return generate_access_config function. Therefore for example, if
+question has arisen of whether to add spaces before commands or a new line at
+the end, you can look at what the result requires. Also check your output
+against the output in variable_return_value.
 
 How to run tests for tasks verification
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The most important thing is where to run tests: all tests must be run from a directory with section tasks, not from a test directory. For example, in section 09_functions such a directory structure with tasks:
+The most important thing is where to run tests: all tests must be run from a
+directory with section tasks, not from a test directory. For example,
+in section 09_functions such a directory structure with tasks:
 
 ::
 
@@ -122,7 +137,10 @@ In this case, you have to run tests from 09_functions directory:
 conftest.py
 ~~~~~~~~~~~
 
-In addition to test directory there is a conftest.py file - special file in which you can write functions (more precisely fixtures) common to different tests. For example, this file contains functions that connect via SSH/Telnet to equipment.
+In addition to test directory there is a conftest.py file - special file in
+which you can write functions (more precisely fixtures) common to different
+tests. For example, this file contains functions that connect via SSH/Telnet
+to equipment.
 
 Useful commands
 ~~~~~~~~~~~~~~~~
@@ -133,7 +151,8 @@ Run one test:
 
     $ pytest tests/test_task_9_1.py
 
-Run one test with more detailed output (shows *diff* between data in test and what is received from function):
+Run one test with more detailed output (shows diff between data in test and
+what is received from function):
 
 ::
 
