@@ -288,7 +288,7 @@ Restriction: All tasks must be performed using only covered topics.
 Task 5.2a
 ~~~~~~~~~~~~
 
-It’s like task 5.2 but if user entered host address instead of network address, you have to convert host address to network address and display network address and mask as in task 5.2.
+It's like task 5.2 but if user entered host address instead of network address, you have to convert host address to network address and display network address and mask as in task 5.2.
 
 Example of network address (all host bits are zero):
 
@@ -348,7 +348,7 @@ Restriction: All tasks must be performed using only covered topics.
 That is, it is possible to solve this task without using *if* condition and *for/while* loops.
 
 Hint:
-Leading to this task was task 5.1. To make this task easier, you can look at task 5.1 and figure out how it was possible to extract different information depending on user’s input.
+Leading to this task was task 5.1. To make this task easier, you can look at task 5.1 and figure out how it was possible to extract different information depending on user's input.
 
 
 The following are examples of how to execute a script to make task easier to understand.

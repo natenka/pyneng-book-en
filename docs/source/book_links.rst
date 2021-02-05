@@ -23,7 +23,9 @@ Virtual machines in which the following are installed:
 -  GNS3 for networking equipment
 
 
-There are two options for prepared virtual machines (follow the links for instructions for each option, which contain links to the image and instructions on how to work with GNS3):
+There are two options for prepared virtual machines (follow the links for
+instructions for each option, which contain links to the image and
+instructions on how to work with GNS3):
 
 -  `vagrant <https://docs.google.com/document/d/1tIb8prINPM7uhyFxIhSSIF1-jckN_OWkKaO8zHQus9g/edit?usp=sharing>`__
 -  `vmware <https://drive.google.com/open?id=1r7Si9xTphdWp79sKxDhVk2zjWGggfy5Z6h8cKCLP5Cs>`__
@@ -48,14 +50,18 @@ Exercises
 
 `Repository with examples and tasks <https://github.com/natenka/pyneng-examples-exercises-en/>`__
 
-All tasks and auxiliary files can be downloaded from the repository. Tasks are duplicated in the book 
-solely for a convenient overview of all tasks in the section. Since all supporting files, code, and tests are in the repository, 
-it is best to do tasks in a copy of the repository. How to make a copy is described in section 2. Using Git and GitHub.
+All tasks and auxiliary files can be downloaded from the repository. Tasks are
+duplicated in the book solely for a convenient overview of all tasks in the
+section. Since all supporting files, code, and tests are in the repository, 
+it is best to do tasks in a copy of the repository. How to make a copy is
+described in section 2. Using Git and GitHub.
 
-Sometimes, a certain section can be especially difficult, in this case, you can stop at a minimum of tasks. 
-This will allow you to move on and not abandon your studies. Later you can come back and finish the tasks. 
-In general, of course, it is better to do all the tasks, since practice is the only way to properly learn the topic, 
-but sometimes it is better to do fewer tasks and continue studying than to get stuck on one topic and abandon everything.
+Sometimes, a certain section can be especially difficult, in this case, you can
+stop at a minimum of tasks. This will allow you to move on and not abandon your
+studies. Later you can come back and finish the tasks. In general, of course,
+it is better to do all the tasks, since practice is the only way to properly
+learn the topic, but sometimes it is better to do fewer tasks and continue
+studying than to get stuck on one topic and abandon everything.
  
 
 +----------------------------+---------------------------------------+--------------------------------------------------------------+
@@ -100,9 +106,10 @@ but sometimes it is better to do fewer tasks and continue studying than to get s
 Tests
 ~~~~~
 
-Starting from section “9. Functions” there are automatic tests for checking tasks. 
-They help to check whether everything fits the task and also give feedback on what does not fit the task. 
-As a rule, after first period of adaptation to tests, it becomes easier to do tasks with tests.
+Starting from section 9. Functions there are automatic tests for checking tasks. 
+They help to check whether everything fits the task and also give feedback on
+what does not fit the task. As a rule, after first period of adaptation to
+tests, it becomes easier to do tasks with tests.
 
 :ref:`How to work with tests and basics of pytest <additional_info_pytest>`. 
 
@@ -110,5 +117,10 @@ As a rule, after first period of adaptation to tests, it becomes easier to do ta
 Further reading
 ---------------
 
-Almost every book chapter has subchapter "Further reading" which includes useful materials and references on the subject, plus references to official documentations. Moreover, I prepared a `collection <https://natenka.github.io/pyneng-resources-en/>`__ of resources on "Python for network engineers" topic where you can find a lot of useful articles, books, video courses and podcasts.
+Almost every book chapter has subchapter "Further reading" which includes
+useful materials and references on the subject, plus references to official
+documentations. Moreover, I prepared a
+`collection <https://natenka.github.io/pyneng-resources-en/>`__ of
+resources on "Python for network engineers" topic where you can find a
+lot of useful articles, books, video courses and podcasts.
 

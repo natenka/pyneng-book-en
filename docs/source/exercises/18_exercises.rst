@@ -39,7 +39,7 @@ To verify this, change your password on device or in devices.yaml
 Task 18.1b
 ~~~~~~~~~~~~~
 
-Copy send_show_command() function from task 18.1a and redo it in such a way that exception is generated not only when authentication on device fails, but also when device’s IP address is not available.
+Copy send_show_command() function from task 18.1a and redo it in such a way that exception is generated not only when authentication on device fails, but also when device's IP address is not available.
 
 If error occurs, exception message should be displayed on standard output stream.
 

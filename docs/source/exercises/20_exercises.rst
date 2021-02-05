@@ -86,7 +86,7 @@ All commands must be in appropriate modes.
 Check resulting templates/ospf.txt template with data in data_files/ospf.yml file using generate_config() function from task 20.1. Do not copy generate_config() function code.
 
 
-The result should be a configuration of this kind (commands inside *router ospf* mode don’t have to be in such order, more important that they are in the right mode):
+The result should be a configuration of this kind (commands inside *router ospf* mode don't have to be in such order, more important that they are in the right mode):
 
 ::
 
@@ -193,7 +193,7 @@ For example, *src* router has such interfaces as Tunnel1, Tunnel4. On *dest* rou
 
     To complicate task you can make that number 5 is taken instead of 9.
 
-There’s no test for this task!
+There's no test for this task!
 
 .. code:: python
 

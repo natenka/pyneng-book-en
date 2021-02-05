@@ -21,7 +21,7 @@ Address is considered correct if it:
 
 Mask is considered correct if it is between 8 and 32 inclusive
 
-If mask or address didn’t pass verification, you should generate ValueError exception with appropriate text (output below).
+If mask or address didn't pass verification, you should generate ValueError exception with appropriate text (output below).
 
 Also, when creating a class, two instance variables should be created: *ip* and *mask* which contain address and mask, respectively.
 
