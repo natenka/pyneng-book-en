@@ -18,11 +18,11 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Python for network engineers'
-copyright = '2015-2020, Natasha Samoylenko'
+copyright = '2015-2021, Natasha Samoylenko'
 author = 'Natasha Samoylenko'
 
 # The full version, including alpha/beta/rc tags
-release = '3.0'
+release = '1.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -81,7 +81,7 @@ latex_elements = {
 \usepackage[margin=1.0in]{geometry}
 \usepackage{polyglossia}
 \setcounter{secnumdepth}{0}
-\setdefaultlanguage{russian}
+\setdefaultlanguage{english}
 \setotherlanguage{english}
 \usepackage{fontspec}
 \defaultfontfeatures{Scale=MatchLowercase}
