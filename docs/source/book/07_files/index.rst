@@ -49,5 +49,6 @@ This section covers only the minimum required for working with files. More in
    write
    close
    with
+   working_with_files
    further_reading
    ../../exercises/07_exercises

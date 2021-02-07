@@ -1,5 +1,5 @@
-Working with dictionary
--------------------
+Examples of working with files
+------------------------------
 
 When processing output of commands or configuration, often it will
 be necessary to write summary data to the dictionary.
