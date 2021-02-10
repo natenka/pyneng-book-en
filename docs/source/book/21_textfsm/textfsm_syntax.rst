@@ -17,13 +17,10 @@ Example of traceroute command examination:
 
 ::
 
-    # Value definition:
     Value ID (\d+)
     Value Hop (\d+(\.\d+){3})
 
-    # Section with state definition always should be started with *Start* state
     Start
-    #     Переменные      действие
        ^  ${ID} ${Hop} -> Record
 
 Value definition
@@ -43,12 +40,17 @@ Format of value description:
 Syntax of value description (for each option below we will consider examples):
 
 * ``Value`` - keyword that indicates that a value is being created. It must be specified
-* option - options that define how to work with a variable. If several options are to be specified, they must be separated by a comma, without spaces. These options are supported:
+* option - options that define how to work with a variable. If several options
+  are to be specified, they must be separated by a comma, without spaces. These options are supported:
 
-  * ``Filldown`` - value that previously matched with a regex,  remembered until the next processing line (if has not been explicitly cleared or matched again). This means that the last column value that matches regex is stored and used in the following strings if this column is not present.
+  * ``Filldown`` - value that previously matched with a regex,  remembered until
+    the next processing line (if has not been explicitly cleared or matched again).
+    This means that the last column value that matches regex is stored and used
+    in the following strings if this column is not present.
   * ``Key`` - determines that this field contains a unique string identifier
   * ``Required`` - string that is processed will only be written if this value is present.
-  * ``List`` - value is a list, and each match with a regex will add an item to the list. By default, each next match overwrites the previous one. 
+  * ``List`` - value is a list, and each match with a regex will add an item to the list.
+    By default, each next match overwrites the previous one. 
   * ``Fillup`` - works as Filldown but fills empty value up until it finds a match. Not compatible with Required.
 
 * ``name`` - name of value that will be used as column name. Reserved names should not be used as value names. 
@@ -95,7 +97,8 @@ State rules
 Each state consists of one or more rules: 
 
 * TextFSM handles incoming strings and compares them to rules 
-* if rule (regex) matches the string, actions in rule are executed and for the next string the process is repeated from the beginning of state.
+* if rule (regex) matches the string, actions in rule are executed and for the
+  next string the process is repeated from the beginning of state.
 
 Rules should be written in this format:
 
@@ -105,7 +108,8 @@ Rules should be written in this format:
 
 In rule: 
 
-* each rule must start with two spaces and caret symbol ``^``. Caret symbol ``^`` means the beginning of a line and must always be clearly indicated
+* each rule must start with two spaces and caret symbol ``^``. Caret symbol
+  ``^`` means the beginning of a line and must always be clearly indicated
 * regex - regex in which variables can be used
 
   * to specify variable you can use syntax like ``$ValueName`` or ``${ValueName}``\ (preferred format) 
@@ -131,13 +135,15 @@ Line Actions
 
 Line Actions:
 
-* ``Next`` - process the line, read the next line and start checking it from the beginning. This action is used by default unless otherwise specified
+* ``Next`` - process the line, read the next line and start checking it from
+  the beginning. This action is used by default unless otherwise specified
 * ``Continue`` - continue to process rules as if there was no match while values are assigned
 
 Record Action
 ^^^^^^^^^^^^^
 
-``Record Action`` - optional action that can be specified after Line Action. They must be separated by a dot. Types of actions:
+``Record Action`` - optional action that can be specified after Line Action.
+They must be separated by a dot. Types of actions:
 
 * ``NoRecord`` - do nothing. This is default action when no other is specified
 * ``Record`` - all variables except those with Filldown option are reset.
@@ -159,7 +165,8 @@ A new state can be specified after action:
   * the next line is read, 
   * then the current state changes to a new state and processing continues in new state.
 
-If rule uses ``Continue`` action, it is not possible to change state inside this rule. This rule is needed to avoid loops in sequence of states.
+If rule uses ``Continue`` action, it is not possible to change state inside
+this rule. This rule is needed to avoid loops in sequence of states.
 
 Error Action
 ^^^^^^^^^^^^

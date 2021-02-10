@@ -30,15 +30,17 @@ In this case TextFSM template will look like this (traceroute.template file):
 ::
 
     Value ID (\d+)
-    Value Hop (\d+(\.\d+){3})
+    Value Hop (\S+)
 
     Start
-      ^  ${ID} ${Hop} -> Record
+      ^  ${ID} ${Hop} +\d+ -> Record
 
 First two lines define variables:
 
-* ``Value ID (\d+)`` - this line defines an ``ID`` variable that describes a regular expression: ``(\d+)`` - one or more digits, here are the hop numbers
-* ``Value Hop (\d+(\.\d+){3})`` - line that defines a ``Hop`` variable that describes an IP address by such regular expression: ``(\d+(\.\d+){3})``
+* ``Value ID (\d+)`` - this line defines an ``ID`` variable that describes a
+  regular expression: ``(\d+)`` - one or more digits, here are the hop numbers
+* ``Value Hop (\S+)`` - line that defines a ``Hop`` variable that
+  describes an IP address by such regular expression
 
 After ``Start`` line, the template itself begins. In this case, it's very simple:
 

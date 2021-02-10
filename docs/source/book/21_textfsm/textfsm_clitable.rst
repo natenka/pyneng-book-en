@@ -23,7 +23,12 @@ This file should be in a directory with templates and should have this format:
 
 * other columns are optional 
 
-  * in example below there are columns Hostname, Vendor. They allow you to refine your device information to determine which template to use. For example, *show version* command may be in Cisco and HP devices. Of course, having only commands are not sufficient to determine which template to use. In this case, you can pass information about the type of equipment used with command and then you can define the correct template.
+  * in example below there are columns Hostname, Vendor. They allow you to
+    refine your device information to determine which template to use. For
+    example, *show version* command may be in Cisco and HP devices. Of course,
+    having only commands are not sufficient to determine which template to use.
+    In this case, you can pass information about the type of equipment used with
+    command and then you can define the correct template.
 
 * all columns except the first column support regular expressions. 
   Regular expressions are not supported inside ``[[]]``
