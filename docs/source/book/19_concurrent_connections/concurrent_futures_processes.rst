@@ -35,7 +35,7 @@ ThreadPoolExecutor to ProcessPoolExecutor:
     def send_show(device_dict, command):
         start_msg = '===> {} Connection: {}'
         received_msg = '<=== {} Received:   {}'
-        ip = device_dict['ip']
+        ip = device_dict['host']
         logging.info(start_msg.format(datetime.now().time(), ip))
         if ip == '192.168.100.1': time.sleep(5)
 
@@ -54,7 +54,7 @@ ThreadPoolExecutor to ProcessPoolExecutor:
         with ProcessPoolExecutor(max_workers=2) as executor:
             result = executor.map(send_show, devices, repeat(command))
             for device, output in zip(devices, result):
-                data[device['ip']] = output
+                data[device['host']] = output
         return data
 
 
@@ -108,7 +108,7 @@ File netmiko_processes_submit_exception.py:
 
 
     def send_show(device_dict, command):
-        ip = device_dict['ip']
+        ip = device_dict['host']
         logging.info(start_msg.format(datetime.now().time(), ip))
         if ip == '192.168.100.1': time.sleep(5)
         with ConnectHandler(**device_dict) as ssh:

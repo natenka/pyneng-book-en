@@ -13,7 +13,7 @@ Very important feature of working with threads: with a small number of threads
 and small test tasks "everything works". For example, printing output when
 connected to 20 devices in 5 threads will work normally. But when connected to
 a large number of devices with a large number of threads, it turns out that
-sometimes messages "will fit" on each other. This peculiarity appears very
+sometimes messages overlap. This peculiarity appears very
 often, so do not trust the version when "everything works" on basic examples,
 follow the rules of working with threads.
 

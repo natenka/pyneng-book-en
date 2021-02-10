@@ -3,8 +3,10 @@ Processes and threads in Python (CPython)
 
 First, we need to work out the terms:
 
--  process - roughly speaking, it's a launched program. Separate resources are allocated to the process: memory, processor time
--  thread - execution unit in the process. Thread share resources of the process to which they relate.
+-  process - roughly speaking, it's a launched program. Separate resources are
+   allocated to the process: memory, processor time
+-  thread - execution unit in the process. Thread share resources of the
+   process to which they relate.
 
 Python (or, more precisely, CPython - the implementation used in the book)
 is optimized to work in single-threaded mode. This is good if program uses only

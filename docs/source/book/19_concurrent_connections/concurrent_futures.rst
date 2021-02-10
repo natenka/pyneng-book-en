@@ -7,14 +7,14 @@ is used which makes it easy to switch between them.
 
 If you compare this module with threading or multiprocessing, it has fewer
 features but with ``concurrent.futures`` it's easier to work and interface
-more understandable.
+easier to understand.
 
 Concurrent.futures module allows to solve the problem of starting multiple
 threads/processes and getting data from them. For this purpose, module
 uses two classes:
 
--  **ThreadPoolExecutor** - for threads handling
--  **ProcessPoolExecutor** - for process handling
+-  ``ThreadPoolExecutor`` - for threads handling
+-  ``ProcessPoolExecutor`` - for process handling
 
 Both classes use the same interface, so it is enough to deal with one and then
 just switch to other if necessary.

@@ -43,7 +43,7 @@ An example of using a ``map`` function with ThreadPoolExecutor (netmiko_threads_
     def send_show(device, show):
         start_msg = '===> {} Connection: {}'
         received_msg = '<=== {} Received:   {}'
-        ip = device['ip']
+        ip = device['host']
         logging.info(start_msg.format(datetime.now().time(), ip))
         if ip == '192.168.100.1':
             time.sleep(5)
@@ -61,7 +61,7 @@ An example of using a ``map`` function with ThreadPoolExecutor (netmiko_threads_
     with ThreadPoolExecutor(max_workers=3) as executor:
         result = executor.map(send_show, devices, repeat('sh clock'))
         for device, output in zip(devices, result):
-            print(device['ip'], output)
+            print(device['host'], output)
 
 
 Since function should be passed to ``map`` method, ``send_show`` function is
@@ -73,7 +73,7 @@ the result with command output.
     def send_show(device, show):
         start_msg = '===> {} Connection: {}'
         received_msg = '<=== {} Received:   {}'
-        ip = device['ip']
+        ip = device['host']
         logging.info(start_msg.format(datetime.now().time(), ip))
         if ip == '192.168.100.1':
             time.sleep(5)
@@ -97,15 +97,24 @@ Last 4 lines of code are responsible for connecting to devices in separate threa
     with ThreadPoolExecutor(max_workers=3) as executor:
         result = executor.map(send_show, devices, repeat('sh clock'))
         for device, output in zip(devices, result):
-            print(device['ip'], output)
+            print(device['host'], output)
 
-* ``with ThreadPoolExecutor(max_workers=3) as executor:`` - ThreadPoolExecutor class is initiated in ``with`` block with indicated number of threads.
-* ``result = executor.map(send_show, devices, repeat('sh clock'))`` - ``map`` method is similar to ``map`` function, but here the send_show() function is called in different threads. However, in different threads the function will be called with different arguments:
+* ``with ThreadPoolExecutor(max_workers=3) as executor:`` - ThreadPoolExecutor
+  class is initiated in ``with`` block with indicated number of threads.
+* ``result = executor.map(send_show, devices, repeat('sh clock'))`` - ``map``
+  method is similar to ``map`` function, but here the ``send_show`` function is
+  called in different threads. However, in different threads the function will be
+  called with different arguments:
 
   * elements of iterable object ``devices`` and the same command "sh clock".
-  * since instead of a list of commands only one command is used, it must be repeated in some way, so that ``map`` method will set this command to different devices. It uses ``repeat`` function - it repeats command exactly as many times as ``map`` requests
+  * since instead of a list of commands only one command is used, it must be
+    repeated in some way, so that ``map`` method will set this command to
+    different devices. It uses ``repeat`` function - it repeats command exactly
+    as many times as ``map`` requests
   
-*  ``map`` method returns generator. This generator contains results of functions. Results are in the same order as devices in the list of devices, so zip() function is used to combine device IP addresses and command output.
+*  ``map`` method returns generator. This generator contains results of functions.
+   Results are in the same order as devices in the list of devices, so ``zip``
+   function is used to combine device IP addresses and command output.
 
 Execution result:
 
@@ -177,7 +186,7 @@ Example of ``map`` with exception handling:
     def send_show(device_dict, command):
         start_msg = '===> {} Connection: {}'
         received_msg = '<=== {} Received:   {}'
-        ip = device_dict['ip']
+        ip = device_dict['host']
         logging.info(start_msg.format(datetime.now().time(), ip))
         if ip == '192.168.100.1': time.sleep(5)
 
@@ -196,7 +205,7 @@ Example of ``map`` with exception handling:
         with ThreadPoolExecutor(max_workers=2) as executor:
             result = executor.map(send_show, devices, repeat(command))
             for device, output in zip(devices, result):
-                data[device['ip']] = output
+                data[device['host']] = output
         return data
 
 

@@ -1,5 +1,5 @@
 Measure script execution time 
-------------------------------------
+-----------------------------
 
 There are several options for estimating execution time of the script. The
 simplest options are:

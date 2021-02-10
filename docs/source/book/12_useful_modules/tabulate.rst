@@ -43,7 +43,7 @@ Parameter **headers** allows you to pass an additional argument that specifies c
 
 .. code:: python
 
-    In [8]: columns=['Interface', 'IP', 'Status', 'Protocol']
+    In [8]: columns = ['Interface', 'IP', 'Status', 'Protocol']
 
     In [9]: print(tabulate(sh_ip_int_br, headers=columns))
     Interface        IP         Status    Protocol
@@ -111,6 +111,26 @@ If data is in the form of a list of dictionaries, you should specify headers equ
     FastEthernet0/2  10.0.13.1  up        up
     Loopback0        10.1.1.1   up        up
     Loopback100      100.0.0.1  up        up
+
+
+
+Dict with lists in values:
+
+.. code:: python
+
+    In [6]: vlans = {"sw1": [10, 20, 30, 40], "sw2": [1, 2, 10], "sw3": [1, 2, 3, 4, 5, 10, 11, 12]}
+
+    In [7]: print(tabulate(vlans, headers="keys"))
+      sw1    sw2    sw3
+    -----  -----  -----
+       10      1      1
+       20      2      2
+       30     10      3
+       40             4
+                      5
+                     10
+                     11
+                     12
 
 Table style
 ~~~~~~~~~~~~~

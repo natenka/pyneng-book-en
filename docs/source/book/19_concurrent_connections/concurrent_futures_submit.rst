@@ -4,11 +4,16 @@ Method submit and work with futures
 Method ``submit`` differs from ``map`` method:
 
 * ``submit`` runs only one function in thread
-* ``submit`` can run different functions with different unrelated arguments, when ``map`` must run with iterable objects as arguments
+* ``submit`` can run different functions with different unrelated arguments,
+  when ``map`` must run with iterable objects as arguments
 * ``submit`` immediately returns the result without having to wait for function execution
 * ``submit`` returns special Future object that represents execution of function.
 
-  * ``submit`` returns Future in order that the call of ``submit`` does not block the code. Once ``submit`` has returned Future, code can be executed further. And once all functions in threads are running, you can start requesting Future if results are ready. Or take advantage of special function as_completed(), which requests the result itself and code gets it when it's ready
+  * ``submit`` returns Future in order that the call of ``submit`` does not block
+    the code. Once ``submit`` has returned Future, code can be executed further.
+    And once all functions in threads are running, you can start requesting Future
+    if results are ready. Or take advantage of special function ``as_completed``,
+    which requests the result itself and code gets it when it's ready
 
 * ``submit`` returns results in readiness order, not in argument order
 * ``submit`` can pass key arguments when ``map`` only position arguments
@@ -16,7 +21,7 @@ Method ``submit`` differs from ``map`` method:
 Method ``submit`` uses `Future <https://en.wikipedia.org/wiki/Futures_and_promises>`__ object - an
 object that represents a delayed computation. This object can be requested for
 status (completed or not), and results or exceptions can be obtained from the
-job. Future does not need to create manually, these objects are created by ``submit``.
+job. Future does not need to be created manually, these objects are created by ``submit``.
 
 
 Example of running a function in threads using ``submit`` (netmiko_threads_submit_basics.py file)
@@ -43,7 +48,7 @@ Example of running a function in threads using ``submit`` (netmiko_threads_submi
     def send_show(device_dict, command):
         start_msg = '===> {} Connection: {}'
         received_msg = '<=== {} Received: {}'
-        ip = device_dict['ip']
+        ip = device_dict['host']
         logging.info(start_msg.format(datetime.now().time(), ip))
         if ip == '192.168.100.1':
             time.sleep(5)
@@ -69,7 +74,7 @@ Example of running a function in threads using ``submit`` (netmiko_threads_submi
             print(f.result())
 
 
-The rest of the code has not changed, so you only need to deal with the block
+The rest of the code has not changed, so you only need to understand the block
 which runs ``send_show`` function in threads:
 
 .. code:: python
@@ -103,7 +108,10 @@ Now block ``with`` has two cycles:
   * ``submit`` function is used to create Future object
   * ``submit`` expects the name of function to be executed and its arguments
 
-* the next cycle runs through future_list using as_completed() function. This function returns a Future objects only when they have finished or been cancelled. Future is then returned as soon as work is completed, not in the order of adding to future_list
+* the next cycle runs through future_list using ``as_completed`` function.
+  This function returns a Future objects only when they have finished or
+  been cancelled. Future is then returned as soon as work is completed,
+  not in the order of adding to future_list
 
 
 .. note::
@@ -198,7 +206,7 @@ the script (netmiko_threads_submit_futures.py):
     def send_show(device_dict, command):
         start_msg = '===> {} Connection: {}'
         received_msg = '<=== {} Received: {}'
-        ip = device_dict['ip']
+        ip = device_dict['host']
         logging.info(start_msg.format(datetime.now().time(), ip))
         if ip == '192.168.100.1':
             time.sleep(5)
@@ -217,7 +225,7 @@ the script (netmiko_threads_submit_futures.py):
             for device in devices:
                 future = executor.submit(send_show, device, command)
                 future_list.append(future)
-                print('Future: {} for device {}'.format(future, device['ip']))
+                print('Future: {} for device {}'.format(future, device['host']))
             for f in as_completed(future_list):
                 result = f.result()
                 print('Future done {}'.format(f))
@@ -308,7 +316,7 @@ processing (netmiko_threads_submit_exception.py file):
 
 
     def send_show(device_dict, command):
-        ip = device_dict['ip']
+        ip = device_dict['host']
         logging.info(start_msg.format(datetime.now().time(), ip))
         if ip == '192.168.100.1': time.sleep(5)
         with ConnectHandler(**device_dict) as ssh:
