@@ -1,6 +1,9 @@
 Examples of working with files
 ------------------------------
 
+This subsection covers working with files and brings together
+topics: files, loops, and conditions.
+
 When processing output of commands or configuration, often it will
 be necessary to write summary data to the dictionary.
 It is not always obvious how to handle the output of commands and

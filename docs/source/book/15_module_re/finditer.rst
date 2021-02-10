@@ -3,7 +3,7 @@ Finditer function
 
 Function ``finditer``: 
 
-* is used to search for all disjoint matches in template
+* is used to search for all non-overlapping matches in string
 * returns an iterator with Match objects
 * ``finditer`` returns iterator even if no match is found
 
@@ -112,7 +112,7 @@ In this case it is possible to pass the entire contents of file
             ports.add(m.group(2))
             ports.add(m.group(3))
 
-    print('Loop between ports {} в VLAN {}'.format(', '.join(ports), vlan))
+    print('Loop between ports {} in VLAN {}'.format(', '.join(ports), vlan))
 
 .. warning::
 

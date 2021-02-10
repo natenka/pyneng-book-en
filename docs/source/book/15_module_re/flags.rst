@@ -1,7 +1,7 @@
 Flags
 -----
 
-When using functions or creating a compiled regex you can specify additional
+When using re functions or creating a compiled regex you can specify additional
 flags that affect the behavior of regex.
 
 The ``re`` module supports flags (in parentheses - a short version of flag):
@@ -22,7 +22,7 @@ re.DOTALL
 
 Regex can also be used for multiline string.
 
-For example, from *sh_cdp* string you need to get a device name, platform and IOS:
+For example, from ``sh_cdp`` string you need to get a device name, platform and IOS:
 
 .. code:: python
 
@@ -136,8 +136,9 @@ Search for all regex matches:
         ...:
     ('SW2', '2911', '15.2(2)T1')
 
-At first glance, it seems that instead of three devices there was only one device in output. 
-However, if you look at the results the tuple has Device ID from the first neighbor and platform and IOS from the last neighbor.
+At first glance, it seems that instead of three devices there was only one
+device in output. However, if you look at the results the tuple has Device ID
+from the first neighbor and platform and IOS from the last neighbor.
 
 A short output to ease understanding of result:
 

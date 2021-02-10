@@ -108,7 +108,8 @@ and then there is a plus. The first and the second part of MAC
 address matched to expression in parentheses. But only the last expression is
 remembered and returned.
 
-If named groups are used in expression, group name can be passed to ``group`` method and the corresponding substring can be obtained:
+If named groups are used in expression, group name can be passed to ``group``
+method and the corresponding substring can be obtained:
 
 .. code:: python
 

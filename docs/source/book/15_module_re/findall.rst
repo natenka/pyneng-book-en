@@ -3,7 +3,7 @@ Findall function
 
 Function ``findall``: 
 
-* is used to search for all disjoint matches in template
+* is used to search for all non-overlapping matches in string
 * returns:
 
   * list of strings that are described by regex if there are no groups in regex
@@ -67,7 +67,8 @@ matches with expression in the group:
      'a1bb.1c60.7000',
      'aa0b.cc70.7000']
 
-``findall`` searches for a match of the entire string but returns a result similar to group() method in Match object.
+``findall`` searches for a match of the entire string but returns a result
+similar to ``group`` method in Match object.
 If there are several groups, ``findall`` will return the list of tuples:
 
 .. code:: python
@@ -105,7 +106,7 @@ An example of using ``findall`` in a log file parsing (parse_log_findall.py file
             ports.add(port1)
             ports.add(port2)
 
-    print('Loop between ports {} в VLAN {}'.format(', '.join(ports), vlan))
+    print('Loop between ports {} in VLAN {}'.format(', '.join(ports), vlan))
 
 The result is:
 

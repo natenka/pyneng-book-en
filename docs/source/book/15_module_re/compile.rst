@@ -6,10 +6,10 @@ This is particularly useful when regex is used a lot in the script.
 
 The use of a compiled expression can speed up processing and it is generally
 more convenient to use this option as the program divides the creation of a
-regex and its use. In addition, using re.compile function creates a RegexObject
+regex and its use. In addition, using ``re.compile`` function creates a RegexObject
 object that has several additional features that are not present in MatchObject object.
 
-To compile a regex, use re.compile:
+To compile a regex, use ``re.compile``:
 
 .. code:: python
 
@@ -85,7 +85,7 @@ file (parse_log_compile.py file):
             ports.add(m.group(2))
             ports.add(m.group(3))
 
-    print('Петля между портами {} в VLAN {}'.format(', '.join(ports), vlan))
+    print('Loop between ports {} in VLAN {}'.format(', '.join(ports), vlan))
 
 This is a modified example of ``finditer`` usage. Description of regex changed:
 

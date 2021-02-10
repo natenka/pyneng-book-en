@@ -224,7 +224,6 @@ The second version of solution (parse_sh_cdp_neighbors_detail_ver2.py file):
 Explanations for the second option:
 
 * in regex, all lines written via ``|`` sign (or) 
-* without checking a line the match is searched 
 * if a match is found, ``lastgroup`` method is checked
 * ``lastgroup`` method returns name of the last named group in regex for which a match has been found
 * if a match was found for ``device`` group, the value that fells into the group is written to ``device`` variable 

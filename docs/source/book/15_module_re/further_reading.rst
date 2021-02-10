@@ -3,7 +3,6 @@ Further reading
 
 Regular expressions in Python:
 
--  `Regular expressions in Python from simple to complex. Details, examples, pictures, exercises <https://habrahabr.ru/post/349860/>`__ (in Russian)
 -  `Regular Expression
    HOWTO <https://docs.python.org/3.6/howto/regex.html>`__
 -  `Python 3 Module of the Week. Module re <https://pymotw.com/3/re/>`__

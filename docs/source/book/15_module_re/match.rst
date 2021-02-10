@@ -3,9 +3,9 @@ Match function
 
 Function ``match``: 
 
-* is used to search at the beginning of string that corresponds to template
-* returns Match object if substring is found
-* returns ``None`` if no substring was found
+* is used to search at the beginning of string that corresponds to regex
+* returns Match object if match is found
+* returns ``None`` if no match was found
 
 ``Match`` function differs from ``search`` in that ``match`` always looks for a
 match at the beginning of the line. For example, if you repeat the example that
@@ -30,7 +30,7 @@ The result will be None:
     In [6]: print(match)
     None
 
-This is because match() searches for *Host* word at the beginning of the line. But this message is in the middle.
+This is because ``match`` searches for Host word at the beginning of the line. But this message is in the middle.
 
 In this case it is easy to fix expression so that match() function finds match:
 
@@ -74,12 +74,12 @@ Example is similar to one used in ``search`` function with minor changes
                 ports.add(match.group(2))
                 ports.add(match.group(3))
 
-    print('Loop between ports {} в VLAN {}'.format(', '.join(ports), vlan))
+    print('Loop between ports {} in VLAN {}'.format(', '.join(ports), vlan))
 
 The result is:
 
 ::
 
     $ python parse_log_match.py
-    Loop between ports Gi0/19, Gi0/24, Gi0/16 в VLAN 10
+    Loop between ports Gi0/19, Gi0/24, Gi0/16 in VLAN 10
 
