@@ -11,8 +11,11 @@ are created by specifying variables inside the class itself, not a method:
 
         def __init__(self, network):
             self.network = network
-            self.hosts = tuple(str(ip) for ip in ipaddress.ip_network(network).hosts())
+            self.hosts = tuple(
+                str(ip) for ip in ipaddress.ip_network(network).hosts()
+            )
             self.allocated = []
+
 
         def allocate(self, ip):
             if ip in self.hosts:
@@ -26,9 +29,9 @@ are created by specifying variables inside the class itself, not a method:
 
 Class variables can be accessed in different ways:
 
-* self.all_allocated_ip
-* Network.all_allocated_ip
-* type(self).all_allocated_ip
+* ``self.all_allocated_ip``
+* ``Network.all_allocated_ip``
+* ``type(self).all_allocated_ip``
 
 
 The ``self.all_allocated_ip`` option allows you to access the value of class variable
