@@ -73,7 +73,6 @@ Script to generate configurations router_config_generator_ver2.py
 
 .. code:: python
 
-    # -*- coding: utf-8 -*-
     from jinja2 import Environment, FileSystemLoader
     import yaml
 
@@ -84,7 +83,7 @@ Script to generate configurations router_config_generator_ver2.py
         routers = yaml.safe_load(f)
 
     for router in routers:
-        r1_conf = router['name']+'_r1.txt'
+        r1_conf = router['name'] + '_r1.txt'
         with open(r1_conf, 'w') as f:
             f.write(template.render(router))
 
@@ -95,7 +94,8 @@ File router_config_generator.py imports from jinja2 module:
   * path to directory where templates are located is specified here
   * in this case template is in templates directory
   
-* ``Environment`` - a class for describing environment parameters. In this case only loader is specified, but you can specify how to process a template
+* ``Environment`` - a class for describing environment parameters. In this
+   case only loader is specified, but you can specify how to process a template
 
 Note that template is now in ``templates`` directory.
 

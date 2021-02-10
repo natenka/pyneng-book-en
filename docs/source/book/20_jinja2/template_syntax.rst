@@ -26,13 +26,12 @@ Script cfg_gen.py will be used to generate templates.
 
 .. code:: python
 
-    # -*- coding: utf-8 -*-
     from jinja2 import Environment, FileSystemLoader
     import yaml
     import sys
     import os
 
-    #$ python cfg_gen.py templates/for.txt data_files/for.yml
+    # python cfg_gen.py templates/for.txt data_files/for.yml
     template_dir, template = os.path.split(sys.argv[1])
 
     vars_file = sys.argv[2]

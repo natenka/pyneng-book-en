@@ -6,7 +6,7 @@ or there may be modified values of variables that have been passed to template.
 In this way you can remember a value that for example was obtained by using
 several filters. Then use variable name instead of repeating all filters.
 
-Template example templates/set.txt in which **set** expression is used to
+Template example templates/set.txt in which ``set`` expression is used to
 specify shorter parameter names:
 
 ::

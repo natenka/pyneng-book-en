@@ -172,7 +172,7 @@ The result of execution will be (interfaces are ordered):
 join
 ~~~~
 
-Filter ``join`` works just like join() method in Python.
+Filter ``join`` works just like ``join`` method in Python.
 
 With ``join`` filter you can combine sequence of elements into a string with
 an optional separator between elements.

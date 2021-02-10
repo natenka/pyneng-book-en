@@ -37,7 +37,7 @@ The output  is:
      neighbor 10.0.0.3 remote-as 100
      neighbor 10.0.0.3 update-source lo100
 
-new lines occur because of *for* block.
+new lines occur because of ``for`` block.
 
 ::
 
@@ -66,7 +66,7 @@ The result will be:
 Empty lines after block were removed.
 
 In front of ``neighbor ... remote-as`` lines two spaces appeared. This is
-because there is a space in front of *for* block. Once lstrip_blocks has
+because there is a space in front of ``for`` block. Once lstrip_blocks has
 been disabled, spaces and tabs in front of the block are added to the first line of block.
 
 This does not affect the next lines. Therefore, lines with 
