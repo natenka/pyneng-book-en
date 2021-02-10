@@ -18,11 +18,13 @@ Python has several modules that allow you to connect to network devices and exec
 
   * this module allows working with any interactive session: ssh, telnet, sftp, etc. 
   * in addition, it makes possible to execute different commands in OS (this can also be done with other modules)
-  * while pexpect may be less user-friendly than other modules, it implements a more general functionality and allows it to be used in situations where other modules do not work
+  * while pexpect may be less user-friendly than other modules, it implements
+    a more general functionality and allows it to be used in situations where other modules do not work
 
 * ``telnetlib`` - this module allows you connecting via Telnet
   
-  * ``netmiko`` version 1.0 also has Telnet support, so if ``netmiko`` supports the network devices you use, it is more convenient to use it
+  * ``netmiko`` version >= 1.0 also has Telnet support, so if ``netmiko`` supports
+    the network devices you use, it is more convenient to use it
 
 * ``paramiko`` - his module allows you connecting via SSHv2
 

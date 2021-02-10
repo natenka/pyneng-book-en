@@ -2,7 +2,7 @@ Module paramiko
 ---------------
 
 Paramiko is an implementation of SSHv2 protocol on Python. Paramiko provides
-client-server functionality. We will cover only client functionality.
+client-server functionality. Book covers only client functionality.
 
 Since Paramiko is not part of standard Python module library, it needs to be installed:
 
@@ -32,8 +32,11 @@ Policy ``paramiko.AutoAddPolicy()`` automatically add new hostname and key to lo
 
 Method ``connect`` connects to SSH server and authenticates the connection. Parameters:
 
-* ``look_for_keys`` - by default paramiko performs key authentication. To disable this, put the flag in False
-* ``allow_agent`` - paramiko can connect to a local SSH agent. This is necessary when working with keys and since in this case authentication is done by login/password, it should be disabled.  
+* ``look_for_keys`` - by default paramiko performs key authentication.
+  To disable this, put the flag in False
+* ``allow_agent`` - paramiko can connect to a local SSH agent. This is necessary
+  when working with keys and since in this case authentication is done
+  by login/password, it should be disabled.  
 
 After execution of previous command there is already a connection to server.
 Method ``invoke_shell`` allows to set an interactive SSH session with server.

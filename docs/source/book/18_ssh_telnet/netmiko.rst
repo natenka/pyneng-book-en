@@ -95,14 +95,16 @@ Method works as follows:
 * sends command to device and gets the output until string with prompt or until specified string
 
   * prompt is automatically determined
-  * if your device does not determine it, you can simply specify a string till which to read the output
-  * ``send_command_expect`` method previously worked this way, but since version 1.0.0 this is how send_command works and send_command_expect method is left for compatibility
+  * if your device does not determine it, you can simply specify a string till
+    which to read the output
+  * ``send_command_expect`` method previously worked this way, but since version
+   1.0.0 this is how send_command works and send_command_expect method is left for compatibility
 
 * method returns command output 
 * the following parameters can be passed to method:
 
   * ``command_string`` - command 
-  * ``expect_string`` - till which string read output
+  * ``expect_string`` - to which substring to read the output
   * ``delay_factor`` - option allows to increase delay before the start of string search
   * ``max_loops`` - number of iterations before method gives out an error (exception). By default 500 
   * ``strip_prompt`` - remove prompt from the output. Removed by default
@@ -131,7 +133,8 @@ Method works as follows:
 * goes into configuration mode, 
 * then passes all commands
 * and exits configuration mode
-* depending on device type, there may be no exit from configuration mode. For example, there will be no exit for IOS-XR because you first have to commit changes
+* depending on device type, there may be no exit from configuration mode. For
+  example, there will be no exit for IOS-XR because you first have to commit changes
 
 ``send_config_from_file``
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -154,7 +157,8 @@ Besides the above methods for sending commands, netmiko supports such methods:
 
 * ``config_mode`` - switch to configuration mode: ``ssh.config_mode`` 
 * ``exit_config_mode`` - exit configuration mode: ``ssh.exit_config_mode`` 
-* ``check_config_mode`` - check whether netmiko is in configuration mode (returns True if in configuration mode and False if not): ``ssh.check_config_mode`` 
+* ``check_config_mode`` - check whether netmiko is in configuration mode (returns
+  True if in configuration mode and False if not): ``ssh.check_config_mode`` 
 * ``find_prompt`` - returns the current prompt of device: ``ssh.find_prompt`` 
 * ``commit`` - commit on IOS-XR and Juniper: ``ssh.commit`` 
 * ``disconnect`` - terminate SSH connection

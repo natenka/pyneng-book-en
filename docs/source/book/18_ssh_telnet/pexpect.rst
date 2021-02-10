@@ -9,7 +9,7 @@ Module pexpect allows to automate interactive connections such as:
 
 .. note::
 
-    Pexpect is an implementation of *expect* in Python.
+    Pexpect is an implementation of expect in Python.
 
 First, pexpect module needs to be installed:
 
@@ -331,35 +331,35 @@ Output after script execution:
 
     {'sh clock': 'sh clock\n*13:13:47.525 UTC Sun Jul 19 2020\n',
      'sh int desc': 'sh int desc\n'
-                    'Interface                      Status         Protocol Description\n'
-                    'Et0/0                          up             up       \n'
-                    'Et0/1                          up             up       \n'
-                    'Et0/2                          up             up       \n'
-                    'Et0/3                          up             up       \n'
-                    'Lo22                           up             up       \n'
-                    'Lo33                           up             up       \n'
-                    'Lo45                           up             up       \n'
-                    'Lo55                           up             up       \n'}
+                    'Interface          Status         Protocol Description\n'
+                    'Et0/0              up             up       \n'
+                    'Et0/1              up             up       \n'
+                    'Et0/2              up             up       \n'
+                    'Et0/3              up             up       \n'
+                    'Lo22               up             up       \n'
+                    'Lo33               up             up       \n'
+                    'Lo45               up             up       \n'
+                    'Lo55               up             up       \n'}
     {'sh clock': 'sh clock\n*13:13:50.450 UTC Sun Jul 19 2020\n',
      'sh int desc': 'sh int desc\n'
-                    'Interface                      Status         Protocol Description\n'
-                    'Et0/0                          up             up       \n'
-                    'Et0/1                          up             up       \n'
-                    'Et0/2                          admin down     down     \n'
-                    'Et0/3                          admin down     down     \n'
-                    'Lo0                            up             up       \n'
-                    'Lo9                            up             up       \n'
-                    'Lo19                           up             up       \n'
-                    'Lo33                           up             up       \n'
-                    'Lo100                          up             up       \n'}
+                    'Interface          Status         Protocol Description\n'
+                    'Et0/0              up             up       \n'
+                    'Et0/1              up             up       \n'
+                    'Et0/2              admin down     down     \n'
+                    'Et0/3              admin down     down     \n'
+                    'Lo0                up             up       \n'
+                    'Lo9                up             up       \n'
+                    'Lo19               up             up       \n'
+                    'Lo33               up             up       \n'
+                    'Lo100              up             up       \n'}
     {'sh clock': 'sh clock\n*13:13:53.360 UTC Sun Jul 19 2020\n',
      'sh int desc': 'sh int desc\n'
-                    'Interface                      Status         Protocol Description\n'
-                    'Et0/0                          up             up       \n'
-                    'Et0/1                          up             up       \n'
-                    'Et0/2                          admin down     down     \n'
-                    'Et0/3                          admin down     down     \n'
-                    'Lo33                           up             up       \n'}
+                    'Interface          Status         Protocol Description\n'
+                    'Et0/0              up             up       \n'
+                    'Et0/1              up             up       \n'
+                    'Et0/2              admin down     down     \n'
+                    'Et0/3              admin down     down     \n'
+                    'Lo33               up             up       \n'}
 
 Working with pexpect without disabling commands pagination
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -421,7 +421,7 @@ command (1_pexpect_more.py file):
                 f.write(result)
 
 
-Now after sending the command, expect() method waits for another
+Now after sending the command, ``expect`` method waits for another
 option ``--More--`` - sign, that there will be one more page further.
 Since it's not known in advance how many pages will be in the output,
 reading is performed in a loop ``while True``. Loop is interrupted if
