@@ -3,8 +3,8 @@ Work with YAML files
 
 **YAML (YAML Ain't Markup Language)** - another text format for writing data.
 
-YAML is more human-friendly than JSON, so it is often used to describe scripts
-in software. Ansible, for example.
+YAML is more human-friendly than JSON, so it is often used to describe actions
+in software. Playbooks in Ansible, for example.
 
 YAML syntax
 ~~~~~~~~~~~~~~

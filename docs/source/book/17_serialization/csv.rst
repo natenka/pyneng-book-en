@@ -6,8 +6,8 @@ be data from a table or data from a database).
 
 In this format, each line of a file is a line of a table. Despite format name
 the separator can be not only a comma.
-Although formats with a different separator may have their own name such
-as TSV (tab separated values), CSV is generally understood by all separators.
+Formats with a different separator may have their own name, for example,
+TSV (tab separated values), however, the name CSV usually means any separators).
 
 Example of a CSV file (sw_data.csv):
 
@@ -109,24 +109,20 @@ The output is:
 ::
 
     $ python csv_read_dict.py
-    OrderedDict([('hostname', 'sw1'), ('vendor', 'Cisco'), ('model', '3750'), ('location', 'London')])
+    {'hostname': 'sw1', 'vendor': 'Cisco', 'model': '3750', 'location': 'London, Globe Str 1 '}
     sw1 3750
-    OrderedDict([('hostname', 'sw2'), ('vendor', 'Cisco'), ('model', '3850'), ('location', 'Liverpool')])
+    {'hostname': 'sw2', 'vendor': 'Cisco', 'model': '3850', 'location': 'Liverpool'}
     sw2 3850
-    OrderedDict([('hostname', 'sw3'), ('vendor', 'Cisco'), ('model', '3650'), ('location', 'Liverpool')])
+    {'hostname': 'sw3', 'vendor': 'Cisco', 'model': '3650', 'location': 'Liverpool'}
     sw3 3650
-    OrderedDict([('hostname', 'sw4'), ('vendor', 'Cisco'), ('model', '3650'), ('location', 'London')])
+    {'hostname': 'sw4', 'vendor': 'Cisco', 'model': '3650', 'location': 'London, Grobe Str 1'}
     sw4 3650
 
-Dictreader does not create standard Python dictionaries but ordered
-dictionaries. Thus, the order of elements corresponds to order of columns in CSV file.
 
 .. note::
 
-    Prior to Python 3.6 regular dictionaries were returned, not ordered dictionaries.
+    Prior to Python 3.8 OrderedDict type was returned, not dict.
 
-Otherwise, it is possible to work with ordered dictionaries using the same
-methods as in regular dictionaries.
 
 Writing
 ~~~~~~
@@ -297,7 +293,7 @@ For example, if the file uses separator ``;`` (sw_data2.csv file):
     sw3;Cisco;3650;Liverpool
     sw4;Cisco;3650;London
 
-Simply specify which separator is used in reader() (csv_read_delimiter.py file):
+Simply specify which separator is used in ``reader`` (csv_read_delimiter.py file):
 
 .. code:: python
 

@@ -27,7 +27,7 @@ YAML, JSON, CSV formats usage:
   * table can be exported to CSV format and processed by Python 
 
 * software can return data in JSON format. Accordingly, by converting this data into a Python object you can work with it and do whatever you want 
-* YAML is very convenient to use to describe parameters because it has a nice syntax
+* YAML is very convenient to use to describe parameters
 
   * for example, it can be settings for different objects (IP addresses, VLANs, etc.)
   * at least knowing YAML format will be useful when using Ansible
