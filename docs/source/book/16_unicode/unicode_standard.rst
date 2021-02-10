@@ -6,7 +6,7 @@ all languages and other characters.
 
 A few facts about Unicode:
 
-* version 12.1 (May 2019) describes 137 994 codes
+* version 13.0 (March 2020) describes 143 859 codes
 * each code is a number that corresponds to a certain character
 * standard also defines the encoding - the way of representing the symbol code in bytes
 
@@ -44,3 +44,4 @@ Examples of Unicode characters and their representation in bytes in UTF-8 encodi
 * 🛀 - ``01 f6 c0`` 
 * 🚀 - ``01 f6 80`` 
 * ☃ - ``26 03``
+

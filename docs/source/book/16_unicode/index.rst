@@ -21,7 +21,7 @@ Python 3, respectively, has two concepts:
 
 .. note::
 
-    It is more correct to say that text is an immutable sequence of codes (codepoints) Unicode.
+    It is more correct to say that text is an immutable sequence of Unicode codes (codepoints).
     
 .. toctree::
    :maxdepth: 1

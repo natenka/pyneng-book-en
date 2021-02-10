@@ -53,7 +53,7 @@ Another version of error where different encodings are used to conversion:
 
     UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
 
-Having mistakes is good. They're telling me what the problem is.
+Having mistakes is good. They're telling what the problem is.
 It's worse when it's like this:
 
 .. code:: python
