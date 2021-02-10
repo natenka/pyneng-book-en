@@ -8,7 +8,7 @@ information about it using instance variables ``hostname`` and ``model``:
 .. code:: python
 
     In [1]: def info(sw_obj):
-       ...:     print('Hostname: {}\nModel: {}'.format(sw_obj.hostname, sw_obj.model))
+       ...:     print(f'Hostname: {sw_obj.hostname}\nModel: {sw_obj.model}')
        ...:
 
     In [2]: sw1 = Switch()
@@ -34,7 +34,7 @@ To add a method you have to create a function within class:
 
     In [15]: class Switch:
         ...:     def info(self):
-        ...:         print('Hostname: {}\nModel: {}'.format(self.hostname, self.model))
+        ...:         print(f'Hostname: {self.hostname}\nModel: {self.model}')
         ...:
 
 If you look closely, ``info`` method looks exactly like ``info`` function, only
@@ -63,7 +63,7 @@ Method call is different from the function call: we do not pass a link to an
 instance of ``Switch`` class. We don't need that because we call method from
 instance itself. Another unclear thing - why we wrote ``self`` then?
 
-The point is that Python transforms such a call:
+Python transforms such a call:
 
 .. code:: python
 
@@ -97,7 +97,7 @@ in the list is:
 
 .. code:: python
 
-    In [4]: a = [1,2,3]
+    In [4]: a = [1, 2, 3]
 
     In [5]: a.append(5)
 
@@ -108,7 +108,7 @@ The same can be done using the second option, calling through a class:
 
 .. code:: python
 
-    In [7]: a = [1,2,3]
+    In [7]: a = [1, 2, 3]
 
     In [8]: list.append(a, 5)
 

@@ -8,7 +8,7 @@ For ``info`` method to work correctly the instance should have ``hostname`` and
 
     In [15]: class Switch:
         ...:     def info(self):
-        ...:         print('Hostname: {}\nModel: {}'.format(self.hostname, self.model))
+        ...:         print(f'Hostname: {self.hostname}\nModel: {self.model}')
         ...:
 
     In [59]: sw2 = Switch()
@@ -22,7 +22,7 @@ For ``info`` method to work correctly the instance should have ``hostname`` and
     <ipython-input-57-30b05739380d> in info(self)
           1 class Switch:
           2     def info(self):
-    ----> 3         print('Hostname: {}\nModel: {}'.format(self.hostname, self.model))
+    ----> 3         print(f'Hostname: {self.hostname}\nModel: {self.model}')
 
     AttributeError: 'Switch' object has no attribute 'hostname'
 
@@ -42,7 +42,7 @@ and ``__init__`` method is passed arguments with which instance was created:
         ...:         self.model = model
         ...:
         ...:     def info(self):
-        ...:         print('Hostname: {}\nModel: {}'.format(self.hostname, self.model))
+        ...:         print(f'Hostname: {self.hostname}\nModel: {self.model}')
         ...:
 
 Note that each instance created from this class will have variables:

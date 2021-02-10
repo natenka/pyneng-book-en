@@ -13,7 +13,7 @@ Example of using a different name instead of ``self``:
 
     In [15]: class Switch:
         ...:     def info(sw_object):
-        ...:         print('Hostname: {}\nModel: {}'.format(sw_object.hostname, sw_object.model))
+        ...:         print(f'Hostname: {sw_object.hostname}\nModel: {sw_object.model}')
         ...:
 
 It will work the same way:
@@ -46,7 +46,7 @@ First, an option of creating a usual variable within method:
 
     In [5]: class Switch:
        ...:     def generate_interfaces(self, intf_type, number_of_intf):
-       ...:         interfaces = ['{}{}'.format(intf_type, number) for number in range(1, number_of_intf+1)]
+       ...:         interfaces = [f'{intf_type}{number}' for number in range(1, number_of_intf+1)]
        ...:
 
 In this case, class instances will not have interfaces variable:
@@ -76,10 +76,10 @@ to assign value in self.interfaces:
 
     In [9]: class Switch:
        ...:     def info(self):
-       ...:         print('Hostname: {}\nModel: {}'.format(self.hostname, self.model))
+       ...:         print(f'Hostname: {self.hostname}\nModel: {self.model}')
        ...:
        ...:     def generate_interfaces(self, intf_type, number_of_intf):
-       ...:         interfaces = ['{}{}'.format(intf_type, number) for number in range(1, number_of_intf+1)]
+       ...:         interfaces = [f'{intf_type}{number}' for number in range(1, number_of_intf + 1)]
        ...:         self.interfaces = interfaces
        ...:
 

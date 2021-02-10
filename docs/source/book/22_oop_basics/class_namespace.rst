@@ -14,12 +14,12 @@ then used in ``info`` due to instance being passed as a first argument:
 
 .. code:: python
 
-    In [32]: class Switch:
-        ...:     def __init__(self, hostname, model):
-        ...:         self.hostname = hostname
-        ...:         self.model = model
-        ...:
-        ...:     def info(self):
-        ...:         print('Hostname: {}\nModel: {}'.format(self.hostname, self.model))
-        ...:
+    class Switch:
+        def __init__(self, hostname, model):
+            self.hostname = hostname
+            self.model = model
+
+        def info(self):
+            print(f'Hostname: {self.hostname}\nModel: {self.model}')
+
 
