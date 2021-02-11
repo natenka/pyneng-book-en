@@ -38,5 +38,7 @@ These data types, in turn, can be classified by several criteria:
    boolean
    convert_type
    check_type
+   method_chaining
+   sorting
    further_reading
    ../../exercises/04_exercises
