@@ -9,10 +9,10 @@ IPv4 address:
 
 .. code:: python
 
-    In [1]: class IPAddress:
-       ...:     def __init__(self, ip):
-       ...:         self.ip = ip
-       ...:
+    class IPAddress:
+        def __init__(self, ip):
+            self.ip = ip
+
 
 After creating class instances, they have a default string view that looks
 like this (the same output is displayed when ``print`` is used):
@@ -36,13 +36,13 @@ function. As an argument this method expects only instance and must return strin
 
 .. code:: python
 
-    In [6]: class IPAddress:
-       ...:     def __init__(self, ip):
-       ...:         self.ip = ip
-       ...:
-       ...:     def __str__(self):
-       ...:         return f"IPAddress: {self.ip}"
-       ...:
+    class IPAddress:
+        def __init__(self, ip):
+            self.ip = ip
+
+        def __str__(self):
+            return f"IPAddress: {self.ip}"
+
 
     In [7]: ip1 = IPAddress('10.1.1.1')
 
@@ -74,16 +74,16 @@ of a class:
 
 .. code:: python
 
-    In [14]: class IPAddress:
-        ...:     def __init__(self, ip):
-        ...:         self.ip = ip
-        ...:
-        ...:     def __str__(self):
-        ...:         return f"IPAddress: {self.ip}"
-        ...:
-        ...:     def __repr__(self):
-        ...:         return f"IPAddress('{self.ip}')"
-        ...:
+    class IPAddress:
+        def __init__(self, ip):
+            self.ip = ip
+
+        def __str__(self):
+            return f"IPAddress: {self.ip}"
+
+        def __repr__(self):
+            return f"IPAddress('{self.ip}')"
+
 
     In [15]: ip1 = IPAddress('10.1.1.1')
 

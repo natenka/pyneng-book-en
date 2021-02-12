@@ -110,8 +110,7 @@ processed correctly automatically:
     TypeError: list indices must be integers or slices, not str
 
 
-You will find implementation of remaining methods of sequence protocol
-in tasks to this section:
+Remaining methods of sequence protocol:
 
 * ``__contains__`` - this method is responsible for checking the presence
   of element in sequence ``'10.1.1.198' in net1``. If object does not define

@@ -28,21 +28,21 @@ IPAddress class with ``__add__``:
 
 .. code:: python
 
-    In [5]: class IPAddress:
-       ...:     def __init__(self, ip):
-       ...:         self.ip = ip
-       ...:
-       ...:     def __str__(self):
-       ...:         return f"IPAddress: {self.ip}"
-       ...:
-       ...:     def __repr__(self):
-       ...:         return f"IPAddress('{self.ip}')"
-       ...:
-       ...:     def __add__(self, other):
-       ...:         ip_int = int(ipaddress.ip_address(self.ip))
-       ...:         sum_ip_str = str(ipaddress.ip_address(ip_int + other))
-       ...:         return IPAddress(sum_ip_str)
-       ...:
+    class IPAddress:
+        def __init__(self, ip):
+            self.ip = ip
+
+        def __str__(self):
+            return f"IPAddress: {self.ip}"
+
+        def __repr__(self):
+            return f"IPAddress('{self.ip}')"
+
+        def __add__(self, other):
+            ip_int = int(ipaddress.ip_address(self.ip))
+            sum_ip_str = str(ipaddress.ip_address(ip_int + other))
+            return IPAddress(sum_ip_str)
+
 
 ip_int variable refers to source address value in decimal format.
 And sum_ip_str is a string with IP address obtained by adding two numbers.
@@ -50,7 +50,7 @@ In general, it is desirable that the summation operation returns an instance
 of the same class, so in the last line of method an instance of IPAddress
 class is created and a string with resulting address is passed to it as an argument.
 
-Now IPAddress class instances must support addition with number. As a result
+Now IPAddress class instances support addition with number. As a result
 we get a new instance of IPAddress class.
 
 .. code:: python
@@ -63,8 +63,9 @@ we get a new instance of IPAddress class.
 Since ipaddress module is used within method and it supports creating IP address
 only from a decimal number, it is necessary to limit method to work only with
 ``int`` data type. If the second element was an object of another type, an
-exception must be generated. Exception and error message take from the analogous
-error of ``ipaddress.ip_address`` function:
+exception must be generated.
+The exception and error message are taken from a similar error in
+the ``ipaddress.ip_address`` function:
 
 .. code:: python
 
@@ -85,25 +86,25 @@ Now IPAddress class looks like:
 
 .. code:: python
 
-    In [11]: class IPAddress:
-        ...:     def __init__(self, ip):
-        ...:         self.ip = ip
-        ...:
-        ...:     def __str__(self):
-        ...:         return f"IPAddress: {self.ip}"
-        ...:
-        ...:     def __repr__(self):
-        ...:         return f"IPAddress('{self.ip}')"
-        ...:
-        ...:     def __add__(self, other):
-        ...:         if not isinstance(other, int):
-        ...:             raise TypeError(f"unsupported operand type(s) for +:"
-        ...:                             f" 'IPAddress' and '{type(other).__name__}'")
-        ...:
-        ...:         ip_int = int(ipaddress.ip_address(self.ip))
-        ...:         sum_ip_str = str(ipaddress.ip_address(ip_int + other))
-        ...:         return IPAddress(sum_ip_str)
-        ...:
+    class IPAddress:
+        def __init__(self, ip):
+            self.ip = ip
+
+        def __str__(self):
+            return f"IPAddress: {self.ip}"
+
+        def __repr__(self):
+            return f"IPAddress('{self.ip}')"
+
+        def __add__(self, other):
+            if not isinstance(other, int):
+                raise TypeError(f"unsupported operand type(s) for +:"
+                                f" 'IPAddress' and '{type(other).__name__}'")
+
+            ip_int = int(ipaddress.ip_address(self.ip))
+            sum_ip_str = str(ipaddress.ip_address(ip_int + other))
+            return IPAddress(sum_ip_str)
+
 
 If the second operand is not an instanse of ``int`` class, a TypeError
 exception is generated. In exception, information is displayed that summation

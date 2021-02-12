@@ -1,12 +1,12 @@
 Iteration protocol
 ~~~~~~~~~~~~~~~~~
 
-``iterable`` - object that can return elements one at a time. 
+``iterable`` - object that can return elements one at a time.
 For Python, it is any object that has ``__iter__`` or ``__getitem__`` method.
 If an object has ``__iter__`` method, the iterable becomes an iterator by
 calling ``iter(name)`` where ``name`` - name of iterable.
 If ``__iter__`` method is not present, Python iterates
-elements using ``__getitem__``.
+elements using ``__getitem__`` (also by calling ``iter`` function).
 
 
 .. code:: python
@@ -152,7 +152,7 @@ create an iterator and then ``__next__`` method is called until
 ``Stopiteration`` exception raised.
 
 An example of ``my_for`` function that works with any iterable and loosely imitates
-built-in function ``for``:
+built-in function ``for`` (actually gititem are iterated over by iter function):
 
 .. code:: python
 
@@ -250,26 +250,26 @@ Create an iterator from Network class:
 
 .. code:: python
 
-    In [12]: class Network:
-        ...:     def __init__(self, network):
-        ...:         self.network = network
-        ...:         subnet = ipaddress.ip_network(self.network)
-        ...:         self.addresses = [str(ip) for ip in subnet.hosts()]
-        ...:         self._index = 0
-        ...:
-        ...:     def __iter__(self):
-        ...:         print('Вызываю __iter__')
-        ...:         return self
-        ...:
-        ...:     def __next__(self):
-        ...:         print('Вызываю __next__')
-        ...:         if self._index < len(self.addresses):
-        ...:             current_address = self.addresses[self._index]
-        ...:             self._index += 1
-        ...:             return current_address
-        ...:         else:
-        ...:             raise StopIteration
-        ...:
+    class Network:
+        def __init__(self, network):
+            self.network = network
+            subnet = ipaddress.ip_network(self.network)
+            self.addresses = [str(ip) for ip in subnet.hosts()]
+            self._index = 0
+
+        def __iter__(self):
+            print('Вызываю __iter__')
+            return self
+
+        def __next__(self):
+            print('Вызываю __next__')
+            if self._index < len(self.addresses):
+                current_address = self.addresses[self._index]
+                self._index += 1
+                return current_address
+            else:
+                raise StopIteration
+
 
 Method ``__iter__`` in iterator must return object itself, therefore
 ``return self`` is specified in method and ``__next__`` method
@@ -318,15 +318,15 @@ the easiest option to return iterator is to return  ``iter(self.addresses)``:
 
 .. code:: python
 
-    In [17]: class Network:
-        ...:     def __init__(self, network):
-        ...:         self.network = network
-        ...:         subnet = ipaddress.ip_network(self.network)
-        ...:         self.addresses = [str(ip) for ip in subnet.hosts()]
-        ...:
-        ...:     def __iter__(self):
-        ...:         return iter(self.addresses)
-        ...:
+    class Network:
+        def __init__(self, network):
+            self.network = network
+            subnet = ipaddress.ip_network(self.network)
+            self.addresses = [str(ip) for ip in subnet.hosts()]
+
+        def __iter__(self):
+            return iter(self.addresses)
+
 
 Now all Network class instances will be iterable objects:
 
