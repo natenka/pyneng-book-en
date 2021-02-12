@@ -1,26 +1,40 @@
 What's next
 ===========
 
-Information is usually hard to grasp from the first time. Especially new information.
+Information is usually hard to grasp from the first time. Especially new
+information.
 
-If you do your homework and make notes during your study, you learn a lot more information than if you just read a book. But most likely, in some way you’ll have to read about the same information several times.
+If you do your homework and make notes during your study, you learn a lot
+more information than if you just read a book. But most likely, in some way
+you'll have to read about the same information several times.
 
-Book provides only basics of Python and therefore it is necessary to continue to learn and to repeat already completed topics and to learn new ones. And there are a lot of options:
+Book provides only basics of Python and therefore it is necessary to continue
+to learn and to repeat already completed topics and to learn new ones. And
+there are a lot of options:
 
 -  automate something at work
 -  learn more Python for network automation
 -  learn Python without binding to network equipment
 
-These resources are listed selectively, considering you’ve already read the book. But in addition, I’ve made a `compilation of resources  <https://natenka.github.io/pyneng-resources-en/>`__ where other materials can be found.
+These resources are listed selectively, considering you've already read the
+book. But in addition, I've made a
+`compilation of resources  <https://natenka.github.io/pyneng-resources-en/>`__ where other materials can be found.
 
 You have ideas for the scripts you want to write
 ------------------------------------------------
 
-Most likely, after reading the book there will be ideas what you can automate at work. It’s a great option, because it’s always easier to learn on a real problem. But it is better to go beyond work tasks and study Python further.
+Most likely, after reading the book there will be ideas what you can automate
+at work. It's a great option, because it's always easier to learn on a real
+problem. But it is better to go beyond work tasks and study Python further.
 
-Python allows you to do quite a lot with only basic knowledge. Therefore, with work tasks it is not always possible to increase level of knowledge, but knowing Python better you can usually solve the same problems much more easily. So it’s best not to stop and learn.
+Python allows you to do quite a lot with only basic knowledge. Therefore,
+with work tasks it is not always possible to increase level of knowledge,
+but knowing Python better you can usually solve the same problems much more
+easily. So it's best not to stop and learn.
 
-The following resources are connected to network equipment and generally Python. Depending on from what materials you learn best you can select a book or video course from list
+The following resources are connected to network equipment and generally
+Python. Depending on from what materials you learn best you can select
+a book or video course from list
 
 Python for network equipment automation
 ---------------------------------------
@@ -51,7 +65,7 @@ Packet Pushers often have podcasts about automation:
    Ansible <http://packetpushers.net/podcast/podcasts/show-198-kirk-byers-network-automation-python-ansible/>`__
 -  `Show 270: Design & Build 9: Automation With Python And
    Netmiko <http://packetpushers.net/podcast/podcasts/show-270-design-build-9-automation-python-netmiko/>`__
--  `Show 332: Don’t Believe The Programming
+-  `Show 332: Don't Believe The Programming
    Hype <http://packetpushers.net/podcast/podcasts/show-332-dont-believe-programming-hype/>`__
 -  `Show 333: Automation & Orchestration In
    Networking <http://packetpushers.net/podcast/podcasts/show-333-orchestration-vs-automation/>`__
@@ -92,11 +106,19 @@ Basic level:
 
 Medium/advanced level:
 
-* `Python Tricks <https://www.amazon.com/Python-Tricks-Buffet-Awesome-Features-ebook/dp/B0785Q7GSY>`__ - excellent for 2-3 books on Python. Book describes various aspects of Python and how to use it correctly. The book is fairly new (late 2017) and covers Python 3.
+* `Python Tricks <https://www.amazon.com/Python-Tricks-Buffet-Awesome-Features-ebook/dp/B0785Q7GSY>`__ - excellent
+  for 2-3 book on Python. Book describes various aspects of Python and how to use it
+  correctly. The book is fairly new (late 2017) and covers Python 3.
 * `Effective Python: 59 Specific Ways to Write Better Python (Effective Software Development Series) <https://www.amazon.com/Effective-Python-Specific-Software-Development-ebook-dp-B07ZG18BH3/dp/B07ZG18BH3/>`__ - book of useful advice on how best to write code
-* `Dive Into Python 3 <http://diveintopython3.problemsolving.io/>`__ - briefly covers fundamentals of Python and then more advanced topics: closure, generators, tests and so on. Book written in 2009 but covers Python 3 and 99% of topics remained unchanged. * `Problem Solving with Algorithms and Data Structures using Python <https://runestone.academy/runestone/static/pythonds/index.html>`__ - excellent book on data structures and algorithms. Many examples and homework.
-* `Fluent Python <https://www.amazon.com/gp/product/1491946008/>`__ - excellent book on more advanced topics. Even topics that are obsolete in the current version of Python (asyncio) are worth reading for a perfect explanation of topic.
-* `Python Cookbook <https://www.amazon.com/gp/product/1449340377/>`__ - great recipe book. A huge number of scenarios are considered with solutions and explanations.
+* `Dive Into Python 3 <http://diveintopython3.problemsolving.io/>`__ - briefly
+  covers fundamentals of Python and then more advanced topics: closure, generators,
+  tests and so on. Book written in 2009 but covers Python 3 and 99% of topics remained unchanged.
+* `Problem Solving with Algorithms and Data Structures using Python <https://runestone.academy/runestone/static/pythonds/index.html>`__ - excellent book on data structures and algorithms. Many examples and homework.
+* `Fluent Python <https://www.amazon.com/gp/product/1491946008/>`__ - excellent
+  book on more advanced topics. Even topics that are obsolete in the current
+  version of Python (asyncio) are worth reading for a perfect explanation of topic.
+* `Python Cookbook <https://www.amazon.com/gp/product/1449340377/>`__ - great
+  recipe book. A huge number of scenarios are considered with solutions and explanations.
 
 
 Courses
@@ -105,7 +127,9 @@ Courses
 -  `MITx - 6.00.1x Introduction to Computer Science and Programming
    Using
    Python <https://www.edx.org/course/introduction-computer-science-mitx-6-00-1x-9>`__
-   - a very good course in Python. It’s a great way to continue your study after book. In it you will repeat material on Python basics but from a different angle and learn a lot of new things. There’s a lot of practical tasks and it’s pretty intense.
+   - a very good course in Python. It's a great way to continue your study after
+     book. In it you will repeat material on Python basics but from a different
+     angle and learn a lot of new things. There's a lot of practical tasks and it's pretty intense.
 -  `Python от Computer Science
    Center <https://www.youtube.com/playlist?list=PLlb7e2G7aSpTTNp7HBYzCBByaE1h54ruW>`__
    - an excellent video lecture on Python. There are some basics and more advanced topics
@@ -115,7 +139,9 @@ Coding challenges
 ~~~~~~~~~~~~~~~~~
 
 -  `Bites of Py <https://codechalleng.es/bites/>`__
--  `HackerRank <https://www.hackerrank.com/>`__ - on this resource tasks are broken down by fields: algorithms, regular expressions, databases and others. But there are basic tasks as well
+-  `HackerRank <https://www.hackerrank.com/>`__ - on this resource tasks are
+   broken down by fields: algorithms, regular expressions, databases and others.
+   But there are basic tasks as well
 -  `CheckIO - online game for Python and JavaScript
    coders <https://checkio.org/>`__
 
