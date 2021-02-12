@@ -1,7 +1,9 @@
 Underscore in names
 ----------------------
 
-In Python, underscores at the beginning or at the end of a name indicates special names. Most often it’s just an arrangement but sometimes it actually affects object behavior.
+In Python, underscores at the beginning or at the end of a name indicates
+special names. Most often it's just an arrangement but sometimes it
+actually affects object behavior.
 
 Underscore in name
 ~~~~~~~~~~~~~~~~~~~~~
@@ -120,7 +122,11 @@ Two underscores
 Two underscores before name
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Two underscores before method name are not used simply as an agreement. Such names are transformed into format "class name + method name". This allows the creation of unique methods and attributes of classes.
+Two underscores before method name are not used simply as an agreement. Such
+names are transformed into format "class name + method name". This allows
+the creation of unique methods and attributes of classes.
+
+.. note::
 
     This transformation is only performed if less than two underscore endings or no underscores.
 

@@ -36,12 +36,13 @@ Example of ping_function.py script:
         On success: (return code = 0, command output)
         On failure: (return code, error output (stderr))
         '''
-        reply = subprocess.run('ping -c {count} -n {ip}'
-                               .format(count=count, ip=ip_address),
-                               shell=True,
-                               stdout=subprocess.PIPE,
-                               stderr=subprocess.PIPE,
-                               encoding='utf-8')
+        reply = subprocess.run(
+            'ping -c {count} -n {ip}'.format(count=count, ip=ip_address),
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            encoding='utf-8'
+        )
         if reply.returncode == 0:
             return True, reply.stdout
         else:
@@ -193,11 +194,13 @@ Set IP address as a positional argument (ping_function_ver2.py file):
         On success: (return code = 0, command output)
         On failure: (return code, error output (stderr))
         '''
-        reply = subprocess.run('ping -c {count} -n {ip}' .format(count=count, ip=ip_address),
-                               shell=True,
-                               stdout=subprocess.PIPE,
-                               stderr=subprocess.PIPE,
-                               encoding='utf-8')
+        reply = subprocess.run(
+            'ping -c {count} -n {ip}' .format(count=count, ip=ip_address),
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            encoding='utf-8',
+        )
         if reply.returncode == 0:
             return True, reply.stdout
         else:
