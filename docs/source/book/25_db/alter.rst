@@ -1,14 +1,14 @@
 ALTER
 ~~~~~
 
-ALTER operator allows you to change an existing table: add new columns or rename the table.
+ALTER TABKE statement allows you to change an existing table: add new columns or rename the table.
 
 Add new fields to the table:
 
 * mngmt_ip - switch IP address in management VLAN 
 * mngmt_vid - VLAN ID of management VLAN
 
-Adding entries using ALTER command:
+Adding entries using ALTER TABLE:
 
 .. code:: sql
 

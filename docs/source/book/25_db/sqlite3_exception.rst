@@ -1,5 +1,5 @@
-Processing of exceptions
---------------------
+Exception Handling
+------------------
 
 Let's see an example of how to use ``execute`` method when an error occurs.
 

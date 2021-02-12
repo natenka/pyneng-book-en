@@ -1,7 +1,7 @@
 CREATE
 ~~~~~~
 
-CREATE operator allows you to create tables.
+CREATE TABLE statement allows you to create tables.
 
 First connect to database or create it with litecli:
 
