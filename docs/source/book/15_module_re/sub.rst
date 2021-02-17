@@ -46,7 +46,7 @@ With ``re.sub`` you can transform a string. For example, convert mac_table strin
 Regex is divided into groups:
 
 -  ``(\d+)`` - the first group. VLAN number gets here
--  ``([a-f,0-9]+).([a-f,0-9]+).([a-f,0-9]+)`` - the following three groups (2, 3, 4) describe MAC address
+-  ``([a-f0-9]+).([a-f0-9]+).([a-f0-9]+)`` - the following three groups (2, 3, 4) describe MAC address
 -  ``(\S+)`` - the fifth group. Describes an interface.
 
 In a second regex these groups are used. To refer to a group a backslash and a
