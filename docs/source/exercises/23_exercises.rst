@@ -10,28 +10,36 @@ Tasks
 Task 23.1
 ~~~~~~~~~~~~
 
-In this task you need to create an IPaddress class.
+In this task, you must create an IPAddress class.
 
-When creating class instance, IP address and mask are passed as an argument and the correctness of address and mask should be checked:
+When creating an instance of a class, the IP address and mask are passed
+as an argument, and the correctness of the address and mask must be checked:
 
-Address is considered correct if it:
+* The address is considered to be correctly specified if it:
 
-  * consists of 4 numbers separated by a point
-  * each number in range 0 to 255
+    * consists of 4 numbers separated by a dot
+    * every number in the range from 0 to 255
 
-Mask is considered correct if it is between 8 and 32 inclusive
+* the mask is considered correct if the mask is a number and a number in
+  the range from 8 to 32 inclusiveA
 
-If mask or address didn't pass verification, you should generate ValueError exception with appropriate text (output below).
 
-Also, when creating a class, two instance variables should be created: *ip* and *mask* which contain address and mask, respectively.
+If the mask or address fails validation, you must raise a ValueError
+with the appropriate text (output below).
 
-Example of class instance creation:
+Also, when creating a class, two instance variables must be created: ip and mask,
+which contain the address and mask, respectively.
+
+An example of creating an instance of a class:
 
 .. code:: python
 
-    In [1]: ip = IPAddress('10.1.1.1/24')
+    In [1]: ip1 = IPAddress('10.1.1.1/24')
 
-    Атрибуты ip и mask
+Атрибуты ip и mask
+
+.. code:: python
+
     In [2]: ip1 = IPAddress('10.1.1.1/24')
 
     In [3]: ip1.ip
@@ -40,18 +48,16 @@ Example of class instance creation:
     In [4]: ip1.mask
     Out[4]: 24
 
-Address correctness check (traceback omitted)
+Checking the correctness of the address (traceback is shortened)
 
 .. code:: python
+
     In [5]: ip1 = IPAddress('10.1.1/24')
     ---------------------------------------------------------------------------
     ...
     ValueError: Incorrect IPv4 address
 
-Address correctness check (traceback omitted)
-
-.. code:: python
-
+    Checking the correctness of the mask (traceback is shortened)
     In [6]: ip1 = IPAddress('10.1.1.1/240')
     ---------------------------------------------------------------------------
     ...
@@ -61,11 +67,13 @@ Address correctness check (traceback omitted)
 Task 23.1a
 ~~~~~~~~~~~~~
 
-Copy and change IPaddress class from task 23.1.
+Copy and modify the IPAddress class from task 23.1.
 
-Add two string views for IPaddress class instances. What line views should look like is defined in the following output:
+Add two string views for instances of the IPAddress class.
+How string representations should look like should be determined from
+the output below.
 
-Instance creation
+An example of creating an instance of a class:
 
 .. code:: python
 
@@ -94,9 +102,11 @@ Instance creation
 Task 23.2
 ~~~~~~~~~~~~
 
-Add to CiscoTelnet class from task 22.2x support for work in context manager. When leaving context manager block, connection should be closed.
+Copy the CiscoTelnet class from any 22.2x task and add context manager
+support to the class. When exiting the context manager block, the connection
+should be closed.
 
-Example:
+Example of work:
 
 .. code:: python
 
@@ -115,32 +125,17 @@ Example:
     *19:17:20.244 UTC Sat Apr 6 2019
     R1#
 
-    In [17]: with CiscoTelnet(**r1_params) as r1:
-        ...:     print(r1.send_show_command('sh clock'))
-        ...:     raise ValueError('Error occurred')
-        ...:
-    sh clock
-    *19:17:38.828 UTC Sat Apr 6 2019
-    R1#
-    ---------------------------------------------------------------------------
-    ValueError                                Traceback (most recent call last)
-    <ipython-input-17-f3141be7c129> in <module>
-          1 with CiscoTelnet(**r1_params) as r1:
-          2     print(r1.send_show_command('sh clock'))
-    ----> 3     raise ValueError('Error occurred')
-          4
-
-    ValueError: Возникла ошибка
-
 
 Task 23.3
 ~~~~~~~~~~~~
 
-Copy and change Topology class from task 22.1x.
+Copy and modify the Topology class from job 22.1x.
 
-Add method that allows you to perform addition of two instances of Topology class. As a result of addition, new instance of Topology class should be returned.
+In this task, you need to add a method that will allow you to add two instances
+of the Topology class. The addition should return a new instance of the Topology
+class.
 
-Creation of two topologies:
+Creating two instances of the Topology class:
 
 .. code:: python
 
@@ -163,11 +158,11 @@ Creation of two topologies:
     In [5]: t2.topology
     Out[5]: {('R1', 'Eth0/4'): ('R7', 'Eth0/0'), ('R1', 'Eth0/6'): ('R9', 'Eth0/0')}
 
-Topology summation:
+Summing instances of the Topology class:
 
 .. code:: python
 
-    In [6]: t3 = t1+t2
+    In [6]: t3 = t1 + t2
 
     In [7]: t3.topology
     Out[7]:
@@ -180,7 +175,7 @@ Topology summation:
      ('R3', 'Eth0/1'): ('R4', 'Eth0/0'),
      ('R3', 'Eth0/2'): ('R5', 'Eth0/0')}
 
-Check that original topologies have not changed
+Checking that the original instances haven't changed:
 
 .. code:: python
 
@@ -200,11 +195,16 @@ Check that original topologies have not changed
 Task 23.3a
 ~~~~~~~~~~~~~
 
-In this task, make sure that Topology class instances are iterable objects. The base of Topology class can be taken from any task 22.1x or task 23.3.
+In this task, you need to make sure that instances of the Topology class
+are iterables. The base of the Topology class can be taken from either
+task 22.1x or task 23.3.
 
-After class instance creation, instance should work as an iterable object. After each iteration, tuple that describes a single connection should return.
+After creating an instance of a class, the instance should act like
+an iterable object. Each iteration should return a tuple that describes
+one connection. The order of output of connections can be any.
 
-Example of class run:
+
+An example of how the class works:
 
 .. code:: python
 
@@ -220,5 +220,3 @@ Example of class run:
     (('R3', 'Eth0/1'), ('R4', 'Eth0/0'))
     (('R3', 'Eth0/2'), ('R5', 'Eth0/0'))
 
-
-Check class run.
