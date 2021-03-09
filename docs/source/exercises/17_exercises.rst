@@ -10,17 +10,18 @@ Tasks
 Task 17.1
 ~~~~~~~~~~~~
 
-
-Create write_dhcp_snooping_to_csv() function that processes the output of show dhcp snooping binding command from different files and writes processed data to csv file.
+Create the write_dhcp_snooping_to_csv function, which processes the output
+of the show dhcp snooping binding command from different files and writes
+the processed data to the csv file.
 
 Function arguments:
 
-* filenames - list with file names with show dhcp snooping binding outputs
-* output - file name in csv format to which the result will be written
+* filenames - list of filenames with "show dhcp snooping binding" command output
+* output - the name of the csv file into which the result will be written
 
-Function does not return anything.
+The function returns None.
 
-For example, if a list with one sw3_dhcp_snooping.txt file was passed as an argument:
+For example, if a list with one file sw3_dhcp_snooping.txt was passed as an argument:
 
 ::
 
@@ -30,7 +31,7 @@ For example, if a list with one sw3_dhcp_snooping.txt file was passed as an argu
     00:E9:22:11:A6:50   100.1.1.7        76260       dhcp-snooping   3    FastEthernet0/21
     Total number of bindings: 2
 
-The resulting csv file should have such content:
+The resulting csv file should contain the following content:
 
 ::
 
@@ -38,54 +39,60 @@ The resulting csv file should have such content:
     sw3,00:E9:BC:3F:A6:50,100.1.1.6,3,FastEthernet0/20
     sw3,00:E9:22:11:A6:50,100.1.1.7,3,FastEthernet0/21
 
+The first column in the csv file, the name of the switch, must be obtained from
+the file name, the rest - from the contents in the files.
 
-Check function with content of sw1_dhcp_snooping.txt, sw2_dhcp_snooping.txt, sw3_dhcp_snooping.txt files. The first column in a csv file should be retrieved from filename, the rest from contents of files.
+Check the function on the contents of the files sw1_dhcp_snooping.txt,
+sw2_dhcp_snooping.txt, sw3_dhcp_snooping.txt.
 
 
 Task 17.2
 ~~~~~~~~~~~~
 
-This task requires:
+In this task you need:
 
-* take contents of several files with sh version command output
-* parse command output with regular expressions and get device information
-* write the received information to a CSV file
+* take the contents of several files with the output of the sh version command
+* parse command output using regular expressions and get device information
+* write this information to a file in CSV format
 
-To complete task you need to create two functions.
+To complete the task, you need to create two functions.
 
-Function parse_sh_version():
+parse_sh_version function:
 
-* expects as an argument the output of sh version command as one string (not file name)
-* handles output using regular expressions
+* expects the output of the sh version command as an argument in single string (not a filename)
+* processes output using regular expressions
 * returns a tuple of three elements:
 
-  * ios - in format "12.4(5)T"
-  * image - in format "flash:c2800-advipservicesk9-mz.124-5.T.bin"
-  * uptime - in format "5 days, 3 hours, 3 minutes"
+  * ios - "12.4(5)T"
+  * image - "flash:c2800-advipservicesk9-mz.124-5.T.bin"
+  * uptime - "5 days, 3 hours, 3 minutes"
 
-Function write_inventory_to_csv() should have two parameters:
+The write_inventory_to_csv function must have two parameters:
 
-* data_filenames - expects as argument list of file names with sh version command output
-* csv_filename - expects as argument the name of file (for example, routers_inventory.csv) into which information will be written in CSV format
+* data_filenames - expects a list of filenames as an argument with
+  the output of sh version
+* csv_filename - expects as an argument the name of a file (for example,
+  routers_inventory.csv) to which information will be written in CSV format
 
-Function write_inventory_to_csv() writes content to a CSV file and returns nothing
+write_inventory_to_csv function writes the contents to a file, in CSV format and
+returns nothing.
 
+The write_inventory_to_csv function should do the following:
 
-Function write_inventory_to_csv() should do the following:
+* process information from each file with sh version output:
+  sh_version_r1.txt, sh_version_r2.txt, sh_version_r3.txt
+* using the parse_sh_version function, ios, image, uptime information
+  should be obtained from each output
+* from the file name you need to get the hostname
+* after that all information should be written to a CSV file
 
-* Process information from each file with sh version output:
+The routers_inventory.csv file should have the following columns (in this order):
+hostname, ios, image, uptime
 
-  * sh_version_r1.txt, sh_version_r2.txt, sh_version_r3.txt
+The code below has created a list of files using the glob module.
+You can uncomment the print(sh_version_files) line to see the content of the list.
 
-* with parse_sh_version() function, information like ios, image, uptime should be obtained from each output
-* hostname should be received from file name
-* then all information should be written in CSV file
-
-File routers_inventory.csv should have such columns: ``hostname, ios, image, uptime``
-
-In script, using glob module, a list of files whose name begins on *sh_vers* is created. You can uncomment string *print(sh_version_files)* to see the contents of list.
-
-In addition, a list of headers was created that should be written in CSV.
+In addition, a list of headers has been created, which should be written to CSV.
 
 .. code:: python
 
@@ -100,11 +107,14 @@ In addition, a list of headers was created that should be written in CSV.
 Task 17.3
 ~~~~~~~~~~~~
 
-Create parse_sh_cdp_neighbors() function that handles the output of show cdp neighbors command.
+Create a function parse_sh_cdp_neighbors that processes the output of
+the show cdp neighbors command.
 
-Function expects as an argument the output of command as a string (not file name). Function should return a dictionary that describes connections between devices.
+The function expects, as an argument, the output of the command
+as a single string (not a filename).
+The function should return a dictionary that describes the connections between devices.
 
-For example, if such output is given as an argument:
+For example, if the following output was passed as an argument:
 
 ::
 
@@ -114,33 +124,37 @@ For example, if such output is given as an argument:
     R5           Fa 0/1          122           R S I           2811       Fa 0/1
     R6           Fa 0/2          143           R S I           2811       Fa 0/0
 
-Function should return such dictionary:
+The function should return a dictionary like this:
 
 .. code:: python
 
     {"R4": {"Fa 0/1": {"R5": "Fa 0/1"},
             "Fa 0/2": {"R6": "Fa 0/0"}}}
 
-Interfaces should be written with space. That is Fa 0/0, not Fa0/0.
+Interfaces must be written with a space. That is, so Fa 0/0, and not so Fa0/0.
 
-Check function with contents of sh_cdp_n_sw1.txt file.
+Check the function on the contents of the sh_cdp_n_sw1.txt file
 
 Task 17.3a
 ~~~~~~~~~~~~~
 
-Create generate_topology_from_cdp() function that handles the output of show cdp neighbor command from multiple files and writes the resulting topology in one dictionary.
+Create a generate_topology_from_cdp function that processes the
+show cdp neighbor command output from multiple files and writes
+the resulting topology to a single dictionary.
 
-Function generate_topology_from_cdp() should be created with parameters:
+The generate_topology_from_cdp function must be created with parameters:
 
-* list_of_files - list of files from which to read the output of sh cdp neighbor command
-* save_to_filename - name of file in YAML format that stores topology.
+* list_of_files - list of files from which to read the output of the sh cdp neighbor command
+* save_to_filename is the name of the YAML file where the topology will be saved.
 
-  * default value - None. By default, topology is not saved to file
-  * topology is saved only if file name is specified for save_to_filename argument
+  * default is None. By default, the topology is not saved to a file.
+  * topology is saved only if save_to_filename is file name as argument
 
-Function should return a dictionary that describes connections between devices, regardless of whether topology is saved to file.
 
-The structure of dictionary should be:
+The function should return a dictionary that describes the connections between
+devices, regardless of whether the topology is saved to a file.
+
+Dictionary example:
 
 .. code:: python
 
@@ -149,9 +163,9 @@ The structure of dictionary should be:
      "R5": {"Fa 0/1": {"R4": "Fa 0/1"}},
      "R6": {"Fa 0/0": {"R4": "Fa 0/2"}}}
 
-Interfaces should be written with space. That is Fa 0/0, not Fa0/0.
+Interfaces must be written with a space. That is, so Fa 0/0, and not so Fa0/0.
 
-Check generate_topology_from_cdp() function with list of files:
+Check the work of the generate_topology_from_cdp function on the list of files:
 
 * sh_cdp_n_sw1.txt
 * sh_cdp_n_r1.txt
@@ -161,63 +175,88 @@ Check generate_topology_from_cdp() function with list of files:
 * sh_cdp_n_r5.txt
 * sh_cdp_n_r6.txt
 
-Check save_to_filename option and write the resulting dictionary to topology.yaml file.
+Check the operation of the save_to_filename parameter and write the resulting
+dictionary to the topology.yaml file. You will need it in the next task.
 
 Task 17.3b
 ~~~~~~~~~~~~~
 
-Create transform_topology() function that converts topology into a format suitable for draw_topology() function.
+Create a transform_topology function that converts the topology to a format
+suitable for the draw_topology function.
 
-Function expects as argument the name of file in YAML format in which topology is stored.
+The function expects a YAML filename as an argument in which the topology is stored.
 
-Function should read data from YAML file, convert it accordingly, so that the function returns a dictionary of this type:
+The function must read data from the YAML file, transform it accordingly,
+so that the function returns a dictionary of the following form:
 
 .. code:: python
 
     {("R4", "Fa 0/1"): ("R5", "Fa 0/1"),
      ("R4", "Fa 0/2"): ("R6", "Fa 0/0")}
 
-Function transform_topology() should not only change the format of topology representation but also remove duplicate connections (these are best seen in diagram generated by draw_topology).
 
-Check function with topology.yaml file (should be created in previous task 17.2a). Based on resulting dictionary, you should generate a topology image using draw_topology() function. Do not copy draw_topology() function code.
+The transform_topology function should not only change the format of the topology
+representation, but also remove the "duplicate" connections (they are best seen
+in the diagram that the draw_topology function generates from
+the draw_network_graph.py file).
+"Duplicate" connections are connections of this kind:
 
-Result should look the same as scheme in task_17_3b_topology.svg file
+.. code:: python
 
-At the same time:
+    ("R1", "Eth0/0"): ("SW1", "Eth0/1")
+    ("SW1", "Eth0/1"): ("R1", "Eth0/0")
 
-* Interfaces should be written with space Fa 0/0
-* The arrangement of devices on diagram may be different
-* Connections should follow the diagram
-* There should be no duplicate links on diagram
+Due to the fact that the same link is described twice, there will be extra
+connections on the diagram. The task is to leave only one of these links
+in the final dictionary, does not matter which one.
+
+Check the operation of the function on the topology.yaml file (must be created
+in task 17.3a). Based on the resulting dictionary, you need to generate a topology
+image using the draw_topology function.
+Do not copy draw_topology function code from draw_network_graph.py file.
+
+The result should look the same as the diagram in the task_17_3b_topology.svg file:
+
+* Interfaces must be written with a space Fa 0/0
+* The arrangement of devices on the diagram may be different
+* Connections must match the diagram
+* There should be no "duplicate" links on the diagram
+
+.. figure:: https://raw.githubusercontent.com/natenka/pyneng-examples-exercises/master/exercises/17_serialization/task_17_3b_topology.png
+
 
 .. note::
 
-    To complete this task, graphviz should be installed:
+    To complete this task, graphviz must be installed:
     apt-get install graphviz
 
-    And python module for working with graphviz:
+    And a python module to work with graphviz:
     pip install graphviz
-
-
-.. figure:: https://raw.githubusercontent.com/natenka/pyneng-examples-exercises/master/exercises/17_serialization/task_17_3b_topology.png
 
 Task 17.4
 ~~~~~~~~~~~~
 
-Create write_last_log_to_csv() function.
+Create function write_last_log_to_csv.
 
 Function arguments:
 
-* source_log - name of csv file from which data is read (example mail_log.csv)
-* output - name of csv file to which the result will be written
+* source_log - the name of the csv file from which the data is read (mail_log.csv)
+* output - the name of the csv file into which the result will be written
 
-Function does not return anything.
+The function returns None.
 
-Function write_last_log_to_csv() handles mail_log.csv file. File mail_log.csv contains logs of user name changes. At the same time, user cannot change email, only name.
+The write_last_log_to_csv function processes the csv file mail_log.csv.
+The mail_log.csv file contains the logs of the username change.
+User cannot change email, only username.
 
-Function write_last_log_to_csv() should select only the most recent entries for each user from mail_log.csv file and write them to another csv file. The *output* file should have column headers as a first line, similar to source_log file.
+The write_last_log_to_csv function should select from the mail_log.csv file
+only the most recent entries for each user and write them to another csv file.
+In the output file, the first line should be the column headers as in the source_log file.
 
-Some users have only one record and then only it should be written to final file. Some users have multiple entries with different names. For example, user with c3po@gmail.com has changed his name several times:
+For some users, there is only one record, and then it is necessary to write
+to the final file only her. For some users, there are multiple entries with
+different names. For example, a user with email c3po@gmail.com changed his
+username several times:
 
 ::
 
@@ -225,15 +264,22 @@ Some users have only one record and then only it should be written to final file
     C3PO,c3po@gmail.com,16/12/2019 17:15
     C-3PO,c3po@gmail.com,16/12/2019 17:24
 
-Of these three entries, only one should be written to final file - the latest:
+Of these three records, only one should be written to the final file - the most recent:
 
 ::
 
     C-3PO,c3po@gmail.com,16/12/2019 17:24
 
-It is convenient to use datetime objects from *datetime* module to compare dates. To simplify work with dates, convert_str_to_datetime() function was created - it converts a string with a date in format 11/10/2019 14:05 into an datetime object. The resulting datetime objects can be compared. The second convert_datetime_to_str() function does the reverse operation - converts datetime object into a string.
+It is convenient to use datetime objects from the datetime module
+for comparing dates. To make it easier to work with dates,
+the convert_str_to_datetime function has been created - it converts a date
+string in the format 11/10/2019 14:05 into a datetime object.
+The resulting datetime objects can be compared with each other.
+The second function, convert_datetime_to_str, does the opposite — it turns
+a datetime object into a string.
 
-Functions convert_str_to_datetime() and convert_datetime_to_str() are not necessary to use.
+It is not necessary to use the functions convert_str_to_datetime and convert_datetime_to_str
+
 
 .. code:: python
 
@@ -242,14 +288,13 @@ Functions convert_str_to_datetime() and convert_datetime_to_str() are not necess
 
     def convert_str_to_datetime(datetime_str):
         """
-        Converts a string with a date in format 11/10/2019 14:05 into an datetime object.
+        Converts a date string formatted as 11/10/2019 14:05 to a datetime object.
         """
         return datetime.datetime.strptime(datetime_str, "%d/%m/%Y %H:%M")
 
 
     def convert_datetime_to_str(datetime_obj):
         """
-        Converts datetime object into a string with a date in format 11/10/2019 14:05.
+        Converts a datetime object to a date string in the format 11/10/2019 14:05.
         """
         return datetime.datetime.strftime(datetime_obj, "%d/%m/%Y %H:%M")
-
