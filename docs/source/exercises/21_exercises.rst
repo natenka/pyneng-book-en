@@ -10,24 +10,27 @@ Tasks
 Task 21.1
 ~~~~~~~~~~~~
 
-Create parse_command_output() function. Function parameters:
+Create parse_command_output function. Function parameters:
 
-* template - name of file containing Textfsm template  (templates/sh_ip_int_br.template)
-* command_output - output of corresponding show command (string)
+* template - name of the file containing the TextFSM template.
+  For example templates/sh_ip_int_br.template
+* command_output - output the corresponding show command (string)
 
-Function should return list:
+The function should return a list:
 
-* first element - list with column names
-* other elements - lists containing results of output processing 
+* the first element is a list with column names
+* the rest of the items are lists, which contain the results
+  of processing the output of the show command
 
-Check function with output/sh_ip_int_br.txt and templates/sh_ip_int_br.template template.
+Check the operation of the function on the output of the sh ip int br command
+from the equipment and on the templates/sh_ip_int_br.template template.
 
 .. code:: python
 
     from netmiko import ConnectHandler
 
 
-    # function call should be like
+    # this is how a function call should look
     if __name__ == "__main__":
         r1_params = {
             "device_type": "cisco_ios",
@@ -46,91 +49,129 @@ Check function with output/sh_ip_int_br.txt and templates/sh_ip_int_br.template 
 Task 21.1a
 ~~~~~~~~~~~~~
 
-Create parse_output_to_dict() function.
+Create parse_output_to_dict function.
 
 Function parameters:
 
-* template - name of file containing Textfsm template (templates/sh_ip_int_br.template)
-* command_output - output of corresponding show command (string)
+* template is the name of the file containing the TextFSM template.
+  For example templates/sh_ip_int_br.template
+* command_output - output of the corresponding show command (string)
 
-Function should return list of dictionaries:
+The function should return a list of dictionaries:
 
-* keys - variable names in Textfsm template
-* values  - parts of output that correspond to variables
+* keys - names of variables in the TextFSM template
+* values - parts of the output that correspond to variables
 
-Check function with output/sh_ip_int_br.txt and templates/sh_ip_int_br.template.
+Check the operation of the function on the output of the command
+output/sh_ip_int_br.txt and the template templates/sh_ip_int_br.template.
 
 Task 21.2
 ~~~~~~~~~~~~
 
-Create Textfsm template for processing output of *sh ip dhcp snooping binding* and write it to templates/sh_ip_dhcp_snooping.template
+Create a TextFSM template to parse the output of the sh ip dhcp snooping binding
+command and write it to templates/sh_ip_dhcp_snooping.template
 
-Output of command is in output/sh_ip_dhcp_snooping.txt.
+The command output is located in the file output/sh_ip_dhcp_snooping.txt.
 
-Template should process and return values of such columns:
+The template should process and return the values of such columns:
 
-* mac - like 00:04:A3:3E:5B:69
-* ip - like 10.1.10.6
+* mac - 00:04:A3:3E:5B:69
+* ip - 10.1.10.6
 * vlan - 10
 * intf - FastEthernet0/10
 
-Check template with parse_command_output() function from task 21.1.
+Check the work of the template using the parse_command_output function
+from task 21.1.
 
 Task 21.3
-~~~~~~~~~~~~
+~~~~~~~~~~
 
-Create parse_command_dynamic() function.
+Create function parse_command_dynamic.
 
 Function parameters:
 
 * command_output - command output (string)
-* attributes_dict - dictionary with attributes containing such key-value pairs:
+* attributes_dict - an attribute dict containing the following key-value pairs:
 
   * 'Command': command
   * 'Vendor': vendor
 
-* index_file - name of file where mapping between commands and templates is stored. Default value - "index"
-* templ_path - directory where templates are stored. Default value is - "templates"
+* index_file is the name of the file where the correspondence between commands
+  and templates is stored. The default is "index"
+* templ_path - directory where templates are stored. The default is "templates"
 
-Function should return list of dictionaries with output results (as in 21.1a):
+The function should return a list of dicts with the results
+of parsing the command output (as in task 21.1a):
 
-* keys - variable names in Textfsm template
-* values  - parts of output that correspond to variables
+* keys - names of variables in the TextFSM template
+* values - parts of the output that correspond to variables
 
-Check function with *sh ip int br* output.
+Check the function on the output of the sh ip int br command.
 
 Task 21.4
 ~~~~~~~~~~~~
 
-Create send_and_parse_show_command() function.
+Create function send_and_parse_show_command.
 
 Function parameters:
 
-* device_dict - dictionary with connection parameters to one device
-* command - command to execute
-* templates_path - path to Textfsm template directory
-* index - name of index file, default "index"
+* device_dict - a dict with connectin parameters for one device
+* command - the command to be executed
+* templates_path - path to the directory with TextFSM templates
+* index - file index name, default value "index"
 
-Function should connect to a single device, send show command with netmiko and then parse command output with Textfsm.
+The function should connect to one device, send a show command using netmiko,
+and then parse the command output using TextFSM.
 
-Function should return a list of dictionaries with output results (as in 21.1a):
+The function should return a list of dictionaries with the results
+of parsing the command output (as in task 21.1a):
 
-* keys - variable names in Textfsm template
-* values  - parts of output that correspond to variables
+* keys - names of variables in the TextFSM template
+* values - parts of the output that correspond to variables
 
-Check function with *sh ip int br* output and devices from devices.yaml.
+Check the operation of the function using the output
+of the sh ip int br command and devices from devices.yaml.
 
 Task 21.5
 ~~~~~~~~~~~~
 
-Create send_and_parse_command_parallel() function.
+Create function send_and_parse_command_parallel.
 
-Function send_and_parse_command_parallel() should call send_and_parse_show_command() functon in parallel threads from task 21.4.
+The send_and_parse_command_parallel function must run
+the send_and_parse_show_command function from task 21.4 in concurrent threads.
 
-In this task, you have to decide:
+Send_and_parse_command_parallel function parameters:
 
-* what parameters will be used in function
-* what function will return
+* devices - a list of dicts with connection parameters for devices
+* command - command
+* templates_path - path to the directory with TextFSM templates
+* limit - maximum number of concurrent threads (default 3)
 
+The function should return a dictionary:
 
-There's no test for this task.
+* keys - the IP address of the device from which the output was received
+* values - a list of dicts (the output returned by the send_and_parse_show_command function)
+
+Dictionary example:
+
+.. code:: python
+
+    {'192.168.100.1': [{'address': '192.168.100.1',
+                        'intf': 'Ethernet0/0',
+                        'protocol': 'up',
+                        'status': 'up'},
+                       {'address': '192.168.200.1',
+                        'intf': 'Ethernet0/1',
+                        'protocol': 'up',
+                        'status': 'up'}],
+     '192.168.100.2': [{'address': '192.168.100.2',
+                        'intf': 'Ethernet0/0',
+                        'protocol': 'up',
+                        'status': 'up'},
+                       {'address': '10.100.23.2',
+                        'intf': 'Ethernet0/1',
+                        'protocol': 'up',
+                        'status': 'up'}]}
+
+Check the operation of the function using the output
+of the sh ip int br command and devices from devices.yaml.
