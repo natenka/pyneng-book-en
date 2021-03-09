@@ -11,25 +11,33 @@ Tasks
 Task 22.1
 ~~~~~~~~~~~~
 
-Create Topology class that represents network topology.
+Create a Topology class that represents the topology of the network.
 
-When creating an instance of class, dictionary that describes topology is passed as an argument. Dictionary may contain duplicate connections.
+When creating an instance of a class, a dictionary that describes the topology
+is passed as an argument. The dictionary may contain "duplicate" connections.
+"Duplicate" connections are a situation when there are two connections
+in the dictionary:
 
-Duplicate refers to situation where dictionary contains such couples:
+.. code:: python
 
-::
+    ("R1", "Eth0/0"): ("SW1", "Eth0/1")
+    ("SW1", "Eth0/1"): ("R1", "Eth0/0")
 
-    ('R1', 'Eth0/0'): ('SW1', 'Eth0/1') и ('SW1', 'Eth0/1'): ('R1', 'Eth0/0')
+The task is to leave only one of these links in the final dictionary,
+no matter which one.
 
-Each instance should have *topology* variable that contains topology dictionary, but without duplicates.
+In each instance, a topology instance variable must be created, which contains
+the topology dictionary, but already without "duplicates". The topology instance
+variable should contain a dict without "duplicates" immediately after instance
+creation.
 
-Example of class instance creation:
+An example of creating an instance of a class:
 
 .. code:: python
 
     In [2]: top = Topology(topology_example)
 
-After that, *topology* variable should be available:
+After that, the topology variable should be available:
 
 .. code:: python
 
@@ -41,7 +49,6 @@ After that, *topology* variable should be available:
      ('R3', 'Eth0/0'): ('SW1', 'Eth0/3'),
      ('R3', 'Eth0/1'): ('R4', 'Eth0/0'),
      ('R3', 'Eth0/2'): ('R5', 'Eth0/0')}
-
 
 .. code:: python
 
@@ -60,11 +67,10 @@ After that, *topology* variable should be available:
 Task 22.1a
 ~~~~~~~~~~~~~
 
-Copy Topology class from task 22.1 and change it.
+Copy the Topology class from task 22.1 and modify it.
 
-If in task 22.1 duplicates removal was performed in __init__() method, it is necessary to transfer function of duplicates removal to _normalize() method.
-
-The __init__ method has to look like this:
+Transfer the functionality of removing "duplicates" to the _normalize method.
+In this case, the __init__ method should look like this:
 
 .. code:: python
 
@@ -76,11 +82,13 @@ The __init__ method has to look like this:
 Task 22.1b
 ~~~~~~~~~~~~~
 
-Change Topology class from task 22.1a or 22.1.
+Copy the Topology class from either task 22.1a or 22.1 and modify it.
 
-Add delete_link() method that removes specified connection. Method should also remove mirror connection if it exists (example below).
+Add a delete_link method that deletes the specified connection.
+The method should also remove the "reverse" connection, if any (an example
+is given below).
 
-If there is no such connection, message "There is no such connection" is displayed.
+If there is no such link, the message "There is no such link" should be printed.
 
 Topology creation:
 
@@ -97,7 +105,7 @@ Topology creation:
      ('R3', 'Eth0/1'): ('R4', 'Eth0/0'),
      ('R3', 'Eth0/2'): ('R5', 'Eth0/0')}
 
-Link removal:
+Removing a link:
 
 .. code:: python
 
@@ -111,7 +119,10 @@ Link removal:
      ('R3', 'Eth0/0'): ('SW1', 'Eth0/3'),
      ('R3', 'Eth0/2'): ('R5', 'Eth0/0')}
 
-Removal of mirror connection: dictionary has an entry ('R3', 'Eth0/2'): ('R5', 'Eth0/0'), but call of delete_link() with key and value in reverse order should remove connection:
+Deleting the "reverse" link:
+the dictionary contains an entry ``('R3', 'Eth0/2'): ('R5', 'Eth0/0')``, but calling
+the delete_link method specifying the key and value in reverse order
+``('R5', 'Eth0/0'): ('R3', 'Eth0/2')`` should delete the connection:
 
 .. code:: python
 
@@ -124,19 +135,21 @@ Removal of mirror connection: dictionary has an entry ('R3', 'Eth0/2'): ('R5', '
      ('R2', 'Eth0/1'): ('SW2', 'Eth0/11'),
      ('R3', 'Eth0/0'): ('SW1', 'Eth0/3')}
 
-If there is no such connection, such message is displayed:
+If there is no such connection, the following message is printed:
 
 .. code:: python
 
     In [13]: t.delete_link(('R5', 'Eth0/0'), ('R3', 'Eth0/2'))
-    There is no such connection
+    There is no such link
+
 
 Task 22.1c
 ~~~~~~~~~~~~~
 
-Change Topology class from task 22.1b.
+Copy the Topology class from task 22.1b and modify it.
 
-Add delete_node() method that removes all connections with specified device. If there is no such device, message "There is no such device" is displayed.
+Add a delete_node method that deletes all connections to the specified device.
+If there is no such device, the message "There is no such device" is printed.
 
 Topology creation:
 
@@ -153,7 +166,7 @@ Topology creation:
      ('R3', 'Eth0/1'): ('R4', 'Eth0/0'),
      ('R3', 'Eth0/2'): ('R5', 'Eth0/0')}
 
-Device removal:
+Removing a device:
 
 .. code:: python
 
@@ -165,23 +178,25 @@ Device removal:
      ('R3', 'Eth0/1'): ('R4', 'Eth0/0'),
      ('R3', 'Eth0/2'): ('R5', 'Eth0/0')}
 
-If there is no such device, such message is displayed:
+If there is no such device, the following message is printed:
 
 .. code:: python
 
     In [5]: t.delete_node('SW1')
     There is no such device
 
+
 Task 22.1d
 ~~~~~~~~~~~~~
 
-Change Topology class from task 22.1c
+Copy the Topology class from task 22.1c and modify it.
 
-Add add_link() method that adds specified connection if it is not already in topology. If connection exists, display message "Such connection already exists".
-If one of sides is in topology, display message "Connection with one of ports exists".
+Add the add_link method, which adds the specified link if it is not already
+in the topology. If the connection exists, print the message
+"Such a connection already exists", If one of the sides is in the topology,
+display the message "A link to one of the ports exists".
 
-
-Example of creating a topology and adding connections
+Topology creation:
 
 .. code:: python
 
@@ -209,33 +224,37 @@ Example of creating a topology and adding connections
      ('R3', 'Eth0/2'): ('R5', 'Eth0/0')}
 
     In [11]: t.add_link(('R1', 'Eth0/4'), ('R7', 'Eth0/0'))
-    Such connection already exists
+    Such a connection already exists
 
     In [12]: t.add_link(('R1', 'Eth0/4'), ('R7', 'Eth0/5'))
-    Connection with one of ports exists
+    A link to one of the ports exists
 
 
 Task 22.2
 ~~~~~~~~~~~~
 
-Create CiscoTelnet class that connects via Telnet to Cisco equipment.
+Create a CiscoTelnet class that connects via Telnet to Cisco equipment.
 
-When creating class instance, Telnet connection should be created as well as switching to enable mode. Class should use telnetlib module to connect via Telnet.
+When instantiating the class, a Telnet connection should be created,
+as well as the transition to enable mode. The class must use the telnetlib
+module to connect via Telnet.
 
-CiscoTelnet class, besides __init__(), should have at least two methods:
+The CiscoTelnet class, in addition to __init__, must have at least two methods:
 
-* _write_line() - takes as argument a string and sends to equipment a string converted to bytes and adds a line feed at the end. Method _write_line() should be used within class.
-* send_show_command() - takes show command as argument and returns output received from device
+* _write_line - takes a string as an argument and sends the string converted
+  to bytes to the hardware and adds a line end character at the end.
+  The _write_line method must be used inside the class.
+* send_show_command - takes the show command as an argument and returns
+  the output received from the device
 
-Parameter of __init__() method:
+__init__ method parameters:
 
 * ip - IP address
 * username - username
 * password - password
-* secret - enable password 
+* secret - enable password
 
-
-Example of creating class instance:
+An example of creating an instance of a class:
 
 .. code:: python
 
@@ -250,27 +269,35 @@ Example of creating class instance:
 
     In [4]: r1 = CiscoTelnet(**r1_params)
 
-    In [5]: r1.send_show_command('sh ip int br')
-    Out[5]: 'sh ip int br\r\nInterface                  IP-Address      OK? Method Status                Protocol\r\nEthernet0/0                192.168.100.1   YES NVRAM  up                    up      \r\nEthernet0/1                192.168.200.1   YES NVRAM  up                    up      \r\nEthernet0/2                190.16.200.1    YES NVRAM  up                    up      \r\nEthernet0/3                192.168.130.1   YES NVRAM  up                    up      \r\nEthernet0/3.100            10.100.0.1      YES NVRAM  up                    up      \r\nEthernet0/3.200            10.200.0.1      YES NVRAM  up                    up      \r\nEthernet0/3.300            10.30.0.1       YES NVRAM  up                    up      \r\nLoopback0                  10.1.1.1        YES NVRAM  up                    up      \r\nLoopback55                 5.5.5.5         YES manual up                    up      \r\nR1#'
+    In [5]: r1.send_show_command("sh ip int br")
+    Out[5]: 'sh ip int br\r\nInterface                  IP-Address      OK? Method Status                Protocol\r\nEthernet0/0                192.168.100.1   YES NVRAM  up                    up      \r\nEthernet0/1                192.168.200.1   YES NVRAM  up                    up      \r\nEthernet0/2                unassigned      YES manual up                    up      \r\nEthernet0/3                192.168.130.1   YES NVRAM  up                    up      \r\nR1#'
 
 .. note::
 
-    Tip:
-    Мethod _write_line() is needed to shorten line ``self.telnet.write(line.encode("ascii") + b"\n")`` to such line: ``self._write_line(line)``.
-    It should not do anything else.
+    The _write_line method is needed in order to be able to shorten a line:
+    ``self.telnet.write(line.encode("ascii") + b"\n")``
+
+    to this:
+    ``self._write_line(line)``
+
+    He shouldn't do anything else.
 
 
 Task 22.2a
 ~~~~~~~~~~~~~
 
-Copy CiscoTelnet class from task 22.2 and change send_show_command() method by adding three parameters:
+Copy the CiscoTelnet class from job 22.2 and modify the send_show_command method
+by adding three parameters:
 
-* parse - controls whether the usual command output or list of dictionaries received after processing with Textfsm will be returned. If parse=True, list of dictionaries should be returned and if parse=False, usual output should be returned. Default value is True.
-* templates - path to template directory. Default value - "templates"
-* index - name of file where mapping between commands and templates is stored. Default value - "index"
+* parse - controls what will be returned: normal command output or a list of dicts
+  received after parsing command output using TextFSM.
+  If parse=True, a list of dicts should be returned, and parse=False normal output.
+  The default is True.
+* templates - path to the directory with templates. The default is "templates"
+* index is the name of the file where the correspondence between commands and
+  templates is stored. The default is "index"
 
-
-Example of class instance creation:
+An example of creating an instance of a class:
 
 .. code:: python
 
@@ -284,15 +311,12 @@ Example of class instance creation:
 
     In [3]: r1 = CiscoTelnet(**r1_params)
 
-Use of send_show_command() method:
+Using the send_show_command method:
 
 .. code:: python
 
-    In [4]: r1.send_show_command('sh ip int br', parse=False)
-    Out[4]: 'sh ip int br\r\nInterface                  IP-Address      OK? Method Status                Protocol\r\nEthernet0/0                192.168.100.1   YES NVRAM  up                    up      \r\nEthernet0/1                192.168.200.1   YES NVRAM  up                    up      \r\nEthernet0/2                190.16.200.1    YES NVRAM  up                    up      \r\nEthernet0/3                192.168.130.1   YES NVRAM  up                    up      \r\nEthernet0/3.100            10.100.0.1      YES NVRAM  up                    up      \r\nEthernet0/3.200            10.200.0.1      YES NVRAM  up                    up      \r\nEthernet0/3.300            10.30.0.1       YES NVRAM  up                    up      \r\nLoopback0                  10.1.1.1        YES NVRAM  up                    up      \r\nLoopback55                 5.5.5.5         YES manual up                    up      \r\nR1#'
-
-    In [5]: r1.send_show_command('sh ip int br', parse=True)
-    Out[5]:
+    In [4]: r1.send_show_command("sh ip int br", parse=True)
+    Out[4]:
     [{'intf': 'Ethernet0/0',
       'address': '192.168.100.1',
       'status': 'up',
@@ -302,43 +326,26 @@ Use of send_show_command() method:
       'status': 'up',
       'protocol': 'up'},
      {'intf': 'Ethernet0/2',
-      'address': '190.16.200.1',
-      'status': 'up',
-      'protocol': 'up'},
-     {'intf': 'Ethernet0/3',
       'address': '192.168.130.1',
       'status': 'up',
-      'protocol': 'up'},
-     {'intf': 'Ethernet0/3.100',
-      'address': '10.100.0.1',
-      'status': 'up',
-      'protocol': 'up'},
-     {'intf': 'Ethernet0/3.200',
-      'address': '10.200.0.1',
-      'status': 'up',
-      'protocol': 'up'},
-     {'intf': 'Ethernet0/3.300',
-      'address': '10.30.0.1',
-      'status': 'up',
-      'protocol': 'up'},
-     {'intf': 'Loopback0',
-      'address': '10.1.1.1',
-      'status': 'up',
-      'protocol': 'up'},
-     {'intf': 'Loopback55',
-      'address': '5.5.5.5',
-      'status': 'up',
       'protocol': 'up'}]
+
+    In [5]: r1.send_show_command("sh ip int br", parse=False)
+    Out[5]: 'sh ip int br\r\nInterface                  IP-Address      OK? Method Status
+    Protocol\r\nEthernet0/0                192.168.100.1   YES NVRAM  up
+    up      \r\nEthernet0/1                192.168.200.1   YES NVRAM  up...'
+
 
 Task 22.2b
 ~~~~~~~~~~~~~
 
-Copy CiscoTelnet class from task 22.2a and add send_config_commands() method.
+Copy the CiscoTelnet class from task 22.2a and add the send_config_commands method.
 
+The send_config_commands method must be able to send one configuration mode
+command and a list of commands. The method should return output similar
+to the send_config_set method of netmiko (example output below).
 
-Method send_config_commands() should be able to send one configuration mode command or list of commands. Method should return output similar to send_config_set() method of netmiko (example of output below).
-
-Example of class instance creation:
+An example of creating an instance of a class:
 
 .. code:: python
 
@@ -352,7 +359,7 @@ Example of class instance creation:
 
     In [3]: r1 = CiscoTelnet(**r1_params)
 
-Use of send_config_commands() method:
+Using the send_config_commands method:
 
 .. code:: python
 
@@ -366,16 +373,21 @@ Use of send_config_commands() method:
 Task 22.2c
 ~~~~~~~~~~~~~
 
-Copy CiscoTelnet class from task 22.2b and change send_config_commands() method by adding error check.
+Copy the CiscoTelnet class from task 22.2b and modify the send_config_commands
+method to check for errors.
 
-Method send_config_commands() should have an additional parameter *strict*:
+The send_config_commands method must have an additional strict parameter:
 
-* strict=True means that if error is detected, it is necessary to generate ValueError exception
-* strict=False means that if error is detected, all you have to do is to display error message
+* strict=True means that when an error is encountered, a ValueError must
+  be raised (default)
+* strict=False means that when an error is found, you only need to print
+  the error message to the stdout
 
-Method should return output similar to send_config_set() method of netmiko (example of output below). Exception and error text in example below.
+The method should return output similar to the send_config_set method of
+netmiko (example output below). The text of the exception and error in
+the example below.
 
-Example of class instance creation:
+An example of creating an instance of a class:
 
 .. code:: python
 
@@ -389,18 +401,18 @@ Example of class instance creation:
 
     In [3]: r1 = CiscoTelnet(**r1_params)
 
-    In [4]: commands_with_errors = ['logging 0255.255.1', 'logging', 'i']
+    In [4]: commands_with_errors = ['logging 0255.255.1', 'logging', 'a']
     In [5]: correct_commands = ['logging buffered 20010', 'ip http server']
     In [6]: commands = commands_with_errors+correct_commands
 
-Use of send_config_commands() method:
+Using the send_config_commands method:
 
 .. code:: python
 
     In [7]: print(r1.send_config_commands(commands, strict=False))
-    When executing command  "logging 0255.255.1" on device 192.168.100.1 error occurred -> Invalid input detected at '^' marker.
-    When executing command "logging" on device 192.168.100.1 error occurred -> Incomplete command.
-    When executing command "i" on device 192.168.100.1 error occurred -> Ambiguous command:  "i"
+    When executing the command "logging 0255.255.1" on device 192.168.100.1, an error occurred -> Invalid input detected at '^' marker.
+    When executing the command "logging" on device 192.168.100.1, an error occurred -> Incomplete command.
+    When executing the command "a" on device 192.168.100.1, an error occurred -> Ambiguous command:  "a"
     conf t
     Enter configuration commands, one per line.  End with CNTL/Z.
     R1(config)#logging 0255.255.1
@@ -410,8 +422,8 @@ Use of send_config_commands() method:
     R1(config)#logging
     % Incomplete command.
 
-    R1(config)#i
-    % Ambiguous command:  "i"
+    R1(config)#a
+    % Ambiguous command:  "a"
     R1(config)#logging buffered 20010
     R1(config)#ip http server
     R1(config)#end
@@ -425,5 +437,4 @@ Use of send_config_commands() method:
 
     ...
 
-    ValueError: When executing command "logging 0255.255.1" on device 192.168.100.1 error occurred -> Invalid input detected at '^' marker.
-
+    ValueError: When executing the command "logging 0255.255.1" on device 192.168.100.1, an error occurred -> Invalid input detected at '^' marker.
