@@ -5,7 +5,7 @@
 .. _intro_index:
 
 1. Preparing for work
-=====================
+**********************
 
 In order to start working with Python, you need to decide on a few things:
 
@@ -26,7 +26,7 @@ To complete the tasks in the book, you can make a virtual machine. The following
 
 
 Course virtual machines
-^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~
 
 To complete the tasks of the book, virtual machines have been prepared in which the following are installed:
 
@@ -41,7 +41,7 @@ There are two options for course virtual machines (the links are for instruction
 
 
 Cloud service
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 Another option is to use one of the following services:
  
