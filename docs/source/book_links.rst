@@ -4,7 +4,7 @@ Book resources
 Resources that will come in handy during the learning process:
 
 * `Repository with examples and tasks <https://github.com/natenka/pyneng-examples-exercises-en/>`__
-* `answers <https://github.com/natenka/pyneng-answers/>`__
+* `answers <https://github.com/natenka/pyneng-answers-en/>`__
 * `Write about errors/inaccuracies in the book <https://github.com/natenka/pyneng-book-en/issues>`__
 * `Write about errors/inaccuracies in the tasks <https://github.com/natenka/pyneng-examples-exercises-en/issues>`__
 
