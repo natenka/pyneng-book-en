@@ -2,48 +2,17 @@ Book resources
 ==============
 
 
-Virtual machine
----------------
+Preparing the working environment
+---------------------------------
 
 To complete tasks, you can use several options:
 
 -  take a prepared virtual machine vmware or vagrant (virtualbox)
 -  prepare a virtual machine yourself
+-  use one of the cloud services
 -  work without creating a virtual machine
 
-Course VM
-~~~~~~~~~
-
-Virtual machines in which the following are installed:
-
--  Debian 9.9
--  Python 3.7 and 3.8 in a virtual environment
--  IPython and other modules you will need to complete the tasks
--  text editors vim, Geany, Mu
--  GNS3 for networking equipment
-
-
-There are two options for prepared virtual machines (follow the links for
-instructions for each option, which contain links to the image and
-instructions on how to work with GNS3):
-
--  `vagrant <https://docs.google.com/document/d/1tIb8prINPM7uhyFxIhSSIF1-jckN_OWkKaO8zHQus9g/edit?usp=sharing>`__
--  `vmware <https://drive.google.com/open?id=1r7Si9xTphdWp79sKxDhVk2zjWGggfy5Z6h8cKCLP5Cs>`__
-
-Preparing the virtual machine/host yourself
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- 
-List of modules to be installed:
-
-::
-
-    pip install pytest pytest-clarity pyyaml tabulate jinja2 textfsm pexpect netmiko graphviz
-
-You also need to install graphviz (example for debian):
-
-::
-
-    apt-get install graphviz
+More about these options :ref:`working_env`.
 
 Exercises
 ---------
