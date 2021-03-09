@@ -10,41 +10,50 @@ Tasks
 Task 19.1
 ~~~~~~~~~~~~
 
-Create ping_ip_addresses() function that checks if IP addresses are pingable. Checking IP addresses should be performed in parallel in different threads.
+Create a ping_ip_addresses function that checks if IP addresses are pingable.
+Checking IP addresses should be done concurrent in different threads.
 
-Function parameters:
+Ping_ip_addresses function parameters:
 
 * ip_list - list of IP addresses
 * limit - maximum number of parallel threads (default 3)
 
-Function should return a tuple with two lists:
+The function must return a tuple with two lists:
 
 * list of available IP addresses
-* list of unreachable IP addresses
+* list of unavailable IP addresses
 
-You can create any additional functions to complete task.
-
-To check availability of IP address, use ping.
+You can create any additional functions to complete the task.
+To check the availability of an IP address, use ping.
 
 .. note::
 
-    concurrent.futures hint: if you need to ping multiple IP addresses in different threads, you need to create a function that pings one IP address and then run this function in different threads for different IP addresses with concurrent.futures (ping_ip_addresses() function should do this).
+    A hint about working with concurrent.futures:
+    If you need to ping several IP addresses in different threads, you need to create
+    a function that will ping one IP address, and then run this function in different
+    threads for different IP addresses using concurrent.futures (this last part
+    must be done in the ping_ip_addresses function).
+
 
 Task 19.2
 ~~~~~~~~~~~~
 
-Create send_show_command_to_devices() function that sends the same show command to different devices in parallel threads and then writes output of commands to a file. Output from devices in file can be in any order.
+Create a send_show_command_to_devices function that sends the same show command
+to different devices in concurrent threads and then writes the output of
+the commands to a file. The output from the devices in the file can be in any order.
 
 Function parameters:
 
-* devices - list of dictionaries with connection parameters to devices
-* command - command
-* filename - name of text file into which the output of all commands will be written
-* limit - maximum number of parallel threads (default 3)
+* devices - a list of dictionaries with parameters for connecting to devices
+* command - show command
+* filename - is the name of a text file to which the output of all commands will be written
+* limit - maximum number of concurrent threads (default 3)
 
-Function does not return anything.
+The function returns None.
 
-Output of commands should be written to a plain text file in this format (you should write host name and command itself before output of command):
+The output of the commands should be written to a plain text file in this
+format (before the output of the command, you must write the hostname and
+the command itself):
 
 ::
 
@@ -61,25 +70,30 @@ Output of commands should be written to a plain text file in this format (you sh
     Ethernet0/0                192.168.100.3   YES NVRAM  up                    up
     Ethernet0/1                unassigned      YES NVRAM  administratively down down
 
-You can create any additional functions to complete task.
+You can create any additional functions to complete the task.
 
-Check function with devices from device.yaml file
+Check the operation of the function on devices from the devices.yaml file.
 
 Task 19.3
 ~~~~~~~~~~~~
 
-Create send_command_to_devices() function that sends different show commands to different devices in parallel threads and then writes the output of commands to a file. Output from devices in file can be in any order.
+Create a send_command_to_devices function that sends different show commands
+to different devices in concurrent threads and then writes the output of the
+commands to a file. The output from the devices in the file can be in any order.
 
 Function parameters:
 
-* devices - list of dictionaries with devices connection parameters
-* commands_dict - dictionary that specifies which device to send which command. Example dictionary - *commands*
-* filename - name of file into which the outputs of all commands will be written
-* limit - maximum number of parallel threads (default 3)
+* devices - a list of dictionaries with parameters for connecting to devices
+* commands_dict - a dictionary that specifies which device to send which command.
+  Dictionary example - commands
+* filename is the name of the file to which the output of all commands will be written
+* limit - maximum number of concurrent threads (default 3)
 
-Function does not return anything.
+The function returns None.
 
-Output of commands should be written to a plain text file in this format (you should write host name and command itself before output of command):
+The output of the commands should be written to a plain text file in this
+format (before the output of the command, you must write the hostname and
+the command itself):
 
 ::
 
@@ -87,25 +101,27 @@ Output of commands should be written to a plain text file in this format (you sh
     Interface                  IP-Address      OK? Method Status                Protocol
     Ethernet0/0                192.168.100.1   YES NVRAM  up                    up
     Ethernet0/1                192.168.200.1   YES NVRAM  up                    up
-    R2#sh arp
-    Protocol  Address          Age (min)  Hardware Addr   Type   Interface
-    Internet  192.168.100.1          76   aabb.cc00.6500  ARPA   Ethernet0/0
-    Internet  192.168.100.2           -   aabb.cc00.6600  ARPA   Ethernet0/0
-    Internet  192.168.100.3         173   aabb.cc00.6700  ARPA   Ethernet0/0
-    R3#sh ip int br
-    Interface                  IP-Address      OK? Method Status                Protocol
-    Ethernet0/0                192.168.100.3   YES NVRAM  up                    up
-    Ethernet0/1                unassigned      YES NVRAM  administratively down down
+    R2#sh int desc
+    Interface                      Status         Protocol Description
+    Et0/0                          up             up
+    Et0/1                          up             up
+    Et0/2                          admin down     down
+    Et0/3                          admin down     down
+    Lo9                            up             up
+    Lo19                           up             up
+    R3#sh run | s ^router ospf
+    router ospf 1
+     network 0.0.0.0 255.255.255.255 area 0
     
-You can create any additional functions to complete task.
+You can create any additional functions to complete the task.
 
-Check function with devices from device.yaml file and commands dictionary
+Check the operation of the function on devices from the devices.yaml file.
 
 .. code:: python
 
-    # This dictionary is only needed to check code operation, you can change IP addresses in it
-    # test takes addresses from device.yaml file
-
+    # This dictionary is only needed to check the operation of the code;
+    # you can change the IP addresses in it.
+    # The test takes addresses from the devices.yaml file
     commands = {
         "192.168.100.3": "sh run | s ^router ospf",
         "192.168.100.1": "sh ip int br",
@@ -115,18 +131,24 @@ Check function with devices from device.yaml file and commands dictionary
 Task 19.3a
 ~~~~~~~~~~~~~
 
-Create send_command_to_devices() function that sends a list of specified show commands to different devices in parallel threads and then writes the output of commands to a file. Output from devices in file can be in any order.
+Create a send_command_to_devices function that sends a list of the specified
+show commands to different devices in concurrent threads, and then writes the
+output of the commands to a file. The output from the devices in the file can
+be in any order.
 
 Function parameters:
 
-* devices - list of dictionaries with devices connection parameters
-* commands_dict - dictionary that specifies which device to send which command. Example dictionary - *commands*
-* filename - name of file into which the outputs of all commands will be written
+* devices - a list of dictionaries with parameters for connecting to devices
+* commands_dict - a dictionary that specifies which device to send which commands.
+  Dictionary example - commands
+* filename is the name of the file to which the output of all commands will be written
 * limit - maximum number of parallel threads (default 3)
 
-Function does not return anything.
+The function returns None.
 
-Output of commands should be written to a plain text file in this format (you should write host name and command itself before output of command):
+The output of the commands should be written to a plain text file in this
+format (before the output of the command, you must write the hostname and
+the command itself):
 
 ::
 
@@ -155,16 +177,18 @@ Output of commands should be written to a plain text file in this format (you sh
     O        10.30.0.0/24 [110/20] via 192.168.100.1, 07:12:03, Ethernet0/0
 
 
-Commands in file can be in any order.
+Commands can be written to a file in any order.
+To complete the task, you can create any additional functions,
+as well as use the functions created in previous tasks.
 
-To complete task you can create any additional functions and use functions created in previous tasks.
-
-Check function with devices from device.yaml file and *commands* dictionary
+Check the operation of the function on devices from the devices.yaml file
+and the commands dictionary
 
 .. code:: python
 
-    # This dictionary is only needed to check code operation, you can change IP addresses in it
-    # test takes addresses from device.yaml file
+    # This dictionary is only needed to check the operation of the code;
+    # you can change the IP addresses in it.
+    # The test takes addresses from the devices.yaml file
     commands = {
         "192.168.100.3": ["sh ip int br", "sh ip route | ex -"],
         "192.168.100.1": ["sh ip int br", "sh int desc"],
@@ -175,19 +199,40 @@ Check function with devices from device.yaml file and *commands* dictionary
 Task 19.4
 ~~~~~~~~~~~~
 
-Create send_commands_to_devices() function that sends show or config command to different devices in parallel threads and then writes output to a file.
+Create a send_commands_to_devices function that sends a show or config command
+to different devices in concurrent threads and then writes the output of the
+commands to a file.
 
 Function parameters:
 
-* devices - list of dictionaries with devices connection parameters
-* show - show command to send (default None)
-* config - configuration mode commands to send (default None)
-* filename - name of file into which outputs of all commands will be written
+* devices - a list of dictionaries with parameters for connecting to devices
+* filename is the name of the file to which the output of all commands will be written
+* show - the show command to be sent (by default, the value is None)
+* config - configuration mode commands to be sent (default None)
 * limit - maximum number of parallel threads (default 3)
 
-Function does not return anything.
+The function returns None.
 
-Output of commands should be written to a file in this format (you should write host name and command itself before output of command):
+The show, config and limit arguments should only be passed as keyword arguments.
+Passing these arguments as positional should raise a TypeError exception.
+
+.. code:: python
+
+    In [4]: send_commands_to_devices(devices, 'result.txt', 'sh clock')
+    ---------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call last)
+    <ipython-input-4-75adcfb4a005> in <module>
+    ----> 1 send_commands_to_devices(devices, 'result.txt', 'sh clock')
+
+    TypeError: send_commands_to_devices() takes 2 positional argument but 3 were given
+
+When calling the send_commands_to_devices function, only one of the show,
+config arguments should always be passed. If both arguments are passed,
+a ValueError exception should be raised.
+
+The output of the commands should be written to a plain text file in this
+format (before the output of the command, you must write the hostname and
+the command itself):
 
 ::
 
@@ -205,11 +250,11 @@ Output of commands should be written to a file in this format (you should write 
     Ethernet0/0                192.168.100.3   YES NVRAM  up                    up
     Ethernet0/1                unassigned      YES NVRAM  administratively down down
 
-Example of function call:
+An example of a function call:
 
 .. code:: python
 
-    In [5]: send_commands_to_devices(devices, show='sh clock', filename='result.txt')
+    In [5]: send_commands_to_devices(devices, 'result.txt', show='sh clock')
 
     In [6]: cat result.txt
     R1#sh clock
@@ -219,26 +264,28 @@ Example of function call:
     R3#sh clock
     *04:56:40.354 UTC Sat Mar 23 2019
 
-    In [11]: send_commands_to_devices(devices, config='logging 10.5.5.5', filename='result.txt')
+    In [11]: send_commands_to_devices(devices, 'result.txt', config='logging 10.5.5.5')
 
     In [12]: cat result.txt
     config term
     Enter configuration commands, one per line.  End with CNTL/Z.
     R1(config)#logging 10.5.5.5
     R1(config)#end
-    R1#config term
+    R1#
+    config term
     Enter configuration commands, one per line.  End with CNTL/Z.
     R2(config)#logging 10.5.5.5
     R2(config)#end
-    R2#config term
+    R2#
+    config term
     Enter configuration commands, one per line.  End with CNTL/Z.
     R3(config)#logging 10.5.5.5
     R3(config)#end
     R3#
 
-    In [13]: send_commands_to_devices(devices,
-                                      config=['router ospf 55', 'network 0.0.0.0 255.255.255.255 area 0'],
-                                      filename='result.txt')
+    In [13]: commands = ['router ospf 55', 'network 0.0.0.0 255.255.255.255 area 0']
+
+    In [13]: send_commands_to_devices(devices, 'result.txt', config=commands)
 
     In [14]: cat result.txt
     config term
@@ -246,17 +293,18 @@ Example of function call:
     R1(config)#router ospf 55
     R1(config-router)#network 0.0.0.0 255.255.255.255 area 0
     R1(config-router)#end
-    R1#config term
+    R1#
+    config term
     Enter configuration commands, one per line.  End with CNTL/Z.
     R2(config)#router ospf 55
     R2(config-router)#network 0.0.0.0 255.255.255.255 area 0
     R2(config-router)#end
-    R2#config term
+    R2#
+    config term
     Enter configuration commands, one per line.  End with CNTL/Z.
     R3(config)#router ospf 55
     R3(config-router)#network 0.0.0.0 255.255.255.255 area 0
     R3(config-router)#end
     R3#
-
 
 You can create any additional functions to complete task.
