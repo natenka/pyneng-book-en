@@ -10,16 +10,17 @@ Tasks
 Task 20.1
 ~~~~~~~~~~~~
 
-Create generate_config() function.
+Create generate_config function.
 
 Function parameters:
 
-* template - path to template file (for example, "templates/for.txt")
-* data_dict - dictionary with values to set in template
+* template - path to the template file (for example, "templates/for.txt")
+* data_dict - a dictionary with values to be substituted into the template
 
-Function should return a string with configuration that has been generated.
+The function should return the generated configuration string.
 
-Check function with templates/for.txt template and data from data_files/for.yml.
+Check the operation of the function on the templates/for.txt template
+and data from the data_files/for.yml file.
 
 .. code:: python
 
@@ -38,55 +39,71 @@ Check function with templates/for.txt template and data from data_files/for.yml.
 Task 20.2
 ~~~~~~~~~~~~
 
-Create templates/cisco_router_base.txt template. It should include template content of:
+Create template templates/cisco_router_base.txt.
+
+The templates/cisco_router_base.txt template should include the content
+of the templates:
 
 * templates/cisco_base.txt
 * templates/alias.txt
 * templates/eem_int_desc.txt
 
-You cannot copy template text.
+Template text cannot be copied.
 
-Check templates/cisco_router_base.txt template using generate_config() functon from task 20.1. Do not copy generate_config() function code.
+Test the template templates/cisco_router_base.txt using the generate_config
+function from task 20.1. Do not copy the code of the generate_config function.
 
-As data, use information from data_files/router_info.yml file
+As data, use the information from the data_files/router_info.yml file.
 
 Task 20.3
 ~~~~~~~~~~~~
 
-Create templates/ospf.txt template based on OSPF configuration in cisco_ospf.txt file. Configuration example is given to show syntax.
+Create a template templates/ospf.txt based on the OSPF configuration
+in the cisco_ospf.txt file. A configuration example is given to show the syntax.
 
-Create template manually by copying parts of configuration into corresponding template.
+The template must be created manually by copying parts of the config
+into the corresponding template.
 
-Which values should be variables:
+What values should be variables:
 
 * process number. Variable name - process
 * router-id. Variable name - router_id
 * reference-bandwidth. Variable name - ref_bw
-* interfaces to enable OSPF. Variable name - ospf_intf. This variable expects list of dictionaries with such keys:
+* interfaces on which to enable OSPF. The variable name is ospf_intf.
+  In place of this variable, a list of dictionaries with the following keys is expected:
+   * name - interface name, like Fa0/1, Vlan10, Gi0/0
+   * ip - interface IP address, like 10.0.1.1
+   * area - zone number
+   * passive - whether the interface is passive. Valid values: True or False
 
-  * name - interface name like Fa0/1, Vlan10, Gi0/0
-  * ip - IP address of interface like 10.0.1.1
-  * area - area number
-  * passive - whether interface is passive. Valid values: True or False
+For all interfaces in the ospf_intf list, you need to generate the following lines:
 
-For all interfaces in *ospf_intf* list you should generate lines::
+::
 
-::   network x.x.x.x 0.0.0.0 area x
+    network x.x.x.x 0.0.0.0 area x
 
-If interface is passive, this line should be added:
+If the interface is passive, the line must be added for it:
 
-::   passive-interface x
+::
 
-For interfaces that are not passive, in interface configuration mode you should add a line:
+    passive-interface x
 
-::   ip ospf hello-interval 1
+For interfaces that are not passive, in interface configuration mode,
+you need to add the line:
 
-All commands must be in appropriate modes.
+::
 
-Check resulting templates/ospf.txt template with data in data_files/ospf.yml file using generate_config() function from task 20.1. Do not copy generate_config() function code.
+    ip ospf hello-interval 1
 
+All commands must be in the appropriate configuration mode.
 
-The result should be a configuration of this kind (commands inside *router ospf* mode don't have to be in such order, more important that they are in the right mode):
+Check the resulting template templates/ospf.txt, against the data in
+the data_files/ospf.yml file, using the generate_config function
+from task 20.1. Do not copy the code of the generate_config function.
+
+The result should be a configuration of the following type (the commands
+in router ospf mode do not have to be in this order, the main thing is that
+they are in the correct config section):
 
 ::
 
@@ -111,15 +128,20 @@ The result should be a configuration of this kind (commands inside *router ospf*
 Задание 20.4
 ~~~~~~~~~~~~
 
-Create templates/add_vlan_to_switch.txt template that will be used if it's necessary to add VLAN to switch.
+Create a template templates/add_vlan_to_switch.txt that will be used
+if you need to add a VLAN to the switch.
 
-Template should support these features:
+The template must support the following features:
 
 * add VLAN and VLAN name
-* add VLAN as access on specified interface
-* add VLAN to list of allowed vlans on trunks
+* adding VLANs as access, on the specified interface
+* adding VLANs to the list of allowed, on specified trunks
 
-If you want to add VLAN as access, you need to configure interface mode and add VLAN to it:
+The template must be created manually by copying parts of the config into
+the corresponding template.
+
+If VLAN needs to be added as access, you need to configure the interface
+mode and add it to VLAN:
 
 ::
 
@@ -127,38 +149,52 @@ If you want to add VLAN as access, you need to configure interface mode and add 
      switchport mode access
      switchport access vlan 5
 
-For trunks, only add VLAN to the list of allowed vlans:
+For trunks, you only need to add VLANs to the allowed list:
 
 ::
 
     interface Gi0/10
      switchport trunk allowed vlan add 5
 
-Variable names should be selected from data example in data_files/add_vlan_to_switch.yaml.
+The variable names should be chosen based on the sample data in
+the data_files/add_vlan_to_switch.yaml file.
 
-Check templates/add_vlan_to_switch.txt with data in data_files/add_vlan_to_switch.yaml file  using generat_config() function from task 20.1. Do not copy generate_config() function code.
+Check the templates/add_vlan_to_switch.txt template against the data
+in data_files/add_vlan_to_switch.yaml using the generate_config function
+from task 20.1. Do not copy the code of the generate_config function.
 
 
 Task 20.5
 ~~~~~~~~~~~~
 
-Create templates/gre_ipsec_vpn_1.txt and templates/gre_ipsec_vpn_2.txt templates that generate IPsec over GRE configuration between two routers.
+Create templates templates/gre_ipsec_vpn_1.txt and templates/gre_ipsec_vpn_2.txt
+that generate IPsec over GRE configuration between two routers.
 
-Template templates/gre_ipsec_vpn_1.txt creates a configuration for one side of tunnel and templates/gre_ipsec_vpn_2.txt for other side.
+The templates/gre_ipsec_vpn_1.txt template creates the configuration for one
+side of the tunnel, and templates gre_ipsec_vpn_2.txt for the other.
 
-Examples of resulting configuration that should be created based on templates in files: cisco_vpn_1.txt and cisco_vpn_2.txt.
+Examples of the final configuration that should be generated from templates
+in the files: cisco_vpn_1.txt and cisco_vpn_2.txt.
 
-Create create_vpn_config() function that uses these templates to generate VPN configuration based on data in *data* dictionary.
+Templates must be created manually by copying parts of the config into
+the corresponding templates.
+
+Create a create_vpn_config function that uses these templates to generate
+a VPN configuration based on the data in the data dictionary.
 
 Function parameters:
 
-* template1 - file name with template that creates configuration for one tunnel side
-* template2 - file name with template that creates configuration for second tunnel side
-* data_dict - dictionary with values to set in templates
+* template1 - the name of the template file that creates the configuration
+  for one side of the tunnel
+* template2 - the name of the template file that creates the configuration
+  for the second side of the tunnel
+* data_dict - a dictionary with values to be substituted into templates
 
-Function should return a tuple with two configurations (strings) that are derived from templates.
+The function must return a tuple with two configurations (strings) that are
+derived from templates.
 
-In cisco_vpn_1.txt and cisco_vpn_2.txt you will find examples of VPN configurations that should return create_vpn_config() function.
+Examples of VPN configurations that the create_vpn_config function
+should return in the cisco_vpn_1.txt and cisco_vpn_2.txt files.
 
 .. code:: python
 
@@ -173,27 +209,38 @@ In cisco_vpn_1.txt and cisco_vpn_2.txt you will find examples of VPN configurati
 Task 20.5a
 ~~~~~~~~~~~~~
 
-Create configure_vpn() function that uses templates from task 20.5 to configure VPN on routers based on data in *data* dictionary.
+Create a configure_vpn function that uses the templates from task 20.5
+to configure VPN on routers based on the data in the data dictionary.
 
 Function parameters:
 
-* src_device_params - dictionary with device connection parameters
-* dst_device_params - dictionary with device connection parameters
-* src_template - name of file with template that creates a configuration for one tunnel side
-* dst_template - name of file with template that creates a configuration for second tunnel side
-* vpn_data_dict - dictionary with values to set in templates
+* src_device_params - dictionary with connection parameters for device 1
+* dst_device_params - dictionary with connection parameters for device 2
+* src_template - a template that creates the configuration for side 1
+* dst_template - a template that creates the configuration for side 2
+* vpn_data_dict - a dictionary with values to be substituted into templates
 
-Function should configure VPN based on templates and data on each device using netmiko. Function returns output with a set of commands from two routers (output that returns netmiko send_config_set() method).
+The function should configure the VPN based on templates and data on each
+device using netmiko. The function returns a tuple with the output of commands
+from two routers (the output returned by the netmiko send_config_set method).
+The first element of the tuple is the output from the first device (string),
+the second element of the tuple is the output from the second device.
 
-However, *data* dictionary does not specify Tunnel interface number to be used. Number has to be determined independently based on information from equipment. If there are no Tunnel interfaces on router, take number 0. If there are some interfaces, take the nearest available number but it should be the same for two routers.
+In this task, the data dictionary does not specify the Tunnel interface
+number to use. The number must be determined independently based on information
+from the equipment. If the router does not have Tunnel interfaces, take
+the number 0, if there is, take the nearest free number, but the same for two routers.
 
-For example, *src* router has such interfaces as Tunnel1, Tunnel4. On *dest* router: Tunnel2, Tunnel3, Tunnel8. The first available number for two routers will be 9. And you will need to configure Tunnel9 interface.
+For example, if the src router has the following interfaces: Tunnel1, Tunnel4.
+And on the dst router are: Tunnel2, Tunnel3, Tunnel8.
+The first free number that is the same for two routers will be 5.
+And you will need to configure the Tunnel 5 interface.
 
-.. note::
-
-    To complicate task you can make that number 5 is taken instead of 9.
-
-There's no test for this task!
+For this task, the test verifies that the function works on the first
+two devices from the devices.yaml file. And it checks that the output contains
+commands for configuring interfaces, but does not check the configured tunnel
+numbers and other commands. The tunnels must be configured, but the test has been
+simplified so that there are fewer constraints on the task.
 
 .. code:: python
 
