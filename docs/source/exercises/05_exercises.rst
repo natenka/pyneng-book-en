@@ -10,12 +10,14 @@ Tasks
 Task 5.1
 ~~~~~~~~~~~
 
-A dictionary with information about different devices is created in the task.
 
-You should ask user to enter device name (r1, r2 or sw1). And display information about corresponding device on standard output stream (information will be in form of a dictionary).
+The task contains a dictionary with information about different devices.
 
+In the task you need: ask the user to enter the device name (r1, r2 or sw1).
+Print information about the corresponding device to standard output
+(information will be in the form of a dictionary).
 
-Example of script execution:
+An example of script execution:
 
 ::
 
@@ -23,11 +25,11 @@ Example of script execution:
     Enter name of device: r1
     {"location": "21 New Globe Walk", "vendor": "Cisco", "model": "4451", "ios": "15.4", "ip": "10.255.0.1"}
 
+Restriction: You cannot modify the london_co dictionary.
+
+All tasks must be completed using only the topics covered. That is, this task can be
+solved without using the if condition.
 Restriction: You cannot change london_co dictionary.
-
-Restriction: All tasks must be performed using only covered topics.
-That is, it is possible to solve this task without using *if* condition and other topics to be discussed later.
-
 
 .. code:: python
 
@@ -61,11 +63,12 @@ That is, it is possible to solve this task without using *if* condition and othe
 Task 5.1a
 ~~~~~~~~~~~~
 
-Modify script from Task 5.1 so that in addition to device name the device parameter that you want to display is also requested.
+Modify the script from task 5.1 so that, in addition to the device name,
+the script requested and then printed the device parameter as well.
 
-Display information about corresponding parameter of specified device.
+Display information about the corresponding parameter of the specified device.
 
-Example of script execution:
+An example of script execution:
 
 ::
 
@@ -74,10 +77,10 @@ Example of script execution:
     Enter parameter name: ios
     15.4
 
-Restriction: You cannot change london_co dictionary.
+Restriction: You cannot modify the london_co dictionary.
 
-Restriction: All tasks must be performed using only covered topics.
-That is, it is possible to solve this task without using *if* condition and other topics to be discussed later.
+All tasks must be completed using only the topics covered. That is, this task can be
+solved without using the if condition.
 
 .. code:: python
 
@@ -110,11 +113,13 @@ That is, it is possible to solve this task without using *if* condition and othe
 Task 5.1b
 ~~~~~~~~~~~~
 
-Modify script from task 5.1so that a list of possible parameters is displayed when you ask for parameter. List of parameters should be obtained from dictionary, not written manually.
+Modify the script from task 5.1a so that, when requesting a parameter,
+a list of possible parameters was displayed. The list of parameters must be obtained
+from the dictionary, rather than written manually.
 
-Display information about corresponding parameter of specified device.
+Display information about the corresponding parameter of the specified device.
 
-Example of script execution:
+An example of script execution:
 
 ::
 
@@ -123,10 +128,11 @@ Example of script execution:
     Enter parameter name (ios, model, vendor, location, ip): ip
     10.255.0.1
 
-Restriction: You cannot change london_co dictionary.
 
-Restriction: All tasks must be performed using only covered topics.
-That is, it is possible to solve this task without using *if* condition and other topics to be discussed later.
+Restriction: You cannot modify the london_co dictionary.
+
+All tasks must be completed using only the topics covered. That is, this task can be
+solved without using the if condition.
 
 .. code:: python
 
@@ -159,14 +165,18 @@ That is, it is possible to solve this task without using *if* condition and othe
 Task 5.1c
 ~~~~~~~~~~~~
 
-Modify script from task 5.1b so that when you ask for a parameter that is not present in device dictionary, the message "No such parameter" is displayed.
+
+Copy and modify the script from task 5.1b so that when you request a parameter
+that is not in the device dictionary, the message 'There is no such parameter' is displayed.
+The assignment applies only to the parameters of the devices, not to the devices themselves.
 
 .. note::
-    Try typing an invalid parameter name or a nonexistent parameter to see what the result is. And then do the task.
 
-If an existing parameter is selected display information about corresponding parameter of specified device.
+    Try typing a non-existent parameter, to see what the result will be. And
+    then complete the task.                                                                                           
+If an existing parameter is selected, print information about the corresponding parameter.
 
-Example of script execution:
+An example of script execution:
 
 ::
 
@@ -175,10 +185,11 @@ Example of script execution:
     Enter parameter name (ios, model, vendor, location, ip): ips
     No such parameter
 
-Restriction: You cannot change london_co dictionary.
+Restriction: You cannot modify the london_co dictionary.
 
-Restriction: All tasks must be performed using only covered topics.
-That is, it is possible to solve this task without using *if* condition and other topics to be discussed later.
+All tasks must be completed using only the topics covered. That is, this task can be
+solved without using the if condition.
+
 
 .. code:: python
 
@@ -211,9 +222,11 @@ That is, it is possible to solve this task without using *if* condition and othe
 Task 5.1d
 ~~~~~~~~~~~~
 
-Modify script from task 5.1c so that when you ask for parameter, user can enter name of parameter in any register.
 
-Example of script execution:
+Modify the script from task 5.1c so that, when requesting a parameter,
+the user could enter the parameter name in any case.
+
+An example of script execution:
 
 ::
 
@@ -223,10 +236,10 @@ Example of script execution:
     15.4
 
 
-Restriction: You cannot change london_co dictionary.
+Restriction: You cannot modify the london_co dictionary.
 
-Restriction: All tasks must be performed using only covered topics.
-That is, it is possible to solve this task without using *if* condition and other topics to be discussed later.
+All tasks must be completed using only the topics covered. That is, this task can be
+solved without using the if condition.
 
 .. code:: python
 
@@ -259,9 +272,9 @@ That is, it is possible to solve this task without using *if* condition and othe
 Task 5.2
 ~~~~~~~~~~~
 
-Request user to enter an IP network in format: ``10.1.1.0/24``
+Ask the user to enter the IP network in the format: ``10.1.1.0/24``.
 
-Then display network and mask information in this format:
+Then print information about the network and mask in this format:
 
 ::
 
@@ -274,33 +287,37 @@ Then display network and mask information in this format:
     255       255       255       0
     11111111  11111111  11111111  00000000
 
-Check script on different combinations of network/mask.
+Check the script work on different network/mask combinations.
 
-Hint: Get a mask in binary format:
+Hint: You can get the mask in binary format like this:
 
 ::
 
     In [1]: "1" * 28 + "0" * 4
     Out[1]: "11111111111111111111111111110000"
 
-Restriction: All tasks must be performed using only covered topics.
+You can then take 8 bits of the binary mask using slices and convert them to decimal.
+
+Restriction: All tasks must be done using the topics covered in this and previous chapters.
 
 Task 5.2a
 ~~~~~~~~~~~~
 
-It's like task 5.2 but if user entered host address instead of network address, you have to convert host address to network address and display network address and mask as in task 5.2.
+Copy and modify the script from task 5.2 so that, if the user entered a host address
+rather than a network address, convert the host address to a network address
+and print the network address and mask, as in task 5.2.
 
-Example of network address (all host bits are zero):
+An example of a network address (all host bits are equal to zero):
 
 * 10.0.1.0/24
 * 190.1.0.0/16
 
-Example of host address:
+Host address example:
 
-* 10.0.1.1/24 - хост из сети 10.0.1.0/24
-* 10.0.5.1/30 - хост из сети 10.0.5.0/30
+* 10.0.1.1/24 - host from network 10.0.1.0/24
+* 10.0.5.195/28 - host from network 10.0.5.192/28
 
-If user entered address 10.0.1.1/24, , the output should be:
+If the user entered the address 10.0.1.1/24, the output should look like this:
 
 ::
 
@@ -313,47 +330,55 @@ If user entered address 10.0.1.1/24, , the output should be:
     255       255       255       0
     11111111  11111111  11111111  00000000
 
-Check script on different host/mask combinations, for example: 10.0.5.195/28, 10.0.1.1/24
+Check the script work on different host/mask combinations, for example:
+10.0.5.195/28, 10.0.1.1/24
 
 Hint:
 
-There is a binary host address and a network mask 28. Network address is the first 28 bits of host address + 4 zeros. That is, for example, host address 10.1.1.195/28 in binary format will be ``bin_ip = "00001010000000010000000111000011"``.
+The network address can be calculated from the binary host address and the netmask.
+If the mask is 28, then the network address is the first 28 bits host addresses + 4 zeros.
+For example, the host address 10.1.1.195/28 in binary will be:
 
-And network address will be the first 28 symbols from bin_ip + 0000 (4 because total address can be 32 bits and 32 - 28 = 4): ``00001010000000010000000111000000``
+.. code:: python
 
-Restriction: All tasks must be performed using only covered topics.
+    bin_ip = "00001010000000010000000111000011"
 
+Then the network address will be the first 28 characters from bin_ip + 0000
+(4 because in total there can be 32 bits in the address, and 32 - 28 = 4)
 
-Task 5.2b
-~~~~~~~~~~~~
+::
 
-Modify script from task 5.2a so that the network/mask is not requested from user, but is passed as script argument.
+    00001010000000010000000111000000
 
-Restriction: All tasks must be performed using only covered topics.
+Restriction: All tasks must be done using the topics covered in this and previous chapters.
+
 
 Task 5.3
 ~~~~~~~~~~~~
 
-Script must request from user:
+The script should prompt the user for input:
 
 * interface mode (access/trunk)
-* interface number (type and number, like Gi0/3)
-* Vlan number (Vlan list will be entered for trunk mode)
+* interface number (Gi0/3)
+* VLAN number (for trunk mode, a list of VLANs will be entered)
 
-Depending on selected mode, the appropriate access or trunk configuration should be displayed (command templates are in access_template and trunk_template lists).
+Depending on the selected mode, print corresponding access or trunk configuration
+on stdout (command templates are in the lists access_template and trunk_template).
 
-First, interface string goes and interface number is substituted and then goes the corresponding template into which Vlan number (or Vlan list) is substituted.
+The output should first print the interface line and the interface number, and then
+the corresponding template in which the VLAN number (or the list of VLANs) is inserted.
 
-Restriction: All tasks must be performed using only covered topics.
-That is, it is possible to solve this task without using *if* condition and *for/while* loops.
+Restriction: All tasks must be done using the topics covered in this and previous chapters.
+This task can be solved without using the if condition and for/while loops.
 
 Hint:
-Leading to this task was task 5.1. To make this task easier, you can look at task 5.1 and figure out how it was possible to extract different information depending on user's input.
+Leading up to this task was task 5.1. To make it easier to solve this task,
+you can look at task 5.1 and figure out exactly how different information
+is displayed in the task, depending on user input.
 
+Below are examples of script execution to make it easier to understand the task.
 
-The following are examples of how to execute a script to make task easier to understand.
-
-Example of script execution when you select access mode:
+An example of script execution when the access mode is selected:
 
 ::
 
@@ -369,7 +394,7 @@ Example of script execution when you select access mode:
     spanning-tree portfast
     spanning-tree bpduguard enable
 
-Example of script execution if trunk mode is selected:
+An example of script execution when the trunk mode is selected:
 
 ::
 
@@ -399,14 +424,15 @@ Example of script execution if trunk mode is selected:
 Task 5.3a
 ~~~~~~~~~~~~
 
+Copy and change the script from task 5.3 in such a way that, depending on
+the selected mode, different questions were asked in the request for the VLAN number
+or VLAN list:
 
-Complete script from task 5.3 in such a way that depending on selected mode the different questions are asked in request for Vlan number or Vlan list:
+* for access: 'Enter VLAN number:'
+* for trunk: 'Enter the allowed VLANs:'
 
-* for access: "Enter VLAN number:"
-* for trunk: "Enter allowed VLANs:"
-
-Restriction: All tasks must be performed using only covered topics.
-That is, it is possible to solve this task without using *if* condition and *for/while* loops.
+Restriction: All tasks must be done using the topics covered in this and previous chapters.
+This task can be solved without using the if condition and for/while loops.
 
 .. code:: python
 
