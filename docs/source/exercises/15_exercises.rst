@@ -10,12 +10,14 @@ Tasks
 Task 15.1
 ~~~~~~~~~~~~
 
-Create a get_ip_from_cfg() function that expects as argument the name of file with device configuration.
+Create a get_ip_from_cfg function that expects the name of the file containing
+the device configuration as an argument.
 
-Function should process configuration and return IP addresses and masks, that are configured on interfaces, as a list of tuples:
+The function should process the configuration and return the IP addresses and
+masks that are configured on the interfaces as a list of tuples:
 
-* first element of tuple - IP address
-* second element of tuple - mask
+* the first element of the tuple is the IP address
+* the second element of the tuple is a mask
 
 For example (arbitrary addresses are taken):
 
@@ -25,24 +27,28 @@ For example (arbitrary addresses are taken):
 
 To get this result, use regular expressions.
 
-Check function with config_r1.txt file.
+Check the operation of the function using the config_r1.txt file.
 
-Please note that in this case you can skip checking the correctness of IP address, address ranges, etc., since command output is processed, not user input.
+Please note that in this case, you can not check the correctness
+of the IP address, address ranges, and so on, since the command
+output from network device is processed, not user input.
+
 
 Task 15.1a
 ~~~~~~~~~~~~~
 
-Copy get_ip_from_cfg() function from task 15.1 and redo it to return dictionary:
+Copy the get_ip_from_cfg function from task 15.1 and redesign it so
+that it returns a dictionary:
 
 * key: interface name
-* value: tuple with two strings:
+* value: a tuple with two lines:
 
-  * IP address
-  * mask
+   * IP address
+   * mask
 
-Add to dictionary only those interfaces where IP addresses are configured.
+Add to the dictionary only those interfaces on which IP addresses are configured.
 
-For example (arbitrary addresses are taken):
+Dict example (arbitrary addresses are taken):
 
 .. code:: python
 
@@ -51,16 +57,19 @@ For example (arbitrary addresses are taken):
 
 To get this result, use regular expressions.
 
-Check function with config_r1.txt file.
+Check the operation of the function using the example of the config_r1.txt file.
 
-Please note that in this case you can skip checking the correctness of IP address, address ranges, etc., since command output is processed, not user input.
+Please note that in this case, you can not check the correctness
+of the IP address, address ranges, and so on, since the command
+output from network device is processed, not user input.
+
 
 Task 15.1b
 ~~~~~~~~~~~~~
 
-Check get_ip_from_cfg() function from 15.1a task based on config_r2.txt.
+Check the get_ip_from_cfg function from task 15.1a on the config_r2.txt configuration.
 
-Note that there are two IP addresses assigned to interface e0/1:
+Note that there are two IP addresses assigned on the e0/1 interface:
 
 ::
 
@@ -68,27 +77,38 @@ Note that there are two IP addresses assigned to interface e0/1:
      ip address 10.255.2.2 255.255.255.0
      ip address 10.254.2.2 255.255.255.0 secondary
 
-And in dictionary that returns get_ip_from_cfg() function, only one IP (second) corresponds to interface Ethernet0/1.
+And in the dictionary returned by the get_ip_from_cfg function, only one of them
+(first or second) corresponds to the Ethernet0/1 interface.
 
-Copy get_ip_from_cfg() function from 15.1a task and redo it so that it returns a list of tuples for each interface. If only one address is assigned to interface, one tuple will be listed. If multiple IP addresses are configured on interface, several tuples will be listed.
+Copy the get_ip_from_cfg function from 15.1a and redesign it to return
+a list of tuples for each interface in the dictionary value.
+If only one address is assigned on the interface, there will be one tuple in the list.
+If several IP addresses are configured on the interface, then the list will
+contain several tuples. The interface name remains the key.
 
-Check function with config_r2.txt configuration file and ensure that interface Ethernet0/1 corresponds to list of two tuples.
+Check the function in the config_r2.txt configuration and make sure the
+Ethernet0/1 interface matches a list of two tuples.
 
-Please note that in this case you can skip checking the correctness of IP address, address ranges, etc., since command output is processed, not user input.
+Please note that in this case, you can not check the correctness
+of the IP address, address ranges, and so on, since the command
+output from network device is processed, not user input.
+
 
 Task 15.2
-~~~~~~~~~~~~
+~~~~~~~~~
 
-Create parse_sh_ip_int_br() function that expects as an argument the name of file in which show ip int br output is found.
+Create a function parse_sh_ip_int_br that expects as an argument the name
+of the file containing the output of the show ip int br command.
 
-Function should process the output of show ip int br command and return such fields:
+The function should process the output of the show ip int br command
+and return the following fields:
 
 * Interface
 * IP-Address
 * Status
 * Protocol
 
-Information should be returned in the form of a list of tuples:
+The information should be returned as a list of tuples:
 
 .. code:: python
 
@@ -98,75 +118,32 @@ Information should be returned in the form of a list of tuples:
 
 To get this result, use regular expressions.
 
-Check function with sh_ip_int_br.txt file.
-
-Task 15.2a
-~~~~~~~~~~~~~
-
-Create convert_to_dict() function that expects two arguments:
-
-* list of field names
-* list of tuples with values
-
-
-Function returns the result as a list of dictionaries, where keys are taken from first list and values are substituted from second list.
-
-For example, if functions pass as arguments *headers* list and list
-
-.. code:: python
-
-    [("R1", "12.4(24)T1", "Cisco 3825"),
-     ("R2", "15.2(2)T1", "Cisco 2911")]
-
-Function should return such list with dictionaries:
-
-.. code:: python
-
-    [{"hostname": "R1", "ios": "12.4(24)T1", "platform": "Cisco 3825"},
-     {"hostname": "R2", "ios": "15.2(2)T1", "platform": "Cisco 2911"}]
-
-Function should not be tied to specific data or amount of headers/data in tuples.
-
-Check function with:
-
-* first argument - *headers* list
-* second argument - *data* list
-
-Restriction: All tasks must be performed using only covered topics.
-
-.. code:: python
-
-    headers = ["hostname", "ios", "platform"]
-
-    data = [
-        ("R1", "12.4(24)T1", "Cisco 3825"),
-        ("R2", "15.2(2)T1", "Cisco 2911"),
-        ("SW1", "12.2(55)SE9", "Cisco WS-C2960-8TC-L"),
-    ]
+Check the operation of the function using the example of the sh_ip_int_br.txt file.
 
 
 Task 15.3
 ~~~~~~~~~~~~
 
-Create convert_ios_nat_to_asa() function that converts NAT rules from cisco IOS syntax to cisco ASA.
+Create a convert_ios_nat_to_asa function that converts NAT rules from
+cisco IOS syntax to cisco ASA.
 
-Function expects such arguments:
+The function expects such arguments:
 
-* name of file containing NAT rules for Cisco IOS 
-* name of file to which to write resulting NAT rules for ASA
+* the name of the file containing the Cisco IOS NAT rules
+* the name of the file in which to write the NAT rules for the ASA
 
-Function does not return anything.
+The function returns None.
 
-Check function with cisco_nat_config.txt file.
+Check the function on the cisco_nat_config.txt file.
 
-Example of NAT rules for cisco IOS 
+Example cisco IOS NAT rules
 
 ::
 
     ip nat inside source static tcp 10.1.2.84 22 interface GigabitEthernet0/1 20022
     ip nat inside source static tcp 10.1.9.5 22 interface GigabitEthernet0/1 20023
 
-And corresponding NAT rules for ASA:
+And the corresponding NAT rules for the ASA:
 
 ::
 
@@ -177,22 +154,24 @@ And corresponding NAT rules for ASA:
      host 10.1.9.5
      nat (inside,outside) static interface service tcp 22 20023
 
-In ASA rules file:
+In the file with the rules for the ASA:
 
-* no empty lines between rules
-* "object network" lines should not be preceded by spaces
-* there should be one space in front of the rest of lines
+* there should be no blank lines between the rules
+* there must be no spaces before the lines "object network"
+* there must be one space before the rest of the lines
 
-All ASA rules will have the same interfaces (inside,outside).
+In all rules for ASA, the interfaces will be the same (inside, outside).
 
 Task 15.4
 ~~~~~~~~~~~~
 
-Create get_ints_without_description() function that expects as argument the name of file in which device configuration is found.
+Create a get_ints_without_description function that expects as an argument
+the name of the file containing the device configuration.
 
-Function should process configuration and return a list of interface names that do not have a description (*description* command)..
+The function should process the configuration and return a list of interface names,
+which do not have a description (description command).
 
-Example of interface with description:
+An example of an interface with a description:
 
 ::
 
@@ -209,16 +188,19 @@ Interface without description:
     interface Loopback0
      ip address 10.1.1.1 255.255.255.255
 
-Check function with config_r1.txt file.
+Check the operation of the function using the example of the config_r1.txt file.
+
 
 Task 15.5
 ~~~~~~~~~~~~
 
-Create generate_description_from_cdp() function that expects as an argument the name of file containing show cdp neighbors command output.
+Create a generate_description_from_cdp function that expects as an argument
+the name of the file that contains the output of the show cdp neighbors command.
 
-Function should process the output of show cdp neighbors command and generate a description for interfaces based on command output.
+The function should process the show cdp neighbors command output and generate
+a description for the interfaces based on the command output.
 
-For example, if R1 has this command output:
+For example, if R1 has the following command output:
 
 ::
 
@@ -229,13 +211,18 @@ For example, if R1 has this command output:
     Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
     SW1              Eth 0/0           140          S I      WS-C3750-  Eth 0/1
 
-For interface Eth 0/0, you should generate this description  ``description Connected to SW1 port Eth 0/1``.
-
-Function should return a dictionary where keys are interface names and values are command that defines interface description:
+For the Eth 0/0 interface, you need to generate the following description:
 
 ::
 
-    "Eth 0/0": "description Connected to SW1 port Eth 0/1"
+    description Connected to SW1 port Eth 0/1
 
+The function must return a dictionary, in which the keys are the names
+of the interfaces, and the values are the command specifying the description
+of the interface:
 
-Check function with sh_cdp_n_sw1.txt file.
+::
+
+    'Eth 0/0': 'description Connected to SW1 port Eth 0/1'
+
+Check the operation of the function on the sh_cdp_n_sw1.txt file.
