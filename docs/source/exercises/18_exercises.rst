@@ -10,54 +10,70 @@ Tasks
 Task 18.1
 ~~~~~~~~~~~~
 
-Create send_show_command() function.
+Create send_show_command function.
 
-Function connects via SSH (using netmiko) to one device and performs specified command.
+The function connects via SSH (using netmiko) to ONE device and executes
+the specified command.
 
 Function parameters:
 
-* device - dictionary with device connection parameters
-* command - command to execute
+* device - a dictionary with parameters for connecting to a device
+* command - the command to be executed
 
-Function returns a string with command output.
+The function should return a string with the command output.
 
-Script should send *command* command to all devices from device.yaml file using send_show_command() function.
+The script should send command command to all devices from the devices.yaml file
+using the send_show_command function (this part of the code is written).
 
 .. code:: python
 
-    command = "sh ip int br"
+    import yaml
+
+
+    if __name__ == "__main__":
+        command = "sh ip int br"
+        with open("devices.yaml") as f:
+            devices = yaml.safe_load(f)
+
+        for dev in devices:
+            print(send_show_command(dev, command))
 
 Task 18.1a
-~~~~~~~~~~~~~
+~~~~~~~~~~
 
-Copy send_show_command() function from task 18.1 and redo it to process the exception that is generated when authentication on device fails.
+Copy the send_show_command function from task 18.1 and rewrite it to handle
+the exception that is thrown on authentication failure on the device.
 
-If error occurs, exception message should be displayed on standard output stream.
+When an error occurs, an exception message should be printed to stdout.
 
-To verify this, change your password on device or in devices.yaml
+To verify, change the password on the device or in the devices.yaml file.
 
 Task 18.1b
 ~~~~~~~~~~~~~
 
-Copy send_show_command() function from task 18.1a and redo it in such a way that exception is generated not only when authentication on device fails, but also when device's IP address is not available.
+Copy the send_show_command function from task 18.1a and rewrite it to handle
+not only the exception that is raised when authentication fails on the device,
+but also the exception that is raised when the IP address of the device
+is not available.
 
-If error occurs, exception message should be displayed on standard output stream.
+When an error occurs, an exception message should be printed to standard output.
 
-To verify this, change your password on device or in devices.yaml
+To check, change the IP address on the device or in the devices.yaml file.
 
 Task 18.2
 ~~~~~~~~~~~~
 
-Create send_config_commands() function
+Create send_config_commands function
 
-Function connects via SSH (using netmiko) to device and performs a list of commands in configuration mode based on passed arguments.
+The function connects via SSH (using netmiko) to ONE device and executes
+a list of commands in configuration mode based on the passed arguments.
 
 Function parameters:
 
-* device - dictionary with device connection parameters
-* config_commands - list of commands to execute
+* device - a dictionary with parameters for connecting to a device
+* config_commands - list of configuration commands to be executed
 
-Function returns a string with command output.
+The function should return a string with the results of the command:
 
 .. code:: python
 
@@ -86,8 +102,8 @@ Function returns a string with command output.
     R1(config)#end
     R1#
 
-
-Script should send *command* command to all devices from device.yaml file using send_config_commands() function.
+The script should send command command to all devices from the devices.yaml file
+using the send_config_commands function.
 
 .. code:: python
 
@@ -98,55 +114,60 @@ Script should send *command* command to all devices from device.yaml file using 
 Task 18.2a
 ~~~~~~~~~~~~~
 
-Copy send_config_commands() function from task 18.2 and add *verbose* parameter that controls whether information about to which device connection is established will be displayed in output.
+Copy the send_config_commands function from job 18.2 and add the log parameter.
+The log parameter controls whether information is displayed about which device
+the connection is to:
 
-.. note::
-    verbose - parameter of send_config_commands() function, not parameter of ConnectHandler!
+* if log is equal to True - information is printed
+* if log is equal to False - information is not printed
 
-By default, the result should be displayed.
+By default, log is equal to True.
 
-Example of function execution:
+An example of how the function works:
 
 .. code:: python
 
     In [13]: result = send_config_commands(r1, commands)
-    Connection to 192.168.100.1...
+    Connecting to 192.168.100.1...
 
-    In [14]: result = send_config_commands(r1, commands, verbose=False)
+    In [14]: result = send_config_commands(r1, commands, log=False)
 
     In [15]:
 
-Script should send commands list to all devices from devices.yaml file using the send_config_commands() function.
-
+The script should send command command to all devices from the devices.yaml file
+using the send_config_commands function.
 
 Task 18.2b
 ~~~~~~~~~~~~~
 
-Copy send_config_commands() function from task 18.2a and add error check.
+Copy the send_config_commands function from task 18.2a and add error checking.
 
-When executing each command, script should check the result for such errors:
+When executing each command, the script should check the output for
+the following errors: Invalid input detected, Incomplete command, Ambiguous command
 
-* Invalid input detected, Incomplete command, Ambiguous command
 
-If error occurs during execution of any of commands, function should output a message to standard output stream with information about: which error occurred, which command caused it and on which device. For example: "logging" command was executed with error "Incomplete command." on device 192.168.100.1
+If an error occurs while executing any of the commands, the function should
+print a message to the stdout with information about what error occurred,
+in which command and on which device, for example:
+The "logging" command was executed with the error "Incomplete command." on the device 192.168.100.1
 
-Errors should always be displayed regardless of *verbose* parameter value. However, *verbose* still has to control whether the message will be displayed:
-Connecting to 192.168.100.1...
+Errors should always be printed, regardless of the value of the log parameter.
+At the same time, the log parameter should still control whether the message
+"Connecting to 192.168.100.1..." will be displayed.
 
-Function send_config_commands() should now return a tuple with two dictionaries:
+Send_config_commands should now return a tuple of two dictionaries:
 
-* first dictionary with commands output that executed without error
-* second dictionary with commands output that executed with errors
+* the first dict with the output of commands that were executed without error
+* second dict with the output of commands that were executed with errors
 
-Both dictionaries in format:
+In both dictionaries:
 
 * key - command
-* value - output with execution of commands
+* value - output with command execution
 
-Function can be checked on one device.
+You can test the function on one device.
 
-
-Example of send_config_commands() function execution:
+An example of how the send_config_commands function works:
 
 .. code:: python
 
@@ -228,26 +249,28 @@ Lists of command lists with and without errors:
 Task 18.2c
 ~~~~~~~~~~~~~
 
-Copy send_config_commands() function from 18.2b task and redo it in the following way: If you have error when executing a command, ask user if you need to execute other commands.
+Copy the send_config_commands function from task 18.2b and remake it as follows:
+If an error occurs while executing a command, ask the user whether to continue
+executing other commands.
 
-Response options [y]/n:
+Answer options [y]/n:
 
-* y - to execute other commands. This is the default, so pressing any combination is perceived as "y"
+* y - execute other commands. This is the default, so any key is interpreted as y
 * n or no - do not execute other commands
 
-Function send_config_commands() should still return a tuple with two dictionaries:
+The send_config_commands function should still return a tuple of two dictionaries:
 
-* first dictionary with commands output that executed without error
-* second dictionary with commands output that executed with errors
+* the first dictionary with the output of commands that were executed without error
+* second dictionary with the output of commands that were executed with errors
 
-Both dictionaries in format:
+In both dictionaries:
 
 * key - command
-* value - output with execution of commands
+* value - output with command execution
 
-Function can be checked on one device.
+You can test the function on one device.
 
-Example of function execution:
+An example of how the send_config_commands function works:
 
 .. code:: python
 
@@ -287,30 +310,46 @@ Lists of commands with and without errors:
 Task 18.3
 ~~~~~~~~~~~~
 
-Create send_commands() function (netmiko is used to connect via SSH).
+Create a send_commands function (use netmiko to connect via SSH).
 
 Function parameters:
 
-* device - dictionary with device connection parameters
+* device - a dictionary with parameters for connecting to one device
 * show - one show command (string)
-* config - list of commands to execute in configuration mode
+* config - a list with commands to be executed in configuration mode
 
-Depending on which argument is passed, the function calls different functions within. When calling send_commands(), only one argumnet will be passed - show or config.
+The show and config arguments should only be passed as keyword arguments.
+Passing these arguments as positional should raise a TypeError exception.
 
-Then follows the combination of argument and corresponding fucntion:
+.. code:: python
 
-* show - send_show_command() function from task 18.1
-* config - send_config_commands() function from task 18.2
+    In [4]: send_commands(r1, 'sh clock')
+    ---------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call last)
+    <ipython-input-4-75adcfb4a005> in <module>
+    ----> 1 send_commands(r1, 'sh clock')
 
-Function returns string with execution results of command or commands.
+    TypeError: send_commands() takes 1 positional argument but 2 were given
 
-Check function with:
+Depending on which argument was passed, the send_commands function calls
+different functions internally. When calling the send_commands function,
+only one of the show, config arguments should always be passed. If both
+arguments are passed, a ValueError exception should be raised.
 
-* *commands* - list of commands
-* *command* - command
+A combination of an argument and a corresponding function:
 
-Example of function execution:
+* show - the send_show_command function from task 18.1
+* config - send_config_commands function from task 18.2
 
+The function returns a string with the results of executing single command
+or multiple commands.
+
+Check function operation:
+
+* with a list of config commands in variable commands
+* single show command in variable command
+
+An example of how the function works:
 
 .. code:: python
 
@@ -324,6 +363,5 @@ Commands example:
 
 .. code:: python
 
-    commands = [
-        'logging 10.255.255.1', 'logging buffered 20010']
+    commands = ['logging 10.255.255.1', 'logging buffered 20010']
     command = 'sh ip int br'
