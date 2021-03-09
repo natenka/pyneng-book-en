@@ -2,7 +2,7 @@ Working with repository of tasks and examples
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 All examples and tasks of book are published in a separate 
-`repository <https://github.com/natenka/pyneng-examples-exercises>`__.
+`repository <https://github.com/natenka/pyneng-examples-exercises-en>`__.
 
 Copying repository from Github
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
