@@ -148,3 +148,4 @@ Option to connect to virtual devices via Loopback
 * Be sure to restart the machine afterwards
 
 Then in GNS3 select this loopback interface for connecting the "cloud".
+
