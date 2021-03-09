@@ -10,26 +10,23 @@ Tasks
 Task 9.1
 ~~~~~~~~~~~
 
-Create a function that generates configuration for access ports.
+Create generate_access_config function that generates configuration
+for access ports.
 
-Function expects such arguments:
+The function expects such arguments:
 
-1. dictionary with interface-VLAN mapping:
+* a dictionary with interface as a key and VLAN as a value (access_config or
+  access_config_2 dict)
+* access ports configuration template as a list of commands (access_mode_template list)
 
-.. code:: python
+The function should return a list of all ports in access mode with configuration
+based on the access_mode_template template.
 
-    {"FastEthernet0/12": 10,
-     "FastEthernet0/14": 11,
-     "FastEthernet0/16": 17}
-
-2. access port configuration template in the form of a list of commands (access_mode_template list)
-
-Function should return a list of all ports in access mode with configuration based on template access_mode_template. There should be no line feed at the end of lines in the list.
-
-In this task, the blank for function is already done and only body of function need to be written.
+In this task, the beginning of the function is written and you just need to
+continue writing the function body itself.
 
 
-Example of resulting list (line feed after each item is made for ease of reading):
+An example of a final list (each string is written on a new line for readability):
 
 .. code:: python
 
@@ -48,54 +45,65 @@ Example of resulting list (line feed after each item is made for ease of reading
     "spanning-tree bpduguard enable",
     ...]
 
-Check function with access_config dictionary.
+Check the operation of the function using the access_config dictionary
+and the list of commands access_mode_template.
+If the previous check was successful, check the function again using the dictionary
+access_config_2 and make sure that the final list contains the correct interface
+numbers and vlans.
 
-Restriction: All tasks must be performed using only covered topics.
+Restriction: All tasks must be done using the topics covered in this and previous chapters.
 
 .. code:: python
 
     access_mode_template = [
-        "switchport mode access", "switchport access vlan",
-        "switchport nonegotiate", "spanning-tree portfast",
-        "spanning-tree bpduguard enable"
+        "switchport mode access",
+        "switchport access vlan",
+        "switchport nonegotiate",
+        "spanning-tree portfast",
+        "spanning-tree bpduguard enable",
     ]
 
-    access_config = {
-        "FastEthernet0/12": 10,
-        "FastEthernet0/14": 11,
-        "FastEthernet0/16": 17
+    access_config = {"FastEthernet0/12": 10, "FastEthernet0/14": 11, "FastEthernet0/16": 17}
+
+    access_config_2 = {
+        "FastEthernet0/3": 100,
+        "FastEthernet0/7": 101,
+        "FastEthernet0/9": 107,
     }
 
 
     def generate_access_config(intf_vlan_mapping, access_template):
         """
-        intf_vlan_mapping - dictionary with interface-VLAN mapping:
-            {"FastEthernet0/12": 10,
-             "FastEthernet0/14": 11,
-             "FastEthernet0/16": 17}
-        access_template - list of commands for port in access mode
+        intf_vlan_mapping is a dictionary with interface-VLAN mapping:
+             {'FastEthernet0/12': 10,
+              'FastEthernet0/14': 11,
+              'FastEthernet0/16': 17}
+        access_template - list of commands for the port in access mode
 
-        Return list of all ports in access mode with configuration based on temlate 
+        Returns a list of commands.
         """
-
 
 Task 9.1a
 ~~~~~~~~~~~~
 
-Make a copy of generate_access_config() function from task 9.1.
+Make a copy of the code from the task 9.1.
 
-Complete script: enter an additional parameter that controls whether port-security will be configured:
+Add this functionality: add an additional parameter that controls whether
+port-security configured
 
-* parameter name "psecurity"
-* default is None
-* to configure port-security, list of *port-security* commands should be passed as a value (in port_security_template list)
+  * parameter name 'psecurity'
+  * default is None
+  * to configure port-security, a list of commands must be passed as a value
+    port-security (port_security_template list)
 
-Function should return a list of all ports in access mode with configuration based on access_mode_template template and template port_security_template template if it has been passed. There should be no line feed at the end of lines in the list.
+The function should return a list of all ports in access mode with configuration
+based on the access_mode_template template and the port_security_template template,
+if passed. There should not be a new line character at the end of lines in the list.
 
+Check the operation of the function using the example of the access_config
+dictionary, with the generation of the configuration port-security and without.
 
-Check function with access_config dictionary, with and without port-security configuration generation.
-
-Example of a function call:
+An example of a function call:
 
 ::
 
@@ -103,14 +111,16 @@ Example of a function call:
     print(generate_access_config(access_config, access_mode_template, port_security_template))
 
 
-Restriction: All tasks must be performed using only covered topics.
+Restriction: All tasks must be done using the topics covered in this and previous chapters.
 
 .. code:: python
 
     access_mode_template = [
-        "switchport mode access", "switchport access vlan",
-        "switchport nonegotiate", "spanning-tree portfast",
-        "spanning-tree bpduguard enable"
+        "switchport mode access",
+        "switchport access vlan",
+        "switchport nonegotiate",
+        "spanning-tree portfast",
+        "spanning-tree bpduguard enable",
     ]
 
     port_security_template = [
@@ -125,26 +135,27 @@ Restriction: All tasks must be performed using only covered topics.
 Task 9.2
 ~~~~~~~~~~~
 
-Create a generate_trunk_config() function that generates configuration for trunk ports.
+Create generate_trunk_config function that generates configuration
+for access ports.
 
-Function should have such parameters:
+The function expects such arguments:
 
-1. intf_vlan_mapping: expects a dictionary with interface-VLAN mapping:
+* intf_vlan_mapping: expects a dictionary with interface-VLAN mapping
+  (trunk_config or trunk_config_2)
+* trunk_template: expects trunk port configuration template as command list
+  (trunk_mode_template list)
 
-.. code:: python
+The function should return a list of commands with configuration based on
+the specified ports and trunk_mode_template.
 
-    {"FastEthernet0/1": [10, 20],
-     "FastEthernet0/2": [11, 30],
-     "FastEthernet0/4": [17]}
-
-2. trunk_template: expects trunk port configuration template as command list (trunk_mode_template list)
-
-Function should return a list of commands with configuration based on specified ports and trunk_mode_template template. There should be no line feed at the end of lines in the list.
-
-Check function with trunk_config dictionary and list of commands trunk_mode_template. If this check is successful, check function again with trunk_config_2 dictionary and make sure that the resulting list contains correct interface and vlan numbers.
+Check the operation of the function using the example of the trunk_config
+dictionary and a list of commands trunk_mode_template.
+If the previous check was successful, check the function again
+on the trunk_config_2 dictionary and make sure that the final list contains
+the correct numbers interfaces and vlans.
 
 
-Example of resulting list (line feed after each item is made for ease of reading):
+An example of a final list (each string is written on a new line for readability):
 
 .. code:: python
 
@@ -160,35 +171,65 @@ Example of resulting list (line feed after each item is made for ease of reading
     ...]
 
 
-Restriction: All tasks must be performed using only covered topics.
+Restriction: All tasks must be done using the topics covered in this and previous chapters.
 
 .. code:: python
 
     trunk_mode_template = [
-        "switchport mode trunk", "switchport trunk native vlan 999",
-        "switchport trunk allowed vlan"
+        "switchport mode trunk",
+        "switchport trunk native vlan 999",
+        "switchport trunk allowed vlan",
     ]
 
     trunk_config = {
         "FastEthernet0/1": [10, 20, 30],
         "FastEthernet0/2": [11, 30],
-        "FastEthernet0/4": [17]
+        "FastEthernet0/4": [17],
+    }
+
+    trunk_config_2 = {
+        "FastEthernet0/11": [120, 131],
+        "FastEthernet0/15": [111, 130],
+        "FastEthernet0/14": [117],
     }
 
 
 Task 9.2a
 ~~~~~~~~~~~~
 
-Make a copy of generate_trunk_config() function from task 9.2.
+Make a copy of the code from the task 9.2.
 
-Change function to return a dictionary rather than a list of commands:
+Change the function so that it returns a dictionary instead of a list of commands:
+- keys: interface names, like 'FastEthernet0/1'
+- values: the list of commands that you need execute on this interface
 
-* keys: interface names like "FastEthernet0/1"
-* values: list of commands to execute on this interface
+Check the operation of the function using the example of the trunk_config
+dictionary and the trunk_mode_template template.
 
-Check function with trunk_config dictionary and trunk_mode_template template.
+An example of a final dict (each string is written on a new line for readability):
 
-Restriction: All tasks must be performed using only covered topics.
+.. code:: python
+
+    {
+        "FastEthernet0/1": [
+            "switchport mode trunk",
+            "switchport trunk native vlan 999",
+            "switchport trunk allowed vlan 10,20,30",
+        ],
+        "FastEthernet0/2": [
+            "switchport mode trunk",
+            "switchport trunk native vlan 999",
+            "switchport trunk allowed vlan 11,30",
+        ],
+        "FastEthernet0/4": [
+            "switchport mode trunk",
+            "switchport trunk native vlan 999",
+            "switchport trunk allowed vlan 17",
+        ],
+    }
+
+
+Restriction: All tasks must be done using the topics covered in this and previous chapters.
 
 .. code:: python
 
@@ -207,9 +248,11 @@ Restriction: All tasks must be performed using only covered topics.
 Task 9.3
 ~~~~~~~~~~~
 
-Create get_int_vlan_map() function that processes switch configuration file and returns a tuple with two dictionaries:
+Create a get_int_vlan_map function that handles the switch configuration
+file and returns a tuple of two dictionaries:
 
-1. dictionary of ports in access mode, where keys are port numbers and values is access VLAN (numbers):
+1. A dictionary of ports in access mode, where the keys are port numbers,
+   and the access VLAN values (numbers):
 
 .. code:: python
 
@@ -217,65 +260,102 @@ Create get_int_vlan_map() function that processes switch configuration file and 
      "FastEthernet0/14": 11,
      "FastEthernet0/16": 17}
 
-2. dictionary of ports in trunk mode, where keys are port number and values are list of allowed VLANs (list of numbers):
+2. A dictionary of ports in trunk mode, where the keys are port numbers,
+   and the values are the list of allowed VLANs (list of numbers):
 
 .. code:: python
+
     {"FastEthernet0/1": [10, 20],
      "FastEthernet0/2": [11, 30],
      "FastEthernet0/4": [17]}
 
-Function should have one parameter - config_filename, that expects as an argument the name of configuration file.
+The function must have one parameter, config_filename, which expects as an argument
+the name of the configuration file.
 
-Check function with config_sw1.txt file
+Check the operation of the function using the config_sw1.txt file.
 
-Restriction: All tasks must be performed using only covered topics.
+Restriction: All tasks must be done using the topics covered in this and previous chapters.
 
 
 Task 9.3a
 ~~~~~~~~~~~~
 
-Copy get_int_vlan_map() function from task 9.3.
+Make a copy of the code from the task 9.3.
 
-Complete function: add configuration support when access port configuration is like:
+Add this functionality: add support for configuration when the port is in VLAN 1
+and the access port setting looks like this:
 
 ::
 
     interface FastEthernet0/20
-     switchport mode access
-     duplex auto
+        switchport mode access
+        duplex auto
 
-That is, port is in VLAN 1
-
-In this case, port dictionary should add information that port in VLAN 1
+In this case, information should be added to the dictionary that the port in VLAN 1
+Dictionary example:
 
 .. code:: python
-      {"FastEthernet0/12": 10,
-       "FastEthernet0/14": 11,
-       "FastEthernet0/20": 1}
 
-Function should have one parameter - config_filename, that expects as an argument the name of configuration file.
+    {'FastEthernet0/12': 10,
+     'FastEthernet0/14': 11,
+     'FastEthernet0/20': 1 }
 
-Check function with config_sw2.txt
+The function must have one parameter, config_filename, which expects as an argument
+the name of the configuration file.
 
-Restriction: All tasks must be performed using only covered topics.
+Check the operation of the function using the config_sw2.txt file.
 
+Restriction: All tasks must be done using the topics covered in this and previous chapters.
 
 Task 9.4
 ~~~~~~~~~~~
 
-Create convert_config_to_dict() function that processes switch configuration file and returns dictionary:
+Create a convert_config_to_dict function that handles the switch configuration
+file and returns a dictionary:
 
-* All top-level commands (global configuration mode) will be the keys.
-* If top-level command has a sub-command, it must be in value of corresponding key as a list (spaces at the beginning of line should be removed).
-* If top level command does not have a sub-command, the value is an empty list
+* All top-level commands (global configuration mode) will be keys.
+* If the top-level team has subcommands, they must be in the value
+  from the corresponding key, in the form of a list (spaces at the beginning
+  of the line must be removed).
+* If the top-level command has no subcommands, then the value will be an empty list
 
-Function should have one parameter - config_filename, that expects as an argument the name of configuration file.
+The function must have one parameter, config_filename, which expects as an argument
+the name of the configuration file.
 
-When processing a configuration file, you should ignore lines that start with "!" as well as the lines that contain words from *ignore* list. To check whether to ignore a line, use ignore_command() function.
+Check the operation of the function using the config_sw1.txt file.
 
-Check function with config_sw1.txt file
+When processing the configuration file, you should ignore the lines that begin
+with '!', as well as lines containing words from the ignore list.
 
-Restriction: All tasks must be performed using only covered topics.
+To check if a line should be ignored, use the ignore_command function.
+
+The part of the dictionary that the function should return (the full output can be seen
+in test_task_9_4.py test):
+
+.. code:: python
+
+    {
+        "version 15.0": [],
+        "service timestamps debug datetime msec": [],
+        "service timestamps log datetime msec": [],
+        "no service password-encryption": [],
+        "hostname sw1": [],
+        "interface FastEthernet0/0": [
+            "switchport mode access",
+            "switchport access vlan 10",
+        ],
+        "interface FastEthernet0/1": [
+            "switchport trunk encapsulation dot1q",
+            "switchport trunk allowed vlan 100,200",
+            "switchport mode trunk",
+        ],
+        "interface FastEthernet0/2": [
+            "switchport mode access",
+            "switchport access vlan 20",
+        ],
+    }
+
+Restriction: All tasks must be done using the topics covered in this and previous chapters.
 
 .. code:: python
 
@@ -284,14 +364,17 @@ Restriction: All tasks must be performed using only covered topics.
 
     def ignore_command(command, ignore):
         """
-        Function checks whether command words from *ignore* list.
+        The function checks if the command contains a word from the ignore list.
 
-        command - string. Command that should be checked.
-        ignore - list. List of words.
+        command is a string. Command to check
+        ignore is a list. Word list
 
         Returns
-        * True, if command contains a word from *ignore* list.
+        * True if the command contains a word from the ignore list
         * False - if not
         """
-        return any(word in command for word in ignore)
-
+        ignore_status = False
+        for word in ignore:
+            if word in command:
+                ignore_status = True
+        return ignore_status
