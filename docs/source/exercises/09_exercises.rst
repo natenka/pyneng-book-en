@@ -13,7 +13,7 @@ Task 9.1
 Create generate_access_config function that generates configuration
 for access ports.
 
-The function expects such arguments:
+The function expects arguments:
 
 * a dictionary with interface as a key and VLAN as a value (access_config or
   access_config_2 dict)
@@ -138,7 +138,7 @@ Task 9.2
 Create generate_trunk_config function that generates configuration
 for access ports.
 
-The function expects such arguments:
+The function expects arguments:
 
 * intf_vlan_mapping: expects a dictionary with interface-VLAN mapping
   (trunk_config or trunk_config_2)

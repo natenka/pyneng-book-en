@@ -106,12 +106,15 @@ studying than to get stuck on one topic and abandon everything.
 Tests
 ~~~~~
 
-Starting from section 9. Functions there are automatic tests for checking tasks. 
-They help to check whether everything fits the task and also give feedback on
-what does not fit the task. As a rule, after first period of adaptation to
-tests, it becomes easier to do tasks with tests.
+`Repository with examples and tasks <https://github.com/natenka/pyneng-examples-exercises-en/>`__
 
-:ref:`How to work with tests and basics of pytest <additional_info_pytest>`. 
+There are automated tests in the repository for checking assignments. They
+help to check whether everything matches the task, and also give feedback on what
+does not correspond to the task. As a rule, after the first period of adaptation
+to tests, it becomes easier to do tasks with tests.
+
+
+:ref:`How to work with tests and basics of pytest <additional_info_pyneng>`. 
 
 
 Further reading
