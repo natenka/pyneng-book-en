@@ -36,7 +36,7 @@ An example of creating an instance of a class:
 
     In [1]: ip1 = IPAddress('10.1.1.1/24')
 
-Атрибуты ip и mask
+ip and mask attributes
 
 .. code:: python
 
