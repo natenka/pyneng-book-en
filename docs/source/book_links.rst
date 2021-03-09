@@ -114,7 +114,7 @@ does not correspond to the task. As a rule, after the first period of adaptation
 to tests, it becomes easier to do tasks with tests.
 
 
-:ref:`How to work with tests and basics of pytest <additional_info_pyneng>`. 
+:ref:`How to work with tests and basics of pyneng <additional_info_pyneng>`. 
 
 
 Further reading
