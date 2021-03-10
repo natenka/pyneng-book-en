@@ -10,9 +10,8 @@ Tasks
 Task 3.1
 ^^^^^^^^^^^
 
-Install IPython in a virtual environment or globally in
-system if virtual environments are not used. After installation, by
-ipython command should open IPython interpreter (the output may
+Install IPython in a virtual environment or globally in OS. After installation,
+running ipython command should open IPython interpreter (the output may
 differ slightly):
 
 .. code:: python

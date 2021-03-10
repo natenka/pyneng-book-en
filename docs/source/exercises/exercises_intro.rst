@@ -1,10 +1,11 @@
-All tasks and auxiliary files can be downloaded from 
-`repository <https://github.com/natenka/pyneng-examples-exercises/>`__.
-If you have tasks with letters (for example, 5.2a) in a section, it is better to do tasks without letters and then with letters. Tasks with letter tend to be slightly more complex than letter-free tasks and they develop or complicate the idea in the respective task without letter.
+All tasks and additional files can be downloaded from 
+`repository <https://github.com/natenka/pyneng-examples-exercises-en/>`__.
 
-.. note::
-    For example, in the section there are tasks 5.1, 5.2, 5.2a, 5.2b, 5.3, 5.3a.
-    First it is better to complete 5.1, 5.2, 5.3 and then 5.2a, 5.2b,
-    5.3a
+.. warning::
 
-If you can do a task with letters right away, it is better to do it in order.
+    Starting from section "4. Data types in Python" there are automated tests
+    for testing tasks. They help to check whether everything matches the task,
+    and also give feedback on what does not correspond to the task. As a rule,
+    after the first period of adaptation to tests, it becomes easier to do tasks
+    with tests. Testing is done using the pyneng utility.
+    :ref:`Learn more about how to work with the pyneng utility <additional_info_pyneng>`.

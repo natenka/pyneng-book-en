@@ -159,10 +159,3 @@ engineers are anything special but, in general:
 
 This does not mean that everybody else is "not allowed". It will just be easier for the engineers.
 
-Will the book ever be charged with fee?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-No, this book will always be free. I read a paid
-`online course "Python for network engineers" <https://natenka.github.io/pyneng-online/>`__ (in Russian),
-but this will not affect this book - it will always be free.
-

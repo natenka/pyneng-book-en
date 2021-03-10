@@ -5,7 +5,7 @@
 Tasks
 =======
 
-.. include:: ./pytest.rst
+.. include:: ./exercises_intro.rst
 
 Task 20.1
 ~~~~~~~~~~~~
