@@ -22,14 +22,14 @@ To run the tests, ``pyneng.py`` is used - a script that is located in the
 Where to solve tasks
 --------------------
 
-Tasks must be performed in prepared files.
-For example, section 04_data_structures contains task 4.3. To execute it, open
-the exercises/04_data_structures/task_4_3.py file and execute the task directly
+Tasks must be done in prepared files.
+For example, section 04_data_structures contains task 4.3. Open
+the exercises/04_data_structures/task_4_3.py file and write code for the task directly
 in this file after the task description.
 
-This is important because tests are tied to the fact that tasks are executed
+This is important because tests are tied to the fact that solution for the tasks is written
 in specific files and in a specific directory structure.
-In addition to the fact that the tasks must be done in the prepared files,
+In addition to the fact that the tasks must be solved in the prepared files,
 be sure to copy the entire exercises directory (or even better, the entire
 pyneng-examples-exercises-en repository), since tests depend on files in
 the exercises directory, not only on files in the specific tasks directory.
