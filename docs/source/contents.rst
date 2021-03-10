@@ -35,4 +35,5 @@ as an example, but of course they apply to any other equipment.
    book/Part_VIII
    resources/README
    testimonials
+   download
 
