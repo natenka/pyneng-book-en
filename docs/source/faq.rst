@@ -1,10 +1,33 @@
 Frequently Asked Questions (FAQ)
 ------------------------------
 
-Here are some of the most frequently asked questions in reading
-book.
+Will there be a printed version of the book?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-How does this differ from the regular Python introductory course?
+No, there will be no printed version. The book has existed in some form
+since late 2015. All this time the book has been changing. I love this opportunity
+to change the book, write something differently.
+
+
+Why is there no topic X in the book?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are still a huge number of useful topics and it is simply impossible
+to fit all of them into one book. Of course, each reader has priorities and
+it seems that this particular module is very necessary for everyone, but there
+are a lot of such topics/modules.
+Globally, nothing will change in the book, new topics will not be added.
+
+Почему в книге нет темы X?
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Полезных тем еще огромное количество и просто невозможно все их вместить в одну
+книгу. Конечно, у каждого читателя есть приоритеты и кажется именно этот
+модуль очень нужен всем, но таких тем/модулей очень много.
+Глобально в книге уже ничего не будет менятся, новые темы добавляться не будут.
+
+
+How does this differ from the regular Python introductory book?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The main differences are three:
