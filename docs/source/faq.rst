@@ -18,14 +18,6 @@ it seems that this particular module is very necessary for everyone, but there
 are a lot of such topics/modules.
 Globally, nothing will change in the book, new topics will not be added.
 
-Почему в книге нет темы X?
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Полезных тем еще огромное количество и просто невозможно все их вместить в одну
-книгу. Конечно, у каждого читателя есть приоритеты и кажется именно этот
-модуль очень нужен всем, но таких тем/модулей очень много.
-Глобально в книге уже ничего не будет менятся, новые темы добавляться не будут.
-
 
 How does this differ from the regular Python introductory book?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
