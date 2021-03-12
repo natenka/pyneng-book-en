@@ -9,29 +9,13 @@ Working environment
 
 To complete tasks, you can use several options:
 
--  take a prepared virtual machine vmware or vagrant (virtualbox)
--  prepare a virtual machine yourself
+-  prepare a virtual machine
 -  use one of the cloud services
 -  work without creating a virtual machine
 
-Prepared virtual machines
-~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To complete the tasks of the book, virtual machines have been prepared in which
-the following are installed:
-
--  Debian 9.9
--  Python 3.7 and 3.8 in a virtual environment
--  IPython and other modules you will need to complete the tasks
--  text editors vim, Geany, Mu
-
-There are two options for virtual machines (the links are for instructions for each option):
-
--  `Vagrant <https://docs.google.com/document/d/1tIb8prINPM7uhyFxIhSSIF1-jckN_OWkKaO8zHQus9g/edit?usp=sharing>`__. Login/password vagrant/vagrant
--  `VMware <https://drive.google.com/open?id=1r7Si9xTphdWp79sKxDhVk2zjWGggfy5Z6h8cKCLP5Cs>`__. Login/password python/python
-
-Preparing the virtual machine/host yourself
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Preparing the virtual machine/host
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
 * tips for :ref:`additional_info_pyneng_windows`
 * tips for :ref:`additional_info_pyneng_linux`
