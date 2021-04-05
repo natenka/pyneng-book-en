@@ -357,25 +357,25 @@ without error and ``True`` if it failed.
 send_config method
 ~~~~~~~~~~~~~~~~~~
 
-Метод ``send_config`` позволяет отправить одну команду конфигурационного режима.
+The ``send_config`` method allows you to send one configuration mode command.
 
-Пример использования:
+Example:
 
 .. code:: python
 
     In [33]: r = ssh.send_config("username user1 password password1")
 
-Так как scrapli удаляет команду из вывода, по умолчанию, при использовании
-send_config, в атрибуте result будет пустая строка (если не было ошибки при
-выполнении команды):
+Since scrapli removes the command from the output, by default, when using
+``send_config``, the result attribute will contain an empty string (if there was
+no error while executing the command):
 
 .. code:: python
 
     In [34]: r.result
     Out[34]: ''
 
-Можно добавлять параметр ``strip_prompt=False`` и тогда в выводе появится
-приглашение:
+You can add the parameter ``strip_prompt=False`` and then the prompt will
+appear in the output:
 
 .. code:: python
 
@@ -385,13 +385,13 @@ send_config, в атрибуте result будет пустая строка (е
     Out[38]: 'R1(config)#'
 
 
-Методы send_commands, send_configs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+send_commands, send_configs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Методы send_commands, send_configs отличаются от send_command, send_config тем,
-что могут отправлять несколько команд.
-Кроме того, эти методы возвращают не Response, а MultiResponse, который можно
-в целом воспринимать как список Response, по одному для каждой команды.
+The send_commands, send_configs methods differ from send_command, send_config
+in that they can send several commands. In addition, these methods do not return
+a Response, but a MultiResponse object, which can generally be thought of as a list
+of Response objects, one for each command.
 
 .. code:: python
 
@@ -425,10 +425,10 @@ send_config, в атрибуте result будет пустая строка (е
     In [50]: reply[0].result
     Out[50]: '*08:38:20.115 UTC Thu Apr 1 2021'
 
-При отправке нескольких команд также очень удобно использовать параметр
-``stop_on_failed``. По умолчанию он равен False, поэтому выполняются все
-команды, но если указать ``stop_on_failed=True``, после возникновения
-ошибки в какой-то команде, следующие команды не будут выполняться:
+When sending multiple commands, it is also very convenient to use
+the ``stop_on_failed`` parameter. By default, it is False, so all commands
+are executed, but if you specify ``stop_on_failed=True``, after an error
+occurs in some command, the following commands will not be executed:
 
 .. code:: python
 
@@ -454,12 +454,12 @@ send_config, в атрибуте result будет пустая строка (е
     % Invalid input detected at '^' marker.
 
 
-Подключение telnet
+Telnet connection
 ~~~~~~~~~~~~~~~~~~
 
-Для подключения к оборудовани по Telnet надо указать transport равным
-telnet и обязательно указать параметр port равным 23 (или тому порту который
-используется у вас для подключения по Telnet):
+To connect to equipment via Telnet, you must specify transport equal to ``telnet``
+and be sure to specify the port parameter equal to 23 (or the port that you use
+to connect via Telnet):
 
 .. code:: python
 
@@ -474,7 +474,7 @@ telnet и обязательно указать параметр port равны
         "auth_secondary": "cisco",
         "auth_strict_key": False,
         "transport": "telnet",
-        "port": 23,  # обязательно указывать при подключении telnet
+        "port": 23,  # must be specified when connecting telnet
     }
 
 
@@ -494,8 +494,10 @@ telnet и обязательно указать параметр port равны
         print(output)
 
 
-Примеры использования scrapli
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Scrapli examples
+~~~~~~~~~~~~~~~~
+
+Basic example of sending show command:
 
 .. code:: python
 
@@ -527,6 +529,7 @@ telnet и обязательно указать параметр port равны
         output = send_show(r1, "sh ip int br")
         print(output)
 
+Basic example of sending config commands:
 
 .. code:: python
 
@@ -559,6 +562,7 @@ telnet и обязательно указать параметр port равны
         output = send_show(r1, ["sh ip int br", "sh ver | i uptime"])
         pprint(output, width=120)
 
+An example of sending configuration commands with error checking:
 
 .. code:: python
 
@@ -583,7 +587,9 @@ telnet и обязательно указать параметр port равны
             reply = ssh.send_configs(cfg_commands, stop_on_failed=strict)
             for cmd_reply in reply:
                 if cmd_reply.failed:
-                    print(f"При выполнении команды возникла ошибка:\n{reply.result}\n")
+                    print(
+                        f"An error occurred while executing the command::\n{reply.result}\n"
+                    )
             output = reply.result
         return output
 

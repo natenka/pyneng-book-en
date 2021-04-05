@@ -34,7 +34,11 @@ Python has several modules that allow you to connect to network devices and exec
 
   * ``netmiko`` is a "wrapper" which is oriented to work with network devices
 
-This section covers all four modules and describes how to connect to several
+* ``scrapli`` - is a module that allows you to connect to network equipment
+  using Telnet, SSH or NETCONF
+
+
+This section covers all five modules and describes how to connect to several
 devices in parallel. Three routers are used in section examples. There are no
 requirements for them, only configured SSHv2 and Telnet.
 
@@ -54,5 +58,6 @@ Parameters used in these section:
    telnetlib
    paramiko
    netmiko
+   scrapli
    further_reading
    ../../exercises/18_exercises
