@@ -1,6 +1,17 @@
 Further reading
 ------------------------
 
+Python documentation:
+
+-  `concurrent.futures — Launching parallel
+   tasks <https://docs.python.org/3/library/concurrent.futures.html>`__
+-  `threading <https://docs.python.org/3/library/threading.html>`__
+-  `multiprocessing <https://docs.python.org/3/library/multiprocessing.html>`__
+-  `queue <https://docs.python.org/3/library/queue.html>`__
+-  `PEP 3148 <https://www.python.org/dev/peps/pep-3148/>`__
+-  `PyMOTW. concurrent.futures — Manage Pools of Concurrent
+   Tasks <https://pymotw.com/3/concurrent.futures/index.html>`__
+
 GIL
 ~~~
 
@@ -12,16 +23,6 @@ GIL
 
 concurrent.futures
 ~~~~~~~~~~~~~~~~~~
-
-Python documentation:
-
--  `concurrent.futures — Launching parallel
-   tasks <https://docs.python.org/3/library/concurrent.futures.html>`__
--  `PEP 3148 <https://www.python.org/dev/peps/pep-3148/>`__
--  `PyMOTW. concurrent.futures — Manage Pools of Concurrent
-   Tasks <https://pymotw.com/3/concurrent.futures/index.html>`__
-
-Articles:
 
 -  `A quick introduction to the concurrent.futures
    module <http://masnun.com/2016/03/29/python-a-quick-introduction-to-the-concurrent-futures-module.html>`__
