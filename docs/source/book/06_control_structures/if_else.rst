@@ -26,7 +26,7 @@ Example of if statement:
        ...: elif a < 10:
        ...:     print('a less than 10')
        ...: else:
-       ...:     print('a less than 10')
+       ...:     print('a greater than 10')
        ...:
     a less than 10
 
