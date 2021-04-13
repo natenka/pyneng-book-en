@@ -7,4 +7,6 @@
 
 ## Links
 
-* [Tasks](https://github.com/natenka/pyneng-examples-exercises-en)
+* &#10004; [tasks repo](https://github.com/natenka/pyneng-examples-exercises-en/)
+* &#128218; [resource list](https://natenka.github.io/pyneng-resources-en/)
+* &#128161; [code examples](https://github.com/natenka/pyneng-examples)
