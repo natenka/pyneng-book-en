@@ -40,12 +40,6 @@ The disadvantage of this option is that if in the method you write
 ``self.all_allocated_ip = ...``, instead of changing the class variable,
 an instance variable will be created.
 
-Вариант ``Network.all_allocated_ip`` будет работать корректно, но небольшой минус
-этого варианта в том, что имя класса прописано вручную.
-Вместо него можно использовать третий вариант ``type(self).all_allocated_ip``,
-так как ``type(self)`` возвращает класс.
-
-
 The option ``Network.all_allocated_ip`` will work correctly, but a small drawback
 this option is that the class name is written manually.
 You can use the third option ``type(self).all_allocated_ip`` instead,
