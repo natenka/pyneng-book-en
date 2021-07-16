@@ -212,7 +212,7 @@ The second version of solution (parse_sh_cdp_neighbors_detail_ver2.py file):
                     if match.lastgroup == 'device':
                         device = match.group(match.lastgroup)
                         result[device] = {}
-                    elif device:
+                    else:
                         result[device][match.lastgroup] = match.group(
                             match.lastgroup)
 
