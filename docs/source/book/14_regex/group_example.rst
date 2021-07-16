@@ -35,7 +35,7 @@ Comments on regex:
 -  ``\d+ +`` - numerical sequence (one or more digits) followed by one or more spaces. *Lease* value gets here
 -  ``\S+ +``- sequence of any characters other than whitespace. This matches *Type* (in this case all of them 'dhcp-snooping')
 -  ``(?P<vlan>\d+) +`` - named group 'vlan'. Only numerical sequences with one or more characters are included here
--  ``(?P<port>.\S+)`` - named group 'port'. All characters except whitespace are included here
+-  ``(?P<port>\S+)`` - named group 'port'. All characters except whitespace are included here
 
 As a result, ``groupdict`` method will return such a dictionary:
 
