@@ -63,7 +63,7 @@ After defining values, we need to defiine states:
 
 * each state definition must be separated by an empty line (at least one)
 * first line - state name 
-* then follows lines that describe rules. Rules must start with two spaces and caret symbol ``^``
+* then follows lines that describe rules. Rules must start with one or two spaces and caret symbol ``^``
 
 Initial state is always ``Start``. Input data is compared to the current state
 but rule line can specify that you want to go to a different state.
