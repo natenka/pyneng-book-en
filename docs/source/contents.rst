@@ -23,6 +23,7 @@ as an example, but of course they apply to any other equipment.
 .. toctree::
    :maxdepth: 2
 
+   download
    intro_index
    book_links
    book/Part_I
@@ -35,5 +36,4 @@ as an example, but of course they apply to any other equipment.
    book/Part_VIII
    resources/README
    testimonials
-   download
 
