@@ -27,6 +27,7 @@ are created by user, we make them look like built in Python objects.
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    underscore_names
    str_repr

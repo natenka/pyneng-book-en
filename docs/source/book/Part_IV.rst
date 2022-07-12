@@ -31,6 +31,7 @@ This section covers data reading and writing in CSV, JSON and YAML formats:
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    16_unicode/index.rst
    17_serialization/index.rst

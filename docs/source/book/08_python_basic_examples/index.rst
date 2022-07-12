@@ -13,6 +13,7 @@ While most examples will be file-oriented the same data-processing principles ca
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    f-string
    variable_unpacking  

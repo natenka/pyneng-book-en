@@ -52,6 +52,7 @@ Parameters used in these section:
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    password
    pexpect

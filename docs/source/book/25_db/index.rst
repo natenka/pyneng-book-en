@@ -17,6 +17,7 @@ The use of databases is another way of storing information. Databases are useful
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    sql
    sqlite

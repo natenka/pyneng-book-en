@@ -12,6 +12,7 @@ This section covers these modules:
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    subprocess
    os

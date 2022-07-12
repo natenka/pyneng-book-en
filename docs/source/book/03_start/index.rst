@@ -17,6 +17,7 @@ This section covers:
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    syntax
    ipython

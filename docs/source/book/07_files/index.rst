@@ -43,6 +43,7 @@ This section covers only the minimum required for working with files. More in
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    open
    read

@@ -52,6 +52,7 @@ of various projects. In addition, Github can be also used to:
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    git_basics
    git_basics_bash_status

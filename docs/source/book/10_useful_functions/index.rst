@@ -9,9 +9,20 @@
 
 This section discusses the following functions:
 
+* print
+* range
+* sorted
+* enumerate
+* zip
+* all_any
+* lambda
+* map
+* filter
+
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    print
    range

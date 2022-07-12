@@ -25,6 +25,7 @@ Python 3, respectively, has two concepts:
     
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    unicode_standard
    python_3_unicode

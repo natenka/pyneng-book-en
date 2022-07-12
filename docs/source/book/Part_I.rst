@@ -11,6 +11,7 @@ First part of the book is dedicated to Python basics. It covers:
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    01_intro/index.rst
    02_git_github/index.rst

@@ -22,6 +22,7 @@ as an example, but of course they apply to any other equipment.
 
 .. toctree::
    :maxdepth: 2
+   :hidden:
 
    download
    intro_index
@@ -37,3 +38,12 @@ as an example, but of course they apply to any other equipment.
    resources/README
    testimonials
 
+
+.. toctree::
+   :caption: Links
+   :maxdepth: 1
+   :hidden:
+
+   Examples and tasks <https://github.com/natenka/pyneng-examples-exercises-en/>
+   Answers <https://github.com/natenka/pyneng-answers-en/>
+   Ask a Question <https://github.com/natenka/pyneng-book-en/discussions>

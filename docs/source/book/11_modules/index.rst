@@ -20,6 +20,7 @@ written code and not copy it (for example, do not copy a previously written func
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    import
    create

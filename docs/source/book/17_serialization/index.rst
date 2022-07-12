@@ -36,6 +36,7 @@ For each of these formats, Python has a module that makes them easier to work wi
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    csv
    json

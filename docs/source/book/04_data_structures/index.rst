@@ -27,6 +27,7 @@ These data types, in turn, can be classified by several criteria:
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    README
    numbers

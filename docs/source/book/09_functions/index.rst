@@ -43,6 +43,7 @@ And in :ref:`modules_index` we will see how to reuse objects that are in other s
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    create_func
    namespace

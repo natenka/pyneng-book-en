@@ -20,6 +20,7 @@ Examples of use:
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    README
    example

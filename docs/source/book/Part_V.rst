@@ -10,6 +10,7 @@ In this part, the following topics are discussed:
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    18_ssh_telnet/index.rst
    19_concurrent_connections/index.rst

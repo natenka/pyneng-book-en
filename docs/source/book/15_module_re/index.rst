@@ -26,6 +26,7 @@ In addition to functions that search matches, module has the following functions
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    match_object
    search

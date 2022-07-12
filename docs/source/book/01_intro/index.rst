@@ -18,6 +18,7 @@ This book uses Debian Linux (on other OS the output may differ slightly) and Pyt
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    work_env
    os_and_editor

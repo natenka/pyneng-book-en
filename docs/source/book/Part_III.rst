@@ -34,6 +34,7 @@ to solve. Regular expressions can help in this case.
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    14_regex/index.rst
    15_module_re/index.rst

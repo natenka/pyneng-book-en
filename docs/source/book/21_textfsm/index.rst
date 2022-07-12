@@ -24,6 +24,7 @@ it's easier to find templates that have already been created and use them or sha
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    README
    textfsm_syntax

@@ -41,6 +41,7 @@ All scripts that will be created in this course have an extension ``.py``. You c
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    executable
    args

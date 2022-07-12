@@ -18,6 +18,7 @@ This section covers program flow control:
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    if_else
    for

@@ -6,6 +6,7 @@ book, but which can still be useful.
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    additional_info/pyneng
    additional_info/pytest

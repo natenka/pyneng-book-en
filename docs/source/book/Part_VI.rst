@@ -15,6 +15,7 @@ to understand netmiko code.
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    22_oop_basics/index.rst
    23_oop_special_methods/index.rst
