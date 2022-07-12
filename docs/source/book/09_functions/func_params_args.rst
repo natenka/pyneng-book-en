@@ -62,6 +62,7 @@ Similarly, an error will occur if three or more arguments are passed.
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    func_params_types.rst
    func_args_types.rst

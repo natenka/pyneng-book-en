@@ -209,6 +209,7 @@ Method items() returns a special view object that displays key-value pairs:
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    for_in_for
    for_if

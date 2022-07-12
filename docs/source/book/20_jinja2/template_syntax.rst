@@ -64,6 +64,7 @@ Parameters trim_blocks and lstrip_blocks are described in the following subsecti
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    whitespace_control
    syntax_variables

@@ -8,6 +8,7 @@ to section :ref:`sqlite3_index`
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    create
    drop

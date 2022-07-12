@@ -21,6 +21,7 @@ Set can easily remove repetitive elements:
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    set_methods
    set_operations

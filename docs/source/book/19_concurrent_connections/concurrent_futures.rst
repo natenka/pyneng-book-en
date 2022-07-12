@@ -61,6 +61,7 @@ in different threads for different IP addresses using concurrent.futures.
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    concurrent_futures_map
    concurrent_futures_submit

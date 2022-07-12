@@ -23,6 +23,7 @@ Pytest is used to run tests - a framework for writing tests.
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    pytest_basics
    pytest_pyneng

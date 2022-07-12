@@ -27,6 +27,7 @@ Cursor is created from DB connection:
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    sqlite3_execute
    sqlite3_fetch

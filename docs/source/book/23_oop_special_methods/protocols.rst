@@ -16,6 +16,7 @@ by all who write on Python.
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    iterable_iterator
    sequence_protocol
