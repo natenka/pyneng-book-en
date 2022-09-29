@@ -2,12 +2,31 @@ OS and editor
 =============
 
 You can choose any OS and any editor but it is better to use Python version 3.7
-because book uses this version.
-All examples in book were run on Debian, other operating systems may have a
-slightly different output. You can use Linux, macOS or Windows to perform tasks from a book.
+because book uses this version.  All examples in book were run on Debian, other
+operating systems may have a slightly different output. You can use Linux,
+macOS or Windows to perform tasks from a book.
 
 You can select any text editor or IDE that supports Python. Generally, working
-with Python requires minimal editor settings and often the editor recognizes Python by default.
+with Python requires minimal editor settings and often the editor recognizes
+Python by default.
+
+Thonny
+^^^^^^^
+
+`Thonny <https://thonny.org/>`__.
+
+Great editor for beginners:
+
+* supports Python 3.10 and can install both itself and Python 3.10 at once
+* work with different versions of Python and virtual environments is conveniently done, you can select the version very clearly and this is not hidden in the depths of the settings
+* multiple debugger options
+* the nicer debugger is simply indispensable for beginners to learn Python, it shows step by step how each expression is evaluated in Python
+* the faster debugger generally works like a standard debugger
+* there are all the standard goodies with autocomplete, highlights, and so on (some may need to be enabled in the settings)
+* conveniently highlights unclosed quotes/brackets
+* supports Windows, Mac, Linux
+* user-friendly interface and it is possible to add/remove sections of the interface at will
+
 
 Mu editor
 ^^^^^^^^^
@@ -35,13 +54,3 @@ I wouldn't recommend using it if you're not familiar with it and you're just
 starting to learn Python. You can always switch to it after book but for now
 it's better to try something else.
 
-
-Geany
-^^^^^
-
-`Geany <https://www.geany.org/>`__ - is a text editor that supports different
-programming languages, including Python. It is also a cross-platform editor
-and supports Linux, macOS, and Windows.
-
-.. note::
-    Editor variants above are given for example, they can be replaced by any text editor that supports Python.
