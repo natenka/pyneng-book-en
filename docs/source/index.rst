@@ -49,7 +49,7 @@ as an example, but of course they apply to any other equipment.
    Ask a Question <https://github.com/natenka/pyneng-book-en/discussions>
 
 .. toctree::
-   :caption: Translations
+   :caption: Languages
    :maxdepth: 1
 
    Ukrainian <https://pyneng.io/book>
