@@ -47,3 +47,9 @@ as an example, but of course they apply to any other equipment.
    Examples and tasks <https://github.com/natenka/pyneng-examples-exercises-en/>
    Answers <https://github.com/natenka/pyneng-answers-en/>
    Ask a Question <https://github.com/natenka/pyneng-book-en/discussions>
+
+.. toctree::
+   :caption: Translations
+   :maxdepth: 1
+
+   Ukrainian <https://pyneng.io/book>
